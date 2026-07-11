@@ -2,7 +2,6 @@ import React, { useState, useRef } from 'react';
 import { useResume } from '../context/ResumeContext';
 import { UploadCloud, Sparkles, Trash2, ArrowLeft, ArrowRight, Eye, Download, ChevronRight, Save, FileText, Presentation } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
-import { useReactToPrint } from 'react-to-print';
 
 import { exportToWord } from '../utils/exportWord';
 import { exportToPowerPoint } from '../utils/exportPowerPoint';
@@ -30,27 +29,42 @@ export default function CreateCV() {
   const fileInputRef = useRef(null);
   const printRef = useRef(null);
 
-  // For mobile: toggle between form and preview
   const [showPreviewMobile, setShowPreviewMobile] = useState(false);
+  const [isGeneratingPDF, setIsGeneratingPDF] = useState(false);
 
-  const handlePrint = useReactToPrint({
-    contentRef: printRef,
-    documentTitle: cvData?.personal?.name ? `CV_${cvData.personal.name.replace(/\s+/g, '_')}` : 'Mon_CV',
-    pageStyle: `
-      @page { size: A4; margin: 0; }
-      @media print {
-        body { margin: 0; background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-        #cv-export-container {
-          position: relative !important;
-          transform: scale(1) !important;
-          margin: 0 !important;
-          width: 210mm !important;
-          height: 297mm !important;
-          box-shadow: none !important;
-        }
-      }
-    `
-  });
+  const handlePrint = async () => {
+    if (!printRef.current) return;
+    setIsGeneratingPDF(true);
+    try {
+      // Temporarily remove scale for perfect A4 rendering
+      const originalTransform = printRef.current.style.transform;
+      printRef.current.style.transform = 'scale(1)';
+      
+      const opt = {
+        margin: 0,
+        filename: cvData?.personal?.name ? `CV_${cvData.personal.name.replace(/\s+/g, '_')}.pdf` : 'Mon_CV.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { 
+          scale: 2,
+          useCORS: true,
+          logging: false
+        },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      };
+
+      // Import dynamic to avoid SSR issues if any
+      const html2pdf = (await import('html2pdf.js')).default;
+      await html2pdf().set(opt).from(printRef.current).save();
+      
+      // Restore scale
+      printRef.current.style.transform = originalTransform;
+    } catch (error) {
+      console.error("PDF generation failed", error);
+      alert("Erreur lors de la génération du PDF.");
+    } finally {
+      setIsGeneratingPDF(false);
+    }
+  };
 
   const handleImportClick = () => {
     if (fileInputRef.current) fileInputRef.current.click();
@@ -215,9 +229,9 @@ export default function CreateCV() {
                 <Presentation className="w-4 h-4" />
                 <span className="hidden xl:inline">PPTX</span>
               </button>
-              <button onClick={handlePrint} className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md shadow-blue-600/20 transition-all hover:-translate-y-0.5">
+              <button onClick={handlePrint} disabled={isGeneratingPDF} className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md shadow-blue-600/20 transition-all hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-wait">
                 <Download className="w-4 h-4" />
-                <span className="hidden sm:inline">PDF</span>
+                <span className="hidden sm:inline">{isGeneratingPDF ? "Création..." : "PDF"}</span>
               </button>
             </div>
           </div>
