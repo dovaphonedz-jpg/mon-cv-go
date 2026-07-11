@@ -38,24 +38,28 @@ const CVPreview = forwardRef((props, ref) => {
   }, [cvData, config]);
 
   return (
-    <div ref={containerRef} className="w-full flex justify-center p-4 sm:p-8 bg-slate-100 dark:bg-slate-800 overflow-hidden">
+    <div ref={containerRef} className="w-full flex justify-center p-2 sm:p-8 bg-slate-100 dark:bg-slate-800">
       <div 
-        ref={(node) => {
-          cvRef.current = node;
-          if (typeof ref === 'function') ref(node);
-          else if (ref) ref.current = node;
-        }}
-        className="shadow-2xl bg-white origin-top transition-transform duration-200" 
-        style={{ 
-          width: '794px', 
-          minHeight: '1123px', 
-          transform: `scale(${scale})`, 
-          marginBottom: `-${cvHeight * (1 - scale)}px` 
-        }}
-        id="cv-export-container"
-        dir={isRTL ? "rtl" : "ltr"}
+        style={{ width: `${794 * scale}px`, height: `${cvHeight * scale}px` }}
+        className="relative transition-all duration-200"
       >
-        <TemplateModern cvData={cvData} config={config} />
+        <div 
+          ref={(node) => {
+            cvRef.current = node;
+            if (typeof ref === 'function') ref(node);
+            else if (ref) ref.current = node;
+          }}
+          className="shadow-2xl bg-white absolute top-0 left-0 origin-top-left transition-transform duration-200" 
+          style={{ 
+            width: '794px', 
+            minHeight: '1123px', 
+            transform: `scale(${scale})`
+          }}
+          id="cv-export-container"
+          dir={isRTL ? "rtl" : "ltr"}
+        >
+          <TemplateModern cvData={cvData} config={config} />
+        </div>
       </div>
     </div>
   );
