@@ -1,17 +1,19 @@
-import { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType } from 'docx';
+import { Document, Packer, Paragraph, TextRun, AlignmentType } from 'docx';
 import { saveAs } from 'file-saver';
 
 export const exportToWord = async (cvData) => {
-  const { personal, summary, experience, education, skills } = cvData;
+  const { personal = {}, summary = "", experience = [], education = [], skills = [] } = cvData;
 
   const children = [];
+
+  // Helper to safely add text
+  const safeText = (text) => text || "";
 
   // Header / Personal Info
   if (personal.name) {
     children.push(
       new Paragraph({
-        text: personal.name,
-        heading: HeadingLevel.TITLE,
+        children: [new TextRun({ text: safeText(personal.name), size: 36, bold: true })],
         alignment: AlignmentType.CENTER,
       })
     );
@@ -20,8 +22,7 @@ export const exportToWord = async (cvData) => {
   if (personal.title) {
     children.push(
       new Paragraph({
-        text: personal.title,
-        heading: HeadingLevel.HEADING_1,
+        children: [new TextRun({ text: safeText(personal.title), size: 28, color: "555555" })],
         alignment: AlignmentType.CENTER,
       })
     );
@@ -31,36 +32,34 @@ export const exportToWord = async (cvData) => {
   if (contactInfo) {
     children.push(
       new Paragraph({
-        text: contactInfo,
+        children: [new TextRun({ text: contactInfo, size: 24, color: "888888" })],
         alignment: AlignmentType.CENTER,
       })
     );
   }
 
-  children.push(new Paragraph({ text: "" })); // Spacing
+  children.push(new Paragraph({ text: "" }));
 
   // Summary
   if (summary) {
     children.push(
       new Paragraph({
-        text: "Résumé Professionnel",
-        heading: HeadingLevel.HEADING_2,
+        children: [new TextRun({ text: "Résumé Professionnel", size: 28, bold: true })],
       })
     );
     children.push(
       new Paragraph({
-        text: summary,
+        children: [new TextRun({ text: safeText(summary), size: 24 })],
       })
     );
-    children.push(new Paragraph({ text: "" })); // Spacing
+    children.push(new Paragraph({ text: "" }));
   }
 
   // Experience
   if (experience && experience.length > 0) {
     children.push(
       new Paragraph({
-        text: "Expériences Professionnelles",
-        heading: HeadingLevel.HEADING_2,
+        children: [new TextRun({ text: "Expériences Professionnelles", size: 28, bold: true })],
       })
     );
 
@@ -68,25 +67,24 @@ export const exportToWord = async (cvData) => {
       children.push(
         new Paragraph({
           children: [
-            new TextRun({ text: exp.title, bold: true }),
-            new TextRun({ text: ` - ${exp.company}` }),
+            new TextRun({ text: safeText(exp.title), bold: true, size: 24 }),
+            new TextRun({ text: exp.company ? ` - ${exp.company}` : "", size: 24 }),
           ],
         })
       );
       children.push(
         new Paragraph({
-          text: `${exp.startDate || ''} - ${exp.endDate || ''}`,
-          italics: true,
+          children: [new TextRun({ text: `${safeText(exp.startDate)} - ${safeText(exp.endDate)}`, italics: true, size: 20 })],
         })
       );
       if (exp.description) {
         children.push(
           new Paragraph({
-            text: exp.description,
+            children: [new TextRun({ text: safeText(exp.description), size: 24 })],
           })
         );
       }
-      children.push(new Paragraph({ text: "" })); // Spacing
+      children.push(new Paragraph({ text: "" }));
     });
   }
 
@@ -94,8 +92,7 @@ export const exportToWord = async (cvData) => {
   if (education && education.length > 0) {
     children.push(
       new Paragraph({
-        text: "Formation",
-        heading: HeadingLevel.HEADING_2,
+        children: [new TextRun({ text: "Formation", size: 28, bold: true })],
       })
     );
 
@@ -103,25 +100,24 @@ export const exportToWord = async (cvData) => {
       children.push(
         new Paragraph({
           children: [
-            new TextRun({ text: edu.degree, bold: true }),
-            new TextRun({ text: ` - ${edu.school}` }),
+            new TextRun({ text: safeText(edu.degree), bold: true, size: 24 }),
+            new TextRun({ text: edu.school ? ` - ${edu.school}` : "", size: 24 }),
           ],
         })
       );
       children.push(
         new Paragraph({
-          text: `${edu.startDate || ''} - ${edu.endDate || ''}`,
-          italics: true,
+          children: [new TextRun({ text: `${safeText(edu.startDate)} - ${safeText(edu.endDate)}`, italics: true, size: 20 })],
         })
       );
       if (edu.description) {
         children.push(
           new Paragraph({
-            text: edu.description,
+            children: [new TextRun({ text: safeText(edu.description), size: 24 })],
           })
         );
       }
-      children.push(new Paragraph({ text: "" })); // Spacing
+      children.push(new Paragraph({ text: "" }));
     });
   }
 
@@ -129,15 +125,14 @@ export const exportToWord = async (cvData) => {
   if (skills && skills.length > 0) {
     children.push(
       new Paragraph({
-        text: "Compétences",
-        heading: HeadingLevel.HEADING_2,
+        children: [new TextRun({ text: "Compétences", size: 28, bold: true })],
       })
     );
 
     skills.forEach((skill) => {
       children.push(
         new Paragraph({
-          text: `• ${skill.name} - ${skill.level}`,
+          children: [new TextRun({ text: `• ${safeText(skill.name)} - ${safeText(skill.level)}`, size: 24 })],
         })
       );
     });
