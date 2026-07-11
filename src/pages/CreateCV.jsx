@@ -34,7 +34,7 @@ export default function CreateCV() {
   const [showPreviewMobile, setShowPreviewMobile] = useState(false);
 
   const handlePrint = useReactToPrint({
-    content: () => printRef.current,
+    contentRef: printRef,
     documentTitle: cvData?.personal?.name ? `CV_${cvData.personal.name.replace(/\s+/g, '_')}` : 'Mon_CV',
     pageStyle: `
       @page { size: A4; margin: 0; }
