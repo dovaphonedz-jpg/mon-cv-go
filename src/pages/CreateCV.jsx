@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useResume } from '../context/ResumeContext';
-import { UploadCloud, Sparkles, Trash2, ArrowLeft, ArrowRight, Eye, Download, ChevronRight, Save, FileText, Presentation } from 'lucide-react';
+import { UploadCloud, Sparkles, Trash2, ArrowLeft, ArrowRight, Eye, Download, ChevronRight, Save, FileText, Presentation, Palette } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useReactToPrint } from 'react-to-print';
 
@@ -249,11 +249,24 @@ export default function CreateCV() {
           animate={{ opacity: 1, x: 0 }}
           className={`w-full lg:w-1/2 xl:w-7/12 flex flex-col gap-4 ${!showPreviewMobile ? 'hidden lg:flex' : 'flex'}`}
         >
-          <div className="bg-white dark:bg-[#0F172A] rounded-2xl p-4 shadow-sm border border-slate-200 dark:border-slate-800 flex items-center justify-between gap-4">
-            <h2 className="font-bold text-slate-800 dark:text-white flex items-center gap-2">
-              <Eye className="w-5 h-5 text-emerald-500" />
-              Aperçu en direct
-            </h2>
+          <div className="bg-white dark:bg-[#0F172A] rounded-2xl p-4 shadow-sm border border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-4">
+            <div className="flex items-center gap-4">
+              <h2 className="font-bold text-slate-800 dark:text-white flex items-center gap-2">
+                <Eye className="w-5 h-5 text-emerald-500" />
+                <span className="hidden sm:inline">Aperçu en direct</span>
+              </h2>
+              {/* Bouton visible uniquement sur mobile pour aller aux styles */}
+              <button 
+                onClick={() => {
+                  setActiveStepIdx(0); // Index of the Style tab
+                  setShowPreviewMobile(false);
+                }}
+                className="lg:hidden flex items-center gap-2 px-3 py-1.5 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 font-medium rounded-lg text-sm border border-indigo-100 dark:border-indigo-800 transition-colors"
+              >
+                <Palette className="w-4 h-4" />
+                Styles & Modèles
+              </button>
+            </div>
             <div className="flex gap-2">
               <button onClick={() => exportToWord(cvData)} className="flex items-center gap-2 px-3 py-2.5 bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/30 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-400 font-bold rounded-xl text-sm transition-all" title="Exporter en Word">
                 <FileText className="w-4 h-4" />
