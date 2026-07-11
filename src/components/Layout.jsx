@@ -3,7 +3,7 @@ import { Link, useLocation } from 'react-router-dom';
 import { Sparkles, FilePlus2, PenLine, BookOpen, Info, Mail, Menu, X, Moon, Sun } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CookieConsent from './CookieConsent';
-import ChatBot from './ChatBot';
+import ChatBot from './Chatbot';
 
 export default function Layout({ children }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
