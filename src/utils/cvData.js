@@ -1,3 +1,9 @@
+export const portfolioTemplates = [
+  { id: "portfolio-grid", name: "Modèle Galerie (Grille Créative)", layout: "grid", style: "solid" },
+  { id: "portfolio-dev", name: "Modèle Développeur (Tech Minimal)", layout: "masonry", style: "bordered" },
+  { id: "portfolio-modern", name: "Modèle Moderne (Web Layout)", layout: "web", style: "soft-shadow" }
+];
+
 export const templates100 = [
   // Ultra-Moderne (Nouveau!)
   { id: "siliconvalley", name: "Modèle Silicon Valley (Glassmorphism)", layout: "glassmorphism", style: "solid" },

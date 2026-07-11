@@ -5,14 +5,23 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 export default function ProjectsForm() {
   const { cvData, addProject, updateProject, removeProject } = useResume();
-  const [newProject, setNewProject] = useState({ title: '', techStack: '', link: '', description: '' });
+  const [newProject, setNewProject] = useState({ title: '', techStack: '', link: '', description: '', image: '' });
   const [isAdding, setIsAdding] = useState(false);
 
   const handleAdd = () => {
     if (newProject.title.trim() === '') return;
     addProject(newProject);
-    setNewProject({ title: '', techStack: '', link: '', description: '' });
+    setNewProject({ title: '', techStack: '', link: '', description: '', image: '' });
     setIsAdding(false);
+  };
+
+  const handleImageUpload = (e) => {
+    const file = e.target.files[0];
+    if (file) {
+      const reader = new FileReader();
+      reader.onloadend = () => setNewProject({ ...newProject, image: reader.result });
+      reader.readAsDataURL(file);
+    }
   };
 
   return (
@@ -59,6 +68,24 @@ export default function ProjectsForm() {
                     className="w-full px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white"
                     placeholder="Ex: github.com/mon-projet"
                   />
+                </div>
+              </div>
+
+              <div>
+                <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-2">Image du projet</label>
+                <div className="flex items-center gap-4">
+                  {newProject.image ? (
+                    <div className="relative w-24 h-24 rounded-lg overflow-hidden border-2 border-slate-200">
+                      <img src={newProject.image} alt="Preview" className="w-full h-full object-cover" />
+                      <button onClick={() => setNewProject({ ...newProject, image: '' })} className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 w-6 h-6 flex items-center justify-center text-xs shadow-md hover:bg-red-600 transition-colors">✕</button>
+                    </div>
+                  ) : (
+                    <label className="flex items-center justify-center w-24 h-24 bg-slate-100 dark:bg-slate-900 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-lg cursor-pointer hover:bg-slate-200 transition-colors">
+                      <span className="text-2xl text-slate-400">+</span>
+                      <input type="file" className="hidden" accept="image/*" onChange={handleImageUpload} />
+                    </label>
+                  )}
+                  <p className="text-xs text-slate-500">Formats supportés: JPG, PNG, GIF.<br/>Taille recommandée: - de 2Mo.</p>
                 </div>
               </div>
 
@@ -114,8 +141,29 @@ export default function ProjectsForm() {
               <Trash2 className="w-4 h-4" />
             </button>
             
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pr-10">
-              <div>
+            <div className="flex gap-4 pr-10 flex-col md:flex-row">
+              <div className="flex-shrink-0">
+                {project.image ? (
+                  <div className="relative w-20 h-20 rounded-lg overflow-hidden border border-slate-200">
+                    <img src={project.image} alt="Project" className="w-full h-full object-cover" />
+                    <button onClick={() => updateProject(index, { ...project, image: '' })} className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-0.5 w-5 h-5 flex items-center justify-center text-[10px] shadow-md hover:bg-red-600 transition-colors">✕</button>
+                  </div>
+                ) : (
+                  <label className="flex items-center justify-center w-20 h-20 bg-slate-50 dark:bg-slate-900 border border-dashed border-slate-300 dark:border-slate-700 rounded-lg cursor-pointer hover:bg-slate-100 transition-colors text-slate-400 text-xs text-center p-1">
+                    <span>+ Img</span>
+                    <input type="file" className="hidden" accept="image/*" onChange={(e) => {
+                      const file = e.target.files[0];
+                      if (file) {
+                        const reader = new FileReader();
+                        reader.onloadend = () => updateProject(index, { ...project, image: reader.result });
+                        reader.readAsDataURL(file);
+                      }
+                    }} />
+                  </label>
+                )}
+              </div>
+              <div className="flex-grow grid grid-cols-1 md:grid-cols-2 gap-4">
+                <div>
                 <input
                   type="text"
                   value={project.title}
@@ -139,6 +187,7 @@ export default function ProjectsForm() {
                   className="text-sm text-indigo-500 bg-transparent outline-none w-full border-b border-transparent focus:border-indigo-300 dark:focus:border-indigo-600"
                   placeholder="Lien (URL)"
                 />
+              </div>
               </div>
             </div>
             <textarea

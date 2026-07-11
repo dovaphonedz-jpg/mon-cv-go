@@ -3,6 +3,7 @@ import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import Home from './pages/Home';
 import CreateCV from './pages/CreateCV';
+import CreatePortfolio from './pages/CreatePortfolio';
 import CoverLetter from './pages/CoverLetter';
 import ConseilsCV from './pages/ConseilsCV';
 import About from './pages/About';
@@ -17,6 +18,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Home />} />
           <Route path="/create" element={<CreateCV />} />
+          <Route path="/portfolio" element={<CreatePortfolio />} />
           <Route path="/lettre-motivation" element={<CoverLetter />} />
           <Route path="/conseils-cv" element={<ConseilsCV />} />
           <Route path="/a-propos" element={<About />} />

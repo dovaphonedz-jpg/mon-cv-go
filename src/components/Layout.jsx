@@ -52,7 +52,7 @@ export default function Layout({ children }) {
             {[
               { path: '/', label: 'Accueil' },
               { path: '/create', label: 'Créer un CV' },
-              { path: '/create?step=projects', label: 'Portfolio' },
+              { path: '/portfolio', label: 'Créer un Portfolio' },
               { path: '/lettre-motivation', label: 'Lettre de motivation' },
               { path: '/conseils-cv', label: 'Conseils CV' },
               { path: '/a-propos', label: 'À propos' },
@@ -61,7 +61,7 @@ export default function Layout({ children }) {
               <Link 
                 key={link.path} 
                 to={link.path} 
-                className={`transition-colors hover:text-blue-600 dark:hover:text-blue-400 ${isActive(link.path.split('?')[0]) && location.search === (link.path.split('?')[1] ? '?' + link.path.split('?')[1] : '') ? 'text-blue-600 dark:text-blue-400' : ''}`}
+                className={`transition-colors hover:text-blue-600 dark:hover:text-blue-400 ${isActive(link.path) ? 'text-blue-600 dark:text-blue-400' : ''}`}
               >
                 {link.label}
               </Link>
@@ -153,6 +153,9 @@ export default function Layout({ children }) {
                 </Link>
                 <Link to="/create" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-md">
                   <FilePlus2 className="w-5 h-5" /> Créer mon CV
+                </Link>
+                <Link to="/portfolio" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-white bg-indigo-600 hover:bg-indigo-700 shadow-md">
+                  <Briefcase className="w-5 h-5" /> Créer un Portfolio
                 </Link>
                 <Link to="/lettre-motivation" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
                   <PenLine className="w-5 h-5 text-slate-400" /> Lettre de motivation
