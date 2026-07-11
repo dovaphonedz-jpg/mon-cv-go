@@ -18,14 +18,28 @@ export default function Home() {
   };
 
   return (
-    <div className="bg-slate-50 dark:bg-[#0F172A] min-h-screen overflow-hidden selection:bg-blue-500/30">
+    <div className="bg-slate-50 dark:bg-[#0B1120] min-h-screen overflow-hidden selection:bg-indigo-500/30">
       
-      {/* HERO SECTION - Glassmorphism & SaaS Vibes */}
+      {/* HERO SECTION - Modern & Animated */}
       <section className="relative pt-20 pb-24 sm:pt-32 sm:pb-40" id="accueil">
-        {/* Background glow effects */}
-        <div className="absolute top-0 inset-x-0 h-[500px] overflow-hidden -z-10">
-          <div className="absolute -top-40 left-1/2 -translate-x-1/2 w-[800px] h-[500px] bg-blue-600/20 dark:bg-blue-600/10 blur-[100px] rounded-full"></div>
-          <div className="absolute top-20 right-0 w-[400px] h-[400px] bg-emerald-500/10 dark:bg-emerald-500/5 blur-[100px] rounded-full"></div>
+        {/* Animated Background Gradients */}
+        <div className="absolute inset-0 overflow-hidden -z-10">
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.2, 1],
+              opacity: [0.3, 0.5, 0.3],
+            }}
+            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
+            className="absolute -top-[20%] -left-[10%] w-[70vw] h-[70vw] rounded-full bg-gradient-to-tr from-blue-600/20 to-indigo-600/20 blur-[120px]"
+          />
+          <motion.div 
+            animate={{ 
+              scale: [1, 1.5, 1],
+              opacity: [0.2, 0.4, 0.2],
+            }}
+            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
+            className="absolute top-[20%] -right-[10%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-bl from-emerald-500/20 to-teal-400/20 blur-[120px]"
+          />
         </div>
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -52,17 +66,18 @@ export default function Home() {
               </motion.p>
               
               <motion.div variants={itemVariants} className="mt-10 flex flex-col sm:flex-row flex-wrap gap-4 justify-center lg:justify-start">
-                <Link to="/create" className="group flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl shadow-xl shadow-blue-600/20 transition-all hover:-translate-y-1">
-                  <FilePlus2 className="w-5 h-5" />
-                  Créer mon CV
-                  <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                <Link to="/create" className="group relative overflow-hidden flex items-center justify-center gap-2 px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-2xl shadow-xl transition-all hover:scale-105 hover:shadow-2xl">
+                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                  <FilePlus2 className="w-5 h-5 relative z-10 group-hover:text-white" />
+                  <span className="relative z-10 group-hover:text-white">Créer mon CV</span>
+                  <ArrowRight className="w-4 h-4 relative z-10 group-hover:text-white group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link to="/portfolio" className="flex items-center justify-center gap-2 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-2xl shadow-xl shadow-indigo-600/20 transition-all hover:-translate-y-1">
-                  <Briefcase className="w-5 h-5" />
+                <Link to="/portfolio" className="group flex items-center justify-center gap-2 px-8 py-4 bg-white dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-slate-700 text-indigo-600 dark:text-indigo-400 font-bold rounded-2xl shadow-lg border border-indigo-100 dark:border-slate-700 transition-all hover:scale-105 hover:shadow-indigo-500/20">
+                  <Briefcase className="w-5 h-5 group-hover:scale-110 transition-transform" />
                   Créer un Portfolio
                 </Link>
-                <Link to="/lettre-motivation" className="flex items-center justify-center gap-2 px-8 py-4 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm transition-all hover:-translate-y-1">
-                  <PenLine className="w-5 h-5" />
+                <Link to="/lettre-motivation" className="group flex items-center justify-center gap-2 px-8 py-4 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 transition-all hover:scale-105">
+                  <PenLine className="w-5 h-5 group-hover:-rotate-12 transition-transform" />
                   Lettre de motivation
                 </Link>
               </motion.div>
@@ -74,66 +89,123 @@ export default function Home() {
               </motion.div>
             </motion.div>
 
-            {/* Right Content - Glassmorphism Card */}
+            {/* Right Content - Animated Mockup Showcase */}
             <motion.div 
-              initial={{ opacity: 0, scale: 0.95, rotate: 2 }}
-              animate={{ opacity: 1, scale: 1, rotate: 0 }}
-              transition={{ duration: 0.8, delay: 0.2, type: 'spring' }}
-              className="hidden lg:block relative z-10"
+              initial={{ opacity: 0, x: 50 }}
+              animate={{ opacity: 1, x: 0 }}
+              transition={{ duration: 1, delay: 0.3, type: 'spring' }}
+              className="hidden lg:block relative z-10 perspective-1000"
             >
-              <div className="absolute inset-0 bg-gradient-to-tr from-blue-500 to-emerald-400 blur-2xl opacity-20 dark:opacity-10 rounded-[3rem]"></div>
-              <div className="relative bg-white/60 dark:bg-slate-900/60 backdrop-blur-xl border border-white/40 dark:border-slate-700/50 p-4 rounded-[2rem] shadow-2xl">
-                <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-20">
-                  <span className="bg-slate-900/80 text-white text-[10px] font-bold uppercase tracking-wider px-3 py-1.5 rounded-full backdrop-blur-md">Aperçu en direct</span>
-                  <div className="w-10 h-10 rounded-full bg-blue-600/20 flex items-center justify-center backdrop-blur-md">
-                    <div className="w-4 h-4 bg-blue-500 rounded-full animate-pulse"></div>
+              <motion.div 
+                animate={{ y: [0, -20, 0] }}
+                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+                className="relative"
+              >
+                <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-purple-400 blur-3xl opacity-30 dark:opacity-20 rounded-full"></div>
+                
+                {/* Main Mockup */}
+                <div className="relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-2xl border border-white/50 dark:border-slate-700/50 p-3 rounded-3xl shadow-2xl transform rotate-y-[-10deg] rotate-x-[5deg]">
+                  <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-20">
+                    <span className="bg-slate-900/90 text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full backdrop-blur-md shadow-lg">En direct</span>
+                    <div className="flex gap-1.5">
+                      <div className="w-3 h-3 rounded-full bg-red-400"></div>
+                      <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
+                      <div className="w-3 h-3 rounded-full bg-green-400"></div>
+                    </div>
                   </div>
+                  <img src="/executive_slate_preview.png" alt="Aperçu du CV" className="w-full h-auto rounded-2xl shadow-inner border border-slate-200/50 dark:border-slate-800/50 object-cover" style={{ maxHeight: '600px' }} />
                 </div>
-                <img src="/executive_slate_preview.png" alt="Aperçu du CV" className="w-full h-auto rounded-xl shadow-inner border border-slate-200/50 dark:border-slate-800/50" />
-              </div>
+                
+                {/* Floating Elements */}
+                <motion.div 
+                  animate={{ y: [0, 15, 0], rotate: [0, 5, 0] }}
+                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
+                  className="absolute -bottom-10 -left-10 bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700 flex items-center gap-3"
+                >
+                  <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center"><Check className="w-6 h-6" /></div>
+                  <div>
+                    <p className="text-sm font-bold text-slate-800 dark:text-white">Export réussi</p>
+                    <p className="text-xs text-slate-500">PDF Haute Définition</p>
+                  </div>
+                </motion.div>
+              </motion.div>
             </motion.div>
 
           </div>
         </div>
       </section>
 
+      {/* INFINITE SCROLLING MARQUEE */}
+      <div className="w-full bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 py-6 overflow-hidden flex whitespace-nowrap">
+        <motion.div 
+          animate={{ x: [0, -1035] }}
+          transition={{ duration: 20, repeat: Infinity, ease: "linear" }}
+          className="flex gap-16 items-center px-8"
+        >
+          {/* Repeat multiple times for continuous scrolling */}
+          {[...Array(3)].map((_, i) => (
+            <React.Fragment key={i}>
+              <span className="text-xl font-black text-slate-300 dark:text-slate-700">100+ MODÈLES PROS</span>
+              <span className="text-xl font-black text-slate-300 dark:text-slate-700">•</span>
+              <span className="text-xl font-black text-slate-300 dark:text-slate-700">DESIGN PREMIUM</span>
+              <span className="text-xl font-black text-slate-300 dark:text-slate-700">•</span>
+              <span className="text-xl font-black text-slate-300 dark:text-slate-700">PORTFOLIO INTÉGRÉ</span>
+              <span className="text-xl font-black text-slate-300 dark:text-slate-700">•</span>
+              <span className="text-xl font-black text-slate-300 dark:text-slate-700">EXPORT PDF HD</span>
+              <span className="text-xl font-black text-slate-300 dark:text-slate-700">•</span>
+            </React.Fragment>
+          ))}
+        </motion.div>
+      </div>
+
       {/* GALERIE SECTION */}
-      <section id="modeles-galerie" className="py-24 bg-white dark:bg-[#0B1120] border-t border-slate-100 dark:border-slate-800">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <section id="modeles-galerie" className="relative py-32 bg-slate-50 dark:bg-[#0B1120]">
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+          <div className="absolute -bottom-1/2 -right-1/4 w-full h-full bg-blue-500/5 blur-[150px] rounded-full"></div>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <motion.div 
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-100px" }}
-            className="text-center max-w-3xl mx-auto mb-16"
+            className="text-center max-w-3xl mx-auto mb-20"
           >
-            <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 dark:text-white">Démarquez-vous avec nos modèles</h2>
-            <p className="mt-4 text-lg text-slate-600 dark:text-slate-400">Des designs approuvés par les recruteurs. Modernes, épurés et conçus pour mettre en valeur votre parcours.</p>
+            <span className="text-indigo-600 dark:text-indigo-400 font-bold tracking-widest uppercase text-sm mb-4 block">Notre Galerie</span>
+            <h2 className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight">Des designs approuvés par les experts.</h2>
+            <p className="mt-6 text-xl text-slate-600 dark:text-slate-400 leading-relaxed">Faites forte impression. Nos modèles sont modernes, épurés et optimisés pour capter l'attention des recruteurs.</p>
           </motion.div>
           
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {[
-              { img: "mockup1.png", title: "Modèle Tech & Startup", tag: "Populaire" },
-              { img: "mockup2.png", title: "Modèle Corporate", tag: "Classique" },
-              { img: "mockup3.png", title: "Modèle Créatif", tag: "Design" }
+              { img: "mockup1.png", title: "Tech & Startup", tag: "Populaire" },
+              { img: "mockup2.png", title: "Executive Corporate", tag: "Classique" },
+              { img: "mockup3.png", title: "Portfolio Créatif", tag: "Nouveau" }
             ].map((mockup, idx) => (
               <motion.div 
                 key={idx}
-                initial={{ opacity: 0, y: 30 }}
+                initial={{ opacity: 0, y: 40 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: idx * 0.1 }}
-                className="group relative rounded-2xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-800 overflow-hidden hover:shadow-2xl hover:border-blue-500/30 transition-all duration-300 hover:-translate-y-2"
+                transition={{ delay: idx * 0.15, type: 'spring', stiffness: 200, damping: 20 }}
+                className="group relative rounded-3xl bg-white dark:bg-slate-900 shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800 overflow-hidden hover:shadow-2xl hover:shadow-indigo-500/20 dark:hover:shadow-indigo-500/10 hover:border-indigo-500/30 transition-all duration-500 hover:-translate-y-4"
               >
-                <div className="absolute top-4 left-4 z-10">
-                  <span className="bg-white/90 dark:bg-slate-900/90 backdrop-blur-sm text-slate-900 dark:text-white text-xs font-bold px-3 py-1.5 rounded-full shadow-sm">
+                <div className="absolute top-5 left-5 z-20">
+                  <span className="bg-slate-900/90 dark:bg-white/90 backdrop-blur-md text-white dark:text-slate-900 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full shadow-lg">
                     {mockup.tag}
                   </span>
                 </div>
-                <div className="aspect-[3/4] overflow-hidden bg-slate-200 dark:bg-slate-800">
-                  <img src={`/${mockup.img}`} alt={mockup.title} className="w-full h-full object-cover object-top transition-transform duration-700 group-hover:scale-105" />
+                
+                <div className="aspect-[3/4] overflow-hidden bg-slate-100 dark:bg-slate-800 relative">
+                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 flex items-end p-8">
+                    <button className="w-full py-4 bg-white text-slate-900 font-bold rounded-xl shadow-xl transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
+                      Utiliser ce modèle
+                    </button>
+                  </div>
+                  <img src={`/${mockup.img}`} alt={mockup.title} className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-110" />
                 </div>
-                <div className="p-6">
-                  <h3 className="font-bold text-lg text-slate-900 dark:text-white group-hover:text-blue-600 dark:group-hover:text-blue-400 transition-colors">{mockup.title}</h3>
+                <div className="p-8 text-center bg-white dark:bg-slate-900 relative z-20">
+                  <h3 className="font-bold text-2xl text-slate-900 dark:text-white">{mockup.title}</h3>
                 </div>
               </motion.div>
             ))}
