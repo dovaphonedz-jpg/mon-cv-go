@@ -157,8 +157,10 @@ export const ResumeProvider = ({ children }) => {
   const importData = (jsonData) => {
     try {
       const data = JSON.parse(jsonData);
-      if (data && data.personal) {
-        setCvData(data.cvData || data); // Support both {cvData, config} format and direct cvData format
+      const cvDataToLoad = data.cvData || data;
+      
+      if (cvDataToLoad && cvDataToLoad.personal) {
+        setCvData(cvDataToLoad); // Support both {cvData, config} format and direct cvData format
         if (data.config) {
           setConfig(data.config);
         }
