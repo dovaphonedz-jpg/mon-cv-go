@@ -78,11 +78,6 @@ export default function Layout({ children }) {
               {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
             
-            <Link to="/create" className="hidden sm:flex items-center gap-2 px-5 py-2.5 bg-slate-900 dark:bg-white hover:bg-slate-800 dark:hover:bg-slate-100 text-white dark:text-slate-900 font-bold rounded-xl transition-all shadow-sm hover:shadow-md">
-              <FilePlus2 className="w-4 h-4" />
-              Créer mon CV
-            </Link>
-            
             {/* Hamburger */}
             <button 
               onClick={() => setIsMobileMenuOpen(true)} 
