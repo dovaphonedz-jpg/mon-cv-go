@@ -34,17 +34,19 @@ export default function CreateCV() {
   const [showPreviewMobile, setShowPreviewMobile] = useState(false);
 
   const handlePrint = useReactToPrint({
-    contentRef: printRef,
+    content: () => printRef.current,
     documentTitle: cvData?.personal?.name ? `CV_${cvData.personal.name.replace(/\s+/g, '_')}` : 'Mon_CV',
     pageStyle: `
       @page { size: A4; margin: 0; }
       @media print {
-        body { margin: 0; background: white; }
+        body { margin: 0; background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
         #cv-export-container {
+          position: relative !important;
           transform: scale(1) !important;
           margin: 0 !important;
           width: 210mm !important;
           height: 297mm !important;
+          box-shadow: none !important;
         }
       }
     `
