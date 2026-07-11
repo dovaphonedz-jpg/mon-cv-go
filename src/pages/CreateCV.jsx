@@ -1,8 +1,11 @@
 import React, { useState, useRef } from 'react';
 import { useResume } from '../context/ResumeContext';
-import { UploadCloud, Sparkles, Trash2, ArrowLeft, ArrowRight, Eye, Download, ChevronRight, Save } from 'lucide-react';
+import { UploadCloud, Sparkles, Trash2, ArrowLeft, ArrowRight, Eye, Download, ChevronRight, Save, FileText, Presentation } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useReactToPrint } from 'react-to-print';
+
+import { exportToWord } from '../utils/exportWord';
+import { exportToPowerPoint } from '../utils/exportPowerPoint';
 
 import CVPreview from '../components/cv-preview/CVPreview';
 import PersonalInfoForm from '../components/cv-forms/PersonalInfoForm';
@@ -201,11 +204,20 @@ export default function CreateCV() {
               <Eye className="w-5 h-5 text-emerald-500" />
               Aperçu en direct
             </h2>
-            <button onClick={handlePrint} className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md shadow-blue-600/20 transition-all hover:-translate-y-0.5">
-              <Download className="w-4 h-4" />
-              <span className="hidden sm:inline">Télécharger PDF</span>
-              <span className="sm:hidden">PDF</span>
-            </button>
+            <div className="flex gap-2">
+              <button onClick={() => exportToWord(cvData)} className="flex items-center gap-2 px-3 py-2.5 bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/30 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-400 font-bold rounded-xl text-sm transition-all" title="Exporter en Word">
+                <FileText className="w-4 h-4" />
+                <span className="hidden xl:inline">Word</span>
+              </button>
+              <button onClick={() => exportToPowerPoint(cvData)} className="flex items-center gap-2 px-3 py-2.5 bg-orange-100 hover:bg-orange-200 dark:bg-orange-900/30 dark:hover:bg-orange-900/50 text-orange-700 dark:text-orange-400 font-bold rounded-xl text-sm transition-all" title="Exporter en PowerPoint">
+                <Presentation className="w-4 h-4" />
+                <span className="hidden xl:inline">PPTX</span>
+              </button>
+              <button onClick={handlePrint} className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md shadow-blue-600/20 transition-all hover:-translate-y-0.5">
+                <Download className="w-4 h-4" />
+                <span className="hidden sm:inline">PDF</span>
+              </button>
+            </div>
           </div>
 
           <div className="cv-preview-container flex-grow rounded-3xl border border-slate-200 dark:border-slate-800 relative z-10 shadow-inner overflow-hidden">
