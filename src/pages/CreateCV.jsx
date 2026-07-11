@@ -1,4 +1,5 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
+import { useLocation } from 'react-router-dom';
 import { useResume } from '../context/ResumeContext';
 import { UploadCloud, Sparkles, Trash2, ArrowLeft, ArrowRight, Eye, Download, ChevronRight, Save, FileText, Presentation } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -28,9 +29,26 @@ const STEPS = [
 
 export default function CreateCV() {
   const { cvData, config, updateConfig, resetData, loadDemo, importData } = useResume();
-  const [activeStepIdx, setActiveStepIdx] = useState(0);
+  
+  // Parse query params to allow deep linking to steps
+  const getInitialStep = () => {
+    const params = new URLSearchParams(window.location.search);
+    const step = params.get('step');
+    if (step === 'projects') return 5;
+    return 0;
+  };
+  
+  const [activeStepIdx, setActiveStepIdx] = useState(getInitialStep);
   const fileInputRef = useRef(null);
   const printRef = useRef(null);
+  const location = useLocation();
+
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    if (params.get('step') === 'projects') {
+      setActiveStepIdx(5);
+    }
+  }, [location.search]);
 
   const [showPreviewMobile, setShowPreviewMobile] = useState(false);
   const [isImporting, setIsImporting] = useState(false);

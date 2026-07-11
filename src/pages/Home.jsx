@@ -1,6 +1,6 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FilePlus2, PenLine, Check, ArrowRight, Star } from 'lucide-react';
+import { FilePlus2, PenLine, Check, ArrowRight, Star, Briefcase } from 'lucide-react';
 import { motion } from 'framer-motion';
 
 export default function Home() {
@@ -44,18 +44,22 @@ export default function Home() {
               </motion.div>
               
               <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
-                Décrochez le job de vos rêves avec un <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-500">CV parfait</span>.
+                Décrochez le job de vos rêves avec un <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-500">CV parfait</span> et un Portfolio impactant.
               </motion.h1>
               
               <motion.p variants={itemVariants} className="mt-6 text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                Créez un CV clair, premium et prêt à envoyer en quelques minutes. Choisissez votre modèle, remplissez vos infos et exportez en PDF Haute Définition.
+                Créez un CV clair, une lettre de motivation, et un Portfolio visuel premium prêts à envoyer en quelques minutes. Choisissez votre modèle, remplissez vos infos et exportez en PDF.
               </motion.p>
               
-              <motion.div variants={itemVariants} className="mt-10 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start">
+              <motion.div variants={itemVariants} className="mt-10 flex flex-col sm:flex-row flex-wrap gap-4 justify-center lg:justify-start">
                 <Link to="/create" className="group flex items-center justify-center gap-2 px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-2xl shadow-xl shadow-blue-600/20 transition-all hover:-translate-y-1">
                   <FilePlus2 className="w-5 h-5" />
                   Créer mon CV
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                </Link>
+                <Link to="/create?step=projects" className="flex items-center justify-center gap-2 px-8 py-4 bg-indigo-600 hover:bg-indigo-700 text-white font-bold rounded-2xl shadow-xl shadow-indigo-600/20 transition-all hover:-translate-y-1">
+                  <Briefcase className="w-5 h-5" />
+                  Créer un Portfolio
                 </Link>
                 <Link to="/lettre-motivation" className="flex items-center justify-center gap-2 px-8 py-4 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold rounded-2xl border border-slate-200 dark:border-slate-700 shadow-sm transition-all hover:-translate-y-1">
                   <PenLine className="w-5 h-5" />

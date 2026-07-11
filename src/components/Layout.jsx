@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Sparkles, FilePlus2, PenLine, BookOpen, Info, Mail, Menu, X, Moon, Sun } from 'lucide-react';
+import { Sparkles, FilePlus2, PenLine, BookOpen, Info, Mail, Menu, X, Moon, Sun, Briefcase } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import CookieConsent from './CookieConsent';
 import ChatBot from './Chatbot';
@@ -50,6 +50,9 @@ export default function Layout({ children }) {
           {/* Desktop Nav */}
           <nav className="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-600 dark:text-slate-300">
             {[
+              { path: '/', label: 'Accueil' },
+              { path: '/create', label: 'Créer un CV' },
+              { path: '/create?step=projects', label: 'Portfolio' },
               { path: '/lettre-motivation', label: 'Lettre de motivation' },
               { path: '/conseils-cv', label: 'Conseils CV' },
               { path: '/a-propos', label: 'À propos' },
@@ -58,7 +61,7 @@ export default function Layout({ children }) {
               <Link 
                 key={link.path} 
                 to={link.path} 
-                className={`transition-colors hover:text-blue-600 dark:hover:text-blue-400 ${isActive(link.path) ? 'text-blue-600 dark:text-blue-400' : ''}`}
+                className={`transition-colors hover:text-blue-600 dark:hover:text-blue-400 ${isActive(link.path.split('?')[0]) && location.search === (link.path.split('?')[1] ? '?' + link.path.split('?')[1] : '') ? 'text-blue-600 dark:text-blue-400' : ''}`}
               >
                 {link.label}
               </Link>
