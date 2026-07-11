@@ -31,6 +31,7 @@ export default function CreateCV() {
   const printRef = useRef(null);
 
   const [showPreviewMobile, setShowPreviewMobile] = useState(false);
+  const [isImporting, setIsImporting] = useState(false);
 
   const handlePrint = useReactToPrint({
     contentRef: printRef,
@@ -55,16 +56,43 @@ export default function CreateCV() {
     if (fileInputRef.current) fileInputRef.current.click();
   };
 
-  const handleFileChange = (e) => {
+  const handleFileChange = async (e) => {
     const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onload = (evt) => {
-        const success = importData(evt.target.result);
-        if (success) alert('Données importées avec succès !');
-        else alert('Fichier invalide ou corrompu.');
-      };
-      reader.readAsText(file);
+      setIsImporting(true);
+      try {
+        if (file.name.endsWith('.json')) {
+          const reader = new FileReader();
+          reader.onload = (evt) => {
+            const success = importData(evt.target.result);
+            if (success) alert('Données JSON importées avec succès !');
+            else alert('Fichier JSON invalide ou corrompu.');
+            setIsImporting(false);
+          };
+          reader.readAsText(file);
+        } else if (file.name.endsWith('.pdf')) {
+          const { extractTextFromPDF, parseCVText } = await import('../utils/cvParser');
+          const text = await extractTextFromPDF(file);
+          const { cvData: parsedData } = parseCVText(text);
+          importData(JSON.stringify({ cvData: parsedData }));
+          alert('Texte extrait du PDF ! Veuillez vérifier et corriger les champs.');
+          setIsImporting(false);
+        } else if (file.name.endsWith('.docx') || file.name.endsWith('.doc')) {
+          const { extractTextFromWord, parseCVText } = await import('../utils/cvParser');
+          const text = await extractTextFromWord(file);
+          const { cvData: parsedData } = parseCVText(text);
+          importData(JSON.stringify({ cvData: parsedData }));
+          alert('Texte extrait de Word ! Veuillez vérifier et corriger les champs.');
+          setIsImporting(false);
+        } else {
+          alert("Format non supporté. Veuillez utiliser JSON, PDF ou Word.");
+          setIsImporting(false);
+        }
+      } catch (err) {
+        console.error("Erreur d'importation", err);
+        alert("Erreur lors de l'analyse du fichier.");
+        setIsImporting(false);
+      }
     }
   };
 
@@ -214,6 +242,10 @@ export default function CreateCV() {
                 <Presentation className="w-4 h-4" />
                 <span className="hidden xl:inline">PPTX</span>
               </button>
+              <button onClick={handleImportClick} disabled={isImporting} className="flex items-center gap-2 px-3 py-2 bg-slate-800 hover:bg-slate-700 text-white font-medium rounded-lg text-sm transition-colors border border-slate-700 disabled:opacity-50 disabled:cursor-wait">
+                <UploadCloud className="w-4 h-4" />
+                <span className="hidden sm:inline">{isImporting ? "Analyse..." : "Importer"}</span>
+              </button>
               <button onClick={handlePrint} className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md shadow-blue-600/20 transition-all hover:-translate-y-0.5">
                 <Download className="w-4 h-4" />
                 <span className="hidden sm:inline">PDF</span>
@@ -226,6 +258,13 @@ export default function CreateCV() {
           </div>
         </motion.section>
       </main>
+      <input 
+        type="file" 
+        ref={fileInputRef} 
+        className="hidden" 
+        accept=".json,.pdf,.doc,.docx" 
+        onChange={handleFileChange} 
+      />
     </div>
   );
 }
