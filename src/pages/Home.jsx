@@ -178,9 +178,12 @@ export default function Home() {
           
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
             {[
-              { img: "mockup1.png", title: "Tech & Startup", tag: "Populaire" },
-              { img: "mockup2.png", title: "Executive Corporate", tag: "Classique" },
-              { img: "mockup3.png", title: "Portfolio Créatif", tag: "Nouveau" }
+              { img: "mockup1.png", title: "CV Tech & Startup", tag: "CV" },
+              { img: "mockup2.png", title: "CV Corporate", tag: "CV" },
+              { img: "mockup4.png", title: "Portfolio Dark Grille", tag: "Nouveau" },
+              { img: "mockup3.png", title: "CV Créatif", tag: "CV" },
+              { img: "mockup5.png", title: "Portfolio Dev Minimal", tag: "Portfolio" },
+              { img: "mockup6.png", title: "Lettre de motivation Pro", tag: "Lettre" }
             ].map((mockup, idx) => (
               <motion.div 
                 key={idx}
