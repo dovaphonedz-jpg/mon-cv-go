@@ -1,4 +1,4 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { Sparkles, Trash2, Download, PenLine, Eye } from 'lucide-react';
 import { motion } from 'framer-motion';
 
@@ -22,6 +22,38 @@ export default function CoverLetter() {
 
   const [showPreviewMobile, setShowPreviewMobile] = useState(false);
   const letterRef = useRef(null);
+  const containerRef = useRef(null);
+  const [scale, setScale] = useState(0.7);
+
+  useEffect(() => {
+    if (!containerRef.current) return;
+    const observer = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        let availableWidth = entry.contentRect.width;
+        if (availableWidth <= 0) {
+          availableWidth = containerRef.current.parentElement.clientWidth;
+        }
+        availableWidth -= 32; // padding
+        if (availableWidth > 50) {
+          const a4Width = 794;
+          setScale(Math.max(0.1, Math.min(1, availableWidth / a4Width)));
+        }
+      }
+    });
+    observer.observe(containerRef.current);
+    
+    const timer = setTimeout(() => {
+      if (containerRef.current && containerRef.current.clientWidth > 50) {
+        const a4Width = 794;
+        setScale(Math.max(0.1, Math.min(1, (containerRef.current.clientWidth - 32) / a4Width)));
+      }
+    }, 100);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(timer);
+    };
+  }, []);
 
   const handleChange = (field, value) => {
     setData(prev => ({ ...prev, [field]: value }));
@@ -230,12 +262,16 @@ export default function CoverLetter() {
           animate={{ opacity: 1, x: 0 }}
           className={`w-full lg:w-1/2 xl:w-7/12 flex flex-col gap-4 ${!showPreviewMobile ? 'hidden lg:flex' : 'flex'}`}
         >
-          <div className="cv-preview-container flex-grow rounded-3xl border border-slate-200 dark:border-slate-800 relative z-10 shadow-inner overflow-auto bg-slate-200 dark:bg-slate-800/50">
+          <div ref={containerRef} className="cv-preview-container flex-grow rounded-3xl border border-slate-200 dark:border-slate-800 relative z-10 shadow-inner overflow-hidden flex justify-center p-4 bg-slate-200 dark:bg-slate-800/50">
             <div 
-              ref={letterRef}
-              className="bg-white mx-auto cv-page shadow-2xl relative"
-              style={{ width: '210mm', minHeight: '297mm', padding: '25mm' }}
+              style={{ width: `${794 * scale}px`, height: `${1123 * scale}px` }}
+              className="relative transition-all duration-200"
             >
+              <div 
+                ref={letterRef}
+                className="bg-white mx-auto cv-page shadow-2xl absolute top-0 left-0 origin-top-left transition-transform duration-200"
+                style={{ width: '794px', minHeight: '1123px', padding: '25mm', transform: `scale(${scale})` }}
+              >
               {/* Header (Coordonnées) */}
               <div className="flex justify-between items-start text-sm text-gray-800 mb-12 font-inter">
                 <div className="w-1/2">
@@ -285,6 +321,7 @@ export default function CoverLetter() {
                 {data.senderName && <div className="font-bold text-right mr-12 mt-12 text-gray-900">{data.senderName}</div>}
               </div>
 
+              </div>
             </div>
           </div>
         </motion.section>

@@ -12,18 +12,34 @@ const CVPreview = forwardRef((props, ref) => {
   const [cvHeight, setCvHeight] = useState(1123);
 
   useEffect(() => {
-    const handleResize = () => {
-      if (containerRef.current) {
-        const availableWidth = containerRef.current.clientWidth - 32; // 16px padding on each side
-        const a4Width = 794; // 210mm in pixels at 96dpi
-        setScale(Math.min(1, availableWidth / a4Width));
+    if (!containerRef.current) return;
+    const observer = new ResizeObserver((entries) => {
+      for (let entry of entries) {
+        let availableWidth = entry.contentRect.width;
+        if (availableWidth <= 0) {
+          availableWidth = containerRef.current.parentElement.clientWidth;
+        }
+        availableWidth -= 32; // padding
+        if (availableWidth > 50) {
+          const a4Width = 794;
+          setScale(Math.max(0.1, Math.min(1, availableWidth / a4Width)));
+        }
       }
-    };
+    });
+    observer.observe(containerRef.current);
     
-    // Allow for layout shift then measure
-    setTimeout(handleResize, 50);
-    window.addEventListener('resize', handleResize);
-    return () => window.removeEventListener('resize', handleResize);
+    // Fallback if observer misses initial hidden state
+    const timer = setTimeout(() => {
+      if (containerRef.current && containerRef.current.clientWidth > 50) {
+        const a4Width = 794;
+        setScale(Math.max(0.1, Math.min(1, (containerRef.current.clientWidth - 32) / a4Width)));
+      }
+    }, 100);
+
+    return () => {
+      observer.disconnect();
+      clearTimeout(timer);
+    };
   }, []);
 
   useEffect(() => {
