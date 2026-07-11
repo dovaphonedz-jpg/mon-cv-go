@@ -200,11 +200,6 @@ export default function Home() {
                 </div>
                 
                 <div className="aspect-[3/4] overflow-hidden bg-slate-100 dark:bg-slate-800 relative">
-                  <div className="absolute inset-0 bg-gradient-to-t from-slate-900/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500 z-10 flex items-end p-8">
-                    <button className="w-full py-4 bg-white text-slate-900 font-bold rounded-xl shadow-xl transform translate-y-8 opacity-0 group-hover:translate-y-0 group-hover:opacity-100 transition-all duration-500">
-                      Utiliser ce modèle
-                    </button>
-                  </div>
                   <img src={`/${mockup.img}`} alt={mockup.title} className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-110" />
                 </div>
                 <div className="p-8 text-center bg-white dark:bg-slate-900 relative z-20">
