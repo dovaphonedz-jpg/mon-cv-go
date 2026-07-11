@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useResume } from '../context/ResumeContext';
-import { UploadCloud, Sparkles, Trash2, ArrowLeft, ArrowRight, Eye, Download, ChevronRight, Save, FileText, Presentation, Palette } from 'lucide-react';
+import { UploadCloud, Sparkles, Trash2, ArrowLeft, ArrowRight, Eye, Download, ChevronRight, Save, FileText, Presentation, Palette, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useReactToPrint } from 'react-to-print';
 
@@ -27,6 +27,7 @@ export default function CreatePortfolio() {
   const { cvData, config, updateConfig, resetData, loadDemo, importData } = useResume();
   
   const [activeStepIdx, setActiveStepIdx] = useState(0);
+  const [isStyleModalOpen, setIsStyleModalOpen] = useState(false);
   const fileInputRef = useRef(null);
   const printRef = useRef(null);
   const location = useLocation();
@@ -239,10 +240,7 @@ export default function CreatePortfolio() {
               </h2>
               {/* Bouton visible uniquement sur mobile pour aller aux styles */}
               <button 
-                onClick={() => {
-                  setActiveStepIdx(0); // Index of the Style tab for Portfolio
-                  setShowPreviewMobile(false);
-                }}
+                onClick={() => setIsStyleModalOpen(true)}
                 className="lg:hidden flex items-center gap-2 px-3 py-1.5 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 font-medium rounded-lg text-sm border border-indigo-100 dark:border-indigo-800 transition-colors"
               >
                 <Palette className="w-4 h-4" />
@@ -281,6 +279,28 @@ export default function CreatePortfolio() {
         accept=".json,.pdf,.doc,.docx" 
         onChange={handleFileChange} 
       />
+      <AnimatePresence>
+        {isStyleModalOpen && (
+          <motion.div 
+            initial={{ opacity: 0, y: '100%' }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: '100%' }}
+            className="fixed inset-0 z-50 bg-white dark:bg-[#0B1120] overflow-y-auto lg:hidden"
+          >
+            <div className="sticky top-0 bg-white dark:bg-[#0B1120] border-b border-slate-200 dark:border-slate-800 p-4 flex justify-between items-center z-10 shadow-sm">
+              <h2 className="font-bold text-lg text-slate-800 dark:text-white flex items-center gap-2">
+                <Palette className="w-5 h-5 text-indigo-500" /> Styles & Modèles
+              </h2>
+              <button onClick={() => setIsStyleModalOpen(false)} className="p-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-full text-slate-600 dark:text-slate-300">
+                <X className="w-5 h-5" />
+              </button>
+            </div>
+            <div className="p-4 pb-24">
+              <PortfolioStyleForm />
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </div>
   );
 }
