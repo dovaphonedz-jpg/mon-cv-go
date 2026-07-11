@@ -1,0 +1,811 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Créer mon CV en ligne | Mon CV Go</title>
+  <meta name="description" content="Éditeur de CV en ligne gratuit. Choisissez un modèle, remplissez vos informations, personnalisez le design et téléchargez votre CV au format PDF en quelques minutes.">
+  <meta name="keywords" content="éditeur CV, générateur CV, télécharger CV PDF, créer CV gratuit en ligne">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://moncvgo.com/create.html">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://moncvgo.com/create.html">
+  <meta property="og:title" content="Créer mon CV | Mon CV Go">
+  <meta property="og:description" content="Éditeur de CV en ligne gratuit. Personnalisez le design et téléchargez votre CV au format PDF.">
+  <meta property="og:image" content="https://moncvgo.com/preview.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://moncvgo.com/create.html">
+  <meta property="twitter:title" content="Créer mon CV | Mon CV Go">
+  <meta property="twitter:description" content="Éditeur de CV en ligne gratuit. Personnalisez le design et téléchargez votre CV au format PDF.">
+  <meta property="twitter:image" content="https://moncvgo.com/preview.png">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Éditeur Mon CV Go",
+    "operatingSystem": "Web Browser",
+    "applicationCategory": "BusinessApplication",
+    "description": "Éditeur de CV en ligne pour créer et télécharger gratuitement votre CV PDF.",
+    "url": "https://moncvgo.com/create.html",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    }
+  }
+  </script>
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- Google AdSense : REMPLACE ca-pub-8616442521163368 par TON identifiant editeur -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8616442521163368" crossorigin="anonymous"></script>
+
+  <!-- Tailwind CSS -->
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+
+  <style type="text/tailwindcss">
+    @custom-variant dark (&:where(.dark, .dark *));
+  </style>
+
+  <script>
+    // System theme detection
+    document.documentElement.classList.add('dark');
+  </script>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+  <!-- CSS Stylesheet -->
+  <link rel="stylesheet" href="styles.css">
+
+  <!-- Libraries via CDNs -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- jsPDF & html2canvas-pro & html2pdf.js unbundled -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" integrity="sha512-qZvrmS2ekKPF2mSznTQsxqPgnpkI4DNTlrdUmTzrDgektczlKNRRhy5X5AAOnx5S09ydFYWWNSfcEqDTTHgtNA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas-pro@2.0.4/dist/html2canvas-pro.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.min.js" integrity="sha512-AxayzhdQnYdvCNE7c2/X50r/ELviR9bmCutz2i0Yagdo97qf5D1t2w0ep2+ILUqVw/JUuxuRm5bjBqaEnVnwQg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.6.0/dist/confetti.browser.min.js"></script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
+
+  <!-- Top Announcement Bar (Stating clearly it is free) -->
+  <div class="bg-slate-900 text-slate-300 text-center py-2 px-4 text-[11px] font-medium tracking-[0.15em] uppercase flex items-center justify-center gap-2 select-none border-b border-[#d4af37]/30">
+    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#d4af37]"></i>
+    <span>CV Professionnel — <span class="text-white font-semibold">100% gratuit</span></span>
+  </div>
+
+  <!-- Main Website Container -->
+  <div id="app" class="flex-grow flex flex-col">
+    <!-- Navigation / Header -->
+    <header class="sticky top-0 z-40 bg-gradient-to-r from-slate-900 via-indigo-950 to-slate-900 border-b border-[#d4af37]/40 shadow-md transition-colors duration-200">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <!-- Logo -->
+        <a href="./index.html" class="flex items-center gap-2">
+          <img src="logo-header.png?v=1783637875732" alt="Mon CV Go — Créateur de CV gratuit" class="h-10 sm:h-11 w-auto">
+          <span class="px-2 py-0.5 text-[10px] font-semibold tracking-wider text-[#d4af37] bg-[#d4af37]/10 rounded-full uppercase border border-[#d4af37]/30">Gratuit</span>
+        </a>
+
+        <!-- Primary nav -->
+        <nav class="hidden lg:flex items-center gap-6 text-xs font-semibold text-slate-300">
+          <a href="./lettre-motivation.html" class="hover:text-white transition-colors">Lettre de motivation</a>
+          <a href="./conseils-cv.html" class="hover:text-white transition-colors">Conseils CV</a>
+          <a href="./a-propos.html" class="hover:text-white transition-colors">À propos</a>
+          <a href="./contact.html" class="hover:text-white transition-colors">Contact</a>
+        </nav>
+
+        <!-- Controls (Language, Theme, Reset, Demo) -->
+        <div class="flex items-center gap-2 sm:gap-4">
+          <!-- Interface Lang Selector -->
+          
+
+          <!-- Theme Toggle -->
+          <button id="theme-toggle-btn" class="p-2 bg-white/10 hover:bg-white/20 rounded-lg text-slate-200 transition-colors cursor-pointer" title="Changer de thème">
+            <i id="theme-icon" data-lucide="moon" class="w-4 h-4"></i>
+          </button>
+
+          <!-- Action Buttons -->
+          <button id="load-demo-btn" class="flex items-center gap-1.5 px-3 py-1.5 bg-[#d4af37] hover:bg-[#c5a017] text-slate-900 font-extrabold rounded-lg text-xs font-bold transition-all cursor-pointer">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+            <span id="txt-btn-demo">Exemple</span>
+          </button>
+
+          <button id="reset-cv-btn" class="flex items-center gap-1.5 px-3 py-1.5 bg-white/10 hover:bg-white/20 text-slate-200 rounded-lg text-xs font-bold transition-all border border-white/15 cursor-pointer">
+            <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+            <span id="txt-btn-reset">Effacer</span>
+          </button>
+        </div>
+      </div>
+    </header>
+
+    <section class="create-intro">
+      <div class="es-shell">
+        <span>Création CV</span>
+        <h1>Choisissez votre modèle et personnalisez votre CV.</h1>
+        <p>Modèles, paramètres, contenu et aperçu en direct sont réunis ici.</p>
+      </div>
+    </section>
+
+    <main id="builder" class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col lg:flex-row gap-6">
+
+      <!-- LEFT COLUMN: Editor and Forms (60% width) -->
+      <section class="w-full lg:w-3/5 flex flex-col gap-6">
+        <!-- Form steps navigation -->
+        <div class="bg-white dark:bg-slate-900 rounded-xl shadow-sm border border-slate-200 dark:border-slate-800 overflow-x-auto select-none">
+          <nav id="form-steps-nav" class="flex p-1 gap-1">
+            <!-- Rendered dynamically -->
+          </nav>
+        </div>
+
+        <!-- Form Cards Container -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 p-6 flex-grow transition-all">
+          
+          <!-- Action Buttons -->
+          <div class="flex flex-wrap gap-2 mb-6">
+            
+
+            <button id="import-json-btn" class="flex items-center gap-1.5 px-3 py-1.5 bg-green-100 hover:bg-green-200 text-green-700 dark:bg-green-900/30 dark:hover:bg-green-900/50 dark:text-green-400 rounded-lg text-xs font-bold transition-all border border-green-200 dark:border-green-800 cursor-pointer">
+              <i data-lucide="upload-cloud" class="w-3.5 h-3.5"></i>
+              <span class="hidden sm:inline">Importer CV (Word/PDF/JSON)</span>
+            </button>
+            <button id="import-linkedin-btn" class="flex items-center gap-2 px-3 py-1.5 bg-[#0077b5] hover:bg-[#006097] text-white rounded-lg text-xs font-bold transition-all shadow-sm cursor-pointer hover:shadow-md hover:-translate-y-0.5">
+              <svg xmlns="http://www.w3.org/2000/svg" width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"></path>
+                <rect x="2" y="9" width="4" height="12"></rect>
+                <circle cx="4" cy="4" r="2"></circle>
+              </svg>
+              <span class="hidden sm:inline">Importer LinkedIn</span>
+            </button>
+            
+            <input type="file" id="json-import-input" accept=".json,.pdf,.doc,.docx" class="hidden">
+            <button id="inner-load-demo-btn" class="flex items-center gap-1.5 px-3 py-1.5 bg-[#d4af37] hover:bg-[#c5a017] text-slate-900 font-extrabold rounded-lg text-xs font-bold transition-all cursor-pointer">
+              <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+              <span>Exemple</span>
+            </button>
+            <button id="inner-reset-cv-btn" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-bold transition-all border border-slate-200 dark:border-slate-700 cursor-pointer">
+              <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+              <span>Effacer</span>
+            </button>
+          </div>
+
+          <form id="cv-form" class="space-y-6" onsubmit="event.preventDefault();">
+            <!-- Current active step form inputs rendered dynamically -->
+          </form>
+
+          <!-- Bottom Form Actions (Previous / Next / Save) -->
+          <div class="mt-8 pt-4 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center">
+            <button id="prev-step-btn" class="flex items-center gap-2 px-4 py-2 text-sm font-semibold text-slate-600 dark:text-slate-400 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-xl transition-all disabled:opacity-40 cursor-pointer">
+              <i data-lucide="arrow-left" class="w-4 h-4"></i>
+              <span id="txt-btn-prev">Précédent</span>
+            </button>
+            <button id="next-step-btn" class="flex items-center gap-2 px-5 py-2.5 text-sm font-bold text-white bg-indigo-900 hover:bg-indigo-800 rounded-lg shadow-lg transition-all cursor-pointer">
+              <span id="txt-btn-next">Suivant</span>
+              <i data-lucide="arrow-right" class="w-4 h-4"></i>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- RIGHT COLUMN: Real-Time Preview (40% width) -->
+      <section class="w-full lg:w-2/5 flex flex-col gap-4">
+        <!-- Preview Panel Action Header -->
+        <div class="bg-white dark:bg-slate-900 rounded-2xl p-4 shadow-sm border border-slate-200 dark:border-slate-800 flex items-center justify-between flex-wrap gap-2">
+          <h2 class="font-bold text-slate-800 dark:text-slate-100 flex items-center gap-2">
+            <i data-lucide="eye" class="w-4 h-4 text-blue-600 dark:text-blue-400"></i>
+            <span id="txt-preview-title">Aperçu en direct</span>
+          </h2>
+          <div class="flex items-center gap-2">
+            <!-- Visibility Presets -->
+            <button id="btn-zoom-fit" class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-bold transition cursor-pointer">
+              <i data-lucide="expand" class="w-3.5 h-3.5 text-blue-600"></i>
+              <span id="txt-btn-zoom-fit">Ajuster</span>
+            </button>
+            <button id="btn-zoom-real" class="hidden sm:flex items-center gap-1 px-2.5 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-bold transition cursor-pointer">
+              <i data-lucide="maximize" class="w-3.5 h-3.5"></i>
+              <span>100%</span>
+            </button>
+
+            <!-- Download PDF Button -->
+            <button id="trigger-download-modal-btn" class="flex items-center gap-2 px-4 py-2 bg-[#d4af37] hover:bg-[#c5a017] text-slate-900 font-extrabold font-extrabold text-sm rounded-lg shadow-md transition-all cursor-pointer transform hover:-translate-y-0.5">
+              <i data-lucide="download" class="w-4 h-4"></i>
+              <span id="txt-btn-download">Télécharger PDF</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Scrollable live A4 print rendering container -->
+        <div class="cv-preview-container rounded-3xl flex-grow flex items-center justify-center border border-slate-200 dark:border-slate-800 overflow-hidden relative group">
+          <!-- Zoom/Scale slider to adjust preview on screen -->
+          <div class="absolute bottom-4 right-4 bg-white/95 dark:bg-slate-900/95 shadow-md px-3 py-1.5 rounded-full border border-slate-200 dark:border-slate-800 z-10 flex items-center gap-2 transition-opacity duration-300 opacity-60 hover:opacity-100">
+            <i data-lucide="zoom-out" class="w-3.5 h-3.5 text-slate-400"></i>
+            <input type="range" id="zoom-slider" min="0.4" max="1.1" step="0.05" value="0.75" class="w-20 accent-blue-600 cursor-pointer">
+            <i data-lucide="zoom-in" class="w-3.5 h-3.5 text-slate-400"></i>
+          </div>
+
+          <!-- A4 Page Target -->
+          <div id="cv-preview-wrapper" class="origin-top transform transition-transform duration-200">
+            <div id="cv-preview" class="cv-page font-inter">
+              <!-- Rendered fully dynamic through JS template engines -->
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+
+    <!-- ===================== LANDING CONTENT SECTIONS ===================== -->
+
+    <!-- Stats / Trust bar -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950 border-y border-[#d4af37]/30">
+      <div class="absolute -top-28 left-1/2 -translate-x-1/2 w-[520px] h-[520px] bg-[#d4af37]/10 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-14 grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+        <div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-[#d4af37]" style="font-family:'Playfair Display',serif;">120K+</div>
+          <div class="text-[11px] sm:text-xs font-semibold text-slate-300 uppercase tracking-widest mt-1">CV créés</div>
+        </div>
+        <div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-[#d4af37]" style="font-family:'Playfair Display',serif;">100</div>
+          <div class="text-[11px] sm:text-xs font-semibold text-slate-300 uppercase tracking-widest mt-1">Modèles premium</div>
+        </div>
+        <div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-[#d4af37]" style="font-family:'Playfair Display',serif;">3</div><div class="text-[11px] sm:text-xs font-semibold text-slate-300 uppercase tracking-widest mt-1">Langues (FR, EN, AR)</div>
+        </div>
+        <div>
+          <div class="text-3xl sm:text-4xl font-extrabold text-[#d4af37]" style="font-family:'Playfair Display',serif;">100%</div>
+          <div class="text-[11px] sm:text-xs font-semibold text-slate-300 uppercase tracking-widest mt-1">Gratuit</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ===== Bloc publicitaire Google AdSense ===== -->
+    <!-- IMPORTANT : remplace ca-pub-8616442521163368 et data-ad-slot par tes vraies valeurs AdSense -->
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+      <ins class="adsbygoogle" style="display:block" data-ad-client="ca-pub-8616442521163368" data-ad-slot="0000000000" data-ad-format="auto" data-full-width-responsive="true"></ins>
+      <script>(adsbygoogle = window.adsbygoogle || []).push({});</script>
+    </div>
+
+    <!-- Features -->
+    <section id="features" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="inline-block px-3 py-1 text-[11px] font-bold tracking-widest text-slate-900 font-extrabold dark:text-[#d4af37] bg-[#d4af37]/20 rounded-full uppercase mb-3">Avantages</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800 dark:text-white" style="font-family:'Playfair Display',serif;">Pourquoi choisir Mon CV Go&nbsp;?</h2>
+        <p class="mt-3 text-sm sm:text-base text-slate-500 dark:text-slate-400">Un créateur de CV pensé pour aller vite, rester élégant et vous démarquer auprès des recruteurs.</p>
+      </div>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-[#d4af37]/40 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#d4af37]/30 to-[#d4af37]/5 ring-1 ring-[#d4af37]/20 text-slate-900 font-extrabold dark:text-[#d4af37] flex items-center justify-center mb-4"><i data-lucide="zap" class="w-5 h-5"></i></div>
+          <h3 class="font-bold text-slate-800 dark:text-white mb-1.5">Rapide et intuitif</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Remplissez le formulaire étape par étape et voyez votre CV se construire en temps réel, sans logiciel à installer.</p>
+        </div>
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-[#d4af37]/40 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#d4af37]/30 to-[#d4af37]/5 ring-1 ring-[#d4af37]/20 text-slate-900 font-extrabold dark:text-[#d4af37] flex items-center justify-center mb-4"><i data-lucide="layout-template" class="w-5 h-5"></i></div>
+          <h3 class="font-bold text-slate-800 dark:text-white mb-1.5">100 modèles premium</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Des designs modernes, sobres ou créatifs, adaptés à tous les métiers et à chaque niveau d'expérience.</p>
+        </div>
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-[#d4af37]/40 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#d4af37]/30 to-[#d4af37]/5 ring-1 ring-[#d4af37]/20 text-slate-900 font-extrabold dark:text-[#d4af37] flex items-center justify-center mb-4"><i data-lucide="languages" class="w-5 h-5"></i></div>
+          <h3 class="font-bold text-slate-800 dark:text-white mb-1.5">Optimisé pour la France</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Créez votre CV en français en un seul clic.</p>
+        </div>
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-[#d4af37]/40 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#d4af37]/30 to-[#d4af37]/5 ring-1 ring-[#d4af37]/20 text-slate-900 font-extrabold dark:text-[#d4af37] flex items-center justify-center mb-4"><i data-lucide="file-down" class="w-5 h-5"></i></div>
+          <h3 class="font-bold text-slate-800 dark:text-white mb-1.5">Export PDF haute qualité</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Téléchargez un PDF net au format A4, prêt à être envoyé aux recruteurs ou déposé en ligne.</p>
+        </div>
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-[#d4af37]/40 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#d4af37]/30 to-[#d4af37]/5 ring-1 ring-[#d4af37]/20 text-slate-900 font-extrabold dark:text-[#d4af37] flex items-center justify-center mb-4"><i data-lucide="smartphone" class="w-5 h-5"></i></div>
+          <h3 class="font-bold text-slate-800 dark:text-white mb-1.5">Compatible mobile</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Créez et modifiez votre CV depuis votre téléphone, votre tablette ou votre ordinateur, où que vous soyez.</p>
+        </div>
+        <div class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm hover:shadow-xl hover:-translate-y-1 hover:border-[#d4af37]/40 transition-all duration-300">
+          <div class="w-11 h-11 rounded-xl bg-gradient-to-br from-[#d4af37]/30 to-[#d4af37]/5 ring-1 ring-[#d4af37]/20 text-slate-900 font-extrabold dark:text-[#d4af37] flex items-center justify-center mb-4"><i data-lucide="shield-check" class="w-5 h-5"></i></div>
+          <h3 class="font-bold text-slate-800 dark:text-white mb-1.5">Privé et sécurisé</h3>
+          <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Vos données restent dans votre navigateur. Aucune inscription, aucun paiement, aucune revente.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- How it works -->
+    <section id="how" class="bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <div class="text-center max-w-2xl mx-auto mb-12">
+          <span class="inline-block px-3 py-1 text-[11px] font-bold tracking-widest text-slate-900 font-extrabold dark:text-[#d4af37] bg-[#d4af37]/20 rounded-full uppercase mb-3">Étapes</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800 dark:text-white" style="font-family:'Playfair Display',serif;">Votre CV en 3 étapes</h2>
+          <p class="mt-3 text-sm sm:text-base text-slate-500 dark:text-slate-400">De la page blanche au CV prêt à l'emploi en quelques minutes.</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div class="text-center">
+            <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-[#0f2a43] to-[#14355a] ring-1 ring-[#d4af37]/30 text-[#d4af37] flex items-center justify-center text-2xl font-extrabold shadow-lg mb-4" style="font-family:'Playfair Display',serif;">1</div>
+            <h3 class="font-bold text-slate-800 dark:text-white mb-1.5">Remplissez vos infos</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-xs mx-auto">Coordonnées, expériences, formations, compétences… guidé étape par étape.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-[#0f2a43] to-[#14355a] ring-1 ring-[#d4af37]/30 text-[#d4af37] flex items-center justify-center text-2xl font-extrabold shadow-lg mb-4" style="font-family:'Playfair Display',serif;">2</div>
+            <h3 class="font-bold text-slate-800 dark:text-white mb-1.5">Choisissez un modèle</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-xs mx-auto">Testez les modèles et les couleurs, avec un aperçu en direct à chaque changement.</p>
+          </div>
+          <div class="text-center">
+            <div class="w-16 h-16 mx-auto rounded-full bg-gradient-to-br from-[#0f2a43] to-[#14355a] ring-1 ring-[#d4af37]/30 text-[#d4af37] flex items-center justify-center text-2xl font-extrabold shadow-lg mb-4" style="font-family:'Playfair Display',serif;">3</div>
+            <h3 class="font-bold text-slate-800 dark:text-white mb-1.5">Téléchargez en PDF</h3>
+            <p class="text-sm text-slate-500 dark:text-slate-400 leading-relaxed max-w-xs mx-auto">Exportez un PDF professionnel prêt à postuler, gratuitement.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Guide / Editorial content (important pour AdSense) -->
+    <section id="guide" class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <div class="text-center mb-10">
+        <span class="inline-block px-3 py-1 text-[11px] font-bold tracking-widest text-slate-900 font-extrabold dark:text-[#d4af37] bg-[#d4af37]/20 rounded-full uppercase mb-3">Guide</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800 dark:text-white" style="font-family:'Playfair Display',serif;">Comment rédiger un CV qui décroche des entretiens</h2>
+        <p class="mt-3 text-sm sm:text-base text-slate-500 dark:text-slate-400">Un guide complet et gratuit pour construire, étape par étape, un CV clair, professionnel et adapté au marché de l'emploi.</p>
+      </div>
+
+      <article class="prose-custom space-y-8 text-slate-600 dark:text-slate-300 leading-relaxed text-[15px]">
+        <div>
+          <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2" style="font-family:'Playfair Display',serif;">1. Les rubriques essentielles d'un CV</h3>
+          <p>Un CV efficace repose sur une structure claire que les recruteurs reconnaissent en un coup d'œil. Les rubriques indispensables sont&nbsp;: l'<strong>en-tête</strong> (nom, titre professionnel, coordonnées), une courte <strong>accroche</strong> ou résumé, les <strong>expériences professionnelles</strong>, la <strong>formation</strong>, les <strong>compétences</strong> et les <strong>langues</strong>. Selon votre profil, vous pouvez ajouter des rubriques complémentaires comme les certifications, les projets personnels, le bénévolat ou les centres d'intérêt. L'essentiel est de ne garder que ce qui sert votre candidature pour le poste visé.</p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2" style="font-family:'Playfair Display',serif;">2. Soigner l'en-tête et l'accroche</h3>
+          <p>Votre titre doit correspondre au poste recherché (par exemple «&nbsp;Développeur web front-end&nbsp;» plutôt que simplement «&nbsp;Étudiant&nbsp;»). L'accroche, en deux à trois phrases, résume qui vous êtes, votre expérience et ce que vous apportez. C'est souvent la première chose lue&nbsp;: elle doit donner envie de poursuivre. Évitez les formules creuses et préférez des éléments concrets, comme un nombre d'années d'expérience, une spécialité ou une réalisation marquante.</p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2" style="font-family:'Playfair Display',serif;">3. Décrire ses expériences avec des résultats</h3>
+          <p>Pour chaque expérience, indiquez l'intitulé du poste, l'entreprise, les dates et le lieu, puis décrivez vos missions avec des verbes d'action («&nbsp;géré&nbsp;», «&nbsp;conçu&nbsp;», «&nbsp;augmenté&nbsp;»). Le plus important&nbsp;: quantifiez vos résultats. «&nbsp;Augmentation du trafic de 40&nbsp;% en six mois&nbsp;» a beaucoup plus d'impact que «&nbsp;responsable du site web&nbsp;». Les chiffres crédibilisent vos compétences et permettent au recruteur de mesurer votre valeur.</p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2" style="font-family:'Playfair Display',serif;">4. Mettre en valeur ses compétences</h3>
+          <p>Distinguez les compétences techniques (logiciels, langages, outils) des compétences comportementales (travail en équipe, autonomie, communication). Choisissez celles qui correspondent à l'offre et évitez de tout lister&nbsp;: un CV n'est pas un inventaire. Pour les langues, précisez votre niveau réel (courant, intermédiaire, notions) plutôt que des mentions vagues.</p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2" style="font-family:'Playfair Display',serif;">5. Adapter son CV à chaque offre (et aux logiciels ATS)</h3>
+          <p>De nombreuses entreprises utilisent des logiciels de tri automatique (ATS) qui analysent les CV avant même qu'un humain les lise. Pour passer ce filtre, reprenez les mots-clés de l'annonce, utilisez une mise en page simple et lisible, et évitez les images superflues ou les colonnes complexes qui perturbent la lecture automatique. Adapter votre CV à chaque candidature augmente nettement vos chances d'être rappelé.</p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2" style="font-family:'Playfair Display',serif;">6. Les erreurs les plus fréquentes à éviter</h3>
+          <ul class="list-disc pl-5 space-y-1.5 marker:text-[#d4af37]">
+            <li>Les fautes d'orthographe&nbsp;: relisez-vous et faites relire votre CV.</li>
+            <li>Un CV trop long&nbsp;: une page suffit dans la plupart des cas, deux au maximum.</li>
+            <li>Une adresse e-mail peu professionnelle&nbsp;: préférez prénom.nom.</li>
+            <li>Des informations inutiles&nbsp;: situation familiale, photo non demandée, détails personnels.</li>
+            <li>Une mise en page chargée&nbsp;: privilégiez l'espace et la clarté.</li>
+          </ul>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2" style="font-family:'Playfair Display',serif;">7. Rédiger un CV sans expérience</h3>
+          <p>Si vous débutez, mettez en avant vos stages, projets d'études, travaux personnels, engagements associatifs ou formations en ligne. Ce qui compte, c'est de démontrer vos compétences et votre motivation. Un projet mené de bout en bout, même bénévole, prouve votre capacité à agir et à apprendre. Structurez le tout de manière professionnelle&nbsp;: la forme compte autant que le fond.</p>
+        </div>
+
+        <div>
+          <h3 class="text-xl font-bold text-slate-800 dark:text-white mb-2" style="font-family:'Playfair Display',serif;">8. Le bon format et la bonne longueur</h3>
+          <p>Exportez toujours votre CV au format <strong>PDF</strong>&nbsp;: il conserve votre mise en page sur tous les appareils, contrairement aux fichiers Word qui peuvent se déformer. Nommez votre fichier clairement (par exemple «&nbsp;CV_Prénom_Nom.pdf&nbsp;»). Visez une seule page si vous avez moins de dix ans d'expérience, et restez concis&nbsp;: un recruteur consacre en moyenne quelques secondes à un premier tri.</p>
+        </div>
+
+        <div class="bg-[#d4af37]/10 border border-[#d4af37]/30 rounded-2xl p-6">
+          <h3 class="text-lg font-bold text-slate-800 dark:text-white mb-1.5">En résumé</h3>
+          <p>Un bon CV est clair, ciblé et orienté résultats. Avec Mon CV Go, vous appliquez toutes ces bonnes pratiques automatiquement grâce à des modèles pensés pour les recruteurs. Remplissez vos informations, choisissez un design et téléchargez votre CV en PDF, gratuitement.</p>
+        </div>
+      </article>
+    </section>
+
+    <!-- Testimonials -->
+    <section id="avis" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <div class="text-center max-w-2xl mx-auto mb-12">
+        <span class="inline-block px-3 py-1 text-[11px] font-bold tracking-widest text-slate-900 font-extrabold dark:text-[#d4af37] bg-[#d4af37]/20 rounded-full uppercase mb-3">Témoignages</span>
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800 dark:text-white" style="font-family:'Playfair Display',serif;">Ils ont décroché un entretien</h2>
+      </div>
+      <div class="grid md:grid-cols-3 gap-5">
+        <figure class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
+          <div class="flex gap-0.5 text-[#d4af37] mb-3"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+          <blockquote class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">« En 10 minutes j'avais un CV propre et moderne. J'ai été rappelée dès la semaine suivante&nbsp;! »</blockquote>
+          <figcaption class="mt-4 flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-indigo-900 text-white flex items-center justify-center text-xs font-bold">SB</div>
+            <div><div class="text-sm font-bold text-slate-800 dark:text-white">Sarah B.</div><div class="text-xs text-slate-400">Assistante RH</div></div>
+          </figcaption>
+        </figure>
+        <figure class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
+          <div class="flex gap-0.5 text-[#d4af37] mb-3"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+          <blockquote class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">« Enfin un outil gratuit qui gère l'arabe correctement. La mise en page RTL est parfaite. »</blockquote>
+          <figcaption class="mt-4 flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-indigo-900 text-white flex items-center justify-center text-xs font-bold">YK</div>
+            <div><div class="text-sm font-bold text-slate-800 dark:text-white">Yacine K.</div><div class="text-xs text-slate-400">Développeur web</div></div>
+          </figcaption>
+        </figure>
+        <figure class="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-sm">
+          <div class="flex gap-0.5 text-[#d4af37] mb-3"><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i><i data-lucide="star" class="w-4 h-4 fill-current"></i></div>
+          <blockquote class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">« Les modèles sont vraiment élégants. Je l'ai utilisé sur mon téléphone, c'est super pratique. »</blockquote>
+          <figcaption class="mt-4 flex items-center gap-3">
+            <div class="w-9 h-9 rounded-full bg-indigo-900 text-white flex items-center justify-center text-xs font-bold">LM</div>
+            <div><div class="text-sm font-bold text-slate-800 dark:text-white">Lina M.</div><div class="text-xs text-slate-400">Étudiante</div></div>
+          </figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section id="faq" class="bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <div class="text-center mb-10">
+          <span class="inline-block px-3 py-1 text-[11px] font-bold tracking-widest text-slate-900 font-extrabold dark:text-[#d4af37] bg-[#d4af37]/20 rounded-full uppercase mb-3">FAQ</span>
+          <h2 class="text-3xl sm:text-4xl font-extrabold text-slate-800 dark:text-white" style="font-family:'Playfair Display',serif;">Questions fréquentes</h2>
+        </div>
+        <div class="space-y-3">
+          <details class="group bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 rounded-xl px-5 py-4">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-slate-800 dark:text-white text-sm list-none">Mon CV Go est-il vraiment gratuit&nbsp;?<i data-lucide="plus" class="w-4 h-4 text-[#d4af37] group-open:hidden"></i><i data-lucide="minus" class="w-4 h-4 text-[#d4af37] hidden group-open:block"></i></summary>
+            <p class="mt-3 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Oui, 100&nbsp;% gratuit. Vous pouvez créer, personnaliser et télécharger votre CV en PDF sans payer ni créer de compte.</p>
+          </details>
+          <details class="group bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 rounded-xl px-5 py-4">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-slate-800 dark:text-white text-sm list-none">Dois-je créer un compte&nbsp;?<i data-lucide="plus" class="w-4 h-4 text-[#d4af37] group-open:hidden"></i><i data-lucide="minus" class="w-4 h-4 text-[#d4af37] hidden group-open:block"></i></summary>
+            <p class="mt-3 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Non. Aucune inscription n'est nécessaire. Vos données sont enregistrées localement dans votre navigateur.</p>
+          </details>
+          <details class="group bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 rounded-xl px-5 py-4">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-slate-800 dark:text-white text-sm list-none">Puis-je l'utiliser sur mon téléphone&nbsp;?<i data-lucide="plus" class="w-4 h-4 text-[#d4af37] group-open:hidden"></i><i data-lucide="minus" class="w-4 h-4 text-[#d4af37] hidden group-open:block"></i></summary>
+            <p class="mt-3 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">Oui, le site est responsive et fonctionne sur mobile, tablette et ordinateur. Vous pouvez même ajouter une photo prise avec votre téléphone.</p>
+          </details>
+          <details class="group bg-slate-50 dark:bg-slate-800/50 border border-slate-200 dark:border-slate-800 rounded-xl px-5 py-4">
+            <summary class="flex items-center justify-between cursor-pointer font-bold text-slate-800 dark:text-white text-sm list-none">Dans quelles langues puis-je créer mon CV&nbsp;?<i data-lucide="plus" class="w-4 h-4 text-[#d4af37] group-open:hidden"></i><i data-lucide="minus" class="w-4 h-4 text-[#d4af37] hidden group-open:block"></i></summary>
+            <p class="mt-3 text-sm text-slate-500 dark:text-slate-400 leading-relaxed">En français, en arabe (avec mise en page de droite à gauche) et en anglais. Vous pouvez changer de langue à tout moment.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- À propos / Contact -->
+    <section id="apropos" class="bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 grid md:grid-cols-2 gap-10">
+        <div>
+          <span class="inline-block px-3 py-1 text-[11px] font-bold tracking-widest text-slate-900 font-extrabold dark:text-[#d4af37] bg-[#d4af37]/20 rounded-full uppercase mb-3">À propos</span>
+          <h2 class="text-2xl font-extrabold text-slate-800 dark:text-white mb-3" style="font-family:'Playfair Display',serif;">Qui sommes-nous&nbsp;?</h2>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Mon CV Go est un outil en ligne gratuit qui aide chacun à créer un CV professionnel, rapidement et sans compétences techniques. Notre mission est de rendre la création de CV accessible à tous, en français, en arabe et en anglais. Nous conçevons des modèles modernes, pensés pour répondre aux attentes des recruteurs, et nous publions régulièrement des conseils pour vous aider dans votre recherche d'emploi.</p>
+        </div>
+        <div id="contact">
+          <span class="inline-block px-3 py-1 text-[11px] font-bold tracking-widest text-slate-900 font-extrabold dark:text-[#d4af37] bg-[#d4af37]/20 rounded-full uppercase mb-3">Contact</span>
+          <h2 class="text-2xl font-extrabold text-slate-800 dark:text-white mb-3" style="font-family:'Playfair Display',serif;">Nous contacter</h2>
+          <p class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">Une question, une suggestion ou un problème&nbsp;? Écrivez-nous, nous répondons généralement sous 48&nbsp;heures.</p>
+          <a href="mailto:iratenebillel@gmail.com" class="mt-4 inline-flex items-center gap-2 px-4 py-2.5 bg-indigo-900 hover:bg-indigo-800 text-white text-sm font-bold rounded-xl transition-all">
+            <i data-lucide="mail" class="w-4 h-4"></i>
+            iratenebillel@gmail.com
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- Politique de confidentialité -->
+    <section id="confidentialite" class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+      <span class="inline-block px-3 py-1 text-[11px] font-bold tracking-widest text-slate-900 font-extrabold dark:text-[#d4af37] bg-[#d4af37]/20 rounded-full uppercase mb-3">Confidentialité</span>
+      <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-800 dark:text-white mb-5" style="font-family:'Playfair Display',serif;">Politique de confidentialité</h2>
+      <div class="space-y-4 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+        <p><strong>Vos données de CV.</strong> Les informations que vous saisissez (nom, expériences, photo, etc.) sont enregistrées <strong>uniquement dans votre navigateur</strong> (stockage local). Elles ne sont pas envoyées sur nos serveurs et ne sont pas partagées avec des tiers. Vous pouvez les effacer à tout moment via le bouton «&nbsp;Effacer&nbsp;».</p>
+        <p><strong>Cookies et publicité.</strong> Ce site peut afficher des annonces publicitaires, notamment via Google AdSense. Les fournisseurs tiers, dont Google, utilisent des cookies pour diffuser des annonces en fonction des visites précédentes des utilisateurs sur ce site ou sur d'autres sites. Vous pouvez désactiver la publicité personnalisée en vous rendant sur la page <a href="https://www.google.com/settings/ads" class="text-blue-600 dark:text-blue-400 underline" target="_blank" rel="noopener">Paramètres des annonces Google</a>.</p>
+        <p><strong>Mesure d'audience.</strong> Nous pouvons utiliser des outils de statistiques anonymes pour comprendre l'utilisation du site et l'améliorer. Ces données ne permettent pas de vous identifier personnellement.</p>
+        <p><strong>Vos droits.</strong> Conformément au Règlement Général sur la Protection des Données (RGPD), vous disposez d'un droit d'accès, de rectification et de suppression de vos données. Comme vos informations restent sur votre appareil, vous en gardez le contrôle à tout moment. Pour toute question, contactez-nous à l'adresse indiquée ci-dessus.</p>
+      </div>
+    </section>
+
+    <!-- Mentions légales -->
+    <section id="mentions" class="bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800">
+      <div class="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20">
+        <span class="inline-block px-3 py-1 text-[11px] font-bold tracking-widest text-slate-900 font-extrabold dark:text-[#d4af37] bg-[#d4af37]/20 rounded-full uppercase mb-3">Mentions légales</span>
+        <h2 class="text-2xl sm:text-3xl font-extrabold text-slate-800 dark:text-white mb-5" style="font-family:'Playfair Display',serif;">Mentions légales</h2>
+        <div class="space-y-4 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+          <p><strong>Éditeur du site&nbsp;:</strong> Mon CV Go. Pour toute demande, vous pouvez nous joindre à l'adresse&nbsp;: iratenebillel@gmail.com.</p>
+          <p><strong>Hébergement&nbsp;:</strong> le site est hébergé par son fournisseur d'infrastructure web. Les coordonnées complètes de l'hébergeur peuvent être obtenues sur simple demande.</p>
+          <p><strong>Propriété intellectuelle&nbsp;:</strong> l'ensemble des éléments du site (textes, modèles, logo, mise en page) est protégé par le droit d'auteur. Toute reproduction sans autorisation est interdite. Les CV que vous créez vous appartiennent intégralement.</p>
+          <p><strong>Responsabilité&nbsp;:</strong> Mon CV Go met tout en œuvre pour fournir un service fiable, mais ne saurait être tenu responsable des conséquences liées à l'utilisation du service ou à une indisponibilité temporaire.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section class="relative overflow-hidden bg-gradient-to-br from-slate-950 via-slate-900 to-indigo-950">
+      <div class="absolute -top-16 right-0 w-[440px] h-[440px] bg-[#d4af37]/15 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="absolute -bottom-24 -left-16 w-[380px] h-[380px] bg-[#14355a]/60 rounded-full blur-3xl pointer-events-none"></div>
+      <div class="relative max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-20 sm:py-24 text-center">
+        <h2 class="text-3xl sm:text-4xl font-extrabold text-white" style="font-family:'Playfair Display',serif;">Prêt à créer votre CV&nbsp;?</h2>
+        <p class="mt-3 text-sm sm:text-base text-slate-300 max-w-xl mx-auto">Commencez maintenant, c'est gratuit et sans inscription. Votre prochain emploi commence par un bon CV.</p>
+        <a href="#app" class="mt-8 inline-flex items-center gap-2 px-6 py-3.5 bg-[#d4af37] hover:bg-[#c5a017] text-slate-900 font-extrabold font-extrabold text-sm rounded-xl shadow-lg transition-all transform hover:-translate-y-0.5">
+          <i data-lucide="rocket" class="w-4 h-4"></i>
+          Créer mon CV gratuitement
+        </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-6 mt-12 transition-colors duration-200 text-center text-xs text-slate-500 dark:text-slate-400">
+      <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+        <div>
+          &copy; 2026 <strong class="text-slate-700 dark:text-slate-300">Mon CV Go</strong>. Tous droits réservés.
+        </div>
+        <div class="flex gap-4">
+          <a href="#guide" class="hover:text-blue-500">Guide CV</a>
+          <a href="#apropos" class="hover:text-blue-500">À propos</a>
+          <a href="#contact" class="hover:text-blue-500">Contact</a>
+          <a href="#confidentialite" class="hover:text-blue-500">Confidentialité</a>
+          <a href="#mentions" class="hover:text-blue-500">Mentions légales</a>
+        </div>
+      </div>
+    </footer>
+  </div>
+
+  <!-- Fullscreen Preview Overlay on Mobile/Tablet -->
+  <div id="mobile-preview-overlay" class="fixed inset-0 bg-slate-900/90 z-50 flex flex-col p-4 opacity-0 pointer-events-none transition-all duration-300">
+    <div class="flex items-center justify-between mb-4">
+      <h3 class="text-white font-extrabold text-lg flex items-center gap-2">
+        <i data-lucide="eye" class="w-5 h-5 text-blue-400"></i>
+        Aperçu Mobile
+      </h3>
+      <button id="close-mobile-preview" class="p-2 text-white bg-slate-800 hover:bg-slate-700 rounded-xl cursor-pointer">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+    <div class="flex-grow overflow-auto flex items-start justify-center p-2">
+      <div id="mobile-preview-host" class="origin-top transform scale-75 md:scale-90"></div>
+    </div>
+  </div>
+
+  <!-- Custom Scripts -->
+  <script src="app.js"></script>
+
+<script>
+(function(){
+  const dict={
+    fr:{html:'fr',dir:'ltr',navHome:'Accueil',navLetter:'Lettre de motivation',navTips:'Conseils CV',navAbout:'À propos',navContact:'Contact',ctaCreate:'Créer mon CV',ctaLetter:'Lettre de motivation',kicker:'100% gratuit · Sans inscription',heroTitle:'Créez un CV clair, premium et prêt à envoyer.',heroText:'Mon CV Go vous aide à choisir un modèle professionnel, remplir vos informations et exporter un PDF propre en quelques minutes.',trust1:'Export PDF HD',trust2:'PDF Qualité Pro',trust3:'Aperçu en direct',preview:'Aperçu premium',style:'Executive Slate',steps:'Parcours simple',stepsTitle:'Choisissez un modèle, personnalisez, téléchargez.',stepsText:'La création complète se fait sur une page dédiée pour garder l’accueil rapide et clair.',card1:'Modèles CV',card1p:'Des styles professionnels prêts pour ATS, junior, senior ou créatif.',card2:'Paramètres',card2p:'Couleurs, police, langue, sections et mise en page modifiables.',card3:'Export PDF',card3p:'Prévisualisation en temps réel puis téléchargement PDF propre.',createIntro:'Création CV',createTitle:'Choisissez votre modèle et personnalisez votre CV.',createText:'Modèles, paramètres, contenu et aperçu en direct sont réunis ici.'},
+    en:{html:'en',dir:'ltr',navHome:'Home',navLetter:'Cover letter',navTips:'CV tips',navAbout:'About',navContact:'Contact',ctaCreate:'Create my CV',ctaLetter:'Cover letter',kicker:'100% free · No sign-up',heroTitle:'Create a clear, premium CV ready to send.',heroText:'Mon CV Go helps you choose a professional template, fill in your details, and export a clean PDF in minutes.',trust1:'HD PDF export',trust2:'PDF Qualité Pro',trust3:'Live preview',preview:'Premium preview',style:'Executive Slate',steps:'Simple flow',stepsTitle:'Choose a template, customize, download.',stepsText:'The full CV builder opens on a dedicated page to keep the homepage fast and clear.',card1:'CV templates',card1p:'Professional styles for ATS, junior, senior, or creative profiles.',card2:'Settings',card2p:'Colors, font, language, sections, and layout are customizable.',card3:'PDF export',card3p:'Live preview, then a clean PDF download.',createIntro:'CV builder',createTitle:'Choose your template and customize your CV.',createText:'Templates, settings, content, and live preview are all here.'},
+    ar:{html:'ar',dir:'rtl',navHome:'الرئيسية',navLetter:'رسالة تحفيزية',navTips:'نصائح السيرة',navAbout:'من نحن',navContact:'اتصال',ctaCreate:'أنشئ سيرتي الذاتية',ctaLetter:'رسالة تحفيزية',kicker:'مجاني 100٪ · بدون تسجيل',heroTitle:'أنشئ سيرة ذاتية احترافية وجاهزة للإرسال.',heroText:'يساعدك Mon CV Go على اختيار قالب احترافي، إدخال معلوماتك، وتصدير ملف PDF نظيف خلال دقائق.',trust1:'تصدير PDF عالي الجودة',trust2:'PDF Qualité Pro',trust3:'معاينة مباشرة',preview:'معاينة احترافية',style:'Executive Slate',steps:'مسار بسيط',stepsTitle:'اختر قالباً، خصّصه، ثم حمّله.',stepsText:'تتم عملية الإنشاء الكاملة في صفحة مخصصة ليبقى الاستقبال سريعاً وواضحاً.',card1:'قوالب السيرة الذاتية',card1p:'تصاميم احترافية مناسبة للـ ATS وللمبتدئين والمحترفين.',card2:'الإعدادات',card2p:'الألوان، الخط، اللغة، الأقسام والتخطيط قابلة للتعديل.',card3:'تصدير PDF',card3p:'معاينة مباشرة ثم تحميل PDF نظيف.',createIntro:'إنشاء السيرة',createTitle:'اختر القالب وخصّص سيرتك الذاتية.',createText:'القوالب، الإعدادات، المحتوى والمعاينة المباشرة كلها هنا.'}
+  };
+  function setText(sel,text){document.querySelectorAll(sel).forEach(e=>{e.textContent=text})}
+  function apply(lang){const t=dict[lang]||dict.fr;document.documentElement.lang=t.html;document.documentElement.dir=t.dir;localStorage.setItem('moncvgo_site_lang',lang);
+    setText('nav a[href*="index"], footer a[href*="index"]',t.navHome);setText('nav a[href*="lettre"]',t.navLetter);setText('nav a[href*="conseils"]',t.navTips);setText('nav a[href*="a-propos"]',t.navAbout);setText('nav a[href*="contact"]',t.navContact);
+    setText('.es-btn-primary, a[href*="create.html"] span, a[href*="create.html"]',t.ctaCreate);setText('.es-btn-secondary',t.ctaLetter);setText('.es-kicker',t.kicker);setText('.es-hero h1',t.heroTitle);setText('.es-hero-copy p',t.heroText);
+    const trusts=document.querySelectorAll('.es-trust span'); if(trusts[0]) trusts[0].lastChild.textContent=t.trust1; if(trusts[1]) trusts[1].lastChild.textContent=t.trust2; if(trusts[2]) trusts[2].lastChild.textContent=t.trust3;
+    setText('.es-card-top span',t.preview);setText('.es-card-top strong',t.style);setText('.landing-section-head span',t.steps);setText('.landing-section-head h2',t.stepsTitle);setText('.landing-section-head p',t.stepsText);
+    const cards=document.querySelectorAll('.landing-cards article'); if(cards[0]){cards[0].querySelector('h3').textContent=t.card1;cards[0].querySelector('p').textContent=t.card1p;} if(cards[1]){cards[1].querySelector('h3').textContent=t.card2;cards[1].querySelector('p').textContent=t.card2p;} if(cards[2]){cards[2].querySelector('h3').textContent=t.card3;cards[2].querySelector('p').textContent=t.card3p;}
+    setText('.create-intro span',t.createIntro);setText('.create-intro h1',t.createTitle);setText('.create-intro p',t.createText);
+    const sel=document.getElementById('ui-lang-select'); if(sel) sel.value=lang;
+  }
+  window.monCvGoApplyLang=apply;
+  document.addEventListener('DOMContentLoaded',()=>{const sel=document.getElementById('ui-lang-select'); const initial=localStorage.getItem('moncvgo_site_lang')||(sel&&sel.value)||'fr'; apply(initial); if(sel) sel.addEventListener('change',e=>{apply(e.target.value); if(window.config){window.config.uiLang=e.target.value; window.config.cvLang=e.target.value;}});});
+})();
+</script>
+
+  
+
+<!-- MOBILE MENU DRAWER -->
+<div id="mobile-drawer-backdrop" class="fixed inset-0 bg-slate-950/80 z-[100] hidden transition-opacity" onclick="closeMobileMenu()"></div>
+<aside id="mobile-drawer" class="fixed inset-y-0 left-0 z-[110] w-72 bg-slate-900 border-r border-[#d4af37]/20 shadow-2xl transform -translate-x-full transition-transform duration-300 flex flex-col">
+  <div class="h-16 flex items-center justify-between px-4 border-b border-[#d4af37]/20 bg-slate-950/50">
+    <span class="text-sm font-extrabold text-[#d4af37] tracking-wider uppercase">Menu</span>
+    <button onclick="closeMobileMenu()" class="p-2 text-slate-400 hover:text-white cursor-pointer rounded-lg hover:bg-white/5">
+      <i data-lucide="x" class="w-5 h-5"></i>
+    </button>
+  </div>
+  <nav class="flex flex-col p-4 gap-2 overflow-y-auto">
+    <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-300 hover:bg-white/5 hover:text-white transition-colors"><i data-lucide="home" class="w-4 h-4"></i> Accueil</a>
+    <a href="create.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-[#111827] bg-gradient-to-r from-[#d4af37] to-[#e5c66b] shadow-md transition-transform hover:scale-[1.02]"><i data-lucide="file-plus-2" class="w-4 h-4"></i> Créer mon CV</a>
+    <a href="lettre-motivation.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-300 hover:bg-white/5 hover:text-white transition-colors"><i data-lucide="pen-line" class="w-4 h-4"></i> Lettre de motivation</a>
+    <a href="conseils-cv.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-300 hover:bg-white/5 hover:text-white transition-colors"><i data-lucide="book-open" class="w-4 h-4"></i> Conseils CV</a>
+    <a href="a-propos.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-300 hover:bg-white/5 hover:text-white transition-colors"><i data-lucide="info" class="w-4 h-4"></i> À propos</a>
+    <a href="contact.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-300 hover:bg-white/5 hover:text-white transition-colors"><i data-lucide="mail" class="w-4 h-4"></i> Contact</a>
+  </nav>
+</aside>
+
+<script>
+  function closeMobileMenu() {
+    document.getElementById('mobile-drawer').classList.add('-translate-x-full');
+    document.getElementById('mobile-drawer-backdrop').classList.add('hidden');
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    const headerContainer = document.querySelector("header .justify-between") || document.querySelector("header > div");
+    if (headerContainer && !document.getElementById('mobile-menu-btn')) {
+      const btn = document.createElement("button");
+      btn.id = "mobile-menu-btn";
+      btn.className = "lg:hidden p-2 text-slate-300 hover:text-white cursor-pointer ml-1 rounded-lg hover:bg-white/5 flex-shrink-0";
+      btn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+      btn.onclick = () => {
+        document.getElementById('mobile-drawer').classList.remove('-translate-x-full');
+        document.getElementById('mobile-drawer-backdrop').classList.remove('hidden');
+      };
+      headerContainer.appendChild(btn);
+      if(typeof lucide !== 'undefined') lucide.createIcons();
+    }
+  });
+</script>
+
+<!-- CHATBOT WIDGET -->
+<div id="chatbot-container" class="fixed bottom-5 right-5 z-[150] flex flex-col items-end">
+  
+  <!-- Chat Window -->
+  <div id="chat-window" class="hidden mb-4 w-[340px] max-w-[calc(100vw-2rem)] bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col transition-all origin-bottom-right transform scale-95 opacity-0">
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-slate-900 to-[#14355a] p-4 flex items-center justify-between border-b border-[#d4af37]/30">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full bg-[#d4af37] flex items-center justify-center text-slate-900">
+          <i data-lucide="bot" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-white">Assistant Virtuel</h3>
+          <p class="text-[10px] text-slate-300 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> En ligne</p>
+        </div>
+      </div>
+      <button onclick="toggleChat()" class="text-slate-300 hover:text-white transition-colors cursor-pointer p-1">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+    
+    <!-- Messages Area -->
+    <div id="chat-messages" class="p-4 h-72 overflow-y-auto flex flex-col gap-3 bg-slate-50 dark:bg-slate-950/50">
+      <!-- Welcome message -->
+      <div class="flex gap-2 items-end">
+        <div class="w-6 h-6 rounded-full bg-[#d4af37] flex-shrink-0 flex items-center justify-center text-slate-900"><i data-lucide="bot" class="w-3.5 h-3.5"></i></div>
+        <div class="bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs px-3 py-2 rounded-2xl rounded-bl-none max-w-[85%] shadow-sm">
+          Bonjour ! 👋 Je suis l'assistant de Mon CV Go. Posez-moi vos questions sur la création de CV, le téléchargement, ou nos tarifs !
+        </div>
+      </div>
+    </div>
+    
+    <!-- Input Area -->
+    <div class="p-3 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+      <form id="chat-form" onsubmit="handleChatSubmit(event)" class="flex gap-2 items-center">
+        <input type="text" id="chat-input" placeholder="Posez votre question..." class="flex-1 bg-slate-100 dark:bg-slate-800 border-none text-xs rounded-full px-4 py-2 text-slate-800 dark:text-white focus:ring-1 focus:ring-[#d4af37] outline-none" autocomplete="off">
+        <button type="submit" class="w-8 h-8 rounded-full bg-[#d4af37] hover:bg-[#c5a017] text-slate-900 flex items-center justify-center transition-colors shadow-md flex-shrink-0 cursor-pointer">
+          <i data-lucide="send" class="w-4 h-4 ml-0.5"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toggle Button -->
+  <button id="chat-toggle-btn" onclick="toggleChat()" class="w-14 h-14 bg-gradient-to-br from-[#d4af37] to-[#e5c66b] hover:scale-105 text-slate-900 rounded-full shadow-2xl flex items-center justify-center transition-transform cursor-pointer relative">
+    <i data-lucide="message-square" class="w-6 h-6"></i>
+    <span class="absolute top-0 right-0 w-3.5 h-3.5 bg-red-500 border-2 border-white dark:border-slate-900 rounded-full"></span>
+  </button>
+  
+</div>
+
+<script>
+  function toggleChat() {
+    const win = document.getElementById('chat-window');
+    if (win.classList.contains('hidden')) {
+      win.classList.remove('hidden');
+      setTimeout(() => { win.classList.remove('scale-95', 'opacity-0'); win.classList.add('scale-100', 'opacity-100'); }, 10);
+      document.getElementById('chat-toggle-btn').querySelector('.bg-red-500')?.remove();
+      document.getElementById('chat-input').focus();
+    } else {
+      win.classList.remove('scale-100', 'opacity-100');
+      win.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => { win.classList.add('hidden'); }, 200);
+    }
+  }
+
+  function appendMessage(text, isUser) {
+    const container = document.getElementById('chat-messages');
+    const msgDiv = document.createElement('div');
+    msgDiv.className = isUser ? 'flex gap-2 items-end justify-end' : 'flex gap-2 items-end';
+    
+    if (isUser) {
+      msgDiv.innerHTML = `
+        <div class="bg-[#0f2a43] text-white text-xs px-3 py-2 rounded-2xl rounded-br-none max-w-[85%] shadow-sm">${text}</div>
+      `;
+    } else {
+      msgDiv.innerHTML = `
+        <div class="w-6 h-6 rounded-full bg-[#d4af37] flex-shrink-0 flex items-center justify-center text-slate-900"><i data-lucide="bot" class="w-3.5 h-3.5"></i></div>
+        <div class="bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs px-3 py-2 rounded-2xl rounded-bl-none max-w-[85%] shadow-sm">${text}</div>
+      `;
+    }
+    
+    container.appendChild(msgDiv);
+    container.scrollTop = container.scrollHeight;
+    if(typeof lucide !== 'undefined') lucide.createIcons();
+  }
+
+  function getBotResponse(input) {
+    const text = input.toLowerCase();
+    
+    if (text.includes('gratuit') || text.includes('prix') || text.includes('pay') || text.includes('abonnement')) return "Oui, la création et le téléchargement du CV sont 100% gratuits ! Aucune carte bancaire ni inscription n'est requise.";
+    if (text.includes('télécharger') || text.includes('telecharger') || text.includes('pdf') || text.includes('sauvegarder')) return "Pour télécharger, cliquez simplement sur le bouton jaune 'Télécharger PDF' en haut à droite. Le fichier sera prêt instantanément !";
+    if (text.includes('lettre') || text.includes('motivation')) return "Absolument ! Vous pouvez rédiger une lettre de motivation dans la rubrique 'Lettre de motivation'. Notre IA Gemini peut même la rédiger à votre place !";
+    if (text.includes('donnée') || text.includes('sécurité') || text.includes('privé')) return "Vos données sont en sécurité absolue 🔒. Elles ne sont jamais envoyées sur nos serveurs et restent stockées localement sur votre téléphone ou ordinateur.";
+    if (text.includes('photo') || text.includes('image')) return "Vous pouvez désactiver ou changer votre photo depuis l'onglet 'Style' ou 'Informations' de l'éditeur.";
+    if (text.includes('modèle') || text.includes('modele') || text.includes('couleur') || text.includes('style')) return "Dans l'éditeur, naviguez entre les onglets 'Modèle' et 'Style' pour choisir parmi nos dizaines de designs, changer les couleurs et les polices.";
+    if (text.includes('effacer') || text.includes('supprimer') || text.includes('recommencer')) return "Pour tout recommencer, cliquez sur le bouton 'Effacer' (icône corbeille) en haut de la page.";
+    if (text.includes('langue') || text.includes('anglais')) return "Vous pouvez rédiger votre CV dans n'importe quelle langue ! Tapez simplement vos textes dans la langue souhaitée.";
+    if (text.includes('contact') || text.includes('aide') || text.includes('humain')) return "Vous pouvez discuter avec notre équipe via la page 'Contact' dans le menu principal.";
+    if (text.includes('bonjour') || text.includes('salut') || text.includes('coucou')) return "Bonjour ! 👋 Comment puis-je vous aider à décrocher votre futur emploi aujourd'hui ?";
+    if (text.includes('merci')) return "Avec grand plaisir ! Bonne chance dans vos candidatures ! 🚀";
+    
+    
+    const gmailLink = "https://mail.google.com/mail/?view=cm&fs=1&to=iratenebillel@gmail.com&su=Question%20depuis%20le%20chatbot&body=" + encodeURIComponent("Bonjour,\n\nJ'ai une question :\n\n" + input + "\n\nMerci.");
+    return "Je n'ai pas la réponse à cette question 🤔. <a href='" + gmailLink + "' target='_blank' class='text-[#d4af37] underline font-bold hover:text-white transition-colors'>Cliquez ici pour envoyer la question via Gmail</a> !";
+  }
+
+  // Auto-scroll to preview on mobile
+  function scrollToPreview() {
+    if (window.innerWidth <= 1024) {
+      const preview = document.querySelector('.cv-preview-container') || document.getElementById('preview-wrapper');
+      if (preview) {
+        setTimeout(() => preview.scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);
+      }
+    }
+  }
+
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('#load-demo-btn') || e.target.closest('#inner-load-demo-btn') || e.target.closest('#load-example')) {
+      scrollToPreview();
+    }
+  });
+
+  document.addEventListener('change', (e) => {
+    // Only scroll when changing Select dropdowns (like Models, Fonts) or Colors
+    if (e.target.tagName.toLowerCase() === 'select' || e.target.type === 'color') {
+      scrollToPreview();
+    }
+  });
+
+  function handleChatSubmit(e) {
+    e.preventDefault();
+    const input = document.getElementById('chat-input');
+    const text = input.value.trim();
+    if (!text) return;
+    
+    appendMessage(text, true);
+    input.value = '';
+    
+    // Simulate typing delay
+    setTimeout(() => {
+      const response = getBotResponse(text);
+      appendMessage(response, false);
+    }, 600);
+  }
+</script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.4.120/pdf.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.4.2/mammoth.browser.min.js"></script>\n<script src="import-export.js"></script>
+  <!-- LINKEDIN IMPORT MODAL -->
+  <div id="linkedin-modal" class="fixed inset-0 bg-slate-950/80 z-[200] hidden flex items-center justify-center p-4">
+    <div class="bg-white dark:bg-slate-900 rounded-2xl max-w-lg w-full p-6 shadow-2xl border border-slate-200 dark:border-slate-800">
+      <div class="flex items-center justify-between mb-4">
+        <h3 class="text-xl font-bold text-[#0077b5] flex items-center gap-2"><i data-lucide="linkedin" class="w-6 h-6"></i> Importer depuis LinkedIn</h3>
+        <button id="close-li-modal" class="text-slate-400 hover:text-slate-700 dark:hover:text-white transition"><i data-lucide="x" class="w-5 h-5"></i></button>
+      </div>
+      <div class="space-y-4 text-sm text-slate-600 dark:text-slate-300">
+        <p>Pour des raisons de sécurité, les navigateurs bloquent l'aspiration directe de liens LinkedIn.</p>
+        <p>La solution ? C'est très simple :</p>
+        
+        <!-- Option 1: URL -->
+        <div class="bg-blue-50 dark:bg-blue-900/20 p-4 rounded-xl border border-blue-100 dark:border-blue-800">
+          <h4 class="font-bold text-blue-800 dark:text-blue-300 mb-2">Option 1 : Via votre Lien LinkedIn</h4>
+          <p class="text-xs text-blue-600 dark:text-blue-400 mb-2">⚠️ Ne récupère que le Nom et le Poste (Limitation technique des sites gratuits).</p>
+          <div class="flex gap-2">
+            <input type="url" id="li-url-input" placeholder="https://www.linkedin.com/in/votre-nom" class="flex-1 px-3 py-2 border rounded-lg text-sm bg-white dark:bg-slate-800 text-slate-800 dark:text-white">
+            <button id="li-url-btn" class="bg-[#0077b5] hover:bg-[#006097] text-white px-4 py-2 rounded-lg font-bold text-sm transition">Importer</button>
+          </div>
+        </div>
+        
+        <div class="text-center font-bold text-slate-400">OU</div>
+        
+        <!-- Option 2: PDF -->
+        <div class="bg-slate-50 dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
+          <h4 class="font-bold text-slate-800 dark:text-white mb-2">Option 2 : Via le PDF officiel (Recommandé)</h4>
+          <p class="text-xs text-slate-500 mb-3">Récupère tout votre historique complet. Sur votre profil LinkedIn, cliquez sur <strong>"Plus"</strong> > <strong>"Enregistrer au format PDF"</strong>.</p>
+          <button id="trigger-li-upload" class="w-full flex justify-center items-center gap-2 px-6 py-2.5 bg-slate-800 dark:bg-slate-700 hover:bg-slate-900 text-white font-bold rounded-lg shadow-sm transition">
+            <i data-lucide="upload" class="w-4 h-4"></i> Charger le PDF LinkedIn
+          </button>
+          <input type="file" id="linkedin-pdf-input" accept="application/pdf" class="hidden">
+        </div>
+
+      </div>
+    </div>
+  </div>
+</body>
+</html>

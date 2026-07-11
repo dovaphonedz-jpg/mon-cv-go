@@ -1,0 +1,113 @@
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Tajawal:wght@300;400;500;700&family=Fira+Code:wght@400;500&family=Roboto:wght@300;400;500;700&family=Lora:ital,wght@0,400;0,600;1,400&family=Poppins:wght@300;400;500;600&family=Montserrat:wght@300;400;500;600&display=swap');
+@import 'tailwindcss';
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  --font-inter: 'Inter', sans-serif;
+  --font-roboto: 'Roboto', sans-serif;
+  --font-poppins: 'Poppins', sans-serif;
+  --font-montserrat: 'Montserrat', sans-serif;
+  --font-cairo: 'Cairo', sans-serif;
+  --font-tajawal: 'Tajawal', sans-serif;
+  --font-playfair: 'Playfair Display', serif;
+  --font-lora: 'Lora', serif;
+  --font-fira-code: 'Fira Code', monospace;
+}
+
+@media print {
+  body {
+    background: white;
+  }
+  
+  /* Hide all elements in the body */
+  body * {
+    visibility: hidden;
+  }
+  
+  /* Make the CV container and its children visible */
+  #cv-export-container, #cv-export-container * {
+    visibility: visible;
+  }
+  
+  /* Force the CV to be at the absolute top left of the printed page */
+  #cv-export-container {
+    position: fixed !important;
+    left: 0 !important;
+    top: 0 !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    transform: scale(1) !important;
+    width: 210mm !important;
+    height: 297mm !important;
+    max-height: none !important;
+    overflow: visible !important;
+    box-shadow: none !important;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    z-index: 9999;
+  }
+
+  @page {
+    size: A4;
+    margin: 0;
+  }
+}
+
+/* Base Layout and Custom Styles */
+body {
+  font-family: 'Inter', sans-serif;
+  background-color: #f8fafc;
+}
+
+.dark body {
+  background-color: #0f172a;
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 4px;
+}
+.dark ::-webkit-scrollbar-thumb {
+  background: #475569;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
+
+/* Hide scrollbar for tabs navigation */
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* CV A4 Sheet Container */
+.cv-preview-container {
+  background-color: #e2e8f0;
+  background-image: radial-gradient(#cbd5e1 1.4px, transparent 1.4px);
+  background-size: 22px 22px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 1.5rem;
+  overflow: auto;
+}
+.dark .cv-preview-container {
+  background-color: #1e293b;
+  background-image: radial-gradient(#334155 1.4px, transparent 1.4px);
+}
+
+.cv-page {
+  aspect-ratio: 1 / 1.414;
+  flex-shrink: 0;
+}

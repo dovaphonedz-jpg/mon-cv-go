@@ -1,0 +1,187 @@
+import React, { createContext, useContext, useState, useEffect } from 'react';
+
+const ResumeContext = createContext();
+
+export const useResume = () => useContext(ResumeContext);
+
+export const ResumeProvider = ({ children }) => {
+  const [cvData, setCvData] = useState({
+    personal: { name: "", title: "", email: "", phone: "", address: "", website: "", photo: "" },
+    summary: "",
+    experiences: [],
+    education: [],
+    skills: [],
+    languages: []
+  });
+
+  const [config, setConfig] = useState({
+    uiLang: "fr",
+    cvLang: "fr",
+    template: "paris",
+    color: "blue",
+    font: "inter",
+    fontSize: "normal",
+    textColor: "#1e293b",
+    spacing: "normal",
+    activeTab: "style"
+  });
+
+  // Load from localStorage on mount
+  useEffect(() => {
+    const savedData = localStorage.getItem('moncvgo_data');
+    const savedConfig = localStorage.getItem('moncvgo_config');
+    if (savedData) setCvData(JSON.parse(savedData));
+    if (savedConfig) setConfig(JSON.parse(savedConfig));
+  }, []);
+
+  // Save to localStorage on change
+  useEffect(() => {
+    localStorage.setItem('moncvgo_data', JSON.stringify(cvData));
+    localStorage.setItem('moncvgo_config', JSON.stringify(config));
+  }, [cvData, config]);
+
+  const loadDemo = (lang) => {
+    import('../utils/cvData').then((module) => {
+      const demo = module.demoData[lang];
+      if (demo) {
+        setCvData(demo);
+        setConfig(prev => ({ ...prev, cvLang: lang }));
+      }
+    });
+  };
+
+  const updatePersonal = (field, value) => {
+    setCvData(prev => ({
+      ...prev,
+      personal: { ...prev.personal, [field]: value }
+    }));
+  };
+
+  const updateSummary = (value) => {
+    setCvData(prev => ({ ...prev, summary: value }));
+  };
+
+  const addExperience = (exp) => {
+    setCvData(prev => ({ ...prev, experiences: [...prev.experiences, exp] }));
+  };
+
+  const updateExperience = (index, exp) => {
+    setCvData(prev => {
+      const newExp = [...prev.experiences];
+      newExp[index] = exp;
+      return { ...prev, experiences: newExp };
+    });
+  };
+
+  const removeExperience = (index) => {
+    setCvData(prev => ({
+      ...prev,
+      experiences: prev.experiences.filter((_, i) => i !== index)
+    }));
+  };
+
+  const addEducation = (edu) => {
+    setCvData(prev => ({ ...prev, education: [...prev.education, edu] }));
+  };
+
+  const updateEducation = (index, edu) => {
+    setCvData(prev => {
+      const newEdu = [...prev.education];
+      newEdu[index] = edu;
+      return { ...prev, education: newEdu };
+    });
+  };
+
+  const removeEducation = (index) => {
+    setCvData(prev => ({
+      ...prev,
+      education: prev.education.filter((_, i) => i !== index)
+    }));
+  };
+
+  const addSkill = (skill) => {
+    setCvData(prev => ({ ...prev, skills: [...prev.skills, skill] }));
+  };
+
+  const updateSkill = (index, skill) => {
+    setCvData(prev => {
+      const newSkills = [...prev.skills];
+      newSkills[index] = skill;
+      return { ...prev, skills: newSkills };
+    });
+  };
+
+  const removeSkill = (index) => {
+    setCvData(prev => ({
+      ...prev,
+      skills: prev.skills.filter((_, i) => i !== index)
+    }));
+  };
+
+  const addLanguage = (lang) => {
+    setCvData(prev => ({ ...prev, languages: [...prev.languages, lang] }));
+  };
+
+  const updateLanguage = (index, lang) => {
+    setCvData(prev => {
+      const newLangs = [...prev.languages];
+      newLangs[index] = lang;
+      return { ...prev, languages: newLangs };
+    });
+  };
+
+  const removeLanguage = (index) => {
+    setCvData(prev => ({
+      ...prev,
+      languages: prev.languages.filter((_, i) => i !== index)
+    }));
+  };
+
+  const updateConfig = (key, value) => {
+    setConfig(prev => ({ ...prev, [key]: value }));
+  };
+
+
+
+  const resetData = () => {
+    setCvData({
+      personal: { name: "", title: "", email: "", phone: "", address: "", website: "", photo: "" },
+      summary: "",
+      experiences: [],
+      education: [],
+      skills: [],
+      languages: []
+    });
+  };
+
+  const importData = (jsonData) => {
+    try {
+      const data = JSON.parse(jsonData);
+      if (data && data.personal) {
+        setCvData(data.cvData || data); // Support both {cvData, config} format and direct cvData format
+        if (data.config) {
+          setConfig(data.config);
+        }
+        return true;
+      }
+      return false;
+    } catch (e) {
+      console.error("Invalid JSON", e);
+      return false;
+    }
+  };
+
+  return (
+    <ResumeContext.Provider value={{
+      cvData, config, 
+      updatePersonal, updateSummary,
+      addExperience, updateExperience, removeExperience,
+      addEducation, updateEducation, removeEducation,
+      addSkill, updateSkill, removeSkill,
+      addLanguage, updateLanguage, removeLanguage,
+      updateConfig, loadDemo, resetData, importData
+    }}>
+      {children}
+    </ResumeContext.Provider>
+  );
+};

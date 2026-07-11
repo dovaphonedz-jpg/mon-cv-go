@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="fr" class="scroll-smooth">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Lettre de motivation gratuite | Mon CV Go</title>
+  <meta name="description" content="Créez gratuitement une lettre de motivation professionnelle avec notre assistant IA Gemini. Aperçu en direct et export PDF de haute qualité.">
+  <meta name="keywords" content="lettre de motivation gratuite, modèle lettre de motivation, IA lettre de motivation, créer lettre de motivation PDF">
+  <meta name="robots" content="index, follow">
+  <link rel="canonical" href="https://moncvgo.com/lettre-motivation.html">
+  
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://moncvgo.com/lettre-motivation.html">
+  <meta property="og:title" content="Lettre de motivation gratuite | Mon CV Go">
+  <meta property="og:description" content="Créez gratuitement une lettre de motivation professionnelle avec notre assistant IA Gemini. Aperçu en direct et export PDF.">
+  <meta property="og:image" content="https://moncvgo.com/preview.png">
+
+  <!-- Twitter -->
+  <meta property="twitter:card" content="summary_large_image">
+  <meta property="twitter:url" content="https://moncvgo.com/lettre-motivation.html">
+  <meta property="twitter:title" content="Lettre de motivation gratuite | Mon CV Go">
+  <meta property="twitter:description" content="Créez gratuitement une lettre de motivation professionnelle avec notre assistant IA Gemini. Aperçu en direct et export PDF.">
+  <meta property="twitter:image" content="https://moncvgo.com/preview.png">
+
+  <!-- Schema.org JSON-LD -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "SoftwareApplication",
+    "name": "Lettre de Motivation Go",
+    "operatingSystem": "Web Browser",
+    "applicationCategory": "BusinessApplication",
+    "description": "Créez gratuitement une lettre de motivation professionnelle avec aperçu en direct et export PDF.",
+    "url": "https://moncvgo.com/lettre-motivation.html",
+    "offers": {
+      "@type": "Offer",
+      "price": "0",
+      "priceCurrency": "EUR"
+    }
+  }
+  </script>
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <!-- Google AdSense : REMPLACE ca-pub-8616442521163368 par TON identifiant editeur -->
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-8616442521163368" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@tailwindcss/browser@4"></script>
+  <style type="text/tailwindcss">@custom-variant dark (&:where(.dark, .dark *));</style>
+  <script>document.documentElement.classList.add('dark');</script>
+  <link rel="stylesheet" href="styles.css">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <!-- jsPDF & html2canvas-pro & html2pdf.js unbundled -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+  <script src="https://cdn.jsdelivr.net/npm/html2canvas-pro@2.0.4/dist/html2canvas-pro.min.js" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.min.js" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+</head>
+<body class="bg-slate-50 dark:bg-slate-950 text-slate-800 dark:text-slate-100 min-h-screen flex flex-col transition-colors duration-200">
+
+  <div class="bg-slate-900 text-slate-300 text-center py-2 px-4 text-[11px] font-medium tracking-[0.15em] uppercase flex items-center justify-center gap-2 select-none border-b border-[#d4af37]/30">
+    <i data-lucide="sparkles" class="w-3.5 h-3.5 text-[#d4af37]"></i>
+    <span>Lettre de motivation — <span class="text-white font-semibold">100% gratuit</span></span>
+  </div>
+
+  <header class="site-static-header sticky top-0 z-40 bg-indigo-900 border-b border-[#d4af37]/40 shadow-md">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+      <a href="./index.html" class="flex items-center gap-2">
+        <img src="logo-header.png?v=1783637875732" alt="Mon CV Go — Créateur de CV gratuit" class="h-10 w-auto">
+      </a>
+      <nav class="hidden md:flex items-center gap-6 text-xs font-semibold text-slate-300">
+        <a href="./index.html" class="hover:text-white transition-colors">CV</a>
+        <a href="./lettre-motivation.html" class="text-[#d4af37]">Lettre de motivation</a>
+        <a href="./conseils-cv.html" class="hover:text-white transition-colors">Conseils CV</a>
+        <a href="./a-propos.html" class="hover:text-white transition-colors">À propos</a>
+        <a href="./contact.html" class="hover:text-white transition-colors">Contact</a>
+      </nav>
+      <button id="download-btn" class="flex items-center gap-2 px-4 py-2 bg-[#d4af37] hover:bg-[#c5a017] text-slate-900 font-extrabold font-extrabold text-sm rounded-lg shadow-md transition-all">
+        <i data-lucide="download" class="w-4 h-4"></i><span>Télécharger PDF</span>
+      </button>
+    </div>
+  </header>
+
+  <main class="flex-grow max-w-7xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col lg:flex-row gap-6">
+
+    <!-- FORM -->
+    <section class="w-full lg:w-3/5">
+      <div class="bg-white dark:bg-slate-900 rounded-2xl shadow-md border border-slate-200 dark:border-slate-800 p-6">
+        <h1 class="text-lg font-extrabold text-slate-800 dark:text-white mb-1 flex items-center gap-2"><i data-lucide="pen-line" class="w-5 h-5 text-[#d4af37]"></i>Votre lettre de motivation</h1>
+        <p class="text-xs text-slate-500 dark:text-slate-400 mb-5">Remplissez les champs, l'aperçu se met à jour en direct. Vos données restent sur votre appareil.</p>
+
+        <!-- Assistant IA (cle Gemini du visiteur) -->
+        <div class="mb-6 rounded-2xl border border-[#d4af37]/40 bg-gradient-to-br from-[#0f2a43] to-[#14355a] p-5 text-white hidden">
+          <div class="flex items-center gap-2 mb-1">
+            <i data-lucide="sparkles" class="w-5 h-5 text-[#d4af37]"></i>
+            <h2 class="font-bold">Assistant IA</h2>
+            <span class="ml-auto text-[10px] font-semibold px-2 py-0.5 rounded-full bg-[#d4af37]/20 text-[#d4af37] border border-[#d4af37]/30 uppercase tracking-wider">Gemini</span>
+          </div>
+          <p class="text-xs text-slate-300 mb-4">Décrivez votre profil et le poste visé : l'IA rédige la lettre pour vous instantanément.</p>
+          <div class="space-y-2 mb-3 hidden">
+            <label class="text-[11px] font-semibold text-slate-300 uppercase tracking-wider">Clé API Gemini</label>
+            <div class="flex gap-2">
+              <input id="ai-key" type="password" value="AQ.Ab8RN6LvfzhodmSSfT6yEiVlg9xrx4kd4r7CeX6bwJE2oOdBbw" placeholder="AIza..." class="flex-1 rounded-lg px-3 py-2 text-sm text-slate-800 bg-white/95 focus:ring-2 focus:ring-[#d4af37] outline-none">
+              <button id="ai-key-save" class="px-3 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-xs font-bold">Enregistrer</button>
+            </div>
+            <label class="flex items-center gap-2 text-[11px] text-slate-300"><input id="ai-remember" type="checkbox" class="accent-[#d4af37]"> Mémoriser la clé sur cet appareil</label>
+            <p class="text-[10px] text-slate-400 flex items-start gap-1"><i data-lucide="info" class="w-3 h-3 mt-0.5 shrink-0"></i><span>Obtenez une clé sur aistudio.google.com/app/apikey. Ne la partagez jamais. Elle n'est jamais envoyée à nos serveurs.</span></p>
+          </div>
+          <label class="text-[11px] font-semibold text-slate-300 uppercase tracking-wider">Votre profil &amp; le poste visé</label>
+          <textarea id="ai-context" rows="3" placeholder="Ex : Développeur web junior, 2 ans en React, je postule chez TechnoWeb pour un poste front-end..." class="mt-1 w-full rounded-lg px-3 py-2 text-sm text-slate-800 bg-white/95 focus:ring-2 focus:ring-[#d4af37] outline-none"></textarea>
+          <div class="flex flex-wrap items-center gap-2 mt-3">
+            <select id="ai-model" class="rounded-lg px-2 py-1.5 text-xs text-slate-800 bg-white/95 font-semibold">
+              <option value="gemini-1.5-flash">Rapide (gemini-1.5-flash)</option>
+              <option value="gemini-1.5-pro">Qualité (gemini-1.5-pro)</option>
+            </select>
+            
+            <button id="ai-generate" class="ml-auto flex items-center gap-1.5 px-4 py-2 bg-[#d4af37] hover:bg-[#c5a017] text-slate-900 font-extrabold rounded-lg text-sm font-extrabold transition disabled:opacity-50">
+              <i data-lucide="wand-2" class="w-4 h-4"></i><span id="ai-generate-txt">Générer la lettre</span>
+            </button>
+          </div>
+          <div id="ai-status" class="mt-2 text-xs hidden"></div>
+        </div>
+
+        <div class="flex flex-wrap gap-2 mb-6">
+          <button id="load-example" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-xs font-bold rounded-lg transition"><i data-lucide="sparkles" class="w-3.5 h-3.5"></i>Exemple</button>
+          <button id="reset-btn" class="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 text-xs font-bold rounded-lg transition"><i data-lucide="trash-2" class="w-3.5 h-3.5"></i>Effacer</button>
+        </div>
+
+        <div class="space-y-5">
+          <div>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-[#d4af37] mb-3">Vos coordonnées</h2>
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div><label class="form-label">Nom complet</label><input class="form-input" data-k="senderName" placeholder="Amine Belkacem"></div>
+              <div><label class="form-label">Téléphone</label><input class="form-input" data-k="senderPhone" placeholder="+213 555 12 34 56"></div>
+              <div><label class="form-label">E-mail</label><input class="form-input" data-k="senderEmail" placeholder="amine.belkacem@email.com"></div>
+              <div><label class="form-label">Adresse</label><input class="form-input" data-k="senderAddress" placeholder="Alger, Algérie"></div>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-[#d4af37] mb-3">Destinataire</h2>
+            <div class="grid sm:grid-cols-2 gap-3">
+              <div><label class="form-label">Entreprise</label><input class="form-input" data-k="company" placeholder="Nom de l'entreprise"></div>
+              <div><label class="form-label">Personne / Service</label><input class="form-input" data-k="recipient" placeholder="Service des ressources humaines"></div>
+              <div><label class="form-label">Ville</label><input class="form-input" data-k="city" placeholder="Alger"></div>
+              <div><label class="form-label">Date</label><input class="form-input" data-k="date" placeholder="le 9 juillet 2026"></div>
+            </div>
+          </div>
+
+          <div>
+            <h2 class="text-xs font-bold uppercase tracking-wider text-[#d4af37] mb-3">Contenu</h2>
+            <div class="space-y-3">
+              <div><label class="form-label">Objet</label><input class="form-input" data-k="subject" placeholder="Candidature au poste de Développeur web"></div>
+              <div><label class="form-label">Formule d'appel</label><input class="form-input" data-k="salutation" placeholder="Madame, Monsieur,"></div>
+              <div><label class="form-label">Introduction</label><textarea class="form-input" rows="3" data-k="intro" placeholder="Présentez votre candidature et le poste visé."></textarea></div>
+              <div><label class="form-label">Développement</label><textarea class="form-input" rows="5" data-k="body" placeholder="Mettez en avant vos compétences et expériences pertinentes."></textarea></div>
+              <div><label class="form-label">Conclusion</label><textarea class="form-input" rows="3" data-k="closing" placeholder="Proposez un entretien et remerciez le recruteur."></textarea></div>
+              <div><label class="form-label">Formule de politesse</label><input class="form-input" data-k="signoff" placeholder="Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées."></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PREVIEW -->
+    <section class="w-full lg:w-2/5">
+      <div class="sticky top-24">
+        <div class="cv-preview-container rounded-3xl border border-slate-200 dark:border-slate-800 overflow-auto p-6" style="min-height:auto;">
+          <div id="letter-preview" class="cv-page font-inter" style="width:210mm;transform:scale(0.62);transform-origin:top center;">
+            <!-- rendered by JS -->
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 py-6 mt-12 text-center text-xs text-slate-500 dark:text-slate-400">
+    <div class="max-w-7xl mx-auto px-4 flex flex-col sm:flex-row items-center justify-between gap-4">
+      <div>&copy; 2026 <strong class="text-slate-700 dark:text-slate-300">Mon CV Go</strong>. Tous droits réservés.</div>
+      <div class="flex flex-wrap justify-center gap-4">
+        <a href="./index.html" class="hover:text-blue-500">CV</a>
+        <a href="./lettre-motivation.html" class="hover:text-blue-500">Lettre de motivation</a>
+        <a href="./conseils-cv.html" class="hover:text-blue-500">Conseils CV</a>
+        <a href="./a-propos.html" class="hover:text-blue-500">À propos</a>
+        <a href="./contact.html" class="hover:text-blue-500">Contact</a>
+        <a href="./confidentialite.html" class="hover:text-blue-500">Confidentialité</a>
+        <a href="./mentions-legales.html" class="hover:text-blue-500">Mentions légales</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const KEY = 'moncvgo_lettre';
+    const fields = ['senderName','senderPhone','senderEmail','senderAddress','company','recipient','city','date','subject','salutation','intro','body','closing','signoff'];
+    let data = {};
+
+    const example = {
+      senderName: 'Amine Belkacem', senderPhone: '+213 555 12 34 56', senderEmail: 'amine.belkacem@email.com', senderAddress: 'Alger, Algérie',
+      company: 'TechnoWeb SARL', recipient: 'Service des ressources humaines', city: 'Alger', date: 'le 9 juillet 2026',
+      subject: 'Candidature au poste de Développeur web front-end',
+      salutation: 'Madame, Monsieur,',
+      intro: "Actuellement à la recherche d'un nouveau défi professionnel, je vous soumets ma candidature au poste de développeur web front-end au sein de votre entreprise, dont je suis avec intérêt les réalisations.",
+      body: "Fort de plusieurs années d'expérience dans la création de sites et d'applications web, je maîtrise HTML, CSS, JavaScript ainsi que les frameworks modernes tels que React. J'ai notamment conçu des interfaces réactives et optimisé les performances de plusieurs projets, ce qui a permis d'améliorer l'expérience utilisateur et le taux de conversion. Rigoureux et autonome, j'attache une grande importance à la qualité du code et au travail en équipe.",
+      closing: "Je serais ravi de vous exposer ma motivation lors d'un entretien. Je vous remercie par avance de l'attention portée à ma candidature.",
+      signoff: "Je vous prie d'agréer, Madame, Monsieur, l'expression de mes salutations distinguées."
+    };
+
+    function esc(s){ return (s||'').replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;'); }
+    function para(s){ return esc(s).replace(/\n/g,'<br>'); }
+
+    function render(){
+      const d = data;
+      const el = document.getElementById('letter-preview');
+      el.innerHTML = `
+        <div style="display:flex;justify-content:space-between;gap:20px;font-size:12.5px;color:#334155;">
+          <div>
+            <div style="font-weight:700;font-size:15px;color:#0f2a43;">${esc(d.senderName)||'Votre nom'}</div>
+            <div>${esc(d.senderAddress)}</div>
+            <div>${esc(d.senderPhone)}</div>
+            <div>${esc(d.senderEmail)}</div>
+          </div>
+          <div style="text-align:right;">
+            <div style="font-weight:600;">${esc(d.company)}</div>
+            <div>${esc(d.recipient)}</div>
+          </div>
+        </div>
+        <div style="text-align:right;margin-top:26px;font-size:12.5px;color:#334155;">${esc(d.city)}${d.city&&d.date?', ':''}${esc(d.date)}</div>
+        <div style="margin-top:26px;font-weight:700;font-size:13px;color:#0f2a43;">${d.subject?('Objet : '+esc(d.subject)):''}</div>
+        <div style="margin-top:22px;font-size:12.5px;line-height:1.7;color:#1e293b;">
+          <p style="margin:0 0 14px;">${esc(d.salutation)||'Madame, Monsieur,'}</p>
+          <p style="margin:0 0 14px;text-align:justify;">${para(d.intro)}</p>
+          <p style="margin:0 0 14px;text-align:justify;">${para(d.body)}</p>
+          <p style="margin:0 0 14px;text-align:justify;">${para(d.closing)}</p>
+          <p style="margin:0 0 30px;text-align:justify;">${para(d.signoff)}</p>
+          <div style="text-align:right;font-weight:700;color:#0f2a43;">${esc(d.senderName)}</div>
+        </div>`;
+      if(typeof lucide!=='undefined'){lucide.createIcons();}
+    }
+
+    function save(){ try{ localStorage.setItem(KEY, JSON.stringify(data)); }catch(e){} }
+
+    function bind(){
+      document.querySelectorAll('[data-k]').forEach(inp => {
+        const k = inp.getAttribute('data-k');
+        if(data[k]!==undefined) inp.value = data[k];
+        inp.addEventListener('input', () => { data[k] = inp.value; save(); render(); });
+      });
+    }
+
+    function fill(src){
+      data = Object.assign({}, src);
+      document.querySelectorAll('[data-k]').forEach(inp => { inp.value = data[inp.getAttribute('data-k')]||''; });
+      save(); render();
+    }
+
+    document.getElementById('load-example').onclick = () => fill(example);
+    document.getElementById('reset-btn').onclick = () => { if(confirm('Effacer la lettre ?')) fill({}); };
+
+    document.getElementById('download-btn').onclick = () => {
+      const src = document.getElementById('letter-preview');
+      const clone = src.cloneNode(true);
+      clone.style.transform = 'none';
+      clone.style.width = '210mm';
+      const holder = document.createElement('div');
+      holder.style.position='fixed'; holder.style.left='-9999px'; holder.style.top='0';
+      holder.appendChild(clone); document.body.appendChild(holder);
+      html2pdf().set({
+        margin: 0,
+        filename: 'Lettre_de_motivation.pdf',
+        image: { type: 'jpeg', quality: 0.98 },
+        html2canvas: { scale: 2, useCORS: true },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+      }).from(clone).save().then(()=>{ document.body.removeChild(holder); }).catch(()=>{ document.body.removeChild(holder); });
+    };
+
+    try{ const saved = localStorage.getItem(KEY); if(saved) data = JSON.parse(saved)||{}; }catch(e){ data={}; }
+    bind(); render();
+
+    /* ===== Assistant IA (BYOK : cle Gemini cote visiteur) ===== */
+    const AI_KEY_STORE = "moncvgo_gemini_key";
+    const aiKeyEl = document.getElementById("ai-key");
+    const aiRememberEl = document.getElementById("ai-remember");
+    try { const sk = localStorage.getItem(AI_KEY_STORE); if(sk){ aiKeyEl.value = sk; aiRememberEl.checked = true; } } catch(e){}
+    function aiStatus(msg, type){
+      const el = document.getElementById("ai-status");
+      el.classList.remove("hidden");
+      el.textContent = msg;
+      el.className = "mt-2 text-xs " + (type==="err"?"text-red-300":type==="ok"?"text-emerald-300":"text-slate-300");
+    }
+    document.getElementById("ai-key-save").onclick = function(){
+      try {
+        if(aiRememberEl.checked && aiKeyEl.value.trim()){ localStorage.setItem(AI_KEY_STORE, aiKeyEl.value.trim()); aiStatus("Clé enregistrée sur cet appareil.", "ok"); }
+        else { localStorage.removeItem(AI_KEY_STORE); aiStatus("Clé non mémorisée.", "info"); }
+      } catch(e){ aiStatus("Impossible d'enregistrer la clé.", "err"); }
+    };
+    aiRememberEl.onchange = function(){ if(!aiRememberEl.checked){ try{ localStorage.removeItem(AI_KEY_STORE); }catch(e){} } };
+    document.getElementById("ai-generate").onclick = async function(){
+      const key = aiKeyEl.value.trim();
+      if(!key){ aiStatus("Entrez votre clé API Gemini.", "err"); return; }
+      const ctx = document.getElementById("ai-context").value.trim();
+      if(!ctx){ aiStatus("Décrivez votre profil et le poste visé.", "err"); return; }
+      const model = document.getElementById("ai-model").value;
+      const lang = "français";
+      const btn = document.getElementById("ai-generate");
+      const btnTxt = document.getElementById("ai-generate-txt");
+      btn.disabled = true; btnTxt.textContent = "Génération...";
+      aiStatus("L'IA rédige votre lettre...", "info");
+      const sys = "Tu es un expert en recrutement. Rédige une lettre de motivation professionnelle, convaincante et personnalisée en " + lang + ". Réponds UNIQUEMENT avec un objet JSON valide, sans aucun texte autour, avec exactement ces clés: subject, salutation, intro, body, closing, signoff. Le champ body peut contenir 1 à 2 paragraphes.";
+      const userMsg = "Profil du candidat et poste visé:\n" + ctx + "\n\nInfos déjà saisies à respecter si non vides: nom=" + (data.senderName||"") + ", entreprise=" + (data.company||"") + ", objet=" + (data.subject||"") + ".";
+      try {
+        const endpoint = "https://generativelanguage.googleapis.com/v1beta/models/" + encodeURIComponent(model) + ":generateContent?key=" + encodeURIComponent(key);
+        const res = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            generationConfig: {
+              temperature: 0.7,
+              responseMimeType: "application/json"
+            },
+            contents: [
+              {
+                role: "user",
+                parts: [
+                  { text: sys + "\n\n" + userMsg }
+                ]
+              }
+            ]
+          })
+        });
+        if(!res.ok){
+          let m = "Erreur " + res.status;
+          try { const ej = await res.json(); if(ej.error && ej.error.message) m = ej.error.message; } catch(_){}
+          if(res.status===401) m = "Clé API invalide.";
+          if(res.status===429) m = "Quota dépassé ou trop de requêtes.";
+          aiStatus(m, "err"); btn.disabled=false; btnTxt.textContent="Générer la lettre"; return;
+        }
+        const jr = await res.json();
+        const content = (jr.candidates && jr.candidates[0] && jr.candidates[0].content && jr.candidates[0].content.parts && jr.candidates[0].content.parts[0] && jr.candidates[0].content.parts[0].text) || "{}";
+        let out = null; try { out = JSON.parse(content); } catch(_){}
+        if(!out){ aiStatus("Réponse IA illisible, réessayez.", "err"); btn.disabled=false; btnTxt.textContent="Générer la lettre"; return; }
+        ["subject","salutation","intro","body","closing","signoff"].forEach(function(k){ if(out[k]) data[k]=out[k]; });
+        document.querySelectorAll("[data-k]").forEach(function(inp){ const k=inp.getAttribute("data-k"); if(data[k]!==undefined) inp.value=data[k]; });
+        save(); render();
+        aiStatus("Lettre générée ✓ Vous pouvez la modifier puis télécharger le PDF.", "ok");
+      } catch(err){
+        aiStatus("Échec réseau ou requête bloquée. Vérifiez votre connexion et votre clé.", "err");
+      } finally {
+        btn.disabled=false; btnTxt.textContent="Générer la lettre";
+      }
+    };
+    if(typeof lucide!=='undefined'){lucide.createIcons();}
+  </script>
+  
+
+<!-- MOBILE MENU DRAWER -->
+<div id="mobile-drawer-backdrop" class="fixed inset-0 bg-slate-950/80 z-[100] hidden transition-opacity" onclick="closeMobileMenu()"></div>
+<aside id="mobile-drawer" class="fixed inset-y-0 left-0 z-[110] w-72 bg-slate-900 border-r border-[#d4af37]/20 shadow-2xl transform -translate-x-full transition-transform duration-300 flex flex-col">
+  <div class="h-16 flex items-center justify-between px-4 border-b border-[#d4af37]/20 bg-slate-950/50">
+    <span class="text-sm font-extrabold text-[#d4af37] tracking-wider uppercase">Menu</span>
+    <button onclick="closeMobileMenu()" class="p-2 text-slate-400 hover:text-white cursor-pointer rounded-lg hover:bg-white/5">
+      <i data-lucide="x" class="w-5 h-5"></i>
+    </button>
+  </div>
+  <nav class="flex flex-col p-4 gap-2 overflow-y-auto">
+    <a href="index.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-300 hover:bg-white/5 hover:text-white transition-colors"><i data-lucide="home" class="w-4 h-4"></i> Accueil</a>
+    <a href="create.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-[#111827] bg-gradient-to-r from-[#d4af37] to-[#e5c66b] shadow-md transition-transform hover:scale-[1.02]"><i data-lucide="file-plus-2" class="w-4 h-4"></i> Créer mon CV</a>
+    <a href="lettre-motivation.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-300 hover:bg-white/5 hover:text-white transition-colors"><i data-lucide="pen-line" class="w-4 h-4"></i> Lettre de motivation</a>
+    <a href="conseils-cv.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-300 hover:bg-white/5 hover:text-white transition-colors"><i data-lucide="book-open" class="w-4 h-4"></i> Conseils CV</a>
+    <a href="a-propos.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-300 hover:bg-white/5 hover:text-white transition-colors"><i data-lucide="info" class="w-4 h-4"></i> À propos</a>
+    <a href="contact.html" class="flex items-center gap-3 px-4 py-3 rounded-xl text-sm font-semibold text-slate-300 hover:bg-white/5 hover:text-white transition-colors"><i data-lucide="mail" class="w-4 h-4"></i> Contact</a>
+  </nav>
+</aside>
+
+<script>
+  function closeMobileMenu() {
+    document.getElementById('mobile-drawer').classList.add('-translate-x-full');
+    document.getElementById('mobile-drawer-backdrop').classList.add('hidden');
+  }
+  document.addEventListener("DOMContentLoaded", () => {
+    const headerContainer = document.querySelector("header .justify-between") || document.querySelector("header > div");
+    if (headerContainer && !document.getElementById('mobile-menu-btn')) {
+      const btn = document.createElement("button");
+      btn.id = "mobile-menu-btn";
+      btn.className = "lg:hidden p-2 text-slate-300 hover:text-white cursor-pointer ml-1 rounded-lg hover:bg-white/5 flex-shrink-0";
+      btn.innerHTML = '<i data-lucide="menu" class="w-6 h-6"></i>';
+      btn.onclick = () => {
+        document.getElementById('mobile-drawer').classList.remove('-translate-x-full');
+        document.getElementById('mobile-drawer-backdrop').classList.remove('hidden');
+      };
+      headerContainer.appendChild(btn);
+      if(typeof lucide !== 'undefined') lucide.createIcons();
+    }
+  });
+</script>
+
+<!-- CHATBOT WIDGET -->
+<div id="chatbot-container" class="fixed bottom-5 right-5 z-[150] flex flex-col items-end">
+  
+  <!-- Chat Window -->
+  <div id="chat-window" class="hidden mb-4 w-[340px] max-w-[calc(100vw-2rem)] bg-white dark:bg-slate-900 rounded-2xl shadow-2xl border border-slate-200 dark:border-slate-700 overflow-hidden flex flex-col transition-all origin-bottom-right transform scale-95 opacity-0">
+    <!-- Header -->
+    <div class="bg-gradient-to-r from-slate-900 to-[#14355a] p-4 flex items-center justify-between border-b border-[#d4af37]/30">
+      <div class="flex items-center gap-3">
+        <div class="w-8 h-8 rounded-full bg-[#d4af37] flex items-center justify-center text-slate-900">
+          <i data-lucide="bot" class="w-5 h-5"></i>
+        </div>
+        <div>
+          <h3 class="text-sm font-bold text-white">Assistant Virtuel</h3>
+          <p class="text-[10px] text-slate-300 flex items-center gap-1"><span class="w-1.5 h-1.5 rounded-full bg-emerald-400"></span> En ligne</p>
+        </div>
+      </div>
+      <button onclick="toggleChat()" class="text-slate-300 hover:text-white transition-colors cursor-pointer p-1">
+        <i data-lucide="x" class="w-5 h-5"></i>
+      </button>
+    </div>
+    
+    <!-- Messages Area -->
+    <div id="chat-messages" class="p-4 h-72 overflow-y-auto flex flex-col gap-3 bg-slate-50 dark:bg-slate-950/50">
+      <!-- Welcome message -->
+      <div class="flex gap-2 items-end">
+        <div class="w-6 h-6 rounded-full bg-[#d4af37] flex-shrink-0 flex items-center justify-center text-slate-900"><i data-lucide="bot" class="w-3.5 h-3.5"></i></div>
+        <div class="bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs px-3 py-2 rounded-2xl rounded-bl-none max-w-[85%] shadow-sm">
+          Bonjour ! 👋 Je suis l'assistant de Mon CV Go. Posez-moi vos questions sur la création de CV, le téléchargement, ou nos tarifs !
+        </div>
+      </div>
+    </div>
+    
+    <!-- Input Area -->
+    <div class="p-3 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+      <form id="chat-form" onsubmit="handleChatSubmit(event)" class="flex gap-2 items-center">
+        <input type="text" id="chat-input" placeholder="Posez votre question..." class="flex-1 bg-slate-100 dark:bg-slate-800 border-none text-xs rounded-full px-4 py-2 text-slate-800 dark:text-white focus:ring-1 focus:ring-[#d4af37] outline-none" autocomplete="off">
+        <button type="submit" class="w-8 h-8 rounded-full bg-[#d4af37] hover:bg-[#c5a017] text-slate-900 flex items-center justify-center transition-colors shadow-md flex-shrink-0 cursor-pointer">
+          <i data-lucide="send" class="w-4 h-4 ml-0.5"></i>
+        </button>
+      </form>
+    </div>
+  </div>
+
+  <!-- Toggle Button -->
+  <button id="chat-toggle-btn" onclick="toggleChat()" class="w-14 h-14 bg-gradient-to-br from-[#d4af37] to-[#e5c66b] hover:scale-105 text-slate-900 rounded-full shadow-2xl flex items-center justify-center transition-transform cursor-pointer relative">
+    <i data-lucide="message-square" class="w-6 h-6"></i>
+    <span class="absolute top-0 right-0 w-3.5 h-3.5 bg-red-500 border-2 border-white dark:border-slate-900 rounded-full"></span>
+  </button>
+  
+</div>
+
+<script>
+  function toggleChat() {
+    const win = document.getElementById('chat-window');
+    if (win.classList.contains('hidden')) {
+      win.classList.remove('hidden');
+      setTimeout(() => { win.classList.remove('scale-95', 'opacity-0'); win.classList.add('scale-100', 'opacity-100'); }, 10);
+      document.getElementById('chat-toggle-btn').querySelector('.bg-red-500')?.remove();
+      document.getElementById('chat-input').focus();
+    } else {
+      win.classList.remove('scale-100', 'opacity-100');
+      win.classList.add('scale-95', 'opacity-0');
+      setTimeout(() => { win.classList.add('hidden'); }, 200);
+    }
+  }
+
+  function appendMessage(text, isUser) {
+    const container = document.getElementById('chat-messages');
+    const msgDiv = document.createElement('div');
+    msgDiv.className = isUser ? 'flex gap-2 items-end justify-end' : 'flex gap-2 items-end';
+    
+    if (isUser) {
+      msgDiv.innerHTML = `
+        <div class="bg-[#0f2a43] text-white text-xs px-3 py-2 rounded-2xl rounded-br-none max-w-[85%] shadow-sm">${text}</div>
+      `;
+    } else {
+      msgDiv.innerHTML = `
+        <div class="w-6 h-6 rounded-full bg-[#d4af37] flex-shrink-0 flex items-center justify-center text-slate-900"><i data-lucide="bot" class="w-3.5 h-3.5"></i></div>
+        <div class="bg-slate-200 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs px-3 py-2 rounded-2xl rounded-bl-none max-w-[85%] shadow-sm">${text}</div>
+      `;
+    }
+    
+    container.appendChild(msgDiv);
+    container.scrollTop = container.scrollHeight;
+    if(typeof lucide !== 'undefined') lucide.createIcons();
+  }
+
+  function getBotResponse(input) {
+    const text = input.toLowerCase();
+    
+    if (text.includes('gratuit') || text.includes('prix') || text.includes('pay') || text.includes('abonnement')) return "Oui, la création et le téléchargement du CV sont 100% gratuits ! Aucune carte bancaire ni inscription n'est requise.";
+    if (text.includes('télécharger') || text.includes('telecharger') || text.includes('pdf') || text.includes('sauvegarder')) return "Pour télécharger, cliquez simplement sur le bouton jaune 'Télécharger PDF' en haut à droite. Le fichier sera prêt instantanément !";
+    if (text.includes('lettre') || text.includes('motivation')) return "Absolument ! Vous pouvez rédiger une lettre de motivation dans la rubrique 'Lettre de motivation'. Notre IA Gemini peut même la rédiger à votre place !";
+    if (text.includes('donnée') || text.includes('sécurité') || text.includes('privé')) return "Vos données sont en sécurité absolue 🔒. Elles ne sont jamais envoyées sur nos serveurs et restent stockées localement sur votre téléphone ou ordinateur.";
+    if (text.includes('photo') || text.includes('image')) return "Vous pouvez désactiver ou changer votre photo depuis l'onglet 'Style' ou 'Informations' de l'éditeur.";
+    if (text.includes('modèle') || text.includes('modele') || text.includes('couleur') || text.includes('style')) return "Dans l'éditeur, naviguez entre les onglets 'Modèle' et 'Style' pour choisir parmi nos dizaines de designs, changer les couleurs et les polices.";
+    if (text.includes('effacer') || text.includes('supprimer') || text.includes('recommencer')) return "Pour tout recommencer, cliquez sur le bouton 'Effacer' (icône corbeille) en haut de la page.";
+    if (text.includes('langue') || text.includes('anglais')) return "Vous pouvez rédiger votre CV dans n'importe quelle langue ! Tapez simplement vos textes dans la langue souhaitée.";
+    if (text.includes('contact') || text.includes('aide') || text.includes('humain')) return "Vous pouvez discuter avec notre équipe via la page 'Contact' dans le menu principal.";
+    if (text.includes('bonjour') || text.includes('salut') || text.includes('coucou')) return "Bonjour ! 👋 Comment puis-je vous aider à décrocher votre futur emploi aujourd'hui ?";
+    if (text.includes('merci')) return "Avec grand plaisir ! Bonne chance dans vos candidatures ! 🚀";
+    
+    
+    const gmailLink = "https://mail.google.com/mail/?view=cm&fs=1&to=iratenebillel@gmail.com&su=Question%20depuis%20le%20chatbot&body=" + encodeURIComponent("Bonjour,\n\nJ'ai une question :\n\n" + input + "\n\nMerci.");
+    return "Je n'ai pas la réponse à cette question 🤔. <a href='" + gmailLink + "' target='_blank' class='text-[#d4af37] underline font-bold hover:text-white transition-colors'>Cliquez ici pour envoyer la question via Gmail</a> !";
+  }
+
+  // Auto-scroll to preview on mobile
+  function scrollToPreview() {
+    if (window.innerWidth <= 1024) {
+      const preview = document.querySelector('.cv-preview-container') || document.getElementById('preview-wrapper');
+      if (preview) {
+        setTimeout(() => preview.scrollIntoView({ behavior: 'smooth', block: 'start' }), 200);
+      }
+    }
+  }
+
+  document.addEventListener('click', (e) => {
+    if (e.target.closest('#load-demo-btn') || e.target.closest('#inner-load-demo-btn') || e.target.closest('#load-example')) {
+      scrollToPreview();
+    }
+  });
+
+  document.addEventListener('change', (e) => {
+    // Only scroll when changing Select dropdowns (like Models, Fonts) or Colors
+    if (e.target.tagName.toLowerCase() === 'select' || e.target.type === 'color') {
+      scrollToPreview();
+    }
+  });
+
+  function handleChatSubmit(e) {
+    e.preventDefault();
+    const input = document.getElementById('chat-input');
+    const text = input.value.trim();
+    if (!text) return;
+    
+    appendMessage(text, true);
+    input.value = '';
+    
+    // Simulate typing delay
+    setTimeout(() => {
+      const response = getBotResponse(text);
+      appendMessage(response, false);
+    }, 600);
+  }
+</script>
+</body>
+</html>
