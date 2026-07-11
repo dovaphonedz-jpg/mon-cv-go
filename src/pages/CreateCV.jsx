@@ -2,6 +2,7 @@ import React, { useState, useRef } from 'react';
 import { useResume } from '../context/ResumeContext';
 import { UploadCloud, Sparkles, Trash2, ArrowLeft, ArrowRight, Eye, Download, ChevronRight, Save, FileText, Presentation } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import html2pdf from 'html2pdf.js';
 
 import { exportToWord } from '../utils/exportWord';
 import { exportToPowerPoint } from '../utils/exportPowerPoint';
@@ -52,15 +53,14 @@ export default function CreateCV() {
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
       };
 
-      // Import dynamic to avoid SSR issues if any
-      const html2pdf = (await import('html2pdf.js')).default;
+      // Generate PDF
       await html2pdf().set(opt).from(printRef.current).save();
       
       // Restore scale
       printRef.current.style.transform = originalTransform;
     } catch (error) {
       console.error("PDF generation failed", error);
-      alert("Erreur lors de la génération du PDF.");
+      alert("Erreur lors de la génération du PDF: " + (error.message || error));
     } finally {
       setIsGeneratingPDF(false);
     }
