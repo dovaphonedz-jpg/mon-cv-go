@@ -14,6 +14,7 @@ import ExperienceForm from '../components/cv-forms/ExperienceForm';
 import EducationForm from '../components/cv-forms/EducationForm';
 import SkillsForm from '../components/cv-forms/SkillsForm';
 import SummaryForm from '../components/cv-forms/SummaryForm';
+import ProjectsForm from '../components/cv-forms/ProjectsForm';
 
 const STEPS = [
   { id: 'style', label: 'Modèle & Style' },
@@ -21,6 +22,7 @@ const STEPS = [
   { id: 'experience', label: 'Expériences' },
   { id: 'education', label: 'Éducation' },
   { id: 'skills', label: 'Compétences' },
+  { id: 'projects', label: 'Projets' },
   { id: 'summary', label: 'Description' }
 ];
 
@@ -196,6 +198,7 @@ export default function CreateCV() {
                   {activeStep.id === 'experience' && <ExperienceForm />}
                   {activeStep.id === 'education' && <EducationForm />}
                   {activeStep.id === 'skills' && <SkillsForm />}
+                  {activeStep.id === 'projects' && <ProjectsForm />}
                   {activeStep.id === 'summary' && <SummaryForm />}
                 </motion.div>
               </AnimatePresence>

@@ -11,7 +11,8 @@ export const ResumeProvider = ({ children }) => {
     experiences: [],
     education: [],
     skills: [],
-    languages: []
+    languages: [],
+    projects: []
   });
 
   const [config, setConfig] = useState({
@@ -137,6 +138,25 @@ export const ResumeProvider = ({ children }) => {
     }));
   };
 
+  const addProject = (project) => {
+    setCvData(prev => ({ ...prev, projects: [...(prev.projects || []), project] }));
+  };
+
+  const updateProject = (index, project) => {
+    setCvData(prev => {
+      const newProjects = [...(prev.projects || [])];
+      newProjects[index] = project;
+      return { ...prev, projects: newProjects };
+    });
+  };
+
+  const removeProject = (index) => {
+    setCvData(prev => ({
+      ...prev,
+      projects: (prev.projects || []).filter((_, i) => i !== index)
+    }));
+  };
+
   const updateConfig = (key, value) => {
     setConfig(prev => ({ ...prev, [key]: value }));
   };
@@ -150,7 +170,8 @@ export const ResumeProvider = ({ children }) => {
       experiences: [],
       education: [],
       skills: [],
-      languages: []
+      languages: [],
+      projects: []
     });
   };
 
@@ -181,6 +202,7 @@ export const ResumeProvider = ({ children }) => {
       addEducation, updateEducation, removeEducation,
       addSkill, updateSkill, removeSkill,
       addLanguage, updateLanguage, removeLanguage,
+      addProject, updateProject, removeProject,
       updateConfig, loadDemo, resetData, importData
     }}>
       {children}

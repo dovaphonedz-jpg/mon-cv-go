@@ -1,7 +1,7 @@
 import pptxgen from "pptxgenjs";
 
 export const exportToPowerPoint = async (cvData) => {
-  const { personal = {}, summary = "", experience = [], education = [], skills = [] } = cvData;
+  const { personal = {}, summary = "", experiences = [], education = [], skills = [], projects = [] } = cvData;
   const safeText = (text) => text || "";
 
   const pres = new pptxgen();
@@ -24,13 +24,29 @@ export const exportToPowerPoint = async (cvData) => {
 
   let currentY = 1.8;
 
-  if (experience && experience.length > 0) {
-    slide.addText("Expériences", { x: 0.5, y: currentY, w: "90%", fontSize: 16, bold: true, color: "0F172A" });
+  if (experiences && experiences.length > 0) {
+    slide.addText("Expériences", { x: 0.5, y: currentY, w: "45%", fontSize: 16, bold: true, color: "0F172A" });
     currentY += 0.4;
     
-    experience.forEach((exp) => {
+    experiences.forEach((exp) => {
       const expText = `${safeText(exp.title)} chez ${safeText(exp.company)} (${safeText(exp.startDate)} - ${safeText(exp.endDate)})`;
       slide.addText(expText, { x: 0.5, y: currentY, w: "45%", fontSize: 12, color: "334155" });
+      currentY += 0.3;
+    });
+    currentY += 0.1;
+  }
+
+  if (projects && projects.length > 0) {
+    slide.addText("Projets & Portfolio", { x: 0.5, y: currentY, w: "45%", fontSize: 16, bold: true, color: "0F172A" });
+    currentY += 0.4;
+    
+    projects.forEach((proj) => {
+      const projText = `${safeText(proj.title)}${proj.techStack ? ` - ${proj.techStack}` : ''}`;
+      slide.addText(projText, { x: 0.5, y: currentY, w: "45%", fontSize: 12, color: "334155", bold: true });
+      if (proj.link) {
+        slide.addText(safeText(proj.link), { x: 0.5, y: currentY + 0.15, w: "45%", fontSize: 10, color: "3B82F6", hyperlink: { url: proj.link } });
+        currentY += 0.15;
+      }
       currentY += 0.3;
     });
     currentY += 0.1;

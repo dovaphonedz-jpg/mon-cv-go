@@ -2,7 +2,7 @@ import React from 'react';
 import { templates100, translations } from '../../utils/cvData';
 
 export default function TemplateModern({ cvData, config }) {
-  const { personal, summary, experiences, education, skills, languages } = cvData;
+  const { personal, summary, experiences, education, skills, languages, projects = [] } = cvData;
   const { color, font, fontSize, spacing, template } = config;
 
   // Find active template config
@@ -92,6 +92,23 @@ export default function TemplateModern({ cvData, config }) {
                       <h4 className="font-black text-2xl">{edu.degree}</h4>
                       <div className="font-bold text-lg mb-2">{edu.school} | {edu.start} - {edu.end}</div>
                       <p className="text-sm font-medium leading-relaxed">{edu.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+            {projects.length > 0 && (
+              <section className="bg-white border-[6px] border-black p-6 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                <h3 className="text-2xl font-black uppercase mb-6 bg-black text-white inline-block px-3 py-1">{t.projects}</h3>
+                <div className="space-y-6">
+                  {projects.map((proj, idx) => (
+                    <div key={idx} className="border-b-4 border-black pb-4 last:border-0">
+                      <h4 className="font-bold text-lg mb-1 flex justify-between items-center">
+                        {proj.title}
+                        {proj.link && <a href={proj.link.startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
+                      </h4>
+                      {proj.techStack && <div className="text-sm italic opacity-80 mb-2">{proj.techStack}</div>}
+                      {proj.description && <p className="text-sm opacity-90 leading-relaxed">{proj.description}</p>}
                     </div>
                   ))}
                 </div>
@@ -322,6 +339,23 @@ export default function TemplateModern({ cvData, config }) {
                 </div>
               </section>
             )}
+            {projects.length > 0 && (
+              <section>
+                <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-[#71717a] mb-6">{t.projects}</h3>
+                <div className="space-y-8">
+                  {projects.map((proj, idx) => (
+                    <div key={idx}>
+                      <h4 className="font-bold text-lg mb-1 flex justify-between items-center">
+                        {proj.title}
+                        {proj.link && <a href={proj.link.startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
+                      </h4>
+                      {proj.techStack && <div className="text-sm italic opacity-80 mb-2">{proj.techStack}</div>}
+                      {proj.description && <p className="text-sm opacity-90 leading-relaxed">{proj.description}</p>}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
           </div>
         </div>
       </div>
@@ -420,6 +454,23 @@ export default function TemplateModern({ cvData, config }) {
                 </div>
               </section>
             )}
+            {projects.length > 0 && (
+              <section>
+                <h3 className="text-4xl font-black uppercase tracking-tight mb-8 pb-2 border-b-2 border-[#1c1c1c] inline-block">{t.projects}</h3>
+                <div className="space-y-10">
+                  {projects.map((proj, idx) => (
+                    <div key={idx}>
+                      <h4 className="font-bold text-lg mb-1 flex justify-between items-center">
+                        {proj.title}
+                        {proj.link && <a href={proj.link.startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
+                      </h4>
+                      {proj.techStack && <div className="text-sm italic opacity-80 mb-2">{proj.techStack}</div>}
+                      {proj.description && <p className="text-sm opacity-90 leading-relaxed">{proj.description}</p>}
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
           </div>
         </div>
       </div>
@@ -479,6 +530,23 @@ export default function TemplateModern({ cvData, config }) {
                       </div>
                       <div className="text-sm font-semibold mb-2" style={{ color: themeColor }}>{edu.school}</div>
                       <p className="text-xs text-slate-600 leading-relaxed">{edu.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+            {projects.length > 0 && (
+              <section className="mb-8">
+                {getSectionHeader(t.education)}
+                <div className={spacingClass}>
+                  {projects.map((proj, idx) => (
+                    <div key={idx}>
+                      <h4 className="font-bold text-lg mb-1 flex justify-between items-center">
+                        {proj.title}
+                        {proj.link && <a href={proj.link.startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
+                      </h4>
+                      {proj.techStack && <div className="text-sm italic opacity-80 mb-2">{proj.techStack}</div>}
+                      {proj.description && <p className="text-sm opacity-90 leading-relaxed">{proj.description}</p>}
                     </div>
                   ))}
                 </div>
@@ -585,6 +653,23 @@ export default function TemplateModern({ cvData, config }) {
                     <div className="text-sm font-bold uppercase tracking-wider mb-2" style={{ color: themeColor }}>{edu.school} • {edu.start} - {edu.end}</div>
                     <p className="text-sm text-slate-600 whitespace-pre-line leading-relaxed">{edu.desc}</p>
                   </div>
+                ))}
+              </div>
+            </section>
+          )}
+            {projects.length > 0 && (
+            <section>
+              {getSectionHeader(t.education)}
+              <div className="space-y-6 border-s-2 ms-4 ps-6" style={{ borderColor: themeColor }}>
+                {projects.map((proj, idx) => (
+                  <div key={idx} className="relative">
+                      <h4 className="font-bold text-lg mb-1 flex justify-between items-center">
+                        {proj.title}
+                        {proj.link && <a href={proj.link.startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
+                      </h4>
+                      {proj.techStack && <div className="text-sm italic opacity-80 mb-2">{proj.techStack}</div>}
+                      {proj.description && <p className="text-sm opacity-90 leading-relaxed">{proj.description}</p>}
+                    </div>
                 ))}
               </div>
             </section>
@@ -731,6 +816,23 @@ export default function TemplateModern({ cvData, config }) {
               </div>
             </section>
           )}
+            {projects.length > 0 && (
+            <section className="mb-10">
+              {getSectionHeader(t.education)}
+              <div className={`${spacingClass} relative border-s-2 ms-3 ps-6`} style={{ borderColor: themeColor }}>
+                {projects.map((proj, idx) => (
+                  <div key={idx} className="relative">
+                      <h4 className="font-bold text-lg mb-1 flex justify-between items-center">
+                        {proj.title}
+                        {proj.link && <a href={proj.link.startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
+                      </h4>
+                      {proj.techStack && <div className="text-sm italic opacity-80 mb-2">{proj.techStack}</div>}
+                      {proj.description && <p className="text-sm opacity-90 leading-relaxed">{proj.description}</p>}
+                    </div>
+                ))}
+              </div>
+            </section>
+          )}
         </div>
       </div>
     );
@@ -794,6 +896,23 @@ export default function TemplateModern({ cvData, config }) {
                     <div className="text-sm font-medium text-slate-600 mb-2">{edu.school}</div>
                     <p className="text-xs text-slate-700 leading-relaxed">{edu.desc}</p>
                   </div>
+                ))}
+              </div>
+            </section>
+          )}
+            {projects.length > 0 && (
+            <section className="mb-8">
+              {getSectionHeader(t.education)}
+              <div className={spacingClass}>
+                {projects.map((proj, idx) => (
+                  <div key={idx}>
+                      <h4 className="font-bold text-lg mb-1 flex justify-between items-center">
+                        {proj.title}
+                        {proj.link && <a href={proj.link.startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
+                      </h4>
+                      {proj.techStack && <div className="text-sm italic opacity-80 mb-2">{proj.techStack}</div>}
+                      {proj.description && <p className="text-sm opacity-90 leading-relaxed">{proj.description}</p>}
+                    </div>
                 ))}
               </div>
             </section>

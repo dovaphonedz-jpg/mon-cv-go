@@ -2,7 +2,7 @@ import { Document, Packer, Paragraph, TextRun, AlignmentType } from 'docx';
 import { saveAs } from 'file-saver';
 
 export const exportToWord = async (cvData) => {
-  const { personal = {}, summary = "", experience = [], education = [], skills = [] } = cvData;
+  const { personal = {}, summary = "", experiences = [], education = [], skills = [], projects = [] } = cvData;
 
   const children = [];
 
@@ -56,14 +56,14 @@ export const exportToWord = async (cvData) => {
   }
 
   // Experience
-  if (experience && experience.length > 0) {
+  if (experiences && experiences.length > 0) {
     children.push(
       new Paragraph({
         children: [new TextRun({ text: "Expériences Professionnelles", size: 28, bold: true })],
       })
     );
 
-    experience.forEach((exp) => {
+    experiences.forEach((exp) => {
       children.push(
         new Paragraph({
           children: [
@@ -135,6 +135,41 @@ export const exportToWord = async (cvData) => {
           children: [new TextRun({ text: `• ${safeText(skill.name)} - ${safeText(skill.level)}`, size: 24 })],
         })
       );
+    });
+  }
+
+  // Projects
+  if (projects && projects.length > 0) {
+    children.push(
+      new Paragraph({
+        children: [new TextRun({ text: "Projets & Portfolio", size: 28, bold: true })],
+      })
+    );
+
+    projects.forEach((proj) => {
+      children.push(
+        new Paragraph({
+          children: [
+            new TextRun({ text: safeText(proj.title), bold: true, size: 24 }),
+            new TextRun({ text: proj.link ? ` - ${proj.link}` : "", size: 20, color: "0000FF" }),
+          ],
+        })
+      );
+      if (proj.techStack) {
+        children.push(
+          new Paragraph({
+            children: [new TextRun({ text: safeText(proj.techStack), italics: true, size: 20 })],
+          })
+        );
+      }
+      if (proj.description) {
+        children.push(
+          new Paragraph({
+            children: [new TextRun({ text: safeText(proj.description), size: 24 })],
+          })
+        );
+      }
+      children.push(new Paragraph({ text: "" }));
     });
   }
 

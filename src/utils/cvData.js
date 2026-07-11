@@ -209,7 +209,8 @@ export const translations = {
     education: "Formations",
     contact: "Contact",
     skills: "Compétences",
-    languages: "Langues"
+    languages: "Langues",
+    projects: "Projets & Portfolio"
   },
   en: {
     profile: "Professional Profile",
@@ -217,7 +218,8 @@ export const translations = {
     education: "Education",
     contact: "Contact",
     skills: "Skills",
-    languages: "Languages"
+    languages: "Languages",
+    projects: "Projects & Portfolio"
   },
   ar: {
     profile: "الملف المهني",
@@ -225,6 +227,7 @@ export const translations = {
     education: "المؤهلات العلمية",
     contact: "معلومات الاتصال",
     skills: "المهارات",
-    languages: "اللغات"
+    languages: "اللغات",
+    projects: "المشاريع والأعمال"
   }
 };
