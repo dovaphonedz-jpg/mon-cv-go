@@ -1,4 +1,4 @@
-OWNERDOMAIN=railway.app
+OWNERDOMAIN=moncvgo.com
 MANAGERDOMAIN=themoneytizer.com
 themoneytizer.com,131973,DIRECT
 improvedigital.com, 1602_131973, DIRECT
