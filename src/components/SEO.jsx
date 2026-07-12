@@ -1,7 +1,7 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
 
-export default function SEO({ title, description, url = 'https://mon-cv-go.com' }) {
+export default function SEO({ title, description, url = 'https://www.moncvgo.com' }) {
   const defaultDescription = "Créez votre CV professionnel en ligne gratuitement. Mon CV Go propose 100 modèles premium, un export PDF de qualité et des conseils pour décrocher des entretiens.";
   const siteTitle = title ? `${title} | Mon CV Go` : 'Mon CV Go - Créez votre CV professionnel gratuitement en ligne';
   const siteDescription = description || defaultDescription;

@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://mon-cv-go.com/sitemap.xml
+Sitemap: https://www.moncvgo.com/sitemap.xml

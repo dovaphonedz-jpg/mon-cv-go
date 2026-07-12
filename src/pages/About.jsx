@@ -42,7 +42,7 @@ export default function About() {
 
   return (
     <>
-    <SEO title="À Propos" description="Découvrez l'histoire de Mon CV Go, le générateur de CV gratuit et respectueux de la vie privée." url="https://mon-cv-go.com/a-propos" />
+    <SEO title="À Propos" description="Découvrez l'histoire de Mon CV Go, le générateur de CV gratuit et respectueux de la vie privée." url="https://www.moncvgo.com/a-propos" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] relative overflow-hidden pb-24">
       
       {/* Decorative background glow */}

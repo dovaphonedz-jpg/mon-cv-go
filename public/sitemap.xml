@@ -1,37 +1,37 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
-    <loc>https://mon-cv-go.com/</loc>
+    <loc>https://www.moncvgo.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://mon-cv-go.com/create</loc>
+    <loc>https://www.moncvgo.com/create</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mon-cv-go.com/portfolio</loc>
+    <loc>https://www.moncvgo.com/portfolio</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mon-cv-go.com/lettre-motivation</loc>
+    <loc>https://www.moncvgo.com/lettre-motivation</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mon-cv-go.com/conseils-cv</loc>
+    <loc>https://www.moncvgo.com/conseils-cv</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://mon-cv-go.com/a-propos</loc>
+    <loc>https://www.moncvgo.com/a-propos</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://mon-cv-go.com/contact</loc>
+    <loc>https://www.moncvgo.com/contact</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>

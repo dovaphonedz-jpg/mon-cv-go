@@ -118,7 +118,7 @@ export default function CoverLetter() {
 
   return (
     <>
-    <SEO title="Lettre de Motivation" description="Générateur de lettre de motivation gratuit avec assistant IA." url="https://mon-cv-go.com/lettre-motivation" />
+    <SEO title="Lettre de Motivation" description="Générateur de lettre de motivation gratuit avec assistant IA." url="https://www.moncvgo.com/lettre-motivation" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] flex flex-col relative overflow-hidden">
       
       {/* Decorative background */}

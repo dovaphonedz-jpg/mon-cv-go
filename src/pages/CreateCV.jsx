@@ -130,7 +130,7 @@ export default function CreateCV() {
 
   return (
     <>
-    <SEO title="Créateur de CV" description="Créez votre CV étape par étape avec notre éditeur en ligne gratuit." url="https://mon-cv-go.com/create" />
+    <SEO title="Créateur de CV" description="Créez votre CV étape par étape avec notre éditeur en ligne gratuit." url="https://www.moncvgo.com/create" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] flex flex-col relative overflow-hidden">
       
       {/* Decorative background */}
