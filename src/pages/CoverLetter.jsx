@@ -61,9 +61,9 @@ export default function CoverLetter() {
 
   const loadExample = () => {
     setData({
-      senderName: 'Amine Belkacem', 
+      senderName: 'Jean Dupont', 
       senderPhone: '+213 555 12 34 56', 
-      senderEmail: 'amine.belkacem@email.com', 
+      senderEmail: 'jean.dupont@email.com', 
       senderAddress: 'Alger, Algérie',
       company: 'TechnoWeb SARL', 
       recipient: 'Service des ressources humaines', 
@@ -178,7 +178,7 @@ export default function CoverLetter() {
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
                     <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">Nom complet</label>
-                    <input className="w-full rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white" value={data.senderName} onChange={e => handleChange('senderName', e.target.value)} placeholder="Amine Belkacem" />
+                    <input className="w-full rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white" value={data.senderName} onChange={e => handleChange('senderName', e.target.value)} placeholder="Jean Dupont" />
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">Téléphone</label>
@@ -186,7 +186,7 @@ export default function CoverLetter() {
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">E-mail</label>
-                    <input className="w-full rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white" value={data.senderEmail} onChange={e => handleChange('senderEmail', e.target.value)} placeholder="amine.belkacem@email.com" />
+                    <input className="w-full rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white" value={data.senderEmail} onChange={e => handleChange('senderEmail', e.target.value)} placeholder="jean.dupont@email.com" />
                   </div>
                   <div>
                     <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">Adresse</label>

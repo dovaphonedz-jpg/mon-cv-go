@@ -70,7 +70,7 @@ export default function ExperienceForm() {
                     <label className="block text-xs font-semibold text-slate-500 mb-1">Poste / Titre</label>
                     <input 
                       type="text" 
-                      value={exp.role} 
+                      value={exp.role || ''} 
                       onChange={(e) => handleChange(index, 'role', e.target.value)}
                       className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none" 
                       placeholder="Ex: Chef de Projet"
@@ -80,7 +80,7 @@ export default function ExperienceForm() {
                     <label className="block text-xs font-semibold text-slate-500 mb-1">Entreprise</label>
                     <input 
                       type="text" 
-                      value={exp.company} 
+                      value={exp.company || ''} 
                       onChange={(e) => handleChange(index, 'company', e.target.value)}
                       className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none" 
                       placeholder="Ex: Microsoft"
@@ -90,7 +90,7 @@ export default function ExperienceForm() {
                     <label className="block text-xs font-semibold text-slate-500 mb-1">Date de début</label>
                     <input 
                       type="text" 
-                      value={exp.start} 
+                      value={exp.start || ''} 
                       onChange={(e) => handleChange(index, 'start', e.target.value)}
                       className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none" 
                       placeholder="Ex: Janv 2020"
@@ -100,7 +100,7 @@ export default function ExperienceForm() {
                     <label className="block text-xs font-semibold text-slate-500 mb-1">Date de fin</label>
                     <input 
                       type="text" 
-                      value={exp.end} 
+                      value={exp.end || ''} 
                       onChange={(e) => handleChange(index, 'end', e.target.value)}
                       className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none" 
                       placeholder="Ex: Présent"
@@ -109,7 +109,7 @@ export default function ExperienceForm() {
                   <div className="sm:col-span-2">
                     <label className="block text-xs font-semibold text-slate-500 mb-1">Description des missions</label>
                     <textarea 
-                      value={exp.desc} 
+                      value={exp.desc || ''} 
                       onChange={(e) => handleChange(index, 'desc', e.target.value)}
                       className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none min-h-[100px]" 
                       placeholder="Décrivez vos réalisations, missions, et chiffres clés..."

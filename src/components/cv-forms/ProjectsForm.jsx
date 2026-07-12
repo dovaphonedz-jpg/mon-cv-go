@@ -166,14 +166,14 @@ export default function ProjectsForm() {
                 <div>
                 <input
                   type="text"
-                  value={project.title}
+                  value={project.title || ''}
                   onChange={(e) => updateProject(index, { ...project, title: e.target.value })}
                   className="font-bold text-slate-800 dark:text-white bg-transparent outline-none w-full border-b border-transparent focus:border-indigo-300 dark:focus:border-indigo-600 mb-1"
                   placeholder="Nom du projet"
                 />
                 <input
                   type="text"
-                  value={project.techStack}
+                  value={project.techStack || ''}
                   onChange={(e) => updateProject(index, { ...project, techStack: e.target.value })}
                   className="text-sm text-slate-500 dark:text-slate-400 bg-transparent outline-none w-full border-b border-transparent focus:border-indigo-300 dark:focus:border-indigo-600"
                   placeholder="Technologies"
@@ -182,7 +182,7 @@ export default function ProjectsForm() {
               <div>
                 <input
                   type="text"
-                  value={project.link}
+                  value={project.link || ''}
                   onChange={(e) => updateProject(index, { ...project, link: e.target.value })}
                   className="text-sm text-indigo-500 bg-transparent outline-none w-full border-b border-transparent focus:border-indigo-300 dark:focus:border-indigo-600"
                   placeholder="Lien (URL)"
@@ -191,7 +191,7 @@ export default function ProjectsForm() {
               </div>
             </div>
             <textarea
-              value={project.description}
+              value={project.description || ''}
               onChange={(e) => updateProject(index, { ...project, description: e.target.value })}
               className="mt-3 text-sm text-slate-600 dark:text-slate-300 bg-transparent outline-none w-full border border-transparent focus:border-indigo-300 dark:focus:border-indigo-600 rounded-lg focus:p-2 transition-all resize-none h-20"
               placeholder="Description..."

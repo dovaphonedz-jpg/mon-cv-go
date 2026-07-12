@@ -141,7 +141,7 @@ export const templates100 = [
 
 export const demoData = {
   fr: {
-    personal: { name: "Amine Belkacem", title: "Chef de Projet Web & Digital", email: "amine.belkacem@email.com", phone: "+213 555 12 34 56", address: "Alger, Algérie", website: "linkedin.com/in/amine-web", photo: "" },
+    personal: { name: "Jean Dupont", title: "Chef de Projet Web & Digital", email: "jean.dupont@email.com", phone: "+213 555 12 34 56", address: "Alger, Algérie", website: "linkedin.com/in/jean-web", photo: "" },
     summary: "Professionnel passionné avec plus de 5 ans d'expérience dans la gestion de projets Web, la conception de sites et le marketing digital. Expertise reconnue dans la coordination d'équipes pluridisciplinaires, le pilotage de budgets et l'optimisation SEO.",
     experiences: [
       { company: "Digital Impact DZ", role: "Chef de Projet Web Senior", start: "Janv 2023", end: "Présent", desc: "• Direction d'une équipe de 8 développeurs et designers pour la refonte complète d'une plateforme e-commerce majeure.\n• Augmentation du taux de conversion de 24% grâce à l'optimisation UX/UI.\n• Gestion de portefeuilles clients d'une valeur totale de 120 000€." },
@@ -163,7 +163,7 @@ export const demoData = {
     ]
   },
   ar: {
-    personal: { name: "أمين بلقاسم", title: "مدير مشاريع الويب والرقمية", email: "amine.belkacem@email.com", phone: "+213 555 12 34 56", address: "الجزائر العاصمة، الجزائر", website: "linkedin.com/in/amine-web", photo: "" },
+    personal: { name: "جان دوبون", title: "مدير مشاريع الويب والرقمية", email: "jean.dupont@email.com", phone: "+213 555 12 34 56", address: "الجزائر العاصمة، الجزائر", website: "linkedin.com/in/jean-web", photo: "" },
     summary: "متخصص شغوف يتمتع بخبرة تزيد عن 5 سنوات في إدارة مشاريع الويب وتصميم المواقع والتسويق الرقمي. خبرة مثبتة في تنسيق الفرق متعددة التخصصات، توجيه الميزانيات، وتحسين محركات البحث (SEO).",
     experiences: [
       { company: "ديجيتال إمباكت للحلول الرقمية", role: "مدير مشاريع ويب أول", start: "جانفي 2023", end: "الحالي", desc: "• قيادة فريق مكون من 8 مطورين ومصممين لإعادة هيكلة منصة تجارة إلكترونية كبرى بالكامل.\n• زيادة معدل التحويل بنسبة 24% بفضل تحسين تجربة المستخدم وواجهاته (UX/UI).\n• إدارة وتوجيه محافظ عملاء بقيمة إجمالية تفوق 120,000 يورو." },
@@ -185,7 +185,7 @@ export const demoData = {
     ]
   },
   en: {
-    personal: { name: "Amine Belkacem", title: "Web & Digital Project Manager", email: "amine.belkacem@email.com", phone: "+213 555 12 34 56", address: "Algiers, Algeria", website: "linkedin.com/in/amine-web", photo: "" },
+    personal: { name: "Jean Dupont", title: "Web & Digital Project Manager", email: "jean.dupont@email.com", phone: "+213 555 12 34 56", address: "Algiers, Algeria", website: "linkedin.com/in/jean-web", photo: "" },
     summary: "Passionate professional with over 5 years of experience in Web project management, web design, and digital marketing. Proven expertise in coordinating cross-functional teams, managing budgets, and SEO optimization.",
     experiences: [
       { company: "Digital Impact DZ", role: "Senior Web Project Manager", start: "Jan 2023", end: "Present", desc: "• Led a team of 8 developers and designers for the complete redesign of a major e-commerce platform.\n• Increased conversion rate by 24% through UX/UI optimization.\n• Managed client portfolios with a total value of 120,000€." },

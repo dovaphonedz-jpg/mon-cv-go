@@ -51,7 +51,7 @@ export default function PersonalInfoForm() {
           <input 
             type="text" 
             name="name"
-            value={data.name} 
+            value={data.name || ''} 
             onChange={handleChange} 
             className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-[#d4af37] outline-none" 
             placeholder="Ex: Jean Dupont"
@@ -62,7 +62,7 @@ export default function PersonalInfoForm() {
           <input 
             type="text" 
             name="title"
-            value={data.title} 
+            value={data.title || ''} 
             onChange={handleChange} 
             className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-[#d4af37] outline-none" 
             placeholder="Ex: Développeur Web"
@@ -73,7 +73,7 @@ export default function PersonalInfoForm() {
           <input 
             type="email" 
             name="email"
-            value={data.email} 
+            value={data.email || ''} 
             onChange={handleChange} 
             className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-[#d4af37] outline-none" 
             placeholder="Ex: jean.dupont@email.com"
@@ -84,7 +84,7 @@ export default function PersonalInfoForm() {
           <input 
             type="tel" 
             name="phone"
-            value={data.phone} 
+            value={data.phone || ''} 
             onChange={handleChange} 
             className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-[#d4af37] outline-none" 
             placeholder="Ex: +33 6 12 34 56 78"
@@ -95,7 +95,7 @@ export default function PersonalInfoForm() {
           <input 
             type="text" 
             name="address"
-            value={data.address} 
+            value={data.address || ''} 
             onChange={handleChange} 
             className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-[#d4af37] outline-none" 
             placeholder="Ex: Paris, France"
@@ -106,7 +106,7 @@ export default function PersonalInfoForm() {
           <input 
             type="text" 
             name="website"
-            value={data.website} 
+            value={data.website || ''} 
             onChange={handleChange} 
             className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-[#d4af37] outline-none" 
             placeholder="Ex: linkedin.com/in/jeandupont"

@@ -71,7 +71,7 @@ export default function TemplatePortfolio({ cvData, config }) {
                   )}
                   <p className="text-slate-600 text-sm leading-relaxed mb-4 flex-grow">{proj.description}</p>
                   {proj.link && (
-                    <a href={proj.link.startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-sm font-semibold underline mt-auto" style={{ color: themeColor }}>
+                    <a href={String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-sm font-semibold underline mt-auto" style={{ color: themeColor }}>
                       Voir le projet →
                     </a>
                   )}
@@ -139,7 +139,7 @@ export default function TemplatePortfolio({ cvData, config }) {
                   <h4 className="text-xl font-bold text-white mb-3 flex items-center justify-between">
                     {proj.title}
                     {proj.link && (
-                      <a href={proj.link.startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="opacity-0 group-hover:opacity-100 transition-opacity">
+                      <a href={String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="opacity-0 group-hover:opacity-100 transition-opacity">
                         <svg className="w-5 h-5 text-slate-400 hover:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M10 6H6a2 2 0 00-2 2v10a2 2 0 002 2h10a2 2 0 002-2v-4M14 4h6m0 0v6m0-6L10 14" />
                         </svg>
@@ -218,7 +218,7 @@ export default function TemplatePortfolio({ cvData, config }) {
                       <div className="text-sm font-medium mb-3" style={{ color: themeColor }}>{proj.techStack}</div>
                     )}
                     {proj.link && (
-                      <a href={proj.link.startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-sm font-medium underline text-blue-600 hover:text-blue-800">Lien du projet</a>
+                      <a href={String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-sm font-medium underline text-blue-600 hover:text-blue-800">Lien du projet</a>
                     )}
                   </div>
                   <div className={proj.image ? "sm:w-2/4" : "sm:w-2/3"}>

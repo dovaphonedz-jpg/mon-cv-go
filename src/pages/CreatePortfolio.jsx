@@ -162,8 +162,8 @@ export default function CreatePortfolio() {
           className={`w-full lg:w-1/2 xl:w-5/12 flex flex-col gap-6 lg:sticky lg:top-6 ${showPreviewMobile ? 'hidden lg:flex' : 'flex'}`}
         >
           {/* Breadcrumbs / Steps */}
-          <div className="bg-white dark:bg-[#0F172A] rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-2 overflow-x-auto hide-scrollbar relative">
-            <nav className="flex gap-1 min-w-max">
+          <div className="bg-white dark:bg-[#0F172A] rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-2 relative">
+            <nav className="flex gap-2 flex-wrap">
               {STEPS.map((step, idx) => (
                 <button
                   key={step.id}
@@ -215,13 +215,39 @@ export default function CreatePortfolio() {
                 <ArrowLeft className="w-4 h-4" /> Précédent
               </button>
               
-              <button 
-                onClick={nextStep}
-                disabled={activeStepIdx === STEPS.length - 1}
-                className="flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-white bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 rounded-xl shadow-lg transition-all disabled:opacity-40 disabled:cursor-not-allowed group"
-              >
-                Suivant <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </button>
+              <div className="flex items-center gap-3">
+                {activeStepIdx < STEPS.length - 1 && (
+                  <button 
+                    onClick={nextStep}
+                    className="text-sm font-semibold text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors px-2"
+                  >
+                    Passer
+                  </button>
+                )}
+                
+                {activeStepIdx === STEPS.length - 1 ? (
+                  <button 
+                    onClick={() => {
+                       handlePrint();
+                       if (window.innerWidth < 1024) setShowPreviewMobile(true);
+                       else {
+                         const previewEl = document.querySelector('.cv-preview-container');
+                         if (previewEl) previewEl.scrollIntoView({ behavior: 'smooth' });
+                       }
+                    }}
+                    className="flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl shadow-lg transition-all group"
+                  >
+                    Terminer <Sparkles className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                  </button>
+                ) : (
+                  <button 
+                    onClick={nextStep}
+                    className="flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-white bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 rounded-xl shadow-lg transition-all group"
+                  >
+                    Suivant <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                  </button>
+                )}
+              </div>
             </div>
           </div>
         </motion.section>

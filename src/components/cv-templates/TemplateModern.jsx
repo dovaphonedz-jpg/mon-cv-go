@@ -105,7 +105,7 @@ export default function TemplateModern({ cvData, config }) {
                     <div key={idx} className="border-b-4 border-black pb-4 last:border-0">
                       <h4 className="font-bold text-lg mb-1 flex justify-between items-center">
                         {proj.title}
-                        {proj.link && <a href={proj.link.startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
+                        {proj.link && <a href={String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
                       </h4>
                       {proj.techStack && <div className="text-sm italic opacity-80 mb-2">{proj.techStack}</div>}
                       {proj.description && <p className="text-sm opacity-90 leading-relaxed">{proj.description}</p>}
@@ -213,7 +213,7 @@ export default function TemplateModern({ cvData, config }) {
                           <span>{s.level}</span>
                         </div>
                         <div className="w-full bg-white/10 rounded-full h-1.5 overflow-hidden">
-                          <div className="bg-gradient-to-r from-blue-400 to-emerald-400 h-1.5 rounded-full" style={{ width: s.level.includes('%') ? s.level : '80%' }}></div>
+                          <div className="bg-gradient-to-r from-blue-400 to-emerald-400 h-1.5 rounded-full" style={{ width: String(s.level).includes('%') ? s.level : '80%' }}></div>
                         </div>
                       </div>
                     ))}
@@ -347,7 +347,7 @@ export default function TemplateModern({ cvData, config }) {
                     <div key={idx}>
                       <h4 className="font-bold text-lg mb-1 flex justify-between items-center">
                         {proj.title}
-                        {proj.link && <a href={proj.link.startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
+                        {proj.link && <a href={String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
                       </h4>
                       {proj.techStack && <div className="text-sm italic opacity-80 mb-2">{proj.techStack}</div>}
                       {proj.description && <p className="text-sm opacity-90 leading-relaxed">{proj.description}</p>}
@@ -462,7 +462,7 @@ export default function TemplateModern({ cvData, config }) {
                     <div key={idx}>
                       <h4 className="font-bold text-lg mb-1 flex justify-between items-center">
                         {proj.title}
-                        {proj.link && <a href={proj.link.startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
+                        {proj.link && <a href={String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
                       </h4>
                       {proj.techStack && <div className="text-sm italic opacity-80 mb-2">{proj.techStack}</div>}
                       {proj.description && <p className="text-sm opacity-90 leading-relaxed">{proj.description}</p>}
@@ -543,7 +543,7 @@ export default function TemplateModern({ cvData, config }) {
                     <div key={idx}>
                       <h4 className="font-bold text-lg mb-1 flex justify-between items-center">
                         {proj.title}
-                        {proj.link && <a href={proj.link.startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
+                        {proj.link && <a href={String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
                       </h4>
                       {proj.techStack && <div className="text-sm italic opacity-80 mb-2">{proj.techStack}</div>}
                       {proj.description && <p className="text-sm opacity-90 leading-relaxed">{proj.description}</p>}
@@ -576,7 +576,7 @@ export default function TemplateModern({ cvData, config }) {
                         <span>{s.level}</span>
                       </div>
                       <div className="w-full bg-slate-200 rounded-full h-1.5">
-                        <div className="bg-slate-700 h-1.5 rounded-full" style={{ width: s.level.includes('%') ? s.level : '80%', backgroundColor: themeColor }}></div>
+                        <div className="bg-slate-700 h-1.5 rounded-full" style={{ width: String(s.level).includes('%') ? s.level : '80%', backgroundColor: themeColor }}></div>
                       </div>
                     </li>
                   ))}
@@ -665,7 +665,7 @@ export default function TemplateModern({ cvData, config }) {
                   <div key={idx} className="relative">
                       <h4 className="font-bold text-lg mb-1 flex justify-between items-center">
                         {proj.title}
-                        {proj.link && <a href={proj.link.startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
+                        {proj.link && <a href={String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
                       </h4>
                       {proj.techStack && <div className="text-sm italic opacity-80 mb-2">{proj.techStack}</div>}
                       {proj.description && <p className="text-sm opacity-90 leading-relaxed">{proj.description}</p>}
@@ -824,7 +824,7 @@ export default function TemplateModern({ cvData, config }) {
                   <div key={idx} className="relative">
                       <h4 className="font-bold text-lg mb-1 flex justify-between items-center">
                         {proj.title}
-                        {proj.link && <a href={proj.link.startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
+                        {proj.link && <a href={String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
                       </h4>
                       {proj.techStack && <div className="text-sm italic opacity-80 mb-2">{proj.techStack}</div>}
                       {proj.description && <p className="text-sm opacity-90 leading-relaxed">{proj.description}</p>}
@@ -908,7 +908,7 @@ export default function TemplateModern({ cvData, config }) {
                   <div key={idx}>
                       <h4 className="font-bold text-lg mb-1 flex justify-between items-center">
                         {proj.title}
-                        {proj.link && <a href={proj.link.startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
+                        {proj.link && <a href={String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
                       </h4>
                       {proj.techStack && <div className="text-sm italic opacity-80 mb-2">{proj.techStack}</div>}
                       {proj.description && <p className="text-sm opacity-90 leading-relaxed">{proj.description}</p>}

@@ -32,13 +32,13 @@ export default function SkillsForm() {
               <div key={index} className="flex gap-2 items-center">
                 <input 
                   type="text" 
-                  value={skill.name} 
+                  value={skill.name || ''} 
                   onChange={(e) => updateSkill(index, { ...skill, name: e.target.value })}
                   className="flex-1 px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-amber-500 outline-none" 
                   placeholder="Ex: React.js, Gestion de Projet..."
                 />
                 <select 
-                  value={skill.level} 
+                  value={skill.level || 'Débutant'} 
                   onChange={(e) => updateSkill(index, { ...skill, level: e.target.value })}
                   className="w-1/3 px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-amber-500 outline-none"
                 >
@@ -68,7 +68,7 @@ export default function SkillsForm() {
         <div className="flex justify-between items-center mb-4">
           <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">Langues</h3>
           <button 
-            onClick={() => addLanguage({ name: '', level: 'Moyen' })}
+            onClick={() => addLanguage({ name: '', level: 'B1 (Intermédiaire)' })}
             className="flex items-center gap-1 px-3 py-1.5 bg-cyan-50 text-cyan-600 hover:bg-cyan-100 dark:bg-cyan-900/30 dark:text-cyan-400 dark:hover:bg-cyan-900/50 rounded-lg text-sm font-semibold transition-colors"
           >
             <Plus className="w-4 h-4" /> Ajouter
@@ -85,13 +85,13 @@ export default function SkillsForm() {
               <div key={index} className="flex gap-2 items-center">
                 <input 
                   type="text" 
-                  value={lang.name} 
+                  value={lang.name || ''} 
                   onChange={(e) => updateLanguage(index, { ...lang, name: e.target.value })}
                   className="flex-1 px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-cyan-500 outline-none" 
                   placeholder="Ex: Anglais, Espagnol..."
                 />
                 <select 
-                  value={lang.level} 
+                  value={lang.level || 'B1 (Intermédiaire)'} 
                   onChange={(e) => updateLanguage(index, { ...lang, level: e.target.value })}
                   className="w-1/3 px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-cyan-500 outline-none"
                 >
