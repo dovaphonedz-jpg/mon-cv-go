@@ -61,7 +61,7 @@ export default function Home() {
               </motion.div>
               
               <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
-                Décrochez le job de vos rêves avec un <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-500">CV parfait</span> et un Portfolio impactant.
+                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-500">Création de CV professionnel</span> gratuit, décrochez le job de vos rêves.
               </motion.h1>
               
               <motion.p variants={itemVariants} className="mt-6 text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-xl mx-auto lg:mx-0 leading-relaxed">
@@ -116,7 +116,7 @@ export default function Home() {
                       <div className="w-3 h-3 rounded-full bg-green-400"></div>
                     </div>
                   </div>
-                  <img src="/executive_slate_preview.png" alt="Aperçu du CV" className="w-full h-auto rounded-2xl shadow-inner border border-slate-200/50 dark:border-slate-800/50 object-cover" style={{ maxHeight: '600px' }} />
+                  <img src="/executive_slate_preview.png" alt="Aperçu du CV" width="600" height="848" loading="lazy" className="w-full h-auto rounded-2xl shadow-inner border border-slate-200/50 dark:border-slate-800/50 object-cover" style={{ maxHeight: '600px' }} />
                 </div>
                 
                 {/* Floating Elements */}
@@ -203,7 +203,7 @@ export default function Home() {
                 </div>
                 
                 <div className="aspect-[3/4] overflow-hidden bg-slate-100 dark:bg-slate-800 relative">
-                  <img src={`/${mockup.img}`} alt={mockup.title} className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-110" />
+                  <img src={`/${mockup.img}`} alt={mockup.title} width="400" height="566" loading="lazy" className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-110" />
                 </div>
                 <div className="p-8 text-center bg-white dark:bg-slate-900 relative z-20">
                   <h3 className="font-bold text-2xl text-slate-900 dark:text-white">{mockup.title}</h3>
