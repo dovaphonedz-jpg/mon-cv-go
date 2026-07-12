@@ -2,9 +2,9 @@ import React, { Suspense, lazy } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import CookieConsent from './components/CookieConsent';
+import Home from './pages/Home';
 
 // Lazy loaded pages
-const Home = lazy(() => import('./pages/Home'));
 const CreateCV = lazy(() => import('./pages/CreateCV'));
 const CreatePortfolio = lazy(() => import('./pages/CreatePortfolio'));
 const CoverLetter = lazy(() => import('./pages/CoverLetter'));

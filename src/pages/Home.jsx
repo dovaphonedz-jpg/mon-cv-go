@@ -116,7 +116,7 @@ export default function Home() {
                       <div className="w-3 h-3 rounded-full bg-green-400"></div>
                     </div>
                   </div>
-                  <img src="/executive_slate_preview.png" alt="Aperçu du CV" width="600" height="848" loading="lazy" className="w-full h-auto rounded-2xl shadow-inner border border-slate-200/50 dark:border-slate-800/50 object-cover" style={{ maxHeight: '600px' }} />
+                  <img src="/executive_slate_preview.png" alt="Aperçu du CV" width="600" height="848" loading="eager" className="w-full h-auto rounded-2xl shadow-inner border border-slate-200/50 dark:border-slate-800/50 object-cover" style={{ maxHeight: '600px' }} />
                 </div>
                 
                 {/* Floating Elements */}
