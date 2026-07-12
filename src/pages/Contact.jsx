@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { motion } from 'framer-motion';
 import { Mail, Send, MessageSquare, CheckCircle } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function Contact() {
   const [status, setStatus] = useState('idle'); // idle | loading | success
@@ -23,6 +24,8 @@ export default function Contact() {
   };
 
   return (
+    <>
+    <SEO title="Contact" description="Contactez l'équipe Mon CV Go pour toute question, suggestion ou demande d'assistance." url="https://mon-cv-go.com/contact" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] relative overflow-hidden flex flex-col justify-center">
       
       {/* Decorative background glow */}
@@ -122,5 +125,6 @@ export default function Contact() {
         </div>
       </div>
     </div>
+    </>
   );
 }

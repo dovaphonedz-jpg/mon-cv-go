@@ -4,6 +4,7 @@ import { useResume } from '../context/ResumeContext';
 import { UploadCloud, Sparkles, Trash2, ArrowLeft, ArrowRight, Eye, Download, ChevronRight, Save, FileText, Presentation, Palette, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useReactToPrint } from 'react-to-print';
+import SEO from '../components/SEO';
 
 import { exportToWord } from '../utils/exportWord';
 import { exportToPowerPoint } from '../utils/exportPowerPoint';
@@ -128,6 +129,8 @@ export default function CreateCV() {
   };
 
   return (
+    <>
+    <SEO title="Créateur de CV" description="Créez votre CV étape par étape avec notre éditeur en ligne gratuit." url="https://mon-cv-go.com/create" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] flex flex-col relative overflow-hidden">
       
       {/* Decorative background */}
@@ -346,5 +349,6 @@ export default function CreateCV() {
         )}
       </AnimatePresence>
     </div>
+    </>
   );
 }

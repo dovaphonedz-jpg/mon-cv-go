@@ -1,8 +1,11 @@
 import React from 'react';
 import { ShieldCheck } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function Privacy() {
   return (
+    <>
+    <SEO title="Politique de Confidentialité" description="Politique de confidentialité et gestion des données personnelles de Mon CV Go." url="https://mon-cv-go.com/confidentialite" />
     <div className="max-w-4xl mx-auto px-4 py-12">
       <div className="flex items-center gap-3 mb-8">
         <div className="p-3 bg-blue-100 dark:bg-blue-900/30 rounded-xl text-blue-600 dark:text-blue-400">
@@ -45,5 +48,6 @@ export default function Privacy() {
         </p>
       </div>
     </div>
+    </>
   );
 }

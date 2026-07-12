@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { Sparkles, Code2, Heart, ShieldCheck, Zap, Users } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function About() {
   const containerVariants = {
@@ -40,6 +41,8 @@ export default function About() {
   ];
 
   return (
+    <>
+    <SEO title="À Propos" description="Découvrez l'histoire de Mon CV Go, le générateur de CV gratuit et respectueux de la vie privée." url="https://mon-cv-go.com/a-propos" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] relative overflow-hidden pb-24">
       
       {/* Decorative background glow */}
@@ -116,5 +119,6 @@ export default function About() {
       </section>
 
     </div>
+    </>
   );
 }

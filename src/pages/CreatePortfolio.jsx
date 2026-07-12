@@ -4,6 +4,7 @@ import { useResume } from '../context/ResumeContext';
 import { UploadCloud, Sparkles, Trash2, ArrowLeft, ArrowRight, Eye, Download, ChevronRight, Save, FileText, Presentation, Palette, X } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useReactToPrint } from 'react-to-print';
+import SEO from '../components/SEO';
 
 import { exportToWord } from '../utils/exportWord';
 import { exportToPowerPoint } from '../utils/exportPowerPoint';
@@ -112,6 +113,8 @@ export default function CreatePortfolio() {
   };
 
   return (
+    <>
+    <SEO title="Créateur de Portfolio" description="Créez un magnifique portfolio en ligne en quelques minutes." url="https://mon-cv-go.com/portfolio" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] flex flex-col relative overflow-hidden">
       
       {/* Decorative background */}
@@ -328,5 +331,6 @@ export default function CreatePortfolio() {
         )}
       </AnimatePresence>
     </div>
+    </>
   );
 }

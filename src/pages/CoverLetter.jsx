@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Sparkles, Trash2, Download, PenLine, Eye } from 'lucide-react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 export default function CoverLetter() {
   const [data, setData] = useState({
@@ -116,6 +117,8 @@ export default function CoverLetter() {
   };
 
   return (
+    <>
+    <SEO title="Lettre de Motivation" description="Générateur de lettre de motivation gratuit avec assistant IA." url="https://mon-cv-go.com/lettre-motivation" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] flex flex-col relative overflow-hidden">
       
       {/* Decorative background */}
@@ -327,5 +330,6 @@ export default function CoverLetter() {
         </motion.section>
       </main>
     </div>
+    </>
   );
 }

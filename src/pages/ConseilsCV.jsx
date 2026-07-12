@@ -1,6 +1,7 @@
 import React from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen, CheckCircle, AlertTriangle, Target, Search, Edit3 } from 'lucide-react';
+import SEO from '../components/SEO';
 
 export default function ConseilsCV() {
   const containerVariants = {
@@ -41,6 +42,8 @@ export default function ConseilsCV() {
   ];
 
   return (
+    <>
+    <SEO title="Conseils CV" description="Découvrez nos meilleures pratiques pour créer un CV qui attire l'œil des recruteurs." url="https://mon-cv-go.com/conseils-cv" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] relative overflow-hidden pb-20">
       
       {/* Decorative background */}
@@ -128,5 +131,6 @@ export default function ConseilsCV() {
       </section>
 
     </div>
+    </>
   );
 }

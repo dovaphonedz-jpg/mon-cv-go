@@ -1,6 +1,7 @@
 import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
+import CookieConsent from './components/CookieConsent';
 import Home from './pages/Home';
 import CreateCV from './pages/CreateCV';
 import CreatePortfolio from './pages/CreatePortfolio';
@@ -26,6 +27,7 @@ function App() {
           <Route path="/mentions-legales" element={<Legal />} />
           <Route path="/confidentialite" element={<Privacy />} />
         </Routes>
+        <CookieConsent />
       </Layout>
     </Router>
   );

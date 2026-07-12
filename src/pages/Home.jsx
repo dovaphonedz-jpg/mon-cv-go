@@ -2,6 +2,7 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import { FilePlus2, PenLine, Check, ArrowRight, Star, Briefcase } from 'lucide-react';
 import { motion } from 'framer-motion';
+import SEO from '../components/SEO';
 
 export default function Home() {
   const containerVariants = {
@@ -18,6 +19,8 @@ export default function Home() {
   };
 
   return (
+    <>
+    <SEO title="Accueil" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-screen overflow-hidden selection:bg-indigo-500/30">
       
       {/* HERO SECTION - Modern & Animated */}
@@ -211,5 +214,6 @@ export default function Home() {
         </div>
       </section>
     </div>
+    </>
   );
 }
