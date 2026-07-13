@@ -45,7 +45,10 @@
     <!-- Ezoic Generic Ad Trigger -->
     <script>
         ezstandalone.cmd.push(function () {
-            ezstandalone.showAds({ sizes: "300x250" });
+            ezstandalone.showAds({
+                mobile_sizes: ["300x250", "336x280"],
+                desktop_sizes: ["728x90", "970x250"],
+            });
         });
     </script>
   </body>
