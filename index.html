@@ -42,13 +42,15 @@
     <script src="https://cdn.jsdelivr.net/npm/html2canvas-pro@2.0.4/dist/html2canvas-pro.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.min.js"></script>
 
+    <!-- Ezoic Ad Placeholders (Temporaires pour la validation) -->
+    <div class="ezoicad" data-sizes="300x250,336x280"></div>
+    <div class="ezoicad" data-sizes="300x250" data-fluid="false"></div>
+    <div class="ezoicad" data-devices="desktop" data-sizes="728x90"></div>
+
     <!-- Ezoic Generic Ad Trigger -->
     <script>
         ezstandalone.cmd.push(function () {
-            ezstandalone.showAds({
-                mobile_sizes: ["300x250", "336x280"],
-                desktop_sizes: ["728x90", "970x250"],
-            });
+            ezstandalone.showAds(".ezoicad");
         });
     </script>
   </body>
