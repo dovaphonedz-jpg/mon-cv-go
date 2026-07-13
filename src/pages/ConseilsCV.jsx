@@ -19,25 +19,32 @@ export default function ConseilsCV() {
 
   const adviceSections = [
     {
-      title: "La Règle d'Or : Clarté et Concision",
+      title: "La Règle d'Or : Clarté et Concision avant tout",
       icon: <Target className="w-6 h-6 text-blue-500" />,
-      content: "Un recruteur passe en moyenne 6 secondes sur un CV. Allez à l'essentiel. Utilisez des listes à puces, des phrases courtes et mettez en gras les mots-clés de votre secteur.",
-      dos: ["Limiter le CV à une ou deux pages", "Mettre les expériences les plus récentes en premier"],
-      donts: ["Faire de longs paragraphes narratifs", "Ajouter des informations obsolètes (> 10 ans)"]
+      content: "Un recruteur passe en moyenne 6 à 10 secondes sur un CV lors de la première sélection. Il est donc crucial d'aller à l'essentiel immédiatement. Utilisez des listes à puces pour détailler vos missions, privilégiez des phrases courtes et percutantes, et mettez en gras les mots-clés de votre secteur d'activité. La structure de votre document doit guider l'œil du lecteur du haut (votre profil et vos compétences clés) vers le bas (vos expériences détaillées). Évitez le jargon interne à vos anciennes entreprises qui pourrait ne pas être compris par un recruteur externe.",
+      dos: ["Limiter le CV à une ou deux pages maximum", "Mettre les expériences les plus récentes en premier (anti-chronologique)", "Quantifier vos résultats (ex: +20% de ventes, équipe de 5 personnes)"],
+      donts: ["Faire de longs paragraphes narratifs ou autobiographiques", "Ajouter des informations obsolètes ou peu pertinentes (> 10-15 ans)", "Mettre une photo de vacances ou mal éclairée"]
     },
     {
-      title: "Adaptez votre CV à l'offre",
+      title: "L'importance cruciale d'adapter votre CV à l'offre",
       icon: <Search className="w-6 h-6 text-emerald-500" />,
-      content: "Il vaut mieux avoir 3 CVs très ciblés que 50 envois du même CV générique. Reprenez le vocabulaire de l'offre d'emploi dans votre section Compétences.",
-      dos: ["Créer un titre de CV qui correspond au poste visé", "Mettre en avant les compétences demandées"],
-      donts: ["Envoyer exactement le même document partout", "Mentir sur vos compétences pour correspondre"]
+      content: "C'est l'erreur numéro un des candidats : envoyer exactement le même CV à 50 entreprises différentes. Il vaut mille fois mieux envoyer 5 CVs ultra-ciblés que 50 CVs génériques. Prenez le temps de lire l'offre d'emploi en détail, repérez le vocabulaire utilisé, les compétences techniques (hard skills) et comportementales (soft skills) exigées. Ensuite, réintégrez ces mêmes mots-clés dans votre propre document. Cela augmentera non seulement vos chances de retenir l'attention du recruteur, mais c'est également indispensable pour passer les filtres des logiciels de recrutement (ATS) qui scannent automatiquement les CVs.",
+      dos: ["Créer un titre de CV qui correspond très exactement au poste visé", "Mettre en avant les compétences spécifiques demandées par l'annonce", "Ajuster l'accroche (profil) pour chaque candidature"],
+      donts: ["Envoyer un document générique intitulé 'CV_2024.pdf'", "Mentir sur vos compétences simplement pour 'matcher' l'offre", "Oublier de relire et laisser le nom d'une autre entreprise dans la lettre"]
     },
     {
-      title: "Le fond avant la forme, mais...",
+      title: "Le design : Le fond avant la forme, mais la forme compte",
       icon: <Edit3 className="w-6 h-6 text-indigo-500" />,
-      content: "Un beau design ne sauvera pas un profil vide, mais un profil solide avec un mauvais design (illisibilité, couleurs agressives) finira à la corbeille. Utilisez MonCVGo pour garantir l'aspect pro.",
-      dos: ["Choisir des polices professionnelles (Inter, Roboto)", "Garder beaucoup d'espaces blancs (respiration)"],
-      donts: ["Utiliser plus de 2 couleurs différentes", "Mettre des jauges de compétences (ex: 4/5 en Anglais)"]
+      content: "Ne nous y trompons pas : un design magnifique ne sauvera jamais un profil vide d'expérience ou ne correspondant pas au poste. Cependant, à compétences égales, un CV clair, aéré, moderne et professionnel fera toujours la différence. Un mauvais design (textes illisibles, couleurs agressives, marges inexistantes) donne une impression de négligence et peut envoyer votre candidature directement à la corbeille. C'est précisément pour cela que Mon CV Go existe : nous gérons la complexité du design et de la mise en page pour que vous puissiez vous concentrer à 100% sur le contenu. Nos modèles sont testés et approuvés par des professionnels des ressources humaines.",
+      dos: ["Choisir des polices professionnelles et modernes (Inter, Roboto, sans-serif)", "Garder beaucoup d'espaces blancs pour laisser le document 'respirer'", "Aligner parfaitement les dates et les lieux pour une lecture fluide"],
+      donts: ["Utiliser plus de 2 ou 3 couleurs différentes sur le même document", "Mettre des jauges de compétences subjectives (ex: 4/5 en Anglais ou 80% en Photoshop)", "Utiliser des polices fantaisistes (Comic Sans MS, Papyrus)"]
+    },
+    {
+      title: "Les Soft Skills : Votre atout secret en 2024",
+      icon: <CheckCircle className="w-6 h-6 text-purple-500" />,
+      content: "Les compétences techniques (hard skills) prouvent que vous savez faire le travail, mais ce sont les compétences comportementales (soft skills) qui prouvent que vous êtes la personne avec qui l'équipe a envie de travailler. L'intelligence émotionnelle, la capacité à résoudre des problèmes complexes, l'adaptabilité, l'esprit d'équipe et la communication sont aujourd'hui au moins aussi recherchés que les diplômes. Ne vous contentez pas de lister 'Esprit d'équipe' : prouvez-le dans la description de vos expériences (ex: 'Coordination d'une équipe transverse de 5 personnes'). Les soft skills font la différence lors de la sélection finale.",
+      dos: ["Illustrer vos soft skills par des exemples concrets dans vos expériences", "Demander des recommandations LinkedIn pour valider ces compétences", "Préparer des anecdotes pour l'entretien prouvant ces qualités"],
+      donts: ["Lister des mots à la mode sans aucun contexte ('Agile', 'Synergie')", "Confondre traits de personnalité (être souriant) et soft skills (négociation)", "Négliger ces compétences pour des postes très techniques"]
     }
   ];
 

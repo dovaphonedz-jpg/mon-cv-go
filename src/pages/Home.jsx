@@ -213,6 +213,48 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      {/* SEO & CONTENT SECTION (Crucial for AdSense & Google Ranking) */}
+      <section className="bg-white dark:bg-slate-900 py-24 border-t border-slate-200 dark:border-slate-800">
+        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="prose prose-lg prose-slate dark:prose-invert mx-auto">
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-8">Pourquoi utiliser Mon CV Go pour créer votre Curriculum Vitae en ligne ?</h2>
+            
+            <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+              La recherche d'emploi est une étape cruciale dans la vie de tout professionnel. Que vous soyez un jeune diplômé à la recherche de votre premier poste, ou un cadre expérimenté souhaitant donner un nouvel élan à votre carrière, <strong>votre Curriculum Vitae (CV) est votre passeport pour l'entretien</strong>. Mon CV Go a été pensé et développé pour vous offrir la meilleure expérience de création de CV gratuit en ligne.
+            </p>
+
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-6">L'importance d'un CV moderne et optimisé ATS</h3>
+            <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+              Aujourd'hui, la majorité des grandes entreprises et cabinets de recrutement utilisent des logiciels de suivi de candidatures, appelés <strong>ATS (Applicant Tracking Systems)</strong>. Ces logiciels scannent automatiquement votre document à la recherche de mots-clés spécifiques avant même qu'un recruteur humain ne pose les yeux dessus. Nos modèles de CV ont été conçus non seulement pour être esthétiquement parfaits, mais surtout pour être lisibles et compréhensibles par ces algorithmes.
+            </p>
+
+            <div className="bg-slate-50 dark:bg-slate-800/50 p-8 rounded-2xl border border-slate-100 dark:border-slate-800 my-10">
+              <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Nos 3 piliers pour un CV réussi :</h4>
+              <ul className="space-y-4 text-slate-600 dark:text-slate-400 list-disc pl-6">
+                <li><strong>La clarté visuelle :</strong> Une hiérarchie de l'information respectée avec des polices professionnelles qui guident l'œil du recruteur vers vos compétences clés.</li>
+                <li><strong>La pertinence du contenu :</strong> Des rubriques bien définies (Profil, Expériences, Formations, Compétences) que vous pouvez facilement personnaliser et ordonner.</li>
+                <li><strong>L'export PDF Haute Qualité :</strong> Contrairement au format Word, l'export PDF garantit que votre mise en page restera exactement la même, quel que soit l'ordinateur ou le smartphone utilisé par le recruteur.</li>
+              </ul>
+            </div>
+
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-6">Plus qu'un simple générateur de CV</h3>
+            <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+              Nous savons que le CV seul ne suffit parfois pas. C'est pourquoi Mon CV Go intègre également un module de création de <strong>Lettre de Motivation</strong> et un outil novateur pour générer un <strong>Portfolio visuel</strong>. Pour les métiers du web, du design, de l'architecture ou de la communication, pouvoir montrer ses réalisations concrètes en un clic est un avantage indéniable.
+            </p>
+
+            <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+              Toutes vos données restent privées et sécurisées. La génération de votre document se fait directement dans votre navigateur web, ce qui garantit que vos informations personnelles ne sont pas stockées sur des serveurs tiers de manière non sécurisée. C'est l'engagement de Mon CV Go : vous fournir un service gratuit, rapide et respectueux de votre vie privée.
+            </p>
+
+            <div className="mt-12 text-center">
+              <Link to="/conseils-cv" className="text-indigo-600 dark:text-indigo-400 font-bold hover:underline">
+                Découvrez tous nos conseils d'experts pour rédiger un CV parfait &rarr;
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
     </div>
     </>
   );
