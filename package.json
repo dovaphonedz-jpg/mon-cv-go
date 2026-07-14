@@ -7,11 +7,16 @@
     "dev": "vite",
     "build": "vite build",
     "lint": "oxlint",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "start:backend": "node server.js"
   },
   "dependencies": {
+    "@google/generative-ai": "^0.24.1",
     "@tailwindcss/vite": "^4.3.2",
+    "cors": "^2.8.6",
     "docx": "^9.7.1",
+    "dotenv": "^17.4.2",
+    "express": "^5.2.1",
     "file-saver": "^2.0.5",
     "framer-motion": "^12.42.2",
     "html2canvas": "^1.4.1",
@@ -19,6 +24,7 @@
     "jspdf": "^4.2.1",
     "lucide-react": "^1.24.0",
     "mammoth": "^1.12.0",
+    "openai": "^6.46.0",
     "pdfjs-dist": "^6.1.200",
     "pptxgenjs": "^4.0.1",
     "react": "^19.2.7",

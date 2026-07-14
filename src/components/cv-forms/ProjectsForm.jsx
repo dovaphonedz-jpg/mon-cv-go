@@ -3,6 +3,8 @@ import { useResume } from '../../context/ResumeContext';
 import { Plus, Trash2, Briefcase } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 
+import { compressImage } from '../../utils/imageCompressor';
+
 export default function ProjectsForm() {
   const { cvData, addProject, updateProject, removeProject } = useResume();
   const [newProject, setNewProject] = useState({ title: '', techStack: '', link: '', description: '', image: '' });
@@ -15,12 +17,16 @@ export default function ProjectsForm() {
     setIsAdding(false);
   };
 
-  const handleImageUpload = (e) => {
+  const handleImageUpload = async (e) => {
     const file = e.target.files[0];
     if (file) {
-      const reader = new FileReader();
-      reader.onloadend = () => setNewProject({ ...newProject, image: reader.result });
-      reader.readAsDataURL(file);
+      try {
+        const compressedBase64 = await compressImage(file, 800, 800, 0.7);
+        setNewProject({ ...newProject, image: compressedBase64 });
+      } catch (err) {
+        console.error("Erreur lors de la compression de l'image", err);
+        alert("Impossible de charger l'image.");
+      }
     }
   };
 
@@ -151,12 +157,16 @@ export default function ProjectsForm() {
                 ) : (
                   <label className="flex items-center justify-center w-20 h-20 bg-slate-50 dark:bg-slate-900 border border-dashed border-slate-300 dark:border-slate-700 rounded-lg cursor-pointer hover:bg-slate-100 transition-colors text-slate-400 text-xs text-center p-1">
                     <span>+ Img</span>
-                    <input type="file" className="hidden" accept="image/*" onChange={(e) => {
+                    <input type="file" className="hidden" accept="image/*" onChange={async (e) => {
                       const file = e.target.files[0];
                       if (file) {
-                        const reader = new FileReader();
-                        reader.onloadend = () => updateProject(index, { ...project, image: reader.result });
-                        reader.readAsDataURL(file);
+                        try {
+                          const compressedBase64 = await compressImage(file, 800, 800, 0.7);
+                          updateProject(index, { ...project, image: compressedBase64 });
+                        } catch (err) {
+                          console.error("Erreur lors de la compression de l'image", err);
+                          alert("Impossible de charger l'image.");
+                        }
                       }
                     }} />
                   </label>

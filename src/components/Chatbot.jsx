@@ -2,6 +2,7 @@ import React, { useState, useRef, useEffect } from 'react';
 import { MessageCircle, X, Send, Bot, User, Sparkles } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { getBotResponse } from '../utils/botLogic';
+import { Link } from 'react-router-dom';
 
 export default function ChatBot() {
   const [isOpen, setIsOpen] = useState(false);
@@ -34,7 +35,11 @@ export default function ChatBot() {
     // Simulate network delay for natural feel
     setTimeout(() => {
       const botResponse = getBotResponse(userMessage);
-      setMessages(prev => [...prev, { id: Date.now() + 1, type: 'bot', text: botResponse }]);
+      const isObject = typeof botResponse === 'object' && botResponse !== null;
+      const botText = isObject ? botResponse.text : botResponse;
+      const botActions = isObject ? botResponse.actions : null;
+      
+      setMessages(prev => [...prev, { id: Date.now() + 1, type: 'bot', text: botText, actions: botActions }]);
       setIsTyping(false);
     }, 800 + Math.random() * 800);
   };
@@ -106,7 +111,7 @@ export default function ChatBot() {
                   <div className={`w-8 h-8 shrink-0 rounded-full flex items-center justify-center ${msg.type === 'user' ? 'bg-blue-100 text-blue-600 dark:bg-blue-900/50 dark:text-blue-400' : 'bg-emerald-100 text-emerald-600 dark:bg-emerald-900/50 dark:text-emerald-400'}`}>
                     {msg.type === 'user' ? <User className="w-4 h-4" /> : <Bot className="w-4 h-4" />}
                   </div>
-                  <div className={`px-4 py-2 rounded-2xl max-w-[75%] text-sm ${
+                  <div className={`px-4 py-2 rounded-2xl max-w-[75%] text-sm whitespace-pre-wrap ${
                     msg.type === 'user' 
                       ? 'bg-blue-600 text-white rounded-tr-none' 
                       : 'bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 rounded-tl-none shadow-sm'
@@ -116,6 +121,21 @@ export default function ChatBot() {
                       ? msg.text.split('**').map((part, i) => i % 2 === 1 ? <strong key={i} className="font-bold text-slate-900 dark:text-white">{part}</strong> : part)
                       : msg.text
                     }
+                    {/* Render Action Buttons if available */}
+                    {msg.actions && msg.actions.length > 0 && (
+                      <div className="mt-3 flex flex-col gap-2">
+                        {msg.actions.map((action, idx) => (
+                          <Link 
+                            key={idx} 
+                            to={action.url}
+                            className="inline-flex items-center justify-center bg-blue-50 dark:bg-blue-900/30 text-blue-600 dark:text-blue-400 border border-blue-200 dark:border-blue-800 rounded-lg px-3 py-2 text-xs font-bold hover:bg-blue-100 dark:hover:bg-blue-900/50 transition-colors shadow-sm"
+                            onClick={() => setIsOpen(false)} // Optional: close chat when clicking a link
+                          >
+                            {action.label}
+                          </Link>
+                        ))}
+                      </div>
+                    )}
                   </div>
                 </motion.div>
               ))}

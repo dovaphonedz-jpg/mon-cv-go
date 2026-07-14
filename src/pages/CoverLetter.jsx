@@ -1,9 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Sparkles, Trash2, Download, PenLine, Eye } from 'lucide-react';
 import { motion } from 'framer-motion';
+import { useReactToPrint } from 'react-to-print';
 import SEO from '../components/SEO';
 
 export default function CoverLetter() {
+  const [language, setLanguage] = useState('fr');
   const [data, setData] = useState({
     senderName: '',
     senderPhone: '',
@@ -61,22 +63,58 @@ export default function CoverLetter() {
   };
 
   const loadExample = () => {
-    setData({
-      senderName: 'Jean Dupont', 
-      senderPhone: '+213 555 12 34 56', 
-      senderEmail: 'jean.dupont@email.com', 
-      senderAddress: 'Alger, Algérie',
-      company: 'TechnoWeb SARL', 
-      recipient: 'Service des ressources humaines', 
-      city: 'Alger', 
-      date: 'le 9 juillet 2026',
-      subject: 'Candidature au poste de Développeur web front-end',
-      salutation: 'Madame, Monsieur,',
-      intro: "Actuellement à la recherche d'un nouveau défi professionnel, je vous soumets ma candidature au poste de développeur web front-end au sein de votre entreprise, dont je suis avec intérêt les réalisations.",
-      body: "Fort de 2 ans d'expérience dans la création d'interfaces utilisateur avec React, j'ai développé une solide expertise en intégration web et optimisation des performances. Mon précédent poste m'a permis de travailler sur des projets ambitieux, de la conception à la mise en production, tout en respectant les bonnes pratiques d'accessibilité et de design responsive.",
-      closing: "Intégrer votre équipe me permettrait de mettre mes compétences au service de vos projets tout en continuant d'évoluer dans un environnement stimulant. Je me tiens à votre entière disposition pour un entretien afin de vous détailler de vive voix mes motivations.",
-      signoff: "Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées."
-    });
+    if (language === 'ar') {
+      setData({
+        senderName: 'أحمد محمود', 
+        senderPhone: '+213 555 12 34 56', 
+        senderEmail: 'ahmed.mahmoud@email.com', 
+        senderAddress: 'الجزائر العاصمة، الجزائر',
+        company: 'شركة تكنو ويب', 
+        recipient: 'قسم الموارد البشرية', 
+        city: 'الجزائر', 
+        date: '9 يوليو 2026',
+        subject: 'الترشح لمنصب مطور واجهات الويب',
+        salutation: 'سيدتي، سيدي،',
+        intro: "أبحث حالياً عن تحدٍ مهني جديد، ويسعدني أن أقدم ترشيحي لمنصب مطور واجهات الويب في شركتكم، والتي أتابع إنجازاتها باهتمام.",
+        body: "بفضل خبرتي الممتدة لسنتين في إنشاء واجهات المستخدم باستخدام React، طورت خبرة قوية في دمج الويب وتحسين الأداء. أتاح لي منصبي السابق العمل على مشاريع طموحة، من التصميم إلى الإنتاج، مع الالتزام بأفضل ممارسات إمكانية الوصول والتصميم المتجاوب.",
+        closing: "إن الانضمام إلى فريقكم سيسمح لي بوضع مهاراتي في خدمة مشاريعكم مع الاستمرار في التطور في بيئة محفزة. أنا تحت تصرفكم بالكامل لإجراء مقابلة لتفصيل دوافعي شخصياً.",
+        signoff: "تفضلوا بقبول فائق الاحترام والتقدير."
+      });
+    } else if (language === 'en') {
+      setData({
+        senderName: 'John Doe', 
+        senderPhone: '+1 555 12 34 56', 
+        senderEmail: 'john.doe@email.com', 
+        senderAddress: 'New York, USA',
+        company: 'TechnoWeb LLC', 
+        recipient: 'Human Resources Department', 
+        city: 'New York', 
+        date: 'July 9, 2026',
+        subject: 'Application for Front-End Web Developer',
+        salutation: 'Dear Hiring Manager,',
+        intro: "Currently seeking a new professional challenge, I am submitting my application for the Front-End Web Developer position at your company, whose achievements I follow with interest.",
+        body: "With 2 years of experience creating user interfaces with React, I have developed strong expertise in web integration and performance optimization. My previous role allowed me to work on ambitious projects, from design to production, while adhering to the best practices of accessibility and responsive design.",
+        closing: "Joining your team would allow me to put my skills at the service of your projects while continuing to grow in a stimulating environment. I am entirely at your disposal for an interview to detail my motivations in person.",
+        signoff: "Sincerely,"
+      });
+    } else {
+      setData({
+        senderName: 'Jean Dupont', 
+        senderPhone: '+213 555 12 34 56', 
+        senderEmail: 'jean.dupont@email.com', 
+        senderAddress: 'Alger, Algérie',
+        company: 'TechnoWeb SARL', 
+        recipient: 'Service des ressources humaines', 
+        city: 'Alger', 
+        date: 'le 9 juillet 2026',
+        subject: 'Candidature au poste de Développeur web front-end',
+        salutation: 'Madame, Monsieur,',
+        intro: "Actuellement à la recherche d'un nouveau défi professionnel, je vous soumets ma candidature au poste de développeur web front-end au sein de votre entreprise, dont je suis avec intérêt les réalisations.",
+        body: "Fort de 2 ans d'expérience dans la création d'interfaces utilisateur avec React, j'ai développé une solide expertise en intégration web et optimisation des performances. Mon précédent poste m'a permis de travailler sur des projets ambitieux, de la conception à la mise en production, tout en respectant les bonnes pratiques d'accessibilité et de design responsive.",
+        closing: "Intégrer votre équipe me permettrait de mettre mes compétences au service de vos projets tout en continuant d'évoluer dans un environnement stimulant. Je me tiens à votre entière disposition pour un entretien afin de vous détailler de vive voix mes motivations.",
+        signoff: "Je vous prie d'agréer, Madame, Monsieur, mes salutations distinguées."
+      });
+    }
   };
 
   const resetData = () => {
@@ -85,27 +123,13 @@ export default function CoverLetter() {
     setData(emptyData);
   };
 
-  const downloadPDF = async () => {
-    if (!letterRef.current) return;
-    
-    // Dynamic import to prevent SSR issues if this was SSR (it's Vite though)
-    try {
-      const html2pdf = (await import('html2pdf.js')).default;
-      const element = letterRef.current;
-      
-      const opt = {
-        margin: 0,
-        filename: 'lettre-motivation.pdf',
-        image: { type: 'jpeg', quality: 1 },
-        html2canvas: { scale: 3, useCORS: true },
-        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-      };
-      
-      html2pdf().set(opt).from(element).save();
-    } catch (err) {
-      console.error("Erreur PDF:", err);
-      alert("Erreur lors de la génération du PDF. Vérifiez votre connexion.");
-    }
+  const handlePrint = useReactToPrint({
+    contentRef: letterRef,
+    documentTitle: 'lettre-motivation',
+  });
+
+  const downloadPDF = () => {
+    handlePrint();
   };
 
   // Helper for rendering line breaks properly
@@ -163,13 +187,34 @@ export default function CoverLetter() {
           {/* Form Container */}
           <div className="bg-white dark:bg-[#0F172A] rounded-3xl shadow-xl shadow-slate-200/40 dark:shadow-none border border-slate-200 dark:border-slate-800 p-6 sm:p-8 flex-grow">
             
-            <div className="flex flex-wrap gap-2 mb-8">
-              <button onClick={loadExample} className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/50 text-xs font-bold rounded-lg transition border border-blue-200 dark:border-blue-800">
-                <Sparkles className="w-3.5 h-3.5" /> Exemple
-              </button>
-              <button onClick={resetData} className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold rounded-lg transition border border-slate-200 dark:border-slate-700">
-                <Trash2 className="w-3.5 h-3.5" /> Effacer
-              </button>
+            <div className="flex flex-wrap gap-2 mb-8 justify-between items-center">
+              <div className="flex gap-2">
+                <button onClick={loadExample} className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/50 text-xs font-bold rounded-lg transition border border-blue-200 dark:border-blue-800">
+                  <Sparkles className="w-3.5 h-3.5" /> Exemple
+                </button>
+                <button onClick={resetData} className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold rounded-lg transition border border-slate-200 dark:border-slate-700">
+                  <Trash2 className="w-3.5 h-3.5" /> Effacer
+                </button>
+              </div>
+              
+              <div className="flex items-center gap-2">
+                <label className="text-xs font-bold text-slate-500">Langue :</label>
+                <select 
+                  value={language}
+                  onChange={(e) => {
+                    setLanguage(e.target.value);
+                    // Automatically load the example for the new language if the form is empty
+                    if (!data.senderName && !data.intro) {
+                      setTimeout(() => loadExample(), 50);
+                    }
+                  }}
+                  className="bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-white text-xs rounded-lg px-2 py-1.5 focus:outline-none focus:ring-2 focus:ring-blue-500"
+                >
+                  <option value="fr">Français</option>
+                  <option value="en">English</option>
+                  <option value="ar">العربية (Arabe)</option>
+                </select>
+              </div>
             </div>
 
             <div className="space-y-8">
@@ -272,58 +317,63 @@ export default function CoverLetter() {
             >
               <div 
                 ref={letterRef}
+                id="cv-export-container"
                 className="bg-white mx-auto cv-page shadow-2xl absolute top-0 left-0 origin-top-left transition-transform duration-200"
-                style={{ width: '794px', minHeight: '1123px', padding: '25mm', transform: `scale(${scale})` }}
+                style={{ width: '794px', minHeight: '1123px', transform: `scale(${scale})` }}
               >
-              {/* Header (Coordonnées) */}
-              <div className="flex justify-between items-start text-sm text-gray-800 mb-12 font-inter">
-                <div className="w-1/2">
-                  {data.senderName && <div className="font-bold text-lg mb-1 text-gray-900">{data.senderName}</div>}
-                  {data.senderAddress && <div>{data.senderAddress}</div>}
-                  {data.senderPhone && <div>{data.senderPhone}</div>}
-                  {data.senderEmail && <div>{data.senderEmail}</div>}
+                <div style={{ padding: '25mm', width: '100%', height: '100%', boxSizing: 'border-box' }} dir={language === 'ar' ? 'rtl' : 'ltr'}>
+                  {/* Header (Coordonnées) */}
+                  <div className="flex justify-between items-start text-sm text-gray-800 mb-12 font-inter">
+                    <div className="w-1/2">
+                      {data.senderName && <div className="font-bold text-lg mb-1 text-gray-900">{data.senderName}</div>}
+                      {data.senderAddress && <div>{data.senderAddress}</div>}
+                      {data.senderPhone && <div className={`text-${language === 'ar' ? 'right' : 'left'}`} dir="ltr">{data.senderPhone}</div>}
+                      {data.senderEmail && <div>{data.senderEmail}</div>}
+                    </div>
+                    
+                    <div className={`w-1/2 mt-8 ${language === 'ar' ? 'text-left' : 'text-right'}`}>
+                      {data.company && <div className="font-bold text-gray-900 mb-1">{data.company}</div>}
+                      {data.recipient && <div>
+                        {language === 'ar' ? 'إلى عناية :' : language === 'en' ? 'To the attention of:' : "À l'attention de :"} {data.recipient}
+                      </div>}
+                    </div>
+                  </div>
+
+                  {/* Date & Lieu */}
+                  {(data.city || data.date) && (
+                    <div className={`text-sm text-gray-800 mb-8 font-inter ${language === 'ar' ? 'text-left' : 'text-right'}`}>
+                      {language === 'ar' ? 'في' : language === 'en' ? '' : 'À'} {data.city || '...'}
+                      {language === 'en' ? ',' : '،'} {data.date || '...'}
+                    </div>
+                  )}
+
+                  {/* Objet */}
+                  {data.subject && (
+                    <div className="text-sm font-bold text-gray-900 mb-8 font-inter break-words">
+                      {language === 'ar' ? 'الموضوع :' : language === 'en' ? 'Subject:' : 'Objet :'} {data.subject}
+                    </div>
+                  )}
+
+                  {/* Salutation */}
+                  {data.salutation && (
+                    <div className="text-sm text-gray-800 mb-6 font-inter">
+                      {data.salutation}
+                    </div>
+                  )}
+
+                  {/* Corps du texte */}
+                  <div className="text-sm text-gray-800 space-y-4 font-inter leading-relaxed text-justify break-words">
+                    {data.intro && <div>{renderText(data.intro)}</div>}
+                    {data.body && <div>{renderText(data.body)}</div>}
+                    {data.closing && <div>{renderText(data.closing)}</div>}
+                  </div>
+
+                  {/* Formule de politesse & Signature */}
+                  <div className="text-sm text-gray-800 mt-8 space-y-6 font-inter">
+                    {data.signoff && <div>{data.signoff}</div>}
+                    {data.senderName && <div className={`font-bold mt-12 text-gray-900 ${language === 'ar' ? 'text-left ml-12' : 'text-right mr-12'}`}>{data.senderName}</div>}
+                  </div>
                 </div>
-                
-                <div className="w-1/2 text-right mt-8">
-                  {data.company && <div className="font-bold text-gray-900 mb-1">{data.company}</div>}
-                  {data.recipient && <div>À l'attention de : {data.recipient}</div>}
-                </div>
-              </div>
-
-              {/* Date & Lieu */}
-              {(data.city || data.date) && (
-                <div className="text-right text-sm text-gray-800 mb-8 font-inter">
-                  À {data.city || '...'}, {data.date || '...'}
-                </div>
-              )}
-
-              {/* Objet */}
-              {data.subject && (
-                <div className="text-sm font-bold text-gray-900 mb-8 font-inter">
-                  Objet : {data.subject}
-                </div>
-              )}
-
-              {/* Salutation */}
-              {data.salutation && (
-                <div className="text-sm text-gray-800 mb-6 font-inter">
-                  {data.salutation}
-                </div>
-              )}
-
-              {/* Corps du texte */}
-              <div className="text-sm text-gray-800 space-y-4 font-inter leading-relaxed text-justify">
-                {data.intro && <div>{renderText(data.intro)}</div>}
-                {data.body && <div>{renderText(data.body)}</div>}
-                {data.closing && <div>{renderText(data.closing)}</div>}
-              </div>
-
-              {/* Formule de politesse & Signature */}
-              <div className="text-sm text-gray-800 mt-8 space-y-6 font-inter">
-                {data.signoff && <div>{data.signoff}</div>}
-                {data.senderName && <div className="font-bold text-right mr-12 mt-12 text-gray-900">{data.senderName}</div>}
-              </div>
-
               </div>
             </div>
           </div>

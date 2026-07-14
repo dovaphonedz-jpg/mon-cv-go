@@ -42,8 +42,24 @@ export const getBotResponse = (message) => {
   }
   
   // Conseils généraux sur le CV
-  if (msg.match(/conseil|aide|astuce|comment faire|quoi mettre|compétence/)) {
-    return "Mon meilleur conseil : restez concis ! Un recruteur passe en moyenne 6 secondes sur un CV. Utilisez la section **'Résumé'** pour mettre en valeur votre profil en 2 phrases choc, et listez uniquement les expériences pertinentes pour le poste visé.";
+  if (msg.match(/conseil|aide|astuce|recommandation|améliorer|ameliorer|quoi mettre|comment faire/)) {
+    const tips = [
+      "💡 **Conseil Pro :** La Règle des 6 secondes. Un recruteur scanne votre CV très vite. Mettez vos compétences les plus fortes en haut du document.",
+      "💡 **Astuce ATS :** De nombreuses entreprises utilisent des logiciels pour filtrer les CV. Reprenez les mots-clés exacts de l'offre d'emploi dans votre section 'Compétences'.",
+      "💡 **Conseil Contenu :** Ne listez pas simplement vos tâches, listez vos résultats ! Utilisez la méthode STAR (Situation, Tâche, Action, Résultat).",
+      "💡 **Astuce Design :** Laissez de l'espace blanc ! Un CV trop chargé décourage la lecture. Nos modèles sont optimisés pour laisser votre texte respirer.",
+      "💡 **Conseil Photo :** Si vous mettez une photo, choisissez un fond neutre et souriez légèrement. Pas de selfies, restez professionnel !",
+      "💡 **Astuce Portfolio :** Si vous êtes dans le web, le design ou le marketing, accompagnez toujours votre CV d'un Portfolio en ligne. Cela fait une énorme différence.",
+      "💡 **Verbes d'Action :** Commencez vos puces par des verbes forts : 'Piloté', 'Créé', 'Développé' plutôt que des formules passives comme 'J'ai été en charge de...'."
+    ];
+    const randomTip = tips[Math.floor(Math.random() * tips.length)];
+    
+    return {
+      text: randomTip + "\n\n(Tapez **'conseil'** pour en voir un autre !)",
+      actions: [
+        { label: "Voir tous nos conseils détaillés 🚀", url: "/conseils-cv" }
+      ]
+    };
   }
 
   // Question de qui est le bot

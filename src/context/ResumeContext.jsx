@@ -37,8 +37,12 @@ export const ResumeProvider = ({ children }) => {
 
   // Save to localStorage on change
   useEffect(() => {
-    localStorage.setItem('moncvgo_data', JSON.stringify(cvData));
-    localStorage.setItem('moncvgo_config', JSON.stringify(config));
+    try {
+      localStorage.setItem('moncvgo_data', JSON.stringify(cvData));
+      localStorage.setItem('moncvgo_config', JSON.stringify(config));
+    } catch (e) {
+      console.warn("Could not save to localStorage. Quota exceeded?", e);
+    }
   }, [cvData, config]);
 
   const loadDemo = (lang) => {

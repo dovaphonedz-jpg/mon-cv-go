@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, CheckCircle, AlertTriangle, Target, Search, Edit3 } from 'lucide-react';
+import { BookOpen, CheckCircle, AlertTriangle, Target, Search, Edit3, Zap, Briefcase, Award } from 'lucide-react';
 import SEO from '../components/SEO';
 
 export default function ConseilsCV() {
@@ -45,6 +45,27 @@ export default function ConseilsCV() {
       content: "Les compétences techniques (hard skills) prouvent que vous savez faire le travail, mais ce sont les compétences comportementales (soft skills) qui prouvent que vous êtes la personne avec qui l'équipe a envie de travailler. L'intelligence émotionnelle, la capacité à résoudre des problèmes complexes, l'adaptabilité, l'esprit d'équipe et la communication sont aujourd'hui au moins aussi recherchés que les diplômes. Ne vous contentez pas de lister 'Esprit d'équipe' : prouvez-le dans la description de vos expériences (ex: 'Coordination d'une équipe transverse de 5 personnes'). Les soft skills font la différence lors de la sélection finale.",
       dos: ["Illustrer vos soft skills par des exemples concrets dans vos expériences", "Demander des recommandations LinkedIn pour valider ces compétences", "Préparer des anecdotes pour l'entretien prouvant ces qualités"],
       donts: ["Lister des mots à la mode sans aucun contexte ('Agile', 'Synergie')", "Confondre traits de personnalité (être souriant) et soft skills (négociation)", "Négliger ces compétences pour des postes très techniques"]
+    },
+    {
+      title: "Réalisations vs Tâches : Prouvez votre valeur",
+      icon: <Award className="w-6 h-6 text-yellow-500" />,
+      content: "La plupart des candidats se contentent de lister les tâches qu'ils ont effectuées (ex: 'Gestion des réseaux sociaux'). C'est une erreur. Le recruteur sait déjà en quoi consiste votre métier. Ce qu'il veut savoir, c'est si vous le faites BIEN. Transformez vos listes de tâches en listes de réalisations en utilisant la méthode STAR (Situation, Tâche, Action, Résultat). Au lieu de 'Gestion des réseaux', écrivez 'Augmentation de la communauté de 40% en 6 mois via une nouvelle stratégie de contenu'. Les chiffres parlent beaucoup plus fort que les mots.",
+      dos: ["Utiliser des données chiffrées (CA généré, temps gagné, budget géré)", "Mentionner les objectifs atteints ou dépassés", "Préciser l'envergure des projets (budget, taille de l'équipe)"],
+      donts: ["Faire un 'copier-coller' de votre fiche de poste", "Être flou (ex: 'bons résultats', 'beaucoup de clients')", "S'attribuer le travail des autres"]
+    },
+    {
+      title: "L'impact psychologique des verbes d'action",
+      icon: <Zap className="w-6 h-6 text-fuchsia-500" />,
+      content: "Les mots que vous choisissez influencent inconsciemment la perception du recruteur. Évitez les formules passives comme 'J'étais en charge de...' ou 'Responsable de...'. Préférez toujours commencer vos puces par un verbe d'action fort et dynamique : 'Piloté', 'Créé', 'Développé', 'Optimisé', 'Négocié', 'Restructuré'. Ces verbes donnent immédiatement une impression de leadership et d'initiative. Ils transforment un profil passif (exécutant) en un profil proactif (moteur de l'entreprise).",
+      dos: ["Commencer chaque point de vos expériences par un verbe d'action au participe passé ou à l'infinitif", "Varier le vocabulaire pour ne pas répéter le même verbe", "Utiliser des mots forts (Orchestré, Propulsé, Rationalisé)"],
+      donts: ["Utiliser le pronom 'Je' (ex: 'J'ai fait')", "Employer des verbes faibles (Fait, Aidé, Essayé)", "Mélanger les temps verbaux (passé / présent) sans logique"]
+    },
+    {
+      title: "Le Portfolio : Le 'Game Changer' absolu",
+      icon: <Briefcase className="w-6 h-6 text-orange-500" />,
+      content: "Un CV dit ce que vous savez faire. Un Portfolio le prouve. Pour les métiers du design, du développement, du marketing, de l'architecture ou de la rédaction, ne pas avoir de portfolio est un immense désavantage. Même si vous n'êtes pas dans le domaine créatif, documenter vos projets réussis (graphiques, rapports publics, présentations) dans un document annexe ou un lien web est une arme redoutable. Mon CV Go vous permet justement de générer un Portfolio élégant en quelques clics, ne passez pas à côté de cette opportunité.",
+      dos: ["Insérer un lien cliquable vers votre Portfolio directement dans l'en-tête du CV", "Sélectionner vos 3 ou 4 meilleurs projets uniquement (la qualité prime sur la quantité)", "Expliquer brièvement votre rôle exact dans chaque projet du portfolio"],
+      donts: ["Ajouter un lien mort ou privé nécessitant un mot de passe", "Mettre des projets scolaires basiques si vous avez déjà de l'expérience professionnelle", "Laisser le recruteur chercher votre travail sur Google"]
     }
   ];
 

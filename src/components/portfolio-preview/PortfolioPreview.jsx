@@ -22,7 +22,15 @@ const PortfolioPreview = forwardRef((props, ref) => {
         availableWidth -= 32; // padding
         if (availableWidth > 50) {
           const a4Width = 794;
-          setScale(Math.max(0.1, Math.min(1, availableWidth / a4Width)));
+          const a4Height = 1123;
+          const availableHeight = window.innerHeight - 120; // Leave space for navbar and padding
+          
+          const widthScale = availableWidth / a4Width;
+          const heightScale = availableHeight / a4Height;
+          
+          // Use the smaller scale so it never overflows width or height
+          const newScale = Math.min(1, widthScale, heightScale);
+          setScale(Math.max(0.1, newScale));
         }
       }
     });
@@ -31,8 +39,16 @@ const PortfolioPreview = forwardRef((props, ref) => {
     // Fallback if observer misses initial hidden state
     const timer = setTimeout(() => {
       if (containerRef.current && containerRef.current.clientWidth > 50) {
+        const availableWidth = containerRef.current.clientWidth - 32;
         const a4Width = 794;
-        setScale(Math.max(0.1, Math.min(1, (containerRef.current.clientWidth - 32) / a4Width)));
+        const a4Height = 1123;
+        const availableHeight = window.innerHeight - 120;
+        
+        const widthScale = availableWidth / a4Width;
+        const heightScale = availableHeight / a4Height;
+        
+        const newScale = Math.min(1, widthScale, heightScale);
+        setScale(Math.max(0.1, newScale));
       }
     }, 100);
 
@@ -68,7 +84,7 @@ const PortfolioPreview = forwardRef((props, ref) => {
           className="shadow-2xl bg-white absolute top-0 left-0 origin-top-left transition-transform duration-200" 
           style={{ 
             width: '794px', 
-            minHeight: '1123px', 
+            height: '1123px', 
             transform: `scale(${scale})`
           }}
           id="cv-export-container"

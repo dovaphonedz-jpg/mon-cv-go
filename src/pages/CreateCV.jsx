@@ -47,10 +47,22 @@ export default function CreateCV() {
 
   useEffect(() => {
     const params = new URLSearchParams(location.search);
+    const templateParam = params.get('template');
+    if (templateParam) {
+      updateConfig('template', templateParam);
+    }
+    
+    // Automatically load the demo if requested in the URL
+    if (params.get('demo') === 'true') {
+      loadDemo('fr');
+      // Remove the query string so it doesn't reload demo on subsequent navigation
+      window.history.replaceState({}, '', location.pathname + (templateParam ? '?template=' + templateParam : ''));
+    }
+
     if (params.get('step') === 'projects') {
       setActiveStepIdx(5);
     }
-  }, [location.search]);
+  }, [location.search]); // updateConfig is stable from Context
 
   const [showPreviewMobile, setShowPreviewMobile] = useState(false);
   const [isImporting, setIsImporting] = useState(false);

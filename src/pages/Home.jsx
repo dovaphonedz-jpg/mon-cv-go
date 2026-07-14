@@ -1,9 +1,9 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { FilePlus2, PenLine, Check, ArrowRight, Star, Briefcase } from 'lucide-react';
+import { FilePlus2, PenLine, Check, ArrowRight, Star, Briefcase, Zap } from 'lucide-react';
 import { motion } from 'framer-motion';
 import SEO from '../components/SEO';
-
+import TemplateGallery from '../components/TemplateGallery';
 export default function Home() {
   const containerVariants = {
     hidden: { opacity: 0 },
@@ -55,24 +55,27 @@ export default function Home() {
               initial="hidden"
               animate="show"
             >
-              <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-semibold text-xs uppercase tracking-wider border border-blue-200 dark:border-blue-800 mb-6">
-                <Star className="w-3.5 h-3.5" />
-                100% Gratuit · Sans Inscription
+              <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 font-bold text-xs uppercase tracking-wider border border-indigo-200 dark:border-indigo-500/30 mb-6 shadow-sm">
+                <span className="flex h-2 w-2 relative">
+                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
+                  <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
+                </span>
+                100% GRATUIT, SANS INSCRIPTION
               </motion.div>
               
               <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
-                <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-500">Création de CV professionnel</span> gratuit, décrochez le job de vos rêves.
+                Créez le <span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">CV parfait</span> en moins de 5 minutes.
               </motion.h1>
               
               <motion.p variants={itemVariants} className="mt-6 text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                Créez un CV clair, une lettre de motivation, et un Portfolio visuel premium prêts à envoyer en quelques minutes. Choisissez votre modèle, remplissez vos infos et exportez en PDF.
+                Démarquez-vous avec des modèles professionnels, modernes et optimisés pour les recruteurs. Exportez en PDF Haute Qualité gratuitement.
               </motion.p>
               
               <motion.div variants={itemVariants} className="mt-10 flex flex-col sm:flex-row flex-wrap gap-4 justify-center lg:justify-start">
                 <Link to="/create" className="group relative overflow-hidden flex items-center justify-center gap-2 px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-2xl shadow-xl transition-all hover:scale-105 hover:shadow-2xl">
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <FilePlus2 className="w-5 h-5 relative z-10 group-hover:text-white" />
-                  <span className="relative z-10 group-hover:text-white">Créer mon CV</span>
+                  <span className="relative z-10 group-hover:text-white">Créer mon CV maintenant</span>
                   <ArrowRight className="w-4 h-4 relative z-10 group-hover:text-white group-hover:translate-x-1 transition-transform" />
                 </Link>
                 <Link to="/portfolio" className="group flex items-center justify-center gap-2 px-8 py-4 bg-white dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-slate-700 text-indigo-600 dark:text-indigo-400 font-bold rounded-2xl shadow-lg border border-indigo-100 dark:border-slate-700 transition-all hover:scale-105 hover:shadow-indigo-500/20">
@@ -162,57 +165,7 @@ export default function Home() {
       </div>
 
       {/* GALERIE SECTION */}
-      <section id="modeles-galerie" className="relative py-32 bg-slate-50 dark:bg-[#0B1120]">
-        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
-          <div className="absolute -bottom-1/2 -right-1/4 w-full h-full bg-blue-500/5 blur-[150px] rounded-full"></div>
-        </div>
-
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <motion.div 
-            initial={{ opacity: 0, y: 30 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            className="text-center max-w-3xl mx-auto mb-20"
-          >
-            <span className="text-indigo-600 dark:text-indigo-400 font-bold tracking-widest uppercase text-sm mb-4 block">Notre Galerie</span>
-            <h2 className="text-4xl sm:text-5xl font-black text-slate-900 dark:text-white tracking-tight">Des designs approuvés par les experts.</h2>
-            <p className="mt-6 text-xl text-slate-600 dark:text-slate-400 leading-relaxed">Faites forte impression. Nos modèles sont modernes, épurés et optimisés pour capter l'attention des recruteurs.</p>
-          </motion.div>
-          
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-10">
-            {[
-              { img: "mockup1.png", title: "CV Tech & Startup", tag: "CV" },
-              { img: "mockup2.png", title: "CV Corporate", tag: "CV" },
-              { img: "mockup4.png", title: "Portfolio Dark Grille", tag: "Nouveau" },
-              { img: "mockup3.png", title: "CV Créatif", tag: "CV" },
-              { img: "mockup5.png", title: "Portfolio Dev Minimal", tag: "Portfolio" },
-              { img: "mockup6.png", title: "Lettre de motivation Pro", tag: "Lettre" }
-            ].map((mockup, idx) => (
-              <motion.div 
-                key={idx}
-                initial={{ opacity: 0, y: 40 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, margin: "-50px" }}
-                transition={{ delay: idx * 0.15, type: 'spring', stiffness: 200, damping: 20 }}
-                className="group relative rounded-3xl bg-white dark:bg-slate-900 shadow-xl shadow-slate-200/50 dark:shadow-none border border-slate-100 dark:border-slate-800 overflow-hidden hover:shadow-2xl hover:shadow-indigo-500/20 dark:hover:shadow-indigo-500/10 hover:border-indigo-500/30 transition-all duration-500 hover:-translate-y-4"
-              >
-                <div className="absolute top-5 left-5 z-20">
-                  <span className="bg-slate-900/90 dark:bg-white/90 backdrop-blur-md text-white dark:text-slate-900 text-xs font-bold uppercase tracking-wider px-4 py-2 rounded-full shadow-lg">
-                    {mockup.tag}
-                  </span>
-                </div>
-                
-                <div className="aspect-[3/4] overflow-hidden bg-slate-100 dark:bg-slate-800 relative">
-                  <img src={`/${mockup.img}`} alt={mockup.title} className="w-full h-full object-cover object-top transition-transform duration-1000 group-hover:scale-110" />
-                </div>
-                <div className="p-8 text-center bg-white dark:bg-slate-900 relative z-20">
-                  <h3 className="font-bold text-2xl text-slate-900 dark:text-white">{mockup.title}</h3>
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </div>
-      </section>
+      <TemplateGallery />
 
       {/* SEO & CONTENT SECTION (Crucial for AdSense & Google Ranking) */}
       <section className="bg-white dark:bg-slate-900 py-24 border-t border-slate-200 dark:border-slate-800">
@@ -245,6 +198,30 @@ export default function Home() {
 
             <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
               Toutes vos données restent privées et sécurisées. La génération de votre document se fait directement dans votre navigateur web, ce qui garantit que vos informations personnelles ne sont pas stockées sur des serveurs tiers de manière non sécurisée. C'est l'engagement de Mon CV Go : vous fournir un service gratuit, rapide et respectueux de votre vie privée.
+            </p>
+
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-6">Comment créer votre CV en 3 étapes simples ?</h3>
+            <div className="grid sm:grid-cols-3 gap-6 mb-10">
+              <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                <div className="w-10 h-10 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 font-bold rounded-full flex items-center justify-center text-xl mb-4">1</div>
+                <h4 className="font-bold text-slate-900 dark:text-white mb-2">Choisissez un modèle</h4>
+                <p className="text-sm text-slate-600 dark:text-slate-400">Explorez notre galerie de designs professionnels et sélectionnez celui qui correspond à votre secteur d'activité.</p>
+              </div>
+              <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 font-bold rounded-full flex items-center justify-center text-xl mb-4">2</div>
+                <h4 className="font-bold text-slate-900 dark:text-white mb-2">Remplissez vos infos</h4>
+                <p className="text-sm text-slate-600 dark:text-slate-400">Ajoutez vos expériences, diplômes et compétences via notre interface simple. Observez l'aperçu se mettre à jour en temps réel.</p>
+              </div>
+              <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
+                <div className="w-10 h-10 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 font-bold rounded-full flex items-center justify-center text-xl mb-4">3</div>
+                <h4 className="font-bold text-slate-900 dark:text-white mb-2">Téléchargez en PDF</h4>
+                <p className="text-sm text-slate-600 dark:text-slate-400">Un clic suffit pour obtenir votre document final en PDF Haute Définition, prêt à être envoyé aux recruteurs.</p>
+              </div>
+            </div>
+
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-6">L'avantage d'un Portfolio en ligne</h3>
+            <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+              De plus en plus de recruteurs recherchent des preuves visuelles de vos compétences. Un CV classique est essentiel, mais un <strong>Portfolio</strong> fait la différence. Notre outil exclusif vous permet de transformer vos projets en un site de présentation élégant sous format PDF. C'est l'arme secrète des designers, développeurs, architectes et professionnels du marketing pour illustrer concrètement leur valeur ajoutée.
             </p>
 
             <div className="mt-12 text-center">

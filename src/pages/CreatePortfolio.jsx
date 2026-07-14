@@ -1,13 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useResume } from '../context/ResumeContext';
-import { UploadCloud, Sparkles, Trash2, ArrowLeft, ArrowRight, Eye, Download, ChevronRight, Save, FileText, Presentation, Palette, X } from 'lucide-react';
+import { UploadCloud, Sparkles, Trash2, ArrowLeft, ArrowRight, Eye, Download, ChevronRight, Save, FileText, Presentation, Palette, X, Code } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useReactToPrint } from 'react-to-print';
 import SEO from '../components/SEO';
 
 import { exportToWord } from '../utils/exportWord';
 import { exportToPowerPoint } from '../utils/exportPowerPoint';
+import { exportToHTML } from '../utils/exportHTML';
 
 import PortfolioPreview from '../components/portfolio-preview/PortfolioPreview';
 import PersonalInfoForm from '../components/cv-forms/PersonalInfoForm';
@@ -33,8 +34,20 @@ export default function CreatePortfolio() {
   const printRef = useRef(null);
   const location = useLocation();
 
-  // No need for deep linking useEffect since portfolio has fewer steps and projects is prominent
-
+  useEffect(() => {
+    const params = new URLSearchParams(location.search);
+    const templateParam = params.get('template');
+    if (templateParam) {
+      updateConfig('template', templateParam);
+    }
+    
+    // Automatically load the demo if requested in the URL
+    if (params.get('demo') === 'true') {
+      loadDemo('fr');
+      // Remove the query string so it doesn't reload demo on subsequent navigation
+      window.history.replaceState({}, '', location.pathname + '?template=' + templateParam);
+    }
+  }, [location.search]);
 
   const [showPreviewMobile, setShowPreviewMobile] = useState(false);
   const [isImporting, setIsImporting] = useState(false);
@@ -229,19 +242,31 @@ export default function CreatePortfolio() {
                 )}
                 
                 {activeStepIdx === STEPS.length - 1 ? (
-                  <button 
-                    onClick={() => {
-                       handlePrint();
-                       if (window.innerWidth < 1024) setShowPreviewMobile(true);
-                       else {
-                         const previewEl = document.querySelector('.cv-preview-container');
-                         if (previewEl) previewEl.scrollIntoView({ behavior: 'smooth' });
-                       }
-                    }}
-                    className="flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl shadow-lg transition-all group"
-                  >
-                    Terminer <Sparkles className="w-4 h-4 group-hover:scale-110 transition-transform" />
-                  </button>
+                  <div className="flex gap-2">
+                    <button 
+                      onClick={() => exportToHTML(cvData, config)} 
+                      className="flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl shadow-lg shadow-blue-600/20 transition-all hover:-translate-y-0.5 group"
+                      title="Télécharger Code HTML/CSS"
+                    >
+                      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" className="w-4 h-4 fill-current group-hover:scale-110 transition-transform">
+                        <path d="M0 32l34.9 395.8L191.5 480l157.6-52.2L384 32H0zm308.2 127.9H124.4l4.1 49.4h175.6l-13.6 148.4-97.9 27v.3h-1.1l-98.7-27.3-6-75.8h47.7L138 320l53.5 14.5 53.7-14.5 6-62.2H84.3L71.5 112.2h241.1l-4.4 47.7z"/>
+                      </svg>
+                      Générer le code HTML
+                    </button>
+                    <button 
+                      onClick={() => {
+                         handlePrint();
+                         if (window.innerWidth < 1024) setShowPreviewMobile(true);
+                         else {
+                           const previewEl = document.querySelector('.cv-preview-container');
+                           if (previewEl) previewEl.scrollIntoView({ behavior: 'smooth' });
+                         }
+                      }}
+                      className="flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl shadow-lg transition-all group"
+                    >
+                      Terminer <Sparkles className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                    </button>
+                  </div>
                 ) : (
                   <button 
                     onClick={nextStep}

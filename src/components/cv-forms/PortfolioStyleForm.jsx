@@ -15,6 +15,7 @@ export default function PortfolioStyleForm() {
 
   const layoutNames = {
     grid: "Grille Créative",
+    terminal: "Terminal (MacOS)",
     masonry: "Développeur (Tech Minimal)",
     web: "Moderne (Web Layout)"
   };
