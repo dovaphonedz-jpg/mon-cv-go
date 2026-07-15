@@ -71,7 +71,7 @@ export default function ConseilsCV() {
 
   return (
     <>
-    <SEO title="Conseils CV" description="Découvrez nos meilleures pratiques pour créer un CV qui attire l'œil des recruteurs." url="https://www.moncvgo.com/conseils-cv" />
+    <SEO title="Conseils CV : Comment Rédiger un Curriculum Vitae Parfait" description="Découvrez nos conseils d'experts pour rédiger un CV impactant. Apprenez à optimiser votre Curriculum Vitae pour les recruteurs et les logiciels ATS." url="https://www.moncvgo.com/conseils-cv" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] relative overflow-hidden pb-20">
       
       {/* Decorative background */}
@@ -90,7 +90,7 @@ export default function ConseilsCV() {
             Guide Pratique
           </div>
           <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Conseils pour un <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-500">CV impactant</span>
+            Conseils pour rédiger un <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-500">CV professionnel impactant</span>
           </h1>
           <p className="mt-6 text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
             Découvrez nos meilleures pratiques pour créer un CV qui attire l'œil des recruteurs et passe les filtres des logiciels ATS (Applicant Tracking Systems).

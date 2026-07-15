@@ -127,7 +127,7 @@ export default function CreatePortfolio() {
 
   return (
     <>
-    <SEO title="Créateur de Portfolio" description="Créez un magnifique portfolio en ligne en quelques minutes." url="https://www.moncvgo.com/portfolio" />
+    <SEO title="Créer un Portfolio en Ligne Gratuit | Mon CV Go" description="Générez un portfolio professionnel en ligne en quelques clics. Mettez en valeur vos projets et compétences avec notre créateur de portfolio gratuit." url="https://www.moncvgo.com/portfolio" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] flex flex-col relative overflow-hidden">
       
       {/* Decorative background */}

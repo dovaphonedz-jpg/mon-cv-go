@@ -142,7 +142,7 @@ export default function CreateCV() {
 
   return (
     <>
-    <SEO title="Créateur de CV" description="Créez votre CV étape par étape avec notre éditeur en ligne gratuit." url="https://www.moncvgo.com/create" />
+    <SEO title="Créateur de CV en Ligne Gratuit : Modèles et Export PDF" description="Utilisez notre générateur de CV en ligne gratuit. Remplissez vos informations, choisissez un modèle design et téléchargez votre Curriculum Vitae en PDF instantanément." url="https://www.moncvgo.com/create" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] flex flex-col relative overflow-hidden">
       
       {/* Decorative background */}

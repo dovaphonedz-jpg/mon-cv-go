@@ -20,7 +20,7 @@ export default function Home() {
 
   return (
     <>
-    <SEO title="Accueil" />
+    <SEO title="Créer un CV Gratuit en Ligne | Modèles Professionnels" description="Créez votre CV professionnel en ligne gratuitement. Choisissez parmi nos modèles de CV premium, exportez en PDF Haute Qualité et décrochez plus d'entretiens." />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-screen overflow-hidden selection:bg-indigo-500/30">
       
       {/* HERO SECTION - Modern & Animated */}
@@ -72,17 +72,17 @@ export default function Home() {
               </motion.p>
               
               <motion.div variants={itemVariants} className="mt-10 flex flex-col sm:flex-row flex-wrap gap-4 justify-center lg:justify-start">
-                <Link to="/create" className="group relative overflow-hidden flex items-center justify-center gap-2 px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-2xl shadow-xl transition-all hover:scale-105 hover:shadow-2xl">
+                <Link to="/create" className="group relative overflow-hidden flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-2xl shadow-xl transition-all hover:scale-105 hover:shadow-2xl">
                   <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
                   <FilePlus2 className="w-5 h-5 relative z-10 group-hover:text-white" />
                   <span className="relative z-10 group-hover:text-white">Créer mon CV maintenant</span>
                   <ArrowRight className="w-4 h-4 relative z-10 group-hover:text-white group-hover:translate-x-1 transition-transform" />
                 </Link>
-                <Link to="/portfolio" className="group flex items-center justify-center gap-2 px-8 py-4 bg-white dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-slate-700 text-indigo-600 dark:text-indigo-400 font-bold rounded-2xl shadow-lg border border-indigo-100 dark:border-slate-700 transition-all hover:scale-105 hover:shadow-indigo-500/20">
+                <Link to="/portfolio" className="group flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-white dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-slate-700 text-indigo-600 dark:text-indigo-400 font-bold rounded-2xl shadow-lg border border-indigo-100 dark:border-slate-700 transition-all hover:scale-105 hover:shadow-indigo-500/20">
                   <Briefcase className="w-5 h-5 group-hover:scale-110 transition-transform" />
                   Créer un Portfolio
                 </Link>
-                <Link to="/lettre-motivation" className="group flex items-center justify-center gap-2 px-8 py-4 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 transition-all hover:scale-105">
+                <Link to="/lettre-motivation" className="group flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 transition-all hover:scale-105">
                   <PenLine className="w-5 h-5 group-hover:-rotate-12 transition-transform" />
                   Lettre de motivation
                 </Link>
@@ -171,13 +171,13 @@ export default function Home() {
       <section className="bg-white dark:bg-slate-900 py-24 border-t border-slate-200 dark:border-slate-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="prose prose-lg prose-slate dark:prose-invert mx-auto">
-            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-8">Pourquoi utiliser Mon CV Go pour créer votre Curriculum Vitae en ligne ?</h2>
+            <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-8">Pourquoi choisir Mon CV Go pour créer un CV gratuit en ligne ?</h2>
             
             <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
               La recherche d'emploi est une étape cruciale dans la vie de tout professionnel. Que vous soyez un jeune diplômé à la recherche de votre premier poste, ou un cadre expérimenté souhaitant donner un nouvel élan à votre carrière, <strong>votre Curriculum Vitae (CV) est votre passeport pour l'entretien</strong>. Mon CV Go a été pensé et développé pour vous offrir la meilleure expérience de création de CV gratuit en ligne.
             </p>
 
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-6">L'importance d'un CV moderne et optimisé ATS</h3>
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-6">L'importance d'un modèle de CV moderne et optimisé ATS</h3>
             <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
               Aujourd'hui, la majorité des grandes entreprises et cabinets de recrutement utilisent des logiciels de suivi de candidatures, appelés <strong>ATS (Applicant Tracking Systems)</strong>. Ces logiciels scannent automatiquement votre document à la recherche de mots-clés spécifiques avant même qu'un recruteur humain ne pose les yeux dessus. Nos modèles de CV ont été conçus non seulement pour être esthétiquement parfaits, mais surtout pour être lisibles et compréhensibles par ces algorithmes.
             </p>
@@ -191,7 +191,7 @@ export default function Home() {
               </ul>
             </div>
 
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-6">Plus qu'un simple générateur de CV</h3>
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-6">Plus qu'un simple générateur de CV en ligne</h3>
             <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
               Nous savons que le CV seul ne suffit parfois pas. C'est pourquoi Mon CV Go intègre également un module de création de <strong>Lettre de Motivation</strong> et un outil novateur pour générer un <strong>Portfolio visuel</strong>. Pour les métiers du web, du design, de l'architecture ou de la communication, pouvoir montrer ses réalisations concrètes en un clic est un avantage indéniable.
             </p>
@@ -200,7 +200,7 @@ export default function Home() {
               Toutes vos données restent privées et sécurisées. La génération de votre document se fait directement dans votre navigateur web, ce qui garantit que vos informations personnelles ne sont pas stockées sur des serveurs tiers de manière non sécurisée. C'est l'engagement de Mon CV Go : vous fournir un service gratuit, rapide et respectueux de votre vie privée.
             </p>
 
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-6">Comment créer votre CV en 3 étapes simples ?</h3>
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-6">Comment créer un CV professionnel en 3 étapes simples ?</h3>
             <div className="grid sm:grid-cols-3 gap-6 mb-10">
               <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
                 <div className="w-10 h-10 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 font-bold rounded-full flex items-center justify-center text-xl mb-4">1</div>
