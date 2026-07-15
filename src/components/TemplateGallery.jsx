@@ -16,13 +16,13 @@ export default function TemplateGallery() {
     { id: "siliconvalley", type: "cv", name: "CV Silicon Valley", isNew: true, path: "/create?template=siliconvalley&demo=true", color: 'blue' },
     { id: "tokyoneo", type: "cv", name: "CV Tokyo Neo", isNew: true, path: "/create?template=tokyoneo&demo=true", color: 'purple' },
     { id: "parisvogue", type: "cv", name: "CV Paris Vogue", isNew: true, path: "/create?template=parisvogue&demo=true", color: 'rose' },
-    { id: "dubailuxury", type: "cv", name: "CV Dubai Luxury", isNew: true, path: "/create?template=dubailuxury&demo=true", color: 'amber' },
+    { id: "londonelite", type: "cv", name: "CV London Elite", isNew: true, path: "/create?template=londonelite&demo=true", color: 'amber' },
     { id: "berlinbrutal", type: "cv", name: "CV Berlin Brutal", isNew: true, path: "/create?template=berlinbrutal&demo=true", color: 'red' },
-    { id: "newyork", type: "cv", name: "CV Corporate New York", isNew: false, path: "/create?template=newyork&demo=true", color: 'slate' },
+    { id: "singaporenext", type: "cv", name: "CV Singapore Next", isNew: false, path: "/create?template=singaporenext&demo=true", color: 'cyan' },
     { id: "barcelone", type: "cv", name: "CV Créatif Barcelone", isNew: false, path: "/create?template=barcelone&demo=true", color: 'orange' },
-    { id: "glassmorphism", type: "cv", name: "CV Glassmorphism", isNew: false, path: "/create?template=glassmorphism&demo=true", color: 'teal' },
-    { id: "creative", type: "cv", name: "CV Creative Agency", isNew: false, path: "/create?template=creative&demo=true", color: 'fuchsia' },
-    { id: "minimalist", type: "cv", name: "CV Minimal Pur", isNew: false, path: "/create?template=minimalist&demo=true", color: 'zinc' }
+    { id: "paris", type: "cv", name: "CV Paris Minimal", isNew: false, path: "/create?template=paris&demo=true", color: 'zinc' },
+    { id: "cairo", type: "cv", name: "CV Cairo Chronologique", isNew: false, path: "/create?template=cairo&demo=true", color: 'emerald' },
+    { id: "helsinki2", type: "cv", name: "CV Helsinki Split", isNew: false, path: "/create?template=helsinki2&demo=true", color: 'indigo' }
   ];
 
   // Duplication for seamless infinite scroll

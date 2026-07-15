@@ -537,7 +537,7 @@ export default function TemplateModern({ cvData, config }) {
             )}
             {projects.length > 0 && (
               <section className="mb-4">
-                {getSectionHeader(t.education)}
+                {getSectionHeader(t.projects)}
                 <div className={spacingClass}>
                   {projects.map((proj, idx) => (
                     <div key={idx}>
@@ -659,7 +659,7 @@ export default function TemplateModern({ cvData, config }) {
           )}
             {projects.length > 0 && (
             <section>
-              {getSectionHeader(t.education)}
+              {getSectionHeader(t.projects)}
               <div className="space-y-3 border-s-2 ms-4 ps-6" style={{ borderColor: themeColor }}>
                 {projects.map((proj, idx) => (
                   <div key={idx} className="relative">
@@ -818,7 +818,7 @@ export default function TemplateModern({ cvData, config }) {
           )}
             {projects.length > 0 && (
             <section className="mb-5">
-              {getSectionHeader(t.education)}
+              {getSectionHeader(t.projects)}
               <div className={`${spacingClass} relative border-s-2 ms-3 ps-6`} style={{ borderColor: themeColor }}>
                 {projects.map((proj, idx) => (
                   <div key={idx} className="relative">
@@ -902,7 +902,7 @@ export default function TemplateModern({ cvData, config }) {
           )}
             {projects.length > 0 && (
             <section className="mb-4">
-              {getSectionHeader(t.education)}
+              {getSectionHeader(t.projects)}
               <div className={spacingClass}>
                 {projects.map((proj, idx) => (
                   <div key={idx}>

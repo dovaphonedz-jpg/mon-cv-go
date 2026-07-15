@@ -6,7 +6,6 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { useReactToPrint } from 'react-to-print';
 import SEO from '../components/SEO';
 
-import { exportToWord } from '../utils/exportWord';
 import { exportToPowerPoint } from '../utils/exportPowerPoint';
 import { exportToHTML } from '../utils/exportHTML';
 
@@ -301,11 +300,7 @@ export default function CreatePortfolio() {
                 Styles & Modèles
               </button>
             </div>
-            <div className="flex gap-2">
-              <button onClick={() => exportToWord(cvData)} className="flex items-center gap-2 px-3 py-2.5 bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/30 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-400 font-bold rounded-xl text-sm transition-all" title="Exporter en Word">
-                <FileText className="w-4 h-4" />
-                <span className="hidden xl:inline">Word</span>
-              </button>
+            <div className="flex gap-2 flex-wrap">
               <button onClick={() => exportToPowerPoint(cvData)} className="flex items-center gap-2 px-3 py-2.5 bg-orange-100 hover:bg-orange-200 dark:bg-orange-900/30 dark:hover:bg-orange-900/50 text-orange-700 dark:text-orange-400 font-bold rounded-xl text-sm transition-all" title="Exporter en PowerPoint">
                 <Presentation className="w-4 h-4" />
                 <span className="hidden xl:inline">PPTX</span>

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useLocation } from 'react-router-dom';
 import { useResume } from '../context/ResumeContext';
-import { UploadCloud, Sparkles, Trash2, ArrowLeft, ArrowRight, Eye, Download, ChevronRight, Save, FileText, Presentation, Palette, X } from 'lucide-react';
+import { UploadCloud, Sparkles, Trash2, ArrowLeft, ArrowRight, Eye, Download, ChevronRight, Save, FileText, Presentation, Palette, X, Info } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useReactToPrint } from 'react-to-print';
 import SEO from '../components/SEO';
@@ -307,7 +307,7 @@ export default function CreateCV() {
               </button>
             </div>
             <div className="flex gap-2">
-              <button onClick={() => exportToWord(cvData)} className="flex items-center gap-2 px-3 py-2.5 bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/30 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-400 font-bold rounded-xl text-sm transition-all" title="Exporter en Word">
+              <button onClick={() => exportToWord(cvData, config, printRef)} className="flex items-center gap-2 px-3 py-2.5 bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/30 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-400 font-bold rounded-xl text-sm transition-all" title="Exporter en Word">
                 <FileText className="w-4 h-4" />
                 <span className="hidden xl:inline">Word</span>
               </button>
@@ -324,6 +324,14 @@ export default function CreateCV() {
                 <span className="hidden sm:inline">PDF</span>
               </button>
             </div>
+          </div>
+
+          <div className="bg-blue-50/80 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/50 rounded-xl p-3 flex items-start gap-2 shadow-sm">
+            <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
+            <p className="text-xs text-blue-800 dark:text-blue-300 leading-relaxed">
+              <strong className="font-semibold">100% Privé :</strong> Vos données restent exclusivement dans ce navigateur. 
+              <span className="opacity-90"> Attention, si vous videz votre cache, vous perdrez votre CV en cours. Pensez à l'exporter régulièrement !</span>
+            </p>
           </div>
 
           <div className="cv-preview-container flex-grow rounded-3xl border border-slate-200 dark:border-slate-800 relative z-10 shadow-inner overflow-hidden">

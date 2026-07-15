@@ -1,187 +1,317 @@
-import { Document, Packer, Paragraph, TextRun, AlignmentType } from 'docx';
+import { Document, Packer, Paragraph, TextRun, HeadingLevel, AlignmentType, BorderStyle } from 'docx';
 import { saveAs } from 'file-saver';
 
-export const exportToWord = async (cvData) => {
-  const { personal = {}, summary = "", experiences = [], education = [], skills = [], projects = [] } = cvData;
+export const exportToWord = async (cvData, config, elementRef) => {
+  // Ensure we have data
+  if (!cvData || !cvData.personal) {
+    alert("Erreur: Les données du CV sont manquantes.");
+    return;
+  }
+
+  const { personal, summary, experiences, education, skills, projects, languages } = cvData;
+
+  // Map tailwind colors to Hex for Word
+  const colorMap = {
+    blue: '2563eb', emerald: '059669', violet: '7c3aed', rose: 'e11d48',
+    amber: 'd97706', red: 'dc2626', slate: '475569', orange: 'ea580c',
+    teal: '0d9488', fuchsia: 'c026d3', zinc: '3f3f46', sky: '0284c7',
+    indigo: '4f46e5', purple: '9333ea', cyan: '0891b2'
+  };
+  const themeHex = config?.color ? (colorMap[config.color] || '000000') : '000000';
+
+  // Decode photo if it's a base64 string (user uploaded)
+  let photoBytes = null;
+  if (personal.photo && personal.photo.startsWith('data:image/')) {
+    try {
+      const base64Data = personal.photo.replace(/^data:image\/(png|jpeg|jpg);base64,/, "");
+      const binaryString = window.atob(base64Data);
+      const len = binaryString.length;
+      photoBytes = new Uint8Array(len);
+      for (let i = 0; i < len; i++) {
+        photoBytes[i] = binaryString.charCodeAt(i);
+      }
+    } catch (e) {
+      console.error("Impossible de décoder la photo pour Word", e);
+    }
+  }
+
+  // Helper to create section headings
+  const createHeading = (text) => {
+    return new Paragraph({
+      text: text.toUpperCase(),
+      heading: HeadingLevel.HEADING_2,
+      spacing: { before: 400, after: 120 },
+      border: {
+        bottom: {
+          color: themeHex,
+          space: 1,
+          style: BorderStyle.SINGLE,
+          size: 12,
+        },
+      },
+    });
+  };
 
   const children = [];
 
-  // Helper to safely add text
-  const safeText = (text) => text || "";
-
-  // Header / Personal Info
-  if (personal.name) {
-    children.push(
-      new Paragraph({
-        children: [new TextRun({ text: safeText(personal.name), size: 36, bold: true })],
-        alignment: AlignmentType.CENTER,
+  // --- HEADER: NAME & TITLE ---
+  const headerChildren = [];
+  
+  if (photoBytes) {
+    headerChildren.push(
+      new ImageRun({
+        data: photoBytes,
+        type: 'png', // docx needs a hint
+        transformation: {
+          width: 100,
+          height: 100,
+        },
       })
     );
   }
+  
+  headerChildren.push(
+    new TextRun({ 
+      text: personal.name || "Nom", 
+      bold: true, 
+      size: 48, // 24pt
+      color: themeHex 
+    })
+  );
+
+  children.push(
+    new Paragraph({
+      children: headerChildren,
+      alignment: AlignmentType.CENTER,
+      spacing: { after: 100 },
+    })
+  );
 
   if (personal.title) {
     children.push(
       new Paragraph({
-        children: [new TextRun({ text: safeText(personal.title), size: 28, color: "555555" })],
+        text: personal.title.toUpperCase(),
+        heading: HeadingLevel.HEADING_3,
         alignment: AlignmentType.CENTER,
+        spacing: { after: 200 },
       })
     );
   }
 
-  const contactInfo = [personal.email, personal.phone, personal.location].filter(Boolean).join(' | ');
-  if (contactInfo) {
+  // --- CONTACT INFO ---
+  const contactInfo = [];
+  if (personal.email) contactInfo.push(personal.email);
+  if (personal.phone) contactInfo.push(personal.phone);
+  if (personal.address) contactInfo.push(personal.address);
+  if (personal.website) contactInfo.push(personal.website);
+
+  if (contactInfo.length > 0) {
     children.push(
       new Paragraph({
-        children: [new TextRun({ text: contactInfo, size: 24, color: "888888" })],
+        children: [
+          new TextRun({
+            text: contactInfo.join("  |  "),
+            color: "555555",
+            size: 20, // 10pt
+          }),
+        ],
         alignment: AlignmentType.CENTER,
+        spacing: { after: 400 },
       })
     );
   }
 
-  children.push(new Paragraph({ text: "" }));
-
-  // Summary
+  // --- SUMMARY ---
   if (summary) {
+    children.push(createHeading("Profil"));
     children.push(
       new Paragraph({
-        children: [new TextRun({ text: "Résumé Professionnel", size: 28, bold: true })],
+        text: summary,
+        spacing: { after: 200 },
+        alignment: AlignmentType.JUSTIFIED,
       })
     );
-    children.push(
-      new Paragraph({
-        children: [new TextRun({ text: safeText(summary), size: 24 })],
-      })
-    );
-    children.push(new Paragraph({ text: "" }));
   }
 
-  // Experience
+  // --- EXPERIENCES ---
   if (experiences && experiences.length > 0) {
-    children.push(
-      new Paragraph({
-        children: [new TextRun({ text: "Expériences Professionnelles", size: 28, bold: true })],
-      })
-    );
-
+    children.push(createHeading("Expériences Professionnelles"));
+    
     experiences.forEach((exp) => {
+      // Role & Company
       children.push(
         new Paragraph({
           children: [
-            new TextRun({ text: safeText(exp.title), bold: true, size: 24 }),
-            new TextRun({ text: exp.company ? ` - ${exp.company}` : "", size: 24 }),
+            new TextRun({ text: exp.role || "", bold: true, size: 24 }),
+            new TextRun({ text: ` — ${exp.company || ""}`, italics: true, size: 22 }),
           ],
+          spacing: { before: 200, after: 50 },
         })
       );
-      children.push(
-        new Paragraph({
-          children: [new TextRun({ text: `${safeText(exp.startDate)} - ${safeText(exp.endDate)}`, italics: true, size: 20 })],
-        })
-      );
-      if (exp.description) {
+      
+      // Dates
+      if (exp.start || exp.end) {
         children.push(
           new Paragraph({
-            children: [new TextRun({ text: safeText(exp.description), size: 24 })],
+            children: [
+              new TextRun({ text: `${exp.start || ""} - ${exp.end || ""}`, color: "666666", size: 20 }),
+            ],
+            spacing: { after: 100 },
           })
         );
       }
-      children.push(new Paragraph({ text: "" }));
+      
+      // Description (bullet points if lines start with -, • or just plain text)
+      if (exp.desc) {
+        const lines = exp.desc.split('\n');
+        lines.forEach(line => {
+          if (line.trim().length > 0) {
+            children.push(
+              new Paragraph({
+                text: line.replace(/^[•\-\*]\s*/, ""),
+                bullet: { level: 0 },
+                spacing: { after: 50 },
+                alignment: AlignmentType.JUSTIFIED,
+              })
+            );
+          }
+        });
+      }
     });
   }
 
-  // Education
+  // --- EDUCATION ---
   if (education && education.length > 0) {
-    children.push(
-      new Paragraph({
-        children: [new TextRun({ text: "Formation", size: 28, bold: true })],
-      })
-    );
-
+    children.push(createHeading("Formations"));
+    
     education.forEach((edu) => {
       children.push(
         new Paragraph({
           children: [
-            new TextRun({ text: safeText(edu.degree), bold: true, size: 24 }),
-            new TextRun({ text: edu.school ? ` - ${edu.school}` : "", size: 24 }),
+            new TextRun({ text: edu.degree || "", bold: true, size: 24 }),
           ],
+          spacing: { before: 200, after: 50 },
         })
       );
-      children.push(
-        new Paragraph({
-          children: [new TextRun({ text: `${safeText(edu.startDate)} - ${safeText(edu.endDate)}`, italics: true, size: 20 })],
-        })
-      );
-      if (edu.description) {
-        children.push(
-          new Paragraph({
-            children: [new TextRun({ text: safeText(edu.description), size: 24 })],
-          })
-        );
-      }
-      children.push(new Paragraph({ text: "" }));
-    });
-  }
-
-  // Skills
-  if (skills && skills.length > 0) {
-    children.push(
-      new Paragraph({
-        children: [new TextRun({ text: "Compétences", size: 28, bold: true })],
-      })
-    );
-
-    skills.forEach((skill) => {
-      children.push(
-        new Paragraph({
-          children: [new TextRun({ text: `• ${safeText(skill.name)} - ${safeText(skill.level)}`, size: 24 })],
-        })
-      );
-    });
-  }
-
-  // Projects
-  if (projects && projects.length > 0) {
-    children.push(
-      new Paragraph({
-        children: [new TextRun({ text: "Projets & Portfolio", size: 28, bold: true })],
-      })
-    );
-
-    projects.forEach((proj) => {
+      
       children.push(
         new Paragraph({
           children: [
-            new TextRun({ text: safeText(proj.title), bold: true, size: 24 }),
-            new TextRun({ text: proj.link ? ` - ${proj.link}` : "", size: 20, color: "0000FF" }),
+            new TextRun({ text: edu.school || "", italics: true, size: 22 }),
+            new TextRun({ text: `  |  ${edu.start || ""} - ${edu.end || ""}`, color: "666666", size: 20 }),
           ],
+          spacing: { after: 50 },
         })
       );
-      if (proj.techStack) {
+      
+      if (edu.desc) {
         children.push(
           new Paragraph({
-            children: [new TextRun({ text: safeText(proj.techStack), italics: true, size: 20 })],
+            text: edu.desc,
+            spacing: { after: 100 },
           })
         );
       }
-      if (proj.description) {
-        children.push(
-          new Paragraph({
-            children: [new TextRun({ text: safeText(proj.description), size: 24 })],
-          })
-        );
-      }
-      children.push(new Paragraph({ text: "" }));
     });
   }
 
+  // --- SKILLS ---
+  if (skills && skills.length > 0) {
+    children.push(createHeading("Compétences"));
+    
+    // Skills can be a string or an array depending on how it's saved.
+    // In our mock data, it's often an array of objects or strings, or a simple string.
+    let skillsText = "";
+    if (typeof skills === "string") {
+      skillsText = skills;
+    } else if (Array.isArray(skills)) {
+      skillsText = skills.map(s => typeof s === 'string' ? s : s.name).join(" • ");
+    }
+    
+    children.push(
+      new Paragraph({
+        text: skillsText,
+        spacing: { after: 200 },
+      })
+    );
+  }
+
+  // --- LANGUAGES ---
+  if (languages && languages.length > 0) {
+    children.push(createHeading("Langues"));
+    
+    languages.forEach((lang) => {
+      children.push(
+        new Paragraph({
+          children: [
+            new TextRun({ text: lang.name || "", bold: true }),
+            new TextRun({ text: lang.level ? ` : ${lang.level}` : "" }),
+          ],
+          bullet: { level: 0 },
+        })
+      );
+    });
+  }
+
+  // Generate the Document
   const doc = new Document({
+    creator: "Mon CV Go",
+    title: `CV de ${personal.name || "Utilisateur"}`,
+    description: "CV Généré par Mon CV Go",
+    styles: {
+      default: {
+        document: {
+          run: {
+            font: "Arial",
+            size: 22, // 11pt
+            color: "000000",
+          },
+          paragraph: {
+            spacing: { line: 276 },
+          }
+        },
+        title: {
+          run: {
+            font: "Arial",
+            size: 48, // 24pt
+            bold: true,
+            color: "111111",
+          },
+        },
+        heading2: {
+          run: {
+            font: "Arial",
+            size: 32, // 16pt
+            bold: true,
+            color: "333333",
+          },
+        },
+        heading3: {
+          run: {
+            font: "Arial",
+            size: 28, // 14pt
+            color: "555555",
+          },
+        }
+      }
+    },
     sections: [
       {
-        properties: {},
+        properties: {
+          page: {
+            margin: { top: 1000, right: 1000, bottom: 1000, left: 1000 },
+          },
+        },
         children: children,
       },
     ],
   });
 
-  const blob = await Packer.toBlob(doc);
-  saveAs(blob, personal.name ? `CV_${personal.name.replace(/\s+/g, '_')}.docx` : "Mon_CV.docx");
+  try {
+    const blob = await Packer.toBlob(doc);
+    saveAs(blob, `CV_${(personal.name || "Mon_CV").replace(/\s+/g, '_')}.docx`);
+  } catch (error) {
+    console.error("Erreur lors de l'exportation Word:", error);
+    alert(`Erreur de génération Word : ${error.message || error}`);
+  }
 };

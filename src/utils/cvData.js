@@ -6,139 +6,36 @@ export const portfolioTemplates = [
 ];
 
 export const templates100 = [
-  // Ultra-Moderne (Nouveau!)
-  { id: "siliconvalley", name: "Modèle Silicon Valley (Glassmorphism)", layout: "glassmorphism", style: "solid" },
-  { id: "tokyoneo", name: "Modèle Tokyo Neo (Cyberpunk / Neon)", layout: "neon", style: "bordered" },
-  { id: "berlinbrutal", name: "Modèle Berlin (Néo-Brutalisme)", layout: "neobrutalism", style: "solid" },
-  { id: "londonelite", name: "Modèle London Elite (Dark Minimal)", layout: "dark-minimal", style: "soft-shadow" },
-  { id: "parisvogue", name: "Modèle Paris Vogue (Typographique)", layout: "typographic", style: "underlined" },
-  { id: "nycvanguard", name: "Modèle NYC Vanguard (Avant-Garde)", layout: "glassmorphism", style: "bordered" },
-  { id: "seoultech", name: "Modèle Seoul Tech (Minimalisme Tech)", layout: "neon", style: "soft-shadow" },
-  { id: "dubailuxury", name: "Modèle Dubai Luxury (Premium Gold)", layout: "dark-minimal", style: "bordered" },
-  { id: "singaporenext", name: "Modèle Singapore Next (Pro Gradient)", layout: "typographic", style: "solid" },
-  { id: "amsterdamart", name: "Modèle Amsterdam Art (Créatif Abstrait)", layout: "neobrutalism", style: "compact-badge" },
+  // 1. Ultra-Moderne & Avant-Garde
+  { id: "siliconvalley", name: "Silicon Valley (Glassmorphism)", layout: "glassmorphism", style: "solid" },
+  { id: "tokyoneo", name: "Tokyo Neo (Cyberpunk / Neon)", layout: "neon", style: "bordered" },
+  { id: "berlinbrutal", name: "Berlin (Néo-Brutalisme)", layout: "neobrutalism", style: "solid" },
+  { id: "londonelite", name: "London Elite (Dark Minimal)", layout: "dark-minimal", style: "soft-shadow" },
+  { id: "parisvogue", name: "Paris Vogue (Typographique)", layout: "typographic", style: "underlined" },
 
-  // Minimaliste
-  { id: "paris", name: "Modèle Paris (Minimaliste Pur)", layout: "minimalist", style: "solid" },
-  { id: "londres", name: "Modèle Londres (Minimaliste Encadré)", layout: "minimalist", style: "bordered" },
-  { id: "milan", name: "Modèle Milan (Minimaliste Souligné)", layout: "minimalist", style: "underlined" },
-  { id: "geneve", name: "Modèle Genève (Minimaliste Moderne)", layout: "minimalist", style: "compact-badge" },
-  { id: "vienne", name: "Modèle Vienne (Minimaliste Ombres)", layout: "minimalist", style: "soft-shadow" },
-  // Classique
-  { id: "newyork", name: "Modèle New York (Classique Pro)", layout: "classic", style: "solid" },
-  { id: "chicago", name: "Modèle Chicago (Classique Encadré)", layout: "classic", style: "bordered" },
-  { id: "boston", name: "Modèle Boston (Classique Souligné)", layout: "classic", style: "underlined" },
-  { id: "toronto", name: "Modèle Toronto (Classique Badge)", layout: "classic", style: "compact-badge" },
-  { id: "washington", name: "Modèle Washington (Classique Ombres)", layout: "classic", style: "soft-shadow" },
-  // Créatif
-  { id: "barcelone", name: "Modèle Barcelone (Créatif Sidebar)", layout: "creative", style: "solid" },
-  { id: "madrid", name: "Modèle Madrid (Créatif Encadré)", layout: "creative", style: "bordered" },
-  { id: "rome", name: "Modèle Rome (Créatif Souligné)", layout: "creative", style: "underlined" },
-  { id: "lisbonne", name: "Modèle Lisbonne (Créatif Badge)", layout: "creative", style: "compact-badge" },
-  { id: "berlin", name: "Modèle Berlin (Créatif Ombres)", layout: "creative", style: "soft-shadow" },
-  // Grille
-  { id: "tokyo", name: "Modèle Tokyo (Design Grille)", layout: "grid", style: "solid" },
-  { id: "seoul", name: "Modèle Séoul (Grille Encadrée)", layout: "grid", style: "bordered" },
-  { id: "singapour", name: "Modèle Singapour (Grille Soulignée)", layout: "grid", style: "underlined" },
-  { id: "sydney", name: "Modèle Sydney (Grille Badge)", layout: "grid", style: "compact-badge" },
-  { id: "dubai", name: "Modèle Dubaï (Grille Ombres)", layout: "grid", style: "soft-shadow" },
-  // Exécutif
-  { id: "bruxelles", name: "Modèle Bruxelles (Exécutif Lignes)", layout: "executive", style: "solid" },
-  { id: "stockholm", name: "Modèle Stockholm (Exécutif Encadré)", layout: "executive", style: "bordered" },
-  { id: "copenhague", name: "Modèle Copenhague (Exécutif Souligné)", layout: "executive", style: "underlined" },
-  { id: "oslo", name: "Modèle Oslo (Exécutif Badge)", layout: "executive", style: "compact-badge" },
-  { id: "helsinki", name: "Modèle Helsinki (Exécutif Ombres)", layout: "executive", style: "soft-shadow" },
-  // Bannière
-  { id: "amsterdam", name: "Modèle Amsterdam (Bannière Solide)", layout: "banner", style: "solid" },
-  { id: "prague", name: "Modèle Prague (Bannière Encadrée)", layout: "banner", style: "bordered" },
-  { id: "budapest", name: "Modèle Budapest (Bannière Soulignée)", layout: "banner", style: "underlined" },
-  { id: "athenes", name: "Modèle Athènes (Bannière Badge)", layout: "banner", style: "compact-badge" },
-  { id: "varsovie", name: "Modèle Varsovie (Bannière Ombres)", layout: "banner", style: "soft-shadow" },
-  // Élégant
-  { id: "florence", name: "Modèle Florence (Élégant Serif)", layout: "elegant", style: "solid" },
-  { id: "venise", name: "Modèle Venise (Élégant Encadré)", layout: "elegant", style: "bordered" },
-  { id: "seville", name: "Modèle Séville (Élégant Souligné)", layout: "elegant", style: "underlined" },
-  { id: "porto", name: "Modèle Porto (Élégant Badge)", layout: "elegant", style: "compact-badge" },
-  { id: "nice", name: "Modèle Nice (Élégant Ombres)", layout: "elegant", style: "soft-shadow" },
-  // Moderne
-  { id: "sanfrancisco", name: "Modèle Moderne (San Francisco)", layout: "modern", style: "solid" },
-  { id: "seattle", name: "Modèle Moderne (Seattle)", layout: "modern", style: "bordered" },
-  { id: "austin", name: "Modèle Moderne (Austin)", layout: "modern", style: "underlined" },
-  { id: "denver", name: "Modèle Moderne (Denver)", layout: "modern", style: "compact-badge" },
-  { id: "miami", name: "Modèle Moderne (Miami)", layout: "modern", style: "soft-shadow" },
-  // Chronologique
-  { id: "cairo", name: "Modèle Chronologique (Cairo)", layout: "timeline", style: "solid" },
-  { id: "capetown", name: "Modèle Chronologique (Cape Town)", layout: "timeline", style: "bordered" },
-  { id: "nairobi", name: "Modèle Chronologique (Nairobi)", layout: "timeline", style: "underlined" },
-  { id: "lagos", name: "Modèle Chronologique (Lagos)", layout: "timeline", style: "compact-badge" },
-  { id: "accra", name: "Modèle Chronologique (Accra)", layout: "timeline", style: "soft-shadow" },
-  // Sidebar Droite
-  { id: "melbourne", name: "Modèle Sidebar Droite (Melbourne)", layout: "sidebarRight", style: "solid" },
-  { id: "brisbane", name: "Modèle Sidebar Droite (Brisbane)", layout: "sidebarRight", style: "bordered" },
-  { id: "perth", name: "Modèle Sidebar Droite (Perth)", layout: "sidebarRight", style: "underlined" },
-  { id: "adelaide", name: "Modèle Sidebar Droite (Adelaide)", layout: "sidebarRight", style: "compact-badge" },
-  { id: "hobart", name: "Modèle Sidebar Droite (Hobart)", layout: "sidebarRight", style: "soft-shadow" },
-  // Split 50/50
-  { id: "helsinki2", name: "Modèle 50/50 Split (Helsinki)", layout: "split", style: "solid" },
-  { id: "oslo2", name: "Modèle 50/50 Split (Oslo)", layout: "split", style: "bordered" },
-  { id: "copenhagen", name: "Modèle 50/50 Split (Copenhagen)", layout: "split", style: "underlined" },
-  { id: "stockholm2", name: "Modèle 50/50 Split (Stockholm)", layout: "split", style: "compact-badge" },
-  { id: "reykjavik", name: "Modèle 50/50 Split (Reykjavik)", layout: "split", style: "soft-shadow" },
-  // Centré
-  { id: "istanbul", name: "Modèle Centré (Istanbul)", layout: "centered", style: "solid" },
-  { id: "athens", name: "Modèle Centré (Athens)", layout: "centered", style: "bordered" },
-  { id: "rome2", name: "Modèle Centré (Rome)", layout: "centered", style: "underlined" },
-  { id: "naples", name: "Modèle Centré (Naples)", layout: "centered", style: "compact-badge" },
-  { id: "milan2", name: "Modèle Centré (Milan)", layout: "centered", style: "soft-shadow" },
-  // Ultra Compact
-  { id: "moscow", name: "Modèle Ultra-Compact (Moscow)", layout: "compact", style: "solid" },
-  { id: "stpetersburg", name: "Modèle Ultra-Compact (St Petersburg)", layout: "compact", style: "bordered" },
-  { id: "kyiv", name: "Modèle Ultra-Compact (Kyiv)", layout: "compact", style: "underlined" },
-  { id: "warsaw", name: "Modèle Ultra-Compact (Warsaw)", layout: "compact", style: "compact-badge" },
-  { id: "krakow", name: "Modèle Ultra-Compact (Krakow)", layout: "compact", style: "soft-shadow" },
-  // Portfolio
-  { id: "mumbai", name: "Modèle Portfolio (Mumbai)", layout: "portfolio", style: "solid" },
-  { id: "delhi", name: "Modèle Portfolio (Delhi)", layout: "portfolio", style: "bordered" },
-  { id: "bangalore", name: "Modèle Portfolio (Bangalore)", layout: "portfolio", style: "underlined" },
-  { id: "chennai", name: "Modèle Portfolio (Chennai)", layout: "portfolio", style: "compact-badge" },
-  { id: "kolkata", name: "Modèle Portfolio (Kolkata)", layout: "portfolio", style: "soft-shadow" },
-  // Corporate
-  { id: "frankfurt", name: "Modèle Corporate (Frankfurt)", layout: "corporate", style: "solid" },
-  { id: "munich", name: "Modèle Corporate (Munich)", layout: "corporate", style: "bordered" },
-  { id: "zurich", name: "Modèle Corporate (Zurich)", layout: "corporate", style: "underlined" },
-  { id: "vienna", name: "Modèle Corporate (Vienna)", layout: "corporate", style: "compact-badge" },
-  { id: "stuttgart", name: "Modèle Corporate (Stuttgart)", layout: "corporate", style: "soft-shadow" },
-  // Startup
-  { id: "telaviv", name: "Modèle Startup (Tel Aviv)", layout: "startup", style: "solid" },
-  { id: "bangalore2", name: "Modèle Startup (Bangalore)", layout: "startup", style: "bordered" },
-  { id: "taipei", name: "Modèle Startup (Taipei)", layout: "startup", style: "underlined" },
-  { id: "shenzhen", name: "Modèle Startup (Shenzhen)", layout: "startup", style: "compact-badge" },
-  { id: "jakarta", name: "Modèle Startup (Jakarta)", layout: "startup", style: "soft-shadow" },
-  // Academic
-  { id: "oxford", name: "Modèle Académique (Oxford)", layout: "academic", style: "solid" },
-  { id: "cambridge", name: "Modèle Académique (Cambridge)", layout: "academic", style: "bordered" },
-  { id: "harvard", name: "Modèle Académique (Harvard)", layout: "academic", style: "underlined" },
-  { id: "yale", name: "Modèle Académique (Yale)", layout: "academic", style: "compact-badge" },
-  { id: "princeton", name: "Modèle Académique (Princeton)", layout: "academic", style: "soft-shadow" },
-  // Infographic
-  { id: "saopaulo", name: "Modèle Infographie (Sao Paulo)", layout: "infographic", style: "solid" },
-  { id: "rio", name: "Modèle Infographie (Rio)", layout: "infographic", style: "bordered" },
-  { id: "buenosaires", name: "Modèle Infographie (Buenos Aires)", layout: "infographic", style: "underlined" },
-  { id: "santiago", name: "Modèle Infographie (Santiago)", layout: "infographic", style: "compact-badge" },
-  { id: "lima", name: "Modèle Infographie (Lima)", layout: "infographic", style: "soft-shadow" },
-  // Gradient
-  { id: "montreal", name: "Modèle Gradient (Montreal)", layout: "gradient", style: "solid" },
-  { id: "vancouver", name: "Modèle Gradient (Vancouver)", layout: "gradient", style: "bordered" },
-  { id: "calgary", name: "Modèle Gradient (Calgary)", layout: "gradient", style: "underlined" },
-  { id: "ottawa", name: "Modèle Gradient (Ottawa)", layout: "gradient", style: "compact-badge" },
-  { id: "quebec", name: "Modèle Gradient (Quebec)", layout: "gradient", style: "soft-shadow" },
-  // Hybrid
-  { id: "beijing", name: "Modèle Hybride (Beijing)", layout: "hybrid", style: "solid" },
-  { id: "shanghai", name: "Modèle Hybride (Shanghai)", layout: "hybrid", style: "bordered" },
-  { id: "guangzhou", name: "Modèle Hybride (Guangzhou)", layout: "hybrid", style: "underlined" },
-  { id: "shenzhen2", name: "Modèle Hybride (Shenzhen)", layout: "hybrid", style: "compact-badge" },
-  { id: "chengdu", name: "Modèle Hybride (Chengdu)", layout: "hybrid", style: "soft-shadow" },
+  // 2. Bannières & Gradients
+  { id: "singaporenext", name: "Singapore Next (Gradient Pro)", layout: "gradient", style: "solid" },
+  { id: "amsterdam", name: "Amsterdam (Bannière Solide)", layout: "banner", style: "bordered" },
+  { id: "beijing", name: "Beijing (Hybride Header)", layout: "hybrid", style: "soft-shadow" },
+
+  // 3. Sidebars (Colonnes)
+  { id: "barcelone", name: "Barcelone (Sidebar Gauche 1/3)", layout: "creative", style: "solid" },
+  { id: "melbourne", name: "Melbourne (Sidebar Droite 1/3)", layout: "sidebarRight", style: "compact-badge" },
+  { id: "helsinki2", name: "Helsinki (Split 50/50)", layout: "split", style: "bordered" },
+  { id: "mumbai", name: "Mumbai (Portfolio Style)", layout: "portfolio", style: "soft-shadow" },
+
+  // 4. Standards & Professionnels
+  { id: "cairo", name: "Cairo (Chronologique Lignes)", layout: "timeline", style: "solid" },
+  { id: "sanfrancisco", name: "San Francisco (Moderne Épuré)", layout: "modern", style: "underlined" },
+  { id: "oxford", name: "Oxford (Académique Rigoureux)", layout: "academic", style: "bordered" },
+  { id: "istanbul", name: "Istanbul (Centré Élégant)", layout: "centered", style: "compact-badge" },
+  
+  // 5. Minimalistes (Classiques)
+  { id: "paris", name: "Paris (Minimaliste Pur)", layout: "minimalist", style: "solid" },
+  { id: "newyork", name: "New York (Classique Encadré)", layout: "classic", style: "bordered" },
+  { id: "geneve", name: "Genève (Minimaliste Badge)", layout: "minimalist", style: "compact-badge" }
 ];
+
 
 export const demoData = {
   fr: {
