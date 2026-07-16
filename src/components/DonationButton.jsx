@@ -35,9 +35,9 @@ const DonationButton = () => {
         window.paypal.Buttons({
           style: {
             layout: 'horizontal',
-            color: 'blue',
+            color: 'gold',
             shape: 'pill',
-            label: 'donate',
+            label: 'paypal',
             height: 45
           },
           createOrder: (data, actions) => {
