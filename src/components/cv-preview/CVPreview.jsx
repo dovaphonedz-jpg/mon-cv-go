@@ -16,7 +16,7 @@ const CVPreview = forwardRef((props, ref) => {
     const observer = new ResizeObserver((entries) => {
       for (let entry of entries) {
         let availableWidth = entry.contentRect.width;
-        if (availableWidth <= 0) {
+        if (availableWidth <= 0 && containerRef.current) {
           availableWidth = containerRef.current.parentElement.clientWidth;
         }
         availableWidth -= 32; // padding
