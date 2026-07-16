@@ -17,6 +17,7 @@ import EducationForm from '../components/cv-forms/EducationForm';
 import SkillsForm from '../components/cv-forms/SkillsForm';
 import SummaryForm from '../components/cv-forms/SummaryForm';
 import ProjectsForm from '../components/cv-forms/ProjectsForm';
+import DonationButton from '../components/DonationButton';
 
 const STEPS = [
   { id: 'style', label: 'Modèle & Style' },
@@ -282,6 +283,9 @@ export default function CreateCV() {
                 )}
               </div>
             </div>
+          </div>
+          <div className="mt-4">
+            <DonationButton />
           </div>
         </motion.section>
 

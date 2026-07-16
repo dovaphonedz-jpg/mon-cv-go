@@ -3,6 +3,7 @@ import { Sparkles, Trash2, Download, PenLine, Eye } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useReactToPrint } from 'react-to-print';
 import SEO from '../components/SEO';
+import DonationButton from '../components/DonationButton';
 
 export default function CoverLetter() {
   const [language, setLanguage] = useState('fr');
@@ -301,6 +302,9 @@ export default function CoverLetter() {
                 </div>
               </section>
             </div>
+          </div>
+          <div className="mt-4">
+            <DonationButton />
           </div>
         </motion.section>
 
