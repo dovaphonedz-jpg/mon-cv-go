@@ -17,6 +17,7 @@ import SkillsForm from '../components/cv-forms/SkillsForm';
 import SummaryForm from '../components/cv-forms/SummaryForm';
 import ProjectsForm from '../components/cv-forms/ProjectsForm';
 import DonationButton from '../components/DonationButton';
+import ThankYouModal from '../components/ThankYouModal';
 
 const STEPS = [
   { id: 'style', label: 'Modèle & Style' },
@@ -31,6 +32,7 @@ export default function CreatePortfolio() {
   
   const [activeStepIdx, setActiveStepIdx] = useState(0);
   const [isStyleModalOpen, setIsStyleModalOpen] = useState(false);
+  const [isThankYouModalOpen, setIsThankYouModalOpen] = useState(false);
   const fileInputRef = useRef(null);
   const printRef = useRef(null);
   const location = useLocation();
@@ -249,7 +251,7 @@ export default function CreatePortfolio() {
                 {activeStepIdx === STEPS.length - 1 ? (
                   <div className="flex gap-2">
                     <button 
-                      onClick={() => exportToHTML(cvData, config)} 
+                      onClick={() => { setIsThankYouModalOpen(true); exportToHTML(cvData, config); }} 
                       className="flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-white bg-blue-600 hover:bg-blue-700 rounded-xl shadow-lg shadow-blue-600/20 transition-all hover:-translate-y-0.5 group"
                       title="Télécharger Code HTML/CSS"
                     >
@@ -261,7 +263,8 @@ export default function CreatePortfolio() {
                     <button 
                       onClick={() => {
                          triggerConfetti();
-                         handlePrint();
+                         setIsThankYouModalOpen(true);
+                         setTimeout(() => handlePrint(), 500);
                          if (window.innerWidth < 1024) setShowPreviewMobile(true);
                          else {
                            const previewEl = document.querySelector('.cv-preview-container');
@@ -308,7 +311,7 @@ export default function CreatePortfolio() {
               </button>
             </div>
             <div className="flex gap-2 flex-wrap">
-              <button onClick={() => exportToPowerPoint(cvData)} className="flex items-center gap-2 px-3 py-2.5 bg-orange-100 hover:bg-orange-200 dark:bg-orange-900/30 dark:hover:bg-orange-900/50 text-orange-700 dark:text-orange-400 font-bold rounded-xl text-sm transition-all" title="Exporter en PowerPoint">
+              <button onClick={() => { setIsThankYouModalOpen(true); exportToPowerPoint(cvData); }} className="flex items-center gap-2 px-3 py-2.5 bg-orange-100 hover:bg-orange-200 dark:bg-orange-900/30 dark:hover:bg-orange-900/50 text-orange-700 dark:text-orange-400 font-bold rounded-xl text-sm transition-all" title="Exporter en PowerPoint">
                 <Presentation className="w-4 h-4" />
                 <span className="hidden xl:inline">PPTX</span>
               </button>
@@ -316,7 +319,7 @@ export default function CreatePortfolio() {
                 <UploadCloud className="w-4 h-4" />
                 <span className="hidden sm:inline">{isImporting ? "Analyse..." : "Importer"}</span>
               </button>
-              <button onClick={() => { triggerConfetti(); handlePrint(); }} className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md shadow-blue-600/20 transition-all hover:-translate-y-0.5">
+              <button onClick={() => { triggerConfetti(); setIsThankYouModalOpen(true); setTimeout(() => handlePrint(), 500); }} className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md shadow-blue-600/20 transition-all hover:-translate-y-0.5">
                 <Download className="w-4 h-4" />
                 <span className="hidden sm:inline">PDF</span>
               </button>
@@ -357,6 +360,7 @@ export default function CreatePortfolio() {
           </motion.div>
         )}
       </AnimatePresence>
+      <ThankYouModal isOpen={isThankYouModalOpen} onClose={() => setIsThankYouModalOpen(false)} />
     </div>
     </>
   );

@@ -5,6 +5,7 @@ import { useReactToPrint } from 'react-to-print';
 import SEO from '../components/SEO';
 import DonationButton from '../components/DonationButton';
 import { triggerConfetti } from '../utils/confetti';
+import ThankYouModal from '../components/ThankYouModal';
 
 export default function CoverLetter() {
   const [language, setLanguage] = useState('fr');
@@ -26,6 +27,7 @@ export default function CoverLetter() {
   });
 
   const [showPreviewMobile, setShowPreviewMobile] = useState(false);
+  const [isThankYouModalOpen, setIsThankYouModalOpen] = useState(false);
   const letterRef = useRef(null);
   const containerRef = useRef(null);
   const [scale, setScale] = useState(0.7);
@@ -132,7 +134,8 @@ export default function CoverLetter() {
 
   const downloadPDF = () => {
     triggerConfetti();
-    handlePrint();
+    setIsThankYouModalOpen(true);
+    setTimeout(() => handlePrint(), 500);
   };
 
   // Helper for rendering line breaks properly
@@ -386,6 +389,7 @@ export default function CoverLetter() {
           </div>
         </motion.section>
       </main>
+      <ThankYouModal isOpen={isThankYouModalOpen} onClose={() => setIsThankYouModalOpen(false)} />
     </div>
     </>
   );
