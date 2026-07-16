@@ -10,7 +10,7 @@ const DonationButton = () => {
     if (!document.getElementById(scriptId)) {
       const script = document.createElement('script');
       script.id = scriptId;
-      script.src = "https://www.paypal.com/sdk/js?client-id=AQKD88Ht6uKU3_tyaROi83dQ8Wlazp4lVrxu3ZSwv7j3opu8n64XaKQJq-70qVnguIry00GbSSsxsP-l&currency=EUR";
+      script.src = "https://www.paypal.com/sdk/js?client-id=AZaMAIiVQsG6ovikqydHxvRaHG4g8AGa50ylGF2pfSsP3DCoBEMlElOPZCydS9zh9hbOs-E2yFDHzPnb&currency=EUR";
       script.async = true;
       script.onload = () => setIsSdkLoaded(true);
       document.body.appendChild(script);
