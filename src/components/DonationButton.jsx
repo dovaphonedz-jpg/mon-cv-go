@@ -70,7 +70,7 @@ const DonationButton = () => {
   }, [isSdkLoaded, amount]);
 
   return (
-    <div className="relative group flex flex-col items-center justify-center p-6 bg-white dark:bg-slate-900 rounded-2xl shadow-xl shadow-blue-500/10 border border-transparent mt-12 mb-2 text-center max-w-lg mx-auto w-full transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/20 overflow-hidden">
+    <div className="relative group flex flex-col items-center justify-center p-6 bg-white dark:bg-slate-900 rounded-2xl shadow-xl shadow-blue-500/10 border border-transparent my-4 text-center max-w-lg mx-auto w-full transition-all duration-300 hover:-translate-y-1 hover:shadow-2xl hover:shadow-blue-500/20 overflow-hidden">
       {/* Animated gradient border */}
       <div className="absolute inset-0 bg-gradient-to-r from-blue-400 via-indigo-500 to-purple-500 opacity-30 group-hover:opacity-60 transition-opacity duration-300 -z-10"></div>
       <div className="absolute inset-[2px] bg-white dark:bg-[#0F172A] rounded-2xl -z-10"></div>

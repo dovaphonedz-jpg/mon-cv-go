@@ -34,7 +34,7 @@ export default function CoverLetter() {
     const observer = new ResizeObserver((entries) => {
       for (let entry of entries) {
         let availableWidth = entry.contentRect.width;
-        if (availableWidth <= 0) {
+        if (availableWidth <= 0 && containerRef.current) {
           availableWidth = containerRef.current.parentElement.clientWidth;
         }
         availableWidth -= 32; // padding
@@ -185,6 +185,10 @@ export default function CoverLetter() {
           animate={{ opacity: 1, x: 0 }}
           className={`w-full lg:w-1/2 xl:w-5/12 flex flex-col gap-6 ${showPreviewMobile ? 'hidden lg:flex' : 'flex'}`}
         >
+          <div className="w-full">
+            <DonationButton />
+          </div>
+
           {/* Form Container */}
           <div className="bg-white dark:bg-[#0F172A] rounded-3xl shadow-xl shadow-slate-200/40 dark:shadow-none border border-slate-200 dark:border-slate-800 p-6 sm:p-8 flex-grow">
             
@@ -302,9 +306,6 @@ export default function CoverLetter() {
                 </div>
               </section>
             </div>
-          </div>
-          <div className="mt-4">
-            <DonationButton />
           </div>
         </motion.section>
 

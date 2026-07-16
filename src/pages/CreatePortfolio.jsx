@@ -177,6 +177,10 @@ export default function CreatePortfolio() {
           animate={{ opacity: 1, x: 0 }}
           className={`w-full lg:w-1/2 xl:w-5/12 flex flex-col gap-6 lg:sticky lg:top-6 ${showPreviewMobile ? 'hidden lg:flex' : 'flex'}`}
         >
+          <div className="w-full">
+            <DonationButton />
+          </div>
+
           {/* Breadcrumbs / Steps */}
           <div className="bg-white dark:bg-[#0F172A] rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-2 relative">
             <nav className="flex gap-2 flex-wrap">
@@ -277,9 +281,6 @@ export default function CreatePortfolio() {
                 )}
               </div>
             </div>
-          </div>
-          <div className="mt-4">
-            <DonationButton />
           </div>
         </motion.section>
 
