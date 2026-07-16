@@ -68,7 +68,7 @@ export default function Home() {
               </motion.h1>
               
               <motion.p variants={itemVariants} className="mt-6 text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                Démarquez-vous avec des modèles professionnels, modernes et optimisés pour les recruteurs. Exportez en PDF Haute Qualité gratuitement.
+                Démarquez-vous avec des modèles professionnels et modernes. Obtenez un Score ATS de 100% grâce à notre jauge en direct et exportez en PDF Haute Qualité gratuitement.
               </motion.p>
               
               <motion.div variants={itemVariants} className="mt-10 flex flex-col sm:flex-row flex-wrap gap-4 justify-center lg:justify-start">
