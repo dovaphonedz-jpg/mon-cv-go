@@ -2,13 +2,15 @@ import React, { useState, useRef, useEffect } from 'react';
 import { Sparkles, Trash2, Download, PenLine, Eye } from 'lucide-react';
 import { motion } from 'framer-motion';
 import { useReactToPrint } from 'react-to-print';
+import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
 import DonationButton from '../components/DonationButton';
 import { triggerConfetti } from '../utils/confetti';
 import ThankYouModal from '../components/ThankYouModal';
 
 export default function CoverLetter() {
-  const [language, setLanguage] = useState('fr');
+  const { t, i18n } = useTranslation();
+  const [language, setLanguage] = useState(i18n.language.startsWith('ar') ? 'ar' : (i18n.language.startsWith('en') ? 'en' : 'fr'));
   const [data, setData] = useState({
     senderName: '',
     senderPhone: '',
@@ -148,12 +150,12 @@ export default function CoverLetter() {
 
   return (
     <>
-    <SEO title="Générateur de Lettre de Motivation Gratuit avec IA" description="Rédigez une lettre de motivation convaincante facilement. Notre générateur gratuit avec assistant IA vous aide à postuler efficacement." url="https://www.moncvgo.com/lettre-motivation" />
+    <SEO title={t('cover_letter.seo_title')} description={t('cover_letter.seo_desc')} url="https://www.moncvgo.com/lettre-motivation" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] flex flex-col relative overflow-hidden">
       
       {/* Decorative background */}
-      <div className="absolute top-0 left-0 w-[500px] h-[500px] bg-blue-600/5 dark:bg-blue-600/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
-      <div className="absolute bottom-0 right-0 w-[400px] h-[400px] bg-emerald-500/5 dark:bg-emerald-500/10 blur-[100px] rounded-full pointer-events-none -z-10"></div>
+      <div className="absolute top-0 rtl:right-0 ltr:left-0 w-[500px] h-[500px] bg-blue-600/5 dark:bg-blue-600/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+      <div className="absolute bottom-0 rtl:left-0 ltr:right-0 w-[400px] h-[400px] bg-emerald-500/5 dark:bg-emerald-500/10 blur-[100px] rounded-full pointer-events-none -z-10"></div>
 
       {/* Header Info */}
       <section className="border-b border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-[#0F172A]/50 backdrop-blur-md">
@@ -161,22 +163,22 @@ export default function CoverLetter() {
           <div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
               <PenLine className="w-6 h-6 text-blue-500" />
-              Générateur de Lettre de Motivation
+              {t('cover_letter.title')}
             </h1>
             <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-              Rédigez ou laissez l'IA vous aider. Aperçu direct et export PDF gratuit.
+              {t('cover_letter.subtitle')}
             </p>
           </div>
           
           <div className="flex gap-2">
             <button className="flex lg:hidden items-center gap-2 px-4 py-2 bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/30 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-400 rounded-xl text-sm font-bold transition-all" onClick={() => setShowPreviewMobile(!showPreviewMobile)}>
               <Eye className="w-4 h-4" />
-              {showPreviewMobile ? "Éditer" : "Aperçu"}
+              {showPreviewMobile ? t('cover_letter.btn_edit') : t('cover_letter.btn_preview')}
             </button>
             <button onClick={downloadPDF} className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md shadow-blue-600/20 transition-all hover:-translate-y-0.5">
               <Download className="w-4 h-4" />
-              <span className="hidden sm:inline">Télécharger PDF</span>
-              <span className="sm:hidden">PDF</span>
+              <span className="hidden sm:inline">{t('cover_letter.btn_download')}</span>
+              <span className="sm:hidden">{t('cover_letter.btn_pdf')}</span>
             </button>
           </div>
         </div>
@@ -200,15 +202,15 @@ export default function CoverLetter() {
             <div className="flex flex-wrap gap-2 mb-8 justify-between items-center">
               <div className="flex gap-2">
                 <button onClick={loadExample} className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/50 text-xs font-bold rounded-lg transition border border-blue-200 dark:border-blue-800">
-                  <Sparkles className="w-3.5 h-3.5" /> Exemple
+                  <Sparkles className="w-3.5 h-3.5" /> {t('cover_letter.btn_example')}
                 </button>
                 <button onClick={resetData} className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold rounded-lg transition border border-slate-200 dark:border-slate-700">
-                  <Trash2 className="w-3.5 h-3.5" /> Effacer
+                  <Trash2 className="w-3.5 h-3.5" /> {t('cover_letter.btn_clear')}
                 </button>
               </div>
               
               <div className="flex items-center gap-2">
-                <label className="text-xs font-bold text-slate-500">Langue :</label>
+                <label className="text-xs font-bold text-slate-500">{t('cover_letter.lang_label')}</label>
                 <select 
                   value={language}
                   onChange={(e) => {
@@ -231,23 +233,23 @@ export default function CoverLetter() {
               {/* Vos coordonnées */}
               <section>
                 <h2 className="text-xs font-bold uppercase tracking-widest text-blue-500 mb-4 flex items-center gap-2">
-                  <span className="w-6 h-px bg-blue-200 dark:bg-blue-900"></span> Vos coordonnées
+                  <span className="w-6 h-px bg-blue-200 dark:bg-blue-900"></span> {t('cover_letter.section_sender')}
                 </h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">Nom complet</label>
+                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">{t('cover_letter.label_name')}</label>
                     <input className="w-full rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white" value={data.senderName} onChange={e => handleChange('senderName', e.target.value)} placeholder="Jean Dupont" />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">Téléphone</label>
+                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">{t('cover_letter.label_phone')}</label>
                     <input className="w-full rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white" value={data.senderPhone} onChange={e => handleChange('senderPhone', e.target.value)} placeholder="+213 555 12 34 56" />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">E-mail</label>
+                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">{t('cover_letter.label_email')}</label>
                     <input className="w-full rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white" value={data.senderEmail} onChange={e => handleChange('senderEmail', e.target.value)} placeholder="jean.dupont@email.com" />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">Adresse</label>
+                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">{t('cover_letter.label_address')}</label>
                     <input className="w-full rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white" value={data.senderAddress} onChange={e => handleChange('senderAddress', e.target.value)} placeholder="Alger, Algérie" />
                   </div>
                 </div>
@@ -256,23 +258,23 @@ export default function CoverLetter() {
               {/* Destinataire */}
               <section>
                 <h2 className="text-xs font-bold uppercase tracking-widest text-blue-500 mb-4 flex items-center gap-2">
-                  <span className="w-6 h-px bg-blue-200 dark:bg-blue-900"></span> Destinataire
+                  <span className="w-6 h-px bg-blue-200 dark:bg-blue-900"></span> {t('cover_letter.section_recipient')}
                 </h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">Entreprise</label>
+                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">{t('cover_letter.label_company')}</label>
                     <input className="w-full rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white" value={data.company} onChange={e => handleChange('company', e.target.value)} placeholder="Nom de l'entreprise" />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">Service / Personne</label>
+                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">{t('cover_letter.label_recipient')}</label>
                     <input className="w-full rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white" value={data.recipient} onChange={e => handleChange('recipient', e.target.value)} placeholder="Service des ressources humaines" />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">Ville</label>
+                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">{t('cover_letter.label_city')}</label>
                     <input className="w-full rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white" value={data.city} onChange={e => handleChange('city', e.target.value)} placeholder="Alger" />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">Date</label>
+                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">{t('cover_letter.label_date')}</label>
                     <input className="w-full rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white" value={data.date} onChange={e => handleChange('date', e.target.value)} placeholder="le 9 juillet 2026" />
                   </div>
                 </div>
@@ -281,31 +283,31 @@ export default function CoverLetter() {
               {/* Contenu */}
               <section>
                 <h2 className="text-xs font-bold uppercase tracking-widest text-blue-500 mb-4 flex items-center gap-2">
-                  <span className="w-6 h-px bg-blue-200 dark:bg-blue-900"></span> Contenu
+                  <span className="w-6 h-px bg-blue-200 dark:bg-blue-900"></span> {t('cover_letter.section_content')}
                 </h2>
                 <div className="space-y-4">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">Objet de la lettre</label>
+                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">{t('cover_letter.label_subject')}</label>
                     <input className="w-full rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white" value={data.subject} onChange={e => handleChange('subject', e.target.value)} placeholder="Candidature au poste de..." />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">Formule d'appel</label>
+                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">{t('cover_letter.label_salutation')}</label>
                     <input className="w-full rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white" value={data.salutation} onChange={e => handleChange('salutation', e.target.value)} placeholder="Madame, Monsieur," />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">Introduction</label>
+                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">{t('cover_letter.label_intro')}</label>
                     <textarea rows="3" className="w-full rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white" value={data.intro} onChange={e => handleChange('intro', e.target.value)} placeholder="Présentez votre candidature..."></textarea>
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">Développement</label>
+                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">{t('cover_letter.label_body')}</label>
                     <textarea rows="5" className="w-full rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white" value={data.body} onChange={e => handleChange('body', e.target.value)} placeholder="Mettez en avant vos compétences..."></textarea>
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">Conclusion</label>
+                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">{t('cover_letter.label_closing')}</label>
                     <textarea rows="3" className="w-full rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white" value={data.closing} onChange={e => handleChange('closing', e.target.value)} placeholder="Proposez un entretien..."></textarea>
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">Formule de politesse</label>
+                    <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">{t('cover_letter.label_signoff')}</label>
                     <input className="w-full rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-2.5 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white" value={data.signoff} onChange={e => handleChange('signoff', e.target.value)} placeholder="Je vous prie d'agréer..." />
                   </div>
                 </div>
@@ -344,7 +346,7 @@ export default function CoverLetter() {
                     <div className={`w-1/2 mt-8 ${language === 'ar' ? 'text-left' : 'text-right'}`}>
                       {data.company && <div className="font-bold text-gray-900 mb-1">{data.company}</div>}
                       {data.recipient && <div>
-                        {language === 'ar' ? 'إلى عناية :' : language === 'en' ? 'To the attention of:' : "À l'attention de :"} {data.recipient}
+                        {t('cover_letter.to_attention')} {data.recipient}
                       </div>}
                     </div>
                   </div>
@@ -352,15 +354,15 @@ export default function CoverLetter() {
                   {/* Date & Lieu */}
                   {(data.city || data.date) && (
                     <div className={`text-sm text-gray-800 mb-8 font-inter ${language === 'ar' ? 'text-left' : 'text-right'}`}>
-                      {language === 'ar' ? 'في' : language === 'en' ? '' : 'À'} {data.city || '...'}
-                      {language === 'en' ? ',' : '،'} {data.date || '...'}
+                      {t('cover_letter.at')} {data.city || '...'}
+                      {t('cover_letter.on')} {data.date || '...'}
                     </div>
                   )}
 
                   {/* Objet */}
                   {data.subject && (
                     <div className="text-sm font-bold text-gray-900 mb-8 font-inter break-words">
-                      {language === 'ar' ? 'الموضوع :' : language === 'en' ? 'Subject:' : 'Objet :'} {data.subject}
+                      {t('cover_letter.subject')} {data.subject}
                     </div>
                   )}
 

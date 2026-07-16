@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useResume } from '../../context/ResumeContext';
 import { Plus, Trash2, ChevronDown, ChevronUp, Sparkles, Loader2 } from 'lucide-react';
 
 export default function ExperienceForm() {
+  const { t } = useTranslation();
   const { cvData, addExperience, updateExperience, removeExperience } = useResume();
   const experiences = cvData.experiences || [];
   
@@ -113,7 +115,7 @@ export default function ExperienceForm() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-500 mb-1">Date de début</label>
+                    <label className="block text-xs font-semibold text-slate-500 mb-1">{t('forms.experience.start_date')}</label>
                     <input 
                       type="text" 
                       value={exp.start || ''} 
@@ -123,7 +125,7 @@ export default function ExperienceForm() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-500 mb-1">Date de fin</label>
+                    <label className="block text-xs font-semibold text-slate-500 mb-1">{t('forms.experience.end_date')}</label>
                     <input 
                       type="text" 
                       value={exp.end || ''} 
@@ -134,7 +136,7 @@ export default function ExperienceForm() {
                   </div>
                   <div className="sm:col-span-2">
                     <div className="flex justify-between items-center mb-1">
-                      <label className="block text-xs font-semibold text-slate-500">Description des missions</label>
+                      <label className="block text-xs font-semibold text-slate-500">{t('forms.experience.description')}</label>
                       <button 
                         onClick={() => generateExperience(index, exp)}
                         disabled={generatingIndex === index}

@@ -1,8 +1,10 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useResume } from '../../context/ResumeContext';
 import { Plus, Trash2 } from 'lucide-react';
 
 export default function SkillsForm() {
+  const { t } = useTranslation();
   const { cvData, addSkill, updateSkill, removeSkill, addLanguage, updateLanguage, removeLanguage } = useResume();
   const skills = cvData.skills || [];
   const languages = cvData.languages || [];
@@ -13,7 +15,7 @@ export default function SkillsForm() {
       {/* SKILLS SECTION */}
       <section>
         <div className="flex justify-between items-center mb-4">
-          <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">Compétences</h3>
+          <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">{t('forms.skills.title')}</h3>
           <button 
             onClick={() => addSkill({ name: '', level: 'Débutant' })}
             className="flex items-center gap-1 px-3 py-1.5 bg-amber-50 text-amber-600 hover:bg-amber-100 dark:bg-amber-900/30 dark:text-amber-400 dark:hover:bg-amber-900/50 rounded-lg text-sm font-semibold transition-colors"
@@ -42,10 +44,10 @@ export default function SkillsForm() {
                   onChange={(e) => updateSkill(index, { ...skill, level: e.target.value })}
                   className="w-1/3 px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-amber-500 outline-none"
                 >
-                  <option value="Débutant">Débutant</option>
-                  <option value="Intermédiaire">Intermédiaire</option>
-                  <option value="Avancé">Avancé</option>
-                  <option value="Expert">Expert</option>
+                  <option value="Débutant">{t('forms.skills.levels.beginner')}</option>
+                  <option value="Intermédiaire">{t('forms.skills.levels.intermediate')}</option>
+                  <option value="Avancé">{t('forms.skills.levels.advanced')}</option>
+                  <option value="Expert">{t('forms.skills.levels.expert')}</option>
                   <option value="40%">40%</option>
                   <option value="60%">60%</option>
                   <option value="80%">80%</option>

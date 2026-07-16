@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import TemplatePortfolio from './portfolio-templates/TemplatePortfolio';
 import TemplateModern from './cv-templates/TemplateModern';
 import { demoData } from '../utils/cvData';
 
 export default function TemplateGallery() {
+  const { t } = useTranslation();
+
   const portfolioTemplates = [
     { id: "modern", type: "portfolio", name: "Portfolio Web Moderne", isNew: true, path: "/portfolio?template=portfolio-modern&demo=true", color: 'blue' },
     { id: "terminal", type: "portfolio", name: "Portfolio Terminal OS", isNew: true, path: "/portfolio?template=portfolio-terminal&demo=true", color: 'emerald' },
@@ -36,13 +39,13 @@ export default function TemplateGallery() {
         {/* Header Section */}
         <div className="text-center max-w-3xl mx-auto mb-16">
           <p className="text-blue-500 font-bold uppercase tracking-wider text-sm mb-3">
-            NOTRE GALERIE
+            {t('gallery.subtitle')}
           </p>
           <h2 className="text-white text-4xl font-bold mb-5">
-            Des designs approuvés par les experts.
+            {t('gallery.title')}
           </h2>
           <p className="text-slate-400 text-lg leading-relaxed max-w-2xl mx-auto">
-            Faites forte impression. Nos modèles sont modernes, épurés et optimisés pour capter l'attention des recruteurs.
+            {t('gallery.desc')}
           </p>
         </div>
 
@@ -50,7 +53,7 @@ export default function TemplateGallery() {
         <div className="mb-12 relative">
           <div className="flex justify-between items-end mb-6 px-4">
             <h3 className="text-white text-2xl font-bold flex items-center gap-3">
-              <span className="w-2 h-8 bg-blue-500 rounded-full"></span> Modèles de CV
+              <span className="w-2 h-8 bg-blue-500 rounded-full"></span> {t('gallery.cv_models')}
             </h3>
           </div>
           
@@ -71,9 +74,9 @@ export default function TemplateGallery() {
                         <TemplateModern cvData={demoData.fr} config={{ template: template.id, color: template.color || 'blue', font: 'inter', fontSize: 'normal', spacing: 'normal' }} />
                       </div>
                     </div>
-                    {template.isNew && <div className="absolute top-3 -left-2 bg-fuchsia-500 text-white font-bold text-[10px] px-2 py-1 rounded-full shadow-lg z-10">NOUVEAU</div>}
+                    {template.isNew && <div className="absolute top-3 rtl:-right-2 ltr:-left-2 bg-fuchsia-500 text-white font-bold text-[10px] px-2 py-1 rounded-full shadow-lg z-10">{t('gallery.new')}</div>}
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity z-0 flex items-end justify-center pb-6">
-                      <span className="text-white font-bold text-xs bg-blue-600 px-4 py-2 rounded-full shadow-lg translate-y-4 group-hover/card:translate-y-0 transition-transform duration-300">Créer ce CV</span>
+                      <span className="text-white font-bold text-xs bg-blue-600 px-4 py-2 rounded-full shadow-lg translate-y-4 group-hover/card:translate-y-0 transition-transform duration-300">{t('gallery.create_cv')}</span>
                     </div>
                   </div>
                   <div className="text-center relative z-10">
@@ -89,7 +92,7 @@ export default function TemplateGallery() {
         <div className="relative">
           <div className="flex justify-end items-end mb-6 px-4">
             <h3 className="text-white text-2xl font-bold flex items-center gap-3">
-              Modèles de Portfolio <span className="w-2 h-8 bg-emerald-500 rounded-full"></span>
+              {t('gallery.portfolio_models')} <span className="w-2 h-8 bg-emerald-500 rounded-full"></span>
             </h3>
           </div>
           
@@ -110,9 +113,9 @@ export default function TemplateGallery() {
                         <TemplatePortfolio cvData={demoData.fr} config={{ template: template.id === 'modern' ? 'portfolio-modern' : template.id === 'terminal' ? 'portfolio-terminal' : template.id === 'masonry' ? 'portfolio-dev' : 'portfolio-grid', color: template.color || 'blue', font: 'inter', fontSize: 'normal' }} />
                       </div>
                     </div>
-                    {template.isNew && <div className="absolute top-3 -left-2 bg-emerald-500 text-white font-bold text-[10px] px-2 py-1 rounded-full shadow-lg z-10">NOUVEAU</div>}
+                    {template.isNew && <div className="absolute top-3 rtl:-right-2 ltr:-left-2 bg-emerald-500 text-white font-bold text-[10px] px-2 py-1 rounded-full shadow-lg z-10">{t('gallery.new')}</div>}
                     <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity z-0 flex items-end justify-center pb-6">
-                      <span className="text-white font-bold text-xs bg-emerald-600 px-4 py-2 rounded-full shadow-lg translate-y-4 group-hover/card:translate-y-0 transition-transform duration-300">Créer ce Portfolio</span>
+                      <span className="text-white font-bold text-xs bg-emerald-600 px-4 py-2 rounded-full shadow-lg translate-y-4 group-hover/card:translate-y-0 transition-transform duration-300">{t('gallery.create_portfolio')}</span>
                     </div>
                   </div>
                   <div className="text-center relative z-10">

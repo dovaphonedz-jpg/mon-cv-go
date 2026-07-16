@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useResume } from '../../context/ResumeContext';
 import { Plus, Trash2, Briefcase } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -6,6 +7,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import { compressImage } from '../../utils/imageCompressor';
 
 export default function ProjectsForm() {
+  const { t } = useTranslation();
   const { cvData, addProject, updateProject, removeProject } = useResume();
   const [newProject, setNewProject] = useState({ title: '', techStack: '', link: '', description: '', image: '' });
   const [isAdding, setIsAdding] = useState(false);
@@ -62,11 +64,11 @@ export default function ProjectsForm() {
                     value={newProject.title}
                     onChange={(e) => setNewProject({ ...newProject, title: e.target.value })}
                     className="w-full px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white"
-                    placeholder="Ex: Application E-commerce"
+                    placeholder={t('forms.projects.name_ph')}
                   />
                 </div>
                 <div>
-                  <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">Lien (URL)</label>
+                  <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">{t('forms.projects.link')}</label>
                   <input
                     type="text"
                     value={newProject.link}
@@ -96,7 +98,7 @@ export default function ProjectsForm() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">Technologies utilisées</label>
+                <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">{t('forms.projects.technologies')}</label>
                 <input
                   type="text"
                   value={newProject.techStack}
@@ -107,7 +109,7 @@ export default function ProjectsForm() {
               </div>
 
               <div>
-                <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">Description</label>
+                <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">{t('forms.projects.description')}</label>
                 <textarea
                   value={newProject.description}
                   onChange={(e) => setNewProject({ ...newProject, description: e.target.value })}

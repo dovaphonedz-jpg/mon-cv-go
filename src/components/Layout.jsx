@@ -2,10 +2,13 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Sparkles, FilePlus2, PenLine, BookOpen, Info, Mail, Menu, X, Moon, Sun, Briefcase } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
+import { useTranslation } from 'react-i18next';
 import CookieConsent from './CookieConsent';
 import ChatBot from './Chatbot';
+import LanguageSwitcher from './LanguageSwitcher';
 
 export default function Layout({ children }) {
+  const { t } = useTranslation();
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(true);
   const location = useLocation();
@@ -30,7 +33,7 @@ export default function Layout({ children }) {
       {/* Top Bar - Tech SaaS Vibe */}
       <div className="bg-blue-600 dark:bg-blue-900 text-white text-center py-2 px-4 text-xs font-semibold tracking-wide flex items-center justify-center gap-2 select-none">
         <Sparkles className="w-3.5 h-3.5 text-blue-200" />
-        <span>CV Professionnel — 100% gratuit, sans inscription.</span>
+        <span>{t('banner.text')}</span>
       </div>
 
       {/* Header - Glassmorphism */}
@@ -48,15 +51,15 @@ export default function Layout({ children }) {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-600 dark:text-slate-300">
+          <nav className="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-600 dark:text-slate-300 rtl:gap-6">
             {[
-              { path: '/', label: 'Accueil' },
-              { path: '/create', label: 'Créer un CV' },
-              { path: '/portfolio', label: 'Créer un Portfolio' },
-              { path: '/lettre-motivation', label: 'Lettre de motivation' },
-              { path: '/conseils-cv', label: 'Conseils CV' },
-              { path: '/a-propos', label: 'À propos' },
-              { path: '/contact', label: 'Contact' },
+              { path: '/', label: t('nav.home') },
+              { path: '/create', label: t('nav.create_cv') },
+              { path: '/portfolio', label: t('nav.create_portfolio') },
+              { path: '/lettre-motivation', label: t('nav.cover_letter') },
+              { path: '/conseils-cv', label: t('nav.cv_tips') },
+              { path: '/a-propos', label: t('nav.about') },
+              { path: '/contact', label: t('nav.contact') },
             ].map(link => (
               <Link 
                 key={link.path} 
@@ -70,10 +73,11 @@ export default function Layout({ children }) {
 
           {/* Right Actions */}
           <div className="flex items-center gap-3">
+            <LanguageSwitcher />
             <button 
               onClick={toggleTheme} 
               className="p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" 
-              title="Changer de thème"
+              title={t('theme.change')}
             >
               {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
             </button>
@@ -99,14 +103,14 @@ export default function Layout({ children }) {
         <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-2">
             <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-emerald-400 rounded flex items-center justify-center text-white font-black text-xs">M</div>
-            <span className="font-bold text-slate-900 dark:text-white">&copy; 2026 Mon CV Go. Tous droits réservés.</span>
+            <span className="font-bold text-slate-900 dark:text-white">&copy; 2026 Mon CV Go. {t('footer.rights')}</span>
           </div>
           <div className="flex flex-wrap justify-center gap-6 font-medium">
-            <Link to="/" className="hover:text-blue-600 dark:hover:text-blue-400">Accueil</Link>
-            <Link to="/a-propos" className="hover:text-blue-600 dark:hover:text-blue-400">À propos</Link>
-            <Link to="/contact" className="hover:text-blue-600 dark:hover:text-blue-400">Contact</Link>
-            <Link to="/mentions-legales" className="hover:text-blue-600 dark:hover:text-blue-400">Conditions d'utilisation</Link>
-            <Link to="/confidentialite" className="hover:text-blue-600 dark:hover:text-blue-400">Politique de confidentialité</Link>
+            <Link to="/" className="hover:text-blue-600 dark:hover:text-blue-400">{t('nav.home')}</Link>
+            <Link to="/a-propos" className="hover:text-blue-600 dark:hover:text-blue-400">{t('nav.about')}</Link>
+            <Link to="/contact" className="hover:text-blue-600 dark:hover:text-blue-400">{t('nav.contact')}</Link>
+            <Link to="/mentions-legales" className="hover:text-blue-600 dark:hover:text-blue-400">{t('footer.terms')}</Link>
+            <Link to="/confidentialite" className="hover:text-blue-600 dark:hover:text-blue-400">{t('footer.privacy')}</Link>
           </div>
         </div>
       </footer>
@@ -136,33 +140,33 @@ export default function Layout({ children }) {
               className="fixed inset-y-0 left-0 z-50 w-3/4 max-w-sm bg-white dark:bg-[#0F172A] border-r border-slate-200 dark:border-slate-800 shadow-2xl flex flex-col"
             >
               <div className="h-16 flex items-center justify-between px-6 border-b border-slate-100 dark:border-slate-800">
-                <span className="font-extrabold text-lg text-slate-900 dark:text-white">Menu</span>
-                <button onClick={closeMobileMenu} className="p-2 -mr-2 text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-xl bg-slate-100 dark:bg-slate-800">
+                <span className="font-extrabold text-lg text-slate-900 dark:text-white">{t('nav.menu')}</span>
+                <button onClick={closeMobileMenu} className="p-2 -mr-2 rtl:-mr-0 rtl:-ml-2 text-slate-400 hover:text-slate-900 dark:hover:text-white rounded-xl bg-slate-100 dark:bg-slate-800">
                   <X className="w-5 h-5" />
                 </button>
               </div>
               
               <nav className="flex flex-col p-4 gap-2 overflow-y-auto">
                 <Link to="/" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
-                  Accueil
+                  {t('nav.home')}
                 </Link>
                 <Link to="/create" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-md">
-                  <FilePlus2 className="w-5 h-5" /> Créer mon CV
+                  <FilePlus2 className="w-5 h-5" /> {t('nav.create_cv')}
                 </Link>
                 <Link to="/portfolio" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-white bg-indigo-600 hover:bg-indigo-700 shadow-md">
-                  <Briefcase className="w-5 h-5" /> Créer un Portfolio
+                  <Briefcase className="w-5 h-5" /> {t('nav.create_portfolio')}
                 </Link>
                 <Link to="/lettre-motivation" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
-                  <PenLine className="w-5 h-5 text-slate-400" /> Lettre de motivation
+                  <PenLine className="w-5 h-5 text-slate-400" /> {t('nav.cover_letter')}
                 </Link>
                 <Link to="/conseils-cv" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
-                  <BookOpen className="w-5 h-5 text-slate-400" /> Conseils CV
+                  <BookOpen className="w-5 h-5 text-slate-400" /> {t('nav.cv_tips')}
                 </Link>
                 <Link to="/a-propos" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
-                  <Info className="w-5 h-5 text-slate-400" /> À propos
+                  <Info className="w-5 h-5 text-slate-400" /> {t('nav.about')}
                 </Link>
                 <Link to="/contact" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
-                  <Mail className="w-5 h-5 text-slate-400" /> Contact
+                  <Mail className="w-5 h-5 text-slate-400" /> {t('nav.contact')}
                 </Link>
               </nav>
             </motion.aside>

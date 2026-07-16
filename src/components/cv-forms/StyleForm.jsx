@@ -1,9 +1,11 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useResume } from '../../context/ResumeContext';
 import { templates100 } from '../../utils/cvData';
 import { Palette, Type, LayoutTemplate, Languages, AlignLeft } from 'lucide-react';
 
 export default function StyleForm() {
+  const { t } = useTranslation();
   const { config, updateConfig } = useResume();
 
   // Group templates by layout for the select dropdown
@@ -84,7 +86,7 @@ export default function StyleForm() {
       {/* Langue du CV */}
       <section>
         <h2 className="text-xs font-bold uppercase tracking-widest text-blue-500 mb-4 flex items-center gap-2">
-          <Languages className="w-4 h-4" /> Langue du CV
+          <Languages className="w-4 h-4" /> {t('forms.style.cv_lang')}
         </h2>
         <div className="grid grid-cols-3 gap-3">
           <button 

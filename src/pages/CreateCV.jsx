@@ -4,6 +4,7 @@ import { useResume } from '../context/ResumeContext';
 import { UploadCloud, Sparkles, Trash2, ArrowLeft, ArrowRight, Eye, Download, ChevronRight, Save, FileText, Presentation, Palette, X, Info } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useReactToPrint } from 'react-to-print';
+import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
 
 import { exportToWord } from '../utils/exportWord';
@@ -22,19 +23,22 @@ import DonationButton from '../components/DonationButton';
 import ThankYouModal from '../components/ThankYouModal';
 import ATSScore from '../components/ATSScore';
 
-const STEPS = [
-  { id: 'style', label: 'Modèle & Style' },
-  { id: 'personal', label: 'Infos Personnelles' },
-  { id: 'experience', label: 'Expériences' },
-  { id: 'education', label: 'Éducation' },
-  { id: 'skills', label: 'Compétences' },
-  { id: 'projects', label: 'Projets' },
-  { id: 'summary', label: 'Description' }
-];
+
 
 export default function CreateCV() {
   const { cvData, config, updateConfig, resetData, loadDemo, importData } = useResume();
+  const { t } = useTranslation();
   
+  const STEPS = [
+    { id: 'style', label: t('create_cv.step_1') },
+    { id: 'personal', label: t('create_cv.step_2') },
+    { id: 'experience', label: t('create_cv.step_3') },
+    { id: 'education', label: t('create_cv.step_4') },
+    { id: 'skills', label: t('create_cv.step_5') },
+    { id: 'projects', label: t('create_cv.step_6') },
+    { id: 'summary', label: t('create_cv.step_7') }
+  ];
+
   // Parse query params to allow deep linking to steps
   const getInitialStep = () => {
     const params = new URLSearchParams(window.location.search);
@@ -147,7 +151,7 @@ export default function CreateCV() {
 
   return (
     <>
-    <SEO title="Créateur de CV en Ligne Gratuit : Modèles et Export PDF" description="Utilisez notre générateur de CV en ligne gratuit. Remplissez vos informations, choisissez un modèle design et téléchargez votre Curriculum Vitae en PDF instantanément." url="https://www.moncvgo.com/create" />
+    <SEO title={t('create_cv.seo_title')} description={t('create_cv.seo_desc')} url="https://www.moncvgo.com/create" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] flex flex-col relative overflow-hidden">
       
       {/* Decorative background */}
@@ -160,30 +164,30 @@ export default function CreateCV() {
           <div>
             <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
               <Sparkles className="w-6 h-6 text-blue-500" />
-              Éditeur de CV
+              {t('create_cv.title')}
             </h1>
             <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
-              Remplissez les informations et voyez votre CV prendre forme en direct.
+              {t('create_cv.subtitle')}
             </p>
           </div>
           
           <div className="flex gap-2">
             <button onClick={() => loadDemo(config.cvLang || 'fr')} className="flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-900/50 text-blue-600 dark:text-blue-400 rounded-xl text-sm font-semibold transition-all border border-blue-200 dark:border-blue-800">
               <Sparkles className="w-4 h-4" />
-              <span className="hidden sm:inline">Exemple</span>
+              <span className="hidden sm:inline">{t('create_cv.btn_example')}</span>
             </button>
             <button onClick={handleImportClick} className="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-xl text-sm font-semibold transition-all border border-slate-200 dark:border-slate-700">
               <UploadCloud className="w-4 h-4" />
-              <span className="hidden sm:inline">Importer</span>
+              <span className="hidden sm:inline">{t('create_cv.btn_import')}</span>
             </button>
             <input type="file" accept=".json" className="hidden" ref={fileInputRef} onChange={handleFileChange} />
             <button onClick={resetData} className="flex items-center gap-2 px-4 py-2 bg-red-50 hover:bg-red-100 dark:bg-red-900/20 dark:hover:bg-red-900/40 text-red-600 dark:text-red-400 rounded-xl text-sm font-semibold transition-all border border-red-100 dark:border-red-900/50">
               <Trash2 className="w-4 h-4" />
-              <span className="hidden sm:inline">Effacer</span>
+              <span className="hidden sm:inline">{t('create_cv.btn_clear')}</span>
             </button>
             <button className="flex lg:hidden items-center gap-2 px-4 py-2 bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/30 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-400 rounded-xl text-sm font-bold transition-all" onClick={() => setShowPreviewMobile(!showPreviewMobile)}>
               <Eye className="w-4 h-4" />
-              {showPreviewMobile ? "Éditer" : "Aperçu"}
+              {showPreviewMobile ? t('create_cv.btn_edit') : t('create_cv.btn_preview')}
             </button>
           </div>
         </div>
@@ -258,7 +262,7 @@ export default function CreateCV() {
                 disabled={activeStepIdx === 0}
                 className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-slate-600 dark:text-slate-300 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-xl transition-all disabled:opacity-40 disabled:cursor-not-allowed"
               >
-                <ArrowLeft className="w-4 h-4" /> Précédent
+                <ArrowLeft className="w-4 h-4 rtl:-scale-x-100" /> {t('create_cv.btn_prev')}
               </button>
               
               <div className="flex items-center gap-3">
@@ -267,7 +271,7 @@ export default function CreateCV() {
                     onClick={nextStep}
                     className="text-sm font-semibold text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors px-2"
                   >
-                    Passer
+                    {t('create_cv.btn_skip')}
                   </button>
                 )}
                 
@@ -287,14 +291,14 @@ export default function CreateCV() {
                     }}
                     className="flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl shadow-lg transition-all group"
                   >
-                    Terminer <Sparkles className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                    {t('create_cv.btn_finish')} <Sparkles className="w-4 h-4 group-hover:scale-110 transition-transform" />
                   </button>
                 ) : (
                   <button 
                     onClick={nextStep}
                     className="flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-white bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 rounded-xl shadow-lg transition-all group"
                   >
-                    Suivant <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    {t('create_cv.btn_next')} <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform rtl:-scale-x-100" />
                   </button>
                 )}
               </div>
@@ -312,7 +316,7 @@ export default function CreateCV() {
             <div className="flex items-center gap-4">
               <h2 className="font-bold text-slate-800 dark:text-white flex items-center gap-2">
                 <Eye className="w-5 h-5 text-emerald-500" />
-                <span className="hidden sm:inline">Aperçu en direct</span>
+                <span className="hidden sm:inline">{t('create_cv.preview_title')}</span>
               </h2>
               {/* Bouton visible uniquement sur mobile pour aller aux styles */}
               <button 
@@ -320,25 +324,25 @@ export default function CreateCV() {
                 className="lg:hidden flex items-center gap-2 px-3 py-1.5 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 font-medium rounded-lg text-sm border border-indigo-100 dark:border-indigo-800 transition-colors"
               >
                 <Palette className="w-4 h-4" />
-                Styles & Modèles
+                {t('create_cv.btn_styles')}
               </button>
             </div>
             <div className="flex gap-2">
               <button onClick={() => { setIsThankYouModalOpen(true); exportToWord(cvData, config, printRef); }} className="flex items-center gap-2 px-3 py-2.5 bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/30 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-400 font-bold rounded-xl text-sm transition-all" title="Exporter en Word">
                 <FileText className="w-4 h-4" />
-                <span className="hidden xl:inline">Word</span>
+                <span className="hidden xl:inline">{t('create_cv.btn_word')}</span>
               </button>
               <button onClick={() => { setIsThankYouModalOpen(true); exportToPowerPoint(cvData); }} className="flex items-center gap-2 px-3 py-2.5 bg-orange-100 hover:bg-orange-200 dark:bg-orange-900/30 dark:hover:bg-orange-900/50 text-orange-700 dark:text-orange-400 font-bold rounded-xl text-sm transition-all" title="Exporter en PowerPoint">
                 <Presentation className="w-4 h-4" />
-                <span className="hidden xl:inline">PPTX</span>
+                <span className="hidden xl:inline">{t('create_cv.btn_pptx')}</span>
               </button>
               <button onClick={handleImportClick} disabled={isImporting} className="flex items-center gap-2 px-3 py-2 bg-slate-800 hover:bg-slate-700 text-white font-medium rounded-lg text-sm transition-colors border border-slate-700 disabled:opacity-50 disabled:cursor-wait">
                 <UploadCloud className="w-4 h-4" />
-                <span className="hidden sm:inline">{isImporting ? "Analyse..." : "Importer"}</span>
+                <span className="hidden sm:inline">{isImporting ? "Analyse..." : t('create_cv.btn_import')}</span>
               </button>
               <button onClick={() => { triggerConfetti(); setIsThankYouModalOpen(true); setTimeout(() => handlePrint(), 500); }} className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md shadow-blue-600/20 transition-all hover:-translate-y-0.5">
                 <Download className="w-4 h-4" />
-                <span className="hidden sm:inline">PDF</span>
+                <span className="hidden sm:inline">{t('create_cv.btn_pdf')}</span>
               </button>
             </div>
           </div>
@@ -346,8 +350,8 @@ export default function CreateCV() {
           <div className="bg-blue-50/80 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/50 rounded-xl p-3 flex items-start gap-2 shadow-sm">
             <Info className="w-4 h-4 text-blue-500 shrink-0 mt-0.5" />
             <p className="text-xs text-blue-800 dark:text-blue-300 leading-relaxed">
-              <strong className="font-semibold">100% Privé :</strong> Vos données restent exclusivement dans ce navigateur. 
-              <span className="opacity-90"> Attention, si vous videz votre cache, vous perdrez votre CV en cours. Pensez à l'exporter régulièrement !</span>
+              <strong className="font-semibold">{t('create_cv.private_title')}</strong>{t('create_cv.private_desc')}
+              <span className="opacity-90">{t('create_cv.private_warn')}</span>
             </p>
           </div>
 
@@ -373,7 +377,7 @@ export default function CreateCV() {
           >
             <div className="sticky top-0 bg-white dark:bg-[#0B1120] border-b border-slate-200 dark:border-slate-800 p-4 flex justify-between items-center z-10 shadow-sm">
               <h2 className="font-bold text-lg text-slate-800 dark:text-white flex items-center gap-2">
-                <Palette className="w-5 h-5 text-indigo-500" /> Styles & Modèles
+                <Palette className="w-5 h-5 text-indigo-500" /> {t('create_cv.btn_styles')}
               </h2>
               <button onClick={() => setIsStyleModalOpen(false)} className="p-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-full text-slate-600 dark:text-slate-300">
                 <X className="w-5 h-5" />

@@ -1,9 +1,11 @@
 import React, { useMemo } from 'react';
 import { useResume } from '../context/ResumeContext';
 import { CheckCircle2, AlertCircle, Info } from 'lucide-react';
+import { useTranslation } from 'react-i18next';
 
 export default function ATSScore() {
   const { cvData } = useResume();
+  const { t } = useTranslation();
 
   const scoreDetails = useMemo(() => {
     let score = 0;
@@ -14,26 +16,26 @@ export default function ATSScore() {
     if (personal.name && personal.name.length > 2) {
       score += 10;
     } else {
-      feedback.push("Ajoutez votre nom complet.");
+      feedback.push(t("ats.feedback.name"));
     }
     
     if (personal.email && personal.email.includes('@')) {
       score += 10;
     } else {
-      feedback.push("Ajoutez une adresse email valide.");
+      feedback.push(t("ats.feedback.email"));
     }
     
     if (personal.phone && personal.phone.length > 5) {
       score += 10;
     } else {
-      feedback.push("Ajoutez un numéro de téléphone.");
+      feedback.push(t("ats.feedback.phone"));
     }
 
     // 2. Summary (max 20)
     if (cvData.summary && cvData.summary.length > 50) {
       score += 20;
     } else {
-      feedback.push("Le résumé de profil est trop court (min. 50 caractères).");
+      feedback.push(t("ats.feedback.summary"));
     }
 
     // 3. Experiences (max 30)
@@ -43,9 +45,9 @@ export default function ATSScore() {
       score += 30;
     } else if (validExperiences.length === 1) {
       score += 15;
-      feedback.push("Ajoutez une 2ème expérience pour un profil plus solide.");
+      feedback.push(t("ats.feedback.experience_more"));
     } else {
-      feedback.push("Ajoutez des expériences professionnelles avec descriptions détaillées.");
+      feedback.push(t("ats.feedback.experience_missing"));
     }
 
     // 4. Skills (max 20)
@@ -54,13 +56,13 @@ export default function ATSScore() {
       score += 20;
     } else if (skills.length >= 3) {
       score += 10;
-      feedback.push("Ajoutez 2 ou 3 compétences supplémentaires.");
+      feedback.push(t("ats.feedback.skills_more"));
     } else {
-      feedback.push("Listez au moins 3 à 5 compétences clés.");
+      feedback.push(t("ats.feedback.skills_missing"));
     }
 
     return { score, feedback };
-  }, [cvData]);
+  }, [cvData, t]);
 
   const { score, feedback } = scoreDetails;
 
@@ -87,11 +89,11 @@ export default function ATSScore() {
       <div className="flex items-center justify-between mb-4">
         <div>
           <h3 className="text-sm font-extrabold text-slate-800 dark:text-slate-100 uppercase tracking-wider flex items-center gap-2">
-            Score ATS 
+            {t('ats.title')}
             <span className="group relative inline-block cursor-help">
               <Info className="w-4 h-4 text-slate-400" />
               <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-48 bg-slate-800 text-white text-xs p-2 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-10">
-                Score d'optimisation pour les logiciels de recrutement (Applicant Tracking Systems).
+                {t('ats.tooltip')}
               </span>
             </span>
           </h3>

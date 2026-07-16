@@ -1,6 +1,8 @@
+import { useTranslation } from 'react-i18next';
 import React, { useEffect, useRef, useState } from 'react';
 
 const DonationButton = () => {
+  const { t } = useTranslation();
   const [isSdkLoaded, setIsSdkLoaded] = useState(false);
   const [amount, setAmount] = useState('5');
   const paypalRef = useRef(null);
@@ -86,11 +88,11 @@ const DonationButton = () => {
             <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
           </svg>
         </div>
-        <h3 className="text-sm font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">Soutenez le projet</h3>
+        <h3 className="text-sm font-bold bg-gradient-to-r from-blue-600 to-purple-600 dark:from-blue-400 dark:to-purple-400 bg-clip-text text-transparent">{t('donation.title')}</h3>
       </div>
       
       <p className="text-slate-500 dark:text-slate-400 mb-4 text-xs font-medium">
-        Si l'outil vous a aidé, un petit café fait plaisir ! ☕
+        {t('donation.desc')}
       </p>
       
       <div className="flex items-center gap-3 mb-4 justify-center">

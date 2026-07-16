@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useResume } from '../../context/ResumeContext';
 import { Sparkles, Loader2 } from 'lucide-react';
 
 export default function SummaryForm() {
+  const { t } = useTranslation();
   const { cvData, updateSummary } = useResume();
   const [isGenerating, setIsGenerating] = useState(false);
 

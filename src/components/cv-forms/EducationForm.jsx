@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
+import { useTranslation } from 'react-i18next';
 import { useResume } from '../../context/ResumeContext';
 import { Plus, Trash2, ChevronDown, ChevronUp } from 'lucide-react';
 
 export default function EducationForm() {
+  const { t } = useTranslation();
   const { cvData, addEducation, updateEducation, removeEducation } = useResume();
   const education = cvData.education || [];
   
@@ -73,7 +75,7 @@ export default function EducationForm() {
                       value={edu.degree || ''} 
                       onChange={(e) => handleChange(index, 'degree', e.target.value)}
                       className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 outline-none" 
-                      placeholder="Ex: Master en Informatique"
+                      placeholder={t('forms.education.degree_ph')}
                     />
                   </div>
                   <div>
@@ -83,11 +85,11 @@ export default function EducationForm() {
                       value={edu.school || ''} 
                       onChange={(e) => handleChange(index, 'school', e.target.value)}
                       className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 outline-none" 
-                      placeholder="Ex: Université de Paris"
+                      placeholder={t('forms.education.school_ph')}
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-500 mb-1">Date de début</label>
+                    <label className="block text-xs font-semibold text-slate-500 mb-1">{t('forms.education.start_date')}</label>
                     <input 
                       type="text" 
                       value={edu.start || ''} 
@@ -97,7 +99,7 @@ export default function EducationForm() {
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-500 mb-1">Date de fin</label>
+                    <label className="block text-xs font-semibold text-slate-500 mb-1">{t('forms.education.end_date')}</label>
                     <input 
                       type="text" 
                       value={edu.end || ''} 

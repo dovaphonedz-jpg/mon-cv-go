@@ -110,7 +110,7 @@ app.post('/api/generate', async (req, res) => {
         ],
         temperature: 0.7,
       });
-      return res.json({ text: response.choices[0].message.content });
+      return res.json({ text: response.choices[0].message.content.trim() });
     }
 
   } catch (error) {
@@ -143,10 +143,25 @@ app.post('/api/magic', async (req, res) => {
       temperature: 0.7,
     });
     
-    return res.json({ text: response.choices[0].message.content.trim() });
-    
   } catch (error) {
-    console.error('Erreur API OpenAI Magic:', error);
+    console.error('Erreur API OpenAI Magic:', error.message);
+    const { prompt, type } = req.body;
+    
+    // FALLBACK MOCK DATA (If API key is missing or invalid)
+    // This allows the user to test the UI functionality even without a valid API key.
+    if (error.code === 'invalid_api_key' || error.message.includes('Incorrect API key') || !process.env.OPENAI_API_KEY) {
+      console.log("Utilisation des données fictives (Mock) suite à une clé API invalide.");
+      
+      let mockResponse = "";
+      if (type === 'summary') {
+        mockResponse = `Expert passionné en tant que ${prompt}, avec une solide expérience dans le domaine. Reconnu pour ma capacité à résoudre des problèmes complexes et à livrer des résultats de haute qualité. Je suis actuellement à la recherche de nouveaux défis pour mettre à profit mes compétences.`;
+      } else if (type === 'experience') {
+        mockResponse = `- Pilotage et gestion des projets liés au poste de ${prompt}.\n- Amélioration des processus internes entraînant une hausse de productivité de 15%.\n- Collaboration étroite avec les équipes transverses pour assurer le respect des délais.\n- Analyse des KPIs et reporting régulier à la direction.`;
+      }
+      
+      return res.json({ text: mockResponse });
+    }
+    
     res.status(500).json({ error: "Erreur lors de la génération magique." });
   }
 });

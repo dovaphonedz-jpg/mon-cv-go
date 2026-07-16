@@ -1,8 +1,10 @@
 import React from 'react';
+import { useTranslation } from 'react-i18next';
 import { useResume } from '../../context/ResumeContext';
 import { compressImage } from '../../utils/imageCompressor';
 
 export default function PersonalInfoForm() {
+  const { t } = useTranslation();
   const { cvData, updatePersonal } = useResume();
   const data = cvData.personal;
 
@@ -12,7 +14,7 @@ export default function PersonalInfoForm() {
 
   return (
     <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
-      <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">Informations Personnelles</h3>
+      <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-4">{t('forms.personal.title')}</h3>
       
       <div className="flex flex-col sm:flex-row items-center sm:items-start gap-6 mb-6">
         <div className="relative group">
@@ -40,11 +42,11 @@ export default function PersonalInfoForm() {
           </label>
         </div>
         <div className="flex-1">
-          <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">Photo de profil</p>
-          <p className="text-xs text-slate-500 mt-1">Format recommandé: JPG, PNG, ou GIF. Taille max: 2MB.</p>
+          <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">{t("forms.personal.photo")}</p>
+          <p className="text-xs text-slate-500 mt-1">{t("forms.personal.photo_desc")}</p>
           {data.photo && (
             <button onClick={() => updatePersonal('photo', '')} className="text-xs text-red-500 hover:text-red-600 font-bold mt-2">
-              Supprimer la photo
+              {t('forms.personal.photo_delete')}
             </button>
           )}
         </div>
@@ -52,69 +54,69 @@ export default function PersonalInfoForm() {
       
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Nom complet</label>
+          <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">{t('forms.personal.name')}</label>
           <input 
             type="text" 
             name="name"
             value={data.name || ''} 
             onChange={handleChange} 
             className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-[#d4af37] outline-none" 
-            placeholder="Ex: Jean Dupont"
+            placeholder={t('forms.personal.name_ph')}
           />
         </div>
         <div>
-          <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Titre du profil</label>
+          <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">{t('forms.personal.profile_title')}</label>
           <input 
             type="text" 
             name="title"
             value={data.title || ''} 
             onChange={handleChange} 
             className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-[#d4af37] outline-none" 
-            placeholder="Ex: Développeur Web"
+            placeholder={t('forms.personal.profile_title_ph')}
           />
         </div>
         <div>
-          <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Email</label>
+          <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">{t('forms.personal.email')}</label>
           <input 
             type="email" 
             name="email"
             value={data.email || ''} 
             onChange={handleChange} 
             className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-[#d4af37] outline-none" 
-            placeholder="Ex: jean.dupont@email.com"
+            placeholder={t('forms.personal.email_ph')}
           />
         </div>
         <div>
-          <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Téléphone</label>
+          <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">{t('forms.personal.phone')}</label>
           <input 
             type="tel" 
             name="phone"
             value={data.phone || ''} 
             onChange={handleChange} 
             className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-[#d4af37] outline-none" 
-            placeholder="Ex: +33 6 12 34 56 78"
+            placeholder={t('forms.personal.phone_ph')}
           />
         </div>
         <div className="sm:col-span-2">
-          <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Adresse</label>
+          <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">{t('forms.personal.address')}</label>
           <input 
             type="text" 
             name="address"
             value={data.address || ''} 
             onChange={handleChange} 
             className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-[#d4af37] outline-none" 
-            placeholder="Ex: Paris, France"
+            placeholder={t('forms.personal.address_ph')}
           />
         </div>
         <div className="sm:col-span-2">
-          <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">Site Web / LinkedIn</label>
+          <label className="block text-xs font-semibold text-slate-500 dark:text-slate-400 mb-1">{t('forms.personal.website')}</label>
           <input 
             type="text" 
             name="website"
             value={data.website || ''} 
             onChange={handleChange} 
             className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-[#d4af37] outline-none" 
-            placeholder="Ex: linkedin.com/in/jeandupont"
+            placeholder={t('forms.personal.website_ph')}
           />
         </div>
       </div>
