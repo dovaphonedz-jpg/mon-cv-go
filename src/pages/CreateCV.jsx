@@ -20,6 +20,7 @@ import SummaryForm from '../components/cv-forms/SummaryForm';
 import ProjectsForm from '../components/cv-forms/ProjectsForm';
 import DonationButton from '../components/DonationButton';
 import ThankYouModal from '../components/ThankYouModal';
+import ATSScore from '../components/ATSScore';
 
 const STEPS = [
   { id: 'style', label: 'Modèle & Style' },
@@ -196,6 +197,10 @@ export default function CreateCV() {
           animate={{ opacity: 1, x: 0 }}
           className={`w-full lg:w-1/2 xl:w-5/12 flex flex-col gap-6 lg:sticky lg:top-6 ${showPreviewMobile ? 'hidden lg:flex' : 'flex'}`}
         >
+          <div className="w-full">
+            <ATSScore />
+          </div>
+
           <div className="w-full">
             <DonationButton />
           </div>

@@ -1,15 +1,53 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useResume } from '../../context/ResumeContext';
+import { Sparkles, Loader2 } from 'lucide-react';
 
 export default function SummaryForm() {
   const { cvData, updateSummary } = useResume();
+  const [isGenerating, setIsGenerating] = useState(false);
+
+  const generateSummary = async () => {
+    const jobTitle = cvData.personal?.title || prompt("Pour quel métier souhaitez-vous générer ce résumé ?");
+    if (!jobTitle) return;
+
+    setIsGenerating(true);
+    try {
+      const response = await fetch('http://localhost:3001/api/magic', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: jobTitle, type: 'summary' })
+      });
+      
+      const data = await response.json();
+      if (data.text) {
+        updateSummary(data.text);
+      } else {
+        alert("Erreur: " + (data.error || "Impossible de générer le texte."));
+      }
+    } catch (err) {
+      alert("Erreur de connexion au serveur IA.");
+    } finally {
+      setIsGenerating(false);
+    }
+  };
 
   return (
     <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
       <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100 mb-2">Profil Professionnel</h3>
-      <p className="text-sm text-slate-500 dark:text-slate-400 mb-4">
-        Rédigez un court paragraphe (3 à 5 phrases) résumant votre profil, vos années d'expérience et votre objectif professionnel.
-      </p>
+      <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-4">
+        <p className="text-sm text-slate-500 dark:text-slate-400">
+          Rédigez un court paragraphe (3 à 5 phrases) résumant votre profil, vos années d'expérience et votre objectif professionnel.
+        </p>
+        
+        <button 
+          onClick={generateSummary}
+          disabled={isGenerating}
+          className="flex-shrink-0 flex items-center justify-center gap-2 px-4 py-2 bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white text-sm font-bold rounded-xl shadow-md transition-all hover:-translate-y-0.5 disabled:opacity-50 disabled:cursor-not-allowed"
+        >
+          {isGenerating ? <Loader2 className="w-4 h-4 animate-spin" /> : <Sparkles className="w-4 h-4" />}
+          {isGenerating ? "Génération..." : "✨ Magie IA"}
+        </button>
+      </div>
       
       <div>
         <textarea 

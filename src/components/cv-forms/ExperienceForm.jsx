@@ -1,12 +1,38 @@
 import React, { useState } from 'react';
 import { useResume } from '../../context/ResumeContext';
-import { Plus, Trash2, ChevronDown, ChevronUp } from 'lucide-react';
+import { Plus, Trash2, ChevronDown, ChevronUp, Sparkles, Loader2 } from 'lucide-react';
 
 export default function ExperienceForm() {
   const { cvData, addExperience, updateExperience, removeExperience } = useResume();
   const experiences = cvData.experiences || [];
   
   const [expandedIndex, setExpandedIndex] = useState(experiences.length > 0 ? 0 : null);
+  const [generatingIndex, setGeneratingIndex] = useState(null);
+
+  const generateExperience = async (index, exp) => {
+    const jobTitle = exp.role || prompt("Veuillez saisir le titre de ce poste pour que l'IA puisse l'analyser :");
+    if (!jobTitle) return;
+
+    setGeneratingIndex(index);
+    try {
+      const response = await fetch('http://localhost:3001/api/magic', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ prompt: jobTitle, type: 'experience' })
+      });
+      
+      const data = await response.json();
+      if (data.text) {
+        handleChange(index, 'desc', data.text);
+      } else {
+        alert("Erreur: " + (data.error || "Impossible de générer le texte."));
+      }
+    } catch (err) {
+      alert("Erreur de connexion au serveur IA.");
+    } finally {
+      setGeneratingIndex(null);
+    }
+  };
 
   const handleAdd = () => {
     addExperience({ company: '', role: '', start: '', end: '', desc: '' });
@@ -107,7 +133,17 @@ export default function ExperienceForm() {
                     />
                   </div>
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-semibold text-slate-500 mb-1">Description des missions</label>
+                    <div className="flex justify-between items-center mb-1">
+                      <label className="block text-xs font-semibold text-slate-500">Description des missions</label>
+                      <button 
+                        onClick={() => generateExperience(index, exp)}
+                        disabled={generatingIndex === index}
+                        className="flex items-center gap-1.5 px-2.5 py-1 bg-gradient-to-r from-purple-500/10 to-blue-500/10 hover:from-purple-500/20 hover:to-blue-500/20 text-purple-700 dark:text-purple-300 text-xs font-bold rounded-md transition-colors disabled:opacity-50"
+                      >
+                        {generatingIndex === index ? <Loader2 className="w-3.5 h-3.5 animate-spin" /> : <Sparkles className="w-3.5 h-3.5" />}
+                        {generatingIndex === index ? "Génération..." : "✨ Magie IA"}
+                      </button>
+                    </div>
                     <textarea 
                       value={exp.desc || ''} 
                       onChange={(e) => handleChange(index, 'desc', e.target.value)}

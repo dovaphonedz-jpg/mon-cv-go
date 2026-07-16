@@ -119,6 +119,38 @@ app.post('/api/generate', async (req, res) => {
   }
 });
 
+app.post('/api/magic', async (req, res) => {
+  try {
+    const { prompt, type } = req.body;
+    
+    if (!prompt) {
+      return res.status(400).json({ error: 'Prompt requis' });
+    }
+
+    let systemMsg = "Tu es un expert en recrutement.";
+    if (type === 'summary') {
+      systemMsg = "Tu es un expert RH. Rédige un résumé de profil professionnel (Summary) très percutant de 3 à 4 phrases maximum pour un CV. Le texte doit mettre en valeur les compétences et l'expérience en fonction du métier donné. Ne mets pas d'introduction, renvoie juste le texte final.";
+    } else if (type === 'experience') {
+      systemMsg = "Tu es un expert RH. Rédige une description de poste en 3 à 4 puces (bullet points) percutantes pour un CV, basées sur le métier donné. Utilise des verbes d'action forts. Ne mets pas d'introduction, renvoie juste le texte final avec des tirets.";
+    }
+
+    const response = await openai.chat.completions.create({
+      model: "gpt-3.5-turbo",
+      messages: [
+        { role: "system", content: systemMsg },
+        { role: "user", content: `Métier ou mots-clés : ${prompt}` }
+      ],
+      temperature: 0.7,
+    });
+    
+    return res.json({ text: response.choices[0].message.content.trim() });
+    
+  } catch (error) {
+    console.error('Erreur API OpenAI Magic:', error);
+    res.status(500).json({ error: "Erreur lors de la génération magique." });
+  }
+});
+
 app.listen(port, () => {
   console.log(`Backend Express (OpenAI) en cours d'exécution sur le port ${port}`);
 });
