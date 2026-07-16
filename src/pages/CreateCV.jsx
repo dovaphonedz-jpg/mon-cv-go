@@ -8,6 +8,7 @@ import SEO from '../components/SEO';
 
 import { exportToWord } from '../utils/exportWord';
 import { exportToPowerPoint } from '../utils/exportPowerPoint';
+import { triggerConfetti } from '../utils/confetti';
 
 import CVPreview from '../components/cv-preview/CVPreview';
 import PersonalInfoForm from '../components/cv-forms/PersonalInfoForm';
@@ -266,6 +267,7 @@ export default function CreateCV() {
                 {activeStepIdx === STEPS.length - 1 ? (
                   <button 
                     onClick={() => {
+                       triggerConfetti();
                        handlePrint();
                        if (window.innerWidth < 1024) setShowPreviewMobile(true);
                        else {
@@ -324,7 +326,7 @@ export default function CreateCV() {
                 <UploadCloud className="w-4 h-4" />
                 <span className="hidden sm:inline">{isImporting ? "Analyse..." : "Importer"}</span>
               </button>
-              <button onClick={handlePrint} className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md shadow-blue-600/20 transition-all hover:-translate-y-0.5">
+              <button onClick={() => { triggerConfetti(); handlePrint(); }} className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md shadow-blue-600/20 transition-all hover:-translate-y-0.5">
                 <Download className="w-4 h-4" />
                 <span className="hidden sm:inline">PDF</span>
               </button>

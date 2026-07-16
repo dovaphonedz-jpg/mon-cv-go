@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useReactToPrint } from 'react-to-print';
 import SEO from '../components/SEO';
 import DonationButton from '../components/DonationButton';
+import { triggerConfetti } from '../utils/confetti';
 
 export default function CoverLetter() {
   const [language, setLanguage] = useState('fr');
@@ -130,6 +131,7 @@ export default function CoverLetter() {
   });
 
   const downloadPDF = () => {
+    triggerConfetti();
     handlePrint();
   };
 
