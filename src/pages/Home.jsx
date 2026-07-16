@@ -88,10 +88,11 @@ export default function Home() {
                 </Link>
               </motion.div>
               
-              <motion.div variants={itemVariants} className="mt-10 flex flex-wrap justify-center lg:justify-start items-center gap-x-8 gap-y-4 text-sm text-slate-600 dark:text-slate-400 font-medium">
+              <motion.div variants={itemVariants} className="mt-10 flex flex-wrap justify-center lg:justify-start items-center gap-x-6 gap-y-4 text-sm text-slate-600 dark:text-slate-400 font-medium">
                 <span className="flex items-center gap-2"><Check className="w-5 h-5 text-emerald-500 bg-emerald-100 dark:bg-emerald-900/30 rounded-full p-1" /> Export PDF HD</span>
                 <span className="flex items-center gap-2"><Check className="w-5 h-5 text-emerald-500 bg-emerald-100 dark:bg-emerald-900/30 rounded-full p-1" /> 100 Modèles Pros</span>
-                <span className="flex items-center gap-2"><Check className="w-5 h-5 text-emerald-500 bg-emerald-100 dark:bg-emerald-900/30 rounded-full p-1" /> 100% Sécurisé</span>
+                <span className="flex items-center gap-2"><Zap className="w-5 h-5 text-amber-500 bg-amber-100 dark:bg-amber-900/30 rounded-full p-1" /> Magie IA Intégrée</span>
+                <span className="flex items-center gap-2"><Star className="w-5 h-5 text-purple-500 bg-purple-100 dark:bg-purple-900/30 rounded-full p-1" /> Score ATS en Direct</span>
               </motion.div>
             </motion.div>
 
@@ -153,9 +154,9 @@ export default function Home() {
             <React.Fragment key={i}>
               <span className="text-xl font-black text-slate-300 dark:text-slate-700">100+ MODÈLES PROS</span>
               <span className="text-xl font-black text-slate-300 dark:text-slate-700">•</span>
-              <span className="text-xl font-black text-slate-300 dark:text-slate-700">DESIGN PREMIUM</span>
+              <span className="text-xl font-black text-slate-300 dark:text-slate-700 bg-clip-text text-transparent bg-gradient-to-r from-amber-400 to-orange-500">✨ RÉDACTION IA</span>
               <span className="text-xl font-black text-slate-300 dark:text-slate-700">•</span>
-              <span className="text-xl font-black text-slate-300 dark:text-slate-700">PORTFOLIO INTÉGRÉ</span>
+              <span className="text-xl font-black text-slate-300 dark:text-slate-700 bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-500">🎯 SCORE ATS 100%</span>
               <span className="text-xl font-black text-slate-300 dark:text-slate-700">•</span>
               <span className="text-xl font-black text-slate-300 dark:text-slate-700">EXPORT PDF HD</span>
               <span className="text-xl font-black text-slate-300 dark:text-slate-700">•</span>
@@ -176,6 +177,25 @@ export default function Home() {
             <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
               La recherche d'emploi est une étape cruciale dans la vie de tout professionnel. Que vous soyez un jeune diplômé à la recherche de votre premier poste, ou un cadre expérimenté souhaitant donner un nouvel élan à votre carrière, <strong>votre Curriculum Vitae (CV) est votre passeport pour l'entretien</strong>. Mon CV Go a été pensé et développé pour vous offrir la meilleure expérience de création de CV gratuit en ligne.
             </p>
+
+            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-6">Nouveautés : Génération IA & Score ATS Intégrés</h3>
+            <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
+              Pour vous donner un avantage déloyal face aux autres candidats, Mon CV Go intègre désormais deux fonctionnalités de pointe :
+            </p>
+            <ul className="space-y-4 text-slate-600 dark:text-slate-400 mb-6">
+              <li className="flex items-start gap-3">
+                <Zap className="w-6 h-6 text-amber-500 shrink-0 mt-1" />
+                <div>
+                  <strong className="text-slate-900 dark:text-white">La Magie IA (Génération de contenu) :</strong> Vous manquez d'inspiration ? Cliquez sur le bouton "Magie IA" et laissez notre intelligence artificielle rédiger à votre place un résumé de profil percutant ou des descriptions d'expériences parfaitement formulées avec des verbes d'action.
+                </div>
+              </li>
+              <li className="flex items-start gap-3">
+                <Star className="w-6 h-6 text-purple-500 shrink-0 mt-1" />
+                <div>
+                  <strong className="text-slate-900 dark:text-white">La Jauge de Score ATS en direct :</strong> Découvrez instantanément l'efficacité de votre CV ! Notre jauge calcule votre score en temps réel et vous donne des recommandations précises (ajouter des compétences, allonger la description, etc.) pour vous assurer de passer les filtres des logiciels de recrutement (Applicant Tracking Systems).
+                </div>
+              </li>
+            </ul>
 
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-6">L'importance d'un modèle de CV moderne et optimisé ATS</h3>
             <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">
