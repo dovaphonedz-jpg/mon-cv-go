@@ -2,6 +2,11 @@ import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
 import OpenAI from 'openai';
+import path from 'path';
+import { fileURLToPath } from 'url';
+
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 dotenv.config();
 
@@ -14,7 +19,7 @@ app.use(express.json());
 
 // Initialize OpenAI client
 const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY
+  apiKey: process.env.OPENAI_API_KEY || 'dummy_key_to_prevent_crash'
 });
 
 const systemInstruction = `Tu es un assistant de création de CV extrêmement précis.
@@ -66,6 +71,51 @@ Format JSON STRICT exigé :
   }
 }`;
 
+const mockCvData = {
+  cvData: {
+    personal: {
+      name: "Utilisateur (Mode Hors Ligne IA)",
+      title: "Candidat",
+      email: "candidat@email.com",
+      phone: "+33 6 00 00 00 00",
+      address: "Paris, France",
+      website: "",
+      photo: ""
+    },
+    summary: "Avertissement : Les quotas de l'Intelligence Artificielle sont épuisés ou la clé API est manquante. Voici un profil généré par défaut pour vous permettre de tester l'interface.",
+    experiences: [
+      {
+        title: "Poste Exemple",
+        company: "Entreprise Fictive",
+        location: "Ville",
+        startDate: "2020-01",
+        endDate: "2023-01",
+        current: false,
+        description: "- Mission fictive 1\n- Mission fictive 2\n- Mission fictive 3"
+      }
+    ],
+    education: [
+      {
+        degree: "Diplôme Exemple",
+        school: "École Fictive",
+        location: "Ville",
+        startDate: "2015-09",
+        endDate: "2018-06",
+        description: "Description de la formation."
+      }
+    ],
+    skills: [
+      { name: "Compétence Exemple 1", level: "Avancé" },
+      { name: "Compétence Exemple 2", level: "Intermédiaire" }
+    ],
+    languages: [
+      { name: "Français", level: "Natif" },
+      { name: "Anglais", level: "Scolaire" }
+    ],
+    projects: []
+  }
+};
+
 app.post('/api/generate', async (req, res) => {
   try {
     const { documentType, topic } = req.body;
@@ -74,8 +124,10 @@ app.post('/api/generate', async (req, res) => {
       return res.status(400).json({ error: 'Le sujet (topic) est requis' });
     }
 
-    if (!process.env.OPENAI_API_KEY) {
-      return res.status(500).json({ error: "La clé API OpenAI n'est pas configurée correctement." });
+    if (!process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY === 'dummy_key_to_prevent_crash') {
+      console.log("Clé API manquante, utilisation des données fictives.");
+      if (documentType === 'cv') return res.json(mockCvData);
+      return res.json({ text: "Avertissement : Les quotas de l'IA sont épuisés. Ceci est un texte fictif." });
     }
 
     if (documentType === 'cv') {
@@ -89,8 +141,6 @@ app.post('/api/generate', async (req, res) => {
       });
 
       let generatedContent = response.choices[0].message.content;
-      
-      // Clean up markdown block if present
       generatedContent = generatedContent.replace(/```json/gi, '').replace(/```/g, '').trim();
       
       try {
@@ -101,7 +151,6 @@ app.post('/api/generate', async (req, res) => {
         return res.status(500).json({ error: "Le modèle n'a pas renvoyé un JSON valide." });
       }
     } else {
-      // Fallback for letters and portfolio
       const response = await openai.chat.completions.create({
         model: "gpt-3.5-turbo",
         messages: [
@@ -114,7 +163,13 @@ app.post('/api/generate', async (req, res) => {
     }
 
   } catch (error) {
-    console.error('Erreur API OpenAI:', error);
+    console.error('Erreur API OpenAI:', error.message);
+    // FALLBACK MOCK DATA ON QUOTA ERROR
+    if (error.code === 'insufficient_quota' || error.status === 429 || error.code === 'invalid_api_key') {
+      console.log("Quota épuisé ou clé invalide, utilisation des données fictives.");
+      if (req.body.documentType === 'cv') return res.json(mockCvData);
+      return res.json({ text: "Avertissement : Les quotas de l'IA sont épuisés. Veuillez réessayer plus tard ou configurer une nouvelle clé API." });
+    }
     res.status(500).json({ error: error.message || "Erreur lors de la génération avec l'IA." });
   }
 });
@@ -125,6 +180,10 @@ app.post('/api/magic', async (req, res) => {
     
     if (!prompt) {
       return res.status(400).json({ error: 'Prompt requis' });
+    }
+
+    if (!process.env.OPENAI_API_KEY || process.env.OPENAI_API_KEY === 'dummy_key_to_prevent_crash') {
+      throw { code: 'invalid_api_key' }; // Force fallback
     }
 
     let systemMsg = "Tu es un expert en recrutement.";
@@ -142,21 +201,21 @@ app.post('/api/magic', async (req, res) => {
       ],
       temperature: 0.7,
     });
+
+    res.json({ text: response.choices[0].message.content.trim() });
     
   } catch (error) {
     console.error('Erreur API OpenAI Magic:', error.message);
     const { prompt, type } = req.body;
     
-    // FALLBACK MOCK DATA (If API key is missing or invalid)
-    // This allows the user to test the UI functionality even without a valid API key.
-    if (error.code === 'invalid_api_key' || error.message.includes('Incorrect API key') || !process.env.OPENAI_API_KEY) {
-      console.log("Utilisation des données fictives (Mock) suite à une clé API invalide.");
+    if (error.code === 'invalid_api_key' || error.code === 'insufficient_quota' || error.status === 429 || error.message?.includes('Incorrect API key')) {
+      console.log("Utilisation des données fictives (Mock) suite à une clé API invalide ou quota épuisé.");
       
       let mockResponse = "";
       if (type === 'summary') {
-        mockResponse = `Expert passionné en tant que ${prompt}, avec une solide expérience dans le domaine. Reconnu pour ma capacité à résoudre des problèmes complexes et à livrer des résultats de haute qualité. Je suis actuellement à la recherche de nouveaux défis pour mettre à profit mes compétences.`;
+        mockResponse = `Expert passionné en tant que ${prompt}, avec une solide expérience dans le domaine. Reconnu pour ma capacité à résoudre des problèmes complexes et à livrer des résultats de haute qualité. (Note: IA actuellement indisponible, quota épuisé).`;
       } else if (type === 'experience') {
-        mockResponse = `- Pilotage et gestion des projets liés au poste de ${prompt}.\n- Amélioration des processus internes entraînant une hausse de productivité de 15%.\n- Collaboration étroite avec les équipes transverses pour assurer le respect des délais.\n- Analyse des KPIs et reporting régulier à la direction.`;
+        mockResponse = `- Pilotage et gestion des projets liés au poste de ${prompt}.\n- Amélioration des processus internes entraînant une hausse de productivité.\n- (Note: IA actuellement indisponible, quota épuisé).`;
       }
       
       return res.json({ text: mockResponse });
@@ -166,6 +225,14 @@ app.post('/api/magic', async (req, res) => {
   }
 });
 
+// Serve static frontend files in production
+app.use(express.static(path.join(__dirname, 'dist')));
+
+// Fallback for React Router (Single Page Application)
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+});
+
 app.listen(port, () => {
-  console.log(`Backend Express (OpenAI) en cours d'exécution sur le port ${port}`);
+  console.log(`Backend Express en cours d'exécution sur le port ${port}`);
 });
