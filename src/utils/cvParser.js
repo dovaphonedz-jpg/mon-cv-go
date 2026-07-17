@@ -60,96 +60,142 @@ export const parseCVText = (text) => {
     if (validPhone) cvData.personal.phone = validPhone;
   }
 
-  // 3. Find Name (heuristic: first line that isn't contact info)
-  for (let i = 0; i < Math.min(5, lines.length); i++) {
+  // Section Headers regex
+  const expRegex = /^(exp[eé]rience|emploi|parcours professionnel|historique)/i;
+  const eduRegex = /^(formation|[eé]tude|dipl[oô]me|parcours acad[eé]mique|education)/i;
+  const skillsRegex = /^(comp[eé]tence|skill|aptitude|technologie)/i;
+  const langRegex = /^(langue|language)/i;
+
+  // 3. Find Name & Title
+  for (let i = 0; i < Math.min(6, lines.length); i++) {
     const l = lines[i].toLowerCase();
-    if (!l.includes('@') && !/\d{9}/.test(l) && l.length < 40) {
+    const isHeader = expRegex.test(l) || eduRegex.test(l) || skillsRegex.test(l) || langRegex.test(l);
+    if (!cvData.personal.name && !l.includes('@') && !/\d{5}/.test(l) && l.length < 40 && !isHeader) {
       cvData.personal.name = lines[i];
-      // Title might be the next line
-      if (i + 1 < lines.length && lines[i + 1].length < 60 && !lines[i + 1].includes('@')) {
-        cvData.personal.title = lines[i + 1];
-      }
+    } else if (cvData.personal.name && !cvData.personal.title && !l.includes('@') && !/\d{5}/.test(l) && l.length < 60 && !isHeader) {
+      cvData.personal.title = lines[i];
       break;
     }
   }
 
-  // 4. Extract blocks
+  // Section Headers regex
+  const expRegex = /^(exp[eé]rience|emploi|parcours professionnel|historique)/i;
+  const eduRegex = /^(formation|[eé]tude|dipl[oô]me|parcours acad[eé]mique|education)/i;
+  const skillsRegex = /^(comp[eé]tence|skill|aptitude|technologie)/i;
+  const langRegex = /^(langue|language)/i;
+
   let currentSection = "summary";
   let currentBlock = [];
+
+  const extractDates = (str) => {
+    const datePattern = /((?:jan|fév|mar|avr|mai|juin|juil|aoû|sep|oct|nov|déc|janv|fev|mars|avril|juillet|aout|sept|novembre|decembre|january|february|march|april|may|june|july|august|september|october|november|december)?[a-z]*\.?\s*\d{4}|\d{1,2}\/\d{4}|\b20\d{2}\b|\b19\d{2}\b)/gi;
+    const dates = str.match(datePattern);
+    if (dates && dates.length >= 2) return { startDate: dates[0].trim(), endDate: dates[1].trim() };
+    if (dates && dates.length === 1) return { startDate: dates[0].trim(), endDate: "Présent" };
+    return { startDate: "", endDate: "" };
+  };
 
   const processBlock = (section, block) => {
     if (block.length === 0) return;
     
-    // Remove the header itself if it was pushed
-    const filteredBlock = block.filter(l => {
-      const lower = l.toLowerCase();
-      return !(lower.includes("expérience") || lower.includes("experience") || 
-               lower.includes("formation") || lower.includes("education") || 
-               lower.includes("compétence") || lower.includes("skills"));
-    });
-
-    if (filteredBlock.length === 0) return;
+    const filtered = block.filter(l => !(expRegex.test(l) || eduRegex.test(l) || skillsRegex.test(l) || langRegex.test(l)));
+    if (filtered.length === 0) return;
 
     if (section === "summary") {
-      cvData.summary = filteredBlock.join(' ');
-      // If summary is just the name, clear it
-      if (cvData.summary === cvData.personal.name || cvData.summary === cvData.personal.title) {
-        cvData.summary = "";
+      cvData.summary = filtered.join('\n');
+    } else if (section === "experience" || section === "education") {
+      let currentItem = { title: "", company: "", startDate: "", endDate: "", description: [] };
+      let items = [];
+      
+      for (let i = 0; i < filtered.length; i++) {
+        const line = filtered[i];
+        const dates = extractDates(line);
+        
+        // Detect new item if line has dates, or if it's the very first line
+        if ((dates.startDate || dates.endDate) || (i === 0 && !currentItem.title)) {
+          if (currentItem.title || currentItem.company || currentItem.description.length > 0) {
+            items.push(currentItem);
+          }
+          currentItem = { title: line, company: "", startDate: dates.startDate, endDate: dates.endDate, description: [] };
+          // Remove dates from the title
+          let cleanTitle = line;
+          if (dates.startDate) cleanTitle = cleanTitle.replace(dates.startDate, '');
+          if (dates.endDate) cleanTitle = cleanTitle.replace(dates.endDate, '');
+          cleanTitle = cleanTitle.replace(/[-—]|\bau\b|\bto\b|\bà\b/gi, '').trim();
+          if (cleanTitle) currentItem.title = cleanTitle;
+          else currentItem.title = line; 
+        } else if (!currentItem.company && line.length < 60 && !line.includes('•') && !line.includes('-')) {
+          currentItem.company = line;
+        } else {
+          currentItem.description.push(line);
+        }
       }
-    } else if (section === "experience") {
-      cvData.experiences.push({
-        title: filteredBlock[0] || "Poste",
-        company: filteredBlock[1] || "",
-        startDate: "",
-        endDate: "",
-        description: filteredBlock.slice(2).join('\n')
-      });
-    } else if (section === "education") {
-      cvData.education.push({
-        degree: filteredBlock[0] || "Diplôme",
-        school: filteredBlock[1] || "",
-        startDate: "",
-        endDate: "",
-        description: filteredBlock.slice(2).join('\n')
+      if (currentItem.title || currentItem.company || currentItem.description.length > 0) {
+        items.push(currentItem);
+      }
+
+      items.forEach(item => {
+        item.description = item.description.join('\n');
+        if (section === "experience") {
+          cvData.experiences.push(item);
+        } else {
+          cvData.education.push({
+            degree: item.title || "Diplôme",
+            school: item.company || "",
+            startDate: item.startDate,
+            endDate: item.endDate,
+            description: item.description
+          });
+        }
       });
     } else if (section === "skills") {
-      const skillsStr = filteredBlock.join(', ');
-      skillsStr.split(/[,•|-]+/).forEach(s => {
+      const skillsStr = filtered.join(', ');
+      skillsStr.split(/[,•|;]+/).forEach(s => {
         const clean = s.trim();
         if (clean && clean.length < 40) {
           cvData.skills.push({ name: clean, level: "Intermédiaire" });
         }
       });
+    } else if (section === "languages") {
+      filtered.forEach(line => {
+        line.split(/[,•|;]+/).forEach(s => {
+           const clean = s.trim();
+           if (clean && clean.length < 30) {
+             cvData.languages.push({ name: clean, level: "Courant" });
+           }
+        });
+      });
     }
   };
 
   for (let i = 0; i < lines.length; i++) {
-    const line = lines[i].toLowerCase();
+    const line = lines[i];
     
-    // Section header detection
-    if (line === "expériences" || line === "expérience" || line === "experience" || line === "emplois" || line.startsWith("expérience professionnelle")) {
+    if (expRegex.test(line) && line.length < 40) {
       processBlock(currentSection, currentBlock);
-      currentSection = "experience";
-      currentBlock = [];
+      currentSection = "experience"; currentBlock = [];
       continue;
-    } else if (line === "formation" || line === "formations" || line === "education" || line === "études" || line.startsWith("parcours académique")) {
+    } else if (eduRegex.test(line) && line.length < 40) {
       processBlock(currentSection, currentBlock);
-      currentSection = "education";
-      currentBlock = [];
+      currentSection = "education"; currentBlock = [];
       continue;
-    } else if (line === "compétences" || line === "competences" || line === "skills" || line.startsWith("compétences techniques")) {
+    } else if (skillsRegex.test(line) && line.length < 40) {
       processBlock(currentSection, currentBlock);
-      currentSection = "skills";
-      currentBlock = [];
+      currentSection = "skills"; currentBlock = [];
+      continue;
+    } else if (langRegex.test(line) && line.length < 40) {
+      processBlock(currentSection, currentBlock);
+      currentSection = "languages"; currentBlock = [];
       continue;
     }
 
-    currentBlock.push(lines[i]);
+    currentBlock.push(line);
   }
   processBlock(currentSection, currentBlock);
-
-  // Clean up exact matches
-  if (cvData.personal.name === cvData.summary) cvData.summary = "";
+  
+  if (cvData.summary.includes(cvData.personal.name)) {
+    cvData.summary = cvData.summary.replace(cvData.personal.name, '').replace(cvData.personal.title, '').trim();
+  }
 
   return { cvData };
 };
