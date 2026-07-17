@@ -340,7 +340,7 @@ export default function CreateCV() {
                 <UploadCloud className="w-4 h-4" />
                 <span className="hidden sm:inline">{isImporting ? "Analyse..." : t('create_cv.btn_import')}</span>
               </button>
-              <button onClick={() => { triggerConfetti(); setIsThankYouModalOpen(true); setTimeout(() => handlePrint(), 500); }} className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md shadow-blue-600/20 transition-all hover:-translate-y-0.5">
+              <button onClick={() => { if (typeof window !== 'undefined' && window.gtag) window.gtag('event', 'generation_cv', { 'event_category': 'Engagement', 'event_label': 'Bouton_Generer_CV' }); triggerConfetti(); setIsThankYouModalOpen(true); setTimeout(() => handlePrint(), 500); }} className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md shadow-blue-600/20 transition-all hover:-translate-y-0.5">
                 <Download className="w-4 h-4" />
                 <span className="hidden sm:inline">{t('create_cv.btn_pdf')}</span>
               </button>
