@@ -1,8 +1,9 @@
 import * as mammoth from 'mammoth';
 import * as pdfjsLib from 'pdfjs-dist';
 
-// Define worker source for pdfjs
-pdfjsLib.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjsLib.version}/pdf.worker.min.js`;
+// Define worker source for pdfjs using Vite's ?url syntax for local worker
+import pdfWorkerUrl from 'pdfjs-dist/build/pdf.worker.mjs?url';
+pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorkerUrl;
 
 export const extractTextFromWord = async (file) => {
   const arrayBuffer = await file.arrayBuffer();
@@ -17,7 +18,7 @@ export const extractTextFromPDF = async (file) => {
   for (let i = 1; i <= pdf.numPages; i++) {
     const page = await pdf.getPage(i);
     const textContent = await page.getTextContent();
-    text += textContent.items.map(s => s.str).join(' ') + '\n';
+    text += textContent.items.map(s => s.str || '').join(' ') + '\n';
   }
   return text;
 };
