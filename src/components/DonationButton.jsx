@@ -42,6 +42,11 @@ const DonationButton = () => {
             label: 'paypal',
             height: 45
           },
+          onClick: (data, actions) => {
+            if (typeof window !== 'undefined' && window.gtag) {
+              window.gtag('event', 'clic_don_paypal', { 'event_category': 'Monetisation', 'event_label': 'Bouton_Don_PayPal' });
+            }
+          },
           createOrder: (data, actions) => {
             return actions.order.create({
               purchase_units: [{
