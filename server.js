@@ -13,6 +13,14 @@ dotenv.config();
 const app = express();
 const port = process.env.PORT || 3001;
 
+// Force HTTPS on Railway
+app.use((req, res, next) => {
+  if (req.headers['x-forwarded-proto'] === 'http') {
+    return res.redirect(301, `https://${req.hostname}${req.url}`);
+  }
+  next();
+});
+
 // Middleware
 app.use(cors());
 app.use(express.json());
