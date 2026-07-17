@@ -13,13 +13,26 @@ export const extractTextFromWord = async (file) => {
 export const extractTextFromPDF = async (file) => {
   const arrayBuffer = await file.arrayBuffer();
   const pdf = await pdfjsLib.getDocument({ data: new Uint8Array(arrayBuffer) }).promise;
-  let text = '';
+  let fullText = '';
   for (let i = 1; i <= pdf.numPages; i++) {
     const page = await pdf.getPage(i);
     const textContent = await page.getTextContent();
-    text += textContent.items.map(s => s.str || '').join(' ') + '\n';
+    let pageText = '';
+    let lastY = null;
+    for (const item of textContent.items) {
+      if (!item.str) continue;
+      const y = item.transform ? item.transform[5] : null;
+      if (lastY !== null && y !== null && Math.abs(y - lastY) > 3) {
+        pageText += '\n';
+      } else if (lastY !== null && y !== null) {
+        pageText += ' '; // Add space between words on the same line if needed
+      }
+      pageText += item.str;
+      if (y !== null) lastY = y;
+    }
+    fullText += pageText + '\n';
   }
-  return text;
+  return fullText;
 };
 
 export const parseCVText = (text) => {
