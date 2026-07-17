@@ -1,9 +1,9 @@
 import * as mammoth from 'mammoth';
 import * as pdfjsLib from 'pdfjs-dist';
 
-// Define worker source for pdfjs using Vite's ?url syntax for local worker
-import pdfWorkerUrl from 'pdfjs-dist/build/pdf.worker.mjs?url';
-pdfjsLib.GlobalWorkerOptions.workerSrc = pdfWorkerUrl;
+// Use Vite's ?worker syntax to bundle the worker properly and avoid production MIME type issues
+import PdfWorker from 'pdfjs-dist/build/pdf.worker.mjs?worker';
+pdfjsLib.GlobalWorkerOptions.workerPort = new PdfWorker();
 
 export const extractTextFromWord = async (file) => {
   const arrayBuffer = await file.arrayBuffer();
@@ -13,7 +13,7 @@ export const extractTextFromWord = async (file) => {
 
 export const extractTextFromPDF = async (file) => {
   const arrayBuffer = await file.arrayBuffer();
-  const pdf = await pdfjsLib.getDocument({ data: arrayBuffer }).promise;
+  const pdf = await pdfjsLib.getDocument({ data: new Uint8Array(arrayBuffer) }).promise;
   let text = '';
   for (let i = 1; i <= pdf.numPages; i++) {
     const page = await pdf.getPage(i);
