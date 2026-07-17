@@ -78,11 +78,6 @@ export const parseCVText = (text) => {
     }
   }
 
-  // Section Headers regex
-  const expRegex = /^(exp[eé]rience|emploi|parcours professionnel|historique)/i;
-  const eduRegex = /^(formation|[eé]tude|dipl[oô]me|parcours acad[eé]mique|education)/i;
-  const skillsRegex = /^(comp[eé]tence|skill|aptitude|technologie)/i;
-  const langRegex = /^(langue|language)/i;
 
   let currentSection = "summary";
   let currentBlock = [];
