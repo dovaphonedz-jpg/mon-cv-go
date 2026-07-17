@@ -1,9 +1,8 @@
 import * as mammoth from 'mammoth';
 import * as pdfjsLib from 'pdfjs-dist';
 
-// Use Vite's ?worker syntax to bundle the worker properly and avoid production MIME type issues
-import PdfWorker from 'pdfjs-dist/build/pdf.worker.mjs?worker';
-pdfjsLib.GlobalWorkerOptions.workerPort = new PdfWorker();
+// Use unpkg CDN to perfectly bypass any production bundling or MIME type issues
+pdfjsLib.GlobalWorkerOptions.workerSrc = `https://unpkg.com/pdfjs-dist@${pdfjsLib.version}/build/pdf.worker.mjs`;
 
 export const extractTextFromWord = async (file) => {
   const arrayBuffer = await file.arrayBuffer();
