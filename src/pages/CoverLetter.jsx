@@ -170,12 +170,12 @@ export default function CoverLetter() {
             </p>
           </div>
           
-          <div className="flex gap-2">
-            <button className="flex lg:hidden items-center gap-2 px-4 py-2 bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/30 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-400 rounded-xl text-sm font-bold transition-all" onClick={() => setShowPreviewMobile(!showPreviewMobile)}>
+          <div className="flex gap-3">
+            <button className="flex lg:hidden items-center gap-2 px-4 py-2 bg-white text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active" onClick={() => setShowPreviewMobile(!showPreviewMobile)}>
               <Eye className="w-4 h-4" />
               {showPreviewMobile ? t('cover_letter.btn_edit') : t('cover_letter.btn_preview')}
             </button>
-            <button onClick={downloadPDF} className="flex items-center gap-2 px-5 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md shadow-blue-600/20 transition-all hover:-translate-y-0.5">
+            <button onClick={downloadPDF} className="flex items-center gap-2 px-5 py-2.5 bg-cyan-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active">
               <Download className="w-4 h-4" />
               <span className="hidden sm:inline">{t('cover_letter.btn_download')}</span>
               <span className="sm:hidden">{t('cover_letter.btn_pdf')}</span>
@@ -200,12 +200,12 @@ export default function CoverLetter() {
           <div className="bg-white dark:bg-[#0F172A] rounded-3xl shadow-xl shadow-slate-200/40 dark:shadow-none border border-slate-200 dark:border-slate-800 p-6 sm:p-8 flex-grow">
             
             <div className="flex flex-wrap gap-2 mb-8 justify-between items-center">
-              <div className="flex gap-2">
-                <button onClick={loadExample} className="flex items-center gap-1.5 px-3 py-1.5 bg-blue-50 dark:bg-blue-900/30 text-blue-700 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/50 text-xs font-bold rounded-lg transition border border-blue-200 dark:border-blue-800">
-                  <Sparkles className="w-3.5 h-3.5" /> {t('cover_letter.btn_example')}
+              <div className="flex gap-3">
+                <button onClick={loadExample} className="flex items-center gap-2 px-4 py-2 bg-yellow-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active">
+                  <Sparkles className="w-4 h-4" /> {t('cover_letter.btn_example')}
                 </button>
-                <button onClick={resetData} className="flex items-center gap-1.5 px-3 py-1.5 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 text-xs font-bold rounded-lg transition border border-slate-200 dark:border-slate-700">
-                  <Trash2 className="w-3.5 h-3.5" /> {t('cover_letter.btn_clear')}
+                <button onClick={resetData} className="flex items-center gap-2 px-4 py-2 bg-pink-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active">
+                  <Trash2 className="w-4 h-4" /> {t('cover_letter.btn_clear')}
                 </button>
               </div>
               

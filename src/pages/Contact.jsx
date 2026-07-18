@@ -44,13 +44,13 @@ export default function Contact() {
             animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6 }}
           >
-            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-semibold text-xs uppercase tracking-wider border border-blue-200 dark:border-blue-800 mb-6 shadow-sm">
-              <MessageSquare className="w-3.5 h-3.5" />
+            <div className="inline-flex items-center gap-2 px-4 py-2 bg-pink-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow mb-6 transform -rotate-2">
+              <MessageSquare className="w-4 h-4 text-slate-900" />
               {t('contact.badge')}
             </div>
             
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
-              {t('contact.title_1')}<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-500">{t('contact.title_highlight')}</span>
+            <h1 className="text-5xl sm:text-6xl font-black text-slate-900 dark:text-white tracking-tighter uppercase leading-tight">
+              {t('contact.title_1')}<span className="bg-yellow-400 text-slate-900 px-3 py-1 ml-2 brutal-border transform rotate-2 inline-block">{t('contact.title_highlight')}</span>
             </h1>
             
             <p className="mt-6 text-lg text-slate-600 dark:text-slate-400 leading-relaxed max-w-lg">
@@ -58,8 +58,8 @@ export default function Contact() {
             </p>
 
             <div className="mt-12 flex items-center gap-6">
-              <div className="w-16 h-16 rounded-2xl bg-blue-100 dark:bg-blue-900/30 flex items-center justify-center border border-blue-200 dark:border-blue-800/50 shadow-inner">
-                <Mail className="w-8 h-8 text-blue-600 dark:text-blue-400" />
+              <div className="w-16 h-16 bg-cyan-400 flex items-center justify-center brutal-border brutal-shadow transform -rotate-3 hover:rotate-0 transition-transform">
+                <Mail className="w-8 h-8 text-slate-900" strokeWidth={2.5} />
               </div>
               <div>
                 <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">{t('contact.email_label')}</p>
@@ -75,7 +75,7 @@ export default function Contact() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
-            className="bg-white/80 dark:bg-[#0F172A]/80 backdrop-blur-md rounded-3xl p-8 sm:p-10 border border-slate-200 dark:border-slate-800 shadow-2xl shadow-slate-200/50 dark:shadow-none relative"
+            className="bg-white dark:bg-slate-900 p-8 sm:p-10 brutal-border brutal-shadow-lg relative transform rotate-1"
           >
             <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-6">{t('contact.form_title')}</h2>
             
@@ -83,28 +83,28 @@ export default function Contact() {
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">{t('contact.label_name')}</label>
-                  <input required type="text" className="w-full rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white" placeholder={t('contact.ph_name')} />
+                  <input required type="text" className="w-full bg-white dark:bg-slate-800 brutal-border px-4 py-3 text-sm font-bold focus:ring-4 focus:ring-pink-400 outline-none transition-all dark:text-white" placeholder={t('contact.ph_name')} />
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">{t('contact.label_email')}</label>
-                  <input required type="email" className="w-full rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white" placeholder={t('contact.ph_email')} />
+                  <input required type="email" className="w-full bg-white dark:bg-slate-800 brutal-border px-4 py-3 text-sm font-bold focus:ring-4 focus:ring-pink-400 outline-none transition-all dark:text-white" placeholder={t('contact.ph_email')} />
                 </div>
               </div>
 
               <div>
                 <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">{t('contact.label_subject')}</label>
-                <input required type="text" className="w-full rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white" placeholder={t('contact.ph_subject')} />
+                <input required type="text" className="w-full bg-white dark:bg-slate-800 brutal-border px-4 py-3 text-sm font-bold focus:ring-4 focus:ring-pink-400 outline-none transition-all dark:text-white" placeholder={t('contact.ph_subject')} />
               </div>
 
               <div>
                 <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">{t('contact.label_message')}</label>
-                <textarea required rows="4" className="w-full rounded-xl bg-slate-50 dark:bg-slate-900/50 border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm focus:ring-2 focus:ring-blue-500 outline-none transition-all dark:text-white resize-none" placeholder={t('contact.ph_message')}></textarea>
+                <textarea required rows="4" className="w-full bg-white dark:bg-slate-800 brutal-border px-4 py-3 text-sm font-bold focus:ring-4 focus:ring-pink-400 outline-none transition-all dark:text-white resize-none" placeholder={t('contact.ph_message')}></textarea>
               </div>
 
               <button 
                 type="submit" 
                 disabled={status !== 'idle'}
-                className="w-full flex items-center justify-center gap-2 px-6 py-4 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl shadow-lg shadow-blue-600/20 transition-all disabled:opacity-70 disabled:cursor-not-allowed group"
+                className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-yellow-400 text-slate-900 font-black uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active disabled:opacity-70 disabled:cursor-not-allowed group mt-8"
               >
                 {status === 'idle' && (
                   <>

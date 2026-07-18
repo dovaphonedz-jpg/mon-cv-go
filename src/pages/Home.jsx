@@ -28,122 +28,71 @@ export default function Home() {
     <SEO title={t('home.seo_title')} description={t('home.seo_desc')} />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-screen overflow-hidden selection:bg-indigo-500/30">
       
-      {/* HERO SECTION - Modern & Animated */}
-      <section className="relative pt-20 pb-24 sm:pt-32 sm:pb-40" id="accueil">
-        {/* Animated Background Gradients */}
-        <div className="absolute inset-0 overflow-hidden -z-10">
-          <motion.div 
-            animate={{ 
-              scale: [1, 1.2, 1],
-              opacity: [0.3, 0.5, 0.3],
-            }}
-            transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-            className="absolute -top-[20%] -left-[10%] w-[70vw] h-[70vw] rounded-full bg-gradient-to-tr from-blue-600/20 to-indigo-600/20 blur-[120px]"
-          />
-          <motion.div 
-            animate={{ 
-              scale: [1, 1.5, 1],
-              opacity: [0.2, 0.4, 0.2],
-            }}
-            transition={{ duration: 10, repeat: Infinity, ease: "easeInOut", delay: 2 }}
-            className="absolute top-[20%] -right-[10%] w-[60vw] h-[60vw] rounded-full bg-gradient-to-bl from-emerald-500/20 to-teal-400/20 blur-[120px]"
-          />
+      {/* HERO SECTION - Neo-Brutalist & Vibrant */}
+      <section className="relative pt-24 pb-16 sm:pt-40 sm:pb-24 overflow-hidden bg-slate-100 dark:bg-slate-900 brutal-border border-b-8" id="accueil">
+        
+        {/* Playful Asymmetric Background Elements */}
+        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
+          <div className="absolute -top-24 -right-24 w-96 h-96 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob"></div>
+          <div className="absolute top-48 -left-24 w-72 h-72 bg-cyan-400 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-2000"></div>
+          <div className="absolute -bottom-24 left-1/2 w-80 h-80 bg-yellow-400 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-4000"></div>
         </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid lg:grid-cols-2 gap-12 lg:gap-8 items-center">
-            
-            {/* Left Content */}
-            <motion.div 
-              className="max-w-2xl mx-auto lg:mx-0 text-center lg:text-left rtl:lg:text-right"
-              variants={containerVariants}
-              initial="hidden"
-              animate="show"
-            >
-              <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-indigo-500/10 dark:bg-indigo-500/20 text-indigo-700 dark:text-indigo-300 font-bold text-xs uppercase tracking-wider border border-indigo-200 dark:border-indigo-500/30 mb-6 shadow-sm">
-                <span className="flex h-2 w-2 relative">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-indigo-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-indigo-500"></span>
-                </span>
-                {t('home.badge')}
-              </motion.div>
-              
-              <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
-                {t('home.title_1')}<span className="text-transparent bg-clip-text bg-gradient-to-r from-cyan-400 to-emerald-400">{t('home.title_highlight')}</span>{t('home.title_2')}
-              </motion.h1>
-              
-              <motion.p variants={itemVariants} className="mt-6 text-lg sm:text-xl text-slate-600 dark:text-slate-400 max-w-xl mx-auto lg:mx-0 leading-relaxed">
-                {t('home.subtitle')}
-              </motion.p>
-              
-              <motion.div variants={itemVariants} className="mt-10 flex flex-col sm:flex-row flex-wrap gap-4 justify-center lg:justify-start rtl:lg:justify-start">
-                <Link to="/create" className="group relative overflow-hidden flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-2xl shadow-xl transition-all hover:scale-105 hover:shadow-2xl">
-                  <div className="absolute inset-0 bg-gradient-to-r from-blue-600 to-indigo-600 opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                  <FilePlus2 className="w-5 h-5 relative z-10 group-hover:text-white" />
-                  <span className="relative z-10 group-hover:text-white">{t('home.btn_create')}</span>
-                  <ArrowRight className="w-4 h-4 relative z-10 group-hover:text-white rtl:-scale-x-100 rtl:group-hover:-translate-x-1 ltr:group-hover:translate-x-1 transition-transform" />
-                </Link>
-                <Link to="/portfolio" className="group flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-white dark:bg-slate-800 hover:bg-indigo-50 dark:hover:bg-slate-700 text-indigo-600 dark:text-indigo-400 font-bold rounded-2xl shadow-lg border border-indigo-100 dark:border-slate-700 transition-all hover:scale-105 hover:shadow-indigo-500/20">
-                  <Briefcase className="w-5 h-5 group-hover:scale-110 transition-transform" />
-                  {t('home.btn_portfolio')}
-                </Link>
-                <Link to="/lettre-motivation" className="group flex items-center justify-center gap-2 w-full sm:w-auto px-8 py-4 bg-white dark:bg-slate-800 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 font-bold rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 transition-all hover:scale-105">
-                  <PenLine className="w-5 h-5 group-hover:-rotate-12 transition-transform" />
-                  {t('home.btn_letter')}
-                </Link>
-              </motion.div>
-              
-              <motion.div variants={itemVariants} className="mt-10 flex flex-wrap justify-center lg:justify-start items-center gap-x-6 gap-y-4 text-sm text-slate-600 dark:text-slate-400 font-medium">
-                <span className="flex items-center gap-2"><Check className="w-5 h-5 text-emerald-500 bg-emerald-100 dark:bg-emerald-900/30 rounded-full p-1" /> {t('home.feat_pdf')}</span>
-                <span className="flex items-center gap-2"><Check className="w-5 h-5 text-emerald-500 bg-emerald-100 dark:bg-emerald-900/30 rounded-full p-1" /> {t('home.feat_templates')}</span>
-                <span className="flex items-center gap-2"><Zap className="w-5 h-5 text-amber-500 bg-amber-100 dark:bg-amber-900/30 rounded-full p-1" /> {t('home.feat_ai')}</span>
-                <span className="flex items-center gap-2"><Star className="w-5 h-5 text-purple-500 bg-purple-100 dark:bg-purple-900/30 rounded-full p-1" /> {t('home.feat_ats')}</span>
-              </motion.div>
-            </motion.div>
-
-            {/* Right Content - Animated Mockup Showcase */}
-            <motion.div 
-              initial={{ opacity: 0, x: 50 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ duration: 1, delay: 0.3, type: 'spring' }}
-              className="hidden lg:block relative z-10 perspective-1000"
-            >
-              <motion.div 
-                animate={{ y: [0, -20, 0] }}
-                transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-                className="relative"
-              >
-                <div className="absolute inset-0 bg-gradient-to-tr from-indigo-500 to-purple-400 blur-3xl opacity-30 dark:opacity-20 rounded-full"></div>
-                
-                {/* Main Mockup */}
-                <div className="relative bg-white/80 dark:bg-slate-900/80 backdrop-blur-2xl border border-white/50 dark:border-slate-700/50 p-3 rounded-3xl shadow-2xl transform rtl:rotate-y-[10deg] ltr:rotate-y-[-10deg] rotate-x-[5deg]">
-                  <div className="absolute top-4 left-4 right-4 flex justify-between items-center z-20">
-                    <span className="bg-slate-900/90 text-white text-[10px] font-bold uppercase tracking-widest px-4 py-1.5 rounded-full backdrop-blur-md shadow-lg">{t('home.live')}</span>
-                    <div className="flex gap-1.5">
-                      <div className="w-3 h-3 rounded-full bg-red-400"></div>
-                      <div className="w-3 h-3 rounded-full bg-yellow-400"></div>
-                      <div className="w-3 h-3 rounded-full bg-green-400"></div>
-                    </div>
-                  </div>
-                  <img src="/executive_slate_preview.png" alt="Aperçu du CV" className="w-full h-auto rounded-2xl shadow-inner border border-slate-200/50 dark:border-slate-800/50 object-cover" style={{ maxHeight: '600px' }} />
-                </div>
-                
-                {/* Floating Elements */}
-                <motion.div 
-                  animate={{ y: [0, 15, 0], rotate: [0, 5, 0] }}
-                  transition={{ duration: 5, repeat: Infinity, ease: "easeInOut", delay: 1 }}
-                  className="absolute -bottom-10 rtl:-right-10 ltr:-left-10 bg-white dark:bg-slate-800 p-4 rounded-2xl shadow-xl border border-slate-100 dark:border-slate-700 flex items-center gap-3"
-                >
-                  <div className="w-12 h-12 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center"><Check className="w-6 h-6" /></div>
-                  <div>
-                    <p className="text-sm font-bold text-slate-800 dark:text-white">{t('home.export_success')}</p>
-                    <p className="text-xs text-slate-500">{t('home.export_pdf_hd')}</p>
-                  </div>
-                </motion.div>
-              </motion.div>
-            </motion.div>
-
+        {/* Dynamic CV Background (Original Clean Version) */}
+        <div className="absolute inset-0 z-0 opacity-60 dark:opacity-30 pointer-events-none flex gap-6 px-4 transform -rotate-6 scale-110 -translate-y-24 -translate-x-12 sm:-translate-x-4">
+          {/* Column 1 - Scrolling Down */}
+          <div className="flex flex-col gap-6 animate-scroll-down w-1/3 max-w-[300px]">
+            <img src="/mockup1.png" alt="" className="w-full rounded-lg shadow-lg" />
+            <img src="/mockup2.png" alt="" className="w-full rounded-lg shadow-lg" />
+            <img src="/mockup3.png" alt="" className="w-full rounded-lg shadow-lg" />
+            <img src="/mockup1.png" alt="" className="w-full rounded-lg shadow-lg" />
           </div>
+          {/* Column 2 - Scrolling Up */}
+          <div className="flex flex-col gap-6 animate-scroll-up w-1/3 max-w-[300px] mt-24">
+            <img src="/mockup4.png" alt="" className="w-full rounded-lg shadow-lg" />
+            <img src="/mockup5.png" alt="" className="w-full rounded-lg shadow-lg" />
+            <img src="/mockup6.png" alt="" className="w-full rounded-lg shadow-lg" />
+            <img src="/mockup4.png" alt="" className="w-full rounded-lg shadow-lg" />
+          </div>
+          {/* Column 3 - Scrolling Down */}
+          <div className="hidden sm:flex flex-col gap-6 animate-scroll-down w-1/3 max-w-[300px]">
+            <img src="/executive_slate_preview.png" alt="" className="w-full rounded-lg shadow-lg" />
+            <img src="/reference_preview.png" alt="" className="w-full rounded-lg shadow-lg" />
+            <img src="/new_flow_preview.png" alt="" className="w-full rounded-lg shadow-lg" />
+            <img src="/executive_slate_preview.png" alt="" className="w-full rounded-lg shadow-lg" />
+          </div>
+        </div>
+
+        {/* Gradient Overlay for Text Readability */}
+        <div className="absolute inset-0 z-0 bg-gradient-to-b from-yellow-50/40 via-yellow-50/80 to-yellow-50 dark:from-slate-900/60 dark:via-slate-900/90 dark:to-slate-900"></div>
+        
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
+          <motion.div variants={containerVariants} initial="hidden" animate="show">
+            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2 bg-white dark:bg-slate-800 brutal-border brutal-shadow text-slate-900 dark:text-white font-black text-xs sm:text-sm uppercase tracking-widest mb-6 sm:mb-8 transform -rotate-2">
+              <span className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-pink-500 animate-pulse"></span>
+              {t('home.badge')}
+            </motion.div>
+            
+            <motion.h1 variants={itemVariants} className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-[0.95] sm:leading-[0.9] mb-6 sm:mb-8">
+              {t('home.title_1')}<br className="hidden sm:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 drop-shadow-sm">{t('home.title_highlight')}</span> <br className="hidden sm:block" />{t('home.title_2')}
+            </motion.h1>
+            
+            <motion.p variants={itemVariants} className="text-lg sm:text-2xl md:text-3xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mb-10 sm:mb-12 font-bold leading-snug">
+              {t('home.subtitle')}
+            </motion.p>
+            
+            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
+              <Link to="/create" className="w-full sm:w-auto px-8 py-4 sm:px-10 sm:py-5 bg-yellow-400 dark:bg-yellow-400 text-slate-900 font-black uppercase tracking-widest text-lg sm:text-xl brutal-border brutal-shadow transition-smooth brutal-hover brutal-active flex items-center justify-center gap-3 transform rotate-1">
+                <FilePlus2 className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={3} />
+                {t('home.btn_create')}
+              </Link>
+              <Link to="/portfolio" className="w-full sm:w-auto px-8 py-4 sm:px-10 sm:py-5 bg-cyan-400 dark:bg-cyan-400 text-slate-900 font-black uppercase tracking-widest text-lg sm:text-xl brutal-border brutal-shadow transition-smooth brutal-hover brutal-active flex items-center justify-center gap-3 transform -rotate-1">
+                <Briefcase className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={3} />
+                {t('home.btn_portfolio')}
+              </Link>
+            </motion.div>
+          </motion.div>
         </div>
       </section>
 
@@ -212,27 +161,55 @@ export default function Home() {
               </ul>
             </div>
 
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-6">{t('home.more_title')}</h3>
-            <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed" dangerouslySetInnerHTML={{ __html: t('home.more_p1') }}></p>
-            <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">{t('home.more_p2')}</p>
+            <h3 className="text-4xl font-black text-slate-900 dark:text-white mt-20 mb-8 uppercase tracking-tighter">{t('home.more_title')}</h3>
+            <p className="text-xl text-slate-700 dark:text-slate-300 mb-6 font-bold" dangerouslySetInnerHTML={{ __html: t('home.more_p1') }}></p>
+            <p className="text-xl text-slate-700 dark:text-slate-300 mb-16 font-bold">{t('home.more_p2')}</p>
 
-            <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-6">{t('home.steps_title')}</h3>
-            <div className="grid sm:grid-cols-3 gap-6 mb-10">
-              <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
-                <div className="w-10 h-10 bg-indigo-100 dark:bg-indigo-900/50 text-indigo-600 dark:text-indigo-400 font-bold rounded-full flex items-center justify-center text-xl mb-4">1</div>
-                <h4 className="font-bold text-slate-900 dark:text-white mb-2">{t('home.step_1_title')}</h4>
-                <p className="text-sm text-slate-600 dark:text-slate-400">{t('home.step_1_desc')}</p>
-              </div>
-              <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
-                <div className="w-10 h-10 bg-blue-100 dark:bg-blue-900/50 text-blue-600 dark:text-blue-400 font-bold rounded-full flex items-center justify-center text-xl mb-4">2</div>
-                <h4 className="font-bold text-slate-900 dark:text-white mb-2">{t('home.step_2_title')}</h4>
-                <p className="text-sm text-slate-600 dark:text-slate-400">{t('home.step_2_desc')}</p>
-              </div>
-              <div className="bg-white dark:bg-slate-800 p-6 rounded-xl border border-slate-200 dark:border-slate-700 shadow-sm">
-                <div className="w-10 h-10 bg-emerald-100 dark:bg-emerald-900/50 text-emerald-600 dark:text-emerald-400 font-bold rounded-full flex items-center justify-center text-xl mb-4">3</div>
-                <h4 className="font-bold text-slate-900 dark:text-white mb-2">{t('home.step_3_title')}</h4>
-                <p className="text-sm text-slate-600 dark:text-slate-400">{t('home.step_3_desc')}</p>
-              </div>
+            {/* Brutalist Asymmetric Grid */}
+            <div className="grid lg:grid-cols-3 gap-10 mt-12 mb-32 text-left">
+              
+              <motion.div 
+                whileInView={{ opacity: 1, y: 0, rotate: -3 }}
+                initial={{ opacity: 0, y: 50, rotate: -10 }}
+                viewport={{ once: true }}
+                transition={{ type: "spring", bounce: 0.4 }}
+                className="p-8 bg-pink-400 brutal-border brutal-shadow text-slate-900 transform -rotate-3 hover:rotate-0 transition-transform duration-300"
+              >
+                <div className="w-16 h-16 bg-white brutal-border brutal-shadow flex items-center justify-center mb-8 transform rotate-6">
+                  <FilePlus2 className="w-8 h-8 text-slate-900" strokeWidth={2.5} />
+                </div>
+                <h3 className="text-3xl font-black uppercase tracking-tight mb-4">{t('home.step_1_title')}</h3>
+                <p className="font-bold text-lg leading-snug">{t('home.step_1_desc')}</p>
+              </motion.div>
+
+              <motion.div 
+                whileInView={{ opacity: 1, y: 0, rotate: 2 }}
+                initial={{ opacity: 0, y: 50, rotate: 10 }}
+                viewport={{ once: true }}
+                transition={{ type: "spring", bounce: 0.4, delay: 0.1 }}
+                className="p-8 bg-yellow-400 brutal-border brutal-shadow text-slate-900 transform rotate-2 hover:rotate-0 transition-transform duration-300"
+              >
+                <div className="w-16 h-16 bg-white brutal-border brutal-shadow flex items-center justify-center mb-8 transform -rotate-6">
+                  <Check className="w-8 h-8 text-slate-900" strokeWidth={2.5} />
+                </div>
+                <h3 className="text-3xl font-black uppercase tracking-tight mb-4">{t('home.step_2_title')}</h3>
+                <p className="font-bold text-lg leading-snug">{t('home.step_2_desc')}</p>
+              </motion.div>
+
+              <motion.div 
+                whileInView={{ opacity: 1, y: 0, rotate: -1 }}
+                initial={{ opacity: 0, y: 50, rotate: -10 }}
+                viewport={{ once: true }}
+                transition={{ type: "spring", bounce: 0.4, delay: 0.2 }}
+                className="p-8 bg-cyan-400 brutal-border brutal-shadow text-slate-900 transform -rotate-1 hover:rotate-0 transition-transform duration-300"
+              >
+                <div className="w-16 h-16 bg-white brutal-border brutal-shadow flex items-center justify-center mb-8 transform rotate-3">
+                  <Briefcase className="w-8 h-8 text-slate-900" strokeWidth={2.5} />
+                </div>
+                <h3 className="text-3xl font-black uppercase tracking-tight mb-4">{t('home.step_3_title')}</h3>
+                <p className="font-bold text-lg leading-snug">{t('home.step_3_desc')}</p>
+              </motion.div>
+
             </div>
 
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-6">{t('home.portfolio_title')}</h3>

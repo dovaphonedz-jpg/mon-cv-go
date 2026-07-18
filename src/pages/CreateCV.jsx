@@ -186,20 +186,20 @@ export default function CreateCV() {
             </p>
           </div>
           
-          <div className="flex gap-2">
-            <button onClick={() => loadDemo(config.cvLang || 'fr')} className="flex items-center gap-2 px-4 py-2 bg-blue-50 dark:bg-blue-900/30 hover:bg-blue-100 dark:hover:bg-blue-900/50 text-blue-600 dark:text-blue-400 rounded-xl text-sm font-semibold transition-all border border-blue-200 dark:border-blue-800">
+          <div className="flex gap-3">
+            <button onClick={() => loadDemo(config.cvLang || 'fr')} className="flex items-center gap-2 px-4 py-2 bg-cyan-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active">
               <Sparkles className="w-4 h-4" />
               <span className="hidden sm:inline">{t('create_cv.btn_example')}</span>
             </button>
-            <button onClick={handleImportClick} className="flex items-center gap-2 px-4 py-2 bg-slate-100 dark:bg-slate-800 hover:bg-slate-200 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-xl text-sm font-semibold transition-all border border-slate-200 dark:border-slate-700">
+            <button onClick={handleImportClick} className="flex items-center gap-2 px-4 py-2 bg-yellow-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active">
               <UploadCloud className="w-4 h-4" />
               <span className="hidden sm:inline">{t('create_cv.btn_import')}</span>
             </button>
-            <button onClick={resetData} className="flex items-center gap-2 px-4 py-2 bg-red-50 hover:bg-red-100 dark:bg-red-900/20 dark:hover:bg-red-900/40 text-red-600 dark:text-red-400 rounded-xl text-sm font-semibold transition-all border border-red-100 dark:border-red-900/50">
+            <button onClick={resetData} className="flex items-center gap-2 px-4 py-2 bg-pink-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active">
               <Trash2 className="w-4 h-4" />
               <span className="hidden sm:inline">{t('create_cv.btn_clear')}</span>
             </button>
-            <button className="flex lg:hidden items-center gap-2 px-4 py-2 bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/30 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-400 rounded-xl text-sm font-bold transition-all" onClick={() => setShowPreviewMobile(!showPreviewMobile)}>
+            <button className="flex lg:hidden items-center gap-2 px-4 py-2 bg-white text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active" onClick={() => setShowPreviewMobile(!showPreviewMobile)}>
               <Eye className="w-4 h-4" />
               {showPreviewMobile ? t('create_cv.btn_edit') : t('create_cv.btn_preview')}
             </button>
@@ -274,16 +274,16 @@ export default function CreateCV() {
               <button 
                 onClick={prevStep}
                 disabled={activeStepIdx === 0}
-                className="flex items-center gap-2 px-5 py-2.5 text-sm font-semibold text-slate-600 dark:text-slate-300 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 rounded-xl transition-all disabled:opacity-40 disabled:cursor-not-allowed"
+                className="flex items-center gap-2 px-5 py-2.5 bg-white text-slate-900 font-black text-sm uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active disabled:opacity-40 disabled:cursor-not-allowed"
               >
                 <ArrowLeft className="w-4 h-4 rtl:-scale-x-100" /> {t('create_cv.btn_prev')}
               </button>
               
-              <div className="flex items-center gap-3">
+              <div className="flex items-center gap-4">
                 {activeStepIdx < STEPS.length - 1 && (
                   <button 
                     onClick={nextStep}
-                    className="text-sm font-semibold text-slate-500 hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200 transition-colors px-2"
+                    className="text-sm font-black uppercase tracking-widest text-slate-500 hover:text-slate-900 dark:text-slate-400 dark:hover:text-white transition-colors px-2 underline decoration-2 underline-offset-4"
                   >
                     {t('create_cv.btn_skip')}
                   </button>
@@ -303,16 +303,16 @@ export default function CreateCV() {
                          if (previewEl) previewEl.scrollIntoView({ behavior: 'smooth' });
                        }
                     }}
-                    className="flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-white bg-emerald-600 hover:bg-emerald-700 rounded-xl shadow-lg transition-all group"
+                    className="flex items-center gap-2 px-6 py-2.5 bg-pink-400 text-slate-900 font-black text-sm uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active"
                   >
-                    {t('create_cv.btn_finish')} <Sparkles className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                    {t('create_cv.btn_finish')} <Sparkles className="w-4 h-4" />
                   </button>
                 ) : (
                   <button 
                     onClick={nextStep}
-                    className="flex items-center gap-2 px-6 py-2.5 text-sm font-bold text-white bg-slate-900 hover:bg-slate-800 dark:bg-white dark:text-slate-900 dark:hover:bg-slate-200 rounded-xl shadow-lg transition-all group"
+                    className="flex items-center gap-2 px-6 py-2.5 bg-cyan-400 text-slate-900 font-black text-sm uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active"
                   >
-                    {t('create_cv.btn_next')} <ChevronRight className="w-4 h-4 group-hover:translate-x-1 transition-transform rtl:-scale-x-100" />
+                    {t('create_cv.btn_next')} <ChevronRight className="w-4 h-4 rtl:-scale-x-100" />
                   </button>
                 )}
               </div>
@@ -335,26 +335,22 @@ export default function CreateCV() {
               {/* Bouton visible uniquement sur mobile pour aller aux styles */}
               <button 
                 onClick={() => setIsStyleModalOpen(true)}
-                className="lg:hidden flex items-center gap-2 px-3 py-1.5 bg-indigo-50 dark:bg-indigo-900/30 text-indigo-600 dark:text-indigo-400 font-medium rounded-lg text-sm border border-indigo-100 dark:border-indigo-800 transition-colors"
+                className="lg:hidden flex items-center gap-2 px-3 py-1.5 bg-yellow-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active"
               >
                 <Palette className="w-4 h-4" />
                 {t('create_cv.btn_styles')}
               </button>
             </div>
-            <div className="flex gap-2">
-              <button onClick={() => { setIsThankYouModalOpen(true); exportToWord(cvData, config, printRef); }} className="flex items-center gap-2 px-3 py-2.5 bg-blue-100 hover:bg-blue-200 dark:bg-blue-900/30 dark:hover:bg-blue-900/50 text-blue-700 dark:text-blue-400 font-bold rounded-xl text-sm transition-all" title="Exporter en Word">
+            <div className="flex gap-3">
+              <button onClick={() => { setIsThankYouModalOpen(true); exportToWord(cvData, config, printRef); }} className="flex items-center gap-2 px-3 py-2.5 bg-yellow-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active" title="Exporter en Word">
                 <FileText className="w-4 h-4" />
                 <span className="hidden xl:inline">{t('create_cv.btn_word')}</span>
               </button>
-              <button onClick={() => { setIsThankYouModalOpen(true); exportToPowerPoint(cvData); }} className="flex items-center gap-2 px-3 py-2.5 bg-orange-100 hover:bg-orange-200 dark:bg-orange-900/30 dark:hover:bg-orange-900/50 text-orange-700 dark:text-orange-400 font-bold rounded-xl text-sm transition-all" title="Exporter en PowerPoint">
+              <button onClick={() => { setIsThankYouModalOpen(true); exportToPowerPoint(cvData); }} className="flex items-center gap-2 px-3 py-2.5 bg-pink-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active" title="Exporter en PowerPoint">
                 <Presentation className="w-4 h-4" />
                 <span className="hidden xl:inline">{t('create_cv.btn_pptx')}</span>
               </button>
-              <button onClick={handleImportClick} disabled={isImporting} className="flex items-center gap-2 px-3 py-2 bg-slate-800 hover:bg-slate-700 text-white font-medium rounded-lg text-sm transition-colors border border-slate-700 disabled:opacity-50 disabled:cursor-wait">
-                <UploadCloud className="w-4 h-4" />
-                <span className="hidden sm:inline">{isImporting ? "Analyse..." : t('create_cv.btn_import')}</span>
-              </button>
-              <button onClick={() => { if (typeof window !== 'undefined' && window.gtag) window.gtag('event', 'generation_cv', { 'event_category': 'Engagement', 'event_label': 'Bouton_Generer_CV' }); triggerConfetti(); setIsThankYouModalOpen(true); setTimeout(() => handlePrint(), 500); }} className="flex items-center gap-2 px-4 py-2.5 bg-blue-600 hover:bg-blue-700 text-white font-bold rounded-xl text-sm shadow-md shadow-blue-600/20 transition-all hover:-translate-y-0.5">
+              <button onClick={() => { if (typeof window !== 'undefined' && window.gtag) window.gtag('event', 'generation_cv', { 'event_category': 'Engagement', 'event_label': 'Bouton_Generer_CV' }); triggerConfetti(); setIsThankYouModalOpen(true); setTimeout(() => handlePrint(), 500); }} className="flex items-center gap-2 px-4 py-2.5 bg-cyan-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active">
                 <Download className="w-4 h-4" />
                 <span className="hidden sm:inline">{t('create_cv.btn_pdf')}</span>
               </button>

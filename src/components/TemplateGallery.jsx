@@ -33,18 +33,18 @@ export default function TemplateGallery() {
   const marqueePortfolios = [...portfolioTemplates, ...portfolioTemplates, ...portfolioTemplates, ...portfolioTemplates];
 
   return (
-    <section id="modeles-galerie" className="py-24 bg-slate-950">
+    <section id="modeles-galerie" className="py-24 bg-slate-950 border-y-8 border-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Section */}
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <p className="text-blue-500 font-bold uppercase tracking-wider text-sm mb-3">
+          <p className="inline-flex px-4 py-2 bg-pink-400 text-slate-900 font-black uppercase tracking-widest text-sm mb-6 brutal-border brutal-shadow transform -rotate-2">
             {t('gallery.subtitle')}
           </p>
-          <h2 className="text-white text-4xl font-bold mb-5">
+          <h2 className="text-white text-5xl sm:text-6xl font-black mb-5 uppercase tracking-tighter">
             {t('gallery.title')}
           </h2>
-          <p className="text-slate-400 text-lg leading-relaxed max-w-2xl mx-auto">
+          <p className="text-slate-300 font-bold text-xl leading-relaxed max-w-2xl mx-auto">
             {t('gallery.desc')}
           </p>
         </div>
@@ -52,8 +52,8 @@ export default function TemplateGallery() {
         {/* CV Marquee */}
         <div className="mb-12 relative">
           <div className="flex justify-between items-end mb-6 px-4">
-            <h3 className="text-white text-2xl font-bold flex items-center gap-3">
-              <span className="w-2 h-8 bg-blue-500 rounded-full"></span> {t('gallery.cv_models')}
+            <h3 className="text-white text-3xl font-black uppercase tracking-widest flex items-center gap-3">
+              <span className="w-4 h-10 bg-yellow-400 brutal-border"></span> {t('gallery.cv_models')}
             </h3>
           </div>
           
@@ -66,21 +66,21 @@ export default function TemplateGallery() {
                 <Link 
                   to={template.path}
                   key={`cv-${index}`} 
-                  className="w-[280px] md:w-[320px] flex-shrink-0 mx-4 bg-slate-900 rounded-2xl p-4 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-blue-500/20 group/card cursor-pointer border border-slate-800 block"
+                  className="w-[280px] md:w-[320px] flex-shrink-0 mx-4 bg-white brutal-border brutal-shadow-lg p-4 transition-smooth brutal-hover group/card cursor-pointer block"
                 >
-                  <div className="relative aspect-[3/4] bg-slate-800 rounded-xl overflow-hidden mb-4 flex flex-col items-center justify-start border border-slate-700/50">
+                  <div className="relative aspect-[3/4] bg-slate-100 brutal-border overflow-hidden mb-4 flex flex-col items-center justify-start">
                     <div className="w-full h-full bg-slate-50 relative overflow-hidden transition-transform duration-700 group-hover/card:scale-105 z-0 pointer-events-none">
-                      <div className="absolute top-0 left-[50%] origin-top bg-white" style={{ width: '794px', height: '1123px', transform: 'translateX(-50%) scale(0.35)', boxShadow: '0 0 20px rgba(0,0,0,0.05)' }}>
+                      <div className="absolute top-0 left-[50%] origin-top bg-white" style={{ width: '794px', height: '1123px', transform: 'translateX(-50%) scale(0.35)' }}>
                         <TemplateModern cvData={demoData.fr} config={{ template: template.id, color: template.color || 'blue', font: 'inter', fontSize: 'normal', spacing: 'normal' }} />
                       </div>
                     </div>
-                    {template.isNew && <div className="absolute top-3 rtl:-right-2 ltr:-left-2 bg-fuchsia-500 text-white font-bold text-[10px] px-2 py-1 rounded-full shadow-lg z-10">{t('gallery.new')}</div>}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity z-0 flex items-end justify-center pb-6">
-                      <span className="text-white font-bold text-xs bg-blue-600 px-4 py-2 rounded-full shadow-lg translate-y-4 group-hover/card:translate-y-0 transition-transform duration-300">{t('gallery.create_cv')}</span>
+                    {template.isNew && <div className="absolute top-3 rtl:-right-2 ltr:-left-2 bg-pink-400 text-slate-900 brutal-border font-black text-xs uppercase px-3 py-1 shadow-none z-10 transform -rotate-3">{t('gallery.new')}</div>}
+                    <div className="absolute inset-0 bg-yellow-400/90 opacity-0 group-hover/card:opacity-100 transition-opacity z-0 flex items-center justify-center">
+                      <span className="text-slate-900 font-black uppercase tracking-widest text-sm bg-white brutal-border px-6 py-3 brutal-shadow translate-y-4 group-hover/card:translate-y-0 transition-transform duration-300">{t('gallery.create_cv')}</span>
                     </div>
                   </div>
-                  <div className="text-center relative z-10">
-                    <h3 className="text-white font-semibold text-base group-hover/card:text-blue-400 transition-colors truncate">{template.name}</h3>
+                  <div className="text-center relative z-10 mt-6">
+                    <h3 className="text-slate-900 font-black text-lg uppercase tracking-tight truncate">{template.name}</h3>
                   </div>
                 </Link>
               ))}
@@ -91,8 +91,8 @@ export default function TemplateGallery() {
         {/* Portfolio Marquee */}
         <div className="relative">
           <div className="flex justify-end items-end mb-6 px-4">
-            <h3 className="text-white text-2xl font-bold flex items-center gap-3">
-              {t('gallery.portfolio_models')} <span className="w-2 h-8 bg-emerald-500 rounded-full"></span>
+            <h3 className="text-white text-3xl font-black uppercase tracking-widest flex items-center gap-3">
+              {t('gallery.portfolio_models')} <span className="w-4 h-10 bg-pink-400 brutal-border"></span>
             </h3>
           </div>
           
@@ -105,21 +105,21 @@ export default function TemplateGallery() {
                 <Link 
                   to={template.path}
                   key={`port-${index}`} 
-                  className="w-[280px] md:w-[320px] flex-shrink-0 mx-4 bg-slate-900 rounded-2xl p-4 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-emerald-500/20 group/card cursor-pointer border border-slate-800 block"
+                  className="w-[280px] md:w-[320px] flex-shrink-0 mx-4 bg-yellow-400 brutal-border brutal-shadow-lg p-4 transition-smooth brutal-hover group/card cursor-pointer block"
                 >
-                  <div className="relative aspect-[3/4] bg-slate-800 rounded-xl overflow-hidden mb-4 flex flex-col items-center justify-start border border-slate-700/50">
+                  <div className="relative aspect-[3/4] bg-slate-100 brutal-border overflow-hidden mb-4 flex flex-col items-center justify-start">
                     <div className="w-full h-full bg-slate-50 relative overflow-hidden transition-transform duration-700 group-hover/card:scale-105 z-0 pointer-events-none">
-                      <div className="absolute top-0 left-[50%] origin-top bg-white" style={{ width: '794px', height: '1123px', transform: 'translateX(-50%) scale(0.35)', boxShadow: '0 0 20px rgba(0,0,0,0.05)' }}>
+                      <div className="absolute top-0 left-[50%] origin-top bg-white" style={{ width: '794px', height: '1123px', transform: 'translateX(-50%) scale(0.35)' }}>
                         <TemplatePortfolio cvData={demoData.fr} config={{ template: template.id === 'modern' ? 'portfolio-modern' : template.id === 'terminal' ? 'portfolio-terminal' : template.id === 'masonry' ? 'portfolio-dev' : 'portfolio-grid', color: template.color || 'blue', font: 'inter', fontSize: 'normal' }} />
                       </div>
                     </div>
-                    {template.isNew && <div className="absolute top-3 rtl:-right-2 ltr:-left-2 bg-emerald-500 text-white font-bold text-[10px] px-2 py-1 rounded-full shadow-lg z-10">{t('gallery.new')}</div>}
-                    <div className="absolute inset-0 bg-gradient-to-t from-slate-900/90 via-slate-900/20 to-transparent opacity-0 group-hover/card:opacity-100 transition-opacity z-0 flex items-end justify-center pb-6">
-                      <span className="text-white font-bold text-xs bg-emerald-600 px-4 py-2 rounded-full shadow-lg translate-y-4 group-hover/card:translate-y-0 transition-transform duration-300">{t('gallery.create_portfolio')}</span>
+                    {template.isNew && <div className="absolute top-3 rtl:-right-2 ltr:-left-2 bg-cyan-400 text-slate-900 brutal-border font-black text-xs uppercase px-3 py-1 shadow-none z-10 transform rotate-3">{t('gallery.new')}</div>}
+                    <div className="absolute inset-0 bg-pink-400/90 opacity-0 group-hover/card:opacity-100 transition-opacity z-0 flex items-center justify-center">
+                      <span className="text-slate-900 font-black uppercase tracking-widest text-sm bg-white brutal-border px-6 py-3 brutal-shadow translate-y-4 group-hover/card:translate-y-0 transition-transform duration-300">{t('gallery.create_portfolio')}</span>
                     </div>
                   </div>
-                  <div className="text-center relative z-10">
-                    <h3 className="text-white font-semibold text-base group-hover/card:text-emerald-400 transition-colors truncate">{template.name}</h3>
+                  <div className="text-center relative z-10 mt-6">
+                    <h3 className="text-slate-900 font-black text-lg uppercase tracking-tight truncate">{template.name}</h3>
                   </div>
                 </Link>
               ))}

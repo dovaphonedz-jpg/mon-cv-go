@@ -86,14 +86,14 @@ export default function ConseilsCV() {
           animate={{ opacity: 1, y: 0 }}
           className="max-w-4xl mx-auto text-center"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 font-semibold text-xs uppercase tracking-wider border border-blue-200 dark:border-blue-800 mb-6">
-            <BookOpen className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow mb-6 transform -rotate-2">
+            <BookOpen className="w-4 h-4 text-slate-900" />
             Guide Pratique
           </div>
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            Conseils pour rédiger un <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-500">CV professionnel impactant</span>
+          <h1 className="text-5xl sm:text-6xl font-black text-slate-900 dark:text-white tracking-tighter uppercase">
+            Conseils pour rédiger un <span className="bg-cyan-400 text-slate-900 px-3 py-1 ml-2 brutal-border transform rotate-2 inline-block">CV impactant</span>
           </h1>
-          <p className="mt-6 text-lg text-slate-600 dark:text-slate-400 max-w-2xl mx-auto">
+          <p className="mt-8 text-xl text-slate-700 dark:text-slate-300 font-bold max-w-2xl mx-auto">
             Découvrez nos meilleures pratiques pour créer un CV qui attire l'œil des recruteurs et passe les filtres des logiciels ATS (Applicant Tracking Systems).
           </p>
         </motion.div>
@@ -113,42 +113,42 @@ export default function ConseilsCV() {
             <motion.div 
               key={idx} 
               variants={itemVariants}
-              className="bg-white/80 dark:bg-[#0F172A]/80 backdrop-blur-md rounded-3xl p-6 sm:p-8 shadow-xl shadow-slate-200/40 dark:shadow-none border border-slate-200 dark:border-slate-800 transition-all hover:-translate-y-1 hover:shadow-2xl hover:border-blue-500/30"
+              className={`bg-white dark:bg-slate-900 p-6 sm:p-8 brutal-border brutal-shadow-lg transition-smooth brutal-hover ${idx % 2 === 0 ? 'transform rotate-1' : 'transform -rotate-1'}`}
             >
               <div className="flex flex-col sm:flex-row gap-6 items-start">
-                <div className="w-14 h-14 shrink-0 rounded-2xl bg-slate-100 dark:bg-slate-800 flex items-center justify-center border border-slate-200 dark:border-slate-700 shadow-inner">
-                  {section.icon}
+                <div className={`w-16 h-16 shrink-0 flex items-center justify-center brutal-border brutal-shadow transform -rotate-3 ${idx % 3 === 0 ? 'bg-pink-400' : idx % 3 === 1 ? 'bg-yellow-400' : 'bg-cyan-400'}`}>
+                  {React.cloneElement(section.icon, { className: "w-8 h-8 text-slate-900", strokeWidth: 2.5 })}
                 </div>
                 <div className="flex-grow">
-                  <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-3">{section.title}</h2>
-                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed mb-6">
+                  <h2 className="text-2xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-3">{section.title}</h2>
+                  <p className="text-slate-700 dark:text-slate-300 font-bold leading-relaxed mb-6">
                     {section.content}
                   </p>
                   
-                  <div className="grid sm:grid-cols-2 gap-4">
+                  <div className="grid sm:grid-cols-2 gap-6 mt-4">
                     {/* DOS */}
-                    <div className="bg-emerald-50 dark:bg-emerald-900/10 rounded-2xl p-4 border border-emerald-100 dark:border-emerald-900/30">
-                      <h3 className="font-bold text-emerald-800 dark:text-emerald-400 mb-3 flex items-center gap-2">
-                        <CheckCircle className="w-4 h-4" /> À FAIRE
+                    <div className="bg-cyan-400 brutal-border p-5 text-slate-900 transform rotate-1">
+                      <h3 className="font-black uppercase tracking-widest text-slate-900 mb-3 flex items-center gap-2">
+                        <CheckCircle className="w-5 h-5" strokeWidth={3} /> À FAIRE
                       </h3>
-                      <ul className="space-y-2">
+                      <ul className="space-y-3">
                         {section.dos.map((item, i) => (
-                          <li key={i} className="text-sm text-emerald-700 dark:text-emerald-300 flex items-start gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 mt-1.5 shrink-0"></span> {item}
+                          <li key={i} className="text-sm font-bold flex items-start gap-2">
+                            <span className="w-2 h-2 brutal-border bg-white mt-1.5 shrink-0"></span> {item}
                           </li>
                         ))}
                       </ul>
                     </div>
 
                     {/* DONTS */}
-                    <div className="bg-red-50 dark:bg-red-900/10 rounded-2xl p-4 border border-red-100 dark:border-red-900/30">
-                      <h3 className="font-bold text-red-800 dark:text-red-400 mb-3 flex items-center gap-2">
-                        <AlertTriangle className="w-4 h-4" /> À ÉVITER
+                    <div className="bg-pink-400 brutal-border p-5 text-slate-900 transform -rotate-1">
+                      <h3 className="font-black uppercase tracking-widest text-slate-900 mb-3 flex items-center gap-2">
+                        <AlertTriangle className="w-5 h-5" strokeWidth={3} /> À ÉVITER
                       </h3>
-                      <ul className="space-y-2">
+                      <ul className="space-y-3">
                         {section.donts.map((item, i) => (
-                          <li key={i} className="text-sm text-red-700 dark:text-red-300 flex items-start gap-2">
-                            <span className="w-1.5 h-1.5 rounded-full bg-red-500 mt-1.5 shrink-0"></span> {item}
+                          <li key={i} className="text-sm font-bold flex items-start gap-2">
+                            <span className="w-2 h-2 brutal-border bg-white mt-1.5 shrink-0"></span> {item}
                           </li>
                         ))}
                       </ul>

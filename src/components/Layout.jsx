@@ -30,23 +30,20 @@ export default function Layout({ children }) {
   return (
     <div id="app" className={`min-h-screen flex flex-col transition-colors duration-300 ${isDark ? 'bg-[#0F172A] text-slate-100' : 'bg-slate-50 text-slate-800'}`}>
       
-      {/* Top Bar - Tech SaaS Vibe */}
-      <div className="bg-blue-600 dark:bg-blue-900 text-white text-center py-2 px-4 text-xs font-semibold tracking-wide flex items-center justify-center gap-2 select-none">
-        <Sparkles className="w-3.5 h-3.5 text-blue-200" />
+      {/* Top Bar - Neo-Brutalist */}
+      <div className="bg-pink-500 text-slate-900 text-center py-2 px-4 text-xs font-black uppercase tracking-widest flex items-center justify-center gap-2 select-none border-b-4 border-slate-900">
+        <Sparkles className="w-4 h-4 text-slate-900" />
         <span>{t('banner.text')}</span>
       </div>
 
-      {/* Header - Glassmorphism */}
-      <header className="sticky top-0 z-40 bg-white/80 dark:bg-[#0F172A]/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 transition-colors duration-300">
+      {/* Header - Brutalist */}
+      <header className="sticky top-0 z-40 bg-white dark:bg-slate-900 border-b-4 border-slate-900 transition-colors duration-300">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-2 group">
-            <div className="w-8 h-8 bg-gradient-to-br from-blue-500 to-emerald-400 rounded-lg flex items-center justify-center text-white font-black text-lg shadow-md group-hover:shadow-blue-500/50 transition-all">
-              M
-            </div>
-            <span className="font-extrabold text-xl tracking-tight text-slate-900 dark:text-white">
-              MonCV<span className="text-blue-600 dark:text-blue-400">Go</span>
+          <Link to="/" className="flex items-center gap-1 group transition-smooth brutal-hover">
+            <span className="font-extrabold text-2xl sm:text-3xl tracking-tighter text-slate-900 dark:text-white flex items-center">
+              MONCV<span className="bg-yellow-400 text-slate-900 px-2 py-0.5 ml-1 brutal-border transform rotate-3 inline-block">GO</span>
             </span>
           </Link>
 
@@ -64,7 +61,7 @@ export default function Layout({ children }) {
               <Link 
                 key={link.path} 
                 to={link.path} 
-                className={`transition-colors hover:text-blue-600 dark:hover:text-blue-400 ${isActive(link.path) ? 'text-blue-600 dark:text-blue-400' : ''}`}
+                className={`font-black uppercase tracking-widest px-3 py-1 brutal-border transition-smooth brutal-hover ${isActive(link.path) ? 'bg-cyan-400 text-slate-900 brutal-shadow' : 'bg-transparent text-slate-700 dark:text-slate-300 hover:bg-yellow-400 hover:text-slate-900'}`}
               >
                 {link.label}
               </Link>
@@ -76,18 +73,18 @@ export default function Layout({ children }) {
             <LanguageSwitcher />
             <button 
               onClick={toggleTheme} 
-              className="p-2 rounded-xl text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors" 
+              className="p-2 bg-yellow-400 text-slate-900 brutal-border brutal-shadow transition-smooth brutal-hover brutal-active" 
               title={t('theme.change')}
             >
-              {isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
+              {isDark ? <Sun className="w-6 h-6" strokeWidth={3} /> : <Moon className="w-6 h-6" strokeWidth={3} />}
             </button>
             
             {/* Hamburger */}
             <button 
               onClick={() => setIsMobileMenuOpen(true)} 
-              className="lg:hidden p-2 text-slate-500 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-xl"
+              className="lg:hidden p-2 bg-pink-400 text-slate-900 brutal-border brutal-shadow transition-smooth brutal-hover brutal-active"
             >
-              <Menu className="w-6 h-6" />
+              <Menu className="w-6 h-6" strokeWidth={3} />
             </button>
           </div>
         </div>
@@ -99,18 +96,20 @@ export default function Layout({ children }) {
       </main>
 
       {/* Footer */}
-      <footer className="bg-slate-50 dark:bg-[#0B1120] border-t border-slate-200 dark:border-slate-800 py-12 text-sm text-slate-500 dark:text-slate-400">
-        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-6">
-          <div className="flex items-center gap-2">
-            <div className="w-6 h-6 bg-gradient-to-br from-blue-500 to-emerald-400 rounded flex items-center justify-center text-white font-black text-xs">M</div>
-            <span className="font-bold text-slate-900 dark:text-white">&copy; 2026 Mon CV Go. {t('footer.rights')}</span>
+      <footer className="bg-cyan-400 border-t-4 md:border-t-8 border-slate-900 py-4 text-slate-900">
+        <div className="max-w-7xl mx-auto px-4 flex flex-col md:flex-row items-center justify-between gap-4">
+          <div className="flex flex-col md:flex-row items-center gap-2 md:gap-3 text-center md:text-left">
+            <div className="flex items-center gap-2 md:gap-3">
+              <div className="w-8 h-8 md:w-12 md:h-12 bg-white brutal-border brutal-shadow flex items-center justify-center text-slate-900 font-black text-sm md:text-xl transform -rotate-6 shrink-0">M</div>
+              <span className="font-black text-xs md:text-lg uppercase tracking-wider md:tracking-widest">&copy; 2026 Mon CV Go.<span className="hidden md:inline"><br/></span> <span className="md:hidden"> - </span> {t('footer.rights')}</span>
+            </div>
           </div>
-          <div className="flex flex-wrap justify-center gap-6 font-medium">
-            <Link to="/" className="hover:text-blue-600 dark:hover:text-blue-400">{t('nav.home')}</Link>
-            <Link to="/a-propos" className="hover:text-blue-600 dark:hover:text-blue-400">{t('nav.about')}</Link>
-            <Link to="/contact" className="hover:text-blue-600 dark:hover:text-blue-400">{t('nav.contact')}</Link>
-            <Link to="/mentions-legales" className="hover:text-blue-600 dark:hover:text-blue-400">{t('footer.terms')}</Link>
-            <Link to="/confidentialite" className="hover:text-blue-600 dark:hover:text-blue-400">{t('footer.privacy')}</Link>
+          <div className="flex flex-wrap justify-center gap-3 md:gap-6 font-black uppercase tracking-wider text-[10px] sm:text-xs md:text-sm mt-2 md:mt-0">
+            <Link to="/" className="hover:underline underline-offset-4 decoration-2 md:decoration-4 transition-all">{t('nav.home')}</Link>
+            <Link to="/a-propos" className="hover:underline underline-offset-4 decoration-2 md:decoration-4 transition-all">{t('nav.about')}</Link>
+            <Link to="/contact" className="hover:underline underline-offset-4 decoration-2 md:decoration-4 transition-all">{t('nav.contact')}</Link>
+            <Link to="/mentions-legales" className="hover:underline underline-offset-4 decoration-2 md:decoration-4 transition-all">{t('footer.terms')}</Link>
+            <Link to="/confidentialite" className="hover:underline underline-offset-4 decoration-2 md:decoration-4 transition-all">{t('footer.privacy')}</Link>
           </div>
         </div>
       </footer>
@@ -147,26 +146,26 @@ export default function Layout({ children }) {
               </div>
               
               <nav className="flex flex-col p-4 gap-2 overflow-y-auto">
-                <Link to="/" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
+                <Link to="/" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-4 bg-white text-slate-900 font-black uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover">
                   {t('nav.home')}
                 </Link>
-                <Link to="/create" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-white bg-blue-600 hover:bg-blue-700 shadow-md">
-                  <FilePlus2 className="w-5 h-5" /> {t('nav.create_cv')}
+                <Link to="/create" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-4 bg-yellow-400 text-slate-900 font-black uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover">
+                  <FilePlus2 className="w-6 h-6" strokeWidth={3} /> {t('nav.create_cv')}
                 </Link>
-                <Link to="/portfolio" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-white bg-indigo-600 hover:bg-indigo-700 shadow-md">
-                  <Briefcase className="w-5 h-5" /> {t('nav.create_portfolio')}
+                <Link to="/portfolio" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-4 bg-cyan-400 text-slate-900 font-black uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover">
+                  <Briefcase className="w-6 h-6" strokeWidth={3} /> {t('nav.create_portfolio')}
                 </Link>
-                <Link to="/lettre-motivation" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
-                  <PenLine className="w-5 h-5 text-slate-400" /> {t('nav.cover_letter')}
+                <Link to="/lettre-motivation" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-4 bg-pink-400 text-slate-900 font-black uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover">
+                  <PenLine className="w-6 h-6" strokeWidth={3} /> {t('nav.cover_letter')}
                 </Link>
-                <Link to="/conseils-cv" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
-                  <BookOpen className="w-5 h-5 text-slate-400" /> {t('nav.cv_tips')}
+                <Link to="/conseils-cv" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-4 bg-white text-slate-900 font-black uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover">
+                  <BookOpen className="w-6 h-6" strokeWidth={3} /> {t('nav.cv_tips')}
                 </Link>
-                <Link to="/a-propos" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
-                  <Info className="w-5 h-5 text-slate-400" /> {t('nav.about')}
+                <Link to="/a-propos" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-4 bg-white text-slate-900 font-black uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover">
+                  <Info className="w-6 h-6" strokeWidth={3} /> {t('nav.about')}
                 </Link>
-                <Link to="/contact" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-3 rounded-xl font-semibold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800">
-                  <Mail className="w-5 h-5 text-slate-400" /> {t('nav.contact')}
+                <Link to="/contact" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-4 bg-white text-slate-900 font-black uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover">
+                  <Mail className="w-6 h-6" strokeWidth={3} /> {t('nav.contact')}
                 </Link>
               </nav>
             </motion.aside>

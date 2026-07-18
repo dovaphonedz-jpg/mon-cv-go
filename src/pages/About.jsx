@@ -60,14 +60,14 @@ export default function About() {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mx-auto"
         >
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-100 dark:bg-emerald-900/30 text-emerald-700 dark:text-emerald-300 font-semibold text-xs uppercase tracking-wider border border-emerald-200 dark:border-emerald-800 mb-6 shadow-sm">
-            <Sparkles className="w-3.5 h-3.5" />
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-pink-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow mb-6 transform -rotate-2">
+            <Sparkles className="w-4 h-4 text-slate-900" />
             {t('about.badge')}
           </div>
-          <h1 className="text-4xl sm:text-6xl font-extrabold text-slate-900 dark:text-white tracking-tight">
-            {t('about.title_1')}<span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-600 to-emerald-500">{t('about.title_highlight')}</span>
+          <h1 className="text-5xl sm:text-7xl font-black text-slate-900 dark:text-white tracking-tighter uppercase mb-6">
+            {t('about.title_1')}<span className="bg-cyan-400 text-slate-900 px-3 py-1 ml-2 brutal-border transform rotate-2 inline-block">{t('about.title_highlight')}</span>
           </h1>
-          <p className="mt-8 text-lg sm:text-xl text-slate-600 dark:text-slate-400 leading-relaxed">
+          <p className="mt-8 text-xl sm:text-2xl text-slate-700 dark:text-slate-300 font-bold leading-relaxed max-w-2xl mx-auto">
             {t('about.p1')}
           </p>
         </motion.div>
@@ -86,13 +86,18 @@ export default function About() {
             <motion.div 
               key={idx}
               variants={itemVariants}
-              className="bg-white/80 dark:bg-[#0F172A]/80 backdrop-blur-md rounded-3xl p-8 border border-slate-200 dark:border-slate-800 shadow-xl shadow-slate-200/40 dark:shadow-none hover:-translate-y-2 transition-transform duration-300"
+              className={`p-8 brutal-border brutal-shadow transition-smooth brutal-hover text-slate-900 ${
+                idx % 4 === 0 ? 'bg-yellow-400 transform -rotate-1' :
+                idx % 4 === 1 ? 'bg-cyan-400 transform rotate-2' :
+                idx % 4 === 2 ? 'bg-pink-400 transform -rotate-2' :
+                'bg-white transform rotate-1'
+              }`}
             >
-              <div className="w-14 h-14 bg-slate-50 dark:bg-slate-900 rounded-2xl flex items-center justify-center border border-slate-100 dark:border-slate-800 shadow-inner mb-6">
+              <div className="w-16 h-16 bg-white brutal-border brutal-shadow flex items-center justify-center mb-6 transform -rotate-3">
                 {feature.icon}
               </div>
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-3">{feature.title}</h3>
-              <p className="text-slate-600 dark:text-slate-400 leading-relaxed text-sm">
+              <h3 className="text-2xl font-black uppercase tracking-tight mb-3">{feature.title}</h3>
+              <p className="font-bold leading-relaxed text-sm text-slate-800">
                 {feature.description}
               </p>
             </motion.div>
@@ -107,15 +112,17 @@ export default function About() {
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="bg-gradient-to-br from-blue-600 to-indigo-700 rounded-[2.5rem] p-8 sm:p-12 text-center text-white shadow-2xl overflow-hidden relative"
+          className="bg-slate-900 brutal-border brutal-shadow-lg p-8 sm:p-12 text-center text-white relative transform rotate-1"
         >
-          {/* Decorative rings */}
-          <div className="absolute top-0 rtl:left-0 ltr:right-0 -mt-20 rtl:-ml-20 ltr:-mr-20 w-64 h-64 border-[40px] border-white/5 rounded-full blur-[2px]"></div>
-          <div className="absolute bottom-0 rtl:right-0 ltr:left-0 -mb-20 rtl:-mr-20 ltr:-ml-20 w-80 h-80 border-[50px] border-white/5 rounded-full blur-[2px]"></div>
+          {/* Decorative blocks */}
+          <div className="absolute top-0 rtl:left-0 ltr:right-0 w-32 h-32 bg-yellow-400 brutal-border -mt-10 -mr-10 transform rotate-12 z-0"></div>
+          <div className="absolute bottom-0 rtl:right-0 ltr:left-0 w-24 h-24 bg-pink-400 brutal-border -mb-8 -ml-8 transform -rotate-6 z-0"></div>
           
-          <Users className="w-12 h-12 text-blue-200 mx-auto mb-6 relative z-10" />
-          <h2 className="text-3xl font-extrabold mb-6 relative z-10">{t('about.story_title')}</h2>
-          <p className="text-blue-100 leading-relaxed text-lg relative z-10 max-w-2xl mx-auto">
+          <div className="w-20 h-20 bg-cyan-400 brutal-border brutal-shadow flex items-center justify-center mx-auto mb-8 relative z-10 transform -rotate-3">
+            <Users className="w-10 h-10 text-slate-900" strokeWidth={2.5} />
+          </div>
+          <h2 className="text-4xl font-black uppercase tracking-tight mb-6 relative z-10">{t('about.story_title')}</h2>
+          <p className="text-slate-300 font-bold leading-relaxed text-xl relative z-10 max-w-2xl mx-auto">
             {t('about.story_p1')}
           </p>
         </motion.div>
