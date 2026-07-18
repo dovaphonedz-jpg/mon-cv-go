@@ -2,6 +2,7 @@ import React from 'react';
 import { motion } from 'framer-motion';
 import { BookOpen, CheckCircle, AlertTriangle, Target, Search, Edit3, Zap, Briefcase, Award } from 'lucide-react';
 import SEO from '../components/SEO';
+import AdSenseUnit from '../components/AdSenseUnit';
 
 export default function ConseilsCV() {
   const containerVariants = {
@@ -98,7 +99,9 @@ export default function ConseilsCV() {
         </motion.div>
       </section>
 
-      {/* Content Grid */}
+      <AdSenseUnit />
+
+      {/* Main Content - Tips */}
       <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
         <motion.div 
           variants={containerVariants}

@@ -5,6 +5,7 @@ import { motion } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
 import TemplateGallery from '../components/TemplateGallery';
+import AdSenseUnit from '../components/AdSenseUnit';
 
 export default function Home() {
   const { t } = useTranslation();
@@ -145,6 +146,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <AdSenseUnit />
 
       {/* INFINITE SCROLLING MARQUEE */}
       <div className="w-full bg-white dark:bg-slate-900 border-y border-slate-200 dark:border-slate-800 py-6 overflow-hidden flex whitespace-nowrap">
