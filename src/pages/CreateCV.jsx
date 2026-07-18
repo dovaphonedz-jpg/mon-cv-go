@@ -116,25 +116,40 @@ export default function CreateCV() {
         } else if (file.name.endsWith('.pdf')) {
           const { extractTextFromPDF, parseCVText } = await import('../utils/cvParser');
           const text = await extractTextFromPDF(file);
+          if (!text || text.trim().length < 20) {
+            alert('Aucun texte extrait du PDF. S\'agit-il d\'un document scanné ou d\'une image ? Veuillez utiliser un PDF avec du texte sélectionnable.');
+            setIsImporting(false);
+            return;
+          }
           const { cvData: parsedData } = parseCVText(text);
           importData(JSON.stringify({ cvData: parsedData }));
           alert('Texte extrait du PDF ! Veuillez vérifier et corriger les champs.');
           setIsImporting(false);
-        } else if (file.name.endsWith('.docx') || file.name.endsWith('.doc')) {
+        } else if (file.name.endsWith('.docx')) {
           const { extractTextFromWord, parseCVText } = await import('../utils/cvParser');
           const text = await extractTextFromWord(file);
+          if (!text || text.trim().length < 20) {
+            alert('Aucun texte extrait du fichier Word. Veuillez vérifier son contenu.');
+            setIsImporting(false);
+            return;
+          }
           const { cvData: parsedData } = parseCVText(text);
           importData(JSON.stringify({ cvData: parsedData }));
           alert('Texte extrait de Word ! Veuillez vérifier et corriger les champs.');
           setIsImporting(false);
+        } else if (file.name.endsWith('.doc')) {
+          alert('Les anciens fichiers .doc ne sont pas supportés. Veuillez enregistrer votre fichier au format .docx ou .pdf puis réessayer.');
+          setIsImporting(false);
         } else {
-          alert("Format non supporté. Veuillez utiliser JSON, PDF ou Word.");
+          alert("Format non supporté. Veuillez utiliser JSON, PDF ou .docx.");
           setIsImporting(false);
         }
       } catch (err) {
         console.error("Erreur d'importation", err);
-        alert("Erreur lors de l'analyse du fichier.");
+        alert("Erreur lors de l'analyse du fichier. Le fichier est peut-être protégé ou corrompu.");
         setIsImporting(false);
+      } finally {
+        e.target.value = null; // Reset input to allow selecting the same file again
       }
     }
   };
@@ -180,7 +195,6 @@ export default function CreateCV() {
               <UploadCloud className="w-4 h-4" />
               <span className="hidden sm:inline">{t('create_cv.btn_import')}</span>
             </button>
-            <input type="file" accept=".json" className="hidden" ref={fileInputRef} onChange={handleFileChange} />
             <button onClick={resetData} className="flex items-center gap-2 px-4 py-2 bg-red-50 hover:bg-red-100 dark:bg-red-900/20 dark:hover:bg-red-900/40 text-red-600 dark:text-red-400 rounded-xl text-sm font-semibold transition-all border border-red-100 dark:border-red-900/50">
               <Trash2 className="w-4 h-4" />
               <span className="hidden sm:inline">{t('create_cv.btn_clear')}</span>
@@ -363,8 +377,8 @@ export default function CreateCV() {
       <input 
         type="file" 
         ref={fileInputRef} 
-        className="hidden" 
-        accept=".json,.pdf,.doc,.docx" 
+        style={{ display: 'none' }}
+        accept=".json,application/json,.pdf,application/pdf,.doc,.docx,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document" 
         onChange={handleFileChange} 
       />
       <AnimatePresence>
