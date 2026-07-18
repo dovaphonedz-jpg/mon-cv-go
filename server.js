@@ -21,6 +21,15 @@ app.use((req, res, next) => {
   next();
 });
 
+// Redirect www to non-www to preserve paths (e.g. for ads.txt)
+app.use((req, res, next) => {
+  if (req.hostname.startsWith('www.')) {
+    const nonWwwHostname = req.hostname.slice(4);
+    return res.redirect(301, `https://${nonWwwHostname}${req.url}`);
+  }
+  next();
+});
+
 // Middleware
 app.use(cors());
 app.use(express.json());
