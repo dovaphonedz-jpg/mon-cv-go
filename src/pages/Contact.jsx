@@ -16,7 +16,7 @@ export default function Contact() {
     setTimeout(() => {
       setStatus('success');
       // Opening mail client as fallback
-      window.location.href = "mailto:iratenebillel@gmail.com";
+      window.location.href = "mailto:moncvgo@gmail.com";
       
       setTimeout(() => {
         setStatus('idle');
@@ -63,8 +63,8 @@ export default function Contact() {
               </div>
               <div>
                 <p className="text-sm font-semibold text-slate-500 dark:text-slate-400 uppercase tracking-wider mb-1">{t('contact.email_label')}</p>
-                <a href="mailto:iratenebillel@gmail.com" className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
-                  iratenebillel@gmail.com
+                <a href="mailto:moncvgo@gmail.com" className="text-xl font-bold text-slate-900 dark:text-white hover:text-blue-600 dark:hover:text-blue-400 transition-colors">
+                  moncvgo@gmail.com
                 </a>
               </div>
             </div>
