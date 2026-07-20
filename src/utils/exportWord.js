@@ -8,7 +8,7 @@ export const exportToWord = async (cvData, config, elementRef) => {
     return;
   }
 
-  const { personal, summary, experiences, education, skills, projects, languages } = cvData;
+  const { personal, summary, experiences, education, skills, qualities, projects, languages } = cvData;
 
   // Map tailwind colors to Hex for Word
   const colorMap = {
@@ -231,6 +231,25 @@ export const exportToWord = async (cvData, config, elementRef) => {
     children.push(
       new Paragraph({
         text: skillsText,
+        spacing: { after: 200 },
+      })
+    );
+  }
+
+  // --- QUALITIES ---
+  if (qualities && qualities.length > 0) {
+    children.push(createHeading("Qualités & Atouts"));
+    
+    let qualitiesText = "";
+    if (typeof qualities === "string") {
+      qualitiesText = qualities;
+    } else if (Array.isArray(qualities)) {
+      qualitiesText = qualities.map(q => typeof q === 'string' ? q : q.name).filter(Boolean).join(" • ");
+    }
+    
+    children.push(
+      new Paragraph({
+        text: qualitiesText,
         spacing: { after: 200 },
       })
     );
