@@ -1083,6 +1083,7 @@ function RawTemplateModern({ cvData, config }) {
 
 function AutoFitWrapper({ children, cvData, config }) {
   const [fitScale, setFitScale] = React.useState(1);
+  const outerRef = React.useRef(null);
   const innerRef = React.useRef(null);
   const autoFit = config?.autoFit !== false;
 
@@ -1092,37 +1093,30 @@ function AutoFitWrapper({ children, cvData, config }) {
       return;
     }
 
-    const el = innerRef.current;
-    const targetHeight = 1115; // Target height in px for A4 (1123px)
+    const targetHeight = 1110; // Target height in px for A4 page (1123px max)
+    const childEl = innerRef.current.firstElementChild || innerRef.current;
 
-    // Reset inline scale temporarily to measure actual scrollHeight
-    el.style.transform = 'none';
-    el.style.width = '100%';
-    el.style.height = 'auto';
+    // Measure natural unscaled scrollHeight of child layout
+    const naturalHeight = childEl.scrollHeight || childEl.offsetHeight;
 
-    const naturalHeight = el.scrollHeight;
-
-    if (naturalHeight > targetHeight + 10) {
+    if (naturalHeight > targetHeight + 5) {
       const calculatedScale = targetHeight / naturalHeight;
-      // Cap scale between 0.55 and 1
-      const newScale = Math.max(0.55, Math.min(1, Math.floor(calculatedScale * 1000) / 1000));
+      // Cap scale between 0.50 (50%) and 1.0 (100%)
+      const newScale = Math.max(0.50, Math.min(1, Math.floor(calculatedScale * 1000) / 1000));
       setFitScale(newScale);
     } else {
       setFitScale(1);
     }
-
-    el.style.height = '100%';
   }, [cvData, config, autoFit]);
 
   return (
-    <div className="cv-auto-fit-container w-full h-full h-[1123px] overflow-hidden relative box-border bg-white">
+    <div ref={outerRef} className="cv-auto-fit-container w-full h-full h-[1123px] overflow-hidden relative box-border bg-white">
       <div 
         ref={innerRef} 
-        className="w-full h-full transition-transform duration-200 box-border origin-top-left"
+        className="w-full transition-transform duration-200 box-border origin-top-left"
         style={{
           transform: fitScale < 1 ? `scale(${fitScale})` : 'none',
           width: fitScale < 1 ? `${(100 / fitScale).toFixed(3)}%` : '100%',
-          height: fitScale < 1 ? `${(100 / fitScale).toFixed(3)}%` : '100%',
         }}
       >
         {children}
