@@ -11,6 +11,7 @@ export const ResumeProvider = ({ children }) => {
     experiences: [],
     education: [],
     skills: [],
+    qualities: [],
     languages: [],
     projects: []
   });
@@ -24,7 +25,8 @@ export const ResumeProvider = ({ children }) => {
     fontSize: "normal",
     textColor: "#1e293b",
     spacing: "normal",
-    activeTab: "style"
+    activeTab: "style",
+    autoFit: true
   });
 
   // Load from localStorage on mount
@@ -123,6 +125,25 @@ export const ResumeProvider = ({ children }) => {
     }));
   };
 
+  const addQuality = (quality) => {
+    setCvData(prev => ({ ...prev, qualities: [...(prev.qualities || []), quality] }));
+  };
+
+  const updateQuality = (index, quality) => {
+    setCvData(prev => {
+      const newQualities = [...(prev.qualities || [])];
+      newQualities[index] = quality;
+      return { ...prev, qualities: newQualities };
+    });
+  };
+
+  const removeQuality = (index) => {
+    setCvData(prev => ({
+      ...prev,
+      qualities: (prev.qualities || []).filter((_, i) => i !== index)
+    }));
+  };
+
   const addLanguage = (lang) => {
     setCvData(prev => ({ ...prev, languages: [...prev.languages, lang] }));
   };
@@ -165,8 +186,6 @@ export const ResumeProvider = ({ children }) => {
     setConfig(prev => ({ ...prev, [key]: value }));
   };
 
-
-
   const resetData = () => {
     setCvData({
       personal: { name: "", title: "", email: "", phone: "", address: "", website: "", photo: "" },
@@ -174,6 +193,7 @@ export const ResumeProvider = ({ children }) => {
       experiences: [],
       education: [],
       skills: [],
+      qualities: [],
       languages: [],
       projects: []
     });
@@ -205,6 +225,7 @@ export const ResumeProvider = ({ children }) => {
       addExperience, updateExperience, removeExperience,
       addEducation, updateEducation, removeEducation,
       addSkill, updateSkill, removeSkill,
+      addQuality, updateQuality, removeQuality,
       addLanguage, updateLanguage, removeLanguage,
       addProject, updateProject, removeProject,
       updateConfig, loadDemo, resetData, importData
