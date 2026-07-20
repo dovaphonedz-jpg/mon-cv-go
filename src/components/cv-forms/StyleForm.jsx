@@ -2,7 +2,7 @@ import React from 'react';
 import { useTranslation } from 'react-i18next';
 import { useResume } from '../../context/ResumeContext';
 import { templates100 } from '../../utils/cvData';
-import { Palette, Type, LayoutTemplate, Languages, AlignLeft } from 'lucide-react';
+import { Palette, Type, LayoutTemplate, Languages, AlignLeft, Minimize2 } from 'lucide-react';
 
 export default function StyleForm() {
   const { t } = useTranslation();
@@ -152,6 +152,31 @@ export default function StyleForm() {
           <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-400">
             <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
           </div>
+        </div>
+      </section>
+
+      {/* Ajustement automatique 1 Page */}
+      <section>
+        <div className="flex items-center justify-between p-4 bg-slate-50 dark:bg-slate-900/60 rounded-2xl border border-slate-200 dark:border-slate-800">
+          <div>
+            <h2 className="text-xs font-bold uppercase tracking-widest text-blue-500 flex items-center gap-2 mb-1">
+              <Minimize2 className="w-4 h-4" /> Ajustement 1 Page (Auto-Fit)
+            </h2>
+            <p className="text-xs text-slate-500 dark:text-slate-400">
+              Ajuste automatiquement la taille du texte et des espaces pour faire tenir tout le CV sur une seule page A4.
+            </p>
+          </div>
+          <button
+            type="button"
+            onClick={() => updateConfig('autoFit', config.autoFit === false ? true : false)}
+            className={`px-3 py-2 shrink-0 rounded-xl text-xs font-bold transition-all border ${
+              config.autoFit !== false
+                ? 'bg-emerald-50 border-emerald-500 text-emerald-700 dark:bg-emerald-900/30 dark:border-emerald-400 dark:text-emerald-300 shadow-sm'
+                : 'bg-white border-slate-300 text-slate-600 dark:bg-slate-800 dark:border-slate-700 dark:text-slate-400'
+            }`}
+          >
+            {config.autoFit !== false ? 'Activé ✨' : 'Désactivé'}
+          </button>
         </div>
       </section>
 
