@@ -80,16 +80,43 @@ export default function CreateCV() {
     contentRef: printRef,
     documentTitle: cvData?.personal?.name ? `CV_${cvData.personal.name.replace(/\s+/g, '_')}` : 'Mon_CV',
     pageStyle: `
-      @page { size: A4; margin: 0; }
+      @page {
+        size: A4 portrait;
+        margin: 0mm !important;
+      }
       @media print {
-        body { margin: 0; background: white; -webkit-print-color-adjust: exact; print-color-adjust: exact; }
-        #cv-export-container {
-          position: relative !important;
-          transform: scale(1) !important;
-          margin: 0 !important;
+        *, *:before, *:after {
+          -webkit-print-color-adjust: exact !important;
+          print-color-adjust: exact !important;
+          color-adjust: exact !important;
+        }
+        html, body {
           width: 210mm !important;
           height: 297mm !important;
+          max-height: 297mm !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          overflow: hidden !important;
+          background: white !important;
+        }
+        #cv-export-container {
+          position: absolute !important;
+          top: 0 !important;
+          left: 0 !important;
+          width: 210mm !important;
+          height: 297mm !important;
+          max-height: 297mm !important;
+          margin: 0 !important;
+          padding: 0 !important;
+          transform: none !important;
           box-shadow: none !important;
+          overflow: hidden !important;
+          page-break-before: avoid !important;
+          page-break-after: avoid !important;
+          page-break-inside: avoid !important;
+          break-before: avoid !important;
+          break-after: avoid !important;
+          break-inside: avoid !important;
         }
       }
     `
