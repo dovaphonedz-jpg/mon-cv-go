@@ -54,6 +54,12 @@ export const demoData = {
       { name: "UI/UX & Figma prototyping", level: "85%" },
       { name: "Stratégies SEO & Analytics", level: "80%" }
     ],
+    qualities: [
+      { name: "Autonome & Rigoureux" },
+      { name: "Esprit d'équipe" },
+      { name: "Capacité d'adaptation" },
+      { name: "Sens de l'organisation" }
+    ],
     languages: [
       { name: "Arabe", level: "Langue maternelle" },
       { name: "Français", level: "Bilingue" },
@@ -105,6 +111,12 @@ export const demoData = {
       { name: "تصميم واجهات المستخدم وفيكما", level: "90%" },
       { name: "تطوير الويب HTML / CSS", level: "85%" },
       { name: "التسويق الرقمي وتحسين محركات البحث", level: "80%" }
+    ],
+    qualities: [
+      { name: "الاستقلالية والاعتماد على الذات" },
+      { name: "العمل الجماعي" },
+      { name: "الدقة والإنضباط" },
+      { name: "قدرة عالية على التكيف" }
     ],
     languages: [
       { name: "العربية", level: "اللغة الأم" },
@@ -158,6 +170,12 @@ export const demoData = {
       { name: "UI/UX & Figma prototyping", level: "85%" },
       { name: "SEO Strategies & Analytics", level: "80%" }
     ],
+    qualities: [
+      { name: "Self-motivated" },
+      { name: "Team Player" },
+      { name: "Detail-oriented" },
+      { name: "Adaptability" }
+    ],
     languages: [
       { name: "Arabic", level: "Native" },
       { name: "French", level: "Bilingual" },
@@ -203,6 +221,7 @@ export const translations = {
     education: "Formations",
     contact: "Contact",
     skills: "Compétences",
+    qualities: "Qualités & Atouts",
     languages: "Langues",
     projects: "Projets & Portfolio"
   },
@@ -212,6 +231,7 @@ export const translations = {
     education: "Education",
     contact: "Contact",
     skills: "Skills",
+    qualities: "Personal Qualities",
     languages: "Languages",
     projects: "Projects & Portfolio"
   },
@@ -221,6 +241,7 @@ export const translations = {
     education: "المؤهلات العلمية",
     contact: "معلومات الاتصال",
     skills: "المهارات",
+    qualities: "السمات الشخصية",
     languages: "اللغات",
     projects: "المشاريع والأعمال"
   }
