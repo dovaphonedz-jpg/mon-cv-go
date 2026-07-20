@@ -1,7 +1,7 @@
 import pptxgen from "pptxgenjs";
 
 export const exportToPowerPoint = async (cvData) => {
-  const { personal = {}, summary = "", experiences = [], education = [], skills = [], projects = [] } = cvData;
+  const { personal = {}, summary = "", experiences = [], education = [], skills = [], qualities = [], projects = [] } = cvData;
   const safeText = (text) => text || "";
 
   const pres = new pptxgen();
@@ -60,6 +60,20 @@ export const exportToPowerPoint = async (cvData) => {
     skills.forEach((skill) => {
       slide.addText(`• ${safeText(skill.name)} (${safeText(skill.level)})`, { x: 5.5, y: sy, w: "45%", fontSize: 12, color: "334155" });
       sy += 0.3;
+    });
+  }
+
+  if (qualities && qualities.length > 0) {
+    const qualitiesY = 1.8 + (skills.length ? (0.4 + skills.length * 0.3 + 0.2) : 0);
+    slide.addText("Qualités", { x: 5.5, y: qualitiesY, w: "45%", fontSize: 16, bold: true, color: "0F172A" });
+    
+    let qy = qualitiesY + 0.4;
+    qualities.forEach((q) => {
+      const name = typeof q === 'string' ? q : q.name;
+      if (name) {
+        slide.addText(`• ${safeText(name)}`, { x: 5.5, y: qy, w: "45%", fontSize: 12, color: "334155" });
+        qy += 0.3;
+      }
     });
   }
   
