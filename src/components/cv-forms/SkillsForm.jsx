@@ -5,8 +5,9 @@ import { Plus, Trash2 } from 'lucide-react';
 
 export default function SkillsForm() {
   const { t } = useTranslation();
-  const { cvData, addSkill, updateSkill, removeSkill, addLanguage, updateLanguage, removeLanguage } = useResume();
+  const { cvData, addSkill, updateSkill, removeSkill, addQuality, updateQuality, removeQuality, addLanguage, updateLanguage, removeLanguage } = useResume();
   const skills = cvData.skills || [];
+  const qualities = cvData.qualities || [];
   const languages = cvData.languages || [];
 
   return (
@@ -55,6 +56,45 @@ export default function SkillsForm() {
                 </select>
                 <button 
                   onClick={() => removeSkill(index)}
+                  className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
+                >
+                  <Trash2 className="w-5 h-5" />
+                </button>
+              </div>
+            ))}
+          </div>
+        )}
+      </section>
+
+      {/* QUALITIES SECTION */}
+      <section>
+        <div className="flex justify-between items-center mb-4">
+          <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">Qualités & Atouts</h3>
+          <button 
+            onClick={() => addQuality({ name: '' })}
+            className="flex items-center gap-1 px-3 py-1.5 bg-emerald-50 text-emerald-600 hover:bg-emerald-100 dark:bg-emerald-900/30 dark:text-emerald-400 dark:hover:bg-emerald-900/50 rounded-lg text-sm font-semibold transition-colors"
+          >
+            <Plus className="w-4 h-4" /> Ajouter
+          </button>
+        </div>
+
+        {qualities.length === 0 ? (
+          <div className="text-center p-6 bg-slate-50 dark:bg-slate-800/50 rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-700">
+            <p className="text-sm text-slate-500 dark:text-slate-400">Ajoutez vos qualités personnelles et atouts sous forme de liste (ex: Autonome, Ponctuel, Esprit d'équipe...).</p>
+          </div>
+        ) : (
+          <div className="space-y-3">
+            {qualities.map((q, index) => (
+              <div key={index} className="flex gap-2 items-center">
+                <input 
+                  type="text" 
+                  value={typeof q === 'string' ? q : (q.name || '')} 
+                  onChange={(e) => updateQuality(index, typeof q === 'string' ? e.target.value : { ...q, name: e.target.value })}
+                  className="flex-1 px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 outline-none" 
+                  placeholder="Ex: Ponctuel, Autonome, Rigoureux, Esprit d'équipe..."
+                />
+                <button 
+                  onClick={() => removeQuality(index)}
                   className="p-2 text-slate-400 hover:text-red-500 hover:bg-red-50 dark:hover:bg-red-900/20 rounded-lg transition-colors"
                 >
                   <Trash2 className="w-5 h-5" />
