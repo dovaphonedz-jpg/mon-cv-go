@@ -1,8 +1,8 @@
 import React from 'react';
 import { templates100, translations } from '../../utils/cvData';
 
-export default function TemplateModern({ cvData, config }) {
-  const { personal, summary, experiences, education, skills, languages, projects = [] } = cvData;
+function RawTemplateModern({ cvData, config }) {
+  const { personal, summary, experiences, education, skills, qualities = [], languages, projects = [] } = cvData;
   const { color, font, fontSize, spacing, template } = config;
 
   // Find active template config
@@ -29,7 +29,7 @@ export default function TemplateModern({ cvData, config }) {
   const getScale = () => fontSize === 'small' ? '0.9em' : fontSize === 'large' ? '1.1em' : '1em';
 
   // Base layout wrapper
-  let containerClasses = `cv-page ${fontClass} bg-white text-slate-800 shadow-2xl relative w-full h-full h-[1123px] overflow-hidden box-border transition-all duration-300`;
+  let containerClasses = `cv-page ${fontClass} bg-white text-slate-800 shadow-2xl relative w-full min-h-[1123px] box-border transition-all duration-300`;
   
   // Global Styles
   if (style === 'bordered') containerClasses += ' border-[12px] border-slate-100';
@@ -56,7 +56,7 @@ export default function TemplateModern({ cvData, config }) {
   // 0.1 NEOBRUTALISM
   if (layout === 'neobrutalism') {
     return (
-      <div className={`cv-page ${fontClass} bg-yellow-400 text-black shadow-2xl relative w-full h-full h-[1123px] overflow-hidden box-border border-[12px] border-black`} style={{ fontSize: getScale() }}>
+      <div className={`cv-page ${fontClass} bg-yellow-400 text-black shadow-2xl relative w-full min-h-[1123px] box-border border-[12px] border-black`} style={{ fontSize: getScale() }}>
         <header className="p-5 border-b-[12px] border-black bg-white flex justify-between items-center">
           <div>
             <h1 className="text-lg font-black uppercase tracking-tighter mb-2 bg-black text-yellow-400 inline-block px-4 py-2 border-4 border-black" style={{ transform: 'rotate(-2deg)' }}>{personal.name}</h1>
@@ -145,6 +145,22 @@ export default function TemplateModern({ cvData, config }) {
                 </div>
               </section>
             )}
+            {qualities.length > 0 && (
+              <section className="bg-white border-[6px] border-black p-4 shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]">
+                <h3 className="text-sm font-black uppercase mb-4 bg-black text-white inline-block px-3 py-1">{t.qualities || 'Qualités'}</h3>
+                <div className="flex flex-wrap gap-2">
+                  {qualities.map((q, idx) => {
+                    const name = typeof q === 'string' ? q : q?.name;
+                    if (!name) return null;
+                    return (
+                      <span key={idx} className="font-bold border-4 border-black px-3 py-1 bg-[#fef08a] shadow-[4px_4px_0px_0px_rgba(0,0,0,1)] text-xs">
+                        {name}
+                      </span>
+                    );
+                  })}
+                </div>
+              </section>
+            )}
           </div>
         </div>
       </div>
@@ -154,7 +170,7 @@ export default function TemplateModern({ cvData, config }) {
   // 0.2 GLASSMORPHISM
   if (layout === 'glassmorphism') {
     return (
-      <div className={`cv-page ${fontClass} bg-slate-900 text-white shadow-2xl relative w-full h-full h-[1123px] overflow-hidden box-border p-5`} style={{ fontSize: getScale() }}>
+      <div className={`cv-page ${fontClass} bg-slate-900 text-white shadow-2xl relative w-full min-h-[1123px] box-border p-5`} style={{ fontSize: getScale() }}>
         {/* Background Decorative blobs */}
         <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-purple-500 rounded-full mix-blend-screen filter blur-[100px] opacity-40"></div>
         <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500 rounded-full mix-blend-screen filter blur-[100px] opacity-40"></div>
@@ -220,6 +236,22 @@ export default function TemplateModern({ cvData, config }) {
                   </div>
                 </section>
               )}
+              {qualities.length > 0 && (
+                <section className="bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-3xl shadow-xl">
+                  <h3 className="text-base font-bold uppercase tracking-widest text-white/90 mb-4">{t.qualities || 'Qualités'}</h3>
+                  <div className="flex flex-wrap gap-2">
+                    {qualities.map((q, idx) => {
+                      const name = typeof q === 'string' ? q : q?.name;
+                      if (!name) return null;
+                      return (
+                        <span key={idx} className="px-3 py-1 bg-white/20 rounded-full text-xs text-white font-medium border border-white/30">
+                          {name}
+                        </span>
+                      );
+                    })}
+                  </div>
+                </section>
+              )}
               
               {languages.length > 0 && (
                 <section className="bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-3xl shadow-xl">
@@ -248,7 +280,7 @@ export default function TemplateModern({ cvData, config }) {
     const shadow = isNeon ? `0 0 15px ${accent}` : 'none';
     
     return (
-      <div className={`cv-page ${fontClass} bg-[#09090b] text-[#f4f4f5] shadow-2xl relative w-full h-full h-[1123px] overflow-hidden box-border p-6`} style={{ fontSize: getScale() }}>
+      <div className={`cv-page ${fontClass} bg-[#09090b] text-[#f4f4f5] shadow-2xl relative w-full min-h-[1123px] box-border p-6`} style={{ fontSize: getScale() }}>
         <header className="border-b border-[#27272a] pb-4 mb-4 flex justify-between items-end">
           <div>
             <h1 className="text-base font-extrabold uppercase tracking-[0.2em] mb-2" style={{ color: accent, textShadow: shadow }}>{personal.name}</h1>
@@ -280,6 +312,22 @@ export default function TemplateModern({ cvData, config }) {
                       <span className="text-xs" style={{ color: accent }}>{s.level}</span>
                     </li>
                   ))}
+                </ul>
+              </section>
+            )}
+            {qualities.length > 0 && (
+              <section>
+                <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-[#71717a] mb-4">{t.qualities || 'Qualités'}</h3>
+                <ul className="text-sm text-[#d4d4d8] space-y-2 font-medium tracking-wide">
+                  {qualities.map((q, idx) => {
+                    const name = typeof q === 'string' ? q : q?.name;
+                    if (!name) return null;
+                    return (
+                      <li key={idx} className="flex items-center gap-2">
+                        <span style={{ color: accent }}>•</span> {name}
+                      </li>
+                    );
+                  })}
                 </ul>
               </section>
             )}
@@ -365,7 +413,7 @@ export default function TemplateModern({ cvData, config }) {
   // 0.4 TYPOGRAPHIC
   if (layout === 'typographic') {
     return (
-      <div className={`cv-page ${fontClass} bg-[#fdfcf8] text-[#1c1c1c] shadow-2xl relative w-full h-full h-[1123px] overflow-hidden box-border p-6`} style={{ fontSize: getScale() }}>
+      <div className={`cv-page ${fontClass} bg-[#fdfcf8] text-[#1c1c1c] shadow-2xl relative w-full min-h-[1123px] box-border p-6`} style={{ fontSize: getScale() }}>
         <header className="border-b-[3px] border-[#1c1c1c] pb-4 mb-6 flex justify-between items-start">
           <div className="w-2/3">
             <h1 className="text-7xl font-black uppercase tracking-tighter leading-none mb-4" style={{ color: themeColor }}>{personal.name}</h1>
@@ -399,6 +447,22 @@ export default function TemplateModern({ cvData, config }) {
                       <span className="font-bold">{s.level}</span>
                     </li>
                   ))}
+                </ul>
+              </section>
+            )}
+            {qualities.length > 0 && (
+              <section>
+                <h3 className="text-sm font-bold uppercase tracking-[0.2em] mb-4" style={{ color: themeColor }}>{t.qualities || 'Qualités'}</h3>
+                <ul className="text-base font-medium space-y-1">
+                  {qualities.map((q, idx) => {
+                    const name = typeof q === 'string' ? q : q?.name;
+                    if (!name) return null;
+                    return (
+                      <li key={idx} className="border-b border-[#e5e5e5] pb-1">
+                        {name}
+                      </li>
+                    );
+                  })}
                 </ul>
               </section>
             )}
@@ -583,6 +647,22 @@ export default function TemplateModern({ cvData, config }) {
                 </ul>
               </section>
             )}
+            {qualities.length > 0 && (
+              <section>
+                {getSectionHeader(t.qualities || 'Qualités')}
+                <div className="flex flex-wrap gap-2">
+                  {qualities.map((q, idx) => {
+                    const name = typeof q === 'string' ? q : q?.name;
+                    if (!name) return null;
+                    return (
+                      <span key={idx} className="px-2.5 py-1 bg-slate-200 text-slate-800 rounded text-xs font-medium">
+                        {name}
+                      </span>
+                    );
+                  })}
+                </div>
+              </section>
+            )}
 
             {languages.length > 0 && (
               <section>
@@ -688,6 +768,22 @@ export default function TemplateModern({ cvData, config }) {
                 </div>
               </section>
             )}
+            {qualities.length > 0 && (
+              <section>
+                {getSectionHeader(t.qualities || 'Qualités')}
+                <div className="flex flex-wrap gap-2">
+                  {qualities.map((q, idx) => {
+                    const name = typeof q === 'string' ? q : q?.name;
+                    if (!name) return null;
+                    return (
+                      <span key={idx} className="px-3 py-1 bg-slate-100 text-slate-700 text-xs font-bold rounded-full border" style={{ borderColor: themeColor }}>
+                        {name}
+                      </span>
+                    );
+                  })}
+                </div>
+              </section>
+            )}
             
             {languages.length > 0 && (
               <section>
@@ -750,6 +846,22 @@ export default function TemplateModern({ cvData, config }) {
                       <span className="opacity-80 font-bold">{s.level}</span>
                     </li>
                   ))}
+                </ul>
+              </section>
+            )}
+            {qualities.length > 0 && (
+              <section>
+                <h3 className="text-sm font-bold uppercase tracking-wider mb-3 border-b border-white/30 pb-1">{t.qualities || 'Qualités'}</h3>
+                <ul className="text-xs text-white/90 space-y-2 font-medium">
+                  {qualities.map((q, idx) => {
+                    const name = typeof q === 'string' ? q : q?.name;
+                    if (!name) return null;
+                    return (
+                      <li key={idx} className="flex items-center gap-1.5">
+                        <span>•</span> {name}
+                      </li>
+                    );
+                  })}
                 </ul>
               </section>
             )}
@@ -933,6 +1045,22 @@ export default function TemplateModern({ cvData, config }) {
               </ul>
             </section>
           )}
+          {qualities.length > 0 && (
+            <section>
+              {getSectionHeader(t.qualities || 'Qualités')}
+              <ul className="text-xs text-slate-700 space-y-2 font-medium">
+                {qualities.map((q, idx) => {
+                  const name = typeof q === 'string' ? q : q?.name;
+                  if (!name) return null;
+                  return (
+                    <li key={idx} className="border-b pb-1">
+                      {name}
+                    </li>
+                  );
+                })}
+              </ul>
+            </section>
+          )}
 
           {languages.length > 0 && (
             <section>
@@ -950,5 +1078,68 @@ export default function TemplateModern({ cvData, config }) {
         </div>
       </div>
     </div>
+  );
+}
+
+function AutoFitWrapper({ children, cvData, config }) {
+  const [fitScale, setFitScale] = React.useState(1);
+  const innerRef = React.useRef(null);
+  const autoFit = config?.autoFit !== false;
+
+  React.useLayoutEffect(() => {
+    if (!autoFit || !innerRef.current) {
+      setFitScale(1);
+      return;
+    }
+
+    const el = innerRef.current;
+    const targetHeight = 1115; // Target height in px for A4 (1123px)
+
+    // Reset inline scale temporarily to measure actual scrollHeight
+    el.style.transform = 'none';
+    el.style.width = '100%';
+    el.style.height = 'auto';
+
+    const naturalHeight = el.scrollHeight;
+
+    if (naturalHeight > targetHeight + 10) {
+      const calculatedScale = targetHeight / naturalHeight;
+      // Cap scale between 0.55 and 1
+      const newScale = Math.max(0.55, Math.min(1, Math.floor(calculatedScale * 1000) / 1000));
+      setFitScale(newScale);
+    } else {
+      setFitScale(1);
+    }
+
+    el.style.height = '100%';
+  }, [cvData, config, autoFit]);
+
+  return (
+    <div className="cv-auto-fit-container w-full h-full h-[1123px] overflow-hidden relative box-border bg-white">
+      <div 
+        ref={innerRef} 
+        className="w-full h-full transition-transform duration-200 box-border origin-top-left"
+        style={{
+          transform: fitScale < 1 ? `scale(${fitScale})` : 'none',
+          width: fitScale < 1 ? `${(100 / fitScale).toFixed(3)}%` : '100%',
+          height: fitScale < 1 ? `${(100 / fitScale).toFixed(3)}%` : '100%',
+        }}
+      >
+        {children}
+      </div>
+      {fitScale < 1 && (
+        <div className="absolute bottom-2 right-2 bg-slate-900/85 text-white text-[10px] font-mono px-2.5 py-1 rounded-full backdrop-blur pointer-events-none opacity-80 z-50 print:hidden flex items-center gap-1 shadow-md">
+          <span>✨ 1 Page Auto-Fit ({Math.round(fitScale * 100)}%)</span>
+        </div>
+      )}
+    </div>
+  );
+}
+
+export default function TemplateModern({ cvData, config }) {
+  return (
+    <AutoFitWrapper cvData={cvData} config={config}>
+      <RawTemplateModern cvData={cvData} config={config} />
+    </AutoFitWrapper>
   );
 }
