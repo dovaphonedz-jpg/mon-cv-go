@@ -4,6 +4,7 @@ import dotenv from 'dotenv';
 import OpenAI from 'openai';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import nodemailer from 'nodemailer';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -173,6 +174,39 @@ app.post('/api/magic', async (req, res) => {
   } catch (error) {
     console.error('Erreur API OpenAI Magic:', error.message);
     res.status(500).json({ error: error.message || "Erreur lors de la génération magique." });
+  }
+});
+
+app.post('/api/contact', async (req, res) => {
+  try {
+    const { name, email, subject, message } = req.body;
+
+    if (!name || !email || !message) {
+      return res.status(400).json({ error: 'Veuillez remplir tous les champs obligatoires.' });
+    }
+
+    const transporter = nodemailer.createTransport({
+      service: 'gmail',
+      auth: {
+        user: process.env.EMAIL_USER,
+        pass: process.env.EMAIL_PASS
+      }
+    });
+
+    const mailOptions = {
+      from: process.env.EMAIL_USER,
+      to: 'moncvgo@gmail.com',
+      replyTo: email,
+      subject: `Nouveau message de contact : ${subject || 'Sans objet'}`,
+      text: `Vous avez reçu un nouveau message de contact.\n\nNom: ${name}\nEmail: ${email}\nSujet: ${subject}\n\nMessage:\n${message}`,
+      html: `<p>Vous avez reçu un nouveau message de contact.</p><p><strong>Nom:</strong> ${name}</p><p><strong>Email:</strong> ${email}</p><p><strong>Sujet:</strong> ${subject}</p><p><strong>Message:</strong><br/>${message.replace(/\n/g, '<br/>')}</p>`
+    };
+
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ success: true, message: 'Message envoyé avec succès.' });
+  } catch (error) {
+    console.error('Erreur lors de l\'envoi de l\'email :', error);
+    res.status(500).json({ error: 'Erreur lors de l\'envoi du message.' });
   }
 });
 

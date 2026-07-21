@@ -8,21 +8,36 @@ export default function Contact() {
   const { t } = useTranslation();
   const [status, setStatus] = useState('idle'); // idle | loading | success
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setStatus('loading');
     
-    // Simulating form submission or opening mailto link
-    setTimeout(() => {
-      setStatus('success');
-      // Opening mail client as fallback
-      window.location.href = "mailto:moncvgo@gmail.com";
-      
-      setTimeout(() => {
+    const formData = new FormData(e.target);
+    const data = Object.fromEntries(formData.entries());
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      });
+
+      if (response.ok) {
+        setStatus('success');
+        setTimeout(() => {
+          setStatus('idle');
+          e.target.reset();
+        }, 3000);
+      } else {
         setStatus('idle');
-        e.target.reset();
-      }, 3000);
-    }, 1500);
+        alert(t('contact.error_send') || "Une erreur est survenue lors de l'envoi du message.");
+      }
+    } catch (error) {
+      setStatus('idle');
+      alert(t('contact.error_network') || "Erreur de connexion. Veuillez réessayer plus tard.");
+    }
   };
 
   return (
@@ -83,22 +98,22 @@ export default function Contact() {
               <div className="grid sm:grid-cols-2 gap-5">
                 <div>
                   <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">{t('contact.label_name')}</label>
-                  <input required type="text" className="w-full bg-white dark:bg-slate-800 brutal-border px-4 py-3 text-sm font-bold focus:ring-4 focus:ring-pink-400 outline-none transition-all dark:text-white" placeholder={t('contact.ph_name')} />
+                  <input required type="text" name="name" className="w-full bg-white dark:bg-slate-800 brutal-border px-4 py-3 text-sm font-bold focus:ring-4 focus:ring-pink-400 outline-none transition-all dark:text-white" placeholder={t('contact.ph_name')} />
                 </div>
                 <div>
                   <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">{t('contact.label_email')}</label>
-                  <input required type="email" className="w-full bg-white dark:bg-slate-800 brutal-border px-4 py-3 text-sm font-bold focus:ring-4 focus:ring-pink-400 outline-none transition-all dark:text-white" placeholder={t('contact.ph_email')} />
+                  <input required type="email" name="email" className="w-full bg-white dark:bg-slate-800 brutal-border px-4 py-3 text-sm font-bold focus:ring-4 focus:ring-pink-400 outline-none transition-all dark:text-white" placeholder={t('contact.ph_email')} />
                 </div>
               </div>
 
               <div>
                 <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">{t('contact.label_subject')}</label>
-                <input required type="text" className="w-full bg-white dark:bg-slate-800 brutal-border px-4 py-3 text-sm font-bold focus:ring-4 focus:ring-pink-400 outline-none transition-all dark:text-white" placeholder={t('contact.ph_subject')} />
+                <input required type="text" name="subject" className="w-full bg-white dark:bg-slate-800 brutal-border px-4 py-3 text-sm font-bold focus:ring-4 focus:ring-pink-400 outline-none transition-all dark:text-white" placeholder={t('contact.ph_subject')} />
               </div>
 
               <div>
                 <label className="block text-xs font-semibold text-slate-600 dark:text-slate-400 mb-1.5">{t('contact.label_message')}</label>
-                <textarea required rows="4" className="w-full bg-white dark:bg-slate-800 brutal-border px-4 py-3 text-sm font-bold focus:ring-4 focus:ring-pink-400 outline-none transition-all dark:text-white resize-none" placeholder={t('contact.ph_message')}></textarea>
+                <textarea required rows="4" name="message" className="w-full bg-white dark:bg-slate-800 brutal-border px-4 py-3 text-sm font-bold focus:ring-4 focus:ring-pink-400 outline-none transition-all dark:text-white resize-none" placeholder={t('contact.ph_message')}></textarea>
               </div>
 
               <button 
