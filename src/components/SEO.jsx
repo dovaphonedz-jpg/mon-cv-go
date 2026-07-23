@@ -1,13 +1,15 @@
 import React from 'react';
 import { Helmet } from 'react-helmet-async';
+import { useTranslation } from 'react-i18next';
 
 export default function SEO({ title, description, url = 'https://www.moncvgo.com' }) {
-  const defaultDescription = "Créez votre CV professionnel en ligne gratuitement. Mon CV Go propose 100 modèles premium, un export PDF de qualité et des conseils pour décrocher des entretiens.";
+  const { t, i18n } = useTranslation();
+  const defaultDescription = t('home.seo_desc', "Créez facilement et gratuitement votre CV, lettre de motivation et portfolio avec nos outils intuitifs. Simple, rapide et professionnel.");
   const siteTitle = title ? `${title} | Mon CV Go` : 'Mon CV Go - Créez votre CV professionnel gratuitement en ligne';
   const siteDescription = description || defaultDescription;
 
   return (
-    <Helmet>
+    <Helmet htmlAttributes={{ lang: i18n.language || 'fr' }}>
       <title>{siteTitle}</title>
       <meta name="description" content={siteDescription} />
       
