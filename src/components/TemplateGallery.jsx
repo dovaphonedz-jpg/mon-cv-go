@@ -33,7 +33,7 @@ export default function TemplateGallery() {
   const marqueePortfolios = [...portfolioTemplates, ...portfolioTemplates, ...portfolioTemplates, ...portfolioTemplates];
 
   return (
-    <section id="modeles-galerie" className="py-24 bg-slate-950 border-y-8 border-slate-900">
+    <section id="modeles-galerie" data-nosnippet className="py-24 bg-slate-950 border-y-8 border-slate-900">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         
         {/* Header Section */}

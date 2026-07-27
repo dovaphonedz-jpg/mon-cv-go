@@ -30,25 +30,19 @@ export default function Layout({ children }) {
   return (
     <div id="app" className={`min-h-screen flex flex-col transition-colors duration-300 ${isDark ? 'bg-[#0F172A] text-slate-100' : 'bg-slate-50 text-slate-800'}`}>
       
-      {/* Top Bar - Neo-Brutalist */}
-      <div className="bg-pink-500 text-slate-900 text-center py-2 px-4 text-xs font-black uppercase tracking-widest flex items-center justify-center gap-2 select-none border-b-4 border-slate-900">
-        <Sparkles className="w-4 h-4 text-slate-900" />
-        <span>{t('banner.text')}</span>
-      </div>
-
       {/* Header - Brutalist */}
       <header className="sticky top-0 z-40 bg-white dark:bg-slate-900 border-b-4 border-slate-900 transition-colors duration-300">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
+        <div className="w-full mx-auto px-4 sm:px-6 lg:px-10 h-16 flex items-center justify-between gap-4 lg:gap-8">
           
           {/* Logo */}
           <Link to="/" className="flex items-center gap-1 group transition-smooth brutal-hover">
             <span className="font-extrabold text-2xl sm:text-3xl tracking-tighter text-slate-900 dark:text-white flex items-center">
-              MONCV<span className="bg-yellow-400 text-slate-900 px-2 py-0.5 ml-1 brutal-border transform rotate-3 inline-block">GO</span>
+              MONCV<span className="bg-yellow-400 text-slate-900 px-2 py-0.5 ml-1 brutal-border transform rotate-3 inline-block shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]">GO</span>
             </span>
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden lg:flex items-center gap-8 text-sm font-semibold text-slate-600 dark:text-slate-300 rtl:gap-6">
+          <nav className="hidden lg:flex items-center gap-2 lg:gap-3 text-xs xl:text-sm font-semibold text-slate-600 dark:text-slate-300 rtl:gap-2">
             {[
               { path: '/', label: t('nav.home') },
               { path: '/create', label: t('nav.create_cv') },

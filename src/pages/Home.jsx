@@ -14,13 +14,13 @@ export default function Home() {
     hidden: { opacity: 0 },
     show: {
       opacity: 1,
-      transition: { staggerChildren: 0.15 }
+      transition: { staggerChildren: 0.1 }
     }
   };
 
   const itemVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 24 } }
+    hidden: { opacity: 0, y: 30 },
+    show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 400, damping: 30 } }
   };
 
   return (
@@ -68,12 +68,12 @@ export default function Home() {
         
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div variants={containerVariants} initial="hidden" animate="show">
-            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2 bg-white dark:bg-slate-800 brutal-border brutal-shadow text-slate-900 dark:text-white font-black text-xs sm:text-sm uppercase tracking-widest mb-6 sm:mb-8 transform -rotate-2">
+            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2 bg-white dark:bg-slate-800 brutal-border brutal-shadow text-slate-900 dark:text-white font-black text-xs sm:text-sm uppercase tracking-widest mb-10 sm:mb-14 -mt-4 sm:-mt-6 transform -rotate-2">
               <span className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-pink-500 animate-pulse"></span>
               {t('home.badge')}
             </motion.div>
             
-            <motion.h1 variants={itemVariants} className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-slate-900 dark:text-white uppercase tracking-tighter leading-[0.95] sm:leading-[0.9] mb-6 sm:mb-8">
+            <motion.h1 variants={itemVariants} className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-slate-900 dark:text-white uppercase tracking-tight leading-none sm:leading-[1.0] mb-8 sm:mb-10">
               {t('home.title_1')}<br className="hidden sm:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 drop-shadow-sm">{t('home.title_highlight')}</span> <br className="hidden sm:block" />{t('home.title_2')}
             </motion.h1>
