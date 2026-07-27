@@ -68,27 +68,27 @@ export default function Home() {
         
         <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
           <motion.div variants={containerVariants} initial="hidden" animate="show">
-            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-4 py-2 sm:px-5 sm:py-2 bg-white dark:bg-slate-800 brutal-border brutal-shadow text-slate-900 dark:text-white font-black text-xs sm:text-sm uppercase tracking-widest mb-10 sm:mb-14 -mt-4 sm:-mt-6 transform -rotate-2">
+            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-white dark:bg-slate-800 brutal-border brutal-shadow text-slate-900 dark:text-white font-black text-[10px] sm:text-xs md:text-sm uppercase tracking-widest mb-8 sm:mb-10 md:mb-14 -mt-2 sm:-mt-4 md:-mt-6 transform -rotate-2">
               <span className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-pink-500 animate-pulse"></span>
               {t('home.badge')}
             </motion.div>
             
-            <motion.h1 variants={itemVariants} className="text-5xl sm:text-7xl md:text-8xl lg:text-9xl font-black text-slate-900 dark:text-white uppercase tracking-tight leading-none sm:leading-[1.0] mb-8 sm:mb-10">
-              {t('home.title_1')}<br className="hidden sm:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 drop-shadow-sm">{t('home.title_highlight')}</span> <br className="hidden sm:block" />{t('home.title_2')}
+            <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-slate-900 dark:text-white uppercase tracking-tight leading-[1.1] sm:leading-[1.0] mb-6 sm:mb-8 md:mb-10">
+              {t('home.title_1')}<br className="hidden md:block" />
+              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 drop-shadow-sm">{t('home.title_highlight')}</span> <br className="hidden md:block" />{t('home.title_2')}
             </motion.h1>
             
-            <motion.p variants={itemVariants} className="text-lg sm:text-2xl md:text-3xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mb-10 sm:mb-12 font-bold leading-snug">
+            <motion.p variants={itemVariants} className="text-base sm:text-lg md:text-2xl lg:text-3xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 font-bold leading-snug px-4 sm:px-0">
               {t('home.subtitle')}
             </motion.p>
             
-            <motion.div variants={itemVariants} className="flex flex-col sm:flex-row gap-4 sm:gap-6 justify-center items-center">
-              <Link to="/create" className="w-full sm:w-auto px-8 py-4 sm:px-10 sm:py-5 bg-yellow-400 dark:bg-yellow-400 text-slate-900 font-black uppercase tracking-widest text-lg sm:text-xl brutal-border brutal-shadow transition-smooth brutal-hover brutal-active flex items-center justify-center gap-3 transform rotate-1">
-                <FilePlus2 className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={3} />
+            <motion.div variants={itemVariants} className="flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-center px-4 sm:px-0">
+              <Link to="/create" className="w-full md:w-auto px-6 py-4 md:px-10 md:py-5 bg-yellow-400 dark:bg-yellow-400 text-slate-900 font-black uppercase tracking-widest text-base sm:text-lg md:text-xl brutal-border brutal-shadow transition-smooth brutal-hover brutal-active flex items-center justify-center gap-3 transform rotate-1">
+                <FilePlus2 className="w-5 h-5 md:w-6 md:h-6" strokeWidth={3} />
                 {t('home.btn_create')}
               </Link>
-              <Link to="/portfolio" className="w-full sm:w-auto px-8 py-4 sm:px-10 sm:py-5 bg-cyan-400 dark:bg-cyan-400 text-slate-900 font-black uppercase tracking-widest text-lg sm:text-xl brutal-border brutal-shadow transition-smooth brutal-hover brutal-active flex items-center justify-center gap-3 transform -rotate-1">
-                <Briefcase className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={3} />
+              <Link to="/portfolio" className="w-full md:w-auto px-6 py-4 md:px-10 md:py-5 bg-cyan-400 dark:bg-cyan-400 text-slate-900 font-black uppercase tracking-widest text-base sm:text-lg md:text-xl brutal-border brutal-shadow transition-smooth brutal-hover brutal-active flex items-center justify-center gap-3 transform -rotate-1">
+                <Briefcase className="w-5 h-5 md:w-6 md:h-6" strokeWidth={3} />
                 {t('home.btn_portfolio')}
               </Link>
             </motion.div>
