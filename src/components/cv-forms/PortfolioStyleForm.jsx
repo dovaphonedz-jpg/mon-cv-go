@@ -156,6 +156,8 @@ export default function PortfolioStyleForm() {
                         onClick={() => { updateConfig('template', tpl.id); setIsDropdownOpen(false); }}
                         onMouseEnter={() => setHoveredTemplate(tpl)}
                         onMouseLeave={() => setHoveredTemplate(null)}
+                        onTouchStart={() => setHoveredTemplate(tpl)}
+                        onTouchEnd={() => setHoveredTemplate(null)}
                         className={`w-full text-left px-4 py-2 text-sm transition-colors ${config.template === tpl.id ? 'bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 font-bold' : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'}`}
                       >
                         {tpl.name}
@@ -169,21 +171,24 @@ export default function PortfolioStyleForm() {
           
           {/* Fenêtre volante d'aperçu détaillé au survol d'une option */}
           {hoveredTemplate && isDropdownOpen && (
-            <div className="absolute top-0 right-full mr-4 z-[60] w-[240px] h-[340px] hidden md:flex flex-col bg-white dark:bg-slate-800 border-2 border-blue-500 rounded-xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200 pointer-events-none">
+            <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm pointer-events-none md:absolute md:inset-auto md:bg-transparent md:backdrop-blur-none md:top-0 md:right-full md:mr-4 md:z-[60] md:pointer-events-none">
+              <div className="w-[280px] h-[400px] md:w-[240px] md:h-[340px] flex flex-col bg-white dark:bg-slate-800 border-2 border-blue-500 rounded-xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200 pointer-events-none">
               <div className="bg-blue-500 text-white text-xs font-bold px-3 py-2 text-center z-10 shrink-0">
                 Aperçu : {hoveredTemplate.name}
               </div>
               <div className="flex-grow bg-slate-50 dark:bg-slate-900 flex items-center justify-center relative overflow-hidden">
-                <div 
-                  className="absolute top-0 left-0 bg-white origin-top-left"
-                  style={{ 
-                    width: '794px', 
-                    height: '1123px', 
-                    transform: 'scale(0.30)', // 794 * 0.3 = 238px width
-                  }}
-                >
-                  <TemplatePortfolio cvData={demoData[config.cvLang || 'fr']} config={{...config, template: hoveredTemplate.id}} />
-                </div>
+                  <div 
+                    className="absolute top-0 left-0 bg-white origin-top-left hidden md:block"
+                    style={{ width: '794px', height: '1123px', transform: 'scale(0.30)' }}
+                  >
+                    <TemplatePortfolio cvData={demoData[config.cvLang || 'fr']} config={{...config, template: hoveredTemplate.id}} />
+                  </div>
+                  <div 
+                    className="absolute top-0 left-0 bg-white origin-top-left md:hidden"
+                    style={{ width: '794px', height: '1123px', transform: 'scale(0.35)' }}
+                  >
+                    <TemplatePortfolio cvData={demoData[config.cvLang || 'fr']} config={{...config, template: hoveredTemplate.id}} />
+                  </div>
               </div>
             </div>
           )}
