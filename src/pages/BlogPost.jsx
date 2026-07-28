@@ -4,11 +4,22 @@ import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Clock } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
 import SEO from '../components/SEO';
+import { useTranslation } from 'react-i18next';
 
 export default function BlogPost() {
   const { id } = useParams();
   const navigate = useNavigate();
-  const post = blogPosts.find(p => p.id === id);
+  const { i18n } = useTranslation();
+  const lang = i18n.language || 'fr';
+  const currentPosts = blogPosts[lang] || blogPosts['fr'];
+  const post = currentPosts.find(p => p.id === id);
+
+  const texts = {
+    fr: { notFound: "Article introuvable", back: "Retour au blog" },
+    en: { notFound: "Article not found", back: "Back to blog" },
+    ar: { notFound: "المقال غير موجود", back: "العودة للمدونة" }
+  };
+  const t = texts[lang] || texts['fr'];
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -16,17 +27,17 @@ export default function BlogPost() {
 
   if (!post) {
     return (
-      <div className="min-h-[50vh] flex flex-col items-center justify-center bg-slate-50 dark:bg-[#0B1120] text-slate-900 dark:text-white">
-        <h1 className="text-4xl font-black mb-4">Article introuvable</h1>
+      <div dir={lang === 'ar' ? 'rtl' : 'ltr'} className="min-h-[50vh] flex flex-col items-center justify-center bg-slate-50 dark:bg-[#0B1120] text-slate-900 dark:text-white">
+        <h1 className="text-4xl font-black mb-4">{t.notFound}</h1>
         <button onClick={() => navigate('/blog')} className="px-6 py-3 bg-yellow-400 text-slate-900 brutal-border brutal-shadow font-black uppercase">
-          Retour au blog
+          {t.back}
         </button>
       </div>
     );
   }
 
   return (
-    <>
+    <div dir={lang === 'ar' ? 'rtl' : 'ltr'}>
     <SEO title={post.title} description={post.excerpt} url={`https://www.moncvgo.com/blog/${post.id}`} />
     <article className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] pb-20 relative">
       
@@ -38,7 +49,7 @@ export default function BlogPost() {
           to="/blog" 
           className="inline-flex items-center gap-2 px-4 py-2 bg-white text-slate-900 brutal-border brutal-shadow brutal-hover brutal-active font-black uppercase tracking-widest text-xs mb-8"
         >
-          <ArrowLeft className="w-4 h-4" /> Retour au blog
+          <ArrowLeft className={`w-4 h-4 ${lang === 'ar' ? 'rotate-180' : ''}`} /> {t.back}
         </Link>
 
         <div className="bg-white brutal-border brutal-shadow p-6 sm:p-12 transform rotate-1 text-slate-900 mb-12">
@@ -70,6 +81,6 @@ export default function BlogPost() {
         </div>
       </div>
     </article>
-    </>
+    </div>
   );
 }

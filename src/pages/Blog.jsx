@@ -4,8 +4,44 @@ import { Link } from 'react-router-dom';
 import { BookOpen, Calendar, Clock, ArrowRight } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
 import SEO from '../components/SEO';
+import { useTranslation } from 'react-i18next';
 
 export default function Blog() {
+  const { i18n } = useTranslation();
+  const lang = i18n.language || 'fr';
+  const currentPosts = blogPosts[lang] || blogPosts['fr'];
+
+  const texts = {
+    fr: {
+      badge: "Notre Blog",
+      title1: "Ressources et",
+      title2: "Conseils",
+      desc: "Découvrez nos articles exclusifs pour booster votre carrière et décrocher le job de vos rêves.",
+      read: "Lire l'article",
+      seoTitle: "Blog : Conseils CV et Lettre de Motivation",
+      seoDesc: "Lisez nos derniers articles et astuces pour rédiger un CV parfait, créer un portfolio et réussir vos entretiens d'embauche."
+    },
+    en: {
+      badge: "Our Blog",
+      title1: "Resources and",
+      title2: "Advice",
+      desc: "Discover our exclusive articles to boost your career and land your dream job.",
+      read: "Read article",
+      seoTitle: "Blog : Resume & Cover Letter Advice",
+      seoDesc: "Read our latest articles and tips to write a perfect resume, create a portfolio, and ace your job interviews."
+    },
+    ar: {
+      badge: "مدونتنا",
+      title1: "الموارد و",
+      title2: "النصائح",
+      desc: "اكتشف مقالاتنا الحصرية لتعزيز مسيرتك المهنية والحصول على وظيفة أحلامك.",
+      read: "اقرأ المقال",
+      seoTitle: "المدونة : نصائح السيرة الذاتية ورسالة التغطية",
+      seoDesc: "اقرأ أحدث مقالاتنا ونصائحنا لكتابة سيرة ذاتية مثالية وإنشاء ملف أعمال واجتياز مقابلات العمل بنجاح."
+    }
+  };
+  const t = texts[lang] || texts['fr'];
+
   const containerVariants = {
     hidden: { opacity: 0 },
     show: {
@@ -20,8 +56,8 @@ export default function Blog() {
   };
 
   return (
-    <>
-    <SEO title="Blog : Conseils CV et Lettre de Motivation" description="Lisez nos derniers articles et astuces pour rédiger un CV parfait, créer un portfolio et réussir vos entretiens d'embauche." url="https://www.moncvgo.com/blog" />
+    <div dir={lang === 'ar' ? 'rtl' : 'ltr'}>
+    <SEO title={t.seoTitle} description={t.seoDesc} url="https://www.moncvgo.com/blog" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] relative overflow-hidden pb-20">
       
       {/* Decorative background */}
@@ -36,13 +72,13 @@ export default function Blog() {
         >
           <div className="inline-flex items-center gap-2 px-4 py-2 bg-pink-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow mb-6 transform rotate-2">
             <BookOpen className="w-4 h-4 text-slate-900" />
-            Notre Blog
+            {t.badge}
           </div>
           <h1 className="text-5xl sm:text-6xl md:text-7xl font-black text-slate-900 dark:text-white tracking-tighter uppercase mb-6">
-            Ressources et <span className="bg-yellow-400 text-slate-900 px-3 py-1 ml-2 brutal-border transform -rotate-2 inline-block">Conseils</span>
+            {t.title1} <span className="bg-yellow-400 text-slate-900 px-3 py-1 mx-2 brutal-border transform -rotate-2 inline-block">{t.title2}</span>
           </h1>
           <p className="text-xl text-slate-700 dark:text-slate-300 font-bold max-w-2xl mx-auto mb-16">
-            Découvrez nos articles exclusifs pour booster votre carrière et décrocher le job de vos rêves.
+            {t.desc}
           </p>
 
           <motion.div 
@@ -51,7 +87,7 @@ export default function Blog() {
             animate="show"
             className="grid md:grid-cols-2 lg:grid-cols-3 gap-8 text-left"
           >
-            {blogPosts.map((post, index) => {
+            {currentPosts.map((post, index) => {
               const bgColors = ['bg-sky-100', 'bg-orange-100', 'bg-emerald-100', 'bg-purple-100'];
               const cardBg = bgColors[index % bgColors.length];
               const rotations = ['rotate-1', '-rotate-2', 'rotate-2', '-rotate-1'];
@@ -89,10 +125,11 @@ export default function Blog() {
                       {post.excerpt}
                     </p>
                     <Link 
-                      to={`/blog/${post.id}`} 
-                      className="mt-auto flex items-center gap-2 font-black uppercase text-sm tracking-widest bg-white p-3 brutal-border brutal-shadow brutal-hover brutal-active text-center justify-center w-full"
+                      to={`/blog/${post.id}`}
+                      className="mt-6 flex items-center justify-between w-full px-4 py-3 bg-slate-900 text-white font-black text-sm uppercase tracking-wider brutal-border hover:-translate-y-1 hover:bg-slate-800 transition-all"
                     >
-                      Lire l'article <ArrowRight className="w-4 h-4" />
+                      {t.read}
+                      <ArrowRight className={`w-4 h-4 ${lang === 'ar' ? 'rotate-180' : ''}`} />
                     </Link>
                   </div>
                 </motion.article>
@@ -102,6 +139,6 @@ export default function Blog() {
         </motion.div>
       </section>
     </div>
-    </>
+    </div>
   );
 }
