@@ -307,5 +307,18 @@
       "title": "Soutenez le projet",
       "desc": "Si l'outil vous a aidé, un petit café fait plaisir ! ☕"
     }
+  },
+  "tour": {
+    "tour_welcome": "Bienvenue dans notre créateur ! Laissez-nous vous faire visiter rapidement les fonctionnalités.",
+    "tour_actions": "Ici, vous pouvez charger un exemple pour voir ce que ça donne, importer vos anciennes données, ou tout effacer pour recommencer.",
+    "tour_nav": "Ceci est votre barre de progression. Cliquez sur les différentes étapes pour naviguer (Style, Infos Personnelles, etc.).",
+    "tour_form": "Remplissez vos informations dans cette zone. Ne vous inquiétez pas, rien n'est définitif !",
+    "tour_preview": "Regardez la magie opérer ! Votre rendu final s'affiche ici en temps réel pendant que vous tapez.",
+    "tour_download": "Quand vous avez terminé, cliquez ici pour télécharger votre création en PDF, HTML ou PowerPoint. C'est tout ! 🎉",
+    "tour_back": "Précédent",
+    "tour_close": "Fermer",
+    "tour_last": "Terminer",
+    "tour_next": "Suivant",
+    "tour_skip": "Passer le guide"
   }
 }

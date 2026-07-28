@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Joyride, STATUS } from 'react-joyride';
+import { useTranslation } from 'react-i18next';
 
 const CustomBeacon = React.forwardRef((props, ref) => {
   return (
@@ -19,7 +20,7 @@ const CustomBeacon = React.forwardRef((props, ref) => {
 });
 
 export default function OnboardingTour({ isPortfolio = false, pageType = 'cv' }) {
-  console.log('Joyride import:', Joyride);
+  const { t } = useTranslation();
   const [run, setRun] = useState(false);
 
   useEffect(() => {
@@ -50,33 +51,33 @@ export default function OnboardingTour({ isPortfolio = false, pageType = 'cv' })
   const steps = [
     {
       target: 'body',
-      content: 'Bienvenue dans notre créateur ! Laissez-nous vous faire visiter rapidement les fonctionnalités.',
+      content: t('tour.tour_welcome'),
       placement: 'center',
       disableBeacon: true,
     },
     {
       target: '.tour-step-actions',
-      content: 'Ici, vous pouvez charger un exemple pour voir ce que ça donne, importer vos anciennes données, ou tout effacer pour recommencer.',
+      content: t('tour.tour_actions'),
       placement: 'auto',
     },
     ...(pageType !== 'coverletter' ? [{
       target: '.tour-step-nav',
-      content: 'Ceci est votre barre de progression. Cliquez sur les différentes étapes pour naviguer (Style, Infos Personnelles, etc.).',
+      content: t('tour.tour_nav'),
       placement: 'auto',
     }] : []),
     {
       target: '.tour-step-form',
-      content: 'Remplissez vos informations dans cette zone. Ne vous inquiétez pas, rien n\'est définitif !',
+      content: t('tour.tour_form'),
       placement: 'auto',
     },
     {
       target: '.tour-step-preview',
-      content: 'Regardez la magie opérer ! Votre rendu final s\'affiche ici en temps réel pendant que vous tapez.',
+      content: t('tour.tour_preview'),
       placement: 'auto',
     },
     {
       target: '.tour-step-download',
-      content: 'Quand vous avez terminé, cliquez ici pour télécharger votre création en PDF, HTML ou PowerPoint. C\'est tout ! 🎉',
+      content: t('tour.tour_download'),
       placement: 'auto',
     }
   ];
@@ -122,11 +123,11 @@ export default function OnboardingTour({ isPortfolio = false, pageType = 'cv' })
         }
       }}
       locale={{
-        back: 'Précédent',
-        close: 'Fermer',
-        last: 'Terminer',
-        next: 'Suivant',
-        skip: 'Passer le guide',
+        back: t('tour.tour_back'),
+        close: t('tour.tour_close'),
+        last: t('tour.tour_last'),
+        next: t('tour.tour_next'),
+        skip: t('tour.tour_skip'),
       }}
     />
   );
