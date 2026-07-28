@@ -1,12 +1,27 @@
-import React from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useResume } from '../../context/ResumeContext';
-import { portfolioTemplates } from '../../utils/cvData';
+import { portfolioTemplates, demoData } from '../../utils/cvData';
 import { Palette, Type, LayoutTemplate, Languages, AlignLeft } from 'lucide-react';
-
+import TemplatePortfolio from '../portfolio-templates/TemplatePortfolio';
 export default function PortfolioStyleForm() {
   const { t } = useTranslation();
-  const { config, updateConfig } = useResume();
+  const { config, updateConfig, cvData } = useResume();
+
+  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
+  const [hoveredTemplate, setHoveredTemplate] = useState(null);
+  const dropdownRef = useRef(null);
+
+  // Close dropdown when clicking outside
+  useEffect(() => {
+    function handleClickOutside(event) {
+      if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+        setIsDropdownOpen(false);
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   // Group templates by layout for the select dropdown
   const groupedTemplates = portfolioTemplates.reduce((acc, template) => {
@@ -114,23 +129,86 @@ export default function PortfolioStyleForm() {
         <h2 className="text-xs font-bold uppercase tracking-widest text-blue-500 mb-4 flex items-center gap-2">
           <LayoutTemplate className="w-4 h-4" /> Modèle du CV
         </h2>
-        <div className="relative">
-          <select 
-            value={config.template} 
-            onChange={(e) => updateConfig('template', e.target.value)}
-            className="w-full appearance-none rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm font-semibold text-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-all cursor-pointer"
-          >
-            {Object.keys(groupedTemplates).map(layout => (
-              <optgroup key={layout} label={layoutNames[layout] || layout}>
-                {groupedTemplates[layout].map(tpl => (
-                  <option key={tpl.id} value={tpl.id}>{tpl.name}</option>
+        <div className="flex gap-3 items-center relative">
+          <div className="relative flex-grow" ref={dropdownRef}>
+            <button
+              type="button"
+              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+              className="w-full flex items-center justify-between rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm font-semibold text-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-all cursor-pointer"
+            >
+              <span className="truncate">
+                {portfolioTemplates.find(t => t.id === config.template)?.name || 'Sélectionnez un modèle'}
+              </span>
+              <svg className={`w-4 h-4 text-slate-400 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+            </button>
+            
+            {isDropdownOpen && (
+              <div className="absolute z-50 top-full left-0 right-0 mt-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl max-h-80 overflow-y-auto">
+                {Object.keys(groupedTemplates).map(layout => (
+                  <div key={layout} className="py-1">
+                    <div className="px-4 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider bg-slate-50 dark:bg-slate-900/50">
+                      {layoutNames[layout] || layout}
+                    </div>
+                    {groupedTemplates[layout].map(tpl => (
+                      <button
+                        key={tpl.id}
+                        type="button"
+                        onClick={() => { updateConfig('template', tpl.id); setIsDropdownOpen(false); }}
+                        onMouseEnter={() => setHoveredTemplate(tpl)}
+                        onMouseLeave={() => setHoveredTemplate(null)}
+                        className={`w-full text-left px-4 py-2 text-sm transition-colors ${config.template === tpl.id ? 'bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 font-bold' : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'}`}
+                      >
+                        {tpl.name}
+                      </button>
+                    ))}
+                  </div>
                 ))}
-              </optgroup>
-            ))}
-          </select>
-          <div className="absolute inset-y-0 right-0 flex items-center px-4 pointer-events-none text-slate-400">
-            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
+              </div>
+            )}
           </div>
+          
+          {/* Fenêtre volante d'aperçu détaillé au survol d'une option */}
+          {hoveredTemplate && isDropdownOpen && (
+            <div className="absolute top-0 right-full mr-4 z-[60] w-[240px] h-[340px] hidden md:flex flex-col bg-white dark:bg-slate-800 border-2 border-blue-500 rounded-xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200 pointer-events-none">
+              <div className="bg-blue-500 text-white text-xs font-bold px-3 py-2 text-center z-10 shrink-0">
+                Aperçu : {hoveredTemplate.name}
+              </div>
+              <div className="flex-grow bg-slate-50 dark:bg-slate-900 flex items-center justify-center relative overflow-hidden">
+                <div 
+                  className="absolute top-0 left-0 bg-white origin-top-left"
+                  style={{ 
+                    width: '794px', 
+                    height: '1123px', 
+                    transform: 'scale(0.30)', // 794 * 0.3 = 238px width
+                  }}
+                >
+                  <TemplatePortfolio cvData={demoData[config.cvLang || 'fr']} config={{...config, template: hoveredTemplate.id}} />
+                </div>
+              </div>
+            </div>
+          )}
+
+          {/* Miniature visuelle du modèle */}
+          {(() => {
+            const currentTpl = portfolioTemplates.find(t => t.id === config.template) || portfolioTemplates[0];
+            const L = currentTpl.layout;
+            return (
+              <div className="w-12 h-14 shrink-0 bg-white border-2 border-slate-200 dark:border-slate-600 rounded-md shadow-sm overflow-hidden flex flex-col" title={`Aperçu: ${L}`}>
+                {L === 'grid' && (
+                  <div className="flex flex-wrap w-full h-full p-0.5 gap-0.5"><div className="w-[45%] h-[45%] bg-slate-300 rounded-[1px]"></div><div className="w-[45%] h-[45%] bg-slate-200 rounded-[1px]"></div><div className="w-[45%] h-[45%] bg-slate-200 rounded-[1px]"></div><div className="w-[45%] h-[45%] bg-slate-300 rounded-[1px]"></div></div>
+                )}
+                {L === 'terminal' && (
+                  <div className="w-full h-full bg-slate-800 p-1 flex flex-col"><div className="w-full h-1 bg-slate-700 mb-1 flex items-center gap-[1px] px-[1px]"><div className="w-[2px] h-[2px] rounded-full bg-red-400"></div><div className="w-[2px] h-[2px] rounded-full bg-yellow-400"></div><div className="w-[2px] h-[2px] rounded-full bg-green-400"></div></div><div className="w-1/2 h-[2px] bg-green-400 mb-[2px]"></div><div className="w-3/4 h-[2px] bg-green-400/50"></div></div>
+                )}
+                {L === 'masonry' && (
+                  <div className="flex w-full h-full p-0.5 gap-0.5"><div className="w-1/2 flex flex-col gap-0.5"><div className="w-full h-2/3 bg-slate-300 rounded-[1px]"></div><div className="w-full h-1/3 bg-slate-200 rounded-[1px]"></div></div><div className="w-1/2 flex flex-col gap-0.5"><div className="w-full h-1/3 bg-slate-200 rounded-[1px]"></div><div className="w-full h-2/3 bg-slate-300 rounded-[1px]"></div></div></div>
+                )}
+                {L === 'web' && (
+                  <div className="w-full h-full flex flex-col"><div className="w-full h-2 bg-slate-300"></div><div className="w-full flex-grow bg-slate-100 p-1"><div className="w-full h-1 bg-slate-200 mb-1"></div><div className="flex gap-1 h-3"><div className="w-1/2 h-full bg-slate-200"></div><div className="w-1/2 h-full bg-slate-200"></div></div></div></div>
+                )}
+              </div>
+            );
+          })()}
         </div>
       </section>
 

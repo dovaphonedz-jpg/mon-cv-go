@@ -49,6 +49,7 @@ export default function Layout({ children }) {
               { path: '/portfolio', label: t('nav.create_portfolio') },
               { path: '/lettre-motivation', label: t('nav.cover_letter') },
               { path: '/conseils-cv', label: t('nav.cv_tips') },
+              { path: '/blog', label: 'Blog' },
               { path: '/a-propos', label: t('nav.about') },
               { path: '/contact', label: t('nav.contact') },
             ].map(link => (
@@ -154,6 +155,9 @@ export default function Layout({ children }) {
                 </Link>
                 <Link to="/conseils-cv" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-4 bg-white text-slate-900 font-black uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover">
                   <BookOpen className="w-6 h-6" strokeWidth={3} /> {t('nav.cv_tips')}
+                </Link>
+                <Link to="/blog" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-4 bg-purple-100 text-slate-900 font-black uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover">
+                  <BookOpen className="w-6 h-6" strokeWidth={3} /> Blog
                 </Link>
                 <Link to="/a-propos" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-4 bg-white text-slate-900 font-black uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover">
                   <Info className="w-6 h-6" strokeWidth={3} /> {t('nav.about')}

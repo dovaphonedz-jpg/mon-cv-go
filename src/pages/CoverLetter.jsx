@@ -4,6 +4,7 @@ import { motion } from 'framer-motion';
 import { useReactToPrint } from 'react-to-print';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
+import OnboardingTour from '../components/OnboardingTour';
 import DonationButton from '../components/DonationButton';
 import { triggerConfetti } from '../utils/confetti';
 import ThankYouModal from '../components/ThankYouModal';
@@ -175,7 +176,7 @@ export default function CoverLetter() {
               <Eye className="w-4 h-4" />
               {showPreviewMobile ? t('cover_letter.btn_edit') : t('cover_letter.btn_preview')}
             </button>
-            <button onClick={downloadPDF} className="flex items-center gap-2 px-5 py-2.5 bg-cyan-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active">
+            <button onClick={downloadPDF} className="flex items-center gap-2 px-5 py-2.5 bg-cyan-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active tour-step-download">
               <Download className="w-4 h-4" />
               <span className="hidden sm:inline">{t('cover_letter.btn_download')}</span>
               <span className="sm:hidden">{t('cover_letter.btn_pdf')}</span>
@@ -196,11 +197,13 @@ export default function CoverLetter() {
             <DonationButton />
           </div>
 
+          <OnboardingTour pageType="coverletter" />
+
           {/* Form Container */}
-          <div className="bg-white dark:bg-[#0F172A] rounded-3xl shadow-xl shadow-slate-200/40 dark:shadow-none border border-slate-200 dark:border-slate-800 p-6 sm:p-8 flex-grow">
+          <div className="bg-white dark:bg-[#0F172A] rounded-3xl shadow-xl shadow-slate-200/40 dark:shadow-none border border-slate-200 dark:border-slate-800 p-6 sm:p-8 flex-grow tour-step-form">
             
             <div className="flex flex-wrap gap-2 mb-8 justify-between items-center">
-              <div className="flex gap-3">
+              <div className="flex gap-3 tour-step-actions">
                 <button onClick={loadExample} className="flex items-center gap-2 px-4 py-2 bg-yellow-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active">
                   <Sparkles className="w-4 h-4" /> {t('cover_letter.btn_example')}
                 </button>
@@ -322,7 +325,7 @@ export default function CoverLetter() {
           animate={{ opacity: 1, x: 0 }}
           className={`w-full lg:w-1/2 xl:w-7/12 flex flex-col gap-4 ${!showPreviewMobile ? 'hidden lg:flex' : 'flex'}`}
         >
-          <div ref={containerRef} className="cv-preview-container flex-grow rounded-3xl border border-slate-200 dark:border-slate-800 relative z-10 shadow-inner overflow-hidden flex justify-center p-4 bg-slate-200 dark:bg-slate-800/50">
+          <div ref={containerRef} className="cv-preview-container flex-grow rounded-3xl border border-slate-200 dark:border-slate-800 relative z-10 shadow-inner overflow-hidden flex justify-center p-4 bg-slate-200 dark:bg-slate-800/50 tour-step-preview">
             <div 
               style={{ width: `${794 * scale}px`, height: `${1123 * scale}px` }}
               className="relative transition-all duration-200"

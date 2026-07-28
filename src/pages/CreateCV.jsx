@@ -22,6 +22,7 @@ import ProjectsForm from '../components/cv-forms/ProjectsForm';
 import DonationButton from '../components/DonationButton';
 import ThankYouModal from '../components/ThankYouModal';
 import ATSScore from '../components/ATSScore';
+import OnboardingTour from '../components/OnboardingTour';
 
 
 
@@ -242,13 +243,16 @@ export default function CreateCV() {
           animate={{ opacity: 1, x: 0 }}
           className={`w-full lg:w-1/2 xl:w-5/12 flex flex-col gap-6 lg:sticky lg:top-6 ${showPreviewMobile ? 'hidden lg:flex' : 'flex'}`}
         >
-          <div className="w-full">
-            <ATSScore />
+          <div className="w-full flex flex-col sm:flex-row gap-4 lg:gap-6">
+            <div className="flex-1">
+              <DonationButton />
+            </div>
+            <div className="flex-1">
+              <ATSScore />
+            </div>
           </div>
 
-          <div className="w-full">
-            <DonationButton />
-          </div>
+          <OnboardingTour />
 
           {/* Breadcrumbs / Steps */}
           <div className="bg-white dark:bg-[#0F172A] rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-2 relative">
@@ -273,17 +277,28 @@ export default function CreateCV() {
           </div>
 
           {/* Form Container */}
-          <div className="bg-white dark:bg-[#0F172A] rounded-3xl shadow-xl shadow-slate-200/40 dark:shadow-none border border-slate-200 dark:border-slate-800 p-6 sm:p-8 flex-grow flex flex-col relative z-10">
+          <div className="bg-white dark:bg-[#0F172A] rounded-3xl shadow-xl shadow-slate-200/40 dark:shadow-none border border-slate-200 dark:border-slate-800 p-6 sm:p-8 flex-grow flex flex-col relative z-10 tour-step-form">
             
             {/* Form Content Wrapper */}
             <div className="flex-grow min-h-[400px]">
               <AnimatePresence mode="wait">
                 <motion.div
                   key={activeStep.id}
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  exit={{ opacity: 0, y: -10 }}
-                  transition={{ duration: 0.2 }}
+                  initial={{ opacity: 0, y: 10, outline: '0px solid rgba(250,204,21,0)' }}
+                  animate={{ 
+                    opacity: 1, 
+                    y: 0,
+                    outline: ['0px solid rgba(250,204,21,0)', '4px solid rgba(250,204,21,1)', '0px solid rgba(250,204,21,0)'],
+                    boxShadow: ['0px 0px 0px rgba(250,204,21,0)', '0px 0px 20px 4px rgba(250,204,21,0.6)', '0px 0px 0px rgba(250,204,21,0)']
+                  }}
+                  exit={{ opacity: 0, y: -10, outline: '0px solid rgba(250,204,21,0)' }}
+                  transition={{ 
+                    opacity: { duration: 0.2 },
+                    y: { duration: 0.2 },
+                    outline: { duration: 1.5, ease: "easeInOut", times: [0, 0.1, 1] },
+                    boxShadow: { duration: 1.5, ease: "easeInOut", times: [0, 0.1, 1] }
+                  }}
+                  className="rounded-2xl"
                 >
                   {activeStep.id === 'personal' && <PersonalInfoForm />}
                   {activeStep.id === 'style' && <StyleForm />}

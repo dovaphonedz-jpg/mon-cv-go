@@ -18,6 +18,7 @@ import SkillsForm from '../components/cv-forms/SkillsForm';
 import SummaryForm from '../components/cv-forms/SummaryForm';
 import ProjectsForm from '../components/cv-forms/ProjectsForm';
 import DonationButton from '../components/DonationButton';
+import OnboardingTour from '../components/OnboardingTour';
 import ThankYouModal from '../components/ThankYouModal';
 
 
@@ -154,16 +155,12 @@ export default function CreatePortfolio() {
             </p>
           </div>
           
-          <div className="flex gap-3">
+          <div className="flex gap-3 tour-step-actions">
             <button onClick={() => loadDemo(config.cvLang || 'fr')} className="flex items-center gap-2 px-4 py-2 bg-cyan-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active">
               <Sparkles className="w-4 h-4" />
               <span className="hidden sm:inline">{t('create_cv.btn_example')}</span>
             </button>
-            <button onClick={handleImportClick} className="flex items-center gap-2 px-4 py-2 bg-yellow-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active">
-              <UploadCloud className="w-4 h-4" />
-              <span className="hidden sm:inline">{t('create_cv.btn_import')}</span>
-            </button>
-            <input type="file" accept=".json" className="hidden" ref={fileInputRef} onChange={handleFileChange} />
+
             <button onClick={resetData} className="flex items-center gap-2 px-4 py-2 bg-pink-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active">
               <Trash2 className="w-4 h-4" />
               <span className="hidden sm:inline">{t('create_cv.btn_clear')}</span>
@@ -184,12 +181,14 @@ export default function CreatePortfolio() {
           animate={{ opacity: 1, x: 0 }}
           className={`w-full lg:w-1/2 xl:w-5/12 flex flex-col gap-6 lg:sticky lg:top-6 ${showPreviewMobile ? 'hidden lg:flex' : 'flex'}`}
         >
-          <div className="w-full">
+          <div className="w-full flex">
             <DonationButton />
           </div>
 
+          <OnboardingTour pageType="portfolio" />
+
           {/* Breadcrumbs / Steps */}
-          <div className="bg-white dark:bg-[#0F172A] rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-2 relative">
+          <div className="bg-white dark:bg-[#0F172A] rounded-2xl shadow-sm border border-slate-200 dark:border-slate-800 p-2 relative tour-step-nav">
             <nav className="flex gap-2 flex-wrap">
               {STEPS.map((step, idx) => (
                 <button
@@ -211,18 +210,29 @@ export default function CreatePortfolio() {
           </div>
 
           {/* Form Container */}
-          <div className="bg-white dark:bg-[#0F172A] rounded-3xl shadow-xl shadow-slate-200/40 dark:shadow-none border border-slate-200 dark:border-slate-800 p-6 sm:p-8 flex-grow flex flex-col relative z-10">
+          <div className="bg-white dark:bg-[#0F172A] rounded-3xl shadow-xl shadow-slate-200/40 dark:shadow-none border border-slate-200 dark:border-slate-800 p-6 sm:p-8 flex-grow flex flex-col relative z-10 tour-step-form">
             
             {/* Forms Area */}
-            <div className="flex-grow overflow-y-auto p-4 sm:p-6 custom-scrollbar">
+            <div className="flex-grow min-h-[400px] p-4 sm:p-6">
               <AnimatePresence mode="wait">
-                <motion.div
-                  key={activeStep.id}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  exit={{ opacity: 0, x: -20 }}
-                  transition={{ duration: 0.2 }}
-                >
+                  <motion.div
+                    key={activeStep.id}
+                    initial={{ opacity: 0, x: 20, outline: '0px solid rgba(250,204,21,0)' }}
+                    animate={{ 
+                      opacity: 1, 
+                      x: 0,
+                      outline: ['0px solid rgba(250,204,21,0)', '4px solid rgba(250,204,21,1)', '0px solid rgba(250,204,21,0)'],
+                      boxShadow: ['0px 0px 0px rgba(250,204,21,0)', '0px 0px 20px 4px rgba(250,204,21,0.6)', '0px 0px 0px rgba(250,204,21,0)']
+                    }}
+                    exit={{ opacity: 0, x: -20, outline: '0px solid rgba(250,204,21,0)' }}
+                    transition={{ 
+                      opacity: { duration: 0.2 },
+                      x: { duration: 0.2 },
+                      outline: { duration: 1.5, ease: "easeInOut", times: [0, 0.1, 1] },
+                      boxShadow: { duration: 1.5, ease: "easeInOut", times: [0, 0.1, 1] }
+                    }}
+                    className="rounded-2xl"
+                  >
                   {activeStep.id === 'style' && <PortfolioStyleForm />}
                   {activeStep.id === 'personal' && <PersonalInfoForm />}
                   {activeStep.id === 'projects' && <ProjectsForm />}
@@ -275,17 +285,23 @@ export default function CreatePortfolio() {
                            if (previewEl) previewEl.scrollIntoView({ behavior: 'smooth' });
                          }
                       }}
-                      className="flex items-center gap-2 px-6 py-2.5 bg-pink-400 text-slate-900 font-black text-sm uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active"
+                      className="flex items-center gap-2 px-6 py-2.5 bg-pink-400 text-slate-900 font-black text-sm uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active relative"
                     >
+                      <div className="absolute -top-8 left-1/2 -translate-x-1/2 animate-bounce text-pink-500 hidden sm:block">
+                        <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+                      </div>
                       {t('create_cv.btn_finish')} <Sparkles className="w-4 h-4" />
                     </button>
                   </div>
                 ) : (
                   <button 
                     onClick={nextStep}
-                    className="flex items-center gap-2 px-6 py-2.5 bg-cyan-400 text-slate-900 font-black text-sm uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active"
+                    className="flex items-center gap-2 px-6 py-2.5 bg-cyan-400 text-slate-900 font-black text-sm uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active relative group"
                   >
-                    {t('create_cv.btn_next')} <ChevronRight className="w-4 h-4 rtl:-scale-x-100" />
+                    <div className="absolute -top-8 left-1/2 -translate-x-1/2 animate-bounce text-cyan-500 hidden sm:block">
+                      <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="3" strokeLinecap="round" strokeLinejoin="round"><path d="M12 5v14M19 12l-7 7-7-7"/></svg>
+                    </div>
+                    {t('create_cv.btn_next')} <ChevronRight className="w-4 h-4 rtl:-scale-x-100 group-hover:translate-x-1 transition-transform" />
                   </button>
                 )}
               </div>
@@ -313,10 +329,12 @@ export default function CreatePortfolio() {
                 {t('create_cv.btn_styles')}
               </button>
             </div>
-            <div className="flex gap-3 flex-wrap">
-              <button onClick={() => { setIsThankYouModalOpen(true); exportToPowerPoint(cvData); }} className="flex items-center gap-2 px-3 py-2.5 bg-pink-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active" title="Exporter en PowerPoint">
-                <Presentation className="w-4 h-4" />
-                <span className="hidden xl:inline">{t('create_cv.btn_pptx')}</span>
+            <div className="flex gap-3 flex-wrap tour-step-download">
+              <button onClick={() => { setIsThankYouModalOpen(true); exportToHTML(cvData, config); }} className="flex items-center gap-2 px-3 py-2.5 bg-yellow-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active" title="Télécharger Code HTML/CSS">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512" className="w-4 h-4 fill-current">
+                  <path d="M0 32l34.9 395.8L191.5 480l157.6-52.2L384 32H0zm308.2 127.9H124.4l4.1 49.4h175.6l-13.6 148.4-97.9 27v.3h-1.1l-98.7-27.3-6-75.8h47.7L138 320l53.5 14.5 53.7-14.5 6-62.2H84.3L71.5 112.2h241.1l-4.4 47.7z"/>
+                </svg>
+                <span className="hidden xl:inline">{t('create_portfolio.btn_html')}</span>
               </button>
               <button onClick={() => { triggerConfetti(); setIsThankYouModalOpen(true); setTimeout(() => handlePrint(), 500); }} className="flex items-center gap-2 px-4 py-2.5 bg-cyan-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active">
                 <Download className="w-4 h-4" />
@@ -325,7 +343,7 @@ export default function CreatePortfolio() {
             </div>
           </div>
 
-          <div className="cv-preview-container flex-grow rounded-3xl border border-slate-200 dark:border-slate-800 relative z-10 shadow-inner overflow-hidden">
+          <div className="cv-preview-container flex-grow rounded-3xl border border-slate-200 dark:border-slate-800 relative z-10 shadow-inner overflow-hidden tour-step-preview">
             <PortfolioPreview ref={printRef} />
           </div>
         </motion.section>
