@@ -306,19 +306,19 @@
     "donation": {
       "title": "Support the project",
       "desc": "If this tool helped you, a small coffee is appreciated! ☕"
+    },
+    "tour": {
+      "tour_welcome": "Welcome to our builder! Let us give you a quick tour of the features.",
+      "tour_actions": "Here, you can load an example to see how it looks, import your old data, or clear everything to start over.",
+      "tour_nav": "This is your progress bar. Click on the different steps to navigate (Style, Personal Info, etc.).",
+      "tour_form": "Fill in your information in this area. Don't worry, nothing is final!",
+      "tour_preview": "Watch the magic happen! Your final render is displayed here in real time as you type.",
+      "tour_download": "When you are done, click here to download your creation in PDF, HTML, or PowerPoint. That's it! 🎉",
+      "tour_back": "Back",
+      "tour_close": "Close",
+      "tour_last": "Finish",
+      "tour_next": "Next",
+      "tour_skip": "Skip tour"
     }
-  },
-  "tour": {
-    "tour_welcome": "Welcome to our builder! Let us give you a quick tour of the features.",
-    "tour_actions": "Here, you can load an example to see how it looks, import your old data, or clear everything to start over.",
-    "tour_nav": "This is your progress bar. Click on the different steps to navigate (Style, Personal Info, etc.).",
-    "tour_form": "Fill in your information in this area. Don't worry, nothing is final!",
-    "tour_preview": "Watch the magic happen! Your final render is displayed here in real time as you type.",
-    "tour_download": "When you are done, click here to download your creation in PDF, HTML, or PowerPoint. That's it! 🎉",
-    "tour_back": "Back",
-    "tour_close": "Close",
-    "tour_last": "Finish",
-    "tour_next": "Next",
-    "tour_skip": "Skip tour"
   }
 }
