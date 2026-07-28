@@ -191,6 +191,7 @@ export default function PortfolioStyleForm() {
                   </div>
               </div>
             </div>
+            </div>
           )}
 
           {/* Miniature visuelle du modèle */}

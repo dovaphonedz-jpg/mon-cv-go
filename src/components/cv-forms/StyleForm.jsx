@@ -213,6 +213,7 @@ export default function StyleForm() {
                   </div>
               </div>
             </div>
+            </div>
           )}
           
           {/* Miniature visuelle du modèle */}
