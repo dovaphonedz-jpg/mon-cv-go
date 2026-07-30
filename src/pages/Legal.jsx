@@ -5,51 +5,79 @@ import SEO from '../components/SEO';
 export default function Legal() {
   return (
     <>
-    <SEO title="Mentions Légales" description="Mentions légales et conditions d'utilisation du site Mon CV Go." url="https://www.moncvgo.com/mentions-legales" />
+    <SEO title="Conditions d'Utilisation" description="Conditions Générales d'Utilisation (CGU) et Mentions Légales du site Mon CV Go." url="https://www.moncvgo.com/mentions-legales" />
     <div className="max-w-4xl mx-auto px-4 py-12">
       <div className="flex items-center gap-3 mb-8">
         <div className="p-3 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-700 dark:text-slate-300">
           <Scale className="w-8 h-8" />
         </div>
-        <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Conditions d'Utilisation</h1>
+        <h1 className="text-3xl font-black text-slate-900 dark:text-white tracking-tight">Conditions Générales d'Utilisation</h1>
       </div>
 
       <div className="prose prose-slate dark:prose-invert max-w-none prose-headings:font-bold prose-a:text-blue-600">
-        <p><strong>Dernière mise à jour :</strong> 11 Juillet 2026</p>
+        <p><strong>Date de dernière mise à jour :</strong> 11 Juillet 2026</p>
 
-        <h2>1. Présentation du site</h2>
-        <p>
-          Le site <strong>MonCVGo</strong> est un outil en ligne gratuit permettant de créer, formater et télécharger des Curriculum Vitae (CV) professionnels. L'utilisation du site implique l'acceptation pleine et entière des conditions générales d'utilisation décrites ci-après.
-        </p>
+        <p>Bienvenue sur Mon CV Go. Les présentes Conditions Générales d'Utilisation (ci-après les "CGU") ont pour objet de définir les modalités et conditions dans lesquelles nous mettons à votre disposition notre site web et nos services, et les conditions dans lesquelles vous y accédez et les utilisez.</p>
+        <p>L'utilisation de ce site implique l'acceptation pleine et entière des CGU décrites ci-après. Celles-ci sont consultables à tout moment et peuvent être modifiées sans préavis.</p>
 
-        <h2>2. Propriété intellectuelle</h2>
+        <h2>1. Présentation du Service</h2>
         <p>
-          L'ensemble des éléments constituant le site (textes, graphismes, logiciels, photographies, images, vidéos, sons, plans, noms, logos, marques, créations et œuvres protégeables diverses, bases de données, etc.) ainsi que le site lui-même, relèvent des législations françaises et internationales sur le droit d'auteur et sur les droits voisins du droit d'auteur.
+          Le site <strong>Mon CV Go</strong> est un service en ligne gratuit ("Software as a Service") permettant aux utilisateurs (candidats, professionnels, étudiants) de créer, éditer, formater et télécharger des Curriculum Vitae (CV) et des lettres de motivation professionnels sous format PDF ou HTML.
         </p>
         <p>
-          Les modèles de CV mis à disposition sont destinés à un usage strictement personnel. Toute revente ou distribution commerciale des modèles est interdite.
+          L'accès à ce service ne requiert aucune création de compte ni inscription payante. L'intégralité des fonctionnalités proposées (choix des modèles, jauge ATS, assistant de rédaction) est accessible gratuitement. Le financement de ce site est assuré par l'affichage d'encarts publicitaires gérés par la régie Google AdSense.
         </p>
 
-        <h2>3. Responsabilité</h2>
+        <h2>2. Accès au site et Disponibilité</h2>
         <p>
-          MonCVGo est fourni "en l'état". Nous ne saurions garantir l'exactitude, la complétude, et l'actualité des informations qui y sont diffusées. L'utilisateur est seul responsable des données qu'il saisit dans son CV. 
-          MonCVGo décline toute responsabilité quant à d'éventuels dommages directs ou indirects, matériels ou immatériels, résultant de l'utilisation du site, d'une perte de données, ou d'une perte d'opportunité professionnelle.
+          Le site est accessible gratuitement en tout lieu à tout utilisateur ayant un accès à Internet. Tous les frais supportés par l'utilisateur pour accéder au service (matériel informatique, logiciels, connexion Internet, etc.) sont à sa charge.
+        </p>
+        <p>
+          Nous mettons en œuvre tous les moyens raisonnables à notre disposition pour assurer un accès de qualité au service. Cependant, il s'agit d'une obligation de moyens et non de résultat. Nous nous réservons le droit d'interrompre, de suspendre momentanément ou de modifier sans préavis l'accès à tout ou partie du site, afin d'en assurer la maintenance, ou pour toute autre raison, sans que l'interruption n'ouvre droit à aucune obligation ni indemnisation.
         </p>
 
-        <h2>4. Données Personnelles et Cookies</h2>
+        <h2>3. Propriété Intellectuelle</h2>
         <p>
-          Nous nous engageons à respecter votre vie privée. Les données saisies pour la création du CV sont traitées localement sur votre machine et ne sont pas stockées sur nos serveurs. 
-          Pour plus de détails sur l'utilisation de vos données et des cookies (notamment liés à <strong>Google AdSense</strong>), veuillez consulter notre <a href="/confidentialite">Politique de Confidentialité</a>.
+          La structure générale du site Mon CV Go, ainsi que les textes, graphiques, images, sons et vidéos la composant (à l'exclusion des informations saisies par les utilisateurs), sont la propriété exclusive de l'éditeur ou de ses partenaires. 
+        </p>
+        <p>
+          <strong>Modèles de CV et Designs :</strong> Les designs, maquettes et modèles de CV mis à disposition via l'application sont protégés par le droit d'auteur. Ils sont concédés à l'utilisateur pour un <strong>usage strictement personnel et non commercial</strong> (dans le cadre d'une recherche d'emploi ou de stage). Toute reproduction, distribution, revente, ou utilisation commerciale de ces modèles est formellement interdite sans l'accord préalable écrit de l'éditeur.
         </p>
 
-        <h2>5. Liens hypertextes</h2>
+        <h2>4. Responsabilité de l'Utilisateur</h2>
         <p>
-          Le site peut contenir des liens hypertextes vers d'autres sites. MonCVGo n'exerce aucun contrôle sur ces sites et n'assume aucune responsabilité quant à leur contenu ou leurs politiques de confidentialité.
+          L'utilisateur est seul responsable du contenu qu'il intègre dans son CV (informations personnelles, expériences, qualifications). L'utilisateur s'engage à ne pas inclure de contenu illégal, diffamatoire, trompeur ou contraire aux bonnes mœurs.
+        </p>
+        <p>
+          Étant donné que Mon CV Go fonctionne de manière locale dans le navigateur, il incombe à l'utilisateur de sauvegarder régulièrement son travail (en téléchargeant le fichier PDF ou en exportant ses données) pour éviter toute perte en cas de fermeture du navigateur ou de vidage du cache.
         </p>
 
-        <h2>6. Modification des conditions</h2>
+        <h2>5. Limitation de Responsabilité de l'Éditeur</h2>
         <p>
-          Nous nous réservons le droit de modifier à tout moment les présentes conditions d'utilisation afin de les adapter aux évolutions du site ou de la législation en vigueur.
+          Les informations fournies sur le site (notamment dans la rubrique "Conseils CV" ou via la jauge de "Score ATS") le sont à titre indicatif et général. Elles ne sauraient garantir l'obtention d'un emploi ou d'un entretien.
+        </p>
+        <p>
+          Mon CV Go décline toute responsabilité :
+        </p>
+        <ul>
+          <li>En cas de dysfonctionnement, d'incompatibilité avec le matériel de l'utilisateur ou d'impossibilité d'accès au service.</li>
+          <li>En cas de perte des données en cours d'édition (les données n'étant pas sauvegardées sur nos serveurs).</li>
+          <li>Quant aux conséquences directes ou indirectes pouvant résulter de l'utilisation des CV générés via notre plateforme auprès de tiers (recruteurs, employeurs).</li>
+        </ul>
+
+        <h2>6. Politique en matière de Liens Hypertextes</h2>
+        <p>
+          Le site peut contenir des liens pointant vers des sites externes (partenaires, articles de blog externes). L'éditeur n'exerce aucun contrôle sur le contenu de ces sites tiers et n'assume par conséquent aucune responsabilité quant aux informations qui y sont présentées.
+        </p>
+
+        <h2>7. Données Personnelles (RGPD)</h2>
+        <p>
+          Pour toute information relative au traitement de vos données personnelles et à l'utilisation des cookies, nous vous invitons à consulter notre <a href="/confidentialite">Politique de Confidentialité</a>, qui fait partie intégrante de ces présentes CGU.
+        </p>
+
+        <h2>8. Droit Applicable et Juridiction Compétente</h2>
+        <p>
+          Les présentes Conditions Générales d'Utilisation sont régies par la loi française. En cas de litige non résolu à l'amiable entre l'utilisateur et l'éditeur, les tribunaux français seront seuls compétents pour en connaître.
         </p>
       </div>
     </div>

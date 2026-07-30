@@ -220,6 +220,51 @@ export default function Home() {
                 {t('home.link_tips')}
               </Link>
             </div>
+
+            {/* FAQ Section pour AdSense (Contenu riche) */}
+            <div className="mt-24 pt-12 border-t border-slate-200 dark:border-slate-800">
+              <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-10 text-center uppercase tracking-tighter">
+                {t('home.faq_title') || "Questions Fréquentes (FAQ)"}
+              </h3>
+              
+              <div className="space-y-8">
+                <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-xl border border-slate-100 dark:border-slate-800">
+                  <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
+                    {t('home.faq_1_q') || "Est-ce que la création de CV est vraiment 100% gratuite ?"}
+                  </h4>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                    {t('home.faq_1_a') || "Oui, absolument. Contrairement à de nombreux sites qui vous demandent de payer à la dernière étape de téléchargement, Mon CV Go est un service entièrement gratuit, soutenu par la publicité. Vous pouvez générer, modifier et télécharger autant de CV que vous le souhaitez sans jamais avoir à sortir votre carte bancaire."}
+                  </p>
+                </div>
+
+                <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-xl border border-slate-100 dark:border-slate-800">
+                  <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
+                    {t('home.faq_2_q') || "Qu'est-ce qu'un système ATS et pourquoi mon score est-il important ?"}
+                  </h4>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                    {t('home.faq_2_a') || "Un ATS (Applicant Tracking System) est un logiciel utilisé par les recruteurs pour trier automatiquement les CV reçus. Si votre CV n'est pas optimisé pour ces logiciels (mauvais mots-clés, structure complexe, format non lisible), il sera rejeté avant même d'être lu par un humain. Notre jauge de Score ATS vous garantit que votre CV respecte tous les critères techniques requis."}
+                  </p>
+                </div>
+
+                <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-xl border border-slate-100 dark:border-slate-800">
+                  <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
+                    {t('home.faq_3_q') || "Mes données personnelles sont-elles en sécurité ?"}
+                  </h4>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                    {t('home.faq_3_a') || "La protection de votre vie privée est notre priorité absolue. Nous avons conçu Mon CV Go pour fonctionner localement dans votre navigateur. Cela signifie que toutes les informations que vous saisissez (nom, adresse, expériences) ne quittent jamais votre ordinateur et ne sont pas stockées sur nos serveurs."}
+                  </p>
+                </div>
+
+                <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-xl border border-slate-100 dark:border-slate-800">
+                  <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
+                    {t('home.faq_4_q') || "Quel format de téléchargement privilégier pour mon CV ?"}
+                  </h4>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                    {t('home.faq_4_a') || "Nous recommandons toujours le format PDF. Ce format garantit que la mise en page, les polices et le design global de votre document resteront exactement les mêmes, quel que soit l'appareil (ordinateur, tablette, smartphone) ou le système d'exploitation utilisé par le recruteur pour l'ouvrir."}
+                  </p>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

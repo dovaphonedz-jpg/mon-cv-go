@@ -72,7 +72,16 @@
       "step_3_desc": "Un clic suffit pour obtenir votre document final en PDF Haute Définition, prêt à être envoyé aux recruteurs.",
       "portfolio_title": "L'avantage d'un Portfolio en ligne",
       "portfolio_p1": "De plus en plus de recruteurs recherchent des preuves visuelles de vos compétences. Un CV classique est essentiel, mais un <strong>Portfolio</strong> fait la différence. Notre outil exclusif vous permet de transformer vos projets en un site de présentation élégant sous format PDF. C'est l'arme secrète des designers, développeurs, architectes et professionnels du marketing pour illustrer concrètement leur valeur ajoutée.",
-      "link_tips": "Découvrez tous nos conseils d'experts pour rédiger un CV parfait →"
+      "link_tips": "Découvrez tous nos conseils d'experts pour rédiger un CV parfait →",
+      "faq_title": "Questions Fréquentes (FAQ)",
+      "faq_1_q": "Est-ce que la création de CV est vraiment 100% gratuite ?",
+      "faq_1_a": "Oui, absolument. Contrairement à de nombreux sites qui vous demandent de payer à la dernière étape de téléchargement, Mon CV Go est un service entièrement gratuit, soutenu par la publicité. Vous pouvez générer, modifier et télécharger autant de CV que vous le souhaitez sans jamais avoir à sortir votre carte bancaire.",
+      "faq_2_q": "Qu'est-ce qu'un système ATS et pourquoi mon score est-il important ?",
+      "faq_2_a": "Un ATS (Applicant Tracking System) est un logiciel utilisé par les recruteurs pour trier automatiquement les CV reçus. Si votre CV n'est pas optimisé pour ces logiciels (mauvais mots-clés, structure complexe, format non lisible), il sera rejeté avant même d'être lu par un humain. Notre jauge de Score ATS vous garantit que votre CV respecte tous les critères techniques requis.",
+      "faq_3_q": "Mes données personnelles sont-elles en sécurité ?",
+      "faq_3_a": "La protection de votre vie privée est notre priorité absolue. Nous avons conçu Mon CV Go pour fonctionner localement dans votre navigateur. Cela signifie que toutes les informations que vous saisissez (nom, adresse, expériences) ne quittent jamais votre ordinateur et ne sont pas stockées sur nos serveurs.",
+      "faq_4_q": "Quel format de téléchargement privilégier pour mon CV ?",
+      "faq_4_a": "Nous recommandons toujours le format PDF. Ce format garantit que la mise en page, les polices et le design global de votre document resteront exactement les mêmes, quel que soit l'appareil (ordinateur, tablette, smartphone) ou le système d'exploitation utilisé par le recruteur pour l'ouvrir."
     },
     "about": {
       "seo_title": "À Propos",
@@ -80,7 +89,7 @@
       "badge": "Notre Mission",
       "title_1": "Réinventer la création de ",
       "title_highlight": "votre carrière",
-      "p1": "L'idée derrière Mon CV Go est simple : proposer un outil de création de CV performant, sans abonnements complexes ni coûts cachés.",
+      "p1": "L'idée derrière Mon CV Go est simple : proposer un outil de création de CV performant, sans abonnements complexes ni coûts cachés. Trop de candidats perdent un temps précieux sur des plateformes qui se révèlent payantes au moment du téléchargement. Nous voulons redonner le pouvoir aux chercheurs d'emploi en leur fournissant des outils de qualité professionnelle, accessibles à tous.",
       "feat_1_title": "100% Gratuit",
       "feat_1_desc": "Pas d'abonnement caché, pas de filigrane. Vous générez, vous téléchargez. C'est aussi simple que ça.",
       "feat_2_title": "Confidentialité Absolue",
@@ -90,7 +99,7 @@
       "feat_4_title": "Génération Instantanée",
       "feat_4_desc": "Pas de temps d'attente. Votre document est généré en direct à chaque modification que vous apportez.",
       "story_title": "L'histoire du projet",
-      "story_p1": "Mon CV Go est né de la volonté de créer une alternative indépendante aux grands générateurs de CV payants. Ce projet a pour but d'offrir une plateforme fluide et sécurisée pour vous aider à postuler plus sereinement."
+      "story_p1": "Mon CV Go est né de la volonté de créer une alternative indépendante aux grands générateurs de CV payants. Ce projet a pour but d'offrir une plateforme fluide et sécurisée pour vous aider à postuler plus sereinement. Chaque mois, des milliers d'utilisateurs font confiance à notre outil pour structurer leur parcours professionnel et décrocher des entretiens. Notre équipe s'efforce continuellement d'améliorer la plateforme en suivant les dernières tendances en matière de recrutement et de ressources humaines."
     },
     "contact": {
       "seo_title": "Contact",

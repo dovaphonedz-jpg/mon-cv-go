@@ -72,7 +72,16 @@
       "step_3_desc": "One click is enough to get your final document in High Definition PDF, ready to be sent to recruiters.",
       "portfolio_title": "The advantage of an online Portfolio",
       "portfolio_p1": "More and more recruiters are looking for visual proof of your skills. A classic CV is essential, but a <strong>Portfolio</strong> makes the difference. Our exclusive tool allows you to transform your projects into an elegant presentation site in PDF format. It is the secret weapon of designers, developers, architects, and marketing professionals to concretely illustrate their added value.",
-      "link_tips": "Discover all our expert tips for writing a perfect CV →"
+      "link_tips": "Discover all our expert tips for writing a perfect CV →",
+      "faq_title": "Frequently Asked Questions (FAQ)",
+      "faq_1_q": "Is resume creation really 100% free?",
+      "faq_1_a": "Yes, absolutely. Unlike many sites that ask you to pay at the final download step, Mon CV Go is a completely free service, supported by advertising. You can generate, edit, and download as many resumes as you want without ever having to take out your credit card.",
+      "faq_2_q": "What is an ATS system and why is my score important?",
+      "faq_2_a": "An ATS (Applicant Tracking System) is software used by recruiters to automatically sort received resumes. If your resume is not optimized for these programs (wrong keywords, complex structure, unreadable format), it will be rejected before a human even reads it. Our ATS Score gauge ensures your resume meets all necessary technical criteria.",
+      "faq_3_q": "Is my personal data secure?",
+      "faq_3_a": "Protecting your privacy is our top priority. We designed Mon CV Go to work locally in your browser. This means that all the information you enter (name, address, experience) never leaves your computer and is not stored on our servers.",
+      "faq_4_q": "Which download format should I choose for my resume?",
+      "faq_4_a": "We always recommend the PDF format. This format ensures that the layout, fonts, and overall design of your document will remain exactly the same, regardless of the device (computer, tablet, smartphone) or operating system the recruiter uses to open it."
     },
     "about": {
       "seo_title": "About",
@@ -80,7 +89,7 @@
       "badge": "Our Mission",
       "title_1": "Reinventing the creation of ",
       "title_highlight": "your career",
-      "p1": "The idea behind Mon CV Go is simple: to offer a powerful CV creation tool without complex subscriptions or hidden costs.",
+      "p1": "The idea behind Mon CV Go is simple: offer a powerful resume creation tool without complex subscriptions or hidden costs. Too many candidates waste precious time on platforms that turn out to be paid at the time of download. We want to empower job seekers by providing them with professional-grade tools, accessible to everyone.",
       "feat_1_title": "100% Free",
       "feat_1_desc": "No hidden subscription, no watermark. You generate, you download. It's that simple.",
       "feat_2_title": "Absolute Privacy",
@@ -90,7 +99,7 @@
       "feat_4_title": "Instant Generation",
       "feat_4_desc": "No waiting time. Your document is generated live with every change you make.",
       "story_title": "Project Story",
-      "story_p1": "Mon CV Go was born from a desire to create an independent alternative to large paid CV generators. The goal of this project is to provide a smooth, secure platform to help you apply with peace of mind."
+      "story_p1": "Mon CV Go was born from the desire to create an independent alternative to large paid resume generators. The goal of this project is to offer a smooth and secure platform to help you apply with more peace of mind. Every month, thousands of users trust our tool to structure their career path and land interviews. Our team continuously strives to improve the platform by following the latest trends in recruitment and human resources."
     },
     "contact": {
       "seo_title": "Contact",
