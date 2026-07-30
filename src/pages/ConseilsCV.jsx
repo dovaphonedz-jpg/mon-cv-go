@@ -194,6 +194,48 @@ export default function ConseilsCV() {
     }
   };
 
+  const glossaryData = {
+    fr: {
+      title: "Le Glossaire du Chercheur d'Emploi",
+      desc: "Ne vous perdez plus dans le jargon des ressources humaines. Voici les définitions essentielles pour comprendre le recrutement moderne.",
+      terms: [
+        { term: "ATS (Applicant Tracking System)", def: "Logiciel utilisé par les recruteurs pour filtrer, trier et classer automatiquement les milliers de CV reçus selon des mots-clés spécifiques. Un CV non optimisé ATS ne sera jamais lu par un humain." },
+        { term: "Soft Skills (Compétences comportementales)", def: "Traits de personnalité, aptitudes sociales et intelligence émotionnelle (ex: leadership, empathie, gestion du stress). Elles sont devenues aussi importantes, voire plus, que les compétences techniques." },
+        { term: "Hard Skills (Compétences techniques)", def: "Savoir-faire métier, connaissances techniques acquises par la formation ou l'expérience (ex: maîtrise d'un logiciel, programmation, comptabilité)." },
+        { term: "Portfolio", def: "Dossier physique ou numérique (souvent un site web) qui rassemble des preuves de vos réalisations passées (maquettes, articles, code, photos). Indispensable dans les métiers créatifs et techniques." },
+        { term: "Mots-clés (Keywords)", def: "Termes spécifiques présents dans une offre d'emploi. Les recruteurs et les algorithmes ATS cherchent ces mots exacts dans votre CV pour déterminer votre pertinence." },
+        { term: "Onboarding", def: "Processus d'intégration d'un nouveau salarié au sein de l'entreprise (formations, présentation de l'équipe, prise en main des outils)." },
+        { term: "Marque Employeur", def: "L'image et la réputation d'une entreprise en tant qu'employeur. Elle détermine sa capacité à attirer et retenir les meilleurs talents." }
+      ]
+    },
+    en: {
+      title: "The Job Seeker's Glossary",
+      desc: "Don't get lost in HR jargon anymore. Here are the essential definitions to understand modern recruiting.",
+      terms: [
+        { term: "ATS (Applicant Tracking System)", def: "Software used by recruiters to automatically filter, sort, and rank thousands of received resumes based on specific keywords. A non-ATS-optimized resume will never be read by a human." },
+        { term: "Soft Skills", def: "Personality traits, social aptitudes, and emotional intelligence (e.g., leadership, empathy, stress management). They have become as important, if not more, than technical skills." },
+        { term: "Hard Skills", def: "Job-specific know-how, technical knowledge acquired through training or experience (e.g., software mastery, programming, accounting)." },
+        { term: "Portfolio", def: "A physical or digital folder (often a website) that gathers proof of your past achievements (mockups, articles, code, photos). Essential in creative and technical professions." },
+        { term: "Keywords", def: "Specific terms found in a job offer. Recruiters and ATS algorithms look for these exact words in your resume to determine your relevance." },
+        { term: "Onboarding", def: "The process of integrating a new employee into the company (training, team introduction, getting familiar with tools)." },
+        { term: "Employer Branding", def: "The image and reputation of a company as an employer. It determines its ability to attract and retain top talent." }
+      ]
+    },
+    ar: {
+      title: "معجم الباحث عن عمل",
+      desc: "لا تضيع في مصطلحات الموارد البشرية بعد الآن. إليك التعريفات الأساسية لفهم التوظيف الحديث.",
+      terms: [
+        { term: "ATS (نظام تتبع المتقدمين)", def: "برنامج يستخدمه مسؤولو التوظيف لتصفية وفرز وتصنيف آلاف السير الذاتية المستلمة تلقائيًا بناءً على كلمات رئيسية محددة. السيرة الذاتية غير المحسنة لـ ATS لن يقرأها أي إنسان أبدًا." },
+        { term: "المهارات السلوكية (Soft Skills)", def: "السمات الشخصية والكفاءات الاجتماعية والذكاء العاطفي (مثل القيادة والتعاطف وإدارة الإجهاد). أصبحت مهمة، إن لم تكن أكثر، من المهارات الفنية." },
+        { term: "المهارات الفنية (Hard Skills)", def: "المعرفة الخاصة بالوظيفة، المعرفة الفنية المكتسبة من خلال التدريب أو الخبرة (مثل إتقان البرامج، والبرمجة، والمحاسبة)." },
+        { term: "ملف الأعمال (Portfolio)", def: "مجلد مادي أو رقمي (غالبًا موقع ويب) يجمع أدلة على إنجازاتك السابقة (النماذج، المقالات، الكود، الصور). ضروري في المهن الإبداعية والتقنية." },
+        { term: "الكلمات الرئيسية (Keywords)", def: "مصطلحات محددة توجد في عرض العمل. يبحث مسؤولو التوظيف وخوارزميات ATS عن هذه الكلمات الدقيقة في سيرتك الذاتية لتحديد مدى ملاءمتك." },
+        { term: "الدمج (Onboarding)", def: "عملية دمج موظف جديد في الشركة (التدريب، تقديم الفريق، التعرف على الأدوات)." },
+        { term: "العلامة التجارية لصاحب العمل", def: "صورة وسمعة الشركة كصاحب عمل. تحدد قدرتها على جذب أفضل المواهب والاحتفاظ بها." }
+      ]
+    }
+  };
+
   const t = adviceData[lang] || adviceData['fr'];
 
   return (
@@ -279,6 +321,27 @@ export default function ConseilsCV() {
               </div>
             </motion.div>
           ))}
+        </motion.div>
+
+        {/* Glossary Section */}
+        <motion.div 
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+          className="mt-20 bg-white dark:bg-slate-900 p-8 sm:p-12 brutal-border brutal-shadow-lg"
+        >
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-4">{glossaryData[lang]?.title || glossaryData['fr'].title}</h2>
+            <p className="text-slate-700 dark:text-slate-300 font-bold max-w-2xl mx-auto text-lg">{glossaryData[lang]?.desc || glossaryData['fr'].desc}</p>
+          </div>
+          <div className="grid md:grid-cols-2 gap-8">
+            {(glossaryData[lang]?.terms || glossaryData['fr'].terms).map((item, idx) => (
+              <div key={idx} className="bg-slate-50 dark:bg-slate-800 p-6 brutal-border transform hover:-translate-y-1 transition-transform">
+                <h3 className="text-xl font-black text-indigo-600 dark:text-indigo-400 mb-3">{item.term}</h3>
+                <p className="text-slate-700 dark:text-slate-300 leading-relaxed font-medium">{item.def}</p>
+              </div>
+            ))}
+          </div>
         </motion.div>
       </section>
 

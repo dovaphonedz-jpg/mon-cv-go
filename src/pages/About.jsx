@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, Code2, Heart, ShieldCheck, Zap, Users } from 'lucide-react';
+import { Sparkles, Code2, Heart, ShieldCheck, Zap, Users, MessageSquare } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
 
@@ -126,6 +126,43 @@ export default function About() {
             {t('about.story_p1')}
           </p>
         </motion.div>
+      </section>
+
+      {/* Testimonials Section */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-24">
+        <div className="text-center mb-12">
+          <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow mb-6 transform rotate-2">
+            <MessageSquare className="w-4 h-4 text-slate-900" />
+            {t('about.testimonials_title', 'Témoignages')}
+          </div>
+        </div>
+        <div className="grid md:grid-cols-3 gap-8">
+          {[1, 2, 3].map((num) => (
+            <motion.div 
+              key={num}
+              variants={itemVariants}
+              initial="hidden"
+              whileInView="show"
+              viewport={{ once: true }}
+              className={`bg-white dark:bg-slate-800 p-8 brutal-border brutal-shadow-lg transform transition-transform hover:-translate-y-2 ${
+                num === 1 ? '-rotate-1' : num === 2 ? 'rotate-2' : '-rotate-2'
+              }`}
+            >
+              <div className="flex items-center gap-4 mb-6">
+                <div className="w-12 h-12 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 flex items-center justify-center font-black text-xl uppercase brutal-border">
+                  {t(`about.test_${num}_name`).charAt(0)}
+                </div>
+                <div>
+                  <h4 className="font-black text-slate-900 dark:text-white uppercase tracking-tight">{t(`about.test_${num}_name`)}</h4>
+                  <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">{t(`about.test_${num}_role`)}</p>
+                </div>
+              </div>
+              <p className="text-slate-700 dark:text-slate-300 font-medium leading-relaxed italic">
+                "{t(`about.test_${num}_text`)}"
+              </p>
+            </motion.div>
+          ))}
+        </div>
       </section>
 
     </div>

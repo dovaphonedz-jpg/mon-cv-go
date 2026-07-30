@@ -329,5 +329,17 @@
       "tour_next": "Next",
       "tour_skip": "Skip tour"
     }
+  },
+  "about": {
+    "testimonials_title": "What They Say About Us",
+    "test_1_name": "Julian M.",
+    "test_1_role": "Front-End Developer",
+    "test_1_text": "I was having a terrible time getting past the ATS filters with my old Word resume. After using the modern template from Mon CV Go, I landed 3 interviews in two weeks. The clean design and structure made all the difference!",
+    "test_2_name": "Sarah K.",
+    "test_2_role": "Marketing Manager",
+    "test_2_text": "The tool is incredibly simple to use. I particularly appreciated the built-in advice that helped me rephrase my experiences into true quantifiable achievements. My portfolio also impressed the recruiters.",
+    "test_3_name": "Amin B.",
+    "test_3_role": "Recent Finance Graduate",
+    "test_3_text": "As a junior, it's hard to stand out. Mon CV Go allowed me to highlight my student projects and soft skills in an ultra-professional way. I 100% recommend it to all students looking for an internship or first job."
   }
 }
