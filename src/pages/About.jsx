@@ -154,7 +154,8 @@ export default function About() {
                 </div>
                 <div>
                   <h4 className="font-black text-slate-900 dark:text-white uppercase tracking-tight">{t(`about.test_${num}_name`)}</h4>
-                  <p className="text-xs font-bold text-slate-500 uppercase tracking-widest">{t(`about.test_${num}_role`)}</p>
+                  <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">{t(`about.test_${num}_role`)}</p>
+                  <div className="text-yellow-400 text-sm tracking-widest">⭐⭐⭐⭐⭐</div>
                 </div>
               </div>
               <p className="text-slate-700 dark:text-slate-300 font-medium leading-relaxed italic">

@@ -78,8 +78,7 @@ export default function Home() {
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 drop-shadow-sm">{t('home.title_highlight')}</span> <br className="hidden md:block" />{t('home.title_2')}
             </motion.h1>
             
-            <motion.p variants={itemVariants} className="text-base sm:text-lg md:text-2xl lg:text-3xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 font-bold leading-snug px-4 sm:px-0">
-              {t('home.subtitle')}
+            <motion.p variants={itemVariants} className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 font-bold leading-relaxed px-4 sm:px-0" dangerouslySetInnerHTML={{ __html: t('home.subtitle') }}>
             </motion.p>
             
             <motion.div variants={itemVariants} className="flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-center px-4 sm:px-0">
@@ -131,6 +130,29 @@ export default function Home() {
             <h2 className="text-3xl font-bold text-slate-900 dark:text-white mb-8">{t('home.why_title')}</h2>
             
             <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed" dangerouslySetInnerHTML={{ __html: t('home.why_p1') }}></p>
+            
+            <div className="bg-green-300 dark:bg-green-800 p-6 sm:p-8 border-4 border-slate-900 dark:border-white my-10 brutal-shadow transform -rotate-1">
+              <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+                <div className="flex items-center gap-3 font-black text-lg text-slate-900 dark:text-white">
+                  <span className="text-2xl drop-shadow-sm">✅</span> {t('home.why_list_1') || 'Gratuit'}
+                </div>
+                <div className="flex items-center gap-3 font-black text-lg text-slate-900 dark:text-white">
+                  <span className="text-2xl drop-shadow-sm">✅</span> {t('home.why_list_2') || 'Sans inscription'}
+                </div>
+                <div className="flex items-center gap-3 font-black text-lg text-slate-900 dark:text-white">
+                  <span className="text-2xl drop-shadow-sm">✅</span> {t('home.why_list_3') || 'Compatible ATS'}
+                </div>
+                <div className="flex items-center gap-3 font-black text-lg text-slate-900 dark:text-white">
+                  <span className="text-2xl drop-shadow-sm">✅</span> {t('home.why_list_4') || 'Téléchargement PDF'}
+                </div>
+                <div className="flex items-center gap-3 font-black text-lg text-slate-900 dark:text-white">
+                  <span className="text-2xl drop-shadow-sm">✅</span> {t('home.why_list_5') || 'Modèles modernes'}
+                </div>
+                <div className="flex items-center gap-3 font-black text-lg text-slate-900 dark:text-white">
+                  <span className="text-2xl drop-shadow-sm">✅</span> {t('home.why_list_6') || 'Rapide'}
+                </div>
+              </div>
+            </div>
 
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-6">{t('home.news_title')}</h3>
             <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed">{t('home.news_p1')}</p>
@@ -212,6 +234,44 @@ export default function Home() {
 
             </div>
 
+            {/* Guide SEO Étendu */}
+            <div className="my-16 border-t border-slate-200 dark:border-slate-800 pt-16">
+              <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tighter">{t('home.guide_title')}</h3>
+              <div className="grid md:grid-cols-3 gap-8">
+                <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-xl border border-slate-100 dark:border-slate-800">
+                  <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-3">{t('home.guide_1_title')}</h4>
+                  <p className="text-slate-600 dark:text-slate-400">{t('home.guide_1_desc')}</p>
+                </div>
+                <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-xl border border-slate-100 dark:border-slate-800">
+                  <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-3">{t('home.guide_2_title')}</h4>
+                  <p className="text-slate-600 dark:text-slate-400">{t('home.guide_2_desc')}</p>
+                </div>
+                <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-xl border border-slate-100 dark:border-slate-800">
+                  <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-3">{t('home.guide_3_title')}</h4>
+                  <p className="text-slate-600 dark:text-slate-400">{t('home.guide_3_desc')}</p>
+                </div>
+              </div>
+            </div>
+
+            {/* Secteurs SEO */}
+            <div className="my-16 bg-gradient-to-br from-indigo-50 to-purple-50 dark:from-slate-800 dark:to-slate-900 p-8 sm:p-10 rounded-3xl border border-indigo-100 dark:border-slate-700">
+              <h3 className="text-3xl font-black text-slate-900 dark:text-white mb-8 uppercase tracking-tighter">{t('home.sectors_title')}</h3>
+              <div className="space-y-6">
+                <div>
+                  <h4 className="text-xl font-bold text-indigo-700 dark:text-indigo-400 mb-2">{t('home.sector_1_title')}</h4>
+                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed">{t('home.sector_1_desc')}</p>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-purple-700 dark:text-purple-400 mb-2">{t('home.sector_2_title')}</h4>
+                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed">{t('home.sector_2_desc')}</p>
+                </div>
+                <div>
+                  <h4 className="text-xl font-bold text-slate-800 dark:text-slate-200 mb-2">{t('home.sector_3_title')}</h4>
+                  <p className="text-slate-700 dark:text-slate-300 leading-relaxed">{t('home.sector_3_desc')}</p>
+                </div>
+              </div>
+            </div>
+
             <h3 className="text-2xl font-bold text-slate-900 dark:text-white mt-12 mb-6">{t('home.portfolio_title')}</h3>
             <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed" dangerouslySetInnerHTML={{ __html: t('home.portfolio_p1') }}></p>
 
@@ -261,6 +321,24 @@ export default function Home() {
                   </h4>
                   <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
                     {t('home.faq_4_a') || "Nous recommandons toujours le format PDF. Ce format garantit que la mise en page, les polices et le design global de votre document resteront exactement les mêmes, quel que soit l'appareil (ordinateur, tablette, smartphone) ou le système d'exploitation utilisé par le recruteur pour l'ouvrir."}
+                  </p>
+                </div>
+
+                <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-xl border border-slate-100 dark:border-slate-800">
+                  <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
+                    {t('home.faq_5_q')}
+                  </h4>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                    {t('home.faq_5_a')}
+                  </p>
+                </div>
+
+                <div className="bg-slate-50 dark:bg-slate-800/50 p-6 rounded-xl border border-slate-100 dark:border-slate-800">
+                  <h4 className="text-xl font-bold text-slate-900 dark:text-white mb-3">
+                    {t('home.faq_6_q')}
+                  </h4>
+                  <p className="text-slate-600 dark:text-slate-400 leading-relaxed">
+                    {t('home.faq_6_a')}
                   </p>
                 </div>
               </div>
