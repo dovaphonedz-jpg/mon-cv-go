@@ -123,7 +123,17 @@
       "feat_4_title": "Génération Instantanée",
       "feat_4_desc": "Pas de temps d'attente. Votre document est généré en direct à chaque modification que vous apportez.",
       "story_title": "L'histoire du projet",
-      "story_p1": "Mon CV Go est né de la volonté de créer une alternative indépendante aux grands générateurs de CV payants. Ce projet a pour but d'offrir une plateforme fluide et sécurisée pour vous aider à postuler plus sereinement. Chaque mois, des milliers d'utilisateurs font confiance à notre outil pour structurer leur parcours professionnel et décrocher des entretiens. Notre équipe s'efforce continuellement d'améliorer la plateforme en suivant les dernières tendances en matière de recrutement et de ressources humaines."
+      "story_p1": "Mon CV Go est né de la volonté de créer une alternative indépendante aux grands générateurs de CV payants. Ce projet a pour but d'offrir une plateforme fluide et sécurisée pour vous aider à postuler plus sereinement. Chaque mois, des milliers d'utilisateurs font confiance à notre outil pour structurer leur parcours professionnel et décrocher des entretiens. Notre équipe s'efforce continuellement d'améliorer la plateforme en suivant les dernières tendances en matière de recrutement et de ressources humaines.",
+      "testimonials_title": "Ce qu'ils disent de nous",
+      "test_1_name": "Sophie L.",
+      "test_1_role": "Responsable Marketing",
+      "test_1_text": "Grâce à MonCVGo, j'ai refait mon CV en 5 minutes. J'ai décroché 3 entretiens la même semaine !",
+      "test_2_name": "Marc D.",
+      "test_2_role": "Ingénieur Logiciel",
+      "test_2_text": "Le format ATS est redoutable. Mon CV passe enfin les filtres automatiques des grandes entreprises tech.",
+      "test_3_name": "Amira K.",
+      "test_3_role": "Architecte Junior",
+      "test_3_text": "Les modèles sont modernes et le design neo-brutaliste m'a permis de me démarquer immédiatement."
     },
     "contact": {
       "seo_title": "Contact",
@@ -353,17 +363,5 @@
       "tour_next": "Suivant",
       "tour_skip": "Passer le guide"
     }
-  },
-  "about": {
-    "testimonials_title": "Ce qu'ils disent de nous",
-    "test_1_name": "Sophie L.",
-    "test_1_role": "Responsable Marketing",
-    "test_1_text": "Grâce à MonCVGo, j'ai refait mon CV en 5 minutes. J'ai décroché 3 entretiens la même semaine !",
-    "test_2_name": "Marc D.",
-    "test_2_role": "Ingénieur Logiciel",
-    "test_2_text": "Le format ATS est redoutable. Mon CV passe enfin les filtres automatiques des grandes entreprises tech.",
-    "test_3_name": "Amira K.",
-    "test_3_role": "Architecte Junior",
-    "test_3_text": "Les modèles sont modernes et le design neo-brutaliste m'a permis de me démarquer immédiatement."
   }
 }

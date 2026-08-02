@@ -99,7 +99,17 @@
       "feat_4_title": "Instant Generation",
       "feat_4_desc": "No waiting time. Your document is generated live with every change you make.",
       "story_title": "Project Story",
-      "story_p1": "Mon CV Go was born from the desire to create an independent alternative to large paid resume generators. The goal of this project is to offer a smooth and secure platform to help you apply with more peace of mind. Every month, thousands of users trust our tool to structure their career path and land interviews. Our team continuously strives to improve the platform by following the latest trends in recruitment and human resources."
+      "story_p1": "Mon CV Go was born from the desire to create an independent alternative to large paid resume generators. The goal of this project is to offer a smooth and secure platform to help you apply with more peace of mind. Every month, thousands of users trust our tool to structure their career path and land interviews. Our team continuously strives to improve the platform by following the latest trends in recruitment and human resources.",
+      "testimonials_title": "What They Say About Us",
+      "test_1_name": "Sophie L.",
+      "test_1_role": "Marketing Manager",
+      "test_1_text": "Thanks to MonCVGo, I redid my resume in 5 minutes. I landed 3 interviews the very same week!",
+      "test_2_name": "Marc D.",
+      "test_2_role": "Software Engineer",
+      "test_2_text": "The ATS format is formidable. My resume finally passes the automatic filters of big tech companies.",
+      "test_3_name": "Amira K.",
+      "test_3_role": "Junior Architect",
+      "test_3_text": "The templates are modern and the neo-brutalist design allowed me to stand out immediately."
     },
     "contact": {
       "seo_title": "Contact",
@@ -329,17 +339,5 @@
       "tour_next": "Next",
       "tour_skip": "Skip tour"
     }
-  },
-  "about": {
-    "testimonials_title": "What They Say About Us",
-    "test_1_name": "Sophie L.",
-    "test_1_role": "Marketing Manager",
-    "test_1_text": "Thanks to MonCVGo, I redid my resume in 5 minutes. I landed 3 interviews the very same week!",
-    "test_2_name": "Marc D.",
-    "test_2_role": "Software Engineer",
-    "test_2_text": "The ATS format is formidable. My resume finally passes the automatic filters of big tech companies.",
-    "test_3_name": "Amira K.",
-    "test_3_role": "Junior Architect",
-    "test_3_text": "The templates are modern and the neo-brutalist design allowed me to stand out immediately."
   }
 }
