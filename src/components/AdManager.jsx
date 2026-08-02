@@ -45,40 +45,53 @@ export default function AdManager() {
     // If we are on an allowed page, clear the reload flag so we can reload again later if needed
     sessionStorage.removeItem('reloadedForAds');
 
-    // Function to safely inject a script if it doesn't already exist
-    const injectScript = (zone, src) => {
-      if (!document.querySelector(`script[src="${src}"]`)) {
-        const s = document.createElement('script');
-        s.dataset.zone = zone;
-        s.src = src;
-        // The networks usually want it on document.documentElement or document.body
+    // Function to safely inject a script
+    const injectAds = () => {
+        if (window.adsInjectedThisSession) return;
+        window.adsInjectedThisSession = true;
+
         const target = [document.documentElement, document.body].filter(Boolean).pop();
-        if (target) {
-            target.appendChild(s);
-        }
-      }
+        if (!target) return;
+
+        const scripts = [
+            { zone: '11467569', src: 'https://n6wxm.com/vignette.min.js' },
+            { zone: '11463164', src: 'https://nap5k.com/tag.min.js' },
+            { zone: '11486028', src: 'https://al5sm.com/tag.min.js' }
+        ];
+
+        scripts.forEach(({ zone, src }) => {
+            if (!document.querySelector(`script[src="${src}"]`)) {
+                const s = document.createElement('script');
+                s.dataset.zone = zone;
+                s.src = src;
+                target.appendChild(s);
+            }
+        });
     };
 
-    // Inject Delayed Ads (120 seconds)
-    if (!window.adDelayedTimerSet) {
-      window.adDelayedTimerSet = true;
-      setTimeout(() => {
-        const isStillNoAdsPage = noAdsPaths.some(path => window.location.pathname.startsWith(path));
-        
-        if (!isStillNoAdsPage) {
-            // MARK ADS AS INJECTED SO WE CAN RELOAD LATER IF NEEDED
-            window.adsInjectedThisSession = true;
+    // Calculate time elapsed since first visit
+    if (!window.firstVisitTime) {
+        window.firstVisitTime = Date.now();
+    }
 
-            // Inject Vignette Ad
-            injectScript('11467569', 'https://n6wxm.com/vignette.min.js');
+    const timeElapsed = Date.now() - window.firstVisitTime;
+    const delayRequired = 120000; // 2 minutes
 
-            // Inject Interstitial/Pop Ad
-            injectScript('11463164', 'https://nap5k.com/tag.min.js');
+    if (timeElapsed >= delayRequired) {
+        // 2 minutes have already passed! Inject immediately.
+        injectAds();
+    } else {
+        // Less than 2 minutes have passed. Set a timeout for the remaining time!
+        if (window.adTimeoutId) clearTimeout(window.adTimeoutId);
 
-            // Inject the third Ad
-            injectScript('11486028', 'https://al5sm.com/tag.min.js');
-        }
-      }, 120000); // 120000 ms = 2 minutes
+        const remainingTime = delayRequired - timeElapsed;
+        window.adTimeoutId = setTimeout(() => {
+            // Check one last time if we are on a blocked page when timer fires
+            const stillNoAds = noAdsPaths.some(path => window.location.pathname.startsWith(path));
+            if (!stillNoAds) {
+                injectAds();
+            }
+        }, remainingTime);
     }
 
   }, [location.pathname]);
