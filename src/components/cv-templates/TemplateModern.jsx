@@ -951,7 +951,306 @@ function RawTemplateModern({ cvData, config }) {
   }
 
   // 4. MINIMALIST / CLASSIC / CENTERED (Default 1-column header)
-  const isCentered = layout === 'centered';
+  
+  if (layout === 'synthwave') {
+    return (
+      <div className={`cv-page ${fontClass} bg-gray-900 text-cyan-50 min-h-[1123px] relative box-border transition-all duration-300 p-8`} style={{ border: `4px solid ${themeColor}`, boxShadow: `0 0 15px ${themeColor}, inset 0 0 15px ${themeColor}` }}>
+        {/* Header */}
+        <header className="border-b-2 pb-6 mb-6 flex justify-between items-end" style={{ borderColor: themeColor }}>
+          <div>
+            <h1 className="text-5xl font-black uppercase tracking-widest" style={{ color: themeColor, textShadow: `2px 2px 5px ${themeColor}88` }}>{personal.name}</h1>
+            <h2 className="text-xl mt-2 font-bold tracking-widest text-pink-500 uppercase">{personal.title}</h2>
+          </div>
+          {personal.photo && (
+            <img src={personal.photo} alt={personal.name} className="w-28 h-28 object-cover rounded-full border-4" style={{ borderColor: themeColor, boxShadow: `0 0 10px ${themeColor}` }} />
+          )}
+        </header>
+
+        <div className="grid grid-cols-3 gap-8">
+          <div className="col-span-2 space-y-6">
+            {summary && (
+              <section>
+                <h3 className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: themeColor }}>&gt; {t.profile}</h3>
+                <p className="text-sm leading-relaxed opacity-90">{summary}</p>
+              </section>
+            )}
+            
+            {experiences.length > 0 && (
+              <section>
+                <h3 className="text-sm font-bold uppercase tracking-widest mb-4" style={{ color: themeColor }}>&gt; {t.experience}</h3>
+                <div className="space-y-4">
+                  {experiences.map((exp, idx) => (
+                    <div key={idx} className="border-l-2 pl-4" style={{ borderColor: themeColor }}>
+                      <h4 className="font-bold text-base text-pink-400">{exp.role}</h4>
+                      <div className="text-xs uppercase tracking-wider mb-2 opacity-80">{exp.company} | {exp.start} - {exp.end}</div>
+                      <p className="text-sm whitespace-pre-line opacity-90">{exp.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {education.length > 0 && (
+              <section>
+                <h3 className="text-sm font-bold uppercase tracking-widest mb-4" style={{ color: themeColor }}>&gt; {t.education}</h3>
+                <div className="space-y-3">
+                  {education.map((edu, idx) => (
+                    <div key={idx} className="border-l-2 pl-4" style={{ borderColor: themeColor }}>
+                      <h4 className="font-bold text-sm text-pink-400">{edu.degree}</h4>
+                      <div className="text-xs uppercase tracking-wider mb-1 opacity-80">{edu.school} | {edu.start} - {edu.end}</div>
+                      <p className="text-sm opacity-90">{edu.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+          </div>
+          
+          <div className="col-span-1 space-y-6">
+            <section className="bg-gray-800 p-4 border" style={{ borderColor: themeColor }}>
+               <h3 className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: themeColor }}>&gt; Contact</h3>
+               <ul className="text-xs space-y-2 opacity-90">
+                 {personal.email && <li>{personal.email}</li>}
+                 {personal.phone && <li>{personal.phone}</li>}
+                 {personal.address && <li>{personal.address}</li>}
+                 {personal.website && <li>{personal.website}</li>}
+               </ul>
+            </section>
+            
+            {skills.length > 0 && (
+              <section>
+                <h3 className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: themeColor }}>&gt; {t.skills}</h3>
+                <ul className="text-xs space-y-3">
+                  {skills.map((s, idx) => (
+                    <li key={idx}>
+                      <div className="flex justify-between mb-1">
+                        <span>{s.name}</span>
+                        <span className="text-pink-400">{s.level}</span>
+                      </div>
+                      <div className="w-full h-1 bg-gray-700">
+                        <div className="h-full" style={{ width: s.level || '50%', backgroundColor: themeColor, boxShadow: `0 0 5px ${themeColor}` }}></div>
+                      </div>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            {languages.length > 0 && (
+              <section>
+                <h3 className="text-sm font-bold uppercase tracking-widest mb-3" style={{ color: themeColor }}>&gt; {t.languages}</h3>
+                <ul className="text-xs space-y-2">
+                  {languages.map((l, idx) => (
+                    <li key={idx} className="flex justify-between border-b border-gray-800 pb-1">
+                      <span>{l.name}</span>
+                      <span className="text-pink-400">{l.level}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (layout === 'executive-grid') {
+    return (
+      <div className={`cv-page ${fontClass} bg-white text-gray-900 min-h-[1123px] relative box-border transition-all duration-300 p-8 border-8`} style={{ borderColor: themeColor }}>
+        <header className="border-b-4 pb-6 mb-6 flex flex-col items-center text-center" style={{ borderColor: themeColor }}>
+          <h1 className="text-5xl font-serif font-bold uppercase tracking-widest mb-2" style={{ color: themeColor }}>{personal.name}</h1>
+          <h2 className="text-xl font-light tracking-[0.3em] uppercase text-gray-600">{personal.title}</h2>
+          <div className="mt-4 flex flex-wrap justify-center gap-4 text-xs font-medium uppercase tracking-wider text-gray-500">
+            {personal.email && <span>{personal.email}</span>}
+            {personal.phone && <span>• {personal.phone}</span>}
+            {personal.address && <span>• {personal.address}</span>}
+            {personal.website && <span>• {personal.website}</span>}
+          </div>
+        </header>
+
+        <div className="grid grid-cols-12 gap-8">
+          <div className="col-span-8 space-y-6 border-r pr-8">
+            {summary && (
+              <section>
+                <h3 className="text-sm font-bold uppercase tracking-widest mb-3 border-b-2 inline-block pb-1" style={{ borderColor: themeColor }}>{t.profile}</h3>
+                <p className="text-sm leading-relaxed text-gray-700 text-justify">{summary}</p>
+              </section>
+            )}
+            
+            {experiences.length > 0 && (
+              <section>
+                <h3 className="text-sm font-bold uppercase tracking-widest mb-4 border-b-2 inline-block pb-1" style={{ borderColor: themeColor }}>{t.experience}</h3>
+                <div className="space-y-6">
+                  {experiences.map((exp, idx) => (
+                    <div key={idx}>
+                      <div className="flex justify-between items-baseline mb-1">
+                        <h4 className="font-bold text-base text-gray-900">{exp.role}</h4>
+                        <span className="text-xs font-bold uppercase" style={{ color: themeColor }}>{exp.start} - {exp.end}</span>
+                      </div>
+                      <div className="text-sm uppercase tracking-wider mb-2 font-semibold text-gray-500">{exp.company}</div>
+                      <p className="text-sm whitespace-pre-line text-gray-700 leading-relaxed text-justify">{exp.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {education.length > 0 && (
+              <section>
+                <h3 className="text-sm font-bold uppercase tracking-widest mb-4 border-b-2 inline-block pb-1" style={{ borderColor: themeColor }}>{t.education}</h3>
+                <div className="space-y-4">
+                  {education.map((edu, idx) => (
+                    <div key={idx}>
+                      <div className="flex justify-between items-baseline mb-1">
+                        <h4 className="font-bold text-sm text-gray-900">{edu.degree}</h4>
+                        <span className="text-xs font-bold uppercase" style={{ color: themeColor }}>{edu.start} - {edu.end}</span>
+                      </div>
+                      <div className="text-xs uppercase tracking-wider mb-1 font-semibold text-gray-500">{edu.school}</div>
+                      <p className="text-sm text-gray-700">{edu.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+          </div>
+          
+          <div className="col-span-4 space-y-6">
+            {personal.photo && (
+              <div className="mb-6 flex justify-center">
+                <img src={personal.photo} alt={personal.name} className="w-40 h-40 object-cover border-4" style={{ borderColor: themeColor }} />
+              </div>
+            )}
+            
+            {skills.length > 0 && (
+              <section>
+                <h3 className="text-sm font-bold uppercase tracking-widest mb-4 border-b-2 inline-block pb-1" style={{ borderColor: themeColor }}>{t.skills}</h3>
+                <ul className="text-sm space-y-3 font-medium text-gray-700">
+                  {skills.map((s, idx) => (
+                    <li key={idx} className="flex justify-between border-b border-gray-200 pb-1">
+                      <span>{s.name}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+
+            {languages.length > 0 && (
+              <section>
+                <h3 className="text-sm font-bold uppercase tracking-widest mb-4 border-b-2 inline-block pb-1" style={{ borderColor: themeColor }}>{t.languages}</h3>
+                <ul className="text-sm space-y-3 font-medium text-gray-700">
+                  {languages.map((l, idx) => (
+                    <li key={idx} className="flex justify-between border-b border-gray-200 pb-1">
+                      <span>{l.name}</span>
+                      <span className="text-gray-500">{l.level}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  if (layout === 'nordic-minimal') {
+    return (
+      <div className={`cv-page ${fontClass} bg-[#fafafa] text-gray-600 min-h-[1123px] relative box-border transition-all duration-300 p-12`}>
+        <header className="mb-12 flex items-center gap-8">
+          {personal.photo && (
+            <img src={personal.photo} alt={personal.name} className="w-32 h-32 object-cover rounded-full" />
+          )}
+          <div>
+            <h1 className="text-4xl font-light tracking-wide text-gray-900 mb-2">{personal.name}</h1>
+            <h2 className="text-lg font-medium tracking-widest uppercase" style={{ color: themeColor }}>{personal.title}</h2>
+          </div>
+        </header>
+
+        <div className="grid grid-cols-12 gap-12">
+          <div className="col-span-4 space-y-8">
+            <section>
+               <h3 className="text-xs font-bold uppercase tracking-widest mb-4 text-gray-400">Contact</h3>
+               <ul className="text-sm space-y-3">
+                 {personal.email && <li>{personal.email}</li>}
+                 {personal.phone && <li>{personal.phone}</li>}
+                 {personal.address && <li>{personal.address}</li>}
+                 {personal.website && <li>{personal.website}</li>}
+               </ul>
+            </section>
+            
+            {skills.length > 0 && (
+              <section>
+                <h3 className="text-xs font-bold uppercase tracking-widest mb-4 text-gray-400">{t.skills}</h3>
+                <div className="flex flex-wrap gap-2">
+                  {skills.map((s, idx) => (
+                    <span key={idx} className="px-3 py-1 bg-white border border-gray-200 rounded-full text-xs" style={{ color: themeColor }}>{s.name}</span>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {languages.length > 0 && (
+              <section>
+                <h3 className="text-xs font-bold uppercase tracking-widest mb-4 text-gray-400">{t.languages}</h3>
+                <ul className="text-sm space-y-3">
+                  {languages.map((l, idx) => (
+                    <li key={idx}>
+                      <div className="font-medium text-gray-800">{l.name}</div>
+                      <div className="text-xs text-gray-400">{l.level}</div>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
+          </div>
+
+          <div className="col-span-8 space-y-10">
+            {summary && (
+              <section>
+                <h3 className="text-xs font-bold uppercase tracking-widest mb-4 text-gray-400">{t.profile}</h3>
+                <p className="text-base leading-relaxed text-gray-700 font-light">{summary}</p>
+              </section>
+            )}
+            
+            {experiences.length > 0 && (
+              <section>
+                <h3 className="text-xs font-bold uppercase tracking-widest mb-6 text-gray-400">{t.experience}</h3>
+                <div className="space-y-8">
+                  {experiences.map((exp, idx) => (
+                    <div key={idx} className="relative pl-6 border-l" style={{ borderColor: `${themeColor}40` }}>
+                      <div className="absolute w-2 h-2 rounded-full -left-[4.5px] top-1.5" style={{ backgroundColor: themeColor }}></div>
+                      <h4 className="font-medium text-lg text-gray-900">{exp.role}</h4>
+                      <div className="text-sm mb-3" style={{ color: themeColor }}>{exp.company} <span className="text-gray-400">| {exp.start} - {exp.end}</span></div>
+                      <p className="text-sm whitespace-pre-line text-gray-600 leading-relaxed font-light">{exp.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+
+            {education.length > 0 && (
+              <section>
+                <h3 className="text-xs font-bold uppercase tracking-widest mb-6 text-gray-400">{t.education}</h3>
+                <div className="space-y-6">
+                  {education.map((edu, idx) => (
+                    <div key={idx} className="relative pl-6 border-l" style={{ borderColor: `${themeColor}40` }}>
+                      <div className="absolute w-2 h-2 rounded-full -left-[4.5px] top-1.5" style={{ backgroundColor: themeColor }}></div>
+                      <h4 className="font-medium text-base text-gray-900">{edu.degree}</h4>
+                      <div className="text-sm mb-2" style={{ color: themeColor }}>{edu.school} <span className="text-gray-400">| {edu.start} - {edu.end}</span></div>
+                      <p className="text-sm text-gray-600 font-light">{edu.desc}</p>
+                    </div>
+                  ))}
+                </div>
+              </section>
+            )}
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+const isCentered = layout === 'centered';
   return (
     <div className={`${containerClasses} ${paddingClass}`} style={{ fontSize: getScale(), ...(style === 'underlined' ? { borderBottomColor: themeColor } : {}) }}>
       <header className={`${isCentered ? 'text-center' : ''} border-b-2 pb-6 mb-3`} style={{ borderColor: themeColor }}>

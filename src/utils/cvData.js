@@ -33,7 +33,12 @@ export const templates100 = [
   // 5. Minimalistes (Classiques)
   { id: "paris", name: "Paris (Minimaliste Pur)", layout: "minimalist", style: "solid" },
   { id: "newyork", name: "New York (Classique Encadré)", layout: "classic", style: "bordered" },
-  { id: "geneve", name: "Genève (Minimaliste Badge)", layout: "minimalist", style: "compact-badge" }
+  { id: "geneve", name: "Genève (Minimaliste Badge)", layout: "minimalist", style: "compact-badge" },
+
+  // 6. Nouveaux Exclusifs
+  { id: "miamivice", name: "Miami Vice (Cyberpunk Synthwave)", layout: "synthwave", style: "bordered" },
+  { id: "executivegrid", name: "Executive Grid (Corporate Pro)", layout: "executive-grid", style: "solid" },
+  { id: "nordicminimal", name: "Nordic Minimal (Scandinave)", layout: "nordic-minimal", style: "underlined" }
 ];
 
 
