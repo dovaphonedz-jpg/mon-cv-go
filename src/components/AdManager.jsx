@@ -21,11 +21,8 @@ export default function AdManager() {
       
       // If we already reloaded, or ads were never injected, we just clean the DOM
       // (in case they got here directly)
-      const adScripts = document.querySelectorAll('script[src*="al5sm.com"], script[src*="n6wxm.com"], script[src*="nap5k.com"], script[src*="ampproject.org"]');
+      const adScripts = document.querySelectorAll('script[src*="al5sm.com"], script[src*="n6wxm.com"], script[src*="nap5k.com"]');
       adScripts.forEach(script => script.remove());
-      
-      const ampTags = document.querySelectorAll('amp-auto-ads, amp-ad');
-      ampTags.forEach(tag => tag.remove());
 
       const iframes = document.querySelectorAll('iframe');
       iframes.forEach(iframe => {
@@ -80,23 +77,6 @@ export default function AdManager() {
 
             // Inject the third Ad
             injectScript('11486028', 'https://al5sm.com/tag.min.js');
-
-            // Inject AMP Auto Ads script
-            if (!document.querySelector('script[src="https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js"]')) {
-              const ampScript = document.createElement('script');
-              ampScript.async = true;
-              ampScript.setAttribute('custom-element', 'amp-auto-ads');
-              ampScript.src = 'https://cdn.ampproject.org/v0/amp-auto-ads-0.1.js';
-              document.head.appendChild(ampScript);
-            }
-
-            // Inject AMP Auto Ads Tag
-            if (!document.querySelector('amp-auto-ads')) {
-              const ampTag = document.createElement('amp-auto-ads');
-              ampTag.setAttribute('type', 'adsense');
-              ampTag.setAttribute('data-ad-client', 'ca-pub-8616442521163368');
-              document.body.insertBefore(ampTag, document.body.firstChild);
-            }
         }
       }, 120000); // 120000 ms = 2 minutes
     }
