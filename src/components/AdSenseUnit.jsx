@@ -12,10 +12,10 @@ export default function AdSenseUnit() {
   }, []);
 
   return (
-    <div className="w-full my-8 flex justify-center overflow-hidden">
+    <div className="w-full my-4 sm:my-8 flex justify-center overflow-hidden min-h-[50px] max-h-[280px]">
       {/* pub */}
       <ins className="adsbygoogle"
-           style={{ display: 'block', width: '100%' }}
+           style={{ display: 'block', width: '100%', maxHeight: '280px' }}
            data-ad-client="ca-pub-8616442521163368"
            data-ad-slot="2089306393"
            data-ad-format="auto"
