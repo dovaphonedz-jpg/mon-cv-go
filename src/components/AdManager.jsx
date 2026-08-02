@@ -75,13 +75,13 @@ export default function AdManager() {
     }
 
     const timeElapsed = Date.now() - window.firstVisitTime;
-    const delayRequired = 120000; // 2 minutes
+    const delayRequired = 60000; // 1 minute (60000 ms)
 
     if (timeElapsed >= delayRequired) {
-        // 2 minutes have already passed! Inject immediately.
+        // 1 minute has already passed! Inject immediately.
         injectAds();
     } else {
-        // Less than 2 minutes have passed. Set a timeout for the remaining time!
+        // Less than 1 minute has passed. Set a timeout for the remaining time!
         if (window.adTimeoutId) clearTimeout(window.adTimeoutId);
 
         const remainingTime = delayRequired - timeElapsed;
