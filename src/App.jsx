@@ -2,6 +2,7 @@ import React from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import CookieConsent from './components/CookieConsent';
+import AdManager from './components/AdManager';
 import Home from './pages/Home';
 import CreateCV from './pages/CreateCV';
 import CreatePortfolio from './pages/CreatePortfolio';
@@ -18,6 +19,7 @@ function App() {
   return (
     <Router>
       <Layout>
+          <AdManager />
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/create" element={<CreateCV />} />
