@@ -11,27 +11,29 @@ export default function AdManager() {
     const isNoAdsPage = noAdsPaths.some(path => location.pathname.startsWith(path));
 
     if (isNoAdsPage) {
-      // 1. Remove any known ad script tags
+      // If ads were injected in this session, the only way to truly kill 
+      // their global event listeners (popunders) is a hard reload.
+      if (window.adsInjectedThisSession && !sessionStorage.getItem('reloadedForAds')) {
+        sessionStorage.setItem('reloadedForAds', 'true');
+        window.location.reload();
+        return;
+      }
+      
+      // If we already reloaded, or ads were never injected, we just clean the DOM
+      // (in case they got here directly)
       const adScripts = document.querySelectorAll('script[src*="al5sm.com"], script[src*="n6wxm.com"], script[src*="nap5k.com"], script[src*="ampproject.org"]');
       adScripts.forEach(script => script.remove());
       
-      // 2. Remove AMP Auto Ads elements
       const ampTags = document.querySelectorAll('amp-auto-ads, amp-ad');
       ampTags.forEach(tag => tag.remove());
 
-      // 3. Remove suspicious iframes injected by popunder networks
       const iframes = document.querySelectorAll('iframe');
       iframes.forEach(iframe => {
-        // If it doesn't have an id or a specific source we trust, it might be an ad
         if (!iframe.src || iframe.src.includes('about:blank') || !iframe.id) {
-           // We have to be careful not to delete react devtools or something, 
-           // but ad iframes often have generic or no ids
            iframe.style.display = 'none';
         }
       });
 
-      // 4. Force hide any rogue elements appended to body by these networks
-      // Usually they have very high z-index and fixed position
       const allDivs = document.body.querySelectorAll('div');
       allDivs.forEach(div => {
          const zIndex = window.getComputedStyle(div).zIndex;
@@ -42,6 +44,9 @@ export default function AdManager() {
 
       return;
     }
+
+    // If we are on an allowed page, clear the reload flag so we can reload again later if needed
+    sessionStorage.removeItem('reloadedForAds');
 
     // Function to safely inject a script if it doesn't already exist
     const injectScript = (zone, src) => {
@@ -57,14 +62,16 @@ export default function AdManager() {
       }
     };
 
-    // We wrap ALL ad injections in a 120 seconds (2 minutes) delay
+    // Inject Delayed Ads (120 seconds)
     if (!window.adDelayedTimerSet) {
       window.adDelayedTimerSet = true;
       setTimeout(() => {
-        // Double check we are still not on a blocked page when the timer fires
         const isStillNoAdsPage = noAdsPaths.some(path => window.location.pathname.startsWith(path));
         
         if (!isStillNoAdsPage) {
+            // MARK ADS AS INJECTED SO WE CAN RELOAD LATER IF NEEDED
+            window.adsInjectedThisSession = true;
+
             // Inject Vignette Ad
             injectScript('11467569', 'https://n6wxm.com/vignette.min.js');
 
