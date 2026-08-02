@@ -356,14 +356,14 @@
   },
   "about": {
     "testimonials_title": "Ce qu'ils disent de nous",
-    "test_1_name": "Julien M.",
-    "test_1_role": "Développeur Front-End",
-    "test_1_text": "J'avais un mal fou à passer l'étape des filtres ATS avec mon ancien CV fait sur Word. Après avoir utilisé le modèle moderne de Mon CV Go, j'ai décroché 3 entretiens en deux semaines. Le design épuré et la structure ont fait toute la différence !",
-    "test_2_name": "Sarah K.",
-    "test_2_role": "Responsable Marketing",
-    "test_2_text": "L'outil est incroyablement simple à utiliser. J'ai particulièrement apprécié les conseils intégrés qui m'ont aidé à reformuler mes expériences en véritables accomplissements chiffrés. Mon portfolio a également impressionné les recruteurs.",
-    "test_3_name": "Amine B.",
-    "test_3_role": "Jeune Diplômé en Finance",
-    "test_3_text": "En tant que junior, c'est difficile de se démarquer. Mon CV Go m'a permis de mettre en valeur mes projets étudiants et mes soft skills de manière ultra-professionnelle. Je recommande à 100% à tous les étudiants en recherche de stage ou de premier emploi."
+    "test_1_name": "Sophie L.",
+    "test_1_role": "Responsable Marketing",
+    "test_1_text": "Grâce à MonCVGo, j'ai refait mon CV en 5 minutes. J'ai décroché 3 entretiens la même semaine !",
+    "test_2_name": "Marc D.",
+    "test_2_role": "Ingénieur Logiciel",
+    "test_2_text": "Le format ATS est redoutable. Mon CV passe enfin les filtres automatiques des grandes entreprises tech.",
+    "test_3_name": "Amira K.",
+    "test_3_role": "Architecte Junior",
+    "test_3_text": "Les modèles sont modernes et le design neo-brutaliste m'a permis de me démarquer immédiatement."
   }
 }

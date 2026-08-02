@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Sparkles, Code2, Heart, ShieldCheck, Zap, Users, MessageSquare } from 'lucide-react';
+import { Sparkles, Code2, Heart, ShieldCheck, Zap, Users, MessageSquare, Star } from 'lucide-react';
 import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
 
@@ -137,7 +137,11 @@ export default function About() {
           </div>
         </div>
         <div className="grid md:grid-cols-3 gap-8">
-          {[1, 2, 3].map((num) => (
+          {[
+            { num: 1, img: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?q=80&w=200&auto=format&fit=crop" },
+            { num: 2, img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?q=80&w=200&auto=format&fit=crop" },
+            { num: 3, img: "https://images.unsplash.com/photo-1438761681033-6461ffad8d80?q=80&w=200&auto=format&fit=crop" }
+          ].map(({num, img}) => (
             <motion.div 
               key={num}
               variants={itemVariants}
@@ -149,13 +153,17 @@ export default function About() {
               }`}
             >
               <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 flex items-center justify-center font-black text-xl uppercase brutal-border">
-                  {t(`about.test_${num}_name`).charAt(0)}
+                <div className="w-12 h-12 rounded-full overflow-hidden brutal-border flex-shrink-0">
+                  <img src={img} alt={t(`about.test_${num}_name`)} className="w-full h-full object-cover" />
                 </div>
                 <div>
                   <h4 className="font-black text-slate-900 dark:text-white uppercase tracking-tight">{t(`about.test_${num}_name`)}</h4>
                   <p className="text-xs font-bold text-slate-500 uppercase tracking-widest mb-1">{t(`about.test_${num}_role`)}</p>
-                  <div className="text-yellow-400 text-sm tracking-widest">⭐⭐⭐⭐⭐</div>
+                  <div className="flex gap-1 text-yellow-400 mt-1">
+                    {[...Array(5)].map((_, i) => (
+                      <Star key={i} className="w-4 h-4 fill-current" />
+                    ))}
+                  </div>
                 </div>
               </div>
               <p className="text-slate-700 dark:text-slate-300 font-medium leading-relaxed italic">
