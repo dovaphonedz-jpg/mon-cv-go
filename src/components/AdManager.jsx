@@ -31,26 +31,24 @@ export default function AdManager() {
       }
     };
 
-    // Inject Vignette Ad
-    injectScript('11467569', 'https://n6wxm.com/vignette.min.js');
-
-    // Inject Interstitial/Pop Ad
-    injectScript('11463164', 'https://nap5k.com/tag.min.js');
-
-    // Inject Delayed Ad (120 seconds)
-    // We check if we already scheduled it so we don't schedule multiple times
-    if (!window.adDelayedTimerSet && !document.querySelector('script[src="https://al5sm.com/tag.min.js"]')) {
+    // We wrap ALL ad injections in a 120 seconds (2 minutes) delay
+    if (!window.adDelayedTimerSet) {
       window.adDelayedTimerSet = true;
       setTimeout(() => {
         // Double check we are still not on a blocked page when the timer fires
         const isStillNoAdsPage = noAdsPaths.some(path => window.location.pathname.startsWith(path));
-        if (!isStillNoAdsPage && !document.querySelector('script[src="https://al5sm.com/tag.min.js"]')) {
-            const s = document.createElement('script');
-            s.dataset.zone = '11486028';
-            s.src = 'https://al5sm.com/tag.min.js';
-            document.body.appendChild(s);
+        
+        if (!isStillNoAdsPage) {
+            // Inject Vignette Ad
+            injectScript('11467569', 'https://n6wxm.com/vignette.min.js');
+
+            // Inject Interstitial/Pop Ad
+            injectScript('11463164', 'https://nap5k.com/tag.min.js');
+
+            // Inject the third Ad
+            injectScript('11486028', 'https://al5sm.com/tag.min.js');
         }
-      }, 120000);
+      }, 120000); // 120000 ms = 2 minutes
     }
 
   }, [location.pathname]);
