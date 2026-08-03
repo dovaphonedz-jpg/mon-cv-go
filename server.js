@@ -213,6 +213,17 @@ app.post('/api/contact', async (req, res) => {
 // Serve static frontend files in production
 app.use(express.static(path.join(__dirname, 'dist')));
 
+// Explicitly serve SEO files to ensure correct Content-Type and avoid SPA fallback
+app.get('/sitemap.xml', (req, res) => {
+  res.set('Content-Type', 'application/xml');
+  res.sendFile(path.join(__dirname, 'dist', 'sitemap.xml'));
+});
+
+app.get('/robots.txt', (req, res) => {
+  res.set('Content-Type', 'text/plain');
+  res.sendFile(path.join(__dirname, 'dist', 'robots.txt'));
+});
+
 // Fallback for React Router (Single Page Application)
 app.get(/(.*)/, (req, res) => {
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));

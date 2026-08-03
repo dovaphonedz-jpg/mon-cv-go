@@ -2,81 +2,81 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <!-- Pages Principales -->
   <url>
-    <loc>https://www.moncvgo.com/</loc>
+    <loc>https://moncvgo.com/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
   </url>
   <url>
-    <loc>https://www.moncvgo.com/create</loc>
+    <loc>https://moncvgo.com/create</loc>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
   </url>
   <url>
-    <loc>https://www.moncvgo.com/portfolio</loc>
+    <loc>https://moncvgo.com/portfolio</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.moncvgo.com/lettre-motivation</loc>
+    <loc>https://moncvgo.com/lettre-motivation</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.moncvgo.com/conseils-cv</loc>
+    <loc>https://moncvgo.com/conseils-cv</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
   </url>
   <url>
-    <loc>https://www.moncvgo.com/blog</loc>
+    <loc>https://moncvgo.com/blog</loc>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
   </url>
 
   <!-- Pages Modèles (SEO) -->
   <url>
-    <loc>https://www.moncvgo.com/modele-cv-comptable-word</loc>
+    <loc>https://moncvgo.com/modele-cv-comptable-word</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.moncvgo.com/modele-cv-ingenieur</loc>
+    <loc>https://moncvgo.com/modele-cv-ingenieur</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.moncvgo.com/modele-cv-debutant</loc>
+    <loc>https://moncvgo.com/modele-cv-debutant</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.moncvgo.com/modele-cv-etudiant</loc>
+    <loc>https://moncvgo.com/modele-cv-etudiant</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
   <url>
-    <loc>https://www.moncvgo.com/modele-cv-commercial</loc>
+    <loc>https://moncvgo.com/modele-cv-commercial</loc>
     <changefreq>monthly</changefreq>
     <priority>0.7</priority>
   </url>
 
   <!-- Pages Annexes -->
   <url>
-    <loc>https://www.moncvgo.com/a-propos</loc>
+    <loc>https://moncvgo.com/a-propos</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.moncvgo.com/contact</loc>
+    <loc>https://moncvgo.com/contact</loc>
     <changefreq>yearly</changefreq>
     <priority>0.5</priority>
   </url>
   <url>
-    <loc>https://www.moncvgo.com/mentions-legales</loc>
+    <loc>https://moncvgo.com/mentions-legales</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
   <url>
-    <loc>https://www.moncvgo.com/confidentialite</loc>
+    <loc>https://moncvgo.com/confidentialite</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
   </url>
