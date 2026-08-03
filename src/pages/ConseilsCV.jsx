@@ -3,6 +3,7 @@ import { motion } from 'framer-motion';
 import { BookOpen, CheckCircle, AlertTriangle, Target, Search, Edit3, Zap, Briefcase, Award } from 'lucide-react';
 import SEO from '../components/SEO';
 import AdSenseUnit from '../components/AdSenseUnit';
+import SocialShare from '../components/SocialShare';
 import { useTranslation } from 'react-i18next';
 
 export default function ConseilsCV() {
@@ -322,6 +323,12 @@ export default function ConseilsCV() {
             </motion.div>
           ))}
         </motion.div>
+
+        {/* Share Section */}
+        <div className="mt-12 bg-white dark:bg-slate-900 p-8 brutal-border brutal-shadow flex flex-col items-center justify-center text-center">
+          <h3 className="text-2xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-6">Partagez ce guide avec votre réseau</h3>
+          <SocialShare url="https://www.moncvgo.com/conseils-cv" title={t.seoTitle} />
+        </div>
 
         {/* Glossary Section */}
         <motion.div 

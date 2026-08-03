@@ -14,6 +14,7 @@ import Legal from './pages/Legal';
 import Privacy from './pages/Privacy';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
+import ModelePage from './pages/ModelePage';
 
 function App() {
   return (
@@ -32,6 +33,11 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/mentions-legales" element={<Legal />} />
             <Route path="/confidentialite" element={<Privacy />} />
+            <Route path="/modele-cv-comptable-word" element={<ModelePage />} />
+            <Route path="/modele-cv-ingenieur" element={<ModelePage />} />
+            <Route path="/modele-cv-debutant" element={<ModelePage />} />
+            <Route path="/modele-cv-etudiant" element={<ModelePage />} />
+            <Route path="/modele-cv-commercial" element={<ModelePage />} />
           </Routes>
         <CookieConsent />
       </Layout>
