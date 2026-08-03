@@ -268,7 +268,7 @@ export default function ConseilsCV() {
 
       <AdSenseUnit />
 
-      <section className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
+      <section className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
         <motion.div 
           variants={containerVariants}
           initial="hidden"
@@ -282,37 +282,37 @@ export default function ConseilsCV() {
               className={`bg-white dark:bg-slate-900 p-6 sm:p-8 brutal-border brutal-shadow-lg transition-smooth brutal-hover ${idx % 2 === 0 ? 'transform rotate-1' : 'transform -rotate-1'}`}
             >
               <div className="flex flex-col sm:flex-row gap-6 items-start">
-                <div className={`w-16 h-16 shrink-0 flex items-center justify-center brutal-border brutal-shadow transform -rotate-3 ${idx % 3 === 0 ? 'bg-pink-400' : idx % 3 === 1 ? 'bg-yellow-400' : 'bg-cyan-400'}`}>
-                  {React.cloneElement(icons[idx % icons.length], { className: "w-8 h-8 text-slate-900", strokeWidth: 2.5 })}
+                <div className={`w-16 h-16 sm:w-20 sm:h-20 shrink-0 flex items-center justify-center brutal-border brutal-shadow transform -rotate-3 ${idx % 3 === 0 ? 'bg-rose-200' : idx % 3 === 1 ? 'bg-amber-200' : 'bg-sky-200'}`}>
+                  {React.cloneElement(icons[idx % icons.length], { className: "w-8 h-8 sm:w-10 sm:h-10 text-slate-900", strokeWidth: 2.5 })}
                 </div>
                 <div className="flex-grow">
-                  <h2 className="text-2xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-3">{section.title}</h2>
-                  <p className="text-slate-700 dark:text-slate-300 font-bold leading-relaxed mb-6">
+                  <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-4">{section.title}</h2>
+                  <p className="text-lg sm:text-xl text-slate-700 dark:text-slate-300 font-medium leading-loose mb-8">
                     {section.content}
                   </p>
                   
-                  <div className="grid sm:grid-cols-2 gap-6 mt-4">
-                    <div className="bg-cyan-400 brutal-border p-5 text-slate-900 transform rotate-1">
-                      <h3 className="font-black uppercase tracking-widest text-slate-900 mb-3 flex items-center gap-2">
-                        <CheckCircle className="w-5 h-5" strokeWidth={3} /> {t.do}
+                  <div className="grid sm:grid-cols-2 gap-6 mt-6">
+                    <div className="bg-sky-100 dark:bg-sky-900/40 brutal-border p-6 text-slate-900 dark:text-white transform rotate-1">
+                      <h3 className="text-lg sm:text-xl font-black uppercase tracking-widest mb-4 flex items-center gap-2 text-sky-700 dark:text-sky-300">
+                        <CheckCircle className="w-6 h-6" strokeWidth={3} /> {t.do}
                       </h3>
-                      <ul className="space-y-3">
+                      <ul className="space-y-4">
                         {section.dos.map((item, i) => (
-                          <li key={i} className="text-sm font-bold flex items-start gap-2">
-                            <span className="w-2 h-2 brutal-border bg-white mt-1.5 shrink-0"></span> {item}
+                          <li key={i} className="text-base sm:text-lg font-medium flex items-start gap-3 leading-relaxed">
+                            <span className="w-2 h-2 brutal-border bg-sky-500 mt-2 shrink-0"></span> {item}
                           </li>
                         ))}
                       </ul>
                     </div>
 
-                    <div className="bg-pink-400 brutal-border p-5 text-slate-900 transform -rotate-1">
-                      <h3 className="font-black uppercase tracking-widest text-slate-900 mb-3 flex items-center gap-2">
-                        <AlertTriangle className="w-5 h-5" strokeWidth={3} /> {t.dont}
+                    <div className="bg-rose-100 dark:bg-rose-900/40 brutal-border p-6 text-slate-900 dark:text-white transform -rotate-1">
+                      <h3 className="text-lg sm:text-xl font-black uppercase tracking-widest mb-4 flex items-center gap-2 text-rose-700 dark:text-rose-300">
+                        <AlertTriangle className="w-6 h-6" strokeWidth={3} /> {t.dont}
                       </h3>
-                      <ul className="space-y-3">
+                      <ul className="space-y-4">
                         {section.donts.map((item, i) => (
-                          <li key={i} className="text-sm font-bold flex items-start gap-2">
-                            <span className="w-2 h-2 brutal-border bg-white mt-1.5 shrink-0"></span> {item}
+                          <li key={i} className="text-base sm:text-lg font-medium flex items-start gap-3 leading-relaxed">
+                            <span className="w-2 h-2 brutal-border bg-rose-500 mt-2 shrink-0"></span> {item}
                           </li>
                         ))}
                       </ul>
