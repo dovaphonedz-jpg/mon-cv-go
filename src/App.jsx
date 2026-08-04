@@ -15,6 +15,7 @@ import Privacy from './pages/Privacy';
 import Blog from './pages/Blog';
 import BlogPost from './pages/BlogPost';
 import ModelePage from './pages/ModelePage';
+import JobSpace from './pages/JobSpace';
 
 function App() {
   return (
@@ -38,6 +39,7 @@ function App() {
             <Route path="/modele-cv-debutant" element={<ModelePage />} />
             <Route path="/modele-cv-etudiant" element={<ModelePage />} />
             <Route path="/modele-cv-commercial" element={<ModelePage />} />
+            <Route path="/espace-emploi" element={<JobSpace />} />
           </Routes>
         <CookieConsent />
       </Layout>

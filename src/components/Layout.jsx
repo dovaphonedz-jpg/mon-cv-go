@@ -49,6 +49,7 @@ export default function Layout({ children }) {
               { path: '/portfolio', label: t('nav.create_portfolio') },
               { path: '/lettre-motivation', label: t('nav.cover_letter') },
               { path: '/conseils-cv', label: t('nav.cv_tips') },
+              { path: '/espace-emploi', label: '💼 Espace Emploi' },
               { path: '/blog', label: 'Blog' },
               { path: '/a-propos', label: t('nav.about') },
               { path: '/contact', label: t('nav.contact') },
