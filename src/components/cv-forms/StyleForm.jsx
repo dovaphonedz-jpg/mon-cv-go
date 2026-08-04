@@ -193,15 +193,15 @@ export default function StyleForm() {
           
           {/* Fenêtre volante d'aperçu détaillé au survol d'une option */}
           {hoveredTemplate && isDropdownOpen && (
-            <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm pointer-events-none md:absolute md:inset-auto md:bg-transparent md:backdrop-blur-none md:top-0 md:right-full md:mr-4 md:z-[60] md:pointer-events-none">
-              <div className="w-[280px] h-[400px] md:w-[240px] md:h-[340px] flex flex-col bg-white dark:bg-slate-800 border-2 border-blue-500 rounded-xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200 pointer-events-none">
+            <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm pointer-events-none md:inset-auto md:bottom-6 md:left-6 md:bg-transparent md:backdrop-blur-none md:z-[100]">
+              <div className="w-[280px] h-[400px] md:w-[300px] md:h-[420px] flex flex-col bg-white dark:bg-slate-800 border-2 border-blue-500 rounded-xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200 pointer-events-none">
               <div className="bg-blue-500 text-white text-xs font-bold px-3 py-2 text-center z-10 shrink-0">
                 Aperçu : {hoveredTemplate.name}
               </div>
               <div className="flex-grow bg-slate-50 dark:bg-slate-900 flex items-center justify-center relative overflow-hidden">
                   <div 
                     className="absolute top-0 left-0 bg-white origin-top-left hidden md:block"
-                    style={{ width: '794px', height: '1123px', transform: 'scale(0.30)' }}
+                    style={{ width: '794px', height: '1123px', transform: 'scale(0.35)' }}
                   >
                     <TemplateModern cvData={demoData[config.cvLang || 'fr']} config={{...config, template: hoveredTemplate.id}} />
                   </div>

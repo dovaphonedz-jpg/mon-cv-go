@@ -47,7 +47,15 @@ export default function ExperienceForm() {
   };
 
   return (
-    <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
+    <div 
+      className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-300"
+      onFocus={() => setFocusedSection && setFocusedSection('experience')}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          setFocusedSection && setFocusedSection(null);
+        }
+      }}
+    >
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">Expériences Professionnelles</h3>
         <button 
@@ -60,7 +68,7 @@ export default function ExperienceForm() {
 
       {experiences.length === 0 ? (
         <div className="text-center p-8 bg-slate-50 dark:bg-slate-800/50 rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-700">
-          <p className="text-sm text-slate-500 dark:text-slate-400 mb-2">Aucune expérience ajoutée.</p>
+          <p className="text-base text-slate-700 dark:text-slate-300 mb-2">Aucune expérience ajoutée.</p>
           <button onClick={handleAdd} className="text-sm text-blue-500 font-semibold hover:underline">
             Commencez par ajouter votre poste actuel
           </button>
@@ -78,7 +86,7 @@ export default function ExperienceForm() {
                   <h4 className="font-bold text-slate-800 dark:text-slate-100 text-sm">
                     {exp.role || '(Nouveau poste)'}
                   </h4>
-                  <p className="text-xs text-slate-500">{exp.company || 'Entreprise'}</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">{exp.company || 'Entreprise'}</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <button 
@@ -95,48 +103,48 @@ export default function ExperienceForm() {
               {expandedIndex === index && (
                 <div className="p-4 border-t border-slate-100 dark:border-slate-800 grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-500 mb-1">Poste / Titre</label>
+                    <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">Poste / Titre</label>
                     <input 
                       type="text" 
                       value={exp.role || ''} 
                       onChange={(e) => handleChange(index, 'role', e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none" 
+                      className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-base focus:ring-2 focus:ring-blue-500 outline-none" 
                       placeholder="Ex: Chef de Projet"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-500 mb-1">Entreprise</label>
+                    <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">Entreprise</label>
                     <input 
                       type="text" 
                       value={exp.company || ''} 
                       onChange={(e) => handleChange(index, 'company', e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none" 
+                      className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-base focus:ring-2 focus:ring-blue-500 outline-none" 
                       placeholder="Ex: Microsoft"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-500 mb-1">{t('forms.experience.start_date')}</label>
+                    <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">{t('forms.experience.start_date')}</label>
                     <input 
                       type="text" 
                       value={exp.start || ''} 
                       onChange={(e) => handleChange(index, 'start', e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none" 
+                      className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-base focus:ring-2 focus:ring-blue-500 outline-none" 
                       placeholder="Ex: Janv 2020"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-500 mb-1">{t('forms.experience.end_date')}</label>
+                    <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">{t('forms.experience.end_date')}</label>
                     <input 
                       type="text" 
                       value={exp.end || ''} 
                       onChange={(e) => handleChange(index, 'end', e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none" 
+                      className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-base focus:ring-2 focus:ring-blue-500 outline-none" 
                       placeholder="Ex: Présent"
                     />
                   </div>
                   <div className="sm:col-span-2">
                     <div className="flex justify-between items-center mb-1">
-                      <label className="block text-xs font-semibold text-slate-500">{t('forms.experience.description')}</label>
+                      <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300">{t('forms.experience.description')}</label>
                       <button 
                         onClick={() => generateExperience(index, exp)}
                         disabled={generatingIndex === index}
@@ -149,7 +157,7 @@ export default function ExperienceForm() {
                     <textarea 
                       value={exp.desc || ''} 
                       onChange={(e) => handleChange(index, 'desc', e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-blue-500 outline-none min-h-[100px]" 
+                      className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-base focus:ring-2 focus:ring-blue-500 outline-none min-h-[100px]" 
                       placeholder="Décrivez vos réalisations, missions, et chiffres clés..."
                     ></textarea>
                   </div>

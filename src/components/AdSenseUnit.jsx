@@ -7,7 +7,9 @@ export default function AdSenseUnit() {
         (window.adsbygoogle = window.adsbygoogle || []).push({});
       }
     } catch (e) {
-      console.error('AdSense push error', e);
+      if (!e.message?.includes("already have ads")) {
+        console.error('AdSense push error', e);
+      }
     }
   }, []);
 

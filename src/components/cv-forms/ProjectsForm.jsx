@@ -8,7 +8,7 @@ import { compressImage } from '../../utils/imageCompressor';
 
 export default function ProjectsForm() {
   const { t } = useTranslation();
-  const { cvData, addProject, updateProject, removeProject } = useResume();
+  const { cvData, addProject, updateProject, removeProject, setFocusedSection } = useResume();
   const [newProject, setNewProject] = useState({ title: '', techStack: '', link: '', description: '', image: '' });
   const [isAdding, setIsAdding] = useState(false);
 
@@ -33,7 +33,15 @@ export default function ProjectsForm() {
   };
 
   return (
-    <div className="space-y-6">
+    <div 
+      className="space-y-6"
+      onFocus={() => setFocusedSection && setFocusedSection('projects')}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          setFocusedSection && setFocusedSection(null);
+        }
+      }}
+    >
       <div className="flex items-center justify-between mb-4">
         <h3 className="text-xl font-bold text-slate-800 dark:text-white flex items-center gap-2">
           <Briefcase className="w-6 h-6 text-indigo-500" />
@@ -63,7 +71,7 @@ export default function ProjectsForm() {
                     type="text"
                     value={newProject.title}
                     onChange={(e) => setNewProject({ ...newProject, title: e.target.value })}
-                    className="w-full px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white"
+                    className="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-base focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white"
                     placeholder={t('forms.projects.name_ph')}
                   />
                 </div>
@@ -73,7 +81,7 @@ export default function ProjectsForm() {
                     type="text"
                     value={newProject.link}
                     onChange={(e) => setNewProject({ ...newProject, link: e.target.value })}
-                    className="w-full px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white"
+                    className="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-base focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white"
                     placeholder="Ex: github.com/mon-projet"
                   />
                 </div>
@@ -88,9 +96,9 @@ export default function ProjectsForm() {
                       <button onClick={() => setNewProject({ ...newProject, image: '' })} className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-1 w-6 h-6 flex items-center justify-center text-xs shadow-md hover:bg-red-600 transition-colors">✕</button>
                     </div>
                   ) : (
-                    <label className="flex items-center justify-center w-24 h-24 bg-slate-100 dark:bg-slate-900 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-lg cursor-pointer hover:bg-slate-200 transition-colors">
+                    <label htmlFor="project-image-new" aria-label="Upload project image" className="flex items-center justify-center w-24 h-24 bg-slate-100 dark:bg-slate-900 border-2 border-dashed border-slate-300 dark:border-slate-700 rounded-lg cursor-pointer hover:bg-slate-200 transition-colors">
                       <span className="text-2xl text-slate-400">+</span>
-                      <input type="file" className="hidden" accept="image/*" onChange={handleImageUpload} />
+                      <input id="project-image-new" name="project-image-new" type="file" className="hidden" accept="image/*" onChange={handleImageUpload} />
                     </label>
                   )}
                   <p className="text-xs text-slate-500">Formats supportés: JPG, PNG, GIF.<br/>Taille recommandée: - de 2Mo.</p>
@@ -103,7 +111,7 @@ export default function ProjectsForm() {
                   type="text"
                   value={newProject.techStack}
                   onChange={(e) => setNewProject({ ...newProject, techStack: e.target.value })}
-                  className="w-full px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white"
+                  className="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-base focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all dark:text-white"
                   placeholder="Ex: React, Node.js, MongoDB"
                 />
               </div>
@@ -113,7 +121,7 @@ export default function ProjectsForm() {
                 <textarea
                   value={newProject.description}
                   onChange={(e) => setNewProject({ ...newProject, description: e.target.value })}
-                  className="w-full px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all resize-none h-24 dark:text-white"
+                  className="w-full px-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-base focus:ring-2 focus:ring-indigo-500 focus:border-transparent outline-none transition-all resize-none h-28 dark:text-white"
                   placeholder="Décrivez votre rôle et ce que fait le projet..."
                 />
               </div>
@@ -157,9 +165,9 @@ export default function ProjectsForm() {
                     <button onClick={() => updateProject(index, { ...project, image: '' })} className="absolute top-1 right-1 bg-red-500 text-white rounded-full p-0.5 w-5 h-5 flex items-center justify-center text-[10px] shadow-md hover:bg-red-600 transition-colors">✕</button>
                   </div>
                 ) : (
-                  <label className="flex items-center justify-center w-20 h-20 bg-slate-50 dark:bg-slate-900 border border-dashed border-slate-300 dark:border-slate-700 rounded-lg cursor-pointer hover:bg-slate-100 transition-colors text-slate-400 text-xs text-center p-1">
+                  <label htmlFor={`project-image-${index}`} aria-label="Update project image" className="flex items-center justify-center w-20 h-20 bg-slate-50 dark:bg-slate-900 border border-dashed border-slate-300 dark:border-slate-700 rounded-lg cursor-pointer hover:bg-slate-100 transition-colors text-slate-400 text-xs text-center p-1">
                     <span>+ Img</span>
-                    <input type="file" className="hidden" accept="image/*" onChange={async (e) => {
+                    <input id={`project-image-${index}`} name={`project-image-${index}`} type="file" className="hidden" accept="image/*" onChange={async (e) => {
                       const file = e.target.files[0];
                       if (file) {
                         try {
@@ -187,7 +195,7 @@ export default function ProjectsForm() {
                   type="text"
                   value={project.techStack || ''}
                   onChange={(e) => updateProject(index, { ...project, techStack: e.target.value })}
-                  className="text-sm text-slate-500 dark:text-slate-400 bg-transparent outline-none w-full border-b border-transparent focus:border-indigo-300 dark:focus:border-indigo-600"
+                  className="text-base text-slate-600 dark:text-slate-300 bg-transparent outline-none w-full border-b border-transparent focus:border-indigo-300 dark:focus:border-indigo-600"
                   placeholder="Technologies"
                 />
               </div>
@@ -196,7 +204,7 @@ export default function ProjectsForm() {
                   type="text"
                   value={project.link || ''}
                   onChange={(e) => updateProject(index, { ...project, link: e.target.value })}
-                  className="text-sm text-indigo-500 bg-transparent outline-none w-full border-b border-transparent focus:border-indigo-300 dark:focus:border-indigo-600"
+                  className="text-base text-indigo-600 bg-transparent outline-none w-full border-b border-transparent focus:border-indigo-300 dark:focus:border-indigo-600"
                   placeholder="Lien (URL)"
                 />
               </div>
@@ -205,7 +213,7 @@ export default function ProjectsForm() {
             <textarea
               value={project.description || ''}
               onChange={(e) => updateProject(index, { ...project, description: e.target.value })}
-              className="mt-3 text-sm text-slate-600 dark:text-slate-300 bg-transparent outline-none w-full border border-transparent focus:border-indigo-300 dark:focus:border-indigo-600 rounded-lg focus:p-2 transition-all resize-none h-20"
+              className="mt-3 text-base text-slate-700 dark:text-slate-200 bg-transparent outline-none w-full border border-transparent focus:border-indigo-300 dark:focus:border-indigo-600 rounded-lg focus:p-2 transition-all resize-none h-24"
               placeholder="Description..."
             />
           </motion.div>
@@ -213,7 +221,7 @@ export default function ProjectsForm() {
         
         {(!cvData.projects || cvData.projects.length === 0) && !isAdding && (
           <div className="text-center py-10 bg-slate-50 dark:bg-slate-800/50 rounded-2xl border-2 border-dashed border-slate-200 dark:border-slate-700">
-            <p className="text-slate-500 dark:text-slate-400 text-sm">
+            <p className="text-slate-700 dark:text-slate-300 text-base">
               Aucun projet ajouté. Présentez vos meilleures réalisations !
             </p>
           </div>

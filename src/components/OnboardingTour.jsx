@@ -3,11 +3,13 @@ import { Joyride, STATUS } from 'react-joyride';
 import { useTranslation } from 'react-i18next';
 
 const CustomBeacon = React.forwardRef((props, ref) => {
+  // Destructure non-DOM props to prevent React warnings
+  const { continuous, index, isLastStep, step, ...domProps } = props;
   return (
-    <button
+    <span
       ref={ref}
-      {...props}
-      className="relative flex items-center justify-center w-10 h-10 bg-yellow-400 text-slate-900 border-[3px] border-slate-900 shadow-[2px_2px_0px_rgba(15,23,42,1)] rounded-md hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_rgba(15,23,42,1)] transition-all animate-bounce"
+      {...domProps}
+      className="relative flex items-center justify-center w-10 h-10 bg-yellow-400 text-slate-900 border-[3px] border-slate-900 shadow-[2px_2px_0px_rgba(15,23,42,1)] rounded-md hover:-translate-y-0.5 hover:shadow-[4px_4px_0px_rgba(15,23,42,1)] transition-all animate-bounce cursor-pointer"
       title="Ouvrir l'astuce"
     >
       <span className="font-black text-sm -rotate-6 tracking-tighter mt-0.5">GO</span>
@@ -15,7 +17,7 @@ const CustomBeacon = React.forwardRef((props, ref) => {
         <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-pink-400 opacity-75"></span>
         <span className="relative inline-flex rounded-full h-3 w-3 bg-pink-500 border-2 border-slate-900"></span>
       </span>
-    </button>
+    </span>
   );
 });
 

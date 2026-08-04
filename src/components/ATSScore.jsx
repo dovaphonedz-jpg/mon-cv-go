@@ -85,41 +85,41 @@ export default function ATSScore() {
   }
 
   return (
-    <div className={`rounded-2xl p-5 border ${bgClass} ${borderClass} transition-colors duration-300`}>
-      <div className="flex items-center justify-between mb-4">
+    <div className={`rounded-xl p-3 sm:p-4 border ${bgClass} ${borderClass} transition-colors duration-300`}>
+      <div className="flex items-center justify-between mb-2">
         <div>
-          <h3 className="text-sm font-extrabold text-slate-800 dark:text-slate-100 uppercase tracking-wider flex items-center gap-2">
+          <h3 className="text-xs font-extrabold text-slate-800 dark:text-slate-100 uppercase tracking-wider flex items-center gap-1.5">
             {t('ats.title')}
             <span className="group relative inline-block cursor-help">
-              <Info className="w-4 h-4 text-slate-400" />
-              <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-48 bg-slate-800 text-white text-xs p-2 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-10">
+              <Info className="w-3.5 h-3.5 text-slate-400" />
+              <span className="absolute bottom-full mb-2 left-1/2 -translate-x-1/2 w-48 bg-slate-800 text-white text-[10px] p-2 rounded opacity-0 group-hover:opacity-100 pointer-events-none transition-opacity z-10">
                 {t('ats.tooltip')}
               </span>
             </span>
           </h3>
         </div>
-        <div className={`text-3xl font-black ${colorClass}`}>
-          {score}<span className="text-lg opacity-50">/100</span>
+        <div className={`text-xl sm:text-2xl font-black ${colorClass}`}>
+          {score}<span className="text-sm opacity-50">/100</span>
         </div>
       </div>
 
-      <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-2.5 mb-4 overflow-hidden">
+      <div className="w-full bg-slate-200 dark:bg-slate-700 rounded-full h-1.5 mb-2 overflow-hidden">
         <div 
-          className={`h-2.5 rounded-full ${progressColor} transition-all duration-1000 ease-out`} 
+          className={`h-1.5 rounded-full ${progressColor} transition-all duration-1000 ease-out`} 
           style={{ width: `${score}%` }}
         ></div>
       </div>
 
-      <div className="space-y-2">
+      <div className="space-y-1">
         {score === 100 ? (
-          <p className="text-xs font-semibold text-emerald-600 dark:text-emerald-400 flex items-start gap-1.5">
-            <CheckCircle2 className="w-4 h-4 shrink-0" />
+          <p className="text-[10px] sm:text-xs font-semibold text-emerald-600 dark:text-emerald-400 flex items-start gap-1">
+            <CheckCircle2 className="w-3.5 h-3.5 shrink-0" />
             Parfait ! Votre CV est hautement optimisé et prêt à être envoyé.
           </p>
         ) : (
           feedback.slice(0, 3).map((fb, idx) => (
-            <p key={idx} className="text-xs font-medium text-slate-600 dark:text-slate-300 flex items-start gap-1.5 leading-snug">
-              <AlertCircle className={`w-3.5 h-3.5 shrink-0 mt-0.5 ${colorClass}`} />
+            <p key={idx} className="text-[10px] sm:text-xs font-medium text-slate-600 dark:text-slate-300 flex items-start gap-1 leading-tight">
+              <AlertCircle className={`w-3 h-3 shrink-0 mt-0.5 ${colorClass}`} />
               {fb}
             </p>
           ))

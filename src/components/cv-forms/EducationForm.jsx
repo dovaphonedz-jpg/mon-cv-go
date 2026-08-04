@@ -5,7 +5,7 @@ import { Plus, Trash2, ChevronDown, ChevronUp } from 'lucide-react';
 
 export default function EducationForm() {
   const { t } = useTranslation();
-  const { cvData, addEducation, updateEducation, removeEducation } = useResume();
+  const { cvData, addEducation, updateEducation, removeEducation, setFocusedSection } = useResume();
   const education = cvData.education || [];
   
   const [expandedIndex, setExpandedIndex] = useState(education.length > 0 ? 0 : null);
@@ -21,7 +21,15 @@ export default function EducationForm() {
   };
 
   return (
-    <div className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-300">
+    <div 
+      className="space-y-4 animate-in fade-in slide-in-from-bottom-2 duration-300"
+      onFocus={() => setFocusedSection && setFocusedSection('education')}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          setFocusedSection && setFocusedSection(null);
+        }
+      }}
+    >
       <div className="flex justify-between items-center mb-4">
         <h3 className="text-lg font-bold text-slate-800 dark:text-slate-100">Formations & Diplômes</h3>
         <button 
@@ -34,7 +42,7 @@ export default function EducationForm() {
 
       {education.length === 0 ? (
         <div className="text-center p-8 bg-slate-50 dark:bg-slate-800/50 rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-700">
-          <p className="text-sm text-slate-500 dark:text-slate-400 mb-2">Aucune formation ajoutée.</p>
+          <p className="text-base text-slate-700 dark:text-slate-300 mb-2">Aucune formation ajoutée.</p>
           <button onClick={handleAdd} className="text-sm text-emerald-500 font-semibold hover:underline">
             Ajoutez votre dernier diplôme
           </button>
@@ -52,7 +60,7 @@ export default function EducationForm() {
                   <h4 className="font-bold text-slate-800 dark:text-slate-100 text-sm">
                     {edu.degree || '(Nouveau diplôme)'}
                   </h4>
-                  <p className="text-xs text-slate-500">{edu.school || 'Établissement'}</p>
+                  <p className="text-sm text-slate-600 dark:text-slate-400">{edu.school || 'Établissement'}</p>
                 </div>
                 <div className="flex items-center gap-2">
                   <button 
@@ -69,51 +77,51 @@ export default function EducationForm() {
               {expandedIndex === index && (
                 <div className="p-4 border-t border-slate-100 dark:border-slate-800 grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
-                    <label className="block text-xs font-semibold text-slate-500 mb-1">Diplôme / Titre</label>
+                    <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">Diplôme / Titre</label>
                     <input 
                       type="text" 
                       value={edu.degree || ''} 
                       onChange={(e) => handleChange(index, 'degree', e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 outline-none" 
+                      className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-base focus:ring-2 focus:ring-emerald-500 outline-none" 
                       placeholder={t('forms.education.degree_ph')}
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-500 mb-1">Établissement / École</label>
+                    <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">Établissement / École</label>
                     <input 
                       type="text" 
                       value={edu.school || ''} 
                       onChange={(e) => handleChange(index, 'school', e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 outline-none" 
+                      className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-base focus:ring-2 focus:ring-emerald-500 outline-none" 
                       placeholder={t('forms.education.school_ph')}
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-500 mb-1">{t('forms.education.start_date')}</label>
+                    <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">{t('forms.education.start_date')}</label>
                     <input 
                       type="text" 
                       value={edu.start || ''} 
                       onChange={(e) => handleChange(index, 'start', e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 outline-none" 
+                      className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-base focus:ring-2 focus:ring-emerald-500 outline-none" 
                       placeholder="Ex: Sept 2018"
                     />
                   </div>
                   <div>
-                    <label className="block text-xs font-semibold text-slate-500 mb-1">{t('forms.education.end_date')}</label>
+                    <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">{t('forms.education.end_date')}</label>
                     <input 
                       type="text" 
                       value={edu.end || ''} 
                       onChange={(e) => handleChange(index, 'end', e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 outline-none" 
+                      className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-base focus:ring-2 focus:ring-emerald-500 outline-none" 
                       placeholder="Ex: Juin 2020"
                     />
                   </div>
                   <div className="sm:col-span-2">
-                    <label className="block text-xs font-semibold text-slate-500 mb-1">Description (Optionnel)</label>
+                    <label className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">Description (Optionnel)</label>
                     <textarea 
                       value={edu.desc || ''} 
                       onChange={(e) => handleChange(index, 'desc', e.target.value)}
-                      className="w-full px-3 py-2 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 outline-none min-h-[80px]" 
+                      className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-base focus:ring-2 focus:ring-emerald-500 outline-none min-h-[80px]" 
                       placeholder="Ex: Mention Très Bien. Projet de fin d'études sur l'IA..."
                     ></textarea>
                   </div>

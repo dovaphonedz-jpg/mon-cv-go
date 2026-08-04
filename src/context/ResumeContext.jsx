@@ -29,6 +29,8 @@ export const ResumeProvider = ({ children }) => {
     autoFit: true
   });
 
+  const [focusedSection, setFocusedSection] = useState(null);
+
   // Load from localStorage on mount
   useEffect(() => {
     const savedData = localStorage.getItem('moncvgo_data');
@@ -221,6 +223,7 @@ export const ResumeProvider = ({ children }) => {
   return (
     <ResumeContext.Provider value={{
       cvData, config, 
+      focusedSection, setFocusedSection,
       updatePersonal, updateSummary,
       addExperience, updateExperience, removeExperience,
       addEducation, updateEducation, removeEducation,

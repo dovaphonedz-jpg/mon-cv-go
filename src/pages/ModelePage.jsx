@@ -57,7 +57,7 @@ export default function ModelePage() {
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to="/create" className="px-8 py-4 bg-yellow-400 text-slate-900 font-black uppercase tracking-widest brutal-border brutal-shadow brutal-hover flex items-center justify-center gap-2 transform -rotate-1">
+              <Link to={`/create?preset=${path}`} className="px-8 py-4 bg-yellow-400 text-slate-900 font-black uppercase tracking-widest brutal-border brutal-shadow brutal-hover flex items-center justify-center gap-2 transform -rotate-1">
                 <FilePlus2 className="w-5 h-5" strokeWidth={3} />
                 Créer ce CV
               </Link>
@@ -87,7 +87,7 @@ export default function ModelePage() {
               <div className="bg-pink-100 dark:bg-pink-900/30 p-6 rounded-xl border border-pink-200 dark:border-pink-800 sticky top-28">
                 <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">Prêt à décrocher des entretiens ?</h3>
                 <p className="text-slate-600 dark:text-slate-400 mb-6 text-sm">Ne perdez plus de temps sur Word. Remplissez vos informations en 5 minutes et téléchargez un CV parfait.</p>
-                <Link to="/create" className="w-full py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-lg flex items-center justify-center gap-2 hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors">
+                <Link to={`/create?preset=${path}`} className="w-full py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-lg flex items-center justify-center gap-2 hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors">
                   Commencer <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>

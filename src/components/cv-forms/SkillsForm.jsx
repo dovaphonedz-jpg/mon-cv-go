@@ -1,17 +1,25 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useTranslation } from 'react-i18next';
 import { useResume } from '../../context/ResumeContext';
 import { Plus, Trash2 } from 'lucide-react';
 
 export default function SkillsForm() {
   const { t } = useTranslation();
-  const { cvData, addSkill, updateSkill, removeSkill, addQuality, updateQuality, removeQuality, addLanguage, updateLanguage, removeLanguage } = useResume();
+  const { cvData, addSkill, updateSkill, removeSkill, addQuality, updateQuality, removeQuality, addLanguage, updateLanguage, removeLanguage, setFocusedSection } = useResume();
   const skills = cvData.skills || [];
   const qualities = cvData.qualities || [];
   const languages = cvData.languages || [];
 
   return (
-    <div className="space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-300">
+    <div 
+      className="space-y-8 animate-in fade-in slide-in-from-bottom-2 duration-300"
+      onFocus={() => setFocusedSection && setFocusedSection('skills')}
+      onBlur={(e) => {
+        if (!e.currentTarget.contains(e.relatedTarget)) {
+          setFocusedSection && setFocusedSection(null);
+        }
+      }}
+    >
       
       {/* SKILLS SECTION */}
       <section>
@@ -27,7 +35,7 @@ export default function SkillsForm() {
 
         {skills.length === 0 ? (
           <div className="text-center p-6 bg-slate-50 dark:bg-slate-800/50 rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-700">
-            <p className="text-sm text-slate-500 dark:text-slate-400">Ajoutez vos compétences clés.</p>
+            <p className="text-base text-slate-700 dark:text-slate-300">Ajoutez vos compétences clés.</p>
           </div>
         ) : (
           <div className="space-y-3">
@@ -37,13 +45,13 @@ export default function SkillsForm() {
                   type="text" 
                   value={skill.name || ''} 
                   onChange={(e) => updateSkill(index, { ...skill, name: e.target.value })}
-                  className="flex-1 px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-amber-500 outline-none" 
+                  className="flex-1 px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-base focus:ring-2 focus:ring-amber-500 outline-none" 
                   placeholder="Ex: React.js, Gestion de Projet..."
                 />
                 <select 
                   value={skill.level || 'Débutant'} 
                   onChange={(e) => updateSkill(index, { ...skill, level: e.target.value })}
-                  className="w-1/3 px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-amber-500 outline-none"
+                  className="w-1/3 px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-base focus:ring-2 focus:ring-amber-500 outline-none"
                 >
                   <option value="Débutant">{t('forms.skills.levels.beginner')}</option>
                   <option value="Intermédiaire">{t('forms.skills.levels.intermediate')}</option>
@@ -80,7 +88,7 @@ export default function SkillsForm() {
 
         {qualities.length === 0 ? (
           <div className="text-center p-6 bg-slate-50 dark:bg-slate-800/50 rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-700">
-            <p className="text-sm text-slate-500 dark:text-slate-400">Ajoutez vos qualités personnelles et atouts sous forme de liste (ex: Autonome, Ponctuel, Esprit d'équipe...).</p>
+            <p className="text-base text-slate-700 dark:text-slate-300">Ajoutez vos qualités personnelles et atouts sous forme de liste (ex: Autonome, Ponctuel, Esprit d'équipe...).</p>
           </div>
         ) : (
           <div className="space-y-3">
@@ -90,7 +98,7 @@ export default function SkillsForm() {
                   type="text" 
                   value={typeof q === 'string' ? q : (q.name || '')} 
                   onChange={(e) => updateQuality(index, typeof q === 'string' ? e.target.value : { ...q, name: e.target.value })}
-                  className="flex-1 px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-emerald-500 outline-none" 
+                  className="flex-1 px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-base focus:ring-2 focus:ring-emerald-500 outline-none" 
                   placeholder="Ex: Ponctuel, Autonome, Rigoureux, Esprit d'équipe..."
                 />
                 <button 
@@ -119,7 +127,7 @@ export default function SkillsForm() {
 
         {languages.length === 0 ? (
           <div className="text-center p-6 bg-slate-50 dark:bg-slate-800/50 rounded-xl border-2 border-dashed border-slate-200 dark:border-slate-700">
-            <p className="text-sm text-slate-500 dark:text-slate-400">Ajoutez les langues que vous maîtrisez.</p>
+            <p className="text-base text-slate-700 dark:text-slate-300">Ajoutez les langues que vous maîtrisez.</p>
           </div>
         ) : (
           <div className="space-y-3">
@@ -129,13 +137,13 @@ export default function SkillsForm() {
                   type="text" 
                   value={lang.name || ''} 
                   onChange={(e) => updateLanguage(index, { ...lang, name: e.target.value })}
-                  className="flex-1 px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-cyan-500 outline-none" 
+                  className="flex-1 px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-base focus:ring-2 focus:ring-cyan-500 outline-none" 
                   placeholder="Ex: Anglais, Espagnol..."
                 />
                 <select 
                   value={lang.level || 'B1 (Intermédiaire)'} 
                   onChange={(e) => updateLanguage(index, { ...lang, level: e.target.value })}
-                  className="w-1/3 px-3 py-2 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-lg text-sm focus:ring-2 focus:ring-cyan-500 outline-none"
+                  className="w-1/3 px-4 py-3 bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 rounded-xl text-base focus:ring-2 focus:ring-cyan-500 outline-none"
                 >
                   <option value="A1 (Débutant)">A1 (Débutant)</option>
                   <option value="A2 (Élémentaire)">A2 (Élémentaire)</option>

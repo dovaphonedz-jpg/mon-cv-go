@@ -105,7 +105,7 @@ function RawTemplateModern({ cvData, config }) {
                     <div key={idx} className="border-b-4 border-black pb-4 last:border-0">
                       <h4 className="font-bold text-sm mb-1 flex justify-between items-center">
                         {proj.title}
-                        {proj.link && <a href={String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
+                        {proj.link && <span onClick={() => window.open(String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`, '_blank')} className="text-xs text-blue-500 underline ml-2 cursor-pointer">Lien</span>}
                       </h4>
                       {proj.techStack && <div className="text-sm italic opacity-80 mb-2">{proj.techStack}</div>}
                       {proj.description && <p className="text-sm opacity-90 leading-relaxed">{proj.description}</p>}
@@ -395,7 +395,7 @@ function RawTemplateModern({ cvData, config }) {
                     <div key={idx}>
                       <h4 className="font-bold text-sm mb-1 flex justify-between items-center">
                         {proj.title}
-                        {proj.link && <a href={String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
+                        {proj.link && <span onClick={() => window.open(String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`, '_blank')} className="text-xs text-blue-500 underline ml-2 cursor-pointer">Lien</span>}
                       </h4>
                       {proj.techStack && <div className="text-sm italic opacity-80 mb-2">{proj.techStack}</div>}
                       {proj.description && <p className="text-sm opacity-90 leading-relaxed">{proj.description}</p>}
@@ -526,7 +526,7 @@ function RawTemplateModern({ cvData, config }) {
                     <div key={idx}>
                       <h4 className="font-bold text-sm mb-1 flex justify-between items-center">
                         {proj.title}
-                        {proj.link && <a href={String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
+                        {proj.link && <span onClick={() => window.open(String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`, '_blank')} className="text-xs text-blue-500 underline ml-2 cursor-pointer">Lien</span>}
                       </h4>
                       {proj.techStack && <div className="text-sm italic opacity-80 mb-2">{proj.techStack}</div>}
                       {proj.description && <p className="text-sm opacity-90 leading-relaxed">{proj.description}</p>}
@@ -607,7 +607,7 @@ function RawTemplateModern({ cvData, config }) {
                     <div key={idx}>
                       <h4 className="font-bold text-sm mb-1 flex justify-between items-center">
                         {proj.title}
-                        {proj.link && <a href={String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
+                        {proj.link && <span onClick={() => window.open(String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`, '_blank')} className="text-xs text-blue-500 underline ml-2 cursor-pointer">Lien</span>}
                       </h4>
                       {proj.techStack && <div className="text-sm italic opacity-80 mb-2">{proj.techStack}</div>}
                       {proj.description && <p className="text-sm opacity-90 leading-relaxed">{proj.description}</p>}
@@ -745,7 +745,7 @@ function RawTemplateModern({ cvData, config }) {
                   <div key={idx} className="relative">
                       <h4 className="font-bold text-sm mb-1 flex justify-between items-center">
                         {proj.title}
-                        {proj.link && <a href={String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
+                        {proj.link && <span onClick={() => window.open(String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`, '_blank')} className="text-xs text-blue-500 underline ml-2 cursor-pointer">Lien</span>}
                       </h4>
                       {proj.techStack && <div className="text-sm italic opacity-80 mb-2">{proj.techStack}</div>}
                       {proj.description && <p className="text-sm opacity-90 leading-relaxed">{proj.description}</p>}
@@ -936,7 +936,7 @@ function RawTemplateModern({ cvData, config }) {
                   <div key={idx} className="relative">
                       <h4 className="font-bold text-sm mb-1 flex justify-between items-center">
                         {proj.title}
-                        {proj.link && <a href={String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
+                        {proj.link && <span onClick={() => window.open(String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`, '_blank')} className="text-xs text-blue-500 underline ml-2 cursor-pointer">Lien</span>}
                       </h4>
                       {proj.techStack && <div className="text-sm italic opacity-80 mb-2">{proj.techStack}</div>}
                       {proj.description && <p className="text-sm opacity-90 leading-relaxed">{proj.description}</p>}
@@ -1319,7 +1319,7 @@ const isCentered = layout === 'centered';
                   <div key={idx}>
                       <h4 className="font-bold text-sm mb-1 flex justify-between items-center">
                         {proj.title}
-                        {proj.link && <a href={String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`} target="_blank" rel="noreferrer" className="text-xs text-blue-500 underline ml-2">Lien</a>}
+                        {proj.link && <span onClick={() => window.open(String(proj.link).startsWith('http') ? proj.link : `https://${proj.link}`, '_blank')} className="text-xs text-blue-500 underline ml-2 cursor-pointer">Lien</span>}
                       </h4>
                       {proj.techStack && <div className="text-sm italic opacity-80 mb-2">{proj.techStack}</div>}
                       {proj.description && <p className="text-sm opacity-90 leading-relaxed">{proj.description}</p>}
