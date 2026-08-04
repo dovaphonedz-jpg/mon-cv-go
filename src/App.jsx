@@ -1,27 +1,30 @@
-import React from 'react';
+import React, { lazy, Suspense } from 'react';
 import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Layout from './components/Layout';
 import CookieConsent from './components/CookieConsent';
 import AdManager from './components/AdManager';
 import Home from './pages/Home';
-import CreateCV from './pages/CreateCV';
-import CreatePortfolio from './pages/CreatePortfolio';
-import CoverLetter from './pages/CoverLetter';
-import ConseilsCV from './pages/ConseilsCV';
-import About from './pages/About';
-import Contact from './pages/Contact';
-import Legal from './pages/Legal';
-import Privacy from './pages/Privacy';
-import Blog from './pages/Blog';
-import BlogPost from './pages/BlogPost';
-import ModelePage from './pages/ModelePage';
-import JobSpace from './pages/JobSpace';
+
+// Lazy load non-homepage routes for ultra-fast initial bundle loading
+const CreateCV = lazy(() => import('./pages/CreateCV'));
+const CreatePortfolio = lazy(() => import('./pages/CreatePortfolio'));
+const CoverLetter = lazy(() => import('./pages/CoverLetter'));
+const ConseilsCV = lazy(() => import('./pages/ConseilsCV'));
+const About = lazy(() => import('./pages/About'));
+const Contact = lazy(() => import('./pages/Contact'));
+const Legal = lazy(() => import('./pages/Legal'));
+const Privacy = lazy(() => import('./pages/Privacy'));
+const Blog = lazy(() => import('./pages/Blog'));
+const BlogPost = lazy(() => import('./pages/BlogPost'));
+const ModelePage = lazy(() => import('./pages/ModelePage'));
+const JobSpace = lazy(() => import('./pages/JobSpace'));
 
 function App() {
   return (
     <Router>
       <Layout>
-          <AdManager />
+        <AdManager />
+        <Suspense fallback={<div className="min-h-screen bg-slate-100 dark:bg-slate-900" />}>
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/create" element={<CreateCV />} />
@@ -41,6 +44,7 @@ function App() {
             <Route path="/modele-cv-commercial" element={<ModelePage />} />
             <Route path="/espace-emploi" element={<JobSpace />} />
           </Routes>
+        </Suspense>
         <CookieConsent />
       </Layout>
     </Router>
