@@ -42,24 +42,24 @@ export default function Home() {
         <div className="absolute inset-0 z-0 opacity-50 dark:opacity-20 pointer-events-none flex gap-4 sm:gap-6 px-2 sm:px-4 transform -rotate-6 scale-110 -translate-y-24 -translate-x-6 sm:-translate-x-4" style={{overflow: 'hidden'}}>
           {/* Column 1 - Scrolling Down */}
           <div className="flex flex-col gap-4 sm:gap-6 animate-scroll-down w-1/2 sm:w-1/3 max-w-[200px] sm:max-w-[300px]">
-            <img src="/mockup1.png" alt="" className="w-full rounded-lg shadow-lg" />
-            <img src="/mockup2.png" alt="" className="w-full rounded-lg shadow-lg" />
-            <img src="/mockup3.png" alt="" className="w-full rounded-lg shadow-lg" />
-            <img src="/mockup1.png" alt="" className="w-full rounded-lg shadow-lg" />
+            <img src="/mockup1.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
+            <img src="/mockup2.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
+            <img src="/mockup3.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
+            <img src="/mockup1.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
           </div>
           {/* Column 2 - Scrolling Up */}
           <div className="flex flex-col gap-4 sm:gap-6 animate-scroll-up w-1/2 sm:w-1/3 max-w-[200px] sm:max-w-[300px] mt-24">
-            <img src="/mockup4.png" alt="" className="w-full rounded-lg shadow-lg" />
-            <img src="/mockup5.png" alt="" className="w-full rounded-lg shadow-lg" />
-            <img src="/mockup6.png" alt="" className="w-full rounded-lg shadow-lg" />
-            <img src="/mockup4.png" alt="" className="w-full rounded-lg shadow-lg" />
+            <img src="/mockup4.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
+            <img src="/mockup5.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
+            <img src="/mockup6.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
+            <img src="/mockup4.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
           </div>
           {/* Column 3 - Scrolling Down (hidden on very small screens) */}
           <div className="hidden sm:flex flex-col gap-6 animate-scroll-down w-1/3 max-w-[300px]">
-            <img src="/executive_slate_preview.png" alt="" className="w-full rounded-lg shadow-lg" />
-            <img src="/reference_preview.png" alt="" className="w-full rounded-lg shadow-lg" />
-            <img src="/new_flow_preview.png" alt="" className="w-full rounded-lg shadow-lg" />
-            <img src="/executive_slate_preview.png" alt="" className="w-full rounded-lg shadow-lg" />
+            <img src="/executive_slate_preview.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
+            <img src="/reference_preview.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
+            <img src="/new_flow_preview.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
+            <img src="/executive_slate_preview.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
           </div>
         </div>
 
