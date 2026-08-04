@@ -5,6 +5,7 @@ import OpenAI from 'openai';
 import path from 'path';
 import { fileURLToPath } from 'url';
 import nodemailer from 'nodemailer';
+import fs from 'fs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -13,6 +14,27 @@ dotenv.config();
 
 const app = express();
 const port = process.env.PORT || 3001;
+
+// Explicitly serve SEO files for all domains (www and non-www) to prevent 301/SPA fallback
+app.get('/sitemap.xml', (req, res) => {
+  res.set('Content-Type', 'application/xml');
+  const distPath = path.join(__dirname, 'dist', 'sitemap.xml');
+  const publicPath = path.join(__dirname, 'public', 'sitemap.xml');
+  if (fs.existsSync(distPath)) {
+    return res.sendFile(distPath);
+  }
+  return res.sendFile(publicPath);
+});
+
+app.get('/robots.txt', (req, res) => {
+  res.set('Content-Type', 'text/plain');
+  const distPath = path.join(__dirname, 'dist', 'robots.txt');
+  const publicPath = path.join(__dirname, 'public', 'robots.txt');
+  if (fs.existsSync(distPath)) {
+    return res.sendFile(distPath);
+  }
+  return res.sendFile(publicPath);
+});
 
 // Force HTTPS on Railway
 app.use((req, res, next) => {
@@ -212,17 +234,6 @@ app.post('/api/contact', async (req, res) => {
 
 // Serve static frontend files in production
 app.use(express.static(path.join(__dirname, 'dist')));
-
-// Explicitly serve SEO files to ensure correct Content-Type and avoid SPA fallback
-app.get('/sitemap.xml', (req, res) => {
-  res.set('Content-Type', 'application/xml');
-  res.sendFile(path.join(__dirname, 'dist', 'sitemap.xml'));
-});
-
-app.get('/robots.txt', (req, res) => {
-  res.set('Content-Type', 'text/plain');
-  res.sendFile(path.join(__dirname, 'dist', 'robots.txt'));
-});
 
 // Fallback for React Router (Single Page Application)
 app.get(/(.*)/, (req, res) => {
