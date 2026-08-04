@@ -346,6 +346,19 @@
       "msg_photo": "Mettez une photo de profil (Optionnel mais recommandé pour la France).",
       "msg_perfect": "Score parfait ! Votre CV est complet."
     },
+    "ats": {
+      "title": "Score ATS",
+      "feedback": {
+        "name": "Ajoutez votre nom complet.",
+        "email": "Ajoutez une adresse e-mail valide.",
+        "phone": "Ajoutez un numéro de téléphone.",
+        "summary": "Rédigez un résumé de profil (50 caractères min.).",
+        "experience_more": "Ajoutez une 2ème expérience pour renforcer votre profil.",
+        "experience_missing": "Ajoutez au moins une expérience professionnelle.",
+        "skills_more": "Ajoutez davantage de compétences (5 minimum recommandé).",
+        "skills_missing": "Ajoutez au moins 3 compétences."
+      }
+    },
     "donation": {
       "title": "Soutenez le projet",
       "desc": "Si l'outil vous a aidé, un petit café fait plaisir ! ☕"

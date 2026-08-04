@@ -338,6 +338,19 @@
       "tour_last": "Finish",
       "tour_next": "Next",
       "tour_skip": "Skip tour"
+    },
+    "ats": {
+      "title": "ATS Score",
+      "feedback": {
+        "name": "Add your full name.",
+        "email": "Add a valid email address.",
+        "phone": "Add a phone number.",
+        "summary": "Write a profile summary (min. 50 characters).",
+        "experience_more": "Add a 2nd experience to strengthen your profile.",
+        "experience_missing": "Add at least one professional experience.",
+        "skills_more": "Add more skills (5 minimum recommended).",
+        "skills_missing": "Add at least 3 skills."
+      }
     }
   }
 }

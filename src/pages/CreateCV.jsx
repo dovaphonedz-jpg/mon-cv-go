@@ -47,7 +47,7 @@ export default function CreateCV() {
   const printRef = useRef(null);
 
   useEffect(() => {
-    const params = new URLSearchParams(location.search);
+    const params = new URLSearchParams(window.location.search);
     const templateParam = params.get('template');
     if (templateParam) {
       updateConfig('template', templateParam);
@@ -55,21 +55,23 @@ export default function CreateCV() {
     
     const presetParam = params.get('preset');
     if (presetParam && PRESETS[presetParam]) {
-      importData(JSON.stringify(PRESETS[presetParam]));
-      // Remove preset from URL after loading to avoid reloading it on subsequent navigations
+      const preset = PRESETS[presetParam];
+      // Load directly without going through importData JSON stringify/parse
+      importData(JSON.stringify(preset));
+      // Clean URL
       const newUrl = new URL(window.location);
       newUrl.searchParams.delete('preset');
-      window.history.replaceState({}, '', newUrl);
+      window.history.replaceState({}, '', newUrl.toString());
     } else if (params.get('demo') === 'true') {
       loadDemo('fr');
       const newUrl = new URL(window.location);
       newUrl.searchParams.delete('demo');
-      window.history.replaceState({}, '', newUrl);
+      window.history.replaceState({}, '', newUrl.toString());
     }
     if (params.get('step') === 'projects') {
       setOpenAccordion('projects');
     }
-  }, [location.search]);
+  }, []);
 
   // CV Completeness Score (Progress Bar)
   const completionScore = useMemo(() => {
