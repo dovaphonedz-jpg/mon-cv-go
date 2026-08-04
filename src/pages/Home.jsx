@@ -29,7 +29,7 @@ export default function Home() {
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-screen overflow-hidden selection:bg-indigo-500/30">
       
       {/* HERO SECTION - Neo-Brutalist & Vibrant */}
-      <section className="relative pt-24 pb-16 sm:pt-40 sm:pb-24 overflow-hidden bg-slate-100 dark:bg-slate-900 brutal-border border-b-8" id="accueil">
+      <section className="relative pt-20 pb-14 sm:pt-40 sm:pb-24 overflow-hidden bg-slate-100 dark:bg-slate-900 brutal-border border-b-8" id="accueil">
         
         {/* Playful Asymmetric Background Elements */}
         <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
@@ -39,22 +39,22 @@ export default function Home() {
         </div>
 
         {/* Dynamic CV Background (Original Clean Version) */}
-        <div className="absolute inset-0 z-0 opacity-60 dark:opacity-30 pointer-events-none flex gap-6 px-4 transform -rotate-6 scale-110 -translate-y-24 -translate-x-12 sm:-translate-x-4">
+        <div className="absolute inset-0 z-0 opacity-50 dark:opacity-20 pointer-events-none flex gap-4 sm:gap-6 px-2 sm:px-4 transform -rotate-6 scale-110 -translate-y-24 -translate-x-6 sm:-translate-x-4" style={{overflow: 'hidden'}}>
           {/* Column 1 - Scrolling Down */}
-          <div className="flex flex-col gap-6 animate-scroll-down w-1/3 max-w-[300px]">
+          <div className="flex flex-col gap-4 sm:gap-6 animate-scroll-down w-1/2 sm:w-1/3 max-w-[200px] sm:max-w-[300px]">
             <img src="/mockup1.png" alt="" className="w-full rounded-lg shadow-lg" />
             <img src="/mockup2.png" alt="" className="w-full rounded-lg shadow-lg" />
             <img src="/mockup3.png" alt="" className="w-full rounded-lg shadow-lg" />
             <img src="/mockup1.png" alt="" className="w-full rounded-lg shadow-lg" />
           </div>
           {/* Column 2 - Scrolling Up */}
-          <div className="flex flex-col gap-6 animate-scroll-up w-1/3 max-w-[300px] mt-24">
+          <div className="flex flex-col gap-4 sm:gap-6 animate-scroll-up w-1/2 sm:w-1/3 max-w-[200px] sm:max-w-[300px] mt-24">
             <img src="/mockup4.png" alt="" className="w-full rounded-lg shadow-lg" />
             <img src="/mockup5.png" alt="" className="w-full rounded-lg shadow-lg" />
             <img src="/mockup6.png" alt="" className="w-full rounded-lg shadow-lg" />
             <img src="/mockup4.png" alt="" className="w-full rounded-lg shadow-lg" />
           </div>
-          {/* Column 3 - Scrolling Down */}
+          {/* Column 3 - Scrolling Down (hidden on very small screens) */}
           <div className="hidden sm:flex flex-col gap-6 animate-scroll-down w-1/3 max-w-[300px]">
             <img src="/executive_slate_preview.png" alt="" className="w-full rounded-lg shadow-lg" />
             <img src="/reference_preview.png" alt="" className="w-full rounded-lg shadow-lg" />
@@ -73,7 +73,7 @@ export default function Home() {
               {t('home.badge')}
             </motion.div>
             
-            <motion.h1 variants={itemVariants} className="text-4xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-slate-900 dark:text-white uppercase tracking-tight leading-[1.1] sm:leading-[1.0] mb-6 sm:mb-8 md:mb-10">
+            <motion.h1 variants={itemVariants} className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-slate-900 dark:text-white uppercase tracking-tight leading-[1.15] sm:leading-[1.0] mb-5 sm:mb-8 md:mb-10">
               {t('home.title_1')}<br className="hidden md:block" />
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 drop-shadow-sm">{t('home.title_highlight')}</span> <br className="hidden md:block" />{t('home.title_2')}
             </motion.h1>
@@ -132,7 +132,7 @@ export default function Home() {
             <p className="text-slate-600 dark:text-slate-400 mb-6 leading-relaxed" dangerouslySetInnerHTML={{ __html: t('home.why_p1') }}></p>
             
             <div className="bg-green-300 dark:bg-green-800 p-6 sm:p-8 border-4 border-slate-900 dark:border-white my-10 brutal-shadow transform -rotate-1">
-              <div className="grid grid-cols-2 md:grid-cols-3 gap-6">
+              <div className="grid grid-cols-1 xs:grid-cols-2 md:grid-cols-3 gap-4 sm:gap-6">
                 <div className="flex items-center gap-3 font-black text-lg text-slate-900 dark:text-white">
                   <span className="text-2xl drop-shadow-sm">✅</span> {t('home.why_list_1') || 'Gratuit'}
                 </div>

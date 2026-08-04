@@ -56,7 +56,7 @@ export default function ChatBot() {
             whileHover={{ scale: 1.05 }}
             whileTap={{ scale: 0.95 }}
             onClick={() => setIsOpen(true)}
-            className="fixed bottom-6 right-6 w-14 h-14 bg-gradient-to-r from-blue-600 to-emerald-500 text-white rounded-full shadow-lg shadow-blue-500/30 flex items-center justify-center z-50 hover:shadow-xl transition-shadow"
+            className="fixed bottom-24 lg:bottom-6 right-4 sm:right-6 w-12 h-12 sm:w-14 sm:h-14 bg-gradient-to-r from-blue-600 to-emerald-500 text-white rounded-full shadow-lg shadow-blue-500/30 flex items-center justify-center z-50 hover:shadow-xl transition-shadow"
             aria-label="Ouvrir l'assistant"
           >
             <MessageCircle className="w-6 h-6" />
@@ -76,7 +76,7 @@ export default function ChatBot() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 50, scale: 0.9 }}
             transition={{ type: "spring", stiffness: 300, damping: 25 }}
-            className="fixed bottom-6 right-6 w-[350px] max-w-[calc(100vw-32px)] h-[500px] max-h-[calc(100vh-100px)] bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 z-50 flex flex-col overflow-hidden"
+            className="fixed bottom-24 lg:bottom-6 right-4 sm:right-6 w-[calc(100vw-32px)] sm:w-[350px] max-w-[350px] h-[450px] sm:h-[500px] max-h-[calc(100vh-120px)] bg-white dark:bg-slate-900 rounded-3xl shadow-2xl border border-slate-200 dark:border-slate-800 z-50 flex flex-col overflow-hidden"
           >
             {/* Header */}
             <div className="bg-gradient-to-r from-blue-600 to-emerald-500 p-4 flex items-center justify-between text-white shrink-0">

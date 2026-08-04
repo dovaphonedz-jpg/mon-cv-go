@@ -144,18 +144,18 @@ export default function CreatePortfolio() {
 
       {/* Header Info */}
       <section className="border-b border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-[#0F172A]/50 backdrop-blur-md">
-        <div className="max-w-[1400px] mx-auto px-4 sm:px-6 lg:px-8 py-6 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="max-w-[1400px] mx-auto px-3 sm:px-6 lg:px-8 py-3 sm:py-6 flex flex-row flex-wrap items-center justify-between gap-2 sm:gap-4">
           <div>
-            <h1 className="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
-              <Sparkles className="w-6 h-6 text-blue-500" />
-              {t('create_portfolio.title')}
+            <h1 className="text-base sm:text-2xl md:text-3xl font-extrabold text-slate-900 dark:text-white flex items-center gap-1.5 sm:gap-2">
+              <Sparkles className="w-4 h-4 sm:w-6 sm:h-6 text-blue-500 shrink-0" />
+              <span>{t('create_portfolio.title')}</span>
             </h1>
-            <p className="text-sm text-slate-500 dark:text-slate-400 mt-1">
+            <p className="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-0.5 hidden sm:block">
               {t('create_portfolio.subtitle')}
             </p>
           </div>
           
-          <div className="flex gap-3 tour-step-actions">
+          <div className="flex gap-1.5 sm:gap-3 tour-step-actions">
             <button onClick={() => loadDemo(config.cvLang || 'fr')} className="flex items-center gap-2 px-4 py-2 bg-cyan-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover brutal-active">
               <Sparkles className="w-4 h-4" />
               <span className="hidden sm:inline">{t('create_cv.btn_example')}</span>

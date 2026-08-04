@@ -32,12 +32,12 @@ export default function Layout({ children }) {
       
       {/* Header - Brutalist */}
       <header className="sticky top-0 z-40 bg-white dark:bg-slate-900 border-b-4 border-slate-900 transition-colors duration-300">
-        <div className="w-full mx-auto px-4 sm:px-6 lg:px-10 h-16 flex items-center justify-between gap-4 lg:gap-8">
+        <div className="w-full mx-auto px-3 sm:px-6 lg:px-10 h-16 flex items-center justify-between gap-2 sm:gap-4 lg:gap-8">
           
           {/* Logo */}
-          <Link to="/" className="flex items-center gap-1 group transition-smooth brutal-hover">
-            <span className="font-extrabold text-2xl sm:text-3xl tracking-tighter text-slate-900 dark:text-white flex items-center">
-              MONCV<span className="bg-yellow-400 text-slate-900 px-2 py-0.5 ml-1 brutal-border transform rotate-3 inline-block shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]">GO</span>
+          <Link to="/" className="flex items-center gap-1 group transition-smooth brutal-hover shrink-0">
+            <span className="font-extrabold text-lg sm:text-3xl tracking-tighter text-slate-900 dark:text-white flex items-center">
+              MONCV<span className="bg-yellow-400 text-slate-900 px-1.5 sm:px-2 py-0.5 ml-1 brutal-border transform rotate-3 inline-block shadow-[2px_2px_0px_0px_rgba(15,23,42,1)] dark:shadow-[2px_2px_0px_0px_rgba(255,255,255,1)]">GO</span>
             </span>
           </Link>
 
@@ -65,22 +65,22 @@ export default function Layout({ children }) {
           </nav>
 
           {/* Right Actions */}
-          <div className="flex items-center gap-3">
+          <div className="flex items-center gap-1.5 sm:gap-3 shrink-0">
             <LanguageSwitcher />
             <button 
               onClick={toggleTheme} 
-              className="p-2 bg-yellow-400 text-slate-900 brutal-border brutal-shadow transition-smooth brutal-hover brutal-active" 
+              className="p-1.5 sm:p-2 bg-yellow-400 text-slate-900 brutal-border brutal-shadow transition-smooth brutal-hover brutal-active" 
               title={t('theme.change')}
             >
-              {isDark ? <Sun className="w-6 h-6" strokeWidth={3} /> : <Moon className="w-6 h-6" strokeWidth={3} />}
+              {isDark ? <Sun className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={3} /> : <Moon className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={3} />}
             </button>
             
             {/* Hamburger */}
             <button 
               onClick={() => setIsMobileMenuOpen(true)} 
-              className="lg:hidden p-2 bg-pink-400 text-slate-900 brutal-border brutal-shadow transition-smooth brutal-hover brutal-active"
+              className="lg:hidden p-1.5 sm:p-2 bg-pink-400 text-slate-900 brutal-border brutal-shadow transition-smooth brutal-hover brutal-active"
             >
-              <Menu className="w-6 h-6" strokeWidth={3} />
+              <Menu className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={3} />
             </button>
           </div>
         </div>

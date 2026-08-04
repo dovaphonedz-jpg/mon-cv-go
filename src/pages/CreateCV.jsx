@@ -187,9 +187,9 @@ export default function CreateCV() {
 
       {/* Header Info */}
       <section className="shrink-0 border-b border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-[#0F172A]/50 backdrop-blur-md z-20">
-        <div className="max-w-[1600px] mx-auto px-4 sm:px-6 lg:px-8 py-4 lg:py-5 flex flex-col md:flex-row md:items-center justify-between gap-4">
+        <div className="max-w-[1600px] mx-auto px-3 sm:px-6 lg:px-8 py-3 lg:py-5 flex flex-row flex-wrap items-center justify-between gap-2 sm:gap-4">
           <div className="shrink-0">
-            <h1 className="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
+            <h1 className="text-lg sm:text-2xl font-extrabold text-slate-900 dark:text-white flex items-center gap-2">
               <Sparkles className="w-5 h-5 text-blue-500" />
               {t('create_cv.title')}
             </h1>
@@ -206,24 +206,24 @@ export default function CreateCV() {
             </p>
           </div>
 
-          <div className="flex gap-2 sm:gap-3 items-center overflow-x-auto pb-1 sm:pb-0 custom-scrollbar-hide tour-step-actions shrink-0">
+          <div className="flex gap-1.5 sm:gap-2 items-center overflow-x-auto pb-1 sm:pb-0 custom-scrollbar-hide tour-step-actions shrink-0">
 
-            <button onClick={() => loadDemo(config.cvLang || 'fr')} className="shrink-0 flex items-center gap-2 px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 font-semibold text-xs sm:text-sm rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
+            <button onClick={() => loadDemo(config.cvLang || 'fr')} className="shrink-0 flex items-center gap-1.5 px-2.5 sm:px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 font-semibold text-xs rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
               <Sparkles className="w-4 h-4" />
-              <span>{t('create_cv.btn_example')}</span>
+              <span className="hidden sm:inline">{t('create_cv.btn_example')}</span>
             </button>
-            <button onClick={handleImportClick} className="shrink-0 flex items-center gap-2 px-4 py-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 font-semibold text-xs sm:text-sm rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
+            <button onClick={handleImportClick} className="shrink-0 flex items-center gap-1.5 px-2.5 sm:px-4 py-2 bg-yellow-100 dark:bg-yellow-900/30 text-yellow-700 dark:text-yellow-300 font-semibold text-xs rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
               <UploadCloud className="w-4 h-4" />
-              <span>{t('create_cv.btn_import')}</span>
+              <span className="hidden sm:inline">{t('create_cv.btn_import')}</span>
             </button>
-            <button onClick={resetData} className="shrink-0 flex items-center gap-2 px-4 py-2 bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 font-semibold text-xs sm:text-sm rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
+            <button onClick={resetData} className="shrink-0 flex items-center gap-1.5 px-2.5 sm:px-4 py-2 bg-rose-100 dark:bg-rose-900/30 text-rose-700 dark:text-rose-300 font-semibold text-xs rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
               <Trash2 className="w-4 h-4" />
-              <span className="hidden sm:inline">{t('create_cv.btn_clear')}</span>
+              <span className="hidden">{t('create_cv.btn_clear')}</span>
             </button>
-            <button onClick={() => setIsDonationModalOpen(true)} className="shrink-0 flex items-center justify-center px-3 py-2 bg-rose-100 dark:bg-rose-900/30 text-rose-500 rounded-xl shadow-sm hover:shadow-md transition-all hover:bg-rose-200 dark:hover:bg-rose-900/50 hover:-translate-y-0.5" title="Soutenez le projet">
+            <button onClick={() => setIsDonationModalOpen(true)} className="shrink-0 flex items-center justify-center px-2.5 sm:px-3 py-2 bg-rose-100 dark:bg-rose-900/30 text-rose-500 rounded-xl shadow-sm hover:shadow-md transition-all hover:bg-rose-200 dark:hover:bg-rose-900/50 hover:-translate-y-0.5" title="Soutenez le projet">
               <Heart className="w-4 h-4 sm:w-5 sm:h-5 fill-rose-500" />
             </button>
-            <button onClick={() => { if (typeof window !== 'undefined' && window.gtag) window.gtag('event', 'generation_cv', { 'event_category': 'Engagement', 'event_label': 'Bouton_Generer_CV' }); triggerConfetti(); setIsThankYouModalOpen(true); setTimeout(() => handlePrint(), 500); }} className="shrink-0 flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold text-xs sm:text-sm rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all hover:-translate-y-0.5">
+            <button onClick={() => { if (typeof window !== 'undefined' && window.gtag) window.gtag('event', 'generation_cv', { 'event_category': 'Engagement', 'event_label': 'Bouton_Generer_CV' }); triggerConfetti(); setIsThankYouModalOpen(true); setTimeout(() => handlePrint(), 500); }} className="shrink-0 flex items-center gap-1.5 px-3 sm:px-4 py-2 bg-gradient-to-r from-blue-500 to-cyan-500 text-white font-bold text-xs rounded-xl shadow-lg shadow-blue-500/30 hover:shadow-blue-500/50 transition-all hover:-translate-y-0.5">
               <Download className="w-4 h-4" />
               <span>{t('create_cv.btn_pdf')}</span>
             </button>
@@ -267,6 +267,31 @@ export default function CreateCV() {
                 </AnimatePresence>
               </div>
             ))}
+          </div>
+
+          {/* ✅ BOUTON TÉLÉCHARGEMENT EN BAS DU FORMULAIRE */}
+          <div className="px-4 lg:px-0 mt-4 pb-2 shrink-0">
+            <motion.button
+              whileHover={{ scale: 1.02 }}
+              whileTap={{ scale: 0.97 }}
+              onClick={() => {
+                if (typeof window !== 'undefined' && window.gtag)
+                  window.gtag('event', 'generation_cv', { event_category: 'Engagement', event_label: 'Bouton_Bas_Form' });
+                triggerConfetti();
+                setIsThankYouModalOpen(true);
+                setTimeout(() => handlePrint(), 500);
+              }}
+              className="w-full flex items-center justify-center gap-3 px-6 py-4 bg-gradient-to-r from-blue-600 via-cyan-500 to-emerald-500 text-white font-black text-sm uppercase tracking-widest rounded-2xl shadow-xl shadow-blue-500/30 hover:shadow-blue-500/50 transition-all relative overflow-hidden group"
+            >
+              {/* Shimmer */}
+              <span className="absolute inset-0 -translate-x-full group-hover:translate-x-full bg-gradient-to-r from-transparent via-white/20 to-transparent transition-transform duration-700" />
+              <Download className="w-5 h-5 shrink-0" />
+              <span className="truncate max-w-[260px]">
+                {cvData?.personal?.name
+                  ? `Télécharger — ${cvData.personal.name}.pdf`
+                  : 'Télécharger mon CV (PDF)'}
+              </span>
+            </motion.button>
           </div>
         </section>
 

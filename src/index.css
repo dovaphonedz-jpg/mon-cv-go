@@ -54,9 +54,14 @@
 }
 
 /* Base Layout and Custom Styles */
+html {
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'Inter', sans-serif;
   background-color: #f8fafc;
+  overflow-x: hidden;
 }
 
 .dark body {
