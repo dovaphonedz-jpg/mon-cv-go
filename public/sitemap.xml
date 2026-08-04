@@ -1,38 +1,38 @@
-﻿<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
   <!-- PAGES PRINCIPALES -->
   <url>
-    <loc>https://moncvgo.com/</loc>
+    <loc>https://www.moncvgo.com/</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/" />
+    <xhtml:link rel="alternate" hreflang="fr" href="https://www.moncvgo.com/" />
+    <xhtml:link rel="alternate" hreflang="en" href="https://www.moncvgo.com/" />
+    <xhtml:link rel="alternate" hreflang="ar" href="https://www.moncvgo.com/" />
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://www.moncvgo.com/" />
   </url>
   <url>
-    <loc>https://moncvgo.com/create</loc>
+    <loc>https://www.moncvgo.com/create</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
-    <loc>https://moncvgo.com/portfolio</loc>
+    <loc>https://www.moncvgo.com/portfolio</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://moncvgo.com/lettre-motivation</loc>
+    <loc>https://www.moncvgo.com/lettre-motivation</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
   </url>
   <url>
-    <loc>https://moncvgo.com/conseils-cv</loc>
+    <loc>https://www.moncvgo.com/conseils-cv</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
@@ -40,7 +40,7 @@
 
   <!-- ESPACE EMPLOI (NOUVELLE FONCTIONNALITE) -->
   <url>
-    <loc>https://moncvgo.com/espace-emploi</loc>
+    <loc>https://www.moncvgo.com/espace-emploi</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
@@ -48,7 +48,7 @@
 
   <!-- BLOG -->
   <url>
-    <loc>https://moncvgo.com/blog</loc>
+    <loc>https://www.moncvgo.com/blog</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
@@ -56,43 +56,43 @@
 
   <!-- PAGES MODELES SEO -->
   <url>
-    <loc>https://moncvgo.com/modele-cv-comptable-word</loc>
+    <loc>https://www.moncvgo.com/modele-cv-comptable-word</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://moncvgo.com/modele-cv-ingenieur</loc>
+    <loc>https://www.moncvgo.com/modele-cv-ingenieur</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://moncvgo.com/modele-cv-debutant</loc>
+    <loc>https://www.moncvgo.com/modele-cv-debutant</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://moncvgo.com/modele-cv-etudiant</loc>
+    <loc>https://www.moncvgo.com/modele-cv-etudiant</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://moncvgo.com/modele-cv-commercial</loc>
+    <loc>https://www.moncvgo.com/modele-cv-commercial</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
   </url>
   <url>
-    <loc>https://moncvgo.com/modele-cv-developpeur</loc>
+    <loc>https://www.moncvgo.com/modele-cv-developpeur</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
   </url>
   <url>
-    <loc>https://moncvgo.com/modele-cv-designer</loc>
+    <loc>https://www.moncvgo.com/modele-cv-designer</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
@@ -100,25 +100,25 @@
 
   <!-- PAGES ANNEXES -->
   <url>
-    <loc>https://moncvgo.com/a-propos</loc>
+    <loc>https://www.moncvgo.com/a-propos</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
-    <loc>https://moncvgo.com/contact</loc>
+    <loc>https://www.moncvgo.com/contact</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.50</priority>
   </url>
   <url>
-    <loc>https://moncvgo.com/mentions-legales</loc>
+    <loc>https://www.moncvgo.com/mentions-legales</loc>
     <lastmod>2026-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.25</priority>
   </url>
   <url>
-    <loc>https://moncvgo.com/confidentialite</loc>
+    <loc>https://www.moncvgo.com/confidentialite</loc>
     <lastmod>2026-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.25</priority>
