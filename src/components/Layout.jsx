@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { Sparkles, FilePlus2, PenLine, BookOpen, Info, Mail, Menu, X, Moon, Sun, Briefcase } from 'lucide-react';
+import { Sparkles, FilePlus2, PenLine, BookOpen, Info, Mail, Menu, X, Moon, Sun, Briefcase, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
 import CookieConsent from './CookieConsent';
@@ -12,6 +12,10 @@ export default function Layout({ children }) {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [isDark, setIsDark] = useState(true);
   const location = useLocation();
+
+  // Pages where the footer should be hidden (editor pages)
+  const noFooterPaths = ['/create', '/portfolio', '/lettre-motivation'];
+  const isEditorPage = noFooterPaths.some(path => location.pathname.startsWith(path));
 
   const toggleTheme = () => {
     setIsDark(!isDark);
@@ -49,7 +53,7 @@ export default function Layout({ children }) {
               { path: '/portfolio', label: t('nav.create_portfolio') },
               { path: '/lettre-motivation', label: t('nav.cover_letter') },
               { path: '/conseils-cv', label: t('nav.cv_tips') },
-              { path: '/espace-emploi', label: '💼 Espace Emploi' },
+              { path: '/espace-emploi', label: t('nav.job_space', '💼 Espace Emploi'), isNew: true },
               { path: '/blog', label: 'Blog' },
               { path: '/a-propos', label: t('nav.about') },
               { path: '/contact', label: t('nav.contact') },
@@ -57,9 +61,10 @@ export default function Layout({ children }) {
               <Link 
                 key={link.path} 
                 to={link.path} 
-                className={`font-black uppercase tracking-widest px-3 py-1 brutal-border transition-smooth brutal-hover ${isActive(link.path) ? 'bg-cyan-400 text-slate-900 brutal-shadow' : 'bg-transparent text-slate-700 dark:text-slate-300 hover:bg-yellow-400 hover:text-slate-900'}`}
+                className={`relative font-black uppercase tracking-widest px-3 py-1 brutal-border transition-smooth brutal-hover ${isActive(link.path) ? 'bg-cyan-400 text-slate-900 brutal-shadow' : 'bg-transparent text-slate-700 dark:text-slate-300 hover:bg-yellow-400 hover:text-slate-900'}`}
               >
                 {link.label}
+                {link.isNew && <span className="absolute -top-2 -right-2 bg-pink-500 text-white text-[8px] font-black uppercase px-1 rounded-sm">NEW</span>}
               </Link>
             ))}
           </nav>
@@ -91,39 +96,66 @@ export default function Layout({ children }) {
         {children}
       </main>
 
-      <footer className="bg-cyan-400 border-t-4 md:border-t-8 border-slate-900 py-8 text-slate-900">
-        <div className="max-w-7xl mx-auto px-4 grid grid-cols-1 md:grid-cols-3 gap-8">
-          <div className="flex flex-col items-center md:items-start gap-4">
-            <div className="flex items-center gap-2 md:gap-3">
-              <div className="w-8 h-8 md:w-12 md:h-12 bg-white brutal-border brutal-shadow flex items-center justify-center text-slate-900 font-black text-sm md:text-xl transform -rotate-6 shrink-0">M</div>
-              <span className="font-black text-xs md:text-lg uppercase tracking-wider md:tracking-widest">&copy; 2026 Mon CV Go.<span className="hidden md:inline"><br/></span> <span className="md:hidden"> - </span> {t('footer.rights')}</span>
+      {/* FOOTER — Hidden on editor pages */}
+      {!isEditorPage && (
+      <footer className="bg-cyan-400 border-t-4 md:border-t-8 border-slate-900 py-10 text-slate-900">
+        <div className="max-w-7xl mx-auto px-4">
+          {/* Top grid */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8 mb-8">
+            {/* Brand */}
+            <div className="col-span-2 md:col-span-1 flex flex-col gap-3">
+              <div className="flex items-center gap-2">
+                <div className="w-10 h-10 bg-white brutal-border brutal-shadow flex items-center justify-center text-slate-900 font-black text-lg transform -rotate-6 shrink-0">M</div>
+                <span className="font-black text-sm uppercase tracking-widest">Mon CV Go</span>
+              </div>
+              <p className="text-sm font-bold opacity-80 max-w-xs">Le créateur de CV gratuit le plus simple du web. Sans inscription, sans paiement.</p>
+              <div className="flex gap-2 mt-1">
+                <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white brutal-border flex items-center justify-center font-black text-xs hover:bg-yellow-300 transition-colors" aria-label="Twitter">X</a>
+                <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white brutal-border flex items-center justify-center font-black text-xs hover:bg-yellow-300 transition-colors" aria-label="LinkedIn">in</a>
+              </div>
             </div>
-            <p className="text-sm font-bold opacity-80 text-center md:text-left max-w-xs">Le créateur de CV gratuit et sans inscription le plus simple du web.</p>
-          </div>
-          
-          <div className="flex flex-col items-center md:items-start gap-2">
-            <h4 className="font-black uppercase tracking-widest text-lg mb-2">Modèles de CV</h4>
-            <div className="flex flex-col gap-2 font-bold text-sm">
-              <Link to="/modele-cv-comptable-word" className="hover:underline underline-offset-4 decoration-2 transition-all">CV Comptable</Link>
-              <Link to="/modele-cv-ingenieur" className="hover:underline underline-offset-4 decoration-2 transition-all">CV Ingénieur</Link>
-              <Link to="/modele-cv-debutant" className="hover:underline underline-offset-4 decoration-2 transition-all">CV Débutant</Link>
-              <Link to="/modele-cv-etudiant" className="hover:underline underline-offset-4 decoration-2 transition-all">CV Étudiant</Link>
-              <Link to="/modele-cv-commercial" className="hover:underline underline-offset-4 decoration-2 transition-all">CV Commercial</Link>
+
+            {/* Outils */}
+            <div className="flex flex-col gap-2">
+              <h4 className="font-black uppercase tracking-widest text-sm mb-1">Nos Outils</h4>
+              <Link to="/create" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><FilePlus2 className="w-3 h-3" /> {t('nav.create_cv')}</Link>
+              <Link to="/portfolio" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><Briefcase className="w-3 h-3" /> {t('nav.create_portfolio')}</Link>
+              <Link to="/lettre-motivation" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><PenLine className="w-3 h-3" /> {t('nav.cover_letter')}</Link>
+              <Link to="/espace-emploi" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1">
+                <Zap className="w-3 h-3" /> {t('nav.job_space', 'Espace Emploi')} <span className="bg-pink-500 text-white text-[9px] font-black px-1 rounded">NEW</span>
+              </Link>
+            </div>
+
+            {/* Modèles SEO */}
+            <div className="flex flex-col gap-2">
+              <h4 className="font-black uppercase tracking-widest text-sm mb-1">Modèles de CV</h4>
+              <Link to="/modele-cv-comptable-word" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Comptable</Link>
+              <Link to="/modele-cv-ingenieur" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Ingénieur</Link>
+              <Link to="/modele-cv-debutant" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Débutant</Link>
+              <Link to="/modele-cv-etudiant" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Étudiant</Link>
+              <Link to="/modele-cv-commercial" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Commercial</Link>
+            </div>
+
+            {/* Liens utiles */}
+            <div className="flex flex-col gap-2">
+              <h4 className="font-black uppercase tracking-widest text-sm mb-1">Liens utiles</h4>
+              <Link to="/conseils-cv" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><BookOpen className="w-3 h-3" /> {t('nav.cv_tips')}</Link>
+              <Link to="/blog" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><BookOpen className="w-3 h-3" /> Blog</Link>
+              <Link to="/a-propos" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><Info className="w-3 h-3" /> {t('nav.about')}</Link>
+              <Link to="/contact" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><Mail className="w-3 h-3" /> {t('nav.contact')}</Link>
+              <Link to="/mentions-legales" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">{t('footer.terms')}</Link>
+              <Link to="/confidentialite" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">{t('footer.privacy')}</Link>
             </div>
           </div>
 
-          <div className="flex flex-col items-center md:items-start gap-2">
-            <h4 className="font-black uppercase tracking-widest text-lg mb-2">Liens utiles</h4>
-            <div className="flex flex-col gap-2 font-bold text-sm">
-              <Link to="/" className="hover:underline underline-offset-4 decoration-2 transition-all">{t('nav.home')}</Link>
-              <Link to="/a-propos" className="hover:underline underline-offset-4 decoration-2 transition-all">{t('nav.about')}</Link>
-              <Link to="/contact" className="hover:underline underline-offset-4 decoration-2 transition-all">{t('nav.contact')}</Link>
-              <Link to="/mentions-legales" className="hover:underline underline-offset-4 decoration-2 transition-all">{t('footer.terms')}</Link>
-              <Link to="/confidentialite" className="hover:underline underline-offset-4 decoration-2 transition-all">{t('footer.privacy')}</Link>
-            </div>
+          {/* Bottom bar */}
+          <div className="border-t-2 border-slate-900 pt-4 flex flex-col sm:flex-row items-center justify-between gap-2">
+            <span className="font-black text-xs uppercase tracking-widest">&copy; 2026 Mon CV Go. {t('footer.rights')}</span>
+            <span className="text-xs font-bold opacity-70">Made with ❤️ for job seekers worldwide</span>
           </div>
         </div>
       </footer>
+      )}
 
       {/* AdSense Compliance: Cookie Banner */}
       <CookieConsent />

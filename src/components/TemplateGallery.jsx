@@ -25,7 +25,11 @@ export default function TemplateGallery() {
     { id: "barcelone", type: "cv", name: "CV Créatif Barcelone", isNew: false, path: "/create?template=barcelone&demo=true", color: 'orange' },
     { id: "paris", type: "cv", name: "CV Paris Minimal", isNew: false, path: "/create?template=paris&demo=true", color: 'zinc' },
     { id: "cairo", type: "cv", name: "CV Cairo Chronologique", isNew: false, path: "/create?template=cairo&demo=true", color: 'emerald' },
-    { id: "helsinki2", type: "cv", name: "CV Helsinki Split", isNew: false, path: "/create?template=helsinki2&demo=true", color: 'indigo' }
+    { id: "helsinki2", type: "cv", name: "CV Helsinki Split", isNew: false, path: "/create?template=helsinki2&demo=true", color: 'indigo' },
+    { id: "dubai", type: "cv", name: "CV Dubai Luxe", isNew: true, path: "/create?template=dubai&demo=true", color: 'yellow' },
+    { id: "newyork", type: "cv", name: "CV New York Pro", isNew: true, path: "/create?template=newyork&demo=true", color: 'slate' },
+    { id: "minimal", type: "cv", name: "CV Minimaliste Clean", isNew: true, path: "/create?template=minimal&demo=true", color: 'gray' },
+    { id: "maghreb", type: "cv", name: "CV Maghreb Modern", isNew: true, path: "/create?template=maghreb&demo=true", color: 'green' },
   ];
 
   // Duplication for seamless infinite scroll

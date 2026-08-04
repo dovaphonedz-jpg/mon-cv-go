@@ -123,6 +123,52 @@ export default function Home() {
       {/* GALERIE SECTION */}
       <TemplateGallery />
 
+      {/* ESPACE EMPLOI PROMO SECTION — Promote new feature & drive traffic */}
+      <section className="bg-slate-900 border-y-8 border-slate-900 py-20 overflow-hidden relative" id="espace-emploi">
+        <div className="absolute inset-0 pointer-events-none overflow-hidden">
+          <div className="absolute -top-20 -left-20 w-80 h-80 bg-yellow-400/10 rounded-full blur-3xl"></div>
+          <div className="absolute -bottom-20 -right-20 w-80 h-80 bg-cyan-400/10 rounded-full blur-3xl"></div>
+        </div>
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="text-center mb-12">
+            <span className="inline-flex items-center gap-2 px-4 py-2 bg-pink-400 text-slate-900 font-black uppercase tracking-widest text-xs brutal-border brutal-shadow transform rotate-1 mb-6">
+              <span className="w-2 h-2 rounded-full bg-slate-900 animate-pulse"></span>
+              NOUVEAU
+            </span>
+            <h2 className="text-4xl sm:text-6xl font-black text-white uppercase tracking-tighter mb-6">
+              {t('home.job_space_title') || '🚀 Espace Emploi'}
+            </h2>
+            <p className="text-xl text-slate-300 font-bold max-w-2xl mx-auto leading-relaxed">
+              {t('home.job_space_desc') || 'Suivez vos candidatures, analysez des offres d\'emploi et calculez votre salaire. Tout en un seul endroit.'}
+            </p>
+          </div>
+
+          {/* Feature cards */}
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+            {[
+              { emoji: '📋', title: t('home.job_space_feat_1') || 'Tracker Kanban', desc: 'Suivez toutes vos candidatures avec des colonnes visuelles : En attente, Envoyé, Entretien, Offre, Refusé.' },
+              { emoji: '🔍', title: t('home.job_space_feat_2') || 'Analyse d\'Offres', desc: 'Collez une offre d\'emploi et obtenez une analyse des compétences requises + score de compatibilité avec votre profil.' },
+              { emoji: '💰', title: t('home.job_space_feat_3') || 'Calculateur Salaire', desc: 'Estimez votre salaire selon votre métier, votre niveau d\'expérience et votre ville grâce à nos données de marché.' },
+            ].map((feat, i) => (
+              <div key={i} className="bg-white brutal-border brutal-shadow p-6 transform hover:-translate-y-1 transition-transform">
+                <div className="text-4xl mb-4">{feat.emoji}</div>
+                <h3 className="text-slate-900 font-black text-lg uppercase tracking-tight mb-3">{feat.title}</h3>
+                <p className="text-slate-600 text-sm leading-relaxed">{feat.desc}</p>
+              </div>
+            ))}
+          </div>
+
+          <div className="text-center">
+            <Link to="/espace-emploi" className="inline-flex items-center gap-3 px-10 py-5 bg-yellow-400 text-slate-900 font-black uppercase tracking-widest text-lg brutal-border brutal-shadow transition-smooth brutal-hover brutal-active transform -rotate-1">
+              <Briefcase className="w-6 h-6" strokeWidth={3} />
+              {t('home.job_space_btn') || 'Explorer l\'Espace Emploi'}
+              <ArrowRight className="w-6 h-6" strokeWidth={3} />
+            </Link>
+            <p className="text-slate-500 text-sm mt-4 font-bold">100% gratuit · Aucune inscription requise</p>
+          </div>
+        </div>
+      </section>
+
       {/* SEO & CONTENT SECTION (Crucial for AdSense & Google Ranking) */}
       <section className="bg-white dark:bg-slate-900 py-24 border-t border-slate-200 dark:border-slate-800">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">

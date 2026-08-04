@@ -5,7 +5,7 @@ export default function AdManager() {
   const location = useLocation();
 
   useEffect(() => {
-    // Pages where we DO NOT want ads
+    // Pages where we DO NOT want ads (only editor tools)
     const noAdsPaths = ['/create', '/portfolio', '/lettre-motivation'];
     
     const isNoAdsPage = noAdsPaths.some(path => location.pathname.startsWith(path));
@@ -75,7 +75,7 @@ export default function AdManager() {
     }
 
     const timeElapsed = Date.now() - window.firstVisitTime;
-    const delayRequired = 60000; // 1 minute (60000 ms)
+    const delayRequired = 20000; // 20 seconds — optimized for better revenue
 
     if (timeElapsed >= delayRequired) {
         // 1 minute has already passed! Inject immediately.
