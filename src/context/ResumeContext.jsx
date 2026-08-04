@@ -207,7 +207,17 @@ export const ResumeProvider = ({ children }) => {
       const cvDataToLoad = data.cvData || data;
       
       if (cvDataToLoad && cvDataToLoad.personal) {
-        setCvData(cvDataToLoad); // Support both {cvData, config} format and direct cvData format
+        // Merge with defaults to avoid missing fields crashing components
+        setCvData(prev => ({
+          personal: { name: '', title: '', email: '', phone: '', address: '', website: '', photo: '', ...prev.personal, ...(cvDataToLoad.personal || {}) },
+          summary: cvDataToLoad.summary !== undefined ? cvDataToLoad.summary : (prev.summary || ''),
+          experiences: cvDataToLoad.experiences || prev.experiences || [],
+          education: cvDataToLoad.education || prev.education || [],
+          skills: cvDataToLoad.skills || prev.skills || [],
+          qualities: cvDataToLoad.qualities || prev.qualities || [],
+          languages: cvDataToLoad.languages || prev.languages || [],
+          projects: cvDataToLoad.projects || prev.projects || [],
+        }));
         if (data.config) {
           setConfig(data.config);
         }
