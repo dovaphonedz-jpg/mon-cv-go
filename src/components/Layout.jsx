@@ -120,6 +120,7 @@ export default function Layout({ children }) {
             <div className="flex flex-col gap-2">
               <h4 className="font-black uppercase tracking-widest text-sm mb-1">Nos Outils</h4>
               <Link to="/create" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><FilePlus2 className="w-3 h-3" /> {t('nav.create_cv')}</Link>
+              <Link to="/studio-photo" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><Sparkles className="w-3 h-3 text-yellow-600" /> 📸 Studio Photo CV</Link>
               <Link to="/portfolio" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><Briefcase className="w-3 h-3" /> {t('nav.create_portfolio')}</Link>
               <Link to="/lettre-motivation" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><PenLine className="w-3 h-3" /> {t('nav.cover_letter')}</Link>
               <Link to="/espace-emploi" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1">
@@ -199,11 +200,17 @@ export default function Layout({ children }) {
                 <Link to="/create" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-4 bg-yellow-400 text-slate-900 font-black uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover">
                   <FilePlus2 className="w-6 h-6" strokeWidth={3} /> {t('nav.create_cv')}
                 </Link>
+                <Link to="/studio-photo" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-4 bg-yellow-300 text-slate-900 font-black uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover">
+                  <Sparkles className="w-6 h-6 text-slate-900" strokeWidth={3} /> 📸 Studio Photo CV <span className="bg-pink-500 text-white text-[9px] font-black px-1.5 py-0.5 rounded">NEW</span>
+                </Link>
                 <Link to="/portfolio" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-4 bg-cyan-400 text-slate-900 font-black uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover">
                   <Briefcase className="w-6 h-6" strokeWidth={3} /> {t('nav.create_portfolio')}
                 </Link>
                 <Link to="/lettre-motivation" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-4 bg-pink-400 text-slate-900 font-black uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover">
                   <PenLine className="w-6 h-6" strokeWidth={3} /> {t('nav.cover_letter')}
+                </Link>
+                <Link to="/espace-emploi" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-4 bg-emerald-400 text-slate-900 font-black uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover">
+                  <Zap className="w-6 h-6" strokeWidth={3} /> Espace Emploi
                 </Link>
                 <Link to="/conseils-cv" onClick={closeMobileMenu} className="flex items-center gap-3 px-4 py-4 bg-white text-slate-900 font-black uppercase tracking-widest brutal-border brutal-shadow transition-smooth brutal-hover">
                   <BookOpen className="w-6 h-6" strokeWidth={3} /> {t('nav.cv_tips')}
