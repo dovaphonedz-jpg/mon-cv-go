@@ -34,7 +34,8 @@ export default function CreateCV() {
   const getInitialAccordion = () => {
     const params = new URLSearchParams(window.location.search);
     if (params.get('step') === 'projects') return 'projects';
-    return 'personal';
+    if (params.get('step') === 'personal') return 'personal';
+    return 'design';
   };
 
   const [openAccordion, setOpenAccordion] = useState(getInitialAccordion);
@@ -309,7 +310,7 @@ export default function CreateCV() {
         </section>
 
         {/* COLUMN 3: DESIGN (Right) */}
-        <section className={`w-full lg:w-[300px] xl:w-[350px] flex-col gap-4 lg:overflow-y-auto custom-scrollbar lg:pl-2 pb-24 lg:pb-0 pt-4 lg:pt-0 shrink-0 ${mobileTab === 'design' ? 'flex' : 'hidden lg:flex'}`}>
+        <section className={`w-full lg:w-[350px] xl:w-[400px] flex-col gap-4 lg:overflow-y-auto custom-scrollbar lg:pl-2 pb-24 lg:pb-0 pt-4 lg:pt-0 shrink-0 ${mobileTab === 'design' ? 'flex' : 'hidden lg:flex'}`}>
           <div className="bg-white dark:bg-[#1E293B] rounded-2xl border border-slate-100 dark:border-slate-800 shadow-lg shadow-slate-200/50 dark:shadow-none p-4 sm:p-6 mx-4 lg:mx-0 mb-4">
             <h2 className="font-bold text-base text-slate-800 dark:text-white flex items-center gap-2 mb-6 pb-4 border-b border-slate-100 dark:border-slate-800">
               <Palette className="w-5 h-5 text-indigo-500" /> Paramètres Design

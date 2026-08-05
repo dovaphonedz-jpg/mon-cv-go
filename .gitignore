@@ -23,3 +23,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Secret keys and local scripts
+*.json
+!package.json
+!package-lock.json
+*.py
+__pycache__/

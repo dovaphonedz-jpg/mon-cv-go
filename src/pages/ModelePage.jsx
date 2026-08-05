@@ -9,31 +9,50 @@ const modelesData = {
     title: 'Modèle de CV Comptable Word & PDF',
     description: 'Découvrez notre modèle de CV gratuit pour comptable, expert-comptable et aide-comptable. Optimisé pour les recruteurs et les logiciels ATS.',
     content: 'En tant que comptable, votre CV doit refléter votre rigueur, votre précision et votre maîtrise des outils financiers. Ce modèle de CV est spécialement conçu pour mettre en valeur vos compétences en comptabilité générale, analytique, ainsi que votre maîtrise des logiciels (Excel, Sage, Cegid).',
-    keywords: 'CV comptable, modèle CV comptable gratuit, CV expert-comptable, CV aide-comptable Word, télécharger CV comptable'
+    keywords: 'CV comptable, modèle CV comptable gratuit, CV expert-comptable, CV aide-comptable Word, télécharger CV comptable',
+    wordFile: '/templates-word/67-cv-template-francais.docx'
   },
   'modele-cv-ingenieur': {
     title: 'Modèle de CV Ingénieur',
     description: 'Créez un CV d\'ingénieur percutant. Modèle gratuit adapté pour ingénieurs informatiques, mécaniques, civils ou généralistes.',
     content: 'Un bon CV d\'ingénieur doit mettre en avant vos compétences techniques (hard skills), vos projets significatifs et votre capacité à résoudre des problèmes complexes. Notre modèle vous aide à structurer clairement votre parcours, de votre formation d\'ingénieur à vos expériences pratiques.',
-    keywords: 'CV ingénieur, modèle CV ingénieur, CV ingénieur informatique, CV ingénieur mécanique, exemple CV ingénieur'
+    keywords: 'CV ingénieur, modèle CV ingénieur, CV ingénieur informatique, CV ingénieur mécanique, exemple CV ingénieur',
+    wordFile: '/templates-word/10-cv-template-professional-blue.docx'
   },
   'modele-cv-debutant': {
     title: 'Modèle de CV Débutant / Sans Expérience',
     description: 'Premier emploi ? Utilisez notre modèle de CV pour débutant. Valorisez votre formation, vos soft skills et vos petits boulots.',
     content: 'Rédiger un CV sans expérience professionnelle solide peut sembler difficile. Ce modèle est pensé pour les jeunes diplômés ou les personnes cherchant leur premier emploi. Il met l\'accent sur votre formation, vos projets personnels, vos activités bénévoles et vos compétences interpersonnelles (soft skills).',
-    keywords: 'CV débutant, modèle CV sans expérience, premier CV, CV jeune diplômé, exemple CV étudiant'
+    keywords: 'CV débutant, modèle CV sans expérience, premier CV, CV jeune diplômé, exemple CV étudiant',
+    wordFile: '/templates-word/56-cv-template-student.docx'
   },
   'modele-cv-etudiant': {
     title: 'Modèle de CV Étudiant (Job étudiant, Stage)',
     description: 'Le modèle idéal pour trouver un stage, une alternance ou un job étudiant. Structure simple, moderne et efficace.',
     content: 'Ce modèle de CV est parfaitement adapté aux étudiants à la recherche d\'un stage, d\'un job d\'été ou d\'une alternance. Mettez en valeur votre parcours académique, vos centres d\'intérêt pertinents et votre motivation à apprendre sur le terrain.',
-    keywords: 'CV étudiant, modèle CV stage, CV job étudiant, CV alternance, créer CV étudiant'
+    keywords: 'CV étudiant, modèle CV stage, CV job étudiant, CV alternance, créer CV étudiant',
+    wordFile: '/templates-word/56-cv-template-student.docx'
   },
   'modele-cv-commercial': {
     title: 'Modèle de CV Commercial & Vente',
     description: 'Modèle de CV pour commerciaux, vendeurs et technico-commerciaux. Mettez en avant vos résultats et vos compétences en négociation.',
     content: 'Pour un poste de commercial, votre CV doit démontrer votre dynamisme, votre force de persuasion et vos résultats concrets (chiffre d\'affaires, objectifs atteints). Utilisez ce modèle pour structurer vos succès et prouver votre capacité à développer un portefeuille client.',
-    keywords: 'CV commercial, modèle CV vente, CV technico-commercial, CV vendeur, exemple CV commercial'
+    keywords: 'CV commercial, modèle CV vente, CV technico-commercial, CV vendeur, exemple CV commercial',
+    wordFile: '/templates-word/57-cv-template-commercial.docx'
+  },
+  'modele-cv-developpeur': {
+    title: 'Modèle de CV Développeur Web & Software',
+    description: 'Modèle de CV optimisé pour développeurs web, full-stack, frontend et backend. Valorisez votre stack technique et vos projets GitHub.',
+    content: 'En tant que développeur, la clarté de votre stack technique (languages, frameworks, bases de données) et le lien vers vos réalisations (GitHub, projets live) sont décisifs. Ce modèle structuré garantit une lisibilité maximale pour les Tech Leads et les recruteurs IT.',
+    keywords: 'CV développeur, modèle CV développeur web, CV fullstack, CV informatique, exemple CV dev',
+    wordFile: '/templates-word/123-cv-template-digital.docx'
+  },
+  'modele-cv-designer': {
+    title: 'Modèle de CV Designer & UI/UX',
+    description: 'Présentez votre sens esthétique et vos projets créatifs avec ce modèle de CV pour designers, graphistes et UX designers.',
+    content: 'Pour les métiers créatifs, l\'impact visuel et l\'harmonie de votre CV reflètent directement votre expertise. Ce modèle équilibre esthétique moderne et structure sémantique pour mettre en valeur votre portfolio et vos compétences de design.',
+    keywords: 'CV designer, modèle CV graphiste, CV UI UX, exemple CV créatif, modèle CV design',
+    wordFile: '/templates-word/40-cv-template-creative-blue.docx'
   }
 };
 
@@ -59,7 +78,7 @@ export default function ModelePage() {
             <div className="flex flex-col sm:flex-row gap-4">
               <Link to={`/create?preset=${path}`} className="px-8 py-4 bg-yellow-400 text-slate-900 font-black uppercase tracking-widest brutal-border brutal-shadow brutal-hover flex items-center justify-center gap-2 transform -rotate-1">
                 <FilePlus2 className="w-5 h-5" strokeWidth={3} />
-                Créer ce CV
+                Créer & Exporter en PDF (FR / EN / AR)
               </Link>
             </div>
           </div>

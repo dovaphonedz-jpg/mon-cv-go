@@ -15,8 +15,14 @@
   </url>
   <url>
     <loc>https://www.moncvgo.com/create</loc>
-    <lastmod>2026-08-04</lastmod>
+    <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://www.moncvgo.com/studio-photo</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.95</priority>
   </url>
   <url>
@@ -35,6 +41,14 @@
     <loc>https://www.moncvgo.com/conseils-cv</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
+    <priority>0.85</priority>
+  </url>
+
+  <!-- SITEMAP HTML -->
+  <url>
+    <loc>https://www.moncvgo.com/plan-du-site</loc>
+    <lastmod>2026-08-05</lastmod>
+    <changefreq>weekly</changefreq>
     <priority>0.85</priority>
   </url>
 

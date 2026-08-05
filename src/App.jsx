@@ -18,6 +18,8 @@ const Blog = lazy(() => import('./pages/Blog'));
 const BlogPost = lazy(() => import('./pages/BlogPost'));
 const ModelePage = lazy(() => import('./pages/ModelePage'));
 const JobSpace = lazy(() => import('./pages/JobSpace'));
+const PlanDuSite = lazy(() => import('./pages/PlanDuSite'));
+const StudioPhoto = lazy(() => import('./pages/StudioPhoto'));
 
 function App() {
   return (
@@ -28,6 +30,7 @@ function App() {
           <Routes>
             <Route path="/" element={<Home />} />
             <Route path="/create" element={<CreateCV />} />
+            <Route path="/studio-photo" element={<StudioPhoto />} />
             <Route path="/portfolio" element={<CreatePortfolio />} />
             <Route path="/lettre-motivation" element={<CoverLetter />} />
             <Route path="/conseils-cv" element={<ConseilsCV />} />
@@ -37,11 +40,14 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/mentions-legales" element={<Legal />} />
             <Route path="/confidentialite" element={<Privacy />} />
+            <Route path="/plan-du-site" element={<PlanDuSite />} />
             <Route path="/modele-cv-comptable-word" element={<ModelePage />} />
             <Route path="/modele-cv-ingenieur" element={<ModelePage />} />
             <Route path="/modele-cv-debutant" element={<ModelePage />} />
             <Route path="/modele-cv-etudiant" element={<ModelePage />} />
             <Route path="/modele-cv-commercial" element={<ModelePage />} />
+            <Route path="/modele-cv-developpeur" element={<ModelePage />} />
+            <Route path="/modele-cv-designer" element={<ModelePage />} />
             <Route path="/espace-emploi" element={<JobSpace />} />
           </Routes>
         </Suspense>

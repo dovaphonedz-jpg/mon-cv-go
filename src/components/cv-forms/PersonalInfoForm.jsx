@@ -49,7 +49,16 @@ export default function PersonalInfoForm() {
             }} />
           </label>
         </div>
-        <div className="flex-1">
+        <div className="flex-grow space-y-2">
+          <label className="block text-xs font-bold text-slate-600 dark:text-slate-400">Photo de profil</label>
+          <div className="flex flex-wrap gap-2">
+            <a 
+              href="/studio-photo" 
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-sm hover:shadow-md transition-all hover:scale-105"
+            >
+              📸 Studio Photo CV (Costumes, Fonds & Filtres)
+            </a>
+          </div>
           <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">{t("forms.personal.photo")}</p>
           <p className="text-xs text-slate-500 mt-1">{t("forms.personal.photo_desc")}</p>
           {data.photo && (

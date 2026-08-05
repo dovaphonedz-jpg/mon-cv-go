@@ -50,10 +50,11 @@ export default function Layout({ children }) {
             {[
               { path: '/', label: t('nav.home') },
               { path: '/create', label: t('nav.create_cv') },
+              { path: '/studio-photo', label: '📸 Studio Photo', isNew: true },
               { path: '/portfolio', label: t('nav.create_portfolio') },
               { path: '/lettre-motivation', label: t('nav.cover_letter') },
               { path: '/conseils-cv', label: t('nav.cv_tips') },
-              { path: '/espace-emploi', label: t('nav.job_space', '💼 Espace Emploi'), isNew: true },
+              { path: '/espace-emploi', label: t('nav.job_space', '💼 Espace Emploi') },
               { path: '/blog', label: 'Blog' },
               { path: '/a-propos', label: t('nav.about') },
               { path: '/contact', label: t('nav.contact') },
@@ -134,6 +135,8 @@ export default function Layout({ children }) {
               <Link to="/modele-cv-debutant" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Débutant</Link>
               <Link to="/modele-cv-etudiant" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Étudiant</Link>
               <Link to="/modele-cv-commercial" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Commercial</Link>
+              <Link to="/modele-cv-developpeur" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Développeur</Link>
+              <Link to="/modele-cv-designer" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Designer</Link>
             </div>
 
             {/* Liens utiles */}
@@ -141,6 +144,7 @@ export default function Layout({ children }) {
               <h4 className="font-black uppercase tracking-widest text-sm mb-1">Liens utiles</h4>
               <Link to="/conseils-cv" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><BookOpen className="w-3 h-3" /> {t('nav.cv_tips')}</Link>
               <Link to="/blog" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><BookOpen className="w-3 h-3" /> Blog</Link>
+              <Link to="/plan-du-site" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><FilePlus2 className="w-3 h-3" /> Plan du site (HTML)</Link>
               <Link to="/a-propos" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><Info className="w-3 h-3" /> {t('nav.about')}</Link>
               <Link to="/contact" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><Mail className="w-3 h-3" /> {t('nav.contact')}</Link>
               <Link to="/mentions-legales" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">{t('footer.terms')}</Link>

@@ -1,6 +1,51 @@
 export const blogPosts = {
   fr: [
     {
+      id: "studio-photo-cv-intelligence-artificielle-detourage-gratuit",
+      title: "Studio Photo CV par IA : Comment créer une photo de CV professionnelle et la détourer gratuitement en 2026",
+      excerpt: "Découvrez notre nouvel outil exclusif de Studio Photo CV propulsé par l'IA. Détourage 1-clic ultra-précis, remplacement de fond studio et cadres corporate pour booster vos chances d'entretien.",
+      date: "2026-08-05",
+      readTime: "6 min",
+      author: "Équipe Mon CV Go",
+      category: "Innovations & RH",
+      image: "/templates-png/modele-cv-moderne.png",
+      content: `
+        <h2>Pourquoi la photo de CV reste un facteur clé de succès en recrutement</h2>
+        <p>En 2026, l'impact visuel d'une candidature reste l'un des déclencheurs principaux de l'intérêt d'un recruteur. Selon les études RH récentes, un CV comportant une <strong>photo de profil professionnelle</strong> et bien cadrée reçoit jusqu'à <strong>40% de réponses positives en plus</strong> qu'un CV sans photo ou avec un selfie flou.</p>
+        <p>Cependant, payer un photographe professionnel en studio de quartier peut s'avérer coûteux (entre 50€ et 150€ la séance). C'est pourquoi <em>Mon CV Go</em> a développé une technologie révolutionnaire : le <a href="/studio-photo" style="color:#0284c7;font-weight:bold;">Studio Photo CV par Intelligence Artificielle gratuit</a>.</p>
+
+        <h2>Comment fonctionne le détourage photo de CV par IA ?</h2>
+        <p>Contrairement aux simples outils d'édition basiques qui découpent la photo aux ciseaux, notre outil s'appuie sur des réseaux de neurones profonds (ONNX & WebAssembly) s'exécutant directement dans votre navigateur :</p>
+        <ul>
+          <li><strong>Détourage 1-Clic Ultra-Précis :</strong> L'IA détecte automatiquement la silhouette du candidat, isolant avec finesse le visage, les cheveux et les épaules, peu importe la complexité du fond d'origine.</li>
+          <li><strong>Protection Totale des Données :</strong> Tout le traitement s'effectue localement sur votre ordinateur ou smartphone. Votre photo n'est jamais envoyée sur un serveur distant.</li>
+          <li><strong>Remplacement d'Arrière-Plan Studio :</strong> Choisissez instantanément parmi des fonds professionnels : <em>Studio Blanc Pur, Gris Minimaliste, Dégradé Bleu Executive ou Open Space Flouté (Bokeh)</em>.</li>
+        </ul>
+
+        <h2>3 Étapes pour Transformer un Simple Selfie en Photo de Studio RH</h2>
+        <p>Voici la méthodologie pas-à-pas pour obtenir une photo de CV irréprochable en moins de 60 secondes :</p>
+        <h3>1. Téléversez votre portrait et détourez-le avec l'IA</h3>
+        <p>Rendez-vous sur notre <a href="/studio-photo" style="color:#0284c7;font-weight:bold;">Studio Photo CV</a> et importez n'importe quelle photo de votre téléphone. Cliquez sur <strong>"Supprimer le Fond avec l'IA"</strong> pour obtenir une silhouette nette au fond transparent.</p>
+        
+        <h3>2. Choisissez le ratio de découpage et le cadre corporate</h3>
+        <p>Selon vos préférences ou votre secteur d'activité :</p>
+        <ul>
+          <li><strong>Ratio Square 1:1 :</strong> Idéal pour les badges modernes et CV digitaux.</li>
+          <li><strong>Ratio Passeport 3.5 x 4.5 cm :</strong> Parfait pour les candidatures formelles et officielles en Europe.</li>
+          <li><strong>Cadres Corporate :</strong> Ajoutez un bord circulaire doré, un cercle argenté ou un badge RH biseauté pour donner un aspect haut de gamme.</li>
+        </ul>
+
+        <h3>3. Retouchez l'éclairage et injectez la photo dans votre CV</h3>
+        <p>Ajustez les filtres <em>Studio Pro (Éclat)</em>, <em>Noir & Blanc Exécutif</em> ou réglez la luminosité. Cliquez enfin sur <strong>"Injecter dans Mon CV"</strong> pour appliquer la photo retouchée directement dans notre <a href="/create" style="color:#0284c7;font-weight:bold;">Générateur de CV en ligne</a>.</p>
+
+        <h2>Démarquez-vous dès aujourd'hui des autres candidats</h2>
+        <p>Ne laissez pas une photo de mauvaise qualité gâcher une excellente candidature. Profitez dès maintenant de notre outil gratuit et créez un CV qui retient immédiatement l'attention des recruteurs.</p>
+        <p style="text-align:center;margin-top:30px;">
+          <a href="/studio-photo" style="background:#facc15;color:#0f172a;padding:14px 28px;font-weight:900;text-transform:uppercase;border-radius:12px;text-decoration:none;display:inline-block;box-shadow:0 10px 25px rgba(250,204,21,0.3);">👉 Essayer le Studio Photo CV Gratuit</a>
+        </p>
+      `
+    },
+    {
       id: "erreurs-a-eviter-sur-un-cv",
       title: "Les 5 erreurs mortelles à éviter absolument sur votre CV en 2026",
       excerpt: "Un recruteur passe en moyenne 6 secondes sur un CV. Découvrez les erreurs courantes qui peuvent vous coûter un entretien et comment les corriger définitivement.",

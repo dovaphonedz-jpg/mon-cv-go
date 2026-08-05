@@ -148,106 +148,81 @@ export default function StyleForm() {
 
       {/* Sélection du Modèle */}
       <section>
-        <h2 className="text-xs font-bold uppercase tracking-widest text-blue-500 mb-4 flex items-center gap-2">
-          <LayoutTemplate className="w-4 h-4" /> Modèle du CV
+        <h2 className="text-xs font-bold uppercase tracking-widest text-blue-500 mb-4 flex items-center justify-between gap-2">
+          <span className="flex items-center gap-2"><LayoutTemplate className="w-4 h-4" /> Modèles de CV Disponibles</span>
+          <span className="text-[10px] bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 font-black px-2 py-0.5 rounded-full">{templates100.length} Modèles</span>
         </h2>
-        <div className="flex gap-3 items-center relative">
-          <div className="relative flex-grow" ref={dropdownRef}>
-            <button
-              type="button"
-              onClick={() => setIsDropdownOpen(!isDropdownOpen)}
-              className="w-full flex items-center justify-between rounded-xl bg-slate-50 dark:bg-slate-900 border border-slate-200 dark:border-slate-700 px-4 py-3 text-sm font-semibold text-slate-800 dark:text-white focus:ring-2 focus:ring-blue-500 outline-none transition-all cursor-pointer"
-            >
-              <span className="truncate">
-                {templates100.find(t => t.id === config.template)?.name || 'Sélectionnez un modèle'}
-              </span>
-              <svg className={`w-4 h-4 text-slate-400 transition-transform ${isDropdownOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M19 9l-7 7-7-7"></path></svg>
-            </button>
-            
-            {isDropdownOpen && (
-              <div className="absolute z-50 top-full left-0 right-0 mt-2 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-xl max-h-80 overflow-y-auto">
-                {Object.keys(groupedTemplates).map(layout => (
-                  <div key={layout} className="py-1">
-                    <div className="px-4 py-2 text-xs font-bold text-slate-400 uppercase tracking-wider bg-slate-50 dark:bg-slate-900/50">
-                      {layoutNames[layout] || layout}
-                    </div>
-                    {groupedTemplates[layout].map(tpl => (
-                      <button
-                        key={tpl.id}
-                        type="button"
-                        onClick={() => { updateConfig('template', tpl.id); setIsDropdownOpen(false); }}
-                        onMouseEnter={() => setHoveredTemplate(tpl)}
-                        onMouseLeave={() => setHoveredTemplate(null)}
-                        onTouchStart={() => setHoveredTemplate(tpl)}
-                        onTouchEnd={() => setHoveredTemplate(null)}
-                        className={`w-full text-left px-4 py-2 text-sm transition-colors ${config.template === tpl.id ? 'bg-blue-50 text-blue-700 dark:bg-blue-900/30 dark:text-blue-300 font-bold' : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700'}`}
-                      >
-                        {tpl.name}
-                      </button>
-                    ))}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-          
-          {/* Fenêtre volante d'aperçu détaillé au survol d'une option */}
-          {hoveredTemplate && isDropdownOpen && (
-            <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm pointer-events-none md:inset-auto md:bottom-6 md:left-6 md:bg-transparent md:backdrop-blur-none md:z-[100]">
-              <div className="w-[280px] h-[400px] md:w-[300px] md:h-[420px] flex flex-col bg-white dark:bg-slate-800 border-2 border-blue-500 rounded-xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200 pointer-events-none">
-              <div className="bg-blue-500 text-white text-xs font-bold px-3 py-2 text-center z-10 shrink-0">
-                Aperçu : {hoveredTemplate.name}
-              </div>
-              <div className="flex-grow bg-slate-50 dark:bg-slate-900 flex items-center justify-center relative overflow-hidden">
-                  <div 
-                    className="absolute top-0 left-0 bg-white origin-top-left hidden md:block"
-                    style={{ width: '794px', height: '1123px', transform: 'scale(0.35)' }}
-                  >
-                    <TemplateModern cvData={demoData[config.cvLang || 'fr']} config={{...config, template: hoveredTemplate.id}} />
-                  </div>
-                  <div 
-                    className="absolute top-0 left-0 bg-white origin-top-left md:hidden"
-                    style={{ width: '794px', height: '1123px', transform: 'scale(0.35)' }}
-                  >
-                    <TemplateModern cvData={demoData[config.cvLang || 'fr']} config={{...config, template: hoveredTemplate.id}} />
-                  </div>
-              </div>
-            </div>
-            </div>
-          )}
-          
-          {/* Miniature visuelle du modèle */}
-          {(() => {
-            const currentTpl = templates100.find(t => t.id === config.template) || templates100[0];
-            const L = currentTpl.layout;
+        
+        {/* Visual Cards Grid */}
+        <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 mb-4 max-h-96 overflow-y-auto pr-1 p-1 bg-slate-50 dark:bg-slate-900/50 rounded-2xl border border-slate-200 dark:border-slate-800">
+          {templates100.map(tpl => {
+            const isSelected = config.template === tpl.id;
             return (
-              <div className="w-12 h-14 shrink-0 bg-white border-2 border-slate-200 dark:border-slate-600 rounded-md shadow-sm overflow-hidden flex flex-col" title={`Aperçu: ${L}`}>
-                {L === 'sidebarRight' && (
-                  <div className="flex w-full h-full"><div className="w-2/3 h-full bg-slate-100 p-1"><div className="w-full h-1 bg-slate-300 mb-1 rounded-sm"/><div className="w-1/2 h-1 bg-slate-200 rounded-sm"/></div><div className="w-1/3 h-full bg-slate-300"></div></div>
-                )}
-                {L === 'creative' && (
-                  <div className="flex w-full h-full"><div className="w-1/3 h-full bg-slate-300"></div><div className="w-2/3 h-full bg-slate-100 p-1"><div className="w-full h-1 bg-slate-300 mb-1 rounded-sm"/><div className="w-1/2 h-1 bg-slate-200 rounded-sm"/></div></div>
-                )}
-                {L === 'split' && (
-                  <div className="flex w-full h-full"><div className="w-1/2 h-full bg-slate-300 p-1"></div><div className="w-1/2 h-full bg-slate-100 p-1"><div className="w-full h-1 bg-slate-200 mb-1"></div></div></div>
-                )}
-                {L === 'banner' && (
-                  <div className="w-full h-full flex flex-col"><div className="w-full h-4 bg-slate-300"></div><div className="w-full flex-grow bg-slate-100 p-1"><div className="w-3/4 h-1 bg-slate-200 mb-1"></div></div></div>
-                )}
-                {L === 'centered' && (
-                  <div className="w-full h-full flex flex-col items-center p-1 bg-slate-100"><div className="w-6 h-1 bg-slate-300 rounded-sm mb-1"></div><div className="w-10 h-0.5 bg-slate-200 rounded-sm mb-1"></div><div className="w-full h-0.5 bg-slate-200 mt-1"></div></div>
-                )}
-                {['glassmorphism', 'neon', 'neobrutalism', 'dark-minimal', 'modern', 'minimalist', 'classic', 'typographic'].includes(L) && (
-                  <div className="w-full h-full flex flex-col p-1 bg-slate-100"><div className="w-6 h-2 bg-slate-300 mb-1 rounded-sm"></div><div className="w-full h-0.5 bg-slate-200 mb-1"></div><div className="w-3/4 h-0.5 bg-slate-200 mb-1"></div><div className="w-full h-0.5 bg-slate-200"></div></div>
-                )}
-                {/* Fallback */}
-                {!['sidebarRight', 'creative', 'split', 'banner', 'centered', 'glassmorphism', 'neon', 'neobrutalism', 'dark-minimal', 'modern', 'minimalist', 'classic', 'typographic'].includes(L) && (
-                  <div className="w-full h-full flex flex-col p-1 bg-slate-100"><div className="w-1/2 h-2 bg-slate-300 mb-1"></div><div className="w-full flex-grow bg-slate-200"></div></div>
-                )}
-              </div>
+              <button
+                key={tpl.id}
+                type="button"
+                onClick={() => updateConfig('template', tpl.id)}
+                onMouseEnter={() => setHoveredTemplate(tpl)}
+                onMouseLeave={() => setHoveredTemplate(null)}
+                onTouchStart={() => setHoveredTemplate(tpl)}
+                onTouchEnd={() => setHoveredTemplate(null)}
+                className={`relative flex flex-col justify-between p-3 rounded-xl border text-left transition-all cursor-pointer group ${
+                  isSelected 
+                    ? 'bg-blue-50/90 dark:bg-blue-950/60 border-blue-500 text-blue-900 dark:text-blue-100 ring-2 ring-blue-500/30 shadow-md scale-[1.02]' 
+                    : 'bg-white dark:bg-slate-800 border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 hover:border-blue-400 hover:shadow-sm'
+                }`}
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-1.5">
+                    <span className={`text-[10px] font-extrabold uppercase px-1.5 py-0.5 rounded ${
+                      isSelected ? 'bg-blue-600 text-white' : 'bg-slate-100 dark:bg-slate-700 text-slate-600 dark:text-slate-300'
+                    }`}>
+                      {tpl.layout}
+                    </span>
+                    {isSelected && <span className="text-blue-500 font-black text-xs">✓</span>}
+                  </div>
+                  
+                  {/* Mini Preview Box */}
+                  <div className="relative aspect-[3/4] w-full bg-slate-100 dark:bg-slate-900 rounded-lg overflow-hidden border border-slate-200 dark:border-slate-700 mb-2.5 flex items-center justify-center">
+                    <div 
+                      className="absolute top-0 left-1/2 -translate-x-1/2 origin-top scale-[0.15] pointer-events-none bg-white shadow-sm"
+                      style={{ width: '794px', height: '1123px' }}
+                    >
+                      <TemplateModern cvData={demoData[config.cvLang || 'fr']} config={{...config, template: tpl.id}} />
+                    </div>
+                  </div>
+
+                  <h4 className="text-xs font-black tracking-tight leading-tight text-slate-800 dark:text-slate-100">{tpl.name}</h4>
+                </div>
+                
+                <div className="mt-2 text-[10px] font-bold text-slate-400 dark:text-slate-500 flex items-center justify-between pt-1.5 border-t border-slate-100 dark:border-slate-700/50">
+                  <span>PDF HD</span>
+                  <span className="text-blue-500 group-hover:underline font-extrabold">Aperçu →</span>
+                </div>
+              </button>
             );
-          })()}
+          })}
         </div>
+
+        {/* Floating Preview Window on Hover */}
+        {hoveredTemplate && (
+          <div className="fixed inset-0 z-[100] flex items-center justify-center bg-black/40 backdrop-blur-sm pointer-events-none md:inset-auto md:bottom-6 md:right-6 md:bg-transparent md:backdrop-blur-none md:z-[100]">
+            <div className="w-[280px] h-[400px] md:w-[320px] md:h-[450px] flex flex-col bg-white dark:bg-slate-800 border-2 border-blue-500 rounded-2xl shadow-2xl overflow-hidden animate-in fade-in zoom-in duration-200 pointer-events-none">
+              <div className="bg-blue-600 text-white text-xs font-black uppercase tracking-wider px-3 py-2 text-center z-10 shrink-0 flex items-center justify-between">
+                <span>Aperçu en direct</span>
+                <span className="bg-white/20 px-2 py-0.5 rounded text-[10px]">{hoveredTemplate.name}</span>
+              </div>
+              <div className="flex-grow bg-slate-100 dark:bg-slate-900 flex items-center justify-center relative overflow-hidden p-2">
+                <div 
+                  className="absolute top-0 left-1/2 -translate-x-1/2 bg-white origin-top shadow-lg"
+                  style={{ width: '794px', height: '1123px', transform: 'scale(0.36)' }}
+                >
+                  <TemplateModern cvData={cvData?.personal?.name ? cvData : demoData[config.cvLang || 'fr']} config={{...config, template: hoveredTemplate.id}} />
+                </div>
+              </div>
+            </div>
+          </div>
+        )}
       </section>
 
       {/* Ajustement automatique 1 Page */}

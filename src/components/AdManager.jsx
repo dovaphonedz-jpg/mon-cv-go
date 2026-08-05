@@ -5,8 +5,8 @@ export default function AdManager() {
   const location = useLocation();
 
   useEffect(() => {
-    // Pages where we DO NOT want ads (only editor tools)
-    const noAdsPaths = ['/create', '/portfolio', '/lettre-motivation'];
+    // Pages where we DO NOT want ads (only editor tools & studio photo)
+    const noAdsPaths = ['/create', '/portfolio', '/lettre-motivation', '/studio-photo'];
     
     const isNoAdsPage = noAdsPaths.some(path => location.pathname.startsWith(path));
 

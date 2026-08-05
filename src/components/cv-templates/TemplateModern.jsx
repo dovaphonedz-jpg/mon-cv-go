@@ -167,49 +167,48 @@ function RawTemplateModern({ cvData, config }) {
     );
   }
 
-  // 0.2 GLASSMORPHISM
+  // 0.2 GLASSMORPHISM (Silicon Valley - Light Pearl Glass)
   if (layout === 'glassmorphism') {
     return (
-      <div className={`cv-page ${fontClass} bg-slate-900 text-white shadow-2xl relative w-full min-h-[1123px] box-border p-5`} style={{ fontSize: getScale() }}>
+      <div className={`cv-page ${fontClass} bg-gradient-to-br from-slate-100 via-blue-50/50 to-indigo-50/30 text-slate-900 shadow-2xl relative w-full min-h-[1123px] box-border p-6`} style={{ fontSize: getScale() }}>
         {/* Background Decorative blobs */}
-        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-purple-500 rounded-full mix-blend-screen filter blur-[100px] opacity-40"></div>
-        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-blue-500 rounded-full mix-blend-screen filter blur-[100px] opacity-40"></div>
-        <div className="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 w-[500px] h-[500px] bg-emerald-500 rounded-full mix-blend-screen filter blur-[120px] opacity-20"></div>
+        <div className="absolute top-0 right-0 w-[400px] h-[400px] bg-blue-400/20 rounded-full filter blur-[100px] pointer-events-none"></div>
+        <div className="absolute bottom-0 left-0 w-[400px] h-[400px] bg-indigo-400/20 rounded-full filter blur-[100px] pointer-events-none"></div>
 
-        <div className="relative z-10 w-full h-full flex flex-col gap-4">
-          <header className="bg-white/10 backdrop-blur-xl border border-white/20 p-5 rounded-3xl flex justify-between items-center shadow-2xl">
+        <div className="relative z-10 w-full h-full flex flex-col gap-5">
+          <header className="bg-white/80 backdrop-blur-xl border border-white/80 p-6 rounded-3xl flex justify-between items-center shadow-lg shadow-blue-900/5">
             <div>
-              <h1 className="text-base font-extrabold uppercase tracking-tight text-transparent bg-clip-text bg-gradient-to-r from-white to-white/60 mb-2">{personal.name}</h1>
-              <h2 className="text-sm font-medium text-white/80">{personal.title}</h2>
-              <div className="flex gap-4 mt-4 text-sm text-white/70 font-semibold">
+              <h1 className="text-xl font-extrabold uppercase tracking-tight text-slate-900 mb-2">{personal.name}</h1>
+              <h2 className="text-sm font-bold text-blue-600 uppercase tracking-widest">{personal.title}</h2>
+              <div className="flex gap-4 mt-4 text-xs text-slate-600 font-medium">
                 {personal.email && <span>{personal.email}</span>}
                 {personal.phone && <span>• {personal.phone}</span>}
                 {personal.address && <span>• {personal.address}</span>}
               </div>
             </div>
             {personal.photo && (
-              <img src={personal.photo} alt="Profile" className="w-20 h-20 rounded-full object-cover border-4 border-white/30 shadow-lg" />
+              <img src={personal.photo} alt="Profile" className="w-20 h-20 rounded-2xl object-cover border-4 border-white shadow-md" />
             )}
           </header>
 
-          <div className="grid grid-cols-3 gap-4">
-            <div className="col-span-2 space-y-3">
+          <div className="grid grid-cols-3 gap-5">
+            <div className="col-span-2 space-y-4">
               {summary && (
-                <section className="bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-3xl shadow-xl">
-                  <h3 className="text-base font-bold uppercase tracking-widest text-white/90 mb-4">{t.profile}</h3>
-                  <p className="text-sm leading-relaxed text-white/80">{summary}</p>
+                <section className="bg-white/80 backdrop-blur-xl border border-white/80 p-5 rounded-3xl shadow-sm">
+                  <h3 className="text-xs font-black uppercase tracking-widest text-blue-700 mb-3">{t.profile}</h3>
+                  <p className="text-sm leading-relaxed text-slate-700">{summary}</p>
                 </section>
               )}
               {experiences.length > 0 && (
-                <section className="bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-3xl shadow-xl">
-                  <h3 className="text-base font-bold uppercase tracking-widest text-white/90 mb-3">{t.experience}</h3>
-                  <div className="space-y-3 relative border-s-2 border-white/20 ms-2 ps-6">
+                <section className="bg-white/80 backdrop-blur-xl border border-white/80 p-5 rounded-3xl shadow-sm">
+                  <h3 className="text-xs font-black uppercase tracking-widest text-blue-700 mb-4">{t.experience}</h3>
+                  <div className="space-y-4 relative border-s-2 border-blue-200 ms-2 ps-6">
                     {experiences.map((exp, idx) => (
                       <div key={idx} className="relative">
-                        <div className="absolute w-3 h-3 rounded-full bg-white -start-[31px] top-1 shadow-[0_0_10px_rgba(255,255,255,0.8)]"></div>
-                        <h4 className="font-bold text-sm text-white">{exp.role}</h4>
-                        <div className="text-sm font-semibold text-white/60 mb-2">{exp.company} | {exp.start} - {exp.end}</div>
-                        <p className="text-sm text-white/70 leading-relaxed">{exp.desc}</p>
+                        <div className="absolute w-3 h-3 rounded-full bg-blue-600 -start-[31px] top-1 shadow-sm"></div>
+                        <h4 className="font-bold text-sm text-slate-900">{exp.role}</h4>
+                        <div className="text-xs font-semibold text-blue-600 mb-2">{exp.company} | {exp.start} - {exp.end}</div>
+                        <p className="text-sm text-slate-600 leading-relaxed">{exp.desc}</p>
                       </div>
                     ))}
                   </div>
@@ -217,19 +216,19 @@ function RawTemplateModern({ cvData, config }) {
               )}
             </div>
             
-            <div className="col-span-1 space-y-3">
+            <div className="col-span-1 space-y-4">
               {skills.length > 0 && (
-                <section className="bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-3xl shadow-xl">
-                  <h3 className="text-base font-bold uppercase tracking-widest text-white/90 mb-4">{t.skills}</h3>
+                <section className="bg-white/80 backdrop-blur-xl border border-white/80 p-5 rounded-3xl shadow-sm">
+                  <h3 className="text-xs font-black uppercase tracking-widest text-blue-700 mb-4">{t.skills}</h3>
                   <div className="flex flex-col gap-3">
                     {skills.map((s, idx) => (
                       <div key={idx}>
-                        <div className="flex justify-between text-sm font-semibold mb-1 text-white/80">
+                        <div className="flex justify-between text-xs font-bold mb-1 text-slate-700">
                           <span>{s.name}</span>
                           <span>{s.level}</span>
                         </div>
-                        <div className="w-full bg-white/10 rounded-full h-1.5 overflow-hidden">
-                          <div className="bg-gradient-to-r from-blue-400 to-emerald-400 h-1.5 rounded-full" style={{ width: String(s.level).includes('%') ? s.level : '80%' }}></div>
+                        <div className="w-full bg-slate-200 rounded-full h-1.5 overflow-hidden">
+                          <div className="bg-gradient-to-r from-blue-500 to-indigo-600 h-1.5 rounded-full" style={{ width: String(s.level).includes('%') ? s.level : '80%' }}></div>
                         </div>
                       </div>
                     ))}
@@ -237,33 +236,19 @@ function RawTemplateModern({ cvData, config }) {
                 </section>
               )}
               {qualities.length > 0 && (
-                <section className="bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-3xl shadow-xl">
-                  <h3 className="text-base font-bold uppercase tracking-widest text-white/90 mb-4">{t.qualities || 'Qualités'}</h3>
-                  <div className="flex flex-wrap gap-2">
+                <section className="bg-white/80 backdrop-blur-xl border border-white/80 p-5 rounded-3xl shadow-sm">
+                  <h3 className="text-xs font-black uppercase tracking-widest text-blue-700 mb-4">{t.qualities || 'Qualités'}</h3>
+                  <div className="flex flex-wrap gap-1.5">
                     {qualities.map((q, idx) => {
                       const name = typeof q === 'string' ? q : q?.name;
                       if (!name) return null;
                       return (
-                        <span key={idx} className="px-3 py-1 bg-white/20 rounded-full text-xs text-white font-medium border border-white/30">
+                        <span key={idx} className="px-2.5 py-1 bg-blue-100/70 text-blue-900 rounded-lg text-xs font-bold border border-blue-200">
                           {name}
                         </span>
                       );
                     })}
                   </div>
-                </section>
-              )}
-              
-              {languages.length > 0 && (
-                <section className="bg-white/10 backdrop-blur-xl border border-white/20 p-4 rounded-3xl shadow-xl">
-                  <h3 className="text-base font-bold uppercase tracking-widest text-white/90 mb-4">{t.languages}</h3>
-                  <ul className="text-sm text-white/80 space-y-3 font-medium">
-                    {languages.map((l, idx) => (
-                      <li key={idx} className="flex justify-between border-b border-white/10 pb-2">
-                        <span>{l.name}</span>
-                        <span className="text-white/50">{l.level}</span>
-                      </li>
-                    ))}
-                  </ul>
                 </section>
               )}
             </div>
@@ -273,61 +258,42 @@ function RawTemplateModern({ cvData, config }) {
     );
   }
 
-  // 0.3 DARK MINIMAL / NEON
-  if (layout === 'dark-minimal' || layout === 'neon') {
-    const isNeon = layout === 'neon';
-    const accent = isNeon ? '#0ea5e9' : themeColor;
-    const shadow = isNeon ? `0 0 15px ${accent}` : 'none';
-    
+  // 0.3 NEON (Tokyo Neo Cyberpunk Electric Dark)
+  if (layout === 'neon') {
+    const accent = '#0ea5e9';
     return (
-      <div className={`cv-page ${fontClass} bg-[#09090b] text-[#f4f4f5] shadow-2xl relative w-full min-h-[1123px] box-border p-6`} style={{ fontSize: getScale() }}>
-        <header className="border-b border-[#27272a] pb-4 mb-4 flex justify-between items-end">
+      <div className={`cv-page ${fontClass} bg-[#090a16] text-cyan-300 shadow-2xl relative w-full min-h-[1123px] box-border p-6 border-2 border-cyan-500/50`} style={{ fontSize: getScale() }}>
+        <header className="border-b-2 border-cyan-500/40 pb-5 mb-5 flex justify-between items-end bg-cyan-950/20 p-4 rounded-xl shadow-[0_0_15px_rgba(6,182,212,0.15)]">
           <div>
-            <h1 className="text-base font-extrabold uppercase tracking-[0.2em] mb-2" style={{ color: accent, textShadow: shadow }}>{personal.name}</h1>
-            <h2 className="text-base tracking-widest uppercase text-[#a1a1aa]">{personal.title}</h2>
+            <h1 className="text-xl font-black uppercase tracking-[0.2em] mb-2 text-cyan-400 drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]">{personal.name}</h1>
+            <h2 className="text-sm font-extrabold uppercase tracking-widest text-pink-400">{personal.title}</h2>
           </div>
           {personal.photo && (
-            <img src={personal.photo} alt="Profile" className="w-16 h-16 rounded-none object-cover border border-[#27272a] grayscale hover:grayscale-0 transition-all" />
+            <img src={personal.photo} alt="Profile" className="w-16 h-16 rounded-xl object-cover border-2 border-cyan-400 shadow-[0_0_12px_rgba(6,182,212,0.6)]" />
           )}
         </header>
 
         <div className="flex gap-6">
           <div className="w-1/3 space-y-5">
-            <section>
-              <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-[#71717a] mb-4">{t.contact}</h3>
-              <ul className="text-sm text-[#d4d4d8] space-y-3 font-medium">
+            <section className="bg-slate-900/60 p-4 rounded-xl border border-cyan-900/50">
+              <h3 className="text-xs font-black uppercase tracking-[0.3em] text-pink-400 mb-3">{t.contact}</h3>
+              <ul className="text-xs text-slate-300 space-y-2 font-mono">
                 {personal.email && <li>{personal.email}</li>}
                 {personal.phone && <li>{personal.phone}</li>}
                 {personal.address && <li>{personal.address}</li>}
-                {personal.website && <li style={{ color: accent }}>{personal.website}</li>}
+                {personal.website && <li className="text-cyan-400">{personal.website}</li>}
               </ul>
             </section>
             {skills.length > 0 && (
-              <section>
-                <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-[#71717a] mb-4">{t.skills}</h3>
-                <ul className="text-sm text-[#d4d4d8] space-y-2 font-medium tracking-wide">
+              <section className="bg-slate-900/60 p-4 rounded-xl border border-cyan-900/50">
+                <h3 className="text-xs font-black uppercase tracking-[0.3em] text-pink-400 mb-3">{t.skills}</h3>
+                <ul className="text-xs text-slate-300 space-y-2 font-mono">
                   {skills.map((s, idx) => (
                     <li key={idx} className="flex justify-between items-center">
                       <span>{s.name}</span>
-                      <span className="text-xs" style={{ color: accent }}>{s.level}</span>
+                      <span className="text-cyan-400 font-bold">{s.level}</span>
                     </li>
                   ))}
-                </ul>
-              </section>
-            )}
-            {qualities.length > 0 && (
-              <section>
-                <h3 className="text-xs font-bold uppercase tracking-[0.3em] text-[#71717a] mb-4">{t.qualities || 'Qualités'}</h3>
-                <ul className="text-sm text-[#d4d4d8] space-y-2 font-medium tracking-wide">
-                  {qualities.map((q, idx) => {
-                    const name = typeof q === 'string' ? q : q?.name;
-                    if (!name) return null;
-                    return (
-                      <li key={idx} className="flex items-center gap-2">
-                        <span style={{ color: accent }}>•</span> {name}
-                      </li>
-                    );
-                  })}
                 </ul>
               </section>
             )}
