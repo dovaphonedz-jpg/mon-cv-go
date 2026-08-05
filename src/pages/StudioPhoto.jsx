@@ -1,7 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import { UploadCloud, Download, RefreshCw, CheckCircle2, ArrowLeft, Camera, ZoomIn, RotateCw, MoveHorizontal, Wand2, Sparkles, Loader2, Eraser } from 'lucide-react';
-import { removeBackground } from '@imgly/background-removal';
 import { useResume } from '../context/ResumeContext';
 import SEO from '../components/SEO';
 
@@ -95,11 +94,12 @@ export default function StudioPhoto() {
     }
   };
 
-  // 🪄 True AI Background Removal using @imgly/background-removal
+  // 🪄 True AI Background Removal using dynamic import of @imgly/background-removal
   const processAIBgRemoval = async () => {
     if (!imageSrc) return;
     setIsRemoving(true);
     try {
+      const { removeBackground } = await import('@imgly/background-removal');
       const blob = await removeBackground(imageSrc);
       const transparentUrl = URL.createObjectURL(blob);
       setRemovedBgSrc(transparentUrl);
