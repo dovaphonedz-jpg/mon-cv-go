@@ -51,12 +51,17 @@ export default function PersonalInfoForm() {
         </div>
         <div className="flex-grow space-y-2">
           <label className="block text-xs font-bold text-slate-600 dark:text-slate-400">Photo de profil</label>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2 my-1">
             <a 
               href="/studio-photo" 
-              className="inline-flex items-center gap-1.5 px-3 py-1.5 bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-sm hover:shadow-md transition-all hover:scale-105"
+              className="w-full inline-flex items-center justify-between px-3.5 py-2.5 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600 text-white font-black text-xs uppercase tracking-wider rounded-xl shadow-md hover:shadow-lg transition-all transform hover:scale-[1.02] cursor-pointer"
             >
-              📸 Studio Photo CV (Costumes, Fonds & Filtres)
+              <span className="flex items-center gap-2">
+                <span className="text-base">🪄</span> Studio Photo CV & Détourage IA
+              </span>
+              <span className="bg-yellow-400 text-slate-950 text-[10px] font-black px-2 py-0.5 rounded-md uppercase">
+                1-Clic
+              </span>
             </a>
           </div>
           <p className="text-sm font-semibold text-slate-700 dark:text-slate-300">{t("forms.personal.photo")}</p>

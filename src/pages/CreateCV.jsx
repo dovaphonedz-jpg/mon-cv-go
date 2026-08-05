@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect, useMemo } from 'react';
-import { useLocation } from 'react-router-dom';
+import { useLocation, Link } from 'react-router-dom';
 import { useResume } from '../context/ResumeContext';
-import { UploadCloud, Sparkles, Trash2, Eye, Download, FileText, Presentation, Palette, Info, ChevronDown, ChevronUp, Heart, X } from 'lucide-react';
+import { UploadCloud, Sparkles, Trash2, Eye, Download, FileText, Presentation, Palette, Info, ChevronDown, ChevronUp, Heart, X, Camera } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useReactToPrint } from 'react-to-print';
 import { useTranslation } from 'react-i18next';
@@ -72,7 +72,7 @@ export default function CreateCV() {
     if (params.get('step') === 'projects') {
       setOpenAccordion('projects');
     }
-  }, []);
+  }, [location.search]);
 
   // CV Completeness Score (Progress Bar)
   const completionScore = useMemo(() => {
@@ -208,6 +208,14 @@ export default function CreateCV() {
           </div>
 
           <div className="flex gap-1.5 sm:gap-2 items-center overflow-x-auto pb-1 sm:pb-0 custom-scrollbar-hide tour-step-actions shrink-0">
+            <Link 
+              to="/studio-photo" 
+              className="shrink-0 flex items-center gap-1.5 px-3 sm:px-4 py-2 bg-gradient-to-r from-yellow-400 to-amber-500 text-slate-950 font-black text-xs uppercase tracking-wider rounded-xl shadow-md hover:shadow-lg transition-all hover:-translate-y-0.5"
+              title="Studio Photo CV : Détourage IA & Retouche"
+            >
+              <Camera className="w-4 h-4 text-slate-950" />
+              <span>Studio Photo IA</span>
+            </Link>
 
             <button onClick={() => loadDemo(config.cvLang || 'fr')} className="shrink-0 flex items-center gap-1.5 px-2.5 sm:px-4 py-2 bg-cyan-100 dark:bg-cyan-900/30 text-cyan-700 dark:text-cyan-300 font-semibold text-xs rounded-xl shadow-sm hover:shadow-md transition-all hover:-translate-y-0.5">
               <Sparkles className="w-4 h-4" />
