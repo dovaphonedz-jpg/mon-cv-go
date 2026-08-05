@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { UploadCloud, Download, RefreshCw, CheckCircle2, ArrowLeft, Camera, ZoomIn, RotateCw, MoveHorizontal, Wand2, Sparkles, Loader2, Eraser } from 'lucide-react';
+import { UploadCloud, Download, RefreshCw, CheckCircle2, ArrowLeft, Camera, ZoomIn, RotateCw, MoveHorizontal, Wand2, Sparkles, Loader2, Eraser, Trash2 } from 'lucide-react';
 import { useResume } from '../context/ResumeContext';
 import SEO from '../components/SEO';
 
@@ -32,8 +32,8 @@ export default function StudioPhoto() {
   const [contrast, setContrast] = useState(100);
   const [saturation, setSaturation] = useState(100);
 
-  // Position & Zoom
-  const [zoom, setZoom] = useState(0.65);
+  // Position & Zoom (Default 1.0 = Fitted/Dézoomé)
+  const [zoom, setZoom] = useState(1.0);
   const [position, setPosition] = useState({ x: 0, y: 0 });
   const [isDragging, setIsDragging] = useState(false);
   const [dragStart, setDragStart] = useState({ x: 0, y: 0 });
@@ -87,10 +87,28 @@ export default function StudioPhoto() {
         setRemovedBgSrc(null);
         setIsBgRemoved(false);
         setPosition({ x: 0, y: 0 });
-        setZoom(0.65);
+        setZoom(1.0); // Default zoomed-out / fitted view
         setRotation(0);
       };
       reader.readAsDataURL(file);
+    }
+  };
+
+  const handleDeletePhoto = () => {
+    if (window.confirm("Voulez-vous vraiment supprimer la photo importée ?")) {
+      setImageSrc(null);
+      setRemovedBgSrc(null);
+      setIsBgRemoved(false);
+      setPosition({ x: 0, y: 0 });
+      setZoom(1.0);
+      setRotation(0);
+      setFlipH(false);
+      if (updatePersonal) {
+        updatePersonal('photo', '');
+      }
+      if (fileInputRef.current) {
+        fileInputRef.current.value = '';
+      }
     }
   };
 
@@ -134,9 +152,9 @@ export default function StudioPhoto() {
       const canvas = document.createElement('canvas');
       const ctx = canvas.getContext('2d');
       
-      let outW = 600;
-      let outH = 600;
-      if (aspectRatio === '3.5:4.5') outH = 771;
+      let outW = 500;
+      let outH = 500;
+      if (aspectRatio === '3.5:4.5') outH = 643;
 
       canvas.width = outW;
       canvas.height = outH;
@@ -168,43 +186,79 @@ export default function StudioPhoto() {
 
       // 2. Draw Head Photo with Filters
       const img = new Image();
-      img.crossOrigin = 'anonymous';
-      img.onload = () => {
-        ctx.save();
+      if (activeSrc.startsWith('http://') || activeSrc.startsWith('https://')) {
+        img.crossOrigin = 'anonymous';
+      }
 
-        const frameObj = FRAMES.find(f => f.id === selectedFrame);
-        if (frameObj && frameObj.shape === 'circle') {
-          ctx.beginPath();
-          ctx.arc(outW / 2, outH / 2, outW / 2 - 8, 0, Math.PI * 2);
-          ctx.clip();
-        }
-
-        ctx.filter = cssFilterString;
-        ctx.translate(outW / 2 + position.x * (outW / 360), outH / 2 + position.y * (outH / 360));
-        ctx.rotate((rotation * Math.PI) / 180);
-        ctx.scale(flipH ? -1 : 1, 1);
-
-        const drawWidth = outW * zoom;
-        const drawHeight = outH * zoom;
-        ctx.drawImage(img, -drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight);
-        ctx.restore();
-
-        // 3. Draw Frame Stroke Overlay
-        if (frameObj && frameObj.id !== 'none') {
+      const drawImageToCanvas = () => {
+        try {
           ctx.save();
-          ctx.strokeStyle = frameObj.color;
-          ctx.lineWidth = 8;
-          if (frameObj.shape === 'circle') {
+
+          const frameObj = FRAMES.find(f => f.id === selectedFrame);
+          if (frameObj && frameObj.shape === 'circle') {
             ctx.beginPath();
             ctx.arc(outW / 2, outH / 2, outW / 2 - 8, 0, Math.PI * 2);
-            ctx.stroke();
+            ctx.clip();
           }
-          ctx.restore();
-        }
 
-        resolve(canvas.toDataURL('image/png', 0.95));
+          ctx.filter = cssFilterString;
+
+          // Calculate aspect ratio matching CSS object-contain
+          const imgW = img.naturalWidth || img.width || 100;
+          const imgH = img.naturalHeight || img.height || 100;
+          const imgAspect = imgW / imgH;
+          const containerAspect = outW / outH;
+          
+          let baseW = outW;
+          let baseH = outH;
+          if (imgAspect > containerAspect) {
+            baseW = outW;
+            baseH = outW / imgAspect;
+          } else {
+            baseH = outH;
+            baseW = outH * imgAspect;
+          }
+
+          ctx.translate(outW / 2 + position.x * (outW / 360), outH / 2 + position.y * (outH / 360));
+          ctx.rotate((rotation * Math.PI) / 180);
+          ctx.scale(flipH ? -1 : 1, 1);
+
+          const drawWidth = baseW * zoom;
+          const drawHeight = baseH * zoom;
+          ctx.drawImage(img, -drawWidth / 2, -drawHeight / 2, drawWidth, drawHeight);
+          ctx.restore();
+
+          // 3. Draw Frame Stroke Overlay
+          if (frameObj && frameObj.id !== 'none') {
+            ctx.save();
+            ctx.strokeStyle = frameObj.color;
+            ctx.lineWidth = 8;
+            if (frameObj.shape === 'circle') {
+              ctx.beginPath();
+              ctx.arc(outW / 2, outH / 2, outW / 2 - 8, 0, Math.PI * 2);
+              ctx.stroke();
+            }
+            ctx.restore();
+          }
+
+          const format = selectedBg === 'original' ? 'image/png' : 'image/jpeg';
+          resolve(canvas.toDataURL(format, 0.88));
+        } catch (err) {
+          console.error("Canvas render error:", err);
+          resolve(activeSrc);
+        }
       };
+
+      img.onload = drawImageToCanvas;
+      img.onerror = (err) => {
+        console.error("Image loading error in canvas:", err);
+        resolve(activeSrc);
+      };
+
       img.src = activeSrc;
+      if (img.complete && img.naturalWidth !== 0) {
+        drawImageToCanvas();
+      }
     });
   };
 
@@ -219,10 +273,17 @@ export default function StudioPhoto() {
   };
 
   const handleApplyToCV = async () => {
-    const dataUrl = await generateHDDataUrl();
-    if (dataUrl && updatePersonal) {
-      updatePersonal('photo', dataUrl);
-      navigate('/create');
+    try {
+      const dataUrl = await generateHDDataUrl();
+      if (dataUrl && updatePersonal) {
+        updatePersonal('photo', dataUrl);
+        navigate('/create');
+      } else {
+        alert("Impossible de préparer la photo. Veuillez réessayer.");
+      }
+    } catch (err) {
+      console.error("Erreur d'injection photo:", err);
+      alert("Erreur lors de l'injection dans votre CV.");
     }
   };
 
@@ -250,7 +311,14 @@ export default function StudioPhoto() {
             </div>
 
             {imageSrc && (
-              <div className="flex gap-3 w-full sm:w-auto">
+              <div className="flex flex-wrap sm:flex-nowrap gap-3 w-full sm:w-auto">
+                <button 
+                  onClick={handleDeletePhoto} 
+                  className="px-4 py-3 bg-red-500/10 hover:bg-red-500/20 text-red-400 hover:text-red-300 font-black text-xs uppercase tracking-wider rounded-xl border border-red-500/30 flex items-center justify-center gap-2 transition-all cursor-pointer"
+                  title="Supprimer la photo"
+                >
+                  <Trash2 className="w-4 h-4" /> Supprimer
+                </button>
                 <button 
                   onClick={handleDownload} 
                   className="flex-1 sm:flex-initial px-5 py-3 bg-slate-800 hover:bg-slate-700 text-white font-black text-xs uppercase tracking-wider rounded-xl border border-slate-700 flex items-center justify-center gap-2 transition-all cursor-pointer"
@@ -323,9 +391,9 @@ export default function StudioPhoto() {
                     <img
                       src={activeSrc}
                       alt="CV Portrait"
-                      className="absolute inset-0 max-w-none pointer-events-none transition-all duration-75"
+                      className="absolute top-1/2 left-1/2 max-w-full max-h-full object-contain pointer-events-none transition-all duration-75"
                       style={{
-                        transform: `translate(${position.x}px, ${position.y}px) scale(${zoom}) rotate(${rotation}deg) scaleX(${flipH ? -1 : 1})`,
+                        transform: `translate(calc(-50% + ${position.x}px), calc(-50% + ${position.y}px)) scale(${zoom}) rotate(${rotation}deg) scaleX(${flipH ? -1 : 1})`,
                         transformOrigin: 'center center',
                         filter: cssFilterString
                       }}
@@ -351,7 +419,7 @@ export default function StudioPhoto() {
                       <input 
                         type="range" 
                         min="0.2" 
-                        max="2.0" 
+                        max="2.5" 
                         step="0.02" 
                         value={zoom} 
                         onChange={(e) => setZoom(parseFloat(e.target.value))}
@@ -362,8 +430,8 @@ export default function StudioPhoto() {
                     <div className="flex justify-between items-center border-t border-slate-700/60 pt-2">
                       <span className="text-[11px] text-slate-400">💡 Glissez la photo à la souris pour cadrer.</span>
                       <button 
-                        onClick={() => { setZoom(0.65); setPosition({ x: 0, y: 0 }); setRotation(0); setFlipH(false); }} 
-                        className="text-[10px] font-black text-yellow-400 hover:underline uppercase"
+                        onClick={() => { setZoom(1.0); setPosition({ x: 0, y: 0 }); setRotation(0); setFlipH(false); }} 
+                        className="text-[10px] font-black text-yellow-400 hover:underline uppercase cursor-pointer"
                       >
                         Reset Position
                       </button>
@@ -694,14 +762,23 @@ export default function StudioPhoto() {
                 </div>
               )}
 
-              {/* Change photo button */}
+              {/* Change & Delete photo buttons */}
               {imageSrc && (
-                <button 
-                  onClick={() => fileInputRef.current?.click()} 
-                  className="w-full mt-6 py-3 bg-slate-950 hover:bg-slate-800 text-xs font-bold text-slate-400 uppercase tracking-wider rounded-2xl border border-slate-800 flex items-center justify-center gap-2 transition-all cursor-pointer"
-                >
-                  <RefreshCw className="w-4 h-4" /> Changer de Photo
-                </button>
+                <div className="flex gap-3 mt-6">
+                  <button 
+                    onClick={() => fileInputRef.current?.click()} 
+                    className="flex-1 py-3 bg-slate-950 hover:bg-slate-800 text-xs font-bold text-slate-400 hover:text-white uppercase tracking-wider rounded-2xl border border-slate-800 flex items-center justify-center gap-2 transition-all cursor-pointer"
+                  >
+                    <RefreshCw className="w-4 h-4" /> Changer de Photo
+                  </button>
+                  <button 
+                    onClick={handleDeletePhoto} 
+                    className="px-4 py-3 bg-red-500/10 hover:bg-red-500/20 text-red-400 hover:text-red-300 text-xs font-bold uppercase tracking-wider rounded-2xl border border-red-500/30 flex items-center justify-center gap-2 transition-all cursor-pointer"
+                    title="Supprimer la photo"
+                  >
+                    <Trash2 className="w-4 h-4" /> Supprimer
+                  </button>
+                </div>
               )}
 
             </div>
