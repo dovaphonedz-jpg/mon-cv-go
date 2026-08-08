@@ -60,7 +60,8 @@ function RawTemplateModern({ cvData, config }) {
         <header className="p-5 border-b-[12px] border-black bg-white flex justify-between items-center">
           <div>
             <h1 className="text-lg font-black uppercase tracking-tighter mb-2 bg-black text-yellow-400 inline-block px-4 py-2 border-4 border-black" style={{ transform: 'rotate(-2deg)' }}>{personal.name}</h1>
-            <h2 className="text-base font-bold uppercase mt-4">{personal.title}</h2>
+            <h2 className="text-base font-bold uppercase mt-2">{personal.title}</h2>
+            {personal.birthDate && <div className="text-xs font-black uppercase mt-1 bg-white border-2 border-black inline-block px-2 py-0.5">{personal.birthDate}</div>}
           </div>
           {personal.photo && (
             <img src={personal.photo} alt="Profile" className="w-20 h-20 object-cover border-8 border-black shadow-[8px_8px_0px_0px_rgba(0,0,0,1)]" />
@@ -179,8 +180,9 @@ function RawTemplateModern({ cvData, config }) {
         <div className="relative z-10 w-full h-full flex flex-col gap-5">
           <header className="bg-white/80 backdrop-blur-xl border border-white/80 p-6 rounded-3xl flex justify-between items-center shadow-lg shadow-blue-900/5">
             <div>
-              <h1 className="text-xl font-extrabold uppercase tracking-tight text-slate-900 mb-2">{personal.name}</h1>
+              <h1 className="text-xl font-extrabold uppercase tracking-tight text-slate-900 mb-1">{personal.name}</h1>
               <h2 className="text-sm font-bold text-blue-600 uppercase tracking-widest">{personal.title}</h2>
+              {personal.birthDate && <div className="text-xs font-semibold text-slate-600 mt-1">📅 {personal.birthDate}</div>}
               <div className="flex gap-4 mt-4 text-xs text-slate-600 font-medium">
                 {personal.email && <span>{personal.email}</span>}
                 {personal.phone && <span>• {personal.phone}</span>}
@@ -267,8 +269,9 @@ function RawTemplateModern({ cvData, config }) {
       <div className={`cv-page ${fontClass} bg-[#090a16] text-cyan-300 shadow-2xl relative w-full min-h-[1123px] box-border p-6 border-2 border-cyan-500/50`} style={{ fontSize: getScale() }}>
         <header className="border-b-2 border-cyan-500/40 pb-5 mb-5 flex justify-between items-end bg-cyan-950/20 p-4 rounded-xl shadow-[0_0_15px_rgba(6,182,212,0.15)]">
           <div>
-            <h1 className="text-xl font-black uppercase tracking-[0.2em] mb-2 text-cyan-400 drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]">{personal.name}</h1>
+            <h1 className="text-xl font-black uppercase tracking-[0.2em] mb-1 text-cyan-400 drop-shadow-[0_0_8px_rgba(6,182,212,0.8)]">{personal.name}</h1>
             <h2 className="text-sm font-extrabold uppercase tracking-widest text-pink-400">{personal.title}</h2>
+            {personal.birthDate && <div className="text-xs font-bold text-cyan-300 mt-1">🎂 {personal.birthDate}</div>}
           </div>
           {personal.photo && (
             <img src={personal.photo} alt="Profile" className="w-16 h-16 rounded-xl object-cover border-2 border-cyan-400 shadow-[0_0_12px_rgba(6,182,212,0.6)]" />
@@ -386,7 +389,8 @@ function RawTemplateModern({ cvData, config }) {
         <header className="border-b-[3px] border-[#1c1c1c] pb-4 mb-6 flex justify-between items-start">
           <div className="w-2/3">
             <h1 className="text-7xl font-black uppercase tracking-tighter leading-none mb-4" style={{ color: themeColor }}>{personal.name}</h1>
-            <h2 className="text-base font-serif italic text-[#4a4a4a] mb-3">{personal.title}</h2>
+            <h2 className="text-base font-serif italic text-[#4a4a4a] mb-1">{personal.title}</h2>
+            {personal.birthDate && <div className="text-xs font-serif text-[#666] mb-3">📅 {personal.birthDate}</div>}
             {summary && <p className="text-sm font-serif leading-relaxed text-[#1c1c1c] border-l-[3px] pl-6" style={{ borderColor: themeColor }}>{summary}</p>}
           </div>
           {personal.photo && (
@@ -517,8 +521,9 @@ function RawTemplateModern({ cvData, config }) {
       <div className={containerClasses} style={{ fontSize: getScale(), ...(style === 'underlined' ? { borderBottomColor: themeColor } : {}) }}>
         <header className="p-6 text-white flex justify-between items-center" style={{ background: layout === 'gradient' ? `linear-gradient(135deg, ${themeColor}, #0f172a)` : themeColor }}>
           <div>
-            <h1 className="text-base font-extrabold uppercase tracking-tight mb-2">{personal.name}</h1>
+            <h1 className="text-base font-extrabold uppercase tracking-tight mb-1">{personal.name}</h1>
             <h2 className="text-sm font-light opacity-90">{personal.title}</h2>
+            {personal.birthDate && <div className="text-xs opacity-90 mt-1 font-medium">🎂 {personal.birthDate}</div>}
           </div>
           {personal.photo && (
             <img src={personal.photo} alt="Profile" className="w-36 h-36 rounded-full object-cover border-4 border-white shadow-xl" />
@@ -659,8 +664,9 @@ function RawTemplateModern({ cvData, config }) {
     return (
       <div className={`${containerClasses} ${paddingClass}`} style={{ fontSize: getScale(), ...(style === 'underlined' ? { borderBottomColor: themeColor } : {}) }}>
         <header className="mb-5 text-center">
-          <h1 className="text-base font-black uppercase tracking-widest mb-3" style={{ color: themeColor }}>{personal.name}</h1>
-          <h2 className="text-sm text-slate-500 font-light mb-3 tracking-widest uppercase">{personal.title}</h2>
+          <h1 className="text-base font-black uppercase tracking-widest mb-1" style={{ color: themeColor }}>{personal.name}</h1>
+          <h2 className="text-sm text-slate-500 font-light mb-1 tracking-widest uppercase">{personal.title}</h2>
+          {personal.birthDate && <div className="text-xs text-slate-500 font-bold mb-3 tracking-widest uppercase">📅 {personal.birthDate}</div>}
           
           <div className="flex justify-center gap-4 text-xs font-bold text-slate-500 uppercase tracking-wider flex-wrap">
             {personal.email && <span>{personal.email}</span>}
@@ -795,7 +801,8 @@ function RawTemplateModern({ cvData, config }) {
           <h1 className="text-base font-extrabold uppercase tracking-tight text-center mb-1 text-white">
             {personal.name}
           </h1>
-          <h2 className="text-sm text-white/80 font-medium text-center mb-4">{personal.title}</h2>
+          <h2 className="text-sm text-white/80 font-medium text-center mb-1">{personal.title}</h2>
+          {personal.birthDate && <div className="text-xs text-white/90 text-center font-medium mb-4">📅 {personal.birthDate}</div>}
 
           <div className="space-y-4">
             <section>
@@ -933,6 +940,7 @@ function RawTemplateModern({ cvData, config }) {
           <div>
             <h1 className="text-5xl font-black uppercase tracking-widest" style={{ color: themeColor, textShadow: `2px 2px 5px ${themeColor}88` }}>{personal.name}</h1>
             <h2 className="text-xl mt-2 font-bold tracking-widest text-pink-500 uppercase">{personal.title}</h2>
+            {personal.birthDate && <div className="text-xs mt-1 font-bold tracking-widest text-cyan-300 uppercase">🎂 {personal.birthDate}</div>}
           </div>
           {personal.photo && (
             <img src={personal.photo} alt={personal.name} className="w-28 h-28 object-cover rounded-full border-4" style={{ borderColor: themeColor, boxShadow: `0 0 10px ${themeColor}` }} />
@@ -1035,6 +1043,7 @@ function RawTemplateModern({ cvData, config }) {
         <header className="border-b-4 pb-6 mb-6 flex flex-col items-center text-center" style={{ borderColor: themeColor }}>
           <h1 className="text-5xl font-serif font-bold uppercase tracking-widest mb-2" style={{ color: themeColor }}>{personal.name}</h1>
           <h2 className="text-xl font-light tracking-[0.3em] uppercase text-gray-600">{personal.title}</h2>
+          {personal.birthDate && <div className="text-sm font-medium tracking-wider text-gray-500 mt-1">📅 {personal.birthDate}</div>}
           <div className="mt-4 flex flex-wrap justify-center gap-4 text-xs font-medium uppercase tracking-wider text-gray-500">
             {personal.email && <span>{personal.email}</span>}
             {personal.phone && <span>• {personal.phone}</span>}
@@ -1139,6 +1148,7 @@ function RawTemplateModern({ cvData, config }) {
           <div>
             <h1 className="text-4xl font-light tracking-wide text-gray-900 mb-2">{personal.name}</h1>
             <h2 className="text-lg font-medium tracking-widest uppercase" style={{ color: themeColor }}>{personal.title}</h2>
+            {personal.birthDate && <div className="text-sm font-light text-gray-500 mt-1">📅 {personal.birthDate}</div>}
           </div>
         </header>
 
@@ -1234,6 +1244,7 @@ const isCentered = layout === 'centered';
           {personal.name}
         </h1>
         <h2 className="text-base text-slate-500 font-medium mt-1">{personal.title}</h2>
+        {personal.birthDate && <div className="text-xs text-slate-600 font-medium mt-1">📅 {personal.birthDate}</div>}
         
         <ul className={`text-xs text-slate-600 mt-4 flex flex-wrap gap-4 ${isCentered ? 'justify-center' : ''}`}>
           {personal.email && <li>{personal.email}</li>}
