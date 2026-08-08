@@ -222,6 +222,19 @@ export default function ConseilsCV() {
         { term: "Employer Branding", def: "The image and reputation of a company as an employer. It determines its ability to attract and retain top talent." }
       ]
     },
+    de: {
+      title: "Das Glossar für Arbeitssuchende",
+      desc: "Keine Verwirrung mehr bei HR-Fachbegriffen. Hier sind die wichtigsten Definitionen für das moderne Recruiting.",
+      terms: [
+        { term: "ATS (Applicant Tracking System)", def: "Software zur automatischen Vorfilterung und Sortierung von Bewerbungen anhand von Schlüsselwörtern. Nicht ATS-optimierte Bewerbungen werden oft gar nicht von Menschen gelesen." },
+        { term: "Soft Skills (Soziale Kompetenzen)", def: "Persönlichkeitseigenschaften und soziale Fähigkeiten (z. B. Führungskompetenz, Empathie, Stressresistenz)." },
+        { term: "Hard Skills (Fachkompetenzen)", def: "Fachwissen und technische Fähigkeiten, die durch Ausbildung oder Berufserfahrung erworben wurden (z. B. Softwarekenntnisse, Programmierung)." },
+        { term: "Portfolio", def: "Digitale oder gedruckte Mappe zur Präsentation eigener Arbeitsproben (z. B. Designentwürfe, Artikel, Code-Beispiele)." },
+        { term: "Schlüsselwörter (Keywords)", def: "Spezifische Begriffe aus der Stellenanzeige. Recruiter und ATS-Systeme suchen genau danach im Lebenslauf." },
+        { term: "Onboarding", def: "Der Einarbeitungsprozess neuer Mitarbeiter im Unternehmen." },
+        { term: "Arbeitgebermarke (Employer Branding)", def: "Das Ansehen eines Unternehmens als Arbeitgeber zur Gewinnung und Bindung von Talenten." }
+      ]
+    },
     ar: {
       title: "معجم الباحث عن عمل",
       desc: "لا تضيع في مصطلحات الموارد البشرية بعد الآن. إليك التعريفات الأساسية لفهم التوظيف الحديث.",

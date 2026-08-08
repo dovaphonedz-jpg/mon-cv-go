@@ -11,7 +11,7 @@ import ThankYouModal from '../components/ThankYouModal';
 
 export default function CoverLetter() {
   const { t, i18n } = useTranslation();
-  const [language, setLanguage] = useState(i18n.language.startsWith('ar') ? 'ar' : (i18n.language.startsWith('en') ? 'en' : 'fr'));
+  const [language, setLanguage] = useState(i18n.language.startsWith('ar') ? 'ar' : (i18n.language.startsWith('en') ? 'en' : (i18n.language.startsWith('de') ? 'de' : 'fr')));
   const [data, setData] = useState({
     senderName: '',
     senderPhone: '',
@@ -103,6 +103,23 @@ export default function CoverLetter() {
         body: "With 2 years of experience creating user interfaces with React, I have developed strong expertise in web integration and performance optimization. My previous role allowed me to work on ambitious projects, from design to production, while adhering to the best practices of accessibility and responsive design.",
         closing: "Joining your team would allow me to put my skills at the service of your projects while continuing to grow in a stimulating environment. I am entirely at your disposal for an interview to detail my motivations in person.",
         signoff: "Sincerely,"
+      });
+    } else if (language === 'de') {
+      setData({
+        senderName: 'Hans Schmidt', 
+        senderPhone: '+49 170 123 45 67', 
+        senderEmail: 'hans.schmidt@email.de', 
+        senderAddress: 'Berlin, Deutschland',
+        company: 'TechnoWeb GmbH', 
+        recipient: 'Personalabteilung', 
+        city: 'Berlin', 
+        date: '9. Juli 2026',
+        subject: 'Bewerbung als Front-End Webentwickler',
+        salutation: 'Sehr geehrte Damen und Herren,',
+        intro: "auf der Suche nach einer neuen beruflichen Herausforderung bewerbe ich mich hiermit um die Stelle als Front-End Webentwickler in Ihrem Unternehmen.",
+        body: "Mit 2 Jahren Erfahrung in der Erstellung von Benutzeroberflächen mit React verfüge ich über fundierte Kenntnisse in der Web-Integration und Performance-Optimierung. In meiner bisherigen Position konnte ich an anspruchsvollen Projekten von der Konzeption bis zur Fertigstellung arbeiten.",
+        closing: "Sehr gerne möchte ich meine Fähigkeiten in Ihr Team einbringen. Über die Gelegenheit zu einem persönlichen Gespräch freue ich mich sehr.",
+        signoff: "Mit freundlichen Grüßen,"
       });
     } else {
       setData({
@@ -228,6 +245,7 @@ export default function CoverLetter() {
                   <option value="fr">Français</option>
                   <option value="en">English</option>
                   <option value="ar">العربية (Arabe)</option>
+                  <option value="de">Deutsch (Allemand)</option>
                 </select>
               </div>
             </div>

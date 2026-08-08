@@ -42,6 +42,7 @@ export default function SEO({ title, description, url = 'https://www.moncvgo.com
       <link rel="alternate" hreflang="fr" href={url} />
       <link rel="alternate" hreflang="en" href={url} />
       <link rel="alternate" hreflang="ar" href={url} />
+      <link rel="alternate" hreflang="de" href={url} />
       <link rel="alternate" hreflang="x-default" href={url} />
 
       {/* Open Graph / Facebook */}
@@ -52,7 +53,7 @@ export default function SEO({ title, description, url = 'https://www.moncvgo.com
       <meta property="og:image" content={`https://www.moncvgo.com/og-image.jpg`} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
-      <meta property="og:locale" content={lang === 'ar' ? 'ar_AR' : lang === 'en' ? 'en_US' : 'fr_FR'} />
+      <meta property="og:locale" content={lang === 'ar' ? 'ar_AR' : lang === 'en' ? 'en_US' : lang === 'de' ? 'de_DE' : 'fr_FR'} />
       <meta property="og:site_name" content="Mon CV Go" />
 
       {/* Twitter */}
