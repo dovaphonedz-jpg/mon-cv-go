@@ -8,7 +8,7 @@
     "build": "vite build",
     "lint": "oxlint",
     "preview": "vite preview",
-    "start": "node server.js",
+    "start": "npm run build && node server.js",
     "start:backend": "node server.js",
     "dev:all": "concurrently \"npm run start\" \"npm run dev\"",
     "predeploy": "npm run build",
