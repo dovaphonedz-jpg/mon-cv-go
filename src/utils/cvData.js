@@ -212,6 +212,64 @@ export const demoData = {
         link: "https://github.com"
       }
     ]
+  },
+  de: {
+    personal: { name: "Hans Schmidt", title: "Web- & Digital-Projektleiter", email: "hans.schmidt@email.de", phone: "+49 170 123 45 67", address: "Berlin, Deutschland", website: "linkedin.com/in/hans-web", photo: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=300&q=80" },
+    summary: "Leidenschaftlicher Experte mit über 5 Jahren Erfahrung im digitalen Projektmanagement, Webdesign und Online-Marketing. Nachgewiesene Erfahrung in der Leitung interdisziplinärer Teams, Budgetverwaltung und SEO-Optimierung.",
+    experiences: [
+      { company: "Digital Impact GmbH", role: "Senior Web-Projektmanager", start: "Jan 2023", end: "Heute", desc: "• Leitung eines Teams aus 8 Entwicklern und Designern für den Relaunch einer führenden E-Commerce-Plattform.\n• Steigerung der Conversion-Rate um 24% durch gezielte UX/UI-Optimierung.\n• Verwaltung von Kundenportfolios im Gesamtwert von 120.000 €." },
+      { company: "Berlin Web Agency", role: "Junior Projektmanager", start: "Sept 2021", end: "Dez 2022", desc: "• Planung und Überwachung der Bereitstellung von über 25 Web- und Mobilanwendungen.\n• Erstellung funktioneller und technischer Anforderungsspezifikationen.\n• Verbesserung des Suchmaschinen-Rankings (SEO) für Agenturkunden (+40% organischer Traffic)." }
+    ],
+    education: [
+      { school: "Technische Universität Berlin", degree: "Master in Wirtschaftsinformatik", start: "2019", end: "2021", desc: "Spezialisierung auf Softwarearchitektur und agile Methoden (Scrum)." }
+    ],
+    skills: [
+      { name: "Projektmanagement (Scrum/Agile)", level: "95%" },
+      { name: "HTML / CSS & Tailwind CSS", level: "90%" },
+      { name: "UI/UX & Figma Prototyping", level: "85%" },
+      { name: "SEO-Strategien & Analytics", level: "80%" }
+    ],
+    qualities: [
+      { name: "Eigenverantwortlich & Sorgfältig" },
+      { name: "Teamfähig" },
+      { name: "Anpassungsfähig" },
+      { name: "Organisiert" }
+    ],
+    languages: [
+      { name: "Deutsch", level: "Muttersprache" },
+      { name: "Englisch", level: "Fließend (C1)" },
+      { name: "Französisch", level: "Gut (B2)" }
+    ],
+    projects: [
+      {
+        title: "E-Commerce Dashboard",
+        description: "Ein umfassendes Dashboard zur Verwaltung von Verkäufen, Beständen und Kunden mit Echtzeit-Diagrammen.",
+        image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&w=800&q=80",
+        techStack: "React, Tailwind, Node.js",
+        link: "https://github.com"
+      },
+      {
+        title: "Gesundheits- & Fitness-App",
+        description: "Mobile Anwendung zur Gesundheitsüberwachung, mit der Benutzer Ziele setzen und tägliche Fortschritte verfolgen können.",
+        image: "https://images.unsplash.com/photo-1522542550221-31fd19575a2d?auto=format&fit=crop&w=800&q=80",
+        techStack: "Flutter, Firebase",
+        link: "https://github.com"
+      },
+      {
+        title: "B2B SaaS-Plattform",
+        description: "Entwicklung eines kollaborativen Projektmanagement-Tools für kleine Unternehmen inklusive automatisiertem Abrechnungssystem.",
+        image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&w=800&q=80",
+        techStack: "Vue.js, Django",
+        link: "https://github.com"
+      },
+      {
+        title: "Relaunch Unternehmens-Website",
+        description: "Design und Erstellung einer extrem schnellen, SEO-optimierten Website für ein renommiertes Architekturbüro.",
+        image: "https://images.unsplash.com/photo-1498050108023-c5249f4df085?auto=format&fit=crop&w=800&q=80",
+        techStack: "Next.js, Tailwind",
+        link: "https://github.com"
+      }
+    ]
   }
 };
 
@@ -245,5 +303,15 @@ export const translations = {
     qualities: "السمات الشخصية",
     languages: "اللغات",
     projects: "المشاريع والأعمال"
+  },
+  de: {
+    profile: "Berufliches Profil",
+    experience: "Berufserfahrung",
+    education: "Ausbildung",
+    contact: "Kontakt",
+    skills: "Kenntnisse & Fähigkeiten",
+    qualities: "Stärken & Eigenschaften",
+    languages: "Sprachen",
+    projects: "Projekte & Portfolio"
   }
 };

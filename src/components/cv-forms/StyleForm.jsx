@@ -104,7 +104,7 @@ export default function StyleForm() {
         <h2 className="text-xs font-bold uppercase tracking-widest text-blue-500 mb-4 flex items-center gap-2">
           <Languages className="w-4 h-4" /> {t('forms.style.cv_lang')}
         </h2>
-        <div className="grid grid-cols-3 gap-3">
+        <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
           <button 
             type="button"
             onClick={() => updateConfig('cvLang', 'fr')}
@@ -137,6 +137,17 @@ export default function StyleForm() {
             }`}
           >
             العربية (RTL)
+          </button>
+          <button 
+            type="button"
+            onClick={() => updateConfig('cvLang', 'de')}
+            className={`py-3 px-2 rounded-xl text-sm font-bold border transition-all ${
+              config.cvLang === 'de' 
+                ? 'bg-blue-50 border-blue-500 text-blue-700 dark:bg-blue-900/30 dark:border-blue-400 dark:text-blue-300 shadow-sm shadow-blue-500/20' 
+                : 'bg-white border-slate-200 text-slate-600 hover:border-blue-300 dark:bg-slate-900 dark:border-slate-700 dark:text-slate-400 dark:hover:border-slate-600'
+            }`}
+          >
+            Deutsch
           </button>
         </div>
         {config.cvLang === 'ar' && (

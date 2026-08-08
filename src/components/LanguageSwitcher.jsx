@@ -66,6 +66,12 @@ export default function LanguageSwitcher() {
           >
             العربية
           </button>
+          <button
+            onClick={() => changeLanguage('de')}
+            className={`w-full text-left px-4 py-2 text-sm font-medium hover:bg-slate-100 dark:hover:bg-slate-800 ${i18n.language === 'de' ? 'text-blue-600 dark:text-blue-400' : 'text-slate-700 dark:text-slate-300'}`}
+          >
+            Deutsch
+          </button>
         </div>
       </div>
     </div>
