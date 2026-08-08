@@ -28,5 +28,6 @@ dist-ssr
 *.json
 !package.json
 !package-lock.json
+!src/**/*.json
 *.py
 __pycache__/
