@@ -17,7 +17,8 @@ export default function BlogPost() {
   const texts = {
     fr: { notFound: "Article introuvable", back: "Retour au blog" },
     en: { notFound: "Article not found", back: "Back to blog" },
-    ar: { notFound: "المقال غير موجود", back: "العودة للمدونة" }
+    ar: { notFound: "المقال غير موجود", back: "العودة للمدونة" },
+    de: { notFound: "Artikel nicht gefunden", back: "Zurück zum Blog" }
   };
   const t = texts[lang] || texts['fr'];
 

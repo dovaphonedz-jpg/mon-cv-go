@@ -772,5 +772,196 @@ export const blogPosts = {
       readTime: "١٠ دقائق",
       image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800&auto=format&fit=crop"
     }
+  ],
+  de: [
+    {
+      id: "studio-photo-cv-intelligence-artificielle-detourage-gratuit",
+      title: "KI-Bewerbungsfoto-Studio: Professionelles Foto kostenlos freistellen & erstellen 2026",
+      excerpt: "Entdecken Sie unser neues KI-Bewerbungsfoto-Studio. Präzise 1-Klick-Freistellung, Studio-Hintergrundwechsel und Corporate-Rahmen für Ihre Bewerbung.",
+      date: "2026-08-05",
+      readTime: "6 Min.",
+      author: "Mon CV Go Team",
+      category: "Innovationen & HR",
+      image: "/templates-png/modele-cv-moderne.png",
+      content: `
+        <h2>Warum das Bewerbungsfoto ein Schlüsselfaktor im Rekrutierungsprozess bleibt</h2>
+        <p>Im Jahr 2026 bleibt die visuelle Wirkung einer Bewerbung einer der Hauptauslöser für das Interesse eines Personalverantwortlichen. Studien zeigen, dass ein Lebenslauf mit einem <strong>professionellen Profilfoto</strong> bis zu <strong>40% mehr positive Rückmeldungen</strong> erhält als ein Lebenslauf ohne Foto.</p>
+        <p>Ein professioneller Fotograf kann jedoch kostspielig sein. Deshalb hat <em>Mon CV Go</em> das kostenlose <a href="/studio-photo" style="color:#0284c7;font-weight:bold;">KI-Bewerbungsfoto-Studio</a> entwickelt.</p>
+
+        <h2>Wie funktioniert die KI-Fotofreistellung?</h2>
+        <p>Unser Tool nutzt neuronale Netze (ONNX & WebAssembly), die direkt in Ihrem Browser ausgeführt werden:</p>
+        <ul>
+          <li><strong>Präzise 1-Klick-Freistellung:</strong> Die KI erkennt automatisch Ihre Silhouette und isoliert Gesicht, Haare und Schultern.</li>
+          <li><strong>Vollständiger Datenschutz:</strong> Die gesamte Verarbeitung erfolgt lokal auf Ihrem Gerät. Ihr Foto wird nicht auf externe Server hochgeladen.</li>
+          <li><strong>Studio-Hintergrundwechsel:</strong> Wählen Sie aus professionellen Hintergründen: <em>Reines Weiß, Minimalistisches Grau, Executive Blau oder Unscharfes Büro (Bokeh)</em>.</li>
+        </ul>
+
+        <h2>3 Schritte vom einfachen Selfie zum RH-Studiofoto</h2>
+        <ol>
+          <li>Foto hochladen und mit KI freistellen.</li>
+          <li>Zuschnitt-Verhältnis (1:1 oder Passfoto 3,5 x 4,5 cm) und Corporate-Rahmen wählen.</li>
+          <li>Beleuchtung anpassen und das Foto direkt in den <a href="/create" style="color:#0284c7;font-weight:bold;">Lebenslauf-Generator</a> einfügen.</li>
+        </ol>
+      `
+    },
+    {
+      id: "erreurs-a-eviter-sur-un-cv",
+      title: "Die 5 tödlichsten Fehler im Lebenslauf, die Sie 2026 unbedingt vermeiden müssen",
+      excerpt: "Ein Personalverantwortlicher verbringt im Durchschnitt 6 Sekunden mit einem Lebenslauf. Vermeiden Sie diese Fehler, um Ihr Vorstellungsgespräch zu sichern.",
+      content: `
+        <h2>Die entscheidende Bedeutung eines makellosen Lebenslaufs</h2>
+        <p>Personalverantwortliche verbringen im Durchschnitt 6 bis 10 Sekunden mit der ersten Durchsicht Ihres Dokuments. Vermeiden Sie typische Fehler wie Rechtschreibfehler, chaotisches Design oder fehlende Quantifizierung Ihrer Erfolge.</p>
+        <h2>1. Rechtschreib- und Grammatikfehler</h2>
+        <p>Ein Rechtschreibfehler signalisiert Unachtsamkeit. Lassen Sie Ihr Dokument immer Gegenlesen.</p>
+        <h2>2. Überladenes Design</h2>
+        <p>Verwenden Sie maximal zwei Schriftarten und achten Sie auf ausreichend Freiraum (White Space).</p>
+        <h2>3. Generische Bewerbungen</h2>
+        <p>Passen Sie Ihren Lebenslauf individuell an das Stellenangebot an, um auch ATS-Filter (Applicant Tracking Systems) problemlos zu bestehen.</p>
+        <h2>4. Unwichtige Erfahrungen</h2>
+        <p>Konzentrieren Sie sich auf die relevantesten Stationen Ihrer Karriere der letzten 10 bis 15 Jahre.</p>
+        <h2>5. Aufgaben statt Erfolge nennen</h2>
+        <p>Nutzen Sie die Action-Result-Methode: Quantifizieren Sie Ihre Ergebnisse mit Zahlen und Prozentangaben.</p>
+      `,
+      date: "2026-06-15",
+      category: "Experten-Tipps",
+      readTime: "8 Min.",
+      image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      id: "reussir-lettre-de-motivation",
+      title: "Der ultimative Leitfaden für ein überzeugendes Anschreiben 2026",
+      excerpt: "Ist das Anschreiben tot? Absolut nicht! Lernen Sie, wie Sie ein wirkungsvolles Anschreiben verfassen, das Personaler sofort überzeugt.",
+      content: `
+        <h2>Das Anschreiben: Veraltet oder strategischer Vorteil?</h2>
+        <p>Ein gutes Anschreiben ist kein bloßes Nacherzählen Ihres Lebenslaufs, sondern eine Gelegenheit zum Storytelling. Nutzen Sie die bewährte Formel "Sie - Ich - Wir":</p>
+        <h3>1. Das "SIE": Der gezielte Einstieg</h3>
+        <p>Zeigen Sie echtes Interesse am Unternehmen und seiner Philosophie.</p>
+        <h3>2. Das "ICH": Der Mehrwert</h3>
+        <p>Verknüpfen Sie Ihre Fähigkeiten direkt mit den Herausforderungen der Zielposition.</p>
+        <h3>3. Das "WIR": Der Blick in die Zukunft</h3>
+        <p>Schließen Sie mit einem selbstbewussten Aufruf zum Handeln für ein Vorstellungsgespräch ab.</p>
+      `,
+      date: "2026-07-02",
+      category: "Strategische Bewerbung",
+      readTime: "9 Min.",
+      image: "https://images.unsplash.com/photo-1554774853-719586f82d77?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      id: "pourquoi-utiliser-un-portfolio",
+      title: "Warum das Portfolio die Geheimwaffe der besten Bewerber ist",
+      excerpt: "Der traditionelle Lebenslauf reicht in vielen Branchen nicht mehr aus. So erstellen Sie ein Online-Portfolio, das den Unterschied macht.",
+      content: `
+        <h2>Der visuelle Beweis Ihrer Fähigkeiten</h2>
+        <p>Ein Portfolio liefert unumstößliche Beweise für Ihr Können. Präsentieren Sie Ihre besten Projekte mit klaren Fallstudien (Problem, Ihre Rolle, Lösung und messbare Ergebnisse).</p>
+      `,
+      date: "2026-07-25",
+      category: "Personal Branding",
+      readTime: "10 Min.",
+      image: "https://images.unsplash.com/photo-1507238691740-187a5b1d37b8?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      id: "guide-complet-ats",
+      title: "Der komplette Leitfaden für ATS-Software 2026: So bestehen Sie den Roboter-Test",
+      excerpt: "Über 80% der Großunternehmen nutzen ATS-Software. Erfahren Sie, wie Sie Ihren Lebenslauf optimal formatieren.",
+      content: `
+        <h2>Was ist ein ATS?</h2>
+        <p>Applicant Tracking Systeme scannen Bewerbungen nach relevanten Schlüsselwörtern. Verwenden Sie saubere PDF-Dateien, klare Überschriften und exakte Begriffe aus der Stellenausschreibung.</p>
+      `,
+      date: "2026-08-01",
+      category: "ATS-Optimierung",
+      readTime: "6 Min.",
+      image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      id: "phrases-accroche-cv",
+      title: "50 Beispiele für überzeugende Einleitungssätze im Lebenslauf",
+      excerpt: "Die Zusammenfassung ist das Erste, was der Personaler liest. Hier sind konkrete Beispiele für verschiedene Branchen.",
+      content: `
+        <h2>Die Macht eines starken Profils</h2>
+        <p>Fassen Sie Ihre Erfahrung, Ihre größte Stärke und Ihr Ziel in 3-4 prägnanten Zeilen zusammen.</p>
+      `,
+      date: "2026-08-02",
+      category: "Inspiration",
+      readTime: "7 Min.",
+      image: "https://images.unsplash.com/photo-1486312338219-ce68d2c6f44d?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      id: "comment-faire-un-cv-en-2026",
+      title: "Lebenslauf erstellen 2026: Der komplette Leitfaden",
+      excerpt: "Entdecken Sie die neuesten Trends für 2026, um einen Lebenslauf zu verfassen, der Aufmerksamkeit erregt und ATS-Filter besteht.",
+      content: `
+        <h2>Trends im Jahr 2026</h2>
+        <p>Ein moderner Lebenslauf muss sowohl für KI-Algorithmen als auch für menschliche Personaler optimiert sein.</p>
+      `,
+      date: "2026-08-03",
+      category: "Tipps",
+      readTime: "10 Min.",
+      image: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      id: "meilleurs-modeles-cv",
+      title: "Die besten Lebenslauf-Vorlagen für dieses Jahr",
+      excerpt: "Vom klassischen Format bis zum modernen Design: Wählen Sie die perfekte Vorlage für Ihre Branche.",
+      content: `
+        <h2>Wahl der richtigen Vorlage</h2>
+        <p>Wählen Sie ein Design, das zu Ihrer Branche passt: klassisch für Finanzen & Recht, minimalistisch für IT & Engineering, kreativ für Marketing & Design.</p>
+      `,
+      date: "2026-08-04",
+      category: "Design",
+      readTime: "10 Min.",
+      image: "https://images.unsplash.com/photo-1517842645767-c639042777db?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      id: "cv-canada",
+      title: "Lebenslauf für Kanada erstellen: Die goldenen Regeln",
+      excerpt: "Der kanadische Arbeitsmarkt hat strenge Regeln: Kein Foto, kein Alter und voller Fokus auf Erfolge.",
+      content: `
+        <h2>Das kanadische Format</h2>
+        <p>Vermeiden Sie persönliche Angaben wie Foto, Alter oder Familienstand. Konzentrieren Sie sich auf messbare Erfolge.</p>
+      `,
+      date: "2026-08-05",
+      category: "International",
+      readTime: "10 Min.",
+      image: "https://images.unsplash.com/photo-1454165804606-c3d57bc86b40?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      id: "cv-france",
+      title: "Lebenslauf für Frankreich: Die erfolgreiche Methode",
+      excerpt: "Französische Personaler haben präzise Erwartungen. Erfahren Sie, wie Sie Ihren Lebenslauf anpassen.",
+      content: `
+        <h2>Der französische Arbeitsmarkt</h2>
+        <p>Ein Lebenslauf in Frankreich umfasst meist 1 Seite. Ein professionelles Profilfoto wird oft geschätzt.</p>
+      `,
+      date: "2026-08-06",
+      category: "Karriere",
+      readTime: "10 Min.",
+      image: "https://images.unsplash.com/photo-1497215728101-856f4ea42174?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      id: "cv-etudiant",
+      title: "Lebenslauf für Studenten ohne Berufserfahrung",
+      excerpt: "Suchen Sie ein Praktikum? So heben Sie Ihre Ausbildung und akademischen Projekte hervor.",
+      content: `
+        <h2>Lebenslauf für Berufseinsteiger</h2>
+        <p>Heben Sie relevante Kurse, Gruppenprojekte und ehrenamtliches Engagement hervor.</p>
+      `,
+      date: "2026-08-07",
+      category: "Einsteiger",
+      readTime: "10 Min.",
+      image: "https://images.unsplash.com/photo-1523240795612-9a054b0db644?q=80&w=800&auto=format&fit=crop"
+    },
+    {
+      id: "cv-sans-diplome",
+      title: "Lebenslauf ohne Abschluss: Ihre Fähigkeiten hervorheben",
+      excerpt: "Ein fehlender akademischer Titel ist kein Hindernis. Lernen Sie, Ihre Soft Skills zu präsentieren.",
+      content: `
+        <h2>Fähigkeiten im Fokus</h2>
+        <p>Nutzen Sie den funktionalen Lebenslauf, heben Sie Zertifikate und Soft Skills hervor.</p>
+      `,
+      date: "2026-08-08",
+      category: "Karriere",
+      readTime: "10 Min.",
+      image: "https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=800&auto=format&fit=crop"
+    }
   ]
 };

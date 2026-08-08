@@ -38,6 +38,15 @@ export default function Blog() {
       read: "اقرأ المقال",
       seoTitle: "المدونة : نصائح السيرة الذاتية ورسالة التغطية",
       seoDesc: "اقرأ أحدث مقالاتنا ونصائحنا لكتابة سيرة ذاتية مثالية وإنشاء ملف أعمال واجتياز مقابلات العمل بنجاح."
+    },
+    de: {
+      badge: "Unser Blog",
+      title1: "Ressourcen und",
+      title2: "Ratschläge",
+      desc: "Entdecken Sie unsere exklusiven Artikel, um Ihre Karriere zu fördern und Ihren Traumjob zu finden.",
+      read: "Artikel lesen",
+      seoTitle: "Blog: Tipps für Lebenslauf und Anschreiben",
+      seoDesc: "Lesen Sie unsere neuesten Artikel und Tipps, um den perfekten Lebenslauf zu verfassen, ein Portfolio zu erstellen und Bewerbungsgespräche zu meistern."
     }
   };
   const t = texts[lang] || texts['fr'];
