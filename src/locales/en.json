@@ -259,6 +259,8 @@
         "email_ph": "Ex: john.doe@email.com",
         "phone": "Phone",
         "phone_ph": "Ex: +1 555 123 4567",
+        "birthdate": "Date of Birth",
+        "birthdate_ph": "Ex: 15/05/1995 (or 28 years old)",
         "address": "Address",
         "address_ph": "Ex: New York, USA",
         "website": "Website / LinkedIn",

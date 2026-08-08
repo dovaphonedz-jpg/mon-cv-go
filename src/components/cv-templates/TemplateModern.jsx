@@ -128,6 +128,7 @@ function RawTemplateModern({ cvData, config }) {
               <ul className="text-sm font-bold space-y-2">
                 {personal.email && <li>{personal.email}</li>}
                 {personal.phone && <li>{personal.phone}</li>}
+                {personal.birthDate && <li>{personal.birthDate}</li>}
                 {personal.address && <li>{personal.address}</li>}
                 {personal.website && <li>{personal.website}</li>}
               </ul>
@@ -183,6 +184,7 @@ function RawTemplateModern({ cvData, config }) {
               <div className="flex gap-4 mt-4 text-xs text-slate-600 font-medium">
                 {personal.email && <span>{personal.email}</span>}
                 {personal.phone && <span>• {personal.phone}</span>}
+                {personal.birthDate && <span>• {personal.birthDate}</span>}
                 {personal.address && <span>• {personal.address}</span>}
               </div>
             </div>
@@ -280,6 +282,7 @@ function RawTemplateModern({ cvData, config }) {
               <ul className="text-xs text-slate-300 space-y-2 font-mono">
                 {personal.email && <li>{personal.email}</li>}
                 {personal.phone && <li>{personal.phone}</li>}
+                {personal.birthDate && <li>{personal.birthDate}</li>}
                 {personal.address && <li>{personal.address}</li>}
                 {personal.website && <li className="text-cyan-400">{personal.website}</li>}
               </ul>
@@ -398,6 +401,7 @@ function RawTemplateModern({ cvData, config }) {
               <ul className="text-base font-medium space-y-3 break-words">
                 {personal.email && <li>{personal.email}</li>}
                 {personal.phone && <li>{personal.phone}</li>}
+                {personal.birthDate && <li>{personal.birthDate}</li>}
                 {personal.address && <li>{personal.address}</li>}
                 {personal.website && <li>{personal.website}</li>}
               </ul>
@@ -590,6 +594,7 @@ function RawTemplateModern({ cvData, config }) {
               <ul className="text-xs text-slate-700 space-y-3 font-medium">
                 {personal.email && <li className="flex items-center gap-2"><span className="w-6 h-6 rounded bg-slate-200 flex items-center justify-center">✉</span>{personal.email}</li>}
                 {personal.phone && <li className="flex items-center gap-2"><span className="w-6 h-6 rounded bg-slate-200 flex items-center justify-center">☎</span>{personal.phone}</li>}
+                {personal.birthDate && <li className="flex items-center gap-2"><span className="w-6 h-6 rounded bg-slate-200 flex items-center justify-center">🎂</span>{personal.birthDate}</li>}
                 {personal.address && <li className="flex items-center gap-2"><span className="w-6 h-6 rounded bg-slate-200 flex items-center justify-center">⌂</span>{personal.address}</li>}
                 {personal.website && <li className="flex items-center gap-2"><span className="w-6 h-6 rounded bg-slate-200 flex items-center justify-center">🌐</span>{personal.website}</li>}
               </ul>
@@ -660,6 +665,7 @@ function RawTemplateModern({ cvData, config }) {
           <div className="flex justify-center gap-4 text-xs font-bold text-slate-500 uppercase tracking-wider flex-wrap">
             {personal.email && <span>{personal.email}</span>}
             {personal.phone && <span>| {personal.phone}</span>}
+            {personal.birthDate && <span>| {personal.birthDate}</span>}
             {personal.address && <span>| {personal.address}</span>}
             {personal.website && <span>| {personal.website}</span>}
           </div>
@@ -797,6 +803,7 @@ function RawTemplateModern({ cvData, config }) {
               <ul className="text-xs text-white/90 space-y-3 font-medium">
                 {personal.email && <li className="break-words">{personal.email}</li>}
                 {personal.phone && <li>{personal.phone}</li>}
+                {personal.birthDate && <li>{personal.birthDate}</li>}
                 {personal.address && <li>{personal.address}</li>}
                 {personal.website && <li>{personal.website}</li>}
               </ul>
@@ -978,6 +985,7 @@ function RawTemplateModern({ cvData, config }) {
                <ul className="text-xs space-y-2 opacity-90">
                  {personal.email && <li>{personal.email}</li>}
                  {personal.phone && <li>{personal.phone}</li>}
+                 {personal.birthDate && <li>{personal.birthDate}</li>}
                  {personal.address && <li>{personal.address}</li>}
                  {personal.website && <li>{personal.website}</li>}
                </ul>
@@ -1030,6 +1038,7 @@ function RawTemplateModern({ cvData, config }) {
           <div className="mt-4 flex flex-wrap justify-center gap-4 text-xs font-medium uppercase tracking-wider text-gray-500">
             {personal.email && <span>{personal.email}</span>}
             {personal.phone && <span>• {personal.phone}</span>}
+            {personal.birthDate && <span>• {personal.birthDate}</span>}
             {personal.address && <span>• {personal.address}</span>}
             {personal.website && <span>• {personal.website}</span>}
           </div>
@@ -1140,6 +1149,7 @@ function RawTemplateModern({ cvData, config }) {
                <ul className="text-sm space-y-3">
                  {personal.email && <li>{personal.email}</li>}
                  {personal.phone && <li>{personal.phone}</li>}
+                 {personal.birthDate && <li>{personal.birthDate}</li>}
                  {personal.address && <li>{personal.address}</li>}
                  {personal.website && <li>{personal.website}</li>}
                </ul>
@@ -1228,6 +1238,7 @@ const isCentered = layout === 'centered';
         <ul className={`text-xs text-slate-600 mt-4 flex flex-wrap gap-4 ${isCentered ? 'justify-center' : ''}`}>
           {personal.email && <li>{personal.email}</li>}
           {personal.phone && <li>• {personal.phone}</li>}
+          {personal.birthDate && <li>• {personal.birthDate}</li>}
           {personal.address && <li>• {personal.address}</li>}
           {personal.website && <li>• {personal.website}</li>}
         </ul>

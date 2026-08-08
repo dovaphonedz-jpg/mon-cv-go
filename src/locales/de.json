@@ -260,6 +260,8 @@
         "email_ph": "z.B. max@beispiel.de",
         "phone": "Telefon",
         "phone_ph": "z.B. +49 170 1234567",
+        "birthdate": "Geburtsdatum",
+        "birthdate_ph": "z.B. 15.05.1995 (oder 28 Jahre)",
         "address": "Adresse / Ort",
         "address_ph": "z.B. Berlin, Deutschland",
         "website": "Webseite / LinkedIn",

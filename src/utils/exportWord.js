@@ -102,6 +102,7 @@ export const exportToWord = async (cvData, config, elementRef) => {
   const contactInfo = [];
   if (personal.email) contactInfo.push(personal.email);
   if (personal.phone) contactInfo.push(personal.phone);
+  if (personal.birthDate) contactInfo.push(personal.birthDate);
   if (personal.address) contactInfo.push(personal.address);
   if (personal.website) contactInfo.push(personal.website);
 

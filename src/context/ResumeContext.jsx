@@ -6,7 +6,7 @@ export const useResume = () => useContext(ResumeContext);
 
 export const ResumeProvider = ({ children }) => {
   const [cvData, setCvData] = useState({
-    personal: { name: "", title: "", email: "", phone: "", address: "", website: "", photo: "" },
+    personal: { name: "", title: "", email: "", phone: "", birthDate: "", address: "", website: "", photo: "" },
     summary: "",
     experiences: [],
     education: [],

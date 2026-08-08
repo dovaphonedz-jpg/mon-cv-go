@@ -128,6 +128,19 @@ export default function PersonalInfoForm() {
             placeholder={t('forms.personal.phone_ph')}
           />
         </div>
+        <div>
+          <label htmlFor="personal-birthDate" className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">{t('forms.personal.birthdate')}</label>
+          <input 
+            id="personal-birthDate"
+            type="text" 
+            name="birthDate"
+            autoComplete="bday"
+            value={data.birthDate || ''} 
+            onChange={handleChange} 
+            className="w-full px-4 py-3 bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-base focus:ring-2 focus:ring-blue-500 outline-none" 
+            placeholder={t('forms.personal.birthdate_ph')}
+          />
+        </div>
         <div className="sm:col-span-2">
           <label htmlFor="personal-address" className="block text-sm font-semibold text-slate-700 dark:text-slate-300 mb-1">{t('forms.personal.address')}</label>
           <input 

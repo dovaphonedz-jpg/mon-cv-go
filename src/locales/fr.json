@@ -259,6 +259,8 @@
         "email_ph": "Ex: jean.dupont@email.com",
         "phone": "Téléphone",
         "phone_ph": "Ex: +33 6 12 34 56 78",
+        "birthdate": "Date de naissance",
+        "birthdate_ph": "Ex: 15/05/1995 (ou 28 ans)",
         "address": "Adresse",
         "address_ph": "Ex: Paris, France",
         "website": "Site Web / LinkedIn",
