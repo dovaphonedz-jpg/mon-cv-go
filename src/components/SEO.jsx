@@ -2,7 +2,7 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 
-export default function SEO({ title, description, url = 'https://www.moncvgo.com', faqItems = null, breadcrumbs = null }) {
+export default function SEO({ title, description, url = 'https://moncvgo.com', faqItems = null, breadcrumbs = null }) {
   const { t, i18n } = useTranslation();
   const defaultDescription = t('home.seo_desc', "Créez facilement et gratuitement votre CV, lettre de motivation et portfolio avec nos outils intuitifs. Simple, rapide et professionnel.");
   const siteTitle = title ? `${title} | Mon CV Go` : 'Mon CV Go - Créez votre CV professionnel gratuitement en ligne';
@@ -50,7 +50,7 @@ export default function SEO({ title, description, url = 'https://www.moncvgo.com
       <meta property="og:url" content={url} />
       <meta property="og:title" content={siteTitle} />
       <meta property="og:description" content={siteDescription} />
-      <meta property="og:image" content={`https://www.moncvgo.com/og-image.jpg`} />
+      <meta property="og:image" content={`https://moncvgo.com/og-image.jpg`} />
       <meta property="og:image:width" content="1200" />
       <meta property="og:image:height" content="630" />
       <meta property="og:locale" content={lang === 'ar' ? 'ar_AR' : lang === 'en' ? 'en_US' : lang === 'de' ? 'de_DE' : 'fr_FR'} />
@@ -61,7 +61,7 @@ export default function SEO({ title, description, url = 'https://www.moncvgo.com
       <meta property="twitter:url" content={url} />
       <meta property="twitter:title" content={siteTitle} />
       <meta property="twitter:description" content={siteDescription} />
-      <meta property="twitter:image" content={`https://www.moncvgo.com/og-image.jpg`} />
+      <meta property="twitter:image" content={`https://moncvgo.com/og-image.jpg`} />
 
       {/* Canonical Link */}
       <link rel="canonical" href={url} />

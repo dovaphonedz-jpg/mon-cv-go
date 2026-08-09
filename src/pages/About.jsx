@@ -45,7 +45,7 @@ export default function About() {
 
   return (
     <>
-    <SEO title={t('about.seo_title')} description={t('about.seo_desc')} url="https://www.moncvgo.com/a-propos" />
+    <SEO title={t('about.seo_title')} description={t('about.seo_desc')} url="https://moncvgo.com/a-propos" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] relative overflow-hidden pb-24">
       
       {/* Decorative background glow */}

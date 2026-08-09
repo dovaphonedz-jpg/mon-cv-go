@@ -254,7 +254,7 @@ export default function ConseilsCV() {
 
   return (
     <div dir={lang === 'ar' ? 'rtl' : 'ltr'}>
-    <SEO title={t.seoTitle} description={t.seoDesc} url="https://www.moncvgo.com/conseils-cv" />
+    <SEO title={t.seoTitle} description={t.seoDesc} url="https://moncvgo.com/conseils-cv" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] relative overflow-hidden pb-20">
       
       <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/5 dark:bg-blue-600/10 blur-[150px] rounded-full pointer-events-none -z-10"></div>
@@ -340,7 +340,7 @@ export default function ConseilsCV() {
         {/* Share Section */}
         <div className="mt-12 bg-white dark:bg-slate-900 p-8 brutal-border brutal-shadow flex flex-col items-center justify-center text-center">
           <h3 className="text-2xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-6">Partagez ce guide avec votre réseau</h3>
-          <SocialShare url="https://www.moncvgo.com/conseils-cv" title={t.seoTitle} />
+          <SocialShare url="https://moncvgo.com/conseils-cv" title={t.seoTitle} />
         </div>
 
         {/* Glossary Section */}

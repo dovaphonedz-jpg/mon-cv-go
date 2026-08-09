@@ -30,6 +30,11 @@ export default function PlanDuSite() {
         { path: "/modele-cv-commercial", label: "Modèle CV Commercial & Vente", desc: "Valorisez vos résultats de vente et votre portefeuille client" },
         { path: "/modele-cv-developpeur", label: "Modèle CV Développeur Web", desc: "CV optimisé pour profils tech, full-stack et ingénieurs dev" },
         { path: "/modele-cv-designer", label: "Modèle CV Designer & Créatif", desc: "Présentation visuelle pour UI/UX designers et graphistes" },
+        { path: "/modele-cv-infirmiere", label: "Modèle CV Infirmière & Santé", desc: "CV optimisé pour infirmiers, aides-soignants et personnels de santé" },
+        { path: "/modele-cv-restauration", label: "Modèle CV Restauration & Serveur", desc: "Modèle dynamique pour serveurs, cuisiniers et métiers de l'hôtellerie" },
+        { path: "/modele-cv-chauffeur-livreur", label: "Modèle CV Chauffeur & Logistique", desc: "CV efficace pour chauffeurs livreurs, manutentionnaires et préparateurs" },
+        { path: "/modele-cv-secretaire", label: "Modèle CV Secrétaire & Assistant", desc: "Présentation claire pour secrétaires et assistants administratifs" },
+        { path: "/modele-cv-vendeur", label: "Modèle CV Vendeur & Caisse", desc: "Valorisez vos compétences en vente, encaissement et conseil client" },
       ]
     },
     {
@@ -55,8 +60,8 @@ export default function PlanDuSite() {
   ];
 
   const breadcrumbs = [
-    { name: "Accueil", url: "https://www.moncvgo.com/" },
-    { name: "Plan du site", url: "https://www.moncvgo.com/plan-du-site" }
+    { name: "Accueil", url: "https://moncvgo.com/" },
+    { name: "Plan du site", url: "https://moncvgo.com/plan-du-site" }
   ];
 
   return (
@@ -64,7 +69,7 @@ export default function PlanDuSite() {
       <SEO 
         title="Plan du Site HTML | Mon CV Go - Navigation Complète" 
         description="Consultez l'ensemble des pages, outils, modèles de CV et ressources de Mon CV Go sur notre plan du site HTML pour une navigation simple et rapide."
-        url="https://www.moncvgo.com/plan-du-site"
+        url="https://moncvgo.com/plan-du-site"
         breadcrumbs={breadcrumbs}
       />
 

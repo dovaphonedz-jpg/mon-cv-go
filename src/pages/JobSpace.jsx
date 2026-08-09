@@ -78,7 +78,7 @@ export default function JobSpace() {
       <SEO 
         title={t('jobspace.seo_title', 'Espace Emploi — Outils pour trouver un travail')}
         description={t('jobspace.seo_desc', "Suivez vos candidatures, analysez des offres d'emploi, calculez votre salaire et optimisez votre CV.")}
-        url="https://www.moncvgo.com/espace-emploi"
+        url="https://moncvgo.com/espace-emploi"
       />
       <div className="min-h-screen bg-slate-50 dark:bg-[#0B1120] pt-24 pb-16">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

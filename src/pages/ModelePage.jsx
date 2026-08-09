@@ -53,6 +53,41 @@ const modelesData = {
     content: 'Pour les métiers créatifs, l\'impact visuel et l\'harmonie de votre CV reflètent directement votre expertise. Ce modèle équilibre esthétique moderne et structure sémantique pour mettre en valeur votre portfolio et vos compétences de design.',
     keywords: 'CV designer, modèle CV graphiste, CV UI UX, exemple CV créatif, modèle CV design',
     wordFile: '/templates-word/40-cv-template-creative-blue.docx'
+  },
+  'modele-cv-infirmiere': {
+    title: 'Modèle de CV Infirmière & Aide-Soignante',
+    description: 'Modèle de CV gratuit pour infirmiers, infirmières, aides-soignants et personnels de santé. Structure rigoureuse optimisée ATS.',
+    content: 'Les métiers de la santé exigent de mettre en avant la rigueur, l\'empathie, le soin aux patients et le respect des protocoles médicaux. Ce modèle de CV est spécialement conçu pour valoriser vos diplômes d\'État (IDE, AS), vos stages hospitaliers et vos spécialisations médicales.',
+    keywords: 'CV infirmière, modèle CV infirmier gratuit, CV aide-soignante, exemple CV santé, télécharger CV infirmière',
+    wordFile: '/templates-word/67-cv-template-francais.docx'
+  },
+  'modele-cv-restauration': {
+    title: 'Modèle de CV Restauration, Serveur & Cuisinier',
+    description: 'Créez un CV percutant pour les métiers de l\'hôtellerie-restauration. Modèle gratuit adapté pour serveurs, cuisiniers et barmans.',
+    content: 'Dans le secteur de la restauration, le rythme est intense. Votre CV doit démontrer votre sang-froid, votre sens du service client, la maîtrise des normes d\'hygiène (HACCP) et votre polyvalence en salle ou en cuisine.',
+    keywords: 'CV restauration, modèle CV serveur, CV cuisinier gratuit, exemple CV hôtellerie, CV barman',
+    wordFile: '/templates-word/57-cv-template-commercial.docx'
+  },
+  'modele-cv-chauffeur-livreur': {
+    title: 'Modèle de CV Chauffeur, Livreur & Logistique',
+    description: 'Modèle de CV professionnel pour chauffeurs livreurs, préparateurs de commandes et agents logistiques.',
+    content: 'Un bon CV dans le secteur de la logistique et du transport doit souligner la ponctualité, la sécurité routière, la gestion des stocks et la maîtrise des permis (Permis B, C, CACES). Ce modèle met en lumière votre efficacité sur le terrain.',
+    keywords: 'CV chauffeur livreur, modèle CV logistique, CV préparateur de commande, exemple CV routier, CV CACES',
+    wordFile: '/templates-word/10-cv-template-professional-blue.docx'
+  },
+  'modele-cv-secretaire': {
+    title: 'Modèle de CV Secrétaire & Assistant Administratif',
+    description: 'Modèle de CV gratuit pour secrétaires, assistants de direction et agents administratifs. Clair, moderne et efficace.',
+    content: 'La clarté, l\'organisation et la parfaite maîtrise des outils bureautiques (Suite Office, gestion de mails, accueil téléphonique) sont la clé d\'un CV d\'assistant réussi. Utilisez ce modèle pour présenter votre professionnalisme.',
+    keywords: 'CV secrétaire, modèle CV assistant administratif, CV secrétaire de direction, exemple CV accueil, CV bureautique',
+    wordFile: '/templates-word/67-cv-template-francais.docx'
+  },
+  'modele-cv-vendeur': {
+    title: 'Modèle de CV Vendeur & Hôte de Caisse',
+    description: 'Créez votre CV pour la vente en magasin et la grande distribution. Modèle idéal pour vendeurs, hôtes de caisse et conseillers clientèle.',
+    content: 'Le secteur du commerce de détail privilégie le relationnel, l\'encaissement, la tenue de la caisse et la mise en rayon. Ce modèle valorise votre sens du contact et votre dynamisme commercial.',
+    keywords: 'CV vendeur, modèle CV hôte de caisse, exemple CV grande distribution, CV conseiller de vente, CV caissier',
+    wordFile: '/templates-word/57-cv-template-commercial.docx'
   }
 };
 
@@ -63,7 +98,7 @@ export default function ModelePage() {
 
   return (
     <>
-      <SEO title={`${model.title} | Mon CV Go`} description={model.description} />
+      <SEO title={`${model.title} | Mon CV Go`} description={model.description} url={`https://moncvgo.com/${path}`} />
       <div className="bg-slate-50 dark:bg-[#0B1120] min-h-screen pt-24 pb-16">
         <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
           
@@ -98,7 +133,7 @@ export default function ModelePage() {
               
               <div className="mt-8">
                 <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Partagez ce modèle</h3>
-                <SocialShare url={`https://www.moncvgo.com/${path}`} title={model.title} />
+                <SocialShare url={`https://moncvgo.com/${path}`} title={model.title} />
               </div>
             </div>
             

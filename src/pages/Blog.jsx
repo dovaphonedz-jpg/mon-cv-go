@@ -66,7 +66,7 @@ export default function Blog() {
 
   return (
     <div dir={lang === 'ar' ? 'rtl' : 'ltr'}>
-    <SEO title={t.seoTitle} description={t.seoDesc} url="https://www.moncvgo.com/blog" />
+    <SEO title={t.seoTitle} description={t.seoDesc} url="https://moncvgo.com/blog" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] relative overflow-hidden pb-20">
       
       {/* Decorative background */}

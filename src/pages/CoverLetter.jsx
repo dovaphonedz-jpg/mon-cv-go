@@ -168,7 +168,7 @@ export default function CoverLetter() {
 
   return (
     <>
-    <SEO title={t('cover_letter.seo_title')} description={t('cover_letter.seo_desc')} url="https://www.moncvgo.com/lettre-motivation" />
+    <SEO title={t('cover_letter.seo_title')} description={t('cover_letter.seo_desc')} url="https://moncvgo.com/lettre-motivation" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] flex flex-col relative overflow-hidden">
       
       {/* Decorative background */}

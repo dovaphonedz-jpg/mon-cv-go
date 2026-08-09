@@ -135,7 +135,7 @@ export default function CreatePortfolio() {
 
   return (
     <>
-    <SEO title={t('create_portfolio.seo_title')} description={t('create_portfolio.seo_desc')} url="https://www.moncvgo.com/portfolio" />
+    <SEO title={t('create_portfolio.seo_title')} description={t('create_portfolio.seo_desc')} url="https://moncvgo.com/portfolio" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] flex flex-col relative overflow-hidden">
       
       {/* Decorative background */}

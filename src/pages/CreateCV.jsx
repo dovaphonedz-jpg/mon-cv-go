@@ -178,7 +178,7 @@ export default function CreateCV() {
 
   return (
     <>
-    <SEO title={t('create_cv.seo_title')} description={t('create_cv.seo_desc')} url="https://www.moncvgo.com/create" />
+    <SEO title={t('create_cv.seo_title')} description={t('create_cv.seo_desc')} url="https://moncvgo.com/create" />
 
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] lg:h-[calc(100vh-4rem)] flex flex-col relative overflow-hidden mt-1.5 lg:mt-0">
       

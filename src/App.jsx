@@ -1,5 +1,5 @@
 import React, { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
 import Layout from './components/Layout';
 import CookieConsent from './components/CookieConsent';
 import AdManager from './components/AdManager';
@@ -40,6 +40,7 @@ function App() {
             <Route path="/contact" element={<Contact />} />
             <Route path="/mentions-legales" element={<Legal />} />
             <Route path="/confidentialite" element={<Privacy />} />
+            <Route path="/privacy" element={<Navigate to="/confidentialite" replace />} />
             <Route path="/plan-du-site" element={<PlanDuSite />} />
             <Route path="/modele-cv-comptable-word" element={<ModelePage />} />
             <Route path="/modele-cv-ingenieur" element={<ModelePage />} />
@@ -48,7 +49,13 @@ function App() {
             <Route path="/modele-cv-commercial" element={<ModelePage />} />
             <Route path="/modele-cv-developpeur" element={<ModelePage />} />
             <Route path="/modele-cv-designer" element={<ModelePage />} />
+            <Route path="/modele-cv-infirmiere" element={<ModelePage />} />
+            <Route path="/modele-cv-restauration" element={<ModelePage />} />
+            <Route path="/modele-cv-chauffeur-livreur" element={<ModelePage />} />
+            <Route path="/modele-cv-secretaire" element={<ModelePage />} />
+            <Route path="/modele-cv-vendeur" element={<ModelePage />} />
             <Route path="/espace-emploi" element={<JobSpace />} />
+            <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
         </Suspense>
         <CookieConsent />

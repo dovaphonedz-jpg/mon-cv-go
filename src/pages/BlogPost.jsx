@@ -39,7 +39,7 @@ export default function BlogPost() {
 
   return (
     <div dir={lang === 'ar' ? 'rtl' : 'ltr'}>
-    <SEO title={post.title} description={post.excerpt} url={`https://www.moncvgo.com/blog/${post.id}`} />
+    <SEO title={post.title} description={post.excerpt} url={`https://moncvgo.com/blog/${post.id}`} />
     <article className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] pb-20 relative">
       
       {/* Decorative background */}

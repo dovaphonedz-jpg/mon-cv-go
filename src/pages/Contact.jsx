@@ -42,7 +42,7 @@ export default function Contact() {
 
   return (
     <>
-    <SEO title={t('contact.seo_title')} description={t('contact.seo_desc')} url="https://www.moncvgo.com/contact" />
+    <SEO title={t('contact.seo_title')} description={t('contact.seo_desc')} url="https://moncvgo.com/contact" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] relative overflow-hidden flex flex-col justify-center">
       
       {/* Decorative background glow */}

@@ -75,7 +75,7 @@ export default function AdManager() {
     }
 
     const timeElapsed = Date.now() - window.firstVisitTime;
-    const delayRequired = 20000; // 20 seconds — optimized for better revenue
+    const delayRequired = 3000; // 3 seconds — reduced delay to maximize Monetag ad impressions
 
     if (timeElapsed >= delayRequired) {
         // 1 minute has already passed! Inject immediately.

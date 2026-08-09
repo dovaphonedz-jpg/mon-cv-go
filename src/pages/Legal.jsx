@@ -5,7 +5,7 @@ import SEO from '../components/SEO';
 export default function Legal() {
   return (
     <>
-    <SEO title="Conditions d'Utilisation" description="Conditions Générales d'Utilisation (CGU) et Mentions Légales du site Mon CV Go." url="https://www.moncvgo.com/mentions-legales" />
+    <SEO title="Conditions d'Utilisation" description="Conditions Générales d'Utilisation (CGU) et Mentions Légales du site Mon CV Go." url="https://moncvgo.com/mentions-legales" />
     <div className="max-w-4xl mx-auto px-4 py-12">
       <div className="flex items-center gap-3 mb-8">
         <div className="p-3 bg-slate-100 dark:bg-slate-800 rounded-xl text-slate-700 dark:text-slate-300">

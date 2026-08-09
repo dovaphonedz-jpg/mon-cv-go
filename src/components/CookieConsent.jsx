@@ -32,7 +32,7 @@ export default function CookieConsent() {
             <h3 className="font-bold text-slate-900 dark:text-white mb-1">Nous respectons votre vie privée</h3>
             <p className="text-sm text-slate-600 dark:text-slate-400">
               Nous utilisons des cookies et d'autres technologies de suivi (comme Google AdSense) pour améliorer votre expérience de navigation sur notre site, afficher des publicités personnalisées et analyser le trafic. En cliquant sur "Accepter", vous consentez à l'utilisation de ces cookies. 
-              <Link to="/privacy" className="text-blue-600 dark:text-blue-400 hover:underline ml-1">En savoir plus</Link>.
+              <Link to="/confidentialite" className="text-blue-600 dark:text-blue-400 hover:underline ml-1">En savoir plus</Link>.
             </p>
           </div>
         </div>
