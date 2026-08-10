@@ -121,6 +121,32 @@ Quand une nouvelle page peine à s'indexer :
 
 ---
 
+## 4.E Méthodologie "Scale SEO 0 à 300k/mois" (Masterclass Amandine Bart / Waalaxy)
+
+Synthèse de la stratégie SEO en 7 étapes d'Amandine Bart (ex-Head of Acquisition Waalaxy / *SEO Sans Migraine*) :
+
+1. **Les 7 Étapes de la Stratégie** :
+   - **Étape 1 : Audit & Diagnostic des 3 Piliers** (Technique, Contenu, Autorité). Ne jamais négliger le mobile ni travailler 1 seul pilier isolément.
+   - **Étape 2 : Recherche de Mots-Clés accessibles** : Attaquer d'abord la *longue traîne* et les mots-clés à faible concurrence pour accumuler des premières victoires rapides avant les requêtes hyper-concurrentielles.
+   - **Étape 3 : Analyse de l'Intention de Recherche (*Search Intent*)** : Comprendre ce que Google met en #1 et bâtir le contenu qui y répond immédiatement (Pyramide Inversée).
+   - **Étape 4 : Création d'un Pilier de Contenu Irrésistible** : Structure sémantique claire, valeur humaine réelle (gain d'info vs contenu générique IA), optimisation avec des outils sémantiques (ex: *1.fr*, *SERPmantics*).
+   - **Étape 5 : Optimisation On-Page & CTR** : Titres percutants avec le mot-clé principal au début, meta-descriptions incitatives et structure Hn rigoureuse.
+   - **Étape 6 : Netlinking & Amplification** : Obtenir des backlinks DoFollow de qualité, maintenir < 10% d'ancres optimisées, et booster le contenu avec du trafic réel (Réseaux sociaux, LinkedIn/Waalaxy).
+   - **Étape 7 : Suivi & Maintenance (Rafraîchissement)** : Mettre à jour les articles existants qui perdent des positions (rafraîchissement du contenu + maillage interne mis à jour).
+
+2. **Les 4 Erreurs Critiques à Éviter** :
+   - 🛑 Rédiger pour les robots au lieu des humains (pénalité *Helpful Content Update*).
+   - 🛑 Viser trop haut dès le départ (mots-clés ultra-concurrentiels sans autorité préalable).
+   - 🛑 Acheter/Obtenir des backlinks de mauvaise qualité (spam).
+   - 🛑 Travailler le SEO en silo sans faire de lien avec la conversion réelle et les objectifs business.
+
+3. **Les 3 KPIs Clés** :
+   - 📈 **Trafic Organique Qualifié** (impressions + clics Search Console).
+   - 🎯 **Positions & Intention** (positionnement sur les requêtes stratégiques).
+   - 💰 **Conversion & Leads** (le SEO doit générer des utilisateurs/clients réels, pas juste de la vanité).
+
+---
+
 ## 5. Matrice d'Outillage SEO Recommandée
 
 | Besoins SEO | Outils Recommandés |

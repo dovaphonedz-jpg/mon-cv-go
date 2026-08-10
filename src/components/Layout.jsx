@@ -138,6 +138,11 @@ export default function Layout({ children }) {
               <Link to="/modele-cv-commercial" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Commercial</Link>
               <Link to="/modele-cv-developpeur" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Développeur</Link>
               <Link to="/modele-cv-designer" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Designer</Link>
+              <Link to="/modele-cv-infirmiere" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Infirmière</Link>
+              <Link to="/modele-cv-restauration" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Restauration</Link>
+              <Link to="/modele-cv-chauffeur-livreur" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Chauffeur Livreur</Link>
+              <Link to="/modele-cv-secretaire" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Secrétaire</Link>
+              <Link to="/modele-cv-vendeur" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Vendeur</Link>
             </div>
 
             {/* Liens utiles */}

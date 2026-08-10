@@ -1,151 +1,280 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { FilePlus2, Check, ArrowRight } from 'lucide-react';
+import { FilePlus2, Check, ArrowRight, HelpCircle, ChevronDown, Award, Lightbulb, UserCheck, ShieldCheck, Sparkles, BookOpen } from 'lucide-react';
 import SEO from '../components/SEO';
 import SocialShare from '../components/SocialShare';
-
-const modelesData = {
-  'modele-cv-comptable-word': {
-    title: 'Modèle de CV Comptable Word & PDF',
-    description: 'Découvrez notre modèle de CV gratuit pour comptable, expert-comptable et aide-comptable. Optimisé pour les recruteurs et les logiciels ATS.',
-    content: 'En tant que comptable, votre CV doit refléter votre rigueur, votre précision et votre maîtrise des outils financiers. Ce modèle de CV est spécialement conçu pour mettre en valeur vos compétences en comptabilité générale, analytique, ainsi que votre maîtrise des logiciels (Excel, Sage, Cegid).',
-    keywords: 'CV comptable, modèle CV comptable gratuit, CV expert-comptable, CV aide-comptable Word, télécharger CV comptable',
-    wordFile: '/templates-word/67-cv-template-francais.docx'
-  },
-  'modele-cv-ingenieur': {
-    title: 'Modèle de CV Ingénieur',
-    description: 'Créez un CV d\'ingénieur percutant. Modèle gratuit adapté pour ingénieurs informatiques, mécaniques, civils ou généralistes.',
-    content: 'Un bon CV d\'ingénieur doit mettre en avant vos compétences techniques (hard skills), vos projets significatifs et votre capacité à résoudre des problèmes complexes. Notre modèle vous aide à structurer clairement votre parcours, de votre formation d\'ingénieur à vos expériences pratiques.',
-    keywords: 'CV ingénieur, modèle CV ingénieur, CV ingénieur informatique, CV ingénieur mécanique, exemple CV ingénieur',
-    wordFile: '/templates-word/10-cv-template-professional-blue.docx'
-  },
-  'modele-cv-debutant': {
-    title: 'Modèle de CV Débutant / Sans Expérience',
-    description: 'Premier emploi ? Utilisez notre modèle de CV pour débutant. Valorisez votre formation, vos soft skills et vos petits boulots.',
-    content: 'Rédiger un CV sans expérience professionnelle solide peut sembler difficile. Ce modèle est pensé pour les jeunes diplômés ou les personnes cherchant leur premier emploi. Il met l\'accent sur votre formation, vos projets personnels, vos activités bénévoles et vos compétences interpersonnelles (soft skills).',
-    keywords: 'CV débutant, modèle CV sans expérience, premier CV, CV jeune diplômé, exemple CV étudiant',
-    wordFile: '/templates-word/56-cv-template-student.docx'
-  },
-  'modele-cv-etudiant': {
-    title: 'Modèle de CV Étudiant (Job étudiant, Stage)',
-    description: 'Le modèle idéal pour trouver un stage, une alternance ou un job étudiant. Structure simple, moderne et efficace.',
-    content: 'Ce modèle de CV est parfaitement adapté aux étudiants à la recherche d\'un stage, d\'un job d\'été ou d\'une alternance. Mettez en valeur votre parcours académique, vos centres d\'intérêt pertinents et votre motivation à apprendre sur le terrain.',
-    keywords: 'CV étudiant, modèle CV stage, CV job étudiant, CV alternance, créer CV étudiant',
-    wordFile: '/templates-word/56-cv-template-student.docx'
-  },
-  'modele-cv-commercial': {
-    title: 'Modèle de CV Commercial & Vente',
-    description: 'Modèle de CV pour commerciaux, vendeurs et technico-commerciaux. Mettez en avant vos résultats et vos compétences en négociation.',
-    content: 'Pour un poste de commercial, votre CV doit démontrer votre dynamisme, votre force de persuasion et vos résultats concrets (chiffre d\'affaires, objectifs atteints). Utilisez ce modèle pour structurer vos succès et prouver votre capacité à développer un portefeuille client.',
-    keywords: 'CV commercial, modèle CV vente, CV technico-commercial, CV vendeur, exemple CV commercial',
-    wordFile: '/templates-word/57-cv-template-commercial.docx'
-  },
-  'modele-cv-developpeur': {
-    title: 'Modèle de CV Développeur Web & Software',
-    description: 'Modèle de CV optimisé pour développeurs web, full-stack, frontend et backend. Valorisez votre stack technique et vos projets GitHub.',
-    content: 'En tant que développeur, la clarté de votre stack technique (languages, frameworks, bases de données) et le lien vers vos réalisations (GitHub, projets live) sont décisifs. Ce modèle structuré garantit une lisibilité maximale pour les Tech Leads et les recruteurs IT.',
-    keywords: 'CV développeur, modèle CV développeur web, CV fullstack, CV informatique, exemple CV dev',
-    wordFile: '/templates-word/123-cv-template-digital.docx'
-  },
-  'modele-cv-designer': {
-    title: 'Modèle de CV Designer & UI/UX',
-    description: 'Présentez votre sens esthétique et vos projets créatifs avec ce modèle de CV pour designers, graphistes et UX designers.',
-    content: 'Pour les métiers créatifs, l\'impact visuel et l\'harmonie de votre CV reflètent directement votre expertise. Ce modèle équilibre esthétique moderne et structure sémantique pour mettre en valeur votre portfolio et vos compétences de design.',
-    keywords: 'CV designer, modèle CV graphiste, CV UI UX, exemple CV créatif, modèle CV design',
-    wordFile: '/templates-word/40-cv-template-creative-blue.docx'
-  },
-  'modele-cv-infirmiere': {
-    title: 'Modèle de CV Infirmière & Aide-Soignante',
-    description: 'Modèle de CV gratuit pour infirmiers, infirmières, aides-soignants et personnels de santé. Structure rigoureuse optimisée ATS.',
-    content: 'Les métiers de la santé exigent de mettre en avant la rigueur, l\'empathie, le soin aux patients et le respect des protocoles médicaux. Ce modèle de CV est spécialement conçu pour valoriser vos diplômes d\'État (IDE, AS), vos stages hospitaliers et vos spécialisations médicales.',
-    keywords: 'CV infirmière, modèle CV infirmier gratuit, CV aide-soignante, exemple CV santé, télécharger CV infirmière',
-    wordFile: '/templates-word/67-cv-template-francais.docx'
-  },
-  'modele-cv-restauration': {
-    title: 'Modèle de CV Restauration, Serveur & Cuisinier',
-    description: 'Créez un CV percutant pour les métiers de l\'hôtellerie-restauration. Modèle gratuit adapté pour serveurs, cuisiniers et barmans.',
-    content: 'Dans le secteur de la restauration, le rythme est intense. Votre CV doit démontrer votre sang-froid, votre sens du service client, la maîtrise des normes d\'hygiène (HACCP) et votre polyvalence en salle ou en cuisine.',
-    keywords: 'CV restauration, modèle CV serveur, CV cuisinier gratuit, exemple CV hôtellerie, CV barman',
-    wordFile: '/templates-word/57-cv-template-commercial.docx'
-  },
-  'modele-cv-chauffeur-livreur': {
-    title: 'Modèle de CV Chauffeur, Livreur & Logistique',
-    description: 'Modèle de CV professionnel pour chauffeurs livreurs, préparateurs de commandes et agents logistiques.',
-    content: 'Un bon CV dans le secteur de la logistique et du transport doit souligner la ponctualité, la sécurité routière, la gestion des stocks et la maîtrise des permis (Permis B, C, CACES). Ce modèle met en lumière votre efficacité sur le terrain.',
-    keywords: 'CV chauffeur livreur, modèle CV logistique, CV préparateur de commande, exemple CV routier, CV CACES',
-    wordFile: '/templates-word/10-cv-template-professional-blue.docx'
-  },
-  'modele-cv-secretaire': {
-    title: 'Modèle de CV Secrétaire & Assistant Administratif',
-    description: 'Modèle de CV gratuit pour secrétaires, assistants de direction et agents administratifs. Clair, moderne et efficace.',
-    content: 'La clarté, l\'organisation et la parfaite maîtrise des outils bureautiques (Suite Office, gestion de mails, accueil téléphonique) sont la clé d\'un CV d\'assistant réussi. Utilisez ce modèle pour présenter votre professionnalisme.',
-    keywords: 'CV secrétaire, modèle CV assistant administratif, CV secrétaire de direction, exemple CV accueil, CV bureautique',
-    wordFile: '/templates-word/67-cv-template-francais.docx'
-  },
-  'modele-cv-vendeur': {
-    title: 'Modèle de CV Vendeur & Hôte de Caisse',
-    description: 'Créez votre CV pour la vente en magasin et la grande distribution. Modèle idéal pour vendeurs, hôtes de caisse et conseillers clientèle.',
-    content: 'Le secteur du commerce de détail privilégie le relationnel, l\'encaissement, la tenue de la caisse et la mise en rayon. Ce modèle valorise votre sens du contact et votre dynamisme commercial.',
-    keywords: 'CV vendeur, modèle CV hôte de caisse, exemple CV grande distribution, CV conseiller de vente, CV caissier',
-    wordFile: '/templates-word/57-cv-template-commercial.docx'
-  }
-};
+import { jobModelsData } from '../data/jobModelsData';
 
 export default function ModelePage() {
   const location = useLocation();
   const path = location.pathname.substring(1); // Enlève le '/' initial
-  const model = modelesData[path] || modelesData['modele-cv-debutant']; // Fallback
+  const model = jobModelsData[path] || jobModelsData['modele-cv-debutant']; // Fallback
+  const [openFaq, setOpenFaq] = useState(null);
+
+  const breadcrumbs = [
+    { name: 'Accueil', url: 'https://moncvgo.com/' },
+    { name: 'Plan du site', url: 'https://moncvgo.com/plan-du-site' },
+    { name: model.jobTitle, url: `https://moncvgo.com/${path}` }
+  ];
 
   return (
     <>
-      <SEO title={`${model.title} | Mon CV Go`} description={model.description} url={`https://moncvgo.com/${path}`} />
-      <div className="bg-slate-50 dark:bg-[#0B1120] min-h-screen pt-24 pb-16">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+      <SEO 
+        title={model.seoTitle} 
+        description={model.seoDesc} 
+        url={`https://moncvgo.com/${path}`}
+        faqItems={model.faq}
+        breadcrumbs={breadcrumbs}
+      />
+      
+      <div className="bg-slate-50 dark:bg-[#0B1120] min-h-screen pt-20 pb-20">
+        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8">
           
-          <div className="bg-white dark:bg-slate-900 brutal-border brutal-shadow p-8 md:p-12 mb-12">
-            <h1 className="text-4xl md:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tight mb-6">
-              {model.title}
+          {/* Breadcrumbs Navigation */}
+          <nav className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-6">
+            <Link to="/" className="hover:text-cyan-500 transition-colors">Accueil</Link>
+            <span>/</span>
+            <Link to="/plan-du-site" className="hover:text-cyan-500 transition-colors">Modèles de CV</Link>
+            <span>/</span>
+            <span className="text-slate-900 dark:text-white">{model.jobTitle}</span>
+          </nav>
+
+          {/* Hero Header */}
+          <div className="bg-white dark:bg-slate-900 brutal-border brutal-shadow p-8 md:p-12 mb-12 relative overflow-hidden">
+            <div className="absolute top-0 right-0 w-64 h-64 bg-yellow-400/20 dark:bg-yellow-400/10 rounded-full blur-3xl pointer-events-none -z-0"></div>
+            
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-yellow-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border mb-6 transform -rotate-1">
+              <Sparkles className="w-4 h-4 text-slate-900" />
+              Modèle de CV Métier 2026
+            </div>
+
+            <h1 className="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tight mb-6 leading-tight">
+              {model.h1}
             </h1>
-            <p className="text-xl text-slate-700 dark:text-slate-300 font-bold mb-8 leading-relaxed">
-              {model.description}
+            
+            <p className="text-lg sm:text-xl text-slate-700 dark:text-slate-300 font-bold leading-relaxed mb-8 max-w-3xl">
+              {model.intro}
             </p>
             
             <div className="flex flex-col sm:flex-row gap-4">
-              <Link to={`/create?preset=${path}`} className="px-8 py-4 bg-yellow-400 text-slate-900 font-black uppercase tracking-widest brutal-border brutal-shadow brutal-hover flex items-center justify-center gap-2 transform -rotate-1">
+              <Link 
+                to={`/create?preset=${path}`} 
+                className="px-8 py-4 bg-yellow-400 text-slate-900 font-black uppercase tracking-widest text-base brutal-border brutal-shadow brutal-hover flex items-center justify-center gap-3 transform -rotate-1"
+              >
                 <FilePlus2 className="w-5 h-5" strokeWidth={3} />
-                Créer & Exporter en PDF (FR / EN / AR)
+                Créer ce CV gratuitement (PDF)
               </Link>
+              <a 
+                href="#details" 
+                className="px-8 py-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-black uppercase tracking-widest text-base brutal-border brutal-shadow brutal-hover flex items-center justify-center gap-2"
+              >
+                <BookOpen className="w-5 h-5" />
+                Lire le guide métier
+              </a>
             </div>
           </div>
 
-          <div className="grid md:grid-cols-3 gap-8 mb-12">
-            <div className="md:col-span-2 prose prose-lg prose-slate dark:prose-invert">
-              <h2 className="text-2xl font-bold text-slate-900 dark:text-white mb-4">Pourquoi choisir ce modèle ?</h2>
-              <p className="text-slate-600 dark:text-slate-400 mb-6">{model.content}</p>
-              
-              <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Caractéristiques :</h3>
-              <ul className="space-y-2 mb-6">
-                <li className="flex items-center gap-2 text-slate-600 dark:text-slate-400"><Check className="text-green-500 w-5 h-5" /> 100% Gratuit et sans inscription</li>
-                <li className="flex items-center gap-2 text-slate-600 dark:text-slate-400"><Check className="text-green-500 w-5 h-5" /> Optimisé pour les ATS (logiciels RH)</li>
-                <li className="flex items-center gap-2 text-slate-600 dark:text-slate-400"><Check className="text-green-500 w-5 h-5" /> Téléchargement immédiat en PDF</li>
-                <li className="flex items-center gap-2 text-slate-600 dark:text-slate-400"><Check className="text-green-500 w-5 h-5" /> Design moderne et professionnel</li>
-              </ul>
-              
-              <div className="mt-8">
-                <h3 className="text-xl font-bold text-slate-900 dark:text-white mb-4">Partagez ce modèle</h3>
-                <SocialShare url={`https://moncvgo.com/${path}`} title={model.title} />
-              </div>
-            </div>
+          <div className="grid md:grid-cols-3 gap-8" id="details">
             
+            {/* Main Content Area */}
+            <div className="md:col-span-2 space-y-10">
+              
+              {/* Section 1: Pourquoi utiliser ce modèle ? */}
+              <section className="bg-white dark:bg-slate-900 p-8 brutal-border brutal-shadow">
+                <h2 className="text-2xl font-black uppercase text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+                  <Lightbulb className="w-6 h-6 text-yellow-500" strokeWidth={2.5} />
+                  1. Pourquoi utiliser ce modèle de CV {model.jobTitle} ?
+                </h2>
+                <p className="text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
+                  {model.whyUse}
+                </p>
+              </section>
+
+              {/* Section 2: Pour quels profils est-il adapté ? */}
+              <section className="bg-white dark:bg-slate-900 p-8 brutal-border brutal-shadow">
+                <h2 className="text-2xl font-black uppercase text-slate-900 dark:text-white mb-4 flex items-center gap-3">
+                  <UserCheck className="w-6 h-6 text-cyan-500" strokeWidth={2.5} />
+                  2. À qui s'adresse ce modèle de CV ?
+                </h2>
+                <ul className="space-y-3">
+                  {model.targetProfiles.map((profile, i) => (
+                    <li key={i} className="flex items-start gap-3 text-slate-700 dark:text-slate-300 font-medium">
+                      <Check className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" strokeWidth={3} />
+                      <span>{profile}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+
+              {/* Section 3: Compétences clés (Hard & Soft Skills) */}
+              <section className="bg-white dark:bg-slate-900 p-8 brutal-border brutal-shadow">
+                <h2 className="text-2xl font-black uppercase text-slate-900 dark:text-white mb-6 flex items-center gap-3">
+                  <Award className="w-6 h-6 text-pink-500" strokeWidth={2.5} />
+                  3. Compétences indispensables pour {model.jobTitle}
+                </h2>
+                
+                <div className="mb-6">
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3 uppercase text-xs tracking-wider bg-pink-100 dark:bg-pink-900/30 px-3 py-1 inline-block brutal-border">
+                    Hard Skills (Compétences Techniques)
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {model.hardSkills.map((skill, i) => (
+                      <span key={i} className="px-3 py-1.5 bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 font-bold text-xs rounded-lg border border-slate-200 dark:border-slate-700">
+                        ⚡ {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+
+                <div>
+                  <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3 uppercase text-xs tracking-wider bg-cyan-100 dark:bg-cyan-900/30 px-3 py-1 inline-block brutal-border">
+                    Soft Skills (Qualités Comportementales)
+                  </h3>
+                  <div className="flex flex-wrap gap-2">
+                    {model.softSkills.map((skill, i) => (
+                      <span key={i} className="px-3 py-1.5 bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 font-bold text-xs rounded-lg border border-emerald-200 dark:border-emerald-800">
+                        ⭐ {skill}
+                      </span>
+                    ))}
+                  </div>
+                </div>
+              </section>
+
+              {/* Section 4: Informations essentielles à inclure */}
+              <section className="bg-white dark:bg-slate-900 p-8 brutal-border brutal-shadow">
+                <h2 className="text-2xl font-black uppercase text-slate-900 dark:text-white mb-4">
+                  4. Les rubriques obligatoires sur votre CV
+                </h2>
+                <div className="grid sm:grid-cols-2 gap-4">
+                  {model.essentialSections.map((item, i) => (
+                    <div key={i} className="p-4 bg-slate-50 dark:bg-slate-800 rounded-xl border border-slate-200 dark:border-slate-700 flex items-start gap-3">
+                      <span className="w-6 h-6 rounded-full bg-yellow-400 text-slate-900 font-black text-xs flex items-center justify-center shrink-0 mt-0.5">
+                        {i + 1}
+                      </span>
+                      <span className="text-sm font-bold text-slate-800 dark:text-slate-200">{item}</span>
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              {/* Section 5: Exemple d'accroche professionnelle */}
+              <section className="bg-slate-900 text-white p-8 brutal-border brutal-shadow-lg relative overflow-hidden">
+                <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-400/10 rounded-full blur-2xl"></div>
+                <h2 className="text-2xl font-black uppercase mb-4 text-yellow-400 flex items-center gap-2">
+                  <Sparkles className="w-6 h-6" />
+                  5. Exemple d'accroche (Résumé de Profil)
+                </h2>
+                <p className="text-slate-300 text-sm mb-4 font-bold">
+                  Voici un exemple de phrase d'accroche optimisée que vous pouvez personnaliser directement sur Mon CV Go :
+                </p>
+                <div className="bg-slate-800 p-5 rounded-xl border border-slate-700 text-slate-200 font-medium italic text-base leading-relaxed">
+                  {model.sampleCatchphrase}
+                </div>
+              </section>
+
+              {/* Section 6: Conseils Expériences & Méthode CAR */}
+              <section className="bg-white dark:bg-slate-900 p-8 brutal-border brutal-shadow space-y-4">
+                <h2 className="text-2xl font-black uppercase text-slate-900 dark:text-white mb-4">
+                  6. Conseils pour vos Expériences & Formations
+                </h2>
+                
+                <div className="p-4 bg-blue-50 dark:bg-blue-950/40 rounded-xl border border-blue-200 dark:border-blue-800">
+                  <h3 className="font-black text-blue-900 dark:text-blue-300 text-sm uppercase mb-1">💡 Expériences professionnelles</h3>
+                  <p className="text-sm text-slate-700 dark:text-slate-300 font-medium">{model.experienceAdvice}</p>
+                </div>
+
+                <div className="p-4 bg-purple-50 dark:bg-purple-950/40 rounded-xl border border-purple-200 dark:border-purple-800">
+                  <h3 className="font-black text-purple-900 dark:text-purple-300 text-sm uppercase mb-1">🎓 Formations & Diplômes</h3>
+                  <p className="text-sm text-slate-700 dark:text-slate-300 font-medium">{model.educationAdvice}</p>
+                </div>
+
+                <div className="p-4 bg-emerald-50 dark:bg-emerald-950/40 rounded-xl border border-emerald-200 dark:border-emerald-800">
+                  <h3 className="font-black text-emerald-900 dark:text-emerald-300 text-sm uppercase mb-1">🤖 Optimisation ATS (Logiciels RH)</h3>
+                  <p className="text-sm text-slate-700 dark:text-slate-300 font-medium">{model.atsAdvice}</p>
+                </div>
+              </section>
+
+              {/* Section 7: Astuces de succès */}
+              <section className="bg-white dark:bg-slate-900 p-8 brutal-border brutal-shadow">
+                <h2 className="text-2xl font-black uppercase text-slate-900 dark:text-white mb-4">
+                  7. Astuces d'expert pour réussir votre candidature
+                </h2>
+                <ul className="space-y-3">
+                  {model.tips.map((tip, i) => (
+                    <li key={i} className="flex items-start gap-3 text-slate-700 dark:text-slate-300 font-medium">
+                      <ShieldCheck className="w-5 h-5 text-yellow-500 shrink-0 mt-0.5" />
+                      <span>{tip}</span>
+                    </li>
+                  ))}
+                </ul>
+              </section>
+
+              {/* Section 8: FAQ spécifique au métier */}
+              <section className="bg-white dark:bg-slate-900 p-8 brutal-border brutal-shadow">
+                <h2 className="text-2xl font-black uppercase text-slate-900 dark:text-white mb-6 flex items-center gap-3">
+                  <HelpCircle className="w-6 h-6 text-pink-500" />
+                  8. Questions Fréquentes ({model.jobTitle})
+                </h2>
+
+                <div className="space-y-4">
+                  {model.faq.map((item, i) => (
+                    <div key={i} className="border border-slate-200 dark:border-slate-800 rounded-xl overflow-hidden">
+                      <button
+                        onClick={() => setOpenFaq(openFaq === i ? null : i)}
+                        className="w-full p-5 text-left font-bold text-slate-900 dark:text-white flex items-center justify-between gap-4 bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+                      >
+                        <span className="text-base">{item.q}</span>
+                        <ChevronDown className={`w-5 h-5 shrink-0 transition-transform ${openFaq === i ? 'rotate-180 text-cyan-500' : ''}`} />
+                      </button>
+                      {openFaq === i && (
+                        <div className="p-5 text-slate-600 dark:text-slate-300 font-medium text-sm leading-relaxed border-t border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900">
+                          {item.a}
+                        </div>
+                      )}
+                    </div>
+                  ))}
+                </div>
+              </section>
+
+              {/* Share */}
+              <div className="bg-white dark:bg-slate-900 p-6 brutal-border brutal-shadow flex flex-col items-center justify-center text-center">
+                <h3 className="text-lg font-black uppercase tracking-tight text-slate-900 dark:text-white mb-4">Partager ce modèle avec un collègue</h3>
+                <SocialShare url={`https://moncvgo.com/${path}`} title={model.seoTitle} />
+              </div>
+
+            </div>
+
+            {/* Sticky Sidebar CTA */}
             <div className="md:col-span-1">
-              <div className="bg-pink-100 dark:bg-pink-900/30 p-6 rounded-xl border border-pink-200 dark:border-pink-800 sticky top-28">
-                <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-4">Prêt à décrocher des entretiens ?</h3>
-                <p className="text-slate-600 dark:text-slate-400 mb-6 text-sm">Ne perdez plus de temps sur Word. Remplissez vos informations en 5 minutes et téléchargez un CV parfait.</p>
-                <Link to={`/create?preset=${path}`} className="w-full py-3 bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold rounded-lg flex items-center justify-center gap-2 hover:bg-slate-800 dark:hover:bg-slate-100 transition-colors">
-                  Commencer <ArrowRight className="w-4 h-4" />
+              <div className="bg-yellow-400 brutal-border brutal-shadow-lg p-6 text-slate-900 sticky top-24 transform rotate-1">
+                <div className="w-12 h-12 bg-white brutal-border flex items-center justify-center mb-4 transform -rotate-3">
+                  <FilePlus2 className="w-6 h-6 text-slate-900" strokeWidth={3} />
+                </div>
+                
+                <h3 className="text-2xl font-black uppercase tracking-tight mb-3">
+                  Créer votre CV {model.jobTitle}
+                </h3>
+                
+                <p className="font-bold text-sm mb-6 leading-snug text-slate-800">
+                  Générez un CV conforme aux normes RH 2026 en 5 minutes. Téléchargement immédiat au format PDF Haute Définition.
+                </p>
+
+                <ul className="space-y-2 mb-6 text-xs font-black uppercase tracking-wider">
+                  <li className="flex items-center gap-2">✓ 100% Gratuit</li>
+                  <li className="flex items-center gap-2">✓ Sans Inscription</li>
+                  <li className="flex items-center gap-2">✓ Compatible ATS</li>
+                  <li className="flex items-center gap-2">✓ Export PDF HD</li>
+                </ul>
+
+                <Link 
+                  to={`/create?preset=${path}`} 
+                  className="w-full py-4 bg-slate-900 hover:bg-slate-800 text-white font-black uppercase tracking-widest text-sm rounded-none brutal-border flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5"
+                >
+                  Générer mon CV <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </div>
+
           </div>
           
         </div>

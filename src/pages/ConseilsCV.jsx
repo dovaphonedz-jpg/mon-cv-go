@@ -337,6 +337,26 @@ export default function ConseilsCV() {
           ))}
         </motion.div>
 
+        {/* Model Links Section */}
+        <div className="mt-16 bg-gradient-to-r from-yellow-400 via-pink-400 to-cyan-400 p-1 brutal-border brutal-shadow-lg">
+          <div className="bg-white dark:bg-slate-900 p-8 text-center">
+            <h3 className="text-2xl font-black uppercase text-slate-900 dark:text-white mb-4">
+              Explorez nos modèles de CV gratuits par métier
+            </h3>
+            <p className="text-slate-700 dark:text-slate-300 font-bold mb-6 max-w-2xl mx-auto">
+              Chaque métier a ses exigences. Choisissez un modèle de CV pré-rempli et optimisé ATS adapté à votre secteur d'activité.
+            </p>
+            <div className="flex flex-wrap justify-center gap-3">
+              <Link to="/modele-cv-comptable-word" className="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black text-xs uppercase tracking-wider brutal-border hover:bg-yellow-400 dark:hover:bg-yellow-400 dark:hover:text-slate-900 transition-colors">Modèle CV Comptable</Link>
+              <Link to="/modele-cv-developpeur" className="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black text-xs uppercase tracking-wider brutal-border hover:bg-cyan-400 dark:hover:bg-cyan-400 dark:hover:text-slate-900 transition-colors">Modèle CV Développeur</Link>
+              <Link to="/modele-cv-etudiant" className="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black text-xs uppercase tracking-wider brutal-border hover:bg-pink-400 dark:hover:bg-pink-400 dark:hover:text-slate-900 transition-colors">Modèle CV Étudiant</Link>
+              <Link to="/modele-cv-commercial" className="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black text-xs uppercase tracking-wider brutal-border hover:bg-yellow-400 dark:hover:bg-yellow-400 dark:hover:text-slate-900 transition-colors">Modèle CV Commercial</Link>
+              <Link to="/modele-cv-infirmiere" className="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black text-xs uppercase tracking-wider brutal-border hover:bg-emerald-400 dark:hover:bg-emerald-400 dark:hover:text-slate-900 transition-colors">Modèle CV Infirmière</Link>
+              <Link to="/modele-cv-ingenieur" className="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black text-xs uppercase tracking-wider brutal-border hover:bg-purple-400 dark:hover:bg-purple-400 dark:hover:text-slate-900 transition-colors">Modèle CV Ingénieur</Link>
+            </div>
+          </div>
+        </div>
+
         {/* Share Section */}
         <div className="mt-12 bg-white dark:bg-slate-900 p-8 brutal-border brutal-shadow flex flex-col items-center justify-center text-center">
           <h3 className="text-2xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-6">Partagez ce guide avec votre réseau</h3>

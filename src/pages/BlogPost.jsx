@@ -37,9 +37,36 @@ export default function BlogPost() {
     );
   }
 
+  const articleSchema = JSON.stringify({
+    "@context": "https://schema.org",
+    "@type": "BlogPosting",
+    "headline": post.title,
+    "description": post.excerpt,
+    "image": post.image.startsWith('http') ? post.image : `https://moncvgo.com${post.image}`,
+    "datePublished": post.date,
+    "author": {
+      "@type": "Organization",
+      "name": "Mon CV Go",
+      "url": "https://moncvgo.com"
+    },
+    "publisher": {
+      "@type": "Organization",
+      "name": "Mon CV Go",
+      "logo": {
+        "@type": "ImageObject",
+        "url": "https://moncvgo.com/favicon-32x32.png"
+      }
+    },
+    "mainEntityOfPage": {
+      "@type": "WebPage",
+      "@id": `https://moncvgo.com/blog/${post.id}`
+    }
+  });
+
   return (
     <div dir={lang === 'ar' ? 'rtl' : 'ltr'}>
     <SEO title={post.title} description={post.excerpt} url={`https://moncvgo.com/blog/${post.id}`} />
+    <script type="application/ld+json">{articleSchema}</script>
     <article className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] pb-20 relative">
       
       {/* Decorative background */}

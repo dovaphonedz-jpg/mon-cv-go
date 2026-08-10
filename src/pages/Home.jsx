@@ -25,7 +25,7 @@ export default function Home() {
 
   return (
     <>
-    <SEO title={t('home.seo_title')} description={t('home.seo_desc')} />
+    <SEO title={t('home.seo_title')} description={t('home.seo_desc')} url="https://moncvgo.com/" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-screen overflow-hidden selection:bg-indigo-500/30">
       
       {/* HERO SECTION - Neo-Brutalist & Vibrant */}
