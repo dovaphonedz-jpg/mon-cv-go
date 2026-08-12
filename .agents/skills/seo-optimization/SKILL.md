@@ -119,9 +119,28 @@ Quand une nouvelle page peine à s'indexer :
 ### D. Signaux de Trafic Réel (Golden Nugget)
 - Injecter du trafic réel (via newsletter, réseaux sociaux ou campagne ads) vers une page spécifique optimisée envoie un signal très puissant à Google et accélère son positionnement SEO.
 
+### E. Répertoire & Hacks de Backlinks Gratuits (Méthode Punchify)
+Pour construire l'autorité initiale d'un domaine ou diversifier son profil de liens gratuitement :
+- **Plateformes Vidéo, Photo & Audio** :
+  - *Vidéos/Photos* : YouTube, Vimeo, Dailymotion, Twitch, Flickr, Unsplash, Dreamstime (liens dans la description & pages profil).
+  - *Audio/Podcasts* : SoundCloud, Mixcloud, iTunes (conversion d'articles en podcasts avec Odiogo).
+- **Réseaux Sociaux, Curation & Web 2.0** :
+  - *Curation & Bookmarking* : Pearltrees, Scoop.it, Flipboard, Diigo, Pocket, Instapaper, Reddit, Quora.
+  - *Automation* : Automatiser les flux RSS vers Tumblr, Pinterest & Scoop.it via Zapier / IFTTT.
+  - *Hacks Web 2.0 & Tumblr* : Racheter des blogs Tumblr expirés sur Fiverr et les relier en réseau (Ring 2.0) pour créer du jus rapide.
+  - *Profils de Marque* : About.me, Gravatar, GitHub, Academia.edu.
+- **Hack Présentation Document (SlideShare / PDFs)** :
+  - Uploader des PowerPoint/PDFs sur SlideShare, Issuu, SpeakerDeck, Scribd.
+  - *Astuce SlideShare* : Insérer des formes rectangulaires avec liens cliquables dès la 3ᵉ slide, accompagnées d'une longue description riche en mots-clés.
+- **SEO Local & Annuaires Gratuits** :
+  - *Profils d'entreprise* : Google Business Profile, PagesJaunes, Les Echos, Up-Campus, Foursquare, Ulule, Kickstarter, KissKissBankBank.
+  - *Annuaires FR de qualité* : Net-liens, TheOueb, Coodoeil, Gralon, Yagoort, El-annuaire.
+- **Stratégie Domaines Expirés** : Racheter des NDD expirés récents dans la même niche, créer un micro-blog et faire des liens thématiques contextuels vers le site principal.
+
 ---
 
-## 4.E Méthodologie "Scale SEO 0 à 300k/mois" (Masterclass Amandine Bart / Waalaxy)
+
+## 4.F Méthodologie "Scale SEO 0 à 300k/mois" (Masterclass Amandine Bart / Waalaxy)
 
 Synthèse de la stratégie SEO en 7 étapes d'Amandine Bart (ex-Head of Acquisition Waalaxy / *SEO Sans Migraine*) :
 
