@@ -6,6 +6,7 @@ import { useTranslation } from 'react-i18next';
 import SEO from '../components/SEO';
 import TemplateGallery from '../components/TemplateGallery';
 import AdSenseUnit from '../components/AdSenseUnit';
+import CleanHeroNoAnimation from '../components/CleanHeroNoAnimation';
 
 export default function Home() {
   const { t } = useTranslation();
@@ -28,72 +29,8 @@ export default function Home() {
     <SEO title={t('home.seo_title')} description={t('home.seo_desc')} url="https://moncvgo.com/" />
     <div className="bg-slate-50 dark:bg-[#0B1120] min-h-screen overflow-hidden selection:bg-indigo-500/30">
       
-      {/* HERO SECTION - Neo-Brutalist & Vibrant */}
-      <section className="relative pt-20 pb-14 sm:pt-40 sm:pb-24 overflow-hidden bg-slate-100 dark:bg-slate-900 brutal-border border-b-8" id="accueil">
-        
-        {/* Playful Asymmetric Background Elements */}
-        <div className="absolute inset-0 z-0 pointer-events-none overflow-hidden">
-          <div className="absolute -top-24 -right-24 w-96 h-96 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob"></div>
-          <div className="absolute top-48 -left-24 w-72 h-72 bg-cyan-400 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-2000"></div>
-          <div className="absolute -bottom-24 left-1/2 w-80 h-80 bg-yellow-400 rounded-full mix-blend-multiply filter blur-3xl opacity-40 animate-blob animation-delay-4000"></div>
-        </div>
-
-        {/* Dynamic CV Background (Original Clean Version) */}
-        <div className="absolute inset-0 z-0 opacity-50 dark:opacity-20 pointer-events-none flex gap-4 sm:gap-6 px-2 sm:px-4 transform -rotate-6 scale-110 -translate-y-24 -translate-x-6 sm:-translate-x-4" style={{overflow: 'hidden'}}>
-          {/* Column 1 - Scrolling Down */}
-          <div className="flex flex-col gap-4 sm:gap-6 animate-scroll-down w-1/2 sm:w-1/3 max-w-[200px] sm:max-w-[300px]">
-            <img src="/mockup1.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
-            <img src="/mockup2.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
-            <img src="/mockup3.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
-            <img src="/mockup1.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
-          </div>
-          {/* Column 2 - Scrolling Up */}
-          <div className="flex flex-col gap-4 sm:gap-6 animate-scroll-up w-1/2 sm:w-1/3 max-w-[200px] sm:max-w-[300px] mt-24">
-            <img src="/mockup4.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
-            <img src="/mockup5.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
-            <img src="/mockup6.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
-            <img src="/mockup4.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
-          </div>
-          {/* Column 3 - Scrolling Down (hidden on very small screens) */}
-          <div className="hidden sm:flex flex-col gap-6 animate-scroll-down w-1/3 max-w-[300px]">
-            <img src="/executive_slate_preview.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
-            <img src="/reference_preview.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
-            <img src="/new_flow_preview.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
-            <img src="/executive_slate_preview.webp" alt="" width="300" height="425" loading="lazy" decoding="async" className="w-full rounded-lg shadow-lg" />
-          </div>
-        </div>
-
-        {/* Gradient Overlay for Text Readability */}
-        <div className="absolute inset-0 z-0 bg-gradient-to-b from-yellow-50/40 via-yellow-50/80 to-yellow-50 dark:from-slate-900/60 dark:via-slate-900/90 dark:to-slate-900"></div>
-        
-        <div className="max-w-5xl mx-auto px-4 sm:px-6 lg:px-8 text-center relative z-10">
-          <motion.div variants={containerVariants} initial="hidden" animate="show">
-            <motion.div variants={itemVariants} className="inline-flex items-center gap-2 px-3 py-2 sm:px-4 sm:py-2 bg-white dark:bg-slate-800 brutal-border brutal-shadow text-slate-900 dark:text-white font-black text-[10px] sm:text-xs md:text-sm uppercase tracking-widest mb-8 sm:mb-10 md:mb-14 -mt-2 sm:-mt-4 md:-mt-6 transform -rotate-2">
-              <span className="w-2 h-2 sm:w-3 sm:h-3 rounded-full bg-pink-500 animate-pulse"></span>
-              {t('home.badge')}
-            </motion.div>
-            
-            <motion.h1 variants={itemVariants} className="text-3xl sm:text-5xl md:text-7xl lg:text-8xl xl:text-9xl font-black text-slate-900 dark:text-white uppercase tracking-tight leading-[1.15] sm:leading-[1.0] mb-5 sm:mb-8 md:mb-10">
-              {t('home.title_1')}<br className="hidden md:block" />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-pink-500 via-purple-500 to-cyan-500 drop-shadow-sm">{t('home.title_highlight')}</span> <br className="hidden md:block" />{t('home.title_2')}
-            </motion.h1>
-            
-            <motion.p variants={itemVariants} className="text-base sm:text-lg md:text-xl lg:text-2xl text-slate-700 dark:text-slate-300 max-w-3xl mx-auto mb-8 sm:mb-10 md:mb-12 font-bold leading-relaxed px-4 sm:px-0" dangerouslySetInnerHTML={{ __html: t('home.subtitle') }}>
-            </motion.p>
-            
-            <motion.div variants={itemVariants} className="flex flex-col md:flex-row gap-4 md:gap-6 justify-center items-center px-4 sm:px-0">
-              <Link to="/create" className="w-full md:w-auto px-6 py-4 md:px-10 md:py-5 bg-yellow-400 dark:bg-yellow-400 text-slate-900 font-black uppercase tracking-widest text-base sm:text-lg md:text-xl brutal-border brutal-shadow transition-smooth brutal-hover brutal-active flex items-center justify-center gap-3 transform rotate-1">
-                <FilePlus2 className="w-5 h-5 md:w-6 md:h-6" strokeWidth={3} />
-                {t('home.btn_create')}
-              </Link>
-              <Link to="/portfolio" className="w-full md:w-auto px-6 py-4 md:px-10 md:py-5 bg-cyan-400 dark:bg-cyan-400 text-slate-900 font-black uppercase tracking-widest text-base sm:text-lg md:text-xl brutal-border brutal-shadow transition-smooth brutal-hover brutal-active flex items-center justify-center gap-3 transform -rotate-1">
-                <Briefcase className="w-5 h-5 md:w-6 md:h-6" strokeWidth={3} />
-                {t('home.btn_portfolio')}
-              </Link>
-            </motion.div>
-          </motion.div>
-        </div>
-      </section>
+      {/* HERO SECTION - Clean Layout with Beautiful Particle Grid Background without right-side animation box */}
+      <CleanHeroNoAnimation t={t} />
 
       <AdSenseUnit />
 

@@ -20,6 +20,7 @@ const ModelePage = lazy(() => import('./pages/ModelePage'));
 const JobSpace = lazy(() => import('./pages/JobSpace'));
 const PlanDuSite = lazy(() => import('./pages/PlanDuSite'));
 const StudioPhoto = lazy(() => import('./pages/StudioPhoto'));
+const CreerCvGratuitPillar = lazy(() => import('./pages/CreerCvGratuitPillar'));
 
 function App() {
   return (
@@ -54,6 +55,17 @@ function App() {
             <Route path="/modele-cv-chauffeur-livreur" element={<ModelePage />} />
             <Route path="/modele-cv-secretaire" element={<ModelePage />} />
             <Route path="/modele-cv-vendeur" element={<ModelePage />} />
+            
+            {/* High-Intent Target SEO Landing Pages */}
+            <Route path="/creer-cv-gratuit" element={<CreerCvGratuitPillar />} />
+            <Route path="/faire-cv-gratuit" element={<ModelePage />} />
+            <Route path="/cv-gratuit-en-ligne" element={<ModelePage />} />
+            <Route path="/modeles-cv-gratuits" element={<ModelePage />} />
+            <Route path="/cv-professionnel-gratuit" element={<ModelePage />} />
+            <Route path="/cv-etudiant-gratuit" element={<ModelePage />} />
+            <Route path="/cv-sans-experience" element={<ModelePage />} />
+            <Route path="/exemples-cv" element={<ModelePage />} />
+
             <Route path="/espace-emploi" element={<JobSpace />} />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>

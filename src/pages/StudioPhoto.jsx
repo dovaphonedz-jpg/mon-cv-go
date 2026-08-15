@@ -1,10 +1,12 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { UploadCloud, Download, RefreshCw, CheckCircle2, ArrowLeft, Camera, ZoomIn, RotateCw, MoveHorizontal, Wand2, Sparkles, Loader2, Eraser, Trash2 } from 'lucide-react';
 import { useResume } from '../context/ResumeContext';
 import SEO from '../components/SEO';
 
 export default function StudioPhoto() {
+  const { t } = useTranslation();
   const { updatePersonal, cvData } = useResume();
   const navigate = useNavigate();
 

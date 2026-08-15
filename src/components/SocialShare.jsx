@@ -50,7 +50,7 @@ export default function SocialShare({ url, title }) {
         className="flex items-center gap-2 px-4 py-2 bg-slate-200 dark:bg-slate-700 text-slate-800 dark:text-white font-bold rounded-lg hover:bg-slate-300 dark:hover:bg-slate-600 transition-colors shadow-sm"
         aria-label="Copier le lien"
       >
-        <LinkIcon className="w-5 h-5" /> Copier
+        <LinkIcon className="w-5 h-5" /> {t('share.copy', 'Copier')}
       </button>
     </div>
   );

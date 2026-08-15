@@ -139,6 +139,60 @@ export default function ConseilsCV() {
         }
       ]
     },
+    de: {
+      seoTitle: "Lebenslauf-Tipps: Wie verfasst man den perfekten Lebenslauf?",
+      seoDesc: "Entdecken Sie unsere Experten-Tipps für einen wirkungsvollen Lebenslauf.",
+      badge: "Praktischer Leitfaden",
+      title1: "Tipps für einen",
+      title2: "wirkungsvollen Lebenslauf",
+      desc: "Entdecken Sie die besten Methoden für einen Lebenslauf, der Personaler überzeugt und ATS-Filter besteht.",
+      do: "EMPFOHLEN",
+      dont: "VERMEIDEN",
+      sections: [
+        {
+          title: "Die goldene Regel: Klarheit und Prägnanz",
+          content: "Ein Personalverantwortlicher verbringt durchschnittlich 6 bis 10 Sekunden mit einem Lebenslauf. Nutzen Sie Stichpunkte und kurze, präzise Sätze.",
+          dos: ["Lebenslauf auf 1 bis 2 Seiten beschränken", "Aktuelle Erfahrungen zuerst nennen", "Ergebnisse mit Zahlen belegen"],
+          donts: ["Lange Absätze schreiben", "Veraltete Informationen einfügen", "Urlaubsfotos verwenden"]
+        },
+        {
+          title: "Anpassung an das Stellenangebot",
+          content: "Der häufigste Fehler: Der gleiche Lebenslauf an 50 Firmen. Passen Sie die Keywords genau an die Stellenausschreibung an.",
+          dos: ["Gezielten Lebenslauf-Titel wählen", "Geforderte Fähigkeiten hervorheben", "Einleitungssatz anpassen"],
+          donts: ["Generisches Dokument senden", "Bei Fähigkeiten lügen", "Korrekturlesen vergessen"]
+        },
+        {
+          title: "Design: Inhalt vor Form, aber die Form zählt",
+          content: "Ein schlechtes Design wirkt nachlässig. Ein übersichtlicher, professioneller Lebenslauf hebt Sie ab.",
+          dos: ["Moderne Schriftarten wählen", "Ausreichend Weißraum lassen", "Datumsangaben exakt ausrichten"],
+          donts: ["Zu viele Farben nutzen", "Fortschrittsbalken verwenden", "Verzierte Schriften nutzen"]
+        },
+        {
+          title: "Soft Skills: Ihre Geheimwaffe",
+          content: "Soft Skills zeigen, wie gut Sie im Team arbeiten. Emotionale Intelligenz und Anpassungsfähigkeit sind sehr gefragt.",
+          dos: ["Soft Skills mit Beispielen belegen", "LinkedIn-Empfehlungen einholen", "Konkrete Erlebnisse vorbereiten"],
+          donts: ["Schlagwörter ohne Kontext auflisten", "Persönlichkeit mit Skills verwechseln", "Soft Skills vernachlässigen"]
+        },
+        {
+          title: "Erfolge statt Aufgaben",
+          content: "Wandeln Sie reine Aufgabenbeschreibungen in quantifizierbare Erfolge mit konkreten Kennzahlen um.",
+          dos: ["Zahlen und Daten nutzen", "Erreichte Ziele nennen", "Projektumfang angeben"],
+          donts: ["Stellenbeschreibung kopieren", "Vage bleiben", "Fremde Erfolge beanspruchen"]
+        },
+        {
+          title: "Starke Aktionsverben verwenden",
+          content: "Beginnen Sie Stichpunkte mit aktiven Verben wie: Geleitet, Entwickelt, Optimiert, Erstellt.",
+          dos: ["Mit Aktionsverb starten", "Wortschatz variieren", "Aussagekräftige Begriffe nutzen"],
+          donts: ["Pronomen 'Ich' nutzen", "Schwache Verben nutzen", "Zeiten durcheinanderbringen"]
+        },
+        {
+          title: "Das Portfolio: Der entscheidende Vorteil",
+          content: "Ein Lebenslauf nennt Fähigkeiten – ein Portfolio beweist sie. Erstellen Sie mit Mon CV Go ein elegantes Portfolio.",
+          dos: ["Portfolio-Link einfügen", "Beste Projekte auswählen", "Eigene Rolle erklären"],
+          donts: ["Defekte Links einfügen", "Einfache Schulprojekte zeigen", "Recruiter suchen lassen"]
+        }
+      ]
+    },
     ar: {
       seoTitle: "نصائح السيرة الذاتية: كيف تكتب سيرة ذاتية مثالية",
       seoDesc: "اكتشف نصائح خبرائنا لكتابة سيرة ذاتية مؤثرة.",

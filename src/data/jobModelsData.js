@@ -694,5 +694,378 @@ export const jobModelsData = {
         a: 'Insistez sur la rapidité d\'encaissement, l\'absence d\'erreur de caisse et la courtoisie avec les clients.'
       }
     ]
+  },
+  'creer-cv-gratuit': {
+    path: 'creer-cv-gratuit',
+    h1: 'Créer un CV Gratuitement en Ligne (Éditeur PDF & Word 2026)',
+    jobTitle: 'Créer un CV Gratuitement',
+    seoTitle: 'Créer un CV Gratuitement en Ligne | Éditeur Sans Frais Mon CV Go',
+    seoDesc: 'Utilisez notre générateur de CV gratuit pour concevoir et télécharger votre document au format PDF et Word. Personnalisation complète des couleurs, typographies et sections sans inscription.',
+    intro: 'La création d\'un CV professionnel ne doit pas être un obstacle financier ni un casse-tête technique. Notre générateur en ligne vous offre un accès libre et illimité à tous nos outils d\'édition graphique, permettant de bâtir une candidature sur mesure sans frais cachés ni abonnement récurrent.',
+    whyUse: 'Contrairement aux éditeurs payants qui bloquent le téléchargement au dernier moment, MonCVGo vous garantit l\'exportation gratuite et instantanée de votre CV au format PDF vectoriel haute définition ou Word rééditable.',
+    targetProfiles: [
+      'Candidats cherchant un outil d\'édition 100% libre et sans frais cachés.',
+      'Personnes souhaitant créer plusieurs versions de leur CV selon les annonces.',
+      'Utilisateurs désirant un export PDF vectoriel net et imprimable sans filigrane.'
+    ],
+    hardSkills: [
+      'Génération PDF vectoriel haute définition sans filigrane',
+      'Exportation au format Word (.docx) rééditable',
+      'Palette de couleurs HSL et typographies Google Fonts intégrées',
+      'Ajustement dynamique des marges et des espacements de lignes',
+      'Sauvegarde automatique dans le navigateur (Local Storage)'
+    ],
+    softSkills: [
+      'Autonomie dans la création',
+      'Sens de l\'esthétique visuelle',
+      'Précision dans la mise en page'
+    ],
+    essentialSections: [
+      'En-tête dynamique avec titre de profil et coordonnées',
+      'Résumé exécutif personnalisé',
+      'Expériences professionnelles chronologiques',
+      'Cursus de formation et diplômes',
+      'Bloc de compétences techniques et informatiques',
+      'Langues et certifications officielles'
+    ],
+    tips: [
+      'Utilisez le sélecteur de couleurs pour adapter la teinte de votre CV à la charte graphique de l\'entreprise ciblée.',
+      'Vérifiez le rendu d\'impression grâce au mode prévisualisation avant de finaliser votre export PDF.',
+      'Créez une variante de votre CV pour chaque candidature spécifique.'
+    ],
+    sampleCatchphrase: '« Professionnel rigoureux disposant de 5 ans d\'expérience dans le secteur des services. À la recherche d\'un poste dynamique où mettre à profit mes compétences en gestion et organisation. »',
+    experienceAdvice: 'Privilégiez la précision : mentionnez systématiquement les dates, les lieux, le nom de la structure et l\'impact de vos actions.',
+    educationAdvice: 'Indiquez le titre exact du diplôme et les spécialités suivies durant votre cursus.',
+    atsAdvice: 'Tous les fichiers PDF générés par notre créateur conservent leur couche texte vectorielle, indispensable pour la lecture automatique par les algorithmes ATS.',
+    wordFile: '/templates-word/67-cv-template-francais.docx',
+    faq: [
+      { q: 'Y a-t-il une filigrane ou un logo imposé sur le PDF téléchargé ?', a: 'Non, votre CV exporté est totalement propre, professionnel et exempt de tout filigrane ou logo publicitaire.' },
+      { q: 'Combien de CV puis-je créer gratuitement sur le site ?', a: 'Le nombre de créations est illimité. Vous pouvez créer autant de versions et de variantes que vous le souhaitez.' }
+    ]
+  },
+  'faire-cv-gratuit': {
+    path: 'faire-cv-gratuit',
+    h1: 'Comment Faire un CV Gratuitement : Guide Méthodologique Pas à Pas',
+    jobTitle: 'Faire un CV Gratuitement',
+    seoTitle: 'Comment Faire un CV Gratuitement | Guide Pratique & Rédaction',
+    seoDesc: 'Apprenez la méthode pas à pas pour faire un CV gratuit et percutant. Structure, choix des verbes d\'action, rédaction de l\'accroche et conseils d\'experts.',
+    intro: 'Savoir comment faire un CV efficace est une compétence essentielle dans toute carrière. Ce guide méthodologique vous détaille les 5 étapes indispensables pour structurer vos idées, sélectionner le bon vocabulaire professionnel et rédiger un CV qui retient l\'attention des recruteurs dès les 6 premières secondes.',
+    whyUse: 'En suivant notre méthode pas à pas, vous évitez les pièges classiques (contenu trop dense, fautes de syntaxe, manque de mots-clés) et construisez une candidature d\'impact.',
+    targetProfiles: [
+      'Candidats souhaitant apprendre à rédiger un CV de A à Z.',
+      'Personnes en reconversion ayant besoin de restructurer leur discours professionnel.',
+      'Demandeurs d\'emploi souhaitant maximiser leur taux de réponse aux entretiens.'
+    ],
+    hardSkills: [
+      'Méthode de rédaction par objectifs et verbes d\'action',
+      'Hiérarchisation sémantique des rubriques (Hn & listes)',
+      'Technique d\'accroche sous la méthode de la Pyramide Inversée',
+      'Optimisation du ratio texte / espace blanc',
+      'Relecture et correction d\'erreurs fréquentes'
+    ],
+    softSkills: [
+      'Esprit de synthèse rédactionnel',
+      'Capacité de clarification',
+      'Rigueur de structuration'
+    ],
+    essentialSections: [
+      'Titre explicite orienté solution',
+      'Phrase d\'accroche captivante en 3-4 lignes',
+      'Missions rédigées avec des verbes d\'action à l\'infinitif',
+      'Diplômes classés par ordre antéchronologique',
+      'Hard skills et soft skills équilibrés'
+    ],
+    tips: [
+      'Commencez chaque puce d\'expérience par un verbe d\'action fort (ex: "Piloter", "Négocier", "Concevoir", "Optimiser").',
+      'Faites repasser votre texte par un tiers ou un outil de relecture pour supprimer 100% des coquilles.',
+      'Limitez votre CV à une page unique sauf si vous cumulez plus de 10 à 15 ans d\'expertise.'
+    ],
+    sampleCatchphrase: '« Spécialiste de la relation client fort de 6 ans d\'expérience. Reconnu pour ma capacité à résoudre les litiges complexes et à fidéliser le portefeuille d\'abonnés. »',
+    experienceAdvice: 'Utilisez la formule : Verbe d\'action + Contexte + Résultat chiffré (ex: "Optimisation de la gestion des stocks (-15% de pertes en 6 mois)").',
+    educationAdvice: 'Ne conservez que les diplômes significatifs à partir du Baccalauréat.',
+    atsAdvice: 'Insérez les termes exacts issus de l\'offre d\'emploi dans votre section compétences pour matcher avec les critères de recherche ATS.',
+    wordFile: '/templates-word/67-cv-template-francais.docx',
+    faq: [
+      { q: 'Faut-il mettre un titre sur son CV quand on en fait un gratuitement ?', a: 'Oui, le titre est l\'élément clé qui indique immédiatement au recruteur pour quel poste vous postulez.' },
+      { q: 'Quelle est la longueur idéale pour la phrase d\'accroche ?', a: 'Elle doit compter entre 3 et 4 lignes maximum pour être lue en un coup d\'œil.' }
+    ]
+  },
+  'cv-gratuit-en-ligne': {
+    path: 'cv-gratuit-en-ligne',
+    h1: 'Générateur de CV Gratuit en Ligne Sans Inscription (Mobile & PC)',
+    jobTitle: 'CV Gratuit en Ligne',
+    seoTitle: 'CV Gratuit en Ligne Sans Inscription | Confidentialité & Mobile',
+    seoDesc: 'Créez votre CV gratuit en ligne directement depuis votre smartphone ou PC. 100% confidentiel, pas de création de compte requise, export rapide.',
+    intro: 'Votre temps et votre vie privée sont précieux. Notre générateur de CV gratuit en ligne s\'exécute entièrement dans votre navigateur web sans exiger la moindre création de compte, sans enregistrement d\'e-mail préalable et sans stockage de vos données personnelles sur nos serveurs.',
+    whyUse: 'Grâce à notre technologie moderne (Client-Side Rendering), vos informations personnelles restent stockées exclusivement dans le navigateur de votre appareil (smartphone, tablette ou ordinateur).',
+    targetProfiles: [
+      'Utilisateurs sur mobile (iOS / Android) souhaitant postuler directement depuis leur téléphone.',
+      'Candidats soucieux de la protection de leurs données personnelles (RGPD zéro stockage).',
+      'Postulants ayant besoin d\'envoyer un CV en urgence sans passer par une inscription.'
+    ],
+    hardSkills: [
+      'Exécution 100% locale dans le navigateur (Client-Side Rendering)',
+      'Compatibilité tactile fluide pour smartphones et tablettes',
+      'Stockage local sécurisé (Local Storage)',
+      'Exportation directe vers iOS Files, Google Drive ou WhatsApp',
+      'Aucun cookie de suivi intrusif'
+    ],
+    softSkills: [
+      'Réactivité numérique',
+      'Respect de la confidentialité',
+      'Usage mobile avancé'
+    ],
+    essentialSections: [
+      'Bloc coordonnées avec liens cliquables (LinkedIn, Email, Téléphone)',
+      'Titre de candidature',
+      'Expériences clés',
+      'Formations principales',
+      'Compétences informatiques et langues'
+    ],
+    tips: [
+      'Sur smartphone, vous pouvez sauvegarder votre CV PDF directement dans vos fichiers pour l\'attacher à un e-mail ou à une candidature LinkedIn en 1 clic.',
+      'Revenez sur le site depuis le même appareil pour retrouver automatiquement votre CV pré-rempli.'
+    ],
+    sampleCatchphrase: '« Professionnel réactif et connecté, disponible immédiatement pour intégrer vos équipes sur le terrain ou en distanciel. »',
+    experienceAdvice: 'Synthétisez vos points forts pour maintenir une excellente lisibilité sur écran de téléphone.',
+    educationAdvice: 'Allez à l\'essentiel en mentionnant vos titres certifiés.',
+    atsAdvice: 'Les fichiers générés en ligne par notre outil conservent un encodage texte standard compatible avec tous les ATS.',
+    wordFile: '/templates-word/67-cv-template-francais.docx',
+    faq: [
+      { q: 'Mes données personnelles sont-elles conservées sur vos serveurs ?', a: 'Non, absolument aucune donnée n\'est envoyée ni sauvegardée sur un serveur distant. Tout reste sur votre appareil.' },
+      { q: 'Puis-je commencer mon CV sur mobile et le finir sur mon ordinateur ?', a: 'Vous pouvez exporter votre fichier de sauvegarde JSON pour le réimporter en 1 clic sur n\'importe quel autre appareil.' }
+    ]
+  },
+  'modeles-cv-gratuits': {
+    path: 'modeles-cv-gratuits',
+    h1: 'Galerie de Modèles de CV Gratuits : Choisir le Bon Design par Secteur',
+    jobTitle: 'Modèles de CV Gratuits',
+    seoTitle: 'Modèles de CV Gratuits à Télécharger | Galerie & Styles 2026',
+    seoDesc: 'Explorez notre galerie de modèles de CV gratuits. Trouvez le design adapté à votre secteur : moderne, classique, créatif, minimaliste ou néo-brutaliste.',
+    intro: 'Le choix visuel de votre CV communique votre professionnalisme avant même la lecture de vos mots. Notre catalogue de modèles de CV gratuits regroupe des designs variés spécialement conçus pour s\'adapter aux codes esthétiques de chaque secteur d\'activité (Finance, Tech, Restauration, Santé, Artisanat, Arts).',
+    whyUse: 'Chaque modèle de notre collection respecte un équilibre rigoureux entre esthétique visuelle captivante et lisibilité sémantique parfaite pour les logiciels de tri de candidatures.',
+    targetProfiles: [
+      'Candidats cherchant un style graphique adapté à leur métier.',
+      'Professions créatives souhaitant un design original sans excès.',
+      'Cadres recherchant un modèle classique et sobre d\'une grande élégance.'
+    ],
+    hardSkills: [
+      'Typologies de designs : Néo-brutaliste, Minimaliste, Corporate, Éditorial',
+      'Harmonie des contrastes de couleurs selon les normes WCAG2.1',
+      'Grilles d\'alignement à 2 colonnes ou colonne unique',
+      'Mise en valeur d\'icônes vectorielles professionnelles',
+      'Séparation claire des rubriques par bordures ou aplats'
+    ],
+    softSkills: [
+      'Culture du design',
+      'Sens de la présentation',
+      'Adaptation aux codes de l\'entreprise'
+    ],
+    essentialSections: [
+      'En-tête stylisé avec visuel ou photo pro',
+      'Corps principal d\'expériences à fort impact',
+      'Colonne latérale dédiée aux compétences et jauges de niveau',
+      'Bloc diplômes et certifications'
+    ],
+    tips: [
+      'Secteurs traditionnels (Banque, Droit, Comptabilité) : privilégiez nos modèles Minimalistes ou Corporate aux teintes sombres.',
+      'Startups et Tech : optez pour nos modèles Modernes ou Néo-brutalistes aux aplats vifs.',
+      'Arts et Comms : utilisez nos modèles Créatifs en personnalisant la typographie.'
+    ],
+    sampleCatchphrase: '« Profil polyvalent et créatif sachant marier rigueur d\'exécution et sens de l\'innovation visuelle. »',
+    experienceAdvice: 'Assurez-vous que le design choisi n\'empiète pas sur l\'espace réservé au texte de vos missions.',
+    educationAdvice: 'Présentez vos diplômes dans un bloc bien délimité.',
+    atsAdvice: 'Nos modèles à 2 colonnes utilisent une structure HTML/PDF séquentielle lue sans confusion par les parsers ATS.',
+    wordFile: '/templates-word/67-cv-template-francais.docx',
+    faq: [
+      { q: 'Puis-je changer de modèle en cours de rédaction sans perdre mes textes ?', a: 'Oui, notre éditeur vous permet de basculer d\'un modèle à un autre en 1 clic sans retaper la moindre information.' }
+    ]
+  },
+  'cv-professionnel-gratuit': {
+    path: 'cv-professionnel-gratuit',
+    h1: 'Modèle de CV Professionnel Gratuit pour Cadres, Managers et Experts',
+    jobTitle: 'CV Professionnel Gratuit',
+    seoTitle: 'CV Professionnel Gratuit | Modèle Executive & Cadres Mon CV Go',
+    seoDesc: 'Téléchargez notre modèle de CV professionnel gratuit. Structuration executive optimisée pour la valorisation du ROI, du P&L et du leadership.',
+    intro: 'Pour les postes de cadres, d\'experts et de responsables d\'équipe, un CV ordinaire ne suffit pas. Notre modèle de CV professionnel gratuit est conçu pour traduire votre parcours en termes de leadership, de gestion budgétaire, de pilotage de projets stratégiques et de résultats mesurables.',
+    whyUse: 'Ce format haut de gamme applique la structure "Executive Summary", privilégiée par les chasseurs de têtes et les cabinets de recrutement pour les profils à forte valeur ajoutée.',
+    targetProfiles: [
+      'Cadres dirigeants, directeurs de départements et chefs de projets seniors.',
+      'Experts techniques, consultants et ingénieurs expérimentés.',
+      'Managers de proximité et responsables d\'exploitation.'
+    ],
+    hardSkills: [
+      'Structure Executive avec résumé de carrière orienté ROI',
+      'Présentation des réalisations sous la méthodologie CAR (Contexte-Action-Résultat)',
+      'Valorisation de la gestion de budget (P&L) et du management d\'équipe',
+      'Rubrique gouvernance et certifications internationales (PMP, Scrum, PRINCE2)',
+      'Formatage sur 2 pages aérées pour carrières denses'
+    ],
+    softSkills: [
+      'Leadership et vision stratégique',
+      'Conduite du changement',
+      'Négociation de haut niveau'
+    ],
+    essentialSections: [
+      'Titre de fonction Executive exact',
+      'Synthèse de carrière en 5 lignes avec indicateurs de performance',
+      'Chronologie des postes avec périmètres (budget, effectifs, périmètre géographique)',
+      'Réalisations marquantes chiffrées',
+      'Diplômes de grandes écoles ou universités',
+      'Membres de réseaux professionnels ou conseils d\'administration'
+    ],
+    tips: [
+      'N\'hésitez pas à utiliser une deuxième page si vous avez plus de 10 ans d\'expérience de cadre.',
+      'Quantifiez systématiquement : taille du budget géré (ex: 1,5M€), nombre de collaborateurs encadrés, pourcentage de croissance du CA.',
+      'Mettez en avant vos certifications managériales ou méthodologiques.'
+    ],
+    sampleCatchphrase: '« Directeur des Opérations fort de 12 ans d\'expérience en transformation industrielle. Pilote d\'un budget de 5M€ et d\'une équipe de 40 personnes. Augmentation de la marge opérationnelle de +18% en 2 ans. »',
+    experienceAdvice: 'Ne détaillez que les 10 à 15 dernières années de carrière. Regroupez les postes plus anciens sous un bloc condensé "Repères de carrière antérieurs".',
+    educationAdvice: 'Valorisez vos diplômes de niveau 7/8 (Master 2, École de Commerce/Ingénieur, Doctorat) ainsi que la formation continue.',
+    atsAdvice: 'Les recruteurs de cadres recherchent des termes de pilotage stratégique ("Turnaround", "Scale", "ERP", "Restructuration").',
+    wordFile: '/templates-word/67-cv-template-francais.docx',
+    faq: [
+      { q: 'Un CV de cadre doit-il tenir sur 1 seule page ?', a: 'Pour un profil senior avec plus de 10 ans d\'expérience et plusieurs postes managériaux, 2 pages sont parfaitement acceptées et recommandées.' }
+    ]
+  },
+  'cv-etudiant-gratuit': {
+    path: 'cv-etudiant-gratuit',
+    h1: 'Modèle de CV Étudiant Gratuit (Stage, Alternance & Premier Emploi)',
+    jobTitle: 'CV Étudiant Gratuit',
+    seoTitle: 'CV Étudiant Gratuit | Modèle Stage & Alternance Mon CV Go',
+    seoDesc: 'Créez votre CV étudiant gratuit pour stage ou alternance. Structure optimisée pour valoriser vos projets académiques, formations et soft skills.',
+    intro: 'Trouver un premier stage, un contrat d\'alternance ou un job étudiant nécessite une stratégie particulière : compenser le manque d\'expérience en entreprise par la richesse de votre parcours académique, vos projets d\'études, vos activités associatives et votre dynamisme personnel.',
+    whyUse: 'Notre modèle pour étudiant réorganise la hiérarchie du CV pour placer votre formation, vos projets de cours et vos compétences comportementales en haut de page, là où les recruteurs regardent en premier.',
+    targetProfiles: [
+      'Lycéens et étudiants en BTS, BUT, Licence, Master ou Grandes Écoles.',
+      'Candidats à la recherche d\'un contrat d\'apprentissage ou de professionnalisation.',
+      'Étudiants cherchant un job d\'été ou un travail étudiant à temps partiel.'
+    ],
+    hardSkills: [
+      'Mise en valeur des projets académiques et exposés de groupe',
+      'Mise en avant des scores de langues (TOEIC, TOEFL, DELE, Goethe)',
+      'Présentation des outils informatiques et logiciels appris en cours',
+      'Rubrique "Engagements Associatifs et Bénévolat"',
+      'Valorisation des jobs étudiants et petits boulots'
+    ],
+    softSkills: [
+      'Dynamisme et curiosité intellectuelle',
+      'Capacité à travailler en équipe académique',
+      'Sens de l\'organisation et gestion des partiels'
+    ],
+    essentialSections: [
+      'Titre précisant l\'objectif exact (ex: "Recherche Stage de 6 mois en Marketing Digital")',
+      'Accroche personnalisée expliquant votre projet professionnel',
+      'Section Formation détaillée (options, cours clés, mentions)',
+      'Projets d\'études marquant (étude de cas, concours, mémoire)',
+      'Expériences associatives et extra-scolaires',
+      'Langues et compétences informatiques'
+    ],
+    tips: [
+      'Traitez un projet d\'école majeur comme une expérience pro : indiquez le sujet, la taille de l\'équipe et le résultat obtenu.',
+      'N\'omettez aucun job étudiant (caissier, soutien scolaire, animation) : ils prouvent votre sens des responsabilités et votre maturité.',
+      'Précisez vos dates de disponibilité exactes et votre rythme d\'alternance (ex: 3 jours / 2 jours).'
+    ],
+    sampleCatchphrase: '« Étudiant en Master 1 Finance d\'Entreprise à la recherche d\'un stage de 6 mois en analyse financière à partir de Mars 2026. Major de promotion au 1er semestre, rigoureux et maîtrisant Excel et VBA. »',
+    experienceAdvice: 'Si vous n\'avez pas d\'expérience en entreprise, décrivez vos rôles au sein du BDE, des clubs sportifs ou des associations de votre établissement.',
+    educationAdvice: 'Citez 3 à 4 matières principales en lien direct avec le poste visé.',
+    atsAdvice: 'Intégrez les logiciels et méthodes enseignés dans votre cursus (ex: "SPSS", "Python", "Canva", "Méthode Agile").',
+    wordFile: '/templates-word/67-cv-template-francais.docx',
+    faq: [
+      { q: 'Faut-il mettre son diplôme du Baccalauréat quand on est en étude supérieure ?', a: 'Oui, indiquez le type de Bac (Général, STMG, etc.), la spécialité et la mention éventuelle.' }
+    ]
+  },
+  'cv-sans-experience': {
+    path: 'cv-sans-experience',
+    h1: 'Modèle de CV Sans Expérience Gratuit : Structurer sa Candidature Débutant',
+    jobTitle: 'CV Sans Expérience',
+    seoTitle: 'CV Sans Expérience Gratuit | Modèle Débutant & Reconversion',
+    seoDesc: 'Comment faire un CV sans expérience ? Utilisez notre format fonctionnel pour valoriser vos aptitudes, certifications et projets personnels.',
+    intro: 'Ne pas avoir d\'expérience professionnelle formelle sur son CV n\'est pas un frein rédhibitoire à l\'embauche. En adoptant la structure du CV fonctionnel (axée sur les aptitudes plutôt que sur la chronologie des postes), vous pouvez démontrer la pertinence de votre candidature pour un premier emploi.',
+    whyUse: 'Ce modèle spécialisé aide les débutants et les personnes en reconversion totale à transformer leurs qualités personnelles, leurs stages d\'observation et leurs auto-formations en solides arguments d\'embauche.',
+    targetProfiles: [
+      'Jeunes sortis du système scolaire sans expérience en entreprise.',
+      'Personnes en reconversion n\'ayant pas d\'expérience dans le métier ciblé.',
+      'Candidats cherchant des postes d\'entrée ne nécessitant pas de diplôme préalable.'
+    ],
+    hardSkills: [
+      'Structure de CV fonctionnel (par domaines de compétences)',
+      'Mise en valeur des auto-formations et certifications en ligne (MOOC)',
+      'Valorisation du savoir-être et des aptitudes comportementales',
+      'Présentation des projets personnels et passions structurées',
+      'Mise en avant des stages d\'observation et d\'immersion (PMSMP)'
+    ],
+    softSkills: [
+      'Excellente attitude et ponctualité',
+      'Facilité d\'apprentissage et d\'écoute',
+      'Motivation et engagement volontaire'
+    ],
+    essentialSections: [
+      'Titre affirmé d\'objectif professionnel',
+      'Accroche motivée expliquant votre projet et votre potentiel',
+      'Rubrique "Domaines de Compétences" détaillée',
+      'Formation, certifications et cours suivis',
+      'Projets personnels et réalisations concrètes',
+      'Centres d\'intérêt structurés'
+    ],
+    tips: [
+      'Mettez en avant vos certifications gratuites obtenues en ligne (ex: Google Digital Active, OpenClassrooms, Certificat Voltaire).',
+      'Transformez vos passions en compétences : si vous gérez un compte Instagram ou un serveur Discord, vous possédez des bases en modération et communication !',
+      'Rédigez une lettre de motivation particulièrement travaillée pour accompagner ce CV.'
+    ],
+    sampleCatchphrase: '« Candidat motivé et autodidacte passionné par la relation client. Doté d\'une excellente présentation et d\'un grand sens du service. Très désireux de me former rapidement au sein de votre enseigne. »',
+    experienceAdvice: 'Remplacez la section expérience par "Réalisations & Projets" pour y inscrire vos travaux d\'auto-formation ou d\'aide bénévole.',
+    educationAdvice: 'Listez toutes vos formations certifiantes et votre niveau d\'études.',
+    atsAdvice: 'Reprenez scrupuleusement les compétences comportementales demandées dans l\'annonce ("Sens de l\'accueil", "Esprit d\'équipe", "Organisation").',
+    wordFile: '/templates-word/67-cv-template-francais.docx',
+    faq: [
+      { q: 'Peut-on trouver un travail avec un CV sans expérience ?', a: 'Oui, de nombreux secteurs (restauration, grande distribution, accueil, logistique) recrutent avant tout sur l\'attitude et la motivation.' }
+    ]
+  },
+  'exemples-cv': {
+    path: 'exemples-cv',
+    h1: 'Bibliothèque d\'Exemples de CV Gratuits Remplis par Métier (2026)',
+    jobTitle: 'Exemples de CV',
+    seoTitle: 'Exemples de CV Gratuits Remplis | Modèles par Métier 2026',
+    seoDesc: 'Consultez notre bibliothèque d\'exemples de CV gratuits entièrement rédigés et remplis par métier. Phrases d\'accroche et compétences prêtes à copier.',
+    intro: 'Trouver l\'inspiration pour rédiger les bonnes phrases d\'accroche et sélectionner les compétences exactes de son métier est désormais facile. Notre bibliothèque regroupe des exemples de CV entièrement rédigés et remplis par des professionnels du recrutement pour plus de 15 secteurs clés.',
+    whyUse: 'En consultant un exemple de CV propre à votre métier, vous découvrez le vocabulaire technique précis, les formules d\'accroches qui fonctionnent et la façon idéale de présenter vos diplômes.',
+    targetProfiles: [
+      'Candidats cherchant des exemples réels de rédactions par profession.',
+      'Personnes en panne d\'inspiration pour leur phrase d\'accroche.',
+      'Chercheurs d\'emploi souhaitant connaître les mots-clés exacts de leur secteur.'
+    ],
+    hardSkills: [
+      'Bibliothèque d\'exemples de phrases d\'accroches métier par métier',
+      'Listes de hard skills et soft skills pré-triées par secteur',
+      'Glossaire des mots-clés ATS stratégiques par profession',
+      'Modèles d\'exemples réels prêts à personnaliser',
+      'Exemples de structures de CV pour 15+ métiers'
+    ],
+    softSkills: [
+      'Inspiration rédactionnelle',
+      'Pertinence sémantique',
+      'Connaissance des codes métiers'
+    ],
+    essentialSections: [
+      'Exemple d\'en-tête et de titre par poste',
+      'Exemple de paragraphe de présentation rédigé',
+      'Exemple d\'expériences détaillées avec verbes d\'action',
+      'Exemple de rubrique compétences techniques',
+      'Exemple de FAQ métier'
+    ],
+    tips: [
+      'Ne copiez pas aveuglément un exemple : adaptez chaque phrase à votre expérience réelle et aux spécificités de l\'entreprise.',
+      'Inspirez-vous des exemples d\'accroches pour concevoir votre propre introduction personnalisée.',
+      'Consultez la fiche exemple correspondant à votre métier (Comptable, Développeur, Vendeur, Infirmière, Commercial, etc.).'
+    ],
+    sampleCatchphrase: '« Exemple de profil rédigé par un expert RH : découvrez comment tourner vos compétences pour convaincre les recruteurs de votre secteur. »',
+    experienceAdvice: 'Adaptez les chiffres d\'exemples à la réalité de vos réalisations passées.',
+    educationAdvice: 'Vérifiez la concordance entre vos diplômes et l\'exemple proposé.',
+    atsAdvice: 'Chaque exemple de notre bibliothèque contient la liste des 10 mots-clés ATS indispensables de sa profession.',
+    wordFile: '/templates-word/67-cv-template-francais.docx',
+    faq: [
+      { q: 'Puis-je réutiliser les textes des exemples directement sur mon CV ?', a: 'Oui, vous pouvez vous en inspirer librement tout en les personnalisant avec vos chiffres et vos propres expériences.' }
+    ]
   }
 };

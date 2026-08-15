@@ -1,19 +1,21 @@
 import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import { FilePlus2, Check, ArrowRight, HelpCircle, ChevronDown, Award, Lightbulb, UserCheck, ShieldCheck, Sparkles, BookOpen } from 'lucide-react';
 import SEO from '../components/SEO';
 import SocialShare from '../components/SocialShare';
-import { jobModelsData } from '../data/jobModelsData';
+import { getLocalizedJobModel } from '../data/getLocalizedJobModel';
 
 export default function ModelePage() {
+  const { t, i18n } = useTranslation();
   const location = useLocation();
   const path = location.pathname.substring(1); // Enlève le '/' initial
-  const model = jobModelsData[path] || jobModelsData['modele-cv-debutant']; // Fallback
+  const model = getLocalizedJobModel(path, i18n.language);
   const [openFaq, setOpenFaq] = useState(null);
 
   const breadcrumbs = [
-    { name: 'Accueil', url: 'https://moncvgo.com/' },
-    { name: 'Plan du site', url: 'https://moncvgo.com/plan-du-site' },
+    { name: t('nav.home', 'Accueil'), url: 'https://moncvgo.com/' },
+    { name: t('nav.plan_du_site', 'Plan du site'), url: 'https://moncvgo.com/plan-du-site' },
     { name: model.jobTitle, url: `https://moncvgo.com/${path}` }
   ];
 
@@ -32,9 +34,9 @@ export default function ModelePage() {
           
           {/* Breadcrumbs Navigation */}
           <nav className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-6">
-            <Link to="/" className="hover:text-cyan-500 transition-colors">Accueil</Link>
+            <Link to="/" className="hover:text-cyan-500 transition-colors">{t('nav.home', 'Accueil')}</Link>
             <span>/</span>
-            <Link to="/plan-du-site" className="hover:text-cyan-500 transition-colors">Modèles de CV</Link>
+            <Link to="/plan-du-site" className="hover:text-cyan-500 transition-colors">{t('nav.plan_du_site', 'Plan du site')}</Link>
             <span>/</span>
             <span className="text-slate-900 dark:text-white">{model.jobTitle}</span>
           </nav>
@@ -45,7 +47,7 @@ export default function ModelePage() {
             
             <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-yellow-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border mb-6 transform -rotate-1">
               <Sparkles className="w-4 h-4 text-slate-900" />
-              Modèle de CV Métier 2026
+              {t('modele_page.badge', 'Modèle de CV Métier 2026')}
             </div>
 
             <h1 className="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tight mb-6 leading-tight">
@@ -62,14 +64,14 @@ export default function ModelePage() {
                 className="px-8 py-4 bg-yellow-400 text-slate-900 font-black uppercase tracking-widest text-base brutal-border brutal-shadow brutal-hover flex items-center justify-center gap-3 transform -rotate-1"
               >
                 <FilePlus2 className="w-5 h-5" strokeWidth={3} />
-                Créer ce CV gratuitement (PDF)
+                {t('modele_page.cta_create', 'Créer ce CV gratuitement (PDF)')}
               </Link>
               <a 
                 href="#details" 
                 className="px-8 py-4 bg-white dark:bg-slate-800 text-slate-900 dark:text-white font-black uppercase tracking-widest text-base brutal-border brutal-shadow brutal-hover flex items-center justify-center gap-2"
               >
                 <BookOpen className="w-5 h-5" />
-                Lire le guide métier
+                {t('modele_page.cta_read', 'Lire le guide métier')}
               </a>
             </div>
           </div>
@@ -83,7 +85,7 @@ export default function ModelePage() {
               <section className="bg-white dark:bg-slate-900 p-8 brutal-border brutal-shadow">
                 <h2 className="text-2xl font-black uppercase text-slate-900 dark:text-white mb-4 flex items-center gap-3">
                   <Lightbulb className="w-6 h-6 text-yellow-500" strokeWidth={2.5} />
-                  1. Pourquoi utiliser ce modèle de CV {model.jobTitle} ?
+                  {t('modele_page.sec_1_title', { jobTitle: model.jobTitle, defaultValue: `1. Pourquoi utiliser ce modèle de CV ${model.jobTitle} ?` })}
                 </h2>
                 <p className="text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
                   {model.whyUse}
@@ -94,7 +96,7 @@ export default function ModelePage() {
               <section className="bg-white dark:bg-slate-900 p-8 brutal-border brutal-shadow">
                 <h2 className="text-2xl font-black uppercase text-slate-900 dark:text-white mb-4 flex items-center gap-3">
                   <UserCheck className="w-6 h-6 text-cyan-500" strokeWidth={2.5} />
-                  2. À qui s'adresse ce modèle de CV ?
+                  {t('modele_page.sec_2_title', '2. À qui s\'adresse ce modèle de CV ?')}
                 </h2>
                 <ul className="space-y-3">
                   {model.targetProfiles.map((profile, i) => (
@@ -110,12 +112,12 @@ export default function ModelePage() {
               <section className="bg-white dark:bg-slate-900 p-8 brutal-border brutal-shadow">
                 <h2 className="text-2xl font-black uppercase text-slate-900 dark:text-white mb-6 flex items-center gap-3">
                   <Award className="w-6 h-6 text-pink-500" strokeWidth={2.5} />
-                  3. Compétences indispensables pour {model.jobTitle}
+                  {t('modele_page.sec_3_title', { jobTitle: model.jobTitle, defaultValue: `3. Compétences indispensables pour ${model.jobTitle}` })}
                 </h2>
                 
                 <div className="mb-6">
                   <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3 uppercase text-xs tracking-wider bg-pink-100 dark:bg-pink-900/30 px-3 py-1 inline-block brutal-border">
-                    Hard Skills (Compétences Techniques)
+                    {t('modele_page.hard_skills', 'Hard Skills (Compétences Techniques)')}
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {model.hardSkills.map((skill, i) => (
@@ -128,7 +130,7 @@ export default function ModelePage() {
 
                 <div>
                   <h3 className="text-lg font-bold text-slate-900 dark:text-white mb-3 uppercase text-xs tracking-wider bg-cyan-100 dark:bg-cyan-900/30 px-3 py-1 inline-block brutal-border">
-                    Soft Skills (Qualités Comportementales)
+                    {t('modele_page.soft_skills', 'Soft Skills (Qualités Comportementales)')}
                   </h3>
                   <div className="flex flex-wrap gap-2">
                     {model.softSkills.map((skill, i) => (
@@ -143,7 +145,7 @@ export default function ModelePage() {
               {/* Section 4: Informations essentielles à inclure */}
               <section className="bg-white dark:bg-slate-900 p-8 brutal-border brutal-shadow">
                 <h2 className="text-2xl font-black uppercase text-slate-900 dark:text-white mb-4">
-                  4. Les rubriques obligatoires sur votre CV
+                  {t('modele_page.sec_4_title', '4. Les rubriques obligatoires sur votre CV')}
                 </h2>
                 <div className="grid sm:grid-cols-2 gap-4">
                   {model.essentialSections.map((item, i) => (
@@ -162,10 +164,10 @@ export default function ModelePage() {
                 <div className="absolute top-0 right-0 w-32 h-32 bg-yellow-400/10 rounded-full blur-2xl"></div>
                 <h2 className="text-2xl font-black uppercase mb-4 text-yellow-400 flex items-center gap-2">
                   <Sparkles className="w-6 h-6" />
-                  5. Exemple d'accroche (Résumé de Profil)
+                  {t('modele_page.sec_5_title', '5. Exemple d\'accroche (Résumé de Profil)')}
                 </h2>
                 <p className="text-slate-300 text-sm mb-4 font-bold">
-                  Voici un exemple de phrase d'accroche optimisée que vous pouvez personnaliser directement sur Mon CV Go :
+                  {t('modele_page.sample_desc', 'Voici un exemple de phrase d\'accroche optimisée que vous pouvez personnaliser directement sur Mon CV Go :')}
                 </p>
                 <div className="bg-slate-800 p-5 rounded-xl border border-slate-700 text-slate-200 font-medium italic text-base leading-relaxed">
                   {model.sampleCatchphrase}
@@ -175,21 +177,21 @@ export default function ModelePage() {
               {/* Section 6: Conseils Expériences & Méthode CAR */}
               <section className="bg-white dark:bg-slate-900 p-8 brutal-border brutal-shadow space-y-4">
                 <h2 className="text-2xl font-black uppercase text-slate-900 dark:text-white mb-4">
-                  6. Conseils pour vos Expériences & Formations
+                  {t('modele_page.sec_6_title', '6. Conseils pour vos Expériences & Formations')}
                 </h2>
                 
                 <div className="p-4 bg-blue-50 dark:bg-blue-950/40 rounded-xl border border-blue-200 dark:border-blue-800">
-                  <h3 className="font-black text-blue-900 dark:text-blue-300 text-sm uppercase mb-1">💡 Expériences professionnelles</h3>
+                  <h3 className="font-black text-blue-900 dark:text-blue-300 text-sm uppercase mb-1">{t('modele_page.exp_title', '💡 Expériences professionnelles')}</h3>
                   <p className="text-sm text-slate-700 dark:text-slate-300 font-medium">{model.experienceAdvice}</p>
                 </div>
 
                 <div className="p-4 bg-purple-50 dark:bg-purple-950/40 rounded-xl border border-purple-200 dark:border-purple-800">
-                  <h3 className="font-black text-purple-900 dark:text-purple-300 text-sm uppercase mb-1">🎓 Formations & Diplômes</h3>
+                  <h3 className="font-black text-purple-900 dark:text-purple-300 text-sm uppercase mb-1">{t('modele_page.edu_title', '🎓 Formations & Diplômes')}</h3>
                   <p className="text-sm text-slate-700 dark:text-slate-300 font-medium">{model.educationAdvice}</p>
                 </div>
 
                 <div className="p-4 bg-emerald-50 dark:bg-emerald-950/40 rounded-xl border border-emerald-200 dark:border-emerald-800">
-                  <h3 className="font-black text-emerald-900 dark:text-emerald-300 text-sm uppercase mb-1">🤖 Optimisation ATS (Logiciels RH)</h3>
+                  <h3 className="font-black text-emerald-900 dark:text-emerald-300 text-sm uppercase mb-1">{t('modele_page.ats_title', '🤖 Optimisation ATS (Logiciels RH)')}</h3>
                   <p className="text-sm text-slate-700 dark:text-slate-300 font-medium">{model.atsAdvice}</p>
                 </div>
               </section>
@@ -197,7 +199,7 @@ export default function ModelePage() {
               {/* Section 7: Astuces de succès */}
               <section className="bg-white dark:bg-slate-900 p-8 brutal-border brutal-shadow">
                 <h2 className="text-2xl font-black uppercase text-slate-900 dark:text-white mb-4">
-                  7. Astuces d'expert pour réussir votre candidature
+                  {t('modele_page.sec_7_title', '7. Astuces d\'expert pour réussir votre candidature')}
                 </h2>
                 <ul className="space-y-3">
                   {model.tips.map((tip, i) => (
@@ -213,7 +215,7 @@ export default function ModelePage() {
               <section className="bg-white dark:bg-slate-900 p-8 brutal-border brutal-shadow">
                 <h2 className="text-2xl font-black uppercase text-slate-900 dark:text-white mb-6 flex items-center gap-3">
                   <HelpCircle className="w-6 h-6 text-pink-500" />
-                  8. Questions Fréquentes ({model.jobTitle})
+                  {t('modele_page.sec_8_title', { jobTitle: model.jobTitle, defaultValue: `8. Questions Fréquentes (${model.jobTitle})` })}
                 </h2>
 
                 <div className="space-y-4">
@@ -238,7 +240,9 @@ export default function ModelePage() {
 
               {/* Share */}
               <div className="bg-white dark:bg-slate-900 p-6 brutal-border brutal-shadow flex flex-col items-center justify-center text-center">
-                <h3 className="text-lg font-black uppercase tracking-tight text-slate-900 dark:text-white mb-4">Partager ce modèle avec un collègue</h3>
+                <h3 className="text-lg font-black uppercase tracking-tight text-slate-900 dark:text-white mb-4">
+                  {t('modele_page.share_title', 'Partager ce modèle avec un collègue')}
+                </h3>
                 <SocialShare url={`https://moncvgo.com/${path}`} title={model.seoTitle} />
               </div>
 
@@ -252,11 +256,11 @@ export default function ModelePage() {
                 </div>
                 
                 <h3 className="text-2xl font-black uppercase tracking-tight mb-3">
-                  Créer votre CV {model.jobTitle}
+                  {t('modele_page.sidebar_title', { jobTitle: model.jobTitle, defaultValue: `Créer votre CV ${model.jobTitle}` })}
                 </h3>
                 
                 <p className="font-bold text-sm mb-6 leading-snug text-slate-800">
-                  Générez un CV conforme aux normes RH 2026 en 5 minutes. Téléchargement immédiat au format PDF Haute Définition.
+                  {t('modele_page.sidebar_desc', 'Générez un CV conforme aux normes RH 2026 en 5 minutes. Téléchargement immédiat au format PDF Haute Définition.')}
                 </p>
 
                 <ul className="space-y-2 mb-6 text-xs font-black uppercase tracking-wider">
@@ -270,7 +274,7 @@ export default function ModelePage() {
                   to={`/create?preset=${path}`} 
                   className="w-full py-4 bg-slate-900 hover:bg-slate-800 text-white font-black uppercase tracking-widest text-sm rounded-none brutal-border flex items-center justify-center gap-2 transition-all transform hover:-translate-y-0.5"
                 >
-                  Générer mon CV <ArrowRight className="w-4 h-4" />
+                  {t('modele_page.sidebar_cta', 'Générer mon CV')} <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
             </div>
