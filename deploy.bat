@@ -1,14 +1,19 @@
 @echo off
 setlocal
 
-echo === Build de production ===
+echo === 1. Push du code source sur la branche main (Railway) ===
+git add -A
+git commit -m "deploy: update main %date% %time%"
+git push origin main
+
+echo === 2. Build de production ===
 call npm run build
 if %errorlevel% neq 0 (
     echo Erreur lors du build!
     exit /b 1
 )
 
-echo === Deploiement manuel sur gh-pages ===
+echo === 3. Deploiement sur gh-pages (GitHub Pages) ===
 
 :: Aller dans le dossier dist
 cd dist
@@ -29,5 +34,5 @@ git push origin gh-pages --force
 
 cd ..
 
-echo === Deploiement termine! ===
+echo === Deploiement termine sur Railway et GitHub Pages! ===
 endlocal
