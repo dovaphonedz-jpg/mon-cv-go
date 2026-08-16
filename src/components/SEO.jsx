@@ -5,7 +5,9 @@ import { useTranslation } from 'react-i18next';
 export default function SEO({ title, description, url = 'https://moncvgo.com', faqItems = null, breadcrumbs = null }) {
   const { t, i18n } = useTranslation();
   const defaultDescription = t('home.seo_desc', "Créez facilement et gratuitement votre CV, lettre de motivation et portfolio avec nos outils intuitifs. Simple, rapide et professionnel.");
-  const siteTitle = title ? `${title} | Mon CV Go` : 'Mon CV Go - Créez votre CV professionnel gratuitement en ligne';
+  const siteTitle = title 
+    ? (title.includes('Mon CV Go') ? title : `${title} | Mon CV Go`)
+    : 'Mon CV Go - Créez votre CV professionnel gratuitement en ligne';
   const siteDescription = description || defaultDescription;
   const lang = i18n.language || 'fr';
 
