@@ -22,6 +22,22 @@
     "banner": {
       "text": "Professional CV — 100% free, no signup required."
     },
+    "hero": {
+      "title_part1": "CREATE YOUR",
+      "title_highlight": "PERFECT RESUME",
+      "title_part2": "IN 2 MINUTES.",
+      "subtitle": "Create a professional resume for free.",
+      "bullet_1": "Over 50 modern templates.",
+      "bullet_2": "Instant PDF download.",
+      "bullet_3": "ATS compatible.",
+      "bullet_4": "No registration required.",
+      "btn_create": "CREATE MY RESUME FOR FREE",
+      "btn_portfolio": "CREATE A PORTFOLIO",
+      "badge_1": "100% Free & Unlimited",
+      "badge_2": "ATS Compatible",
+      "badge_3": "Gemini AI Optimization",
+      "go_tooltip": "Click to Create your Resume! 🚀"
+    },
     "home": {
       "seo_title": "Create a Free CV Online | Professional Templates",
       "seo_desc": "Easily and freely create your CV, cover letter, and portfolio with our intuitive tools. Simple, fast, and professional.",
@@ -115,11 +131,11 @@
       "job_space_feat_3": "Salary Calculator"
     },
     "about": {
-      "seo_title": "About",
-      "seo_desc": "Discover the story of Mon CV Go, the free and privacy-friendly CV generator.",
-      "badge": "Our Mission",
-      "title_1": "Reinventing the creation of ",
-      "title_highlight": "your career",
+      "seo_title": "About Mon CV Go: Our Mission & Privacy Commitment",
+      "seo_desc": "Discover the mission of Mon CV Go: a 100% free resume builder, respectful of your personal data, with no registration and no hidden fees.",
+      "badge": "Transparency & Trust",
+      "title_1": "About Mon CV Go: ",
+      "title_highlight": "Transparency & Ethics",
       "p1": "The idea behind Mon CV Go is simple: offer a powerful resume creation tool without complex subscriptions or hidden costs. Too many candidates waste precious time on platforms that turn out to be paid at the time of download. We want to empower job seekers by providing them with professional-grade tools, accessible to everyone.",
       "feat_1_title": "100% Free",
       "feat_1_desc": "No hidden subscription, no watermark. You generate, you download. It's that simple.",

@@ -61,14 +61,18 @@ const translations = {
     },
     'modele-cv-comptable-word': {
       jobTitle: 'Accountant / Financial Specialist',
-      h1: 'Free Accountant Resume Template (Word & PDF 2026)',
+      seoTitle: 'Accountant Resume Template: Structure, Skills & PDF Example',
+      seoDesc: 'Download our free accountant resume template. Expert tips to showcase ERP tools, annual closings, tax declarations, and financial balance sheets.',
+      h1: 'Accountant Resume Template: Practical Examples & Standards 2026',
       intro: 'As an accountant, your resume must reflect your daily practice: rigorous, precise, perfectly structured, and completely error-free. Highlight your mastery of accounting standards and ERP software.',
       whyUse: 'Designed with financial recruitment experts to balance ATS readability and visual elegance.',
       sampleCatchphrase: '« Senior General Accountant with 6 years of experience in accounting firms and SMEs. Specialist in annual closings, tax declarations, and cost accounting. Reduced monthly closing time by 3 days. »'
     },
     'modele-cv-developpeur': {
       jobTitle: 'Web / Software Developer',
-      h1: 'Free Developer Resume Template (Full-Stack, React, Node 2026)',
+      seoTitle: 'Web Developer Resume Template: Examples & Tech Tips 2026',
+      seoDesc: 'Resume template for web developers (Full-Stack, Front, Back). Examples of tech stack, GitHub projects, and tips to convince tech recruiters.',
+      h1: 'Web Developer Resume Template: Tech Structure & Examples 2026',
       intro: 'In software engineering, technical recruiters scan your tech stack, GitHub projects, and problem-solving abilities within seconds. Present your code expertise cleanly.',
       whyUse: 'Highlights your programming languages, frameworks, system architecture skills, and open-source contributions.',
       sampleCatchphrase: '« Full-Stack Developer with 4 years of experience building scalable Web Apps in React, Node.js, and TypeScript. Reduced web app load time by 45%. »'
@@ -82,7 +86,9 @@ const translations = {
     },
     'modele-cv-debutant': {
       jobTitle: 'Entry-Level / First Job',
-      h1: 'Free Entry-Level Resume Template (No Experience 2026)',
+      seoTitle: 'Entry-Level Resume Template Without Experience: Practical Guide 2026',
+      seoDesc: 'How to make a first resume with no work experience? Free template to fill out, highlighting soft skills, academic projects, and hiring tips.',
+      h1: 'Entry-Level & No Experience Resume Template: Complete Guide 2026',
       intro: 'Creating a first resume without formal work history is easy when focusing on soft skills, personal initiatives, certifications, and willingness to learn.',
       whyUse: 'Balances the layout to emphasize your education, school projects, volunteer work, and soft skills.',
       sampleCatchphrase: '« Enthusiastic and punctual entry-level candidate ready to learn fast and contribute to your team\'s daily operations. »'

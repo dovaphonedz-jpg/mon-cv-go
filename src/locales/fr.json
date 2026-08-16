@@ -22,6 +22,22 @@
     "banner": {
       "text": "CV Professionnel — 100% gratuit, sans inscription."
     },
+    "hero": {
+      "title_part1": "CRÉEZ VOTRE",
+      "title_highlight": "CV PARFAIT",
+      "title_part2": "EN 2 MINUTES.",
+      "subtitle": "Créez un CV professionnel gratuitement.",
+      "bullet_1": "Plus de 50 modèles modernes.",
+      "bullet_2": "Téléchargement PDF.",
+      "bullet_3": "Compatible ATS.",
+      "bullet_4": "Sans inscription.",
+      "btn_create": "CRÉER MON CV GRATUITEMENT",
+      "btn_portfolio": "CRÉER UN PORTFOLIO",
+      "badge_1": "100% Gratuit & Illimité",
+      "badge_2": "Compatible ATS",
+      "badge_3": "Optimisation IA Gemini",
+      "go_tooltip": "Cliquez pour Créer votre CV ! 🚀"
+    },
     "home": {
       "seo_title": "Créer un CV Gratuit en PDF | Mon CV Go",
       "seo_desc": "Créez facilement et gratuitement votre CV professionnel en PDF en moins de 5 minutes. Modèles modernes, compatible ATS, studio photo IA et 100% sans inscription.",
@@ -115,11 +131,11 @@
       "job_space_feat_3": "Calculateur de Salaire"
     },
     "about": {
-      "seo_title": "À Propos",
-      "seo_desc": "Découvrez l'histoire de Mon CV Go, le générateur de CV gratuit et respectueux de la vie privée.",
-      "badge": "Notre Mission",
-      "title_1": "Réinventer la création de ",
-      "title_highlight": "votre carrière",
+      "seo_title": "À Propos de Mon CV Go : Notre Mission & Engagement Privacy",
+      "seo_desc": "Découvrez la mission de Mon CV Go : un générateur de CV 100 % gratuit, respectueux de vos données personnelles, sans inscription et sans frais cachés.",
+      "badge": "Transparence & Confiance",
+      "title_1": "À Propos de Mon CV Go : ",
+      "title_highlight": "Transparence & Éthique",
       "p1": "L'idée derrière Mon CV Go est simple : proposer un outil de création de CV performant, sans abonnements complexes ni coûts cachés. Trop de candidats perdent un temps précieux sur des plateformes qui se révèlent payantes au moment du téléchargement. Nous voulons redonner le pouvoir aux chercheurs d'emploi en leur fournissant des outils de qualité professionnelle, accessibles à tous.",
       "feat_1_title": "100% Gratuit",
       "feat_1_desc": "Pas d'abonnement caché, pas de filigrane. Vous générez, vous téléchargez. C'est aussi simple que ça.",

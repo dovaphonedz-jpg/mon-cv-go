@@ -22,6 +22,22 @@
     "banner": {
       "text": "Professioneller Lebenslauf — 100% kostenlos, ohne Registrierung."
     },
+    "hero": {
+      "title_part1": "ERSTELLEN SIE IHREN",
+      "title_highlight": "PERFEKTEN LEBENSLAUF",
+      "title_part2": "IN 2 MINUTEN.",
+      "subtitle": "Erstellen Sie kostenlos einen professionellen Lebenslauf.",
+      "bullet_1": "Über 50 moderne Vorlagen.",
+      "bullet_2": "PDF-Download.",
+      "bullet_3": "ATS-kompatibel.",
+      "bullet_4": "Ohne Registrierung.",
+      "btn_create": "MEINEN LEBENSLAUF KOSTENLOS ERSTELLEN",
+      "btn_portfolio": "PORTFOLIO ERSTELLEN",
+      "badge_1": "100% Kostenlos & Unbegrenzt",
+      "badge_2": "ATS-Kompatibel",
+      "badge_3": "Gemini KI-Optimierung",
+      "go_tooltip": "Klicken Sie, um Ihren Lebenslauf zu erstellen! 🚀"
+    },
     "home": {
       "seo_title": "Kostenlos Lebenslauf erstellen | Professionelle Vorlagen",
       "seo_desc": "Erstellen Sie einfach und kostenlos Ihren Lebenslauf, Ihr Anschreiben und Portfolio mit unseren intuitiven Tools. Einfach, schnell und professionell.",
@@ -115,11 +131,11 @@
       "job_space_feat_3": "Gehaltsrechner"
     },
     "about": {
-      "seo_title": "Über uns",
-      "seo_desc": "Erfahren Sie mehr über Mon CV Go, den kostenlosen und datenschutzfreundlichen Lebenslauf-Generator.",
-      "badge": "Unsere Mission",
-      "title_1": "Bewerbungen neu ",
-      "title_highlight": "gestalten",
+      "seo_title": "Über Mon CV Go: Unsere Mission & Datenschutz-Engagement",
+      "seo_desc": "Entdecken Sie die Mission von Mon CV Go: Ein 100% kostenloser Lebenslauf-Generator, datenschutzfreundlich, ohne Registrierung und ohne versteckte Gebühren.",
+      "badge": "Transparenz & Vertrauen",
+      "title_1": "Über Mon CV Go: ",
+      "title_highlight": "Transparenz & Ethik",
       "p1": "Unsere Vision ist einfach: Ein leistungsstarkes Tool zur Lebenslauferstellung ohne versteckte Kosten oder Abos.",
       "feat_1_title": "100% Kostenlos",
       "feat_1_desc": "Kein Abo, kein Wasserzeichen. Erstellen und direkt herunterladen.",

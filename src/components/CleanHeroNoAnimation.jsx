@@ -144,11 +144,11 @@ export default function CleanHeroNoAnimation({ t }) {
               
               {/* Main Headline */}
               <motion.h1 variants={itemVariants} className="text-3xl sm:text-5xl md:text-6xl lg:text-7xl xl:text-8xl font-black uppercase tracking-tight leading-[1.08] sm:leading-[1.05] mb-4 sm:mb-6">
-                CRÉEZ VOTRE <br />
+                {t('hero.title_part1', 'CRÉEZ VOTRE')} <br />
                 <span className="text-transparent bg-clip-text bg-gradient-to-r from-yellow-300 via-pink-400 to-cyan-300 drop-shadow-[0_4px_12px_rgba(250,204,21,0.3)]">
-                  CV PARFAIT
+                  {t('hero.title_highlight', 'CV PARFAIT')}
                 </span> <br />
-                EN 2 MINUTES.
+                {t('hero.title_part2', 'EN 2 MINUTES.')}
               </motion.h1>
               
               {/* Subtitle */}
@@ -156,26 +156,26 @@ export default function CleanHeroNoAnimation({ t }) {
                 variants={itemVariants} 
                 className="text-base sm:text-xl md:text-2xl text-slate-300 mb-6 sm:mb-8 font-bold leading-relaxed max-w-2xl mx-auto lg:mx-0"
               >
-                Créez un CV professionnel gratuitement.
+                {t('hero.subtitle', 'Créez un CV professionnel gratuitement.')}
               </motion.p>
 
               {/* Bullet Point Features */}
               <motion.ul variants={itemVariants} className="space-y-2.5 sm:space-y-3 mb-8 sm:mb-10 text-slate-200 font-bold text-sm sm:text-base md:text-lg max-w-lg mx-auto lg:mx-0">
                 <li className="flex items-center gap-2.5 sm:gap-3 justify-center lg:justify-start">
                   <Check className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 stroke-[3] shrink-0" />
-                  <span>Plus de 50 modèles modernes.</span>
+                  <span>{t('hero.bullet_1', 'Plus de 50 modèles modernes.')}</span>
                 </li>
                 <li className="flex items-center gap-2.5 sm:gap-3 justify-center lg:justify-start">
                   <Check className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 stroke-[3] shrink-0" />
-                  <span>Téléchargement PDF.</span>
+                  <span>{t('hero.bullet_2', 'Téléchargement PDF.')}</span>
                 </li>
                 <li className="flex items-center gap-2.5 sm:gap-3 justify-center lg:justify-start">
                   <Check className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 stroke-[3] shrink-0" />
-                  <span>Compatible ATS.</span>
+                  <span>{t('hero.bullet_3', 'Compatible ATS.')}</span>
                 </li>
                 <li className="flex items-center gap-2.5 sm:gap-3 justify-center lg:justify-start">
                   <Check className="w-4 h-4 sm:w-5 sm:h-5 text-cyan-400 stroke-[3] shrink-0" />
-                  <span>Sans inscription.</span>
+                  <span>{t('hero.bullet_4', 'Sans inscription.')}</span>
                 </li>
               </motion.ul>
 
@@ -186,7 +186,7 @@ export default function CleanHeroNoAnimation({ t }) {
                   className="w-full sm:w-auto px-6 py-4 sm:px-8 sm:py-5 bg-yellow-400 text-slate-950 font-black uppercase tracking-widest text-base sm:text-lg md:text-xl brutal-border brutal-shadow transition-smooth hover:bg-yellow-300 active:scale-95 flex items-center justify-center gap-2.5 sm:gap-3 transform rotate-1 shadow-2xl"
                 >
                   <FilePlus2 className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={3} />
-                  CRÉER MON CV GRATUITEMENT
+                  {t('hero.btn_create', 'CRÉER MON CV GRATUITEMENT')}
                 </Link>
                 
                 <Link 
@@ -194,15 +194,15 @@ export default function CleanHeroNoAnimation({ t }) {
                   className="w-full sm:w-auto px-6 py-4 sm:px-8 sm:py-5 bg-cyan-400 text-slate-950 font-black uppercase tracking-widest text-base sm:text-lg md:text-xl brutal-border brutal-shadow transition-smooth hover:bg-cyan-300 active:scale-95 flex items-center justify-center gap-2.5 sm:gap-3 transform -rotate-1 shadow-2xl"
                 >
                   <Briefcase className="w-5 h-5 sm:w-6 sm:h-6" strokeWidth={3} />
-                  CRÉER UN PORTFOLIO
+                  {t('hero.btn_portfolio', 'CRÉER UN PORTFOLIO')}
                 </Link>
               </motion.div>
 
               {/* Trust Indicators */}
               <motion.div variants={itemVariants} className="flex flex-wrap items-center justify-center lg:justify-start gap-4 sm:gap-6 text-xs sm:text-sm font-bold text-slate-300">
-                <span className="flex items-center gap-2"><Zap className="w-4 h-4 text-yellow-400 shrink-0" /> 100% Gratuit & Illimité</span>
-                <span className="flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0" /> Compatible ATS</span>
-                <span className="flex items-center gap-2"><Cpu className="w-4 h-4 text-pink-400 shrink-0" /> Optimisation IA Gemini</span>
+                <span className="flex items-center gap-2"><Zap className="w-4 h-4 text-yellow-400 shrink-0" /> {t('hero.badge_1', '100% Gratuit & Illimité')}</span>
+                <span className="flex items-center gap-2"><ShieldCheck className="w-4 h-4 text-cyan-400 shrink-0" /> {t('hero.badge_2', 'Compatible ATS')}</span>
+                <span className="flex items-center gap-2"><Cpu className="w-4 h-4 text-pink-400 shrink-0" /> {t('hero.badge_3', 'Optimisation IA Gemini')}</span>
               </motion.div>
 
             </motion.div>
@@ -251,7 +251,7 @@ export default function CleanHeroNoAnimation({ t }) {
                   className="mt-4 sm:mt-6 px-3.5 py-1.5 bg-slate-900/90 border border-yellow-400/60 text-yellow-300 font-bold text-[11px] sm:text-xs rounded-full shadow-lg flex items-center gap-1.5 backdrop-blur-sm group-hover:bg-yellow-400 group-hover:text-slate-950 transition-colors"
                 >
                   <Sparkles className="w-3.5 h-3.5" />
-                  <span>Cliquez pour Créer votre CV ! 🚀</span>
+                  <span>{t('hero.go_tooltip', 'Cliquez pour Créer votre CV ! 🚀')}</span>
                 </motion.div>
 
               </motion.div>

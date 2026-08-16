@@ -24,7 +24,7 @@ git add -A
 git commit -m "deploy: update gh-pages %date% %time%"
 
 :: Push force sur la branche gh-pages
-git remote add origin https://github.com/dovaphonedz-jpg/mon-cv-go.git 2>nul || git remote set-url origin https://github.com/dovaphonedz-jpg/mon-cv-go.git
+git remote add origin https://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@github.com/dovaphonedz-jpg/mon-cv-go.git
 git push origin gh-pages --force
 
 cd ..

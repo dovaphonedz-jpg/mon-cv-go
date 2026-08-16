@@ -1,10 +1,10 @@
 export const jobModelsData = {
   'modele-cv-comptable-word': {
     path: 'modele-cv-comptable-word',
-    h1: 'Modèle de CV Comptable Gratuit (Word & PDF)',
+    h1: 'Modèle de CV Comptable : Exemples Pratiques et Normes 2026',
     jobTitle: 'Comptable / Expert-Comptable',
-    seoTitle: 'Modèle de CV Comptable Gratuit | Mon CV Go',
-    seoDesc: 'Téléchargez notre modèle de CV comptable gratuit au format PDF et Word. Structure professionnelle optimisée ATS avec exemples de compétences et accroches.',
+    seoTitle: 'Modèle CV Comptable : Structure, Compétences & Exemple PDF',
+    seoDesc: 'Téléchargez notre modèle de CV comptable. Conseils pour valoriser la maîtrise des logiciels, clôtures annuelles, liasses fiscales et gestion de bilan.',
     intro: 'En tant que comptable, votre CV doit être à l\'image de votre pratique quotidienne : rigoureux, précis, parfaitement structuré et sans la moindre erreur. Que vous postuliez en cabinet d\'expertise comptable, en PME ou dans un grand groupe, votre profil doit immédiatement rassurer le recruteur sur votre maîtrise des normes comptables et des outils de gestion.',
     whyUse: 'Ce modèle de CV comptable a été élaboré avec des experts en recrutement financier. Il offre un équilibre idéal entre une lisibilité sémantique parfaite pour les logiciels de tri ATS et une présentation visuelle élégante qui met en valeur votre rigueur chiffrée.',
     targetProfiles: [
@@ -122,10 +122,10 @@ export const jobModelsData = {
 
   'modele-cv-debutant': {
     path: 'modele-cv-debutant',
-    h1: 'Modèle de CV Débutant Gratuit (Sans Expérience)',
+    h1: 'Modèle de CV Débutant et Sans Expérience : Le Guide Complet 2026',
     jobTitle: 'Débutant / Premier Emploi',
-    seoTitle: 'Modèle de CV Débutant Gratuit | Mon CV Go',
-    seoDesc: 'Créer un premier CV sans expérience professionnelle. Modèle gratuit optimisé pour valoriser votre formation, vos projets personnels et vos soft skills.',
+    seoTitle: 'Modèle CV Débutant Sans Expérience : Guide Pratique 2026',
+    seoDesc: 'Comment faire un CV débutant sans expérience ? Modèle gratuit à remplir, valorisation des soft skills, projets académiques et conseils pour convaincre.',
     intro: 'Rédiger son premier CV quand on n\'a pas encore d\'expérience professionnelle significative peut sembler intimidant. Pourtant, les recruteurs qui embauchent des profils débutants ne cherchent pas 10 ans de carrière, mais du potentiel, de la motivation et des soft skills.',
     whyUse: 'Ce modèle rééquilibre la mise en page pour accorder une place centrale à votre formation, vos projets académiques, vos activités bénévoles et vos compétences comportementales.',
     targetProfiles: [
@@ -293,10 +293,10 @@ export const jobModelsData = {
 
   'modele-cv-developpeur': {
     path: 'modele-cv-developpeur',
-    h1: 'Modèle de CV Développeur Web Gratuit (Tech & Code)',
+    h1: 'Modèle de CV Développeur Web : Structure Tech & Exemples 2026',
     jobTitle: 'Développeur Web / Software Engineer',
-    seoTitle: 'Modèle de CV Développeur Web Gratuit | Mon CV Go',
-    seoDesc: 'Modèle de CV développeur web gratuit. Mettez en valeur votre stack technique (React, Node, Python), vos projets GitHub et vos réussites tech.',
+    seoTitle: 'Modèle CV Développeur Web : Exemples & Conseils Tech 2026',
+    seoDesc: 'Modèle de CV pour développeur web (Full-Stack, Front, Back). Exemples de stack technique, projets GitHub et astuces pour séduire les recruteurs tech.',
     intro: 'Pour un développeur web ou logiciel, le CV est la vitrine de sa maîtrise technique. Les Tech Leads et recruteurs IT recherchent une stack claire, des langages maîtrisés avec précision et des liens vers des preuves concrètes (GitHub, projets en ligne).',
     whyUse: 'Ce modèle structuré permet de faire ressortir instantanément vos langages, frameworks, bases de données et outils DevOps tout en restant lisible pour les recruteurs non-techniques.',
     targetProfiles: [

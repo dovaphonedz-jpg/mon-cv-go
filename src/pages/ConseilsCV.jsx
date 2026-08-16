@@ -32,11 +32,11 @@ export default function ConseilsCV() {
 
   const adviceData = {
     fr: {
-      seoTitle: "Conseils CV : Comment Rédiger un Curriculum Vitae Parfait",
-      seoDesc: "Découvrez nos conseils d'experts pour rédiger un CV impactant.",
-      badge: "Guide Pratique",
-      title1: "Conseils pour rédiger un",
-      title2: "CV impactant",
+      seoTitle: "Conseils CV 2026 : Guide Ultime pour Réussir vos Candidatures",
+      seoDesc: "Découvrez nos conseils d'experts pour rédiger un CV percutant en 2026. Méthode étape par étape, mise en page et astuces pour décrocher plus d'entretiens.",
+      badge: "Guide Ultime 2026",
+      title1: "Guide Ultime : Comment Rédiger un",
+      title2: "CV qui Décroche des Entretiens",
       desc: "Découvrez nos meilleures pratiques pour créer un CV qui attire l'œil des recruteurs et passe les filtres des logiciels ATS.",
       do: "À FAIRE",
       dont: "À ÉVITER",
