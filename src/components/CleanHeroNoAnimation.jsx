@@ -3,8 +3,11 @@ import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import { FilePlus2, Briefcase, Check, Zap, Cpu, ShieldCheck, Sparkles } from 'lucide-react';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
-export default function CleanHeroNoAnimation({ t }) {
+export default function CleanHeroNoAnimation({ t: propT }) {
+  const { t: hookT } = useTranslation();
+  const t = hookT || propT;
   const containerRef = useRef(null);
   const canvasRef = useRef(null);
 
