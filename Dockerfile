@@ -1,14 +1,14 @@
-FROM node:22-alpine
+FROM node:22-slim
 
 WORKDIR /app
 
 # Copy dependency manifests
 COPY package*.json ./
 
-# Install dependencies cleanly for Linux build
-RUN npm install --include=dev
+# Install dependencies cleanly
+RUN npm install
 
-# Copy source code (node_modules is excluded via .dockerignore)
+# Copy source files (node_modules excluded via .dockerignore)
 COPY . .
 
 # Build Vite frontend bundle
