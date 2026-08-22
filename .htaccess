@@ -1,0 +1,12 @@
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+  
+  # Si le fichier demandé existe (comme sitemap.xml, robots.txt, images...), on l'affiche directement
+  RewriteCond %{REQUEST_FILENAME} -f [OR]
+  RewriteCond %{REQUEST_FILENAME} -d
+  RewriteRule ^ - [L]
+
+  # Sinon, on redirige tout vers index.html pour que React Router gère la page
+  RewriteRule ^ index.html [L]
+</IfModule>

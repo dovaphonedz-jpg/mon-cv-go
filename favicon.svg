@@ -1,0 +1,10 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <g transform="translate(50, 50) rotate(5) translate(-50, -50)">
+    <!-- Ombre brutaliste (carré noir décalé) -->
+    <rect x="22" y="22" width="70" height="70" rx="12" fill="#0F172A" />
+    <!-- Carré jaune principal -->
+    <rect x="15" y="15" width="70" height="70" rx="12" fill="#facc15" />
+    <!-- Texte GO -->
+    <text x="50%" y="54%" dominant-baseline="middle" text-anchor="middle" font-family="system-ui, -apple-system, sans-serif" font-weight="900" font-size="42" fill="#0F172A">GO</text>
+  </g>
+</svg>
