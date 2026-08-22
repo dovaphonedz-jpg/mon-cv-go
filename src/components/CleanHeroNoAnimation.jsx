@@ -2,7 +2,7 @@ import React, { useRef, useEffect } from 'react';
 import { motion, useMotionValue, useSpring, useTransform } from 'framer-motion';
 import confetti from 'canvas-confetti';
 import { FilePlus2, Briefcase, Check, Zap, Cpu, ShieldCheck, Sparkles } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import Link from './LocalizedLink';
 import { useTranslation } from 'react-i18next';
 
 export default function CleanHeroNoAnimation({ t: propT }) {

@@ -1,4 +1,4 @@
-import { jobModelsData } from './jobModelsData';
+import { jobModelsData } from './jobModelsData.js';
 
 // Dictionary of localized overrides for each job model key
 const translations = {

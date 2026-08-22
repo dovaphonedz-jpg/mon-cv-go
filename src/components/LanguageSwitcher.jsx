@@ -1,20 +1,55 @@
 import React, { useEffect, useState, useRef } from 'react';
 import { useTranslation } from 'react-i18next';
+import { useNavigate, useLocation } from 'react-router-dom';
 import { Globe } from 'lucide-react';
 
 export default function LanguageSwitcher() {
   const { i18n } = useTranslation();
   const [isOpen, setIsOpen] = useState(false);
   const dropdownRef = useRef(null);
+  const navigate = useNavigate();
+  const location = useLocation();
 
   const changeLanguage = (lng) => {
+    const currentPath = location.pathname;
+    
+    // Split the path to check if it has an existing lang prefix
+    const pathParts = currentPath.split('/').filter(Boolean);
+    const firstPart = pathParts[0];
+    
+    let newPath = currentPath;
+    
+    const isFirstPartLang = ['en', 'de', 'ar', 'fr'].includes(firstPart);
+    
+    if (lng === 'fr') {
+      // Remove any prefix
+      if (isFirstPartLang) {
+        newPath = '/' + pathParts.slice(1).join('/');
+      }
+    } else {
+      // Add or replace prefix
+      if (isFirstPartLang) {
+        newPath = '/' + lng + '/' + pathParts.slice(1).join('/');
+      } else {
+        newPath = '/' + lng + currentPath;
+      }
+    }
+    
+    // Clean double slashes
+    newPath = newPath.replace(/\/+/g, '/');
+    if (!newPath.startsWith('/')) {
+      newPath = '/' + newPath;
+    }
+    
     i18n.changeLanguage(lng);
+    navigate(newPath);
     setIsOpen(false);
   };
 
   useEffect(() => {
-    document.documentElement.dir = i18n.language === 'ar' ? 'rtl' : 'ltr';
-    document.documentElement.lang = i18n.language;
+    const cleanLang = (i18n.language || 'fr').substring(0, 2);
+    document.documentElement.dir = cleanLang === 'ar' ? 'rtl' : 'ltr';
+    document.documentElement.lang = cleanLang;
   }, [i18n.language]);
 
   // Fermer le menu si on clique à l'extérieur (très important sur mobile)

@@ -1,293 +1,288 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
-        xmlns:xhtml="http://www.w3.org/1999/xhtml">
+<?xml version='1.0' encoding='utf-8'?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
 
-  <!-- PAGES PRINCIPALES -->
+  
   <url>
     <loc>https://moncvgo.com/</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-    <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/" />
-    <xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/" />
-    <xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/" />
-    <xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/" />
-  </url>
+    <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/" /></url>
   <url>
     <loc>https://moncvgo.com/create</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.95</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/create" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/create" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/create" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/create" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/create" /></url>
   <url>
     <loc>https://moncvgo.com/studio-photo</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.95</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/studio-photo" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/studio-photo" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/studio-photo" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/studio-photo" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/studio-photo" /></url>
   <url>
     <loc>https://moncvgo.com/portfolio</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/portfolio" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/portfolio" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/portfolio" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/portfolio" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/portfolio" /></url>
   <url>
     <loc>https://moncvgo.com/lettre-motivation</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/lettre-motivation" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/lettre-motivation" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/lettre-motivation" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/lettre-motivation" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/lettre-motivation" /></url>
   <url>
     <loc>https://moncvgo.com/conseils-cv</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/conseils-cv" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/conseils-cv" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/conseils-cv" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/conseils-cv" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/conseils-cv" /></url>
 
-  <!-- SITEMAP HTML -->
+  
   <url>
     <loc>https://moncvgo.com/plan-du-site</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/plan-du-site" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/plan-du-site" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/plan-du-site" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/plan-du-site" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/plan-du-site" /></url>
 
-  <!-- ESPACE EMPLOI (NOUVELLE FONCTIONNALITE) -->
+  
   <url>
     <loc>https://moncvgo.com/espace-emploi</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/espace-emploi" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/espace-emploi" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/espace-emploi" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/espace-emploi" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/espace-emploi" /></url>
 
-  <!-- BLOG -->
+  
   <url>
     <loc>https://moncvgo.com/blog</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.80</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/blog" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/blog" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/blog" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/blog" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/blog" /></url>
 
-  <!-- PAGES MODELES SEO -->
+  
   <url>
     <loc>https://moncvgo.com/modele-cv-comptable-word</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/modele-cv-comptable-word" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/modele-cv-comptable-word" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/modele-cv-comptable-word" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/modele-cv-comptable-word" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/modele-cv-comptable-word" /></url>
   <url>
     <loc>https://moncvgo.com/modele-cv-ingenieur</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/modele-cv-ingenieur" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/modele-cv-ingenieur" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/modele-cv-ingenieur" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/modele-cv-ingenieur" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/modele-cv-ingenieur" /></url>
   <url>
     <loc>https://moncvgo.com/modele-cv-debutant</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/modele-cv-debutant" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/modele-cv-debutant" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/modele-cv-debutant" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/modele-cv-debutant" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/modele-cv-debutant" /></url>
   <url>
     <loc>https://moncvgo.com/modele-cv-etudiant</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/modele-cv-etudiant" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/modele-cv-etudiant" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/modele-cv-etudiant" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/modele-cv-etudiant" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/modele-cv-etudiant" /></url>
   <url>
     <loc>https://moncvgo.com/modele-cv-commercial</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/modele-cv-commercial" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/modele-cv-commercial" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/modele-cv-commercial" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/modele-cv-commercial" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/modele-cv-commercial" /></url>
   <url>
     <loc>https://moncvgo.com/modele-cv-developpeur</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.70</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/modele-cv-developpeur" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/modele-cv-developpeur" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/modele-cv-developpeur" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/modele-cv-developpeur" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/modele-cv-developpeur" /></url>
   <url>
     <loc>https://moncvgo.com/modele-cv-designer</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/modele-cv-designer" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/modele-cv-designer" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/modele-cv-designer" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/modele-cv-designer" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/modele-cv-designer" /></url>
   <url>
     <loc>https://moncvgo.com/modele-cv-infirmiere</loc>
     <lastmod>2026-08-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/modele-cv-infirmiere" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/modele-cv-infirmiere" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/modele-cv-infirmiere" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/modele-cv-infirmiere" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/modele-cv-infirmiere" /></url>
   <url>
     <loc>https://moncvgo.com/modele-cv-restauration</loc>
     <lastmod>2026-08-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/modele-cv-restauration" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/modele-cv-restauration" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/modele-cv-restauration" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/modele-cv-restauration" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/modele-cv-restauration" /></url>
   <url>
     <loc>https://moncvgo.com/modele-cv-chauffeur-livreur</loc>
     <lastmod>2026-08-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/modele-cv-chauffeur-livreur" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/modele-cv-chauffeur-livreur" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/modele-cv-chauffeur-livreur" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/modele-cv-chauffeur-livreur" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/modele-cv-chauffeur-livreur" /></url>
   <url>
     <loc>https://moncvgo.com/modele-cv-secretaire</loc>
     <lastmod>2026-08-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/modele-cv-secretaire" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/modele-cv-secretaire" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/modele-cv-secretaire" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/modele-cv-secretaire" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/modele-cv-secretaire" /></url>
   <url>
     <loc>https://moncvgo.com/modele-cv-vendeur</loc>
     <lastmod>2026-08-09</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/modele-cv-vendeur" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/modele-cv-vendeur" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/modele-cv-vendeur" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/modele-cv-vendeur" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/modele-cv-vendeur" /></url>
   <url>
     <loc>https://moncvgo.com/creer-cv-gratuit</loc>
     <lastmod>2026-08-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/creer-cv-gratuit" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/creer-cv-gratuit" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/creer-cv-gratuit" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/creer-cv-gratuit" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/creer-cv-gratuit" /></url>
   <url>
     <loc>https://moncvgo.com/faire-cv-gratuit</loc>
     <lastmod>2026-08-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/faire-cv-gratuit" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/faire-cv-gratuit" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/faire-cv-gratuit" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/faire-cv-gratuit" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/faire-cv-gratuit" /></url>
   <url>
     <loc>https://moncvgo.com/cv-gratuit-en-ligne</loc>
     <lastmod>2026-08-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/cv-gratuit-en-ligne" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/cv-gratuit-en-ligne" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/cv-gratuit-en-ligne" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/cv-gratuit-en-ligne" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/cv-gratuit-en-ligne" /></url>
   <url>
     <loc>https://moncvgo.com/modeles-cv-gratuits</loc>
     <lastmod>2026-08-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/modeles-cv-gratuits" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/modeles-cv-gratuits" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/modeles-cv-gratuits" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/modeles-cv-gratuits" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/modeles-cv-gratuits" /></url>
   <url>
     <loc>https://moncvgo.com/cv-professionnel-gratuit</loc>
     <lastmod>2026-08-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/cv-professionnel-gratuit" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/cv-professionnel-gratuit" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/cv-professionnel-gratuit" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/cv-professionnel-gratuit" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/cv-professionnel-gratuit" /></url>
   <url>
     <loc>https://moncvgo.com/cv-etudiant-gratuit</loc>
     <lastmod>2026-08-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/cv-etudiant-gratuit" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/cv-etudiant-gratuit" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/cv-etudiant-gratuit" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/cv-etudiant-gratuit" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/cv-etudiant-gratuit" /></url>
   <url>
     <loc>https://moncvgo.com/cv-sans-experience</loc>
     <lastmod>2026-08-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/cv-sans-experience" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/cv-sans-experience" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/cv-sans-experience" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/cv-sans-experience" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/cv-sans-experience" /></url>
   <url>
     <loc>https://moncvgo.com/exemples-cv</loc>
     <lastmod>2026-08-15</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/exemples-cv" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/exemples-cv" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/exemples-cv" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/exemples-cv" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/exemples-cv" /></url>
 
-  <!-- PAGES ANNEXES -->
+  
   <url>
     <loc>https://moncvgo.com/a-propos</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.50</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/a-propos" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/a-propos" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/a-propos" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/a-propos" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/a-propos" /></url>
   <url>
     <loc>https://moncvgo.com/contact</loc>
     <lastmod>2026-07-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.50</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/contact" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/contact" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/contact" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/contact" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/contact" /></url>
   <url>
     <loc>https://moncvgo.com/mentions-legales</loc>
     <lastmod>2026-01-01</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.25</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/mentions-legales" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/mentions-legales" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/mentions-legales" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/mentions-legales" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/mentions-legales" /></url>
   <url>
     <loc>https://moncvgo.com/confidentialite</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>yearly</changefreq>
     <priority>0.25</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/confidentialite" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/confidentialite" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/confidentialite" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/confidentialite" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/confidentialite" /></url>
 
-  <!-- ARTICLES DU BLOG -->
+  
   <url>
     <loc>https://moncvgo.com/blog/studio-photo-cv-intelligence-artificielle-detourage-gratuit</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/blog/studio-photo-cv-intelligence-artificielle-detourage-gratuit" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/blog/studio-photo-cv-intelligence-artificielle-detourage-gratuit" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/blog/studio-photo-cv-intelligence-artificielle-detourage-gratuit" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/blog/studio-photo-cv-intelligence-artificielle-detourage-gratuit" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/blog/studio-photo-cv-intelligence-artificielle-detourage-gratuit" /></url>
   <url>
     <loc>https://moncvgo.com/blog/comment-faire-un-cv-en-2026</loc>
     <lastmod>2026-08-03</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/blog/comment-faire-un-cv-en-2026" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/blog/comment-faire-un-cv-en-2026" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/blog/comment-faire-un-cv-en-2026" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/blog/comment-faire-un-cv-en-2026" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/blog/comment-faire-un-cv-en-2026" /></url>
   <url>
     <loc>https://moncvgo.com/blog/meilleurs-modeles-cv</loc>
     <lastmod>2026-08-04</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/blog/meilleurs-modeles-cv" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/blog/meilleurs-modeles-cv" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/blog/meilleurs-modeles-cv" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/blog/meilleurs-modeles-cv" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/blog/meilleurs-modeles-cv" /></url>
   <url>
     <loc>https://moncvgo.com/blog/cv-canada</loc>
     <lastmod>2026-08-05</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/blog/cv-canada" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/blog/cv-canada" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/blog/cv-canada" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/blog/cv-canada" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/blog/cv-canada" /></url>
   <url>
     <loc>https://moncvgo.com/blog/cv-france</loc>
     <lastmod>2026-08-06</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/blog/cv-france" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/blog/cv-france" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/blog/cv-france" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/blog/cv-france" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/blog/cv-france" /></url>
   <url>
     <loc>https://moncvgo.com/blog/cv-etudiant</loc>
     <lastmod>2026-08-07</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/blog/cv-etudiant" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/blog/cv-etudiant" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/blog/cv-etudiant" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/blog/cv-etudiant" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/blog/cv-etudiant" /></url>
   <url>
     <loc>https://moncvgo.com/blog/cv-sans-diplome</loc>
     <lastmod>2026-08-08</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/blog/cv-sans-diplome" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/blog/cv-sans-diplome" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/blog/cv-sans-diplome" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/blog/cv-sans-diplome" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/blog/cv-sans-diplome" /></url>
   <url>
     <loc>https://moncvgo.com/blog/erreurs-a-eviter-sur-un-cv</loc>
     <lastmod>2026-06-15</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/blog/erreurs-a-eviter-sur-un-cv" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/blog/erreurs-a-eviter-sur-un-cv" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/blog/erreurs-a-eviter-sur-un-cv" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/blog/erreurs-a-eviter-sur-un-cv" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/blog/erreurs-a-eviter-sur-un-cv" /></url>
   <url>
     <loc>https://moncvgo.com/blog/reussir-lettre-de-motivation</loc>
     <lastmod>2026-07-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/blog/reussir-lettre-de-motivation" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/blog/reussir-lettre-de-motivation" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/blog/reussir-lettre-de-motivation" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/blog/reussir-lettre-de-motivation" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/blog/reussir-lettre-de-motivation" /></url>
   <url>
     <loc>https://moncvgo.com/blog/pourquoi-utiliser-un-portfolio</loc>
     <lastmod>2026-07-25</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/blog/pourquoi-utiliser-un-portfolio" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/blog/pourquoi-utiliser-un-portfolio" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/blog/pourquoi-utiliser-un-portfolio" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/blog/pourquoi-utiliser-un-portfolio" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/blog/pourquoi-utiliser-un-portfolio" /></url>
   <url>
     <loc>https://moncvgo.com/blog/guide-complet-ats</loc>
     <lastmod>2026-08-01</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/blog/guide-complet-ats" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/blog/guide-complet-ats" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/blog/guide-complet-ats" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/blog/guide-complet-ats" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/blog/guide-complet-ats" /></url>
   <url>
     <loc>https://moncvgo.com/blog/phrases-accroche-cv</loc>
     <lastmod>2026-08-02</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
-  </url>
+  <xhtml:link rel="alternate" hreflang="fr" href="https://moncvgo.com/blog/phrases-accroche-cv" /><xhtml:link rel="alternate" hreflang="en" href="https://moncvgo.com/en/blog/phrases-accroche-cv" /><xhtml:link rel="alternate" hreflang="de" href="https://moncvgo.com/de/blog/phrases-accroche-cv" /><xhtml:link rel="alternate" hreflang="ar" href="https://moncvgo.com/ar/blog/phrases-accroche-cv" /><xhtml:link rel="alternate" hreflang="x-default" href="https://moncvgo.com/blog/phrases-accroche-cv" /></url>
 
 </urlset>

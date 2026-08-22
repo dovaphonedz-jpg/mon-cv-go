@@ -1,6 +1,6 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Link } from 'react-router-dom';
+import Link from '../components/LocalizedLink';
 import { BookOpen, Calendar, Clock, ArrowRight } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
 import SEO from '../components/SEO';
@@ -8,7 +8,7 @@ import { useTranslation } from 'react-i18next';
 
 export default function Blog() {
   const { i18n } = useTranslation();
-  const lang = i18n.language || 'fr';
+  const lang = (i18n.language || 'fr').substring(0, 2);
   const currentPosts = blogPosts[lang] || blogPosts['fr'];
 
   const texts = {

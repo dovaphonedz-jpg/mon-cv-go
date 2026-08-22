@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import Link from '../components/LocalizedLink';
 import { useTranslation } from 'react-i18next';
 import { FilePlus2, Check, ArrowRight, HelpCircle, ChevronDown, Award, Lightbulb, UserCheck, ShieldCheck, Sparkles, BookOpen } from 'lucide-react';
 import SEO from '../components/SEO';
@@ -9,7 +10,9 @@ import { getLocalizedJobModel } from '../data/getLocalizedJobModel';
 export default function ModelePage() {
   const { t, i18n } = useTranslation();
   const location = useLocation();
-  const path = location.pathname.substring(1); // Enlève le '/' initial
+  const rawPath = location.pathname.substring(1); // Enlève le '/' initial
+  const pathParts = rawPath.split('/');
+  const path = ['en', 'de', 'ar', 'fr'].includes(pathParts[0]) ? pathParts.slice(1).join('/') : rawPath;
   const model = getLocalizedJobModel(path, i18n.language);
   const [openFaq, setOpenFaq] = useState(null);
 

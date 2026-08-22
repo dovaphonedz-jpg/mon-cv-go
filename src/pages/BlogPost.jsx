@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
-import { useParams, Link, useNavigate } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
+import Link from '../components/LocalizedLink';
 import { motion } from 'framer-motion';
 import { ArrowLeft, Calendar, Clock } from 'lucide-react';
 import { blogPosts } from '../data/blogPosts';
@@ -10,7 +11,7 @@ export default function BlogPost() {
   const { id } = useParams();
   const navigate = useNavigate();
   const { i18n } = useTranslation();
-  const lang = i18n.language || 'fr';
+  const lang = (i18n.language || 'fr').substring(0, 2);
   const currentPosts = blogPosts[lang] || blogPosts['fr'];
   const post = currentPosts.find(p => p.id === id);
 

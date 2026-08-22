@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import Link from '../components/LocalizedLink';
 import { useTranslation } from 'react-i18next';
 import { 
   FilePlus2, Check, ArrowRight, ShieldCheck, Sparkles, Zap, Star, 

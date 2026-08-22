@@ -1,5 +1,5 @@
 import React from 'react';
-import { Link } from 'react-router-dom';
+import Link from '../components/LocalizedLink';
 import { useTranslation } from 'react-i18next';
 import { FilePlus2, Briefcase, PenLine, BookOpen, Zap, Info, Mail, ShieldCheck, FileText, LayoutGrid, CheckCircle } from 'lucide-react';
 import SEO from '../components/SEO';
