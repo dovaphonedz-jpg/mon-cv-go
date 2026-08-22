@@ -235,8 +235,27 @@ app.post('/api/contact', async (req, res) => {
 // Serve static frontend files in production
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// Fallback for React Router (Single Page Application)
+// Fallback for React Router (Single Page Application) with intelligent SSG serving
 app.get(/(.*)/, (req, res) => {
+  const reqPath = req.params[0] || '';
+  const cleanPath = reqPath.replace(/^\//, '').replace(/\/$/, '');
+  
+  // Construct possible static pre-rendered HTML file paths
+  const possiblePaths = [];
+  if (cleanPath) {
+    possiblePaths.push(path.join(__dirname, 'dist', cleanPath, 'index.html'));
+    possiblePaths.push(path.join(__dirname, 'dist', cleanPath + '.html'));
+  } else {
+    possiblePaths.push(path.join(__dirname, 'dist', 'index.html'));
+  }
+  
+  for (const p of possiblePaths) {
+    if (fs.existsSync(p)) {
+      return res.sendFile(p);
+    }
+  }
+  
+  // Default fallback to main SPA index.html
   res.sendFile(path.join(__dirname, 'dist', 'index.html'));
 });
 

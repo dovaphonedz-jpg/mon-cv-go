@@ -213,6 +213,69 @@ const translations = {
       intro: 'Tech-Recruiter scannen Tech-Stack, GitHub-Projekte und Problemlösungsfähigkeiten in Sekunden. Präsentieren Sie Ihren Code übersichtlich.',
       whyUse: 'Hebt Ihre Programmiersprachen, Frameworks und Software-Architektur-Kenntnisse hervor.',
       sampleCatchphrase: '« Full-Stack Entwickler mit 4 Jahren Erfahrung in skalierbaren Web-Apps (React, Node.js, TypeScript). »'
+    },
+    'modele-cv-etudiant': {
+      jobTitle: 'Studenten-Lebenslauf',
+      h1: 'Kostenlose Studenten Lebenslauf Vorlage (Praktikum & Nebenjob 2026)',
+      intro: 'Die Suche nach einem Praktikum oder Nebenjob erfordert die Hervorhebung von akademischen Projekten, Teamfähigkeit und Motivation, um fehlende Berufserfahrung auszugleichen.',
+      whyUse: 'Ordnet das Layout neu, um Ausbildung, Kursprojekte und persönliche Stärken oben zu platzieren.',
+      sampleCatchphrase: '« Motivierter Master-Student der Betriebswirtschaftslehre sucht ein 6-monatiges Praktikum im digitalen Marketing. Top 5% der Klasse. »'
+    },
+    'modele-cv-debutant': {
+      jobTitle: 'Berufseinsteiger / Ohne Erfahrung',
+      h1: 'Lebenslauf-Vorlage für Berufseinsteiger: Praktischer Leitfaden 2026',
+      intro: 'Ein Lebenslauf ohne formelle Berufserfahrung gelingt durch die Fokussierung auf Soft Skills, persönliche Initiativen, Zertifikate und Lernbereitschaft.',
+      whyUse: 'Betont Ausbildung, Schulprojekte, ehrenamtliche Arbeit und Ihre persönlichen Stärken.',
+      sampleCatchphrase: '« Engagierter und pünktlicher Berufseinsteiger, bereit, sich schnell einzuarbeiten und Ihr Team im Tagesgeschäft zu unterstützen. »'
+    },
+    'modele-cv-ingenieur': {
+      jobTitle: 'Ingenieur / Projektingenieur',
+      h1: 'Kostenlose Ingenieur Lebenslauf Vorlage (Technik & R&D 2026)',
+      intro: 'Ingenieure benötigen einen klar strukturierten Lebenslauf mit technischen Fähigkeiten, Projektmetriken, CAD-Tools und quantifizierbaren Ergebnissen.',
+      whyUse: 'Optimiert für technische Personalverantwortliche, die nach spezifischen CAD-Tools und Projektleistungen suchen.',
+      sampleCatchphrase: '« R&D-Ingenieur Maschinenbau mit 5 Jahren Erfahrung. Spezialisiert auf Karosseriedesign und FEA-Simulation (ANSYS). Reduzierte das Chassisgewicht um 12%. »'
+    },
+    'modele-cv-commercial': {
+      jobTitle: 'Vertriebsmitarbeiter / Account Manager',
+      h1: 'Kostenlose Vertriebsmitarbeiter Lebenslauf Vorlage (B2B & B2C 2026)',
+      intro: 'Erfolge im Vertrieb hängen von Zahlen ab. Heben Sie Ihre Quoten, Neukundengewinnung und CRM-Kenntnisse hervor.',
+      whyUse: 'Strukturiert Ihre Positionen nach Umsatzwachstum, Deal-Größen und Akquise-Erfolgen.',
+      sampleCatchphrase: '« B2B Account Executive mit 5 Jahren Erfahrung im SaaS-Vertrieb. Übertraf die Jahresquote um 135% in 2025. »'
+    },
+    'modele-cv-designer': {
+      jobTitle: 'UX/UI Designer / Mediengestalter',
+      h1: 'Kostenlose Designer Lebenslauf Vorlage (UI/UX & Grafik 2026)',
+      intro: 'Präsentieren Sie Ihre visuelle Kreativität bei gleichzeitig hoher Lesbarkeit. Figma-Kenntnisse, Design-Systeme und Portfolio-Links hervorheben.',
+      whyUse: 'Kombiniert saubere Typografie und Ästhetik, um Kreativdirektoren und HR-Manager zu beeindrucken.',
+      sampleCatchphrase: '« Senior Product Designer mit 6 Jahren Erfahrung im SaaS-UX/UI-Design. Optimierte den Onboarding-Flow und steigerte die Conversion um 28%. »'
+    },
+    'modele-cv-infirmiere': {
+      jobTitle: 'Pflegefachkraft / Krankenschwester',
+      h1: 'Kostenlose Pflegefachkraft Lebenslauf Vorlage (Klinik & Pflege 2026)',
+      intro: 'Lebensläufe im Gesundheitswesen erfordern Klarheit über Zertifizierungen, Patientenpflegeprotokolle und Stationserfahrung.',
+      whyUse: 'Hebt Ihre klinische Qualifikation, Ihre Empathie und Ihr Wissen über medizinische Software hervor.',
+      sampleCatchphrase: '« Examinierte Pflegefachkraft mit 5 Jahren Erfahrung auf der Intensivstation. Experte in Notfalltriage und Patientenüberwachung. »'
+    },
+    'modele-cv-restauration': {
+      jobTitle: 'Kellner / Servicekraft',
+      h1: 'Kostenlose Gastronomie Lebenslauf Vorlage (Service & Küche 2026)',
+      intro: 'In der Gastronomie zählen Schnelligkeit, Kassenbedienung, Service-Exzellenz und die Einhaltung von Hygienevorschriften.',
+      whyUse: 'Betont Teamkoordination, Belastbarkeit in Stoßzeiten und exzellenten Kundenservice.',
+      sampleCatchphrase: '« Erfahrene Servicekraft mit 4 Jahren Praxis in der gehobenen Gastronomie. Kompetent in Weinberatung und Kassensystemen. »'
+    },
+    'modele-cv-chauffeur-livreur': {
+      jobTitle: 'Auslieferungsfahrer / Kurier',
+      h1: 'Kostenlose Auslieferungsfahrer Lebenslauf Vorlage (Logistik 2026)',
+      intro: 'Heben Sie Ihre unfallfreie Fahrpraxis, Routenoptimierung und Zuverlässigkeit bei der Paketzustellung hervor.',
+      whyUse: 'Konzentriert sich auf Sicherheit, Pünktlichkeit und die Nutzung von Logistik-Apps.',
+      sampleCatchphrase: '« Zuverlässiger Auslieferungsfahrer mit 4 Jahren Erfahrung in der Stadtlogistik. Pünktlichkeitsquote von 99,4%. »'
+    },
+    'modele-cv-secretaire': {
+      jobTitle: 'Sekretär / Assistent der Geschäftsführung',
+      h1: 'Kostenlose Sekretär Lebenslauf Vorlage (Administration 2026)',
+      intro: 'Administrative Exzellenz beruht auf Organisationstalent, Terminplanung, Korrespondenz und Beherrschung von Bürosoftware.',
+      whyUse: 'Demonstriert Ihre Multitasking-Fähigkeiten, Diskretion und organisatorische Präzision.',
+      sampleCatchphrase: '« Management-Assistent mit 7 Jahren Erfahrung in der Unterstützung von Führungskräften. Spezialist für Reise- und Terminmanagement. »'
     }
   },
   ar: {
@@ -227,7 +290,7 @@ const translations = {
       jobTitle: 'كيف تصنع سيرة ذاتية مجاناً',
       h1: 'كيفية إنشاء سيرة ذاتية مجاناً: دليل خطوة بخطوة (2026)',
       intro: 'معرفة كيفية إنشاء سيرة ذاتية فعالة مهارة أساسية. يوضح هذا الدليل 5 خطوات لإبراز خبراتك وجذب مسؤول التوظيف في 6 ثوانٍ.',
-      whyUse: 'تجنب الأخطاء الشائعة وابنِ طلب توظيف عالي التأثير.',
+      whyUse: 'تجنب الأخط الأخطاء الشائعة وابنِ طلب توظيف عالي التأثير.',
       sampleCatchphrase: '« متخصص في خدمة العملاء خبرة 6 سنوات. قادرة على حل المشكلات المعقدة والاحتفاظ بالعملاء. »'
     },
     'modeles-cv-gratuits': {
@@ -285,6 +348,69 @@ const translations = {
       intro: 'يفحص مسؤولو توظيف التكنولوجيا المهارات ومشاريع GitHub والحلول البرمجية بسرعة. اعرض مهاراتك التقنية بنقاء.',
       whyUse: 'يبرز لغات البرمجة وأطر العمل والمهارات المعمارية للبرمجيات.',
       sampleCatchphrase: '« مطور ويب شامل خبرة 4 سنوات في بناء تطبيقات ويب باستخدام React و Node.js. »'
+    },
+    'modele-cv-etudiant': {
+      jobTitle: 'طالب / تدريب عملي',
+      h1: 'نموذج سيرة ذاتية للطلاب مجاناً (التدريب والعمل الجزئي 2026)',
+      intro: 'يتطلب البحث عن تدريب أو عمل جزئي تسليط الضوء على المشاريع الأكاديمية والعمل الجماعي واللغات لتعويض قلة الخبرة العملية.',
+      whyUse: 'يعيد تنظيم السيرة الذاتية ليرفع التعليم والمشاريع والمهارات الشخصية لأعلى الصفحة.',
+      sampleCatchphrase: '« طالب ماجستير إدارة أعمال طموح يبحث عن تدريب لمدة 6 أشهر في التسويق الرقمي. متحدث طليق بالإنجليزية والفرنسية. »'
+    },
+    'modele-cv-debutant': {
+      jobTitle: 'خريج جديد / بدون خبرة',
+      h1: 'نموذج سيرة ذاتية للمبتدئين بدون خبرة عملية: دليل شامل 2026',
+      intro: 'إنشاء أول سيرة ذاتية بدون خبرة عمل رسمية سهل عند التركيز على المهارات الشخصية والمبادرات الفردية والشهادات الذاتية.',
+      whyUse: 'يبرز التعليم، المشاريع المدرسية، العمل التطوعي، والصفات الشخصية التي تهم أصحاب العمل.',
+      sampleCatchphrase: '« مرشح مبتدئ نشيط ومنضبط وجاهز للتعلم السريع والمساهمة في العمل اليومي لفريقكم. »'
+    },
+    'modele-cv-ingenieur': {
+      jobTitle: 'مهندس / مدير مشاريع تقنية',
+      h1: 'نموذج سيرة ذاتية للمهندس مجاناً (التصميم والتطوير 2026)',
+      intro: 'يحتاج المهندسون إلى سيرة ذاتية منظمة تعرض المهارات التقنية، وإدارة المشاريع، والبرمجيات المتخصصة، والنتائج القابلة للقياس.',
+      whyUse: 'محسن لمسؤولي توظيف المهندسين الباحثين عن أدوات تصميم وإنجازات تقنية محددة.',
+      sampleCatchphrase: '« مهندس أبحاث وتطوير ميكانيكي خبرة 5 سنوات في تصميم السيارات. متخصص في محاكاة FEA (برنامج ANSYS). خفّض وزن الهيكل بنسبة 12%. »'
+    },
+    'modele-cv-commercial': {
+      jobTitle: 'مندوب مبيعات / مدير حسابات',
+      h1: 'نموذج سيرة ذاتية لمندوب المبيعات مجاناً (B2B و B2C 2026)',
+      intro: 'تعتمد سير المبيعات على الأرقام. أبرز نسب تحقيق الأهداف، وجذب العملاء الجدد، وإدارة علاقات العملاء CRM.',
+      whyUse: 'ينظم المناصب السابقة حول نمو الإيرادات، وأحجام الصفقات، ونجاح الاستقطاب.',
+      sampleCatchphrase: '« مسؤول مبيعات B2B خبرة 5 سنوات في قطاع البرمجيات SaaS. تجاوزت أهداف المبيعات بنسبة 135% لعام 2025. »'
+    },
+    'modele-cv-designer': {
+      jobTitle: 'مصمم واجهات UX/UI / مصمم جرافيك',
+      h1: 'نموذج سيرة ذاتية للمصمم مجاناً (واجهات المستخدم والجرافيك 2026)',
+      intro: 'اعرض حسك الإبداعي مع الحفاظ على وضوح القراءة. أبرز مهارات Figma، وأنظمة التصميم، وروابط البورتفوليو.',
+      whyUse: 'يوازن بين الخطوط الأنيقة والبساطة البصرية لإثارة إعجاب مدراء الإبداع والموارد البشرية.',
+      sampleCatchphrase: '« مصمم منتجات أول خبرة 6 سنوات في تصميم واجهات SaaS. أعاد تصميم عملية التسجيل مما زاد التحويل بنسبة 28%. »'
+    },
+    'modele-cv-infirmiere': {
+      jobTitle: 'ممرض / ممرضة / أخصائي رعاية صحية',
+      h1: 'نموذج سيرة ذاتية للممرض والممرضة مجاناً (الرعاية الطبية 2026)',
+      intro: 'تتطلب سير الرعاية الصحية وضوحاً تاماً في التراخيص، وبروتوكولات رعاية المرضى، وخبرة أقسام المستشفيات.',
+      whyUse: 'يسلط الضوء على المؤهلات السريرية، ومهارات الرعاية، والمعرفة بالأنظمة الطبية.',
+      sampleCatchphrase: '« ممرض قانوني خبرة 5 سنوات في قسم الطوارئ والعناية المركزة. متمرس في فرز الحالات ورعاية المرضى. »'
+    },
+    'modele-cv-restauration': {
+      jobTitle: 'نادل / طاهٍ / موظف ضيافة',
+      h1: 'نموذج سيرة ذاتية لقطاع المطاعم والضيافة مجاناً (2026)',
+      intro: 'تقدر وظائف الضيافة السرعة، وإدارة أنظمة البيع POS، وخدمة الطاولات، والالتزام بمعايير النظافة والوقاية.',
+      whyUse: 'يبرز مهارات العمل الجماعي، وإدارة ضغط ساعات الذروة، والتميز في خدمة العملاء.',
+      sampleCatchphrase: '« نادل ذو خبرة 4 سنوات في المطاعم عالية الإقبال. ماهر في التعامل مع أنظمة الدفع وإدارة أكثر من 12 طاولة في الوردية. »'
+    },
+    'modele-cv-chauffeur-livreur': {
+      jobTitle: 'سائق توصيل / عامل خدمات لوجستية',
+      h1: 'نموذج سيرة ذاتية لسائق التوصيل مجاناً (الخدمات اللوجستية 2026)',
+      intro: 'أبرز سجلك المروري النظيف، وقدرتك على تحسين المسارات، وإيصال الشحنات بأمان وفي الوقت المحدد.',
+      whyUse: 'يركز على السلامة، والالتزام بالمواعيد، واستخدام تطبيقات الملاحة والخدمات اللوجستية.',
+      sampleCatchphrase: '« سائق توصيل محترف خبرة 4 سنوات في الخدمات اللوجستية الحضرية. سجل مروري نظيف 100٪ ونسبة تسليم دقيق 99.4٪. »'
+    },
+    'modele-cv-secretaire': {
+      jobTitle: 'سكرتير / مساعد إداري وتنفيذي',
+      h1: 'نموذج سيرة ذاتية للسكرتارية مجاناً (الشؤون الإدارية 2026)',
+      intro: 'يعتمد التميز الإداري على التنظيم، وجدولة المواعيد، وإدارة المراسلات، وإتقان برامج المكتب.',
+      whyUse: 'يوضح مهاراتك في تعدد المهام، والسرية، والدقة التنظيمية.',
+      sampleCatchphrase: '« مساعد تنفيذي خبرة 7 سنوات في دعم الإدارة العليا. متخصص في تنظيم السفر وإدارة المواعيد وبرامج MS Office. »'
     }
   }
 };
