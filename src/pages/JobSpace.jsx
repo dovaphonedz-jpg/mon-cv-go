@@ -76,8 +76,8 @@ export default function JobSpace() {
   return (
     <>
       <SEO 
-        title={t('jobspace.seo_title', 'Espace Emploi — Outils pour trouver un travail')}
-        description={t('jobspace.seo_desc', "Suivez vos candidatures, analysez des offres d'emploi, calculez votre salaire et optimisez votre CV.")}
+        title={t('jobspace.seo_title', 'Espace Emploi : Suivre ses Candidatures | Mon CV Go')}
+        description={t('jobspace.seo_desc', "Suivez vos candidatures avec un tableau Kanban interactif, analysez des offres d'emploi, calculez votre salaire et optimisez votre CV gratuitement.")}
         url="https://moncvgo.com/espace-emploi"
       />
       <div className="min-h-screen bg-slate-50 dark:bg-[#0B1120] pt-24 pb-16">
@@ -88,11 +88,11 @@ export default function JobSpace() {
             <div className="inline-flex items-center gap-2 bg-blue-100 dark:bg-blue-900/30 text-blue-700 dark:text-blue-300 px-4 py-1.5 rounded-full text-sm font-bold mb-4">
               <Zap className="w-4 h-4" /> {t('jobspace.badge', 'Espace Emploi')}
             </div>
-            <h1 className="text-3xl sm:text-4xl font-black text-slate-900 dark:text-white mb-2">
-              {t('jobspace.title', 'Trouvez votre prochain emploi')} 💼
+            <h1 className="text-3xl sm:text-5xl font-black text-slate-900 dark:text-white uppercase tracking-tight mb-2">
+              {t('jobspace.title', 'Espace emploi et suivi des candidatures')}
             </h1>
-            <p className="text-slate-500 dark:text-slate-400 text-lg">
-              {t('jobspace.subtitle', "Tous vos outils de recherche d'emploi au même endroit. 100% gratuit, 100% privé.")}
+            <p className="text-slate-600 dark:text-slate-400 text-base sm:text-lg font-medium">
+              {t('jobspace.subtitle', "Tous vos outils de recherche d'emploi au même endroit : suivi Kanban, analyse de compatibilité et estimation de salaire. 100% gratuit et privé.")}
             </p>
           </div>
 

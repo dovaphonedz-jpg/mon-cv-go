@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
-import { useLocation } from 'react-router-dom';
-import Link from './LocalizedLink';
+import { Link, useLocation } from 'react-router-dom';
 import { Sparkles, FilePlus2, PenLine, BookOpen, Info, Mail, Menu, X, Moon, Sun, Briefcase, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
@@ -110,7 +109,7 @@ export default function Layout({ children }) {
                 <div className="w-10 h-10 bg-white brutal-border brutal-shadow flex items-center justify-center text-slate-900 font-black text-lg transform -rotate-6 shrink-0">M</div>
                 <span className="font-black text-sm uppercase tracking-widest">Mon CV Go</span>
               </div>
-              <p className="text-sm font-bold opacity-80 max-w-xs">{t('footer_section.desc', 'Le créateur de CV gratuit le plus simple du web. Sans inscription, sans paiement.')}</p>
+              <p className="text-sm font-bold opacity-80 max-w-xs">Le créateur de CV gratuit le plus simple du web. Sans inscription, sans paiement.</p>
               <div className="flex gap-2 mt-1">
                 <a href="https://twitter.com/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white brutal-border flex items-center justify-center font-black text-xs hover:bg-yellow-300 transition-colors" aria-label="Twitter">X</a>
                 <a href="https://linkedin.com/" target="_blank" rel="noopener noreferrer" className="w-8 h-8 bg-white brutal-border flex items-center justify-center font-black text-xs hover:bg-yellow-300 transition-colors" aria-label="LinkedIn">in</a>
@@ -119,50 +118,56 @@ export default function Layout({ children }) {
 
             {/* Outils */}
             <div className="flex flex-col gap-2">
-              <h4 className="font-black uppercase tracking-widest text-sm mb-1">{t('footer_section.our_tools', 'Nos Outils')}</h4>
-              <Link to="/create" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><FilePlus2 className="w-3 h-3" /> {t('nav.create_cv')}</Link>
-              <Link to="/studio-photo" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><Sparkles className="w-3 h-3 text-yellow-600" /> {t('footer_section.photo_studio', '📸 Studio Photo CV')}</Link>
-              <Link to="/portfolio" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><Briefcase className="w-3 h-3" /> {t('nav.create_portfolio')}</Link>
-              <Link to="/lettre-motivation" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><PenLine className="w-3 h-3" /> {t('nav.cover_letter')}</Link>
+              <h4 className="font-black uppercase tracking-widest text-sm mb-1">Nos Outils</h4>
+              <Link to="/create" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><FilePlus2 className="w-3 h-3" /> Créer mon CV gratuitement</Link>
+              <Link to="/studio-photo" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><Sparkles className="w-3 h-3 text-yellow-600" /> Photo CV professionnelle</Link>
+              <Link to="/portfolio" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><Briefcase className="w-3 h-3" /> Créer un portfolio en ligne</Link>
+              <Link to="/lettre-motivation" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><PenLine className="w-3 h-3" /> Créer une lettre de motivation</Link>
               <Link to="/espace-emploi" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1">
-                <Zap className="w-3 h-3" /> {t('nav.job_space', 'Espace Emploi')} <span className="bg-pink-500 text-white text-[9px] font-black px-1 rounded">NEW</span>
+                <Zap className="w-3 h-3" /> Espace emploi & candidatures <span className="bg-pink-500 text-white text-[9px] font-black px-1 rounded">NEW</span>
               </Link>
             </div>
 
-            {/* Modèles SEO */}
+            {/* Guides Spécialisés */}
             <div className="flex flex-col gap-2">
-              <h4 className="font-black uppercase tracking-widest text-sm mb-1">{t('footer_section.resume_templates', 'Modèles de CV')}</h4>
-              <Link to="/modele-cv-comptable-word" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">{t('footer_section.tpl_comptable', 'CV Comptable')}</Link>
-              <Link to="/modele-cv-ingenieur" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">{t('footer_section.tpl_ingenieur', 'CV Ingénieur')}</Link>
-              <Link to="/modele-cv-debutant" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">{t('footer_section.tpl_debutant', 'CV Débutant')}</Link>
-              <Link to="/modele-cv-etudiant" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">{t('footer_section.tpl_etudiant', 'CV Étudiant')}</Link>
-              <Link to="/modele-cv-commercial" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">{t('footer_section.tpl_commercial', 'CV Commercial')}</Link>
-              <Link to="/modele-cv-developpeur" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">{t('footer_section.tpl_developpeur', 'CV Développeur')}</Link>
-              <Link to="/modele-cv-designer" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">{t('footer_section.tpl_designer', 'CV Designer')}</Link>
-              <Link to="/modele-cv-infirmiere" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">{t('footer_section.tpl_infirmiere', 'CV Infirmière')}</Link>
-              <Link to="/modele-cv-restauration" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">{t('footer_section.tpl_restauration', 'CV Restauration')}</Link>
-              <Link to="/modele-cv-chauffeur-livreur" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">{t('footer_section.tpl_chauffeur', 'CV Chauffeur Livreur')}</Link>
-              <Link to="/modele-cv-secretaire" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">{t('footer_section.tpl_secretaire', 'CV Secrétaire')}</Link>
-              <Link to="/modele-cv-vendeur" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">{t('footer_section.tpl_vendeur', 'CV Vendeur')}</Link>
+              <h4 className="font-black uppercase tracking-widest text-sm mb-1">Guides & Conseils</h4>
+              <Link to="/cv-ingenieur" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Ingénieur</Link>
+              <Link to="/cv-ingenieur-debutant" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Ingénieur Débutant</Link>
+              <Link to="/cv-etudiant" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Étudiant & Alternance</Link>
+              <Link to="/cv-sans-experience" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Sans Expérience</Link>
+              <Link to="/cv-debutant" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Débutant / 1er Emploi</Link>
+              <Link to="/cv-ats" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Compatible ATS</Link>
+              <Link to="/conseils-cv" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><BookOpen className="w-3 h-3" /> Tous nos conseils CV</Link>
+            </div>
+
+            {/* Modèles de CV */}
+            <div className="flex flex-col gap-2">
+              <h4 className="font-black uppercase tracking-widest text-sm mb-1">Modèles de CV</h4>
+              <Link to="/modele-cv-gratuit" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">Modèles de CV Gratuits</Link>
+              <Link to="/exemple-cv" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">Exemples de CV</Link>
+              <Link to="/cv-professionnel" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Professionnel 2026</Link>
+              <Link to="/cv-informatique" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Informatique & Dev</Link>
+              <Link to="/modele-cv-comptable-word" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Comptable</Link>
+              <Link to="/modele-cv-commercial" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Commercial</Link>
+              <Link to="/modele-cv-infirmiere" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">CV Infirmière</Link>
             </div>
 
             {/* Liens utiles */}
             <div className="flex flex-col gap-2">
-              <h4 className="font-black uppercase tracking-widest text-sm mb-1">{t('footer_section.useful_links', 'Liens utiles')}</h4>
-              <Link to="/conseils-cv" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><BookOpen className="w-3 h-3" /> {t('nav.cv_tips')}</Link>
-              <Link to="/blog" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><BookOpen className="w-3 h-3" /> Blog</Link>
-              <Link to="/plan-du-site" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><FilePlus2 className="w-3 h-3" /> {t('footer_section.sitemap_html', 'Plan du site (HTML)')}</Link>
-              <Link to="/a-propos" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><Info className="w-3 h-3" /> {t('nav.about')}</Link>
-              <Link to="/contact" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><Mail className="w-3 h-3" /> {t('nav.contact')}</Link>
-              <Link to="/mentions-legales" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">{t('footer.terms')}</Link>
-              <Link to="/confidentialite" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">{t('footer.privacy')}</Link>
+              <h4 className="font-black uppercase tracking-widest text-sm mb-1">Mon CV Go</h4>
+              <Link to="/blog" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><BookOpen className="w-3 h-3" /> Blog Emploi</Link>
+              <Link to="/plan-du-site" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><FilePlus2 className="w-3 h-3" /> Plan du site (HTML)</Link>
+              <Link to="/a-propos" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><Info className="w-3 h-3" /> À propos</Link>
+              <Link to="/contact" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><Mail className="w-3 h-3" /> Contact</Link>
+              <Link to="/mentions-legales" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">Mentions légales</Link>
+              <Link to="/confidentialite" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all">Politique de confidentialité</Link>
             </div>
           </div>
 
           {/* Bottom bar */}
           <div className="border-t-2 border-slate-900 pt-4 flex flex-col sm:flex-row items-center justify-between gap-2">
             <span className="font-black text-xs uppercase tracking-widest">&copy; 2026 Mon CV Go. {t('footer.rights')}</span>
-            <span className="text-xs font-bold opacity-70">Made with ❤️ for job seekers worldwide</span>
+            <span className="text-xs font-bold opacity-70">Créateur de CV gratuit en ligne · Sans inscription · Téléchargement PDF instantané</span>
           </div>
         </div>
       </footer>

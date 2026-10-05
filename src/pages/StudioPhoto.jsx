@@ -293,7 +293,11 @@ export default function StudioPhoto() {
 
   return (
     <>
-      <SEO title="Studio Photo CV Gratuit | Détourage IA & Retouche - Mon CV Go" description="Découpez et détourez votre photo de CV avec intelligence artificielle : Suppression de fond IA 1-clic, Recadrage Passeport, Cadres Corporate." url="https://moncvgo.com/studio-photo" />
+      <SEO 
+        title="Photo CV Professionnelle Gratuite | Mon CV Go" 
+        description="Créez une photo de CV professionnelle gratuitement : suppression d'arrière-plan par IA en 1 clic, recadrage format passeport, filtres studio et conseils pour vos candidatures et LinkedIn." 
+        url="https://moncvgo.com/studio-photo" 
+      />
       
       <div className="min-h-screen bg-slate-950 text-white pt-20 pb-16 px-4 sm:px-6 lg:px-8">
         <div className="max-w-6xl mx-auto">
@@ -305,7 +309,7 @@ export default function StudioPhoto() {
                 <ArrowLeft className="w-4 h-4" /> Retour à l'Éditeur CV
               </Link>
               <h1 className="text-3xl sm:text-4xl font-black uppercase tracking-tight flex items-center gap-3">
-                <Camera className="w-8 h-8 text-yellow-400" /> Studio Photo & Détourage IA
+                <Camera className="w-8 h-8 text-yellow-400" /> Photo CV professionnelle gratuite
               </h1>
               <p className="text-sm text-slate-400 mt-1 font-bold">
                 Détourage IA 1-Clic, Découpage Passeport, Cadres Corporate & Retouche Studio

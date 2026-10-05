@@ -232,31 +232,230 @@ app.post('/api/contact', async (req, res) => {
   }
 });
 
+// Trailing slash 301 normalization (e.g. /create/ -> /create, except root /)
+app.use((req, res, next) => {
+  if (req.path.length > 1 && req.path.endsWith('/')) {
+    const query = req.url.slice(req.path.length);
+    const safePath = req.path.slice(0, -1);
+    return res.redirect(301, safePath + query);
+  }
+  next();
+});
+
 // Serve static frontend files in production
 app.use(express.static(path.join(__dirname, 'dist')));
 
-// Fallback for React Router (Single Page Application) with intelligent SSG serving
+// Comprehensive SEO Metadata Map for Server-Side Pre-Rendering / Crawler Injection
+const SEO_ROUTES_MAP = {
+  '/': {
+    title: 'Créer un CV Gratuit en PDF | Mon CV Go',
+    description: 'Créez facilement et gratuitement votre CV en ligne et téléchargez-le en PDF en moins de 5 minutes. Modèles modernes, compatible ATS, sans inscription.',
+    url: 'https://moncvgo.com/'
+  },
+  '/create': {
+    title: 'Créateur de CV Gratuit en Ligne | Mon CV Go',
+    description: 'Créez votre CV gratuitement en ligne avec notre outil intuitif. Modèles professionnels, personnalisation facile, vérification score ATS et téléchargement PDF instantané sans inscription.',
+    url: 'https://moncvgo.com/create'
+  },
+  '/studio-photo': {
+    title: 'Photo CV Professionnelle Gratuite | Mon CV Go',
+    description: 'Créez une photo de CV professionnelle gratuitement : suppression d\'arrière-plan par IA en 1 clic, recadrage format passeport, filtres studio et conseils pour vos candidatures et LinkedIn.',
+    url: 'https://moncvgo.com/studio-photo'
+  },
+  '/portfolio': {
+    title: 'Créer un Portfolio Gratuit en Ligne | Mon CV Go',
+    description: 'Créez un portfolio en ligne gratuitement pour mettre en valeur vos projets, compétences et réalisations. Idéal pour étudiants, freelances et professionnels.',
+    url: 'https://moncvgo.com/portfolio'
+  },
+  '/lettre-motivation': {
+    title: 'Lettre de Motivation Gratuite | Créer en Ligne | Mon CV Go',
+    description: 'Créez une lettre de motivation gratuite et percutante en ligne. Modèles prêts à l\'emploi, assistant de rédaction et téléchargement PDF instantané sans inscription.',
+    url: 'https://moncvgo.com/lettre-motivation'
+  },
+  '/conseils-cv': {
+    title: 'Conseils CV : Exemples et Astuces pour Réussir son CV | Mon CV Go',
+    description: 'Conseils d\'experts pour réussir votre CV professionnel : structure idéale, optimisation ATS, compétences, accroches percutantes et modèles gratuits.',
+    url: 'https://moncvgo.com/conseils-cv'
+  },
+  '/espace-emploi': {
+    title: 'Espace Emploi : Suivre ses Candidatures | Mon CV Go',
+    description: 'Suivez vos candidatures avec un tableau Kanban interactif, analysez des offres d\'emploi, calculez votre salaire et optimisez votre CV gratuitement.',
+    url: 'https://moncvgo.com/espace-emploi'
+  },
+  '/plan-du-site': {
+    title: 'Plan du Site HTML | Mon CV Go - Navigation Complète',
+    description: 'Consultez l\'ensemble des pages, outils, modèles de CV et ressources de Mon CV Go sur notre plan du site HTML pour une navigation simple et rapide.',
+    url: 'https://moncvgo.com/plan-du-site'
+  },
+  '/cv-ingenieur': {
+    title: 'CV Ingénieur : Modèle, Exemple et Conseils | Mon CV Go',
+    description: 'Créez un CV d\'ingénieur percutant et professionnel. Modèle gratuit optimisé ATS, exemples d\'accroches, compétences techniques et conseils de recrutement.',
+    url: 'https://moncvgo.com/cv-ingenieur'
+  },
+  '/cv-ingenieur-debutant': {
+    title: 'CV Ingénieur Débutant : Exemple et Conseils | Mon CV Go',
+    description: 'Modèle de CV pour jeune ingénieur diplômé et débutant. Conseils d\'experts pour valoriser vos stages, projets d\'études, PFE et décrocher votre premier CDI.',
+    url: 'https://moncvgo.com/cv-ingenieur-debutant'
+  },
+  '/cv-etudiant': {
+    title: 'CV Étudiant : Modèle Gratuit, Exemples et Conseils | Mon CV Go',
+    description: 'Modèle de CV étudiant gratuit à télécharger en PDF. Idéal pour stage, alternance, job d\'été ou premier emploi étudiant. Conseils et exemples prêts à remplir.',
+    url: 'https://moncvgo.com/cv-etudiant'
+  },
+  '/cv-sans-experience': {
+    title: 'CV Sans Expérience : Modèle et Conseils | Mon CV Go',
+    description: 'Comment faire un CV quand on n\'a pas d\'expérience ? Guide complet, modèle gratuit et astuces pour décrocher un entretien sans historique professionnel.',
+    url: 'https://moncvgo.com/cv-sans-experience'
+  },
+  '/cv-debutant': {
+    title: 'CV Débutant : Modèle Gratuit et Conseils | Mon CV Go',
+    description: 'Créez votre CV débutant facilement. Modèle gratuit prêt à l\'emploi, exemples concrets pour premier emploi et astuces de recruteurs pour faire la différence.',
+    url: 'https://moncvgo.com/cv-debutant'
+  },
+  '/cv-ats': {
+    title: 'CV Compatible ATS : Guide et Modèles | Mon CV Go',
+    description: 'Comment créer un CV compatible avec les logiciels ATS de recrutement ? Conseils d\'experts, jauge de score en direct et modèles 100% optimisés.',
+    url: 'https://moncvgo.com/cv-ats'
+  },
+  '/exemple-cv': {
+    title: 'Exemples de CV Gratuits : Modèles à Télécharger | Mon CV Go',
+    description: 'Consultez des dizaines d\'exemples de CV gratuits rédigés par des experts. Exemples pour débutants, cadres, étudiants, ingénieurs et reconversions.',
+    url: 'https://moncvgo.com/exemple-cv'
+  },
+  '/modele-cv-gratuit': {
+    title: 'Modèles de CV Gratuits en Ligne | Mon CV Go',
+    description: 'Téléchargez les meilleurs modèles de CV gratuits en ligne. Designs professionnels, épurés, modernes et compatibles ATS. Export PDF instantané.',
+    url: 'https://moncvgo.com/modele-cv-gratuit'
+  },
+  '/cv-informatique': {
+    title: 'CV Informatique : Modèle et Conseils Développeur | Mon CV Go',
+    description: 'Créez un CV informatique percutant : développeur web, full-stack, DevOps, data engineer. Modèle gratuit optimisé pour les recruteurs tech et ESN.',
+    url: 'https://moncvgo.com/cv-informatique'
+  },
+  '/cv-professionnel': {
+    title: 'CV Professionnel : Modèles et Conseils de Recruteurs | Mon CV Go',
+    description: 'Comment faire un CV professionnel irréprochable ? Découvrez nos modèles certifiés par des experts en recrutement, conseils de mise en page et export PDF gratuit.',
+    url: 'https://moncvgo.com/cv-professionnel'
+  },
+  '/modele-cv-comptable-word': {
+    title: 'Modèle de CV Comptable Gratuit | Mon CV Go',
+    description: 'Téléchargez notre modèle de CV comptable gratuit au format PDF et Word. Structure professionnelle optimisée ATS avec exemples de compétences et accroches.',
+    url: 'https://moncvgo.com/modele-cv-comptable-word'
+  },
+  '/modele-cv-ingenieur': {
+    title: 'Modèle de CV Ingénieur Gratuit | Mon CV Go',
+    description: 'Créez un CV d\'ingénieur percutant et professionnel. Modèle gratuit optimisé ATS pour ingénieurs informatique, mécanique, BTP et génie civil.',
+    url: 'https://moncvgo.com/modele-cv-ingenieur'
+  },
+  '/modele-cv-debutant': {
+    title: 'Modèle de CV Débutant / Sans Expérience | Mon CV Go',
+    description: 'Modèle de CV gratuit pour débutants et personnes sans expérience. Mettez en avant vos compétences, votre formation et votre potentiel.',
+    url: 'https://moncvgo.com/modele-cv-debutant'
+  },
+  '/modele-cv-etudiant': {
+    title: 'Modèle de CV Étudiant Gratuit | Mon CV Go',
+    description: 'Modèle de CV étudiant gratuit pour stage, alternance et job d\'été. Structure moderne valorisant les formations et projets académiques.',
+    url: 'https://moncvgo.com/modele-cv-etudiant'
+  },
+  '/modele-cv-commercial': {
+    title: 'Modèle de CV Commercial Gratuit | Mon CV Go',
+    description: 'Modèle de CV gratuit pour commercial, technico-commercial et responsable des ventes. Valorisez votre portefeuille client et vos réussites.',
+    url: 'https://moncvgo.com/modele-cv-commercial'
+  },
+  '/modele-cv-developpeur': {
+    title: 'Modèle de CV Développeur Web Gratuit | Mon CV Go',
+    description: 'Modèle de CV gratuit pour développeur web, full-stack, frontend et backend. Mettez en avant votre stack technique et vos projets GitHub.',
+    url: 'https://moncvgo.com/modele-cv-developpeur'
+  },
+  '/modele-cv-designer': {
+    title: 'Modèle de CV Designer & UI/UX Gratuit | Mon CV Go',
+    description: 'Modèle de CV gratuit pour graphiste, designer UI/UX et directeur artistique. Présentation visuelle élégante pour mettre en valeur votre portfolio.',
+    url: 'https://moncvgo.com/modele-cv-designer'
+  },
+  '/modele-cv-infirmiere': {
+    title: 'Modèle de CV Infirmière & Soignant Gratuit | Mon CV Go',
+    description: 'Modèle de CV gratuit pour infirmiers, aides-soignants et professionnels de santé. Structure conforme aux exigences hospitalières et cliniques.',
+    url: 'https://moncvgo.com/modele-cv-infirmiere'
+  },
+  '/modele-cv-restauration': {
+    title: 'Modèle de CV Restauration & Hôtellerie Gratuit | Mon CV Go',
+    description: 'Modèle de CV gratuit pour serveur, cuisinier, barman et métiers de l\'hôtellerie-restauration. Valorisez votre dynamisme et sens du service.',
+    url: 'https://moncvgo.com/modele-cv-restauration'
+  },
+  '/modele-cv-chauffeur-livreur': {
+    title: 'Modèle de CV Chauffeur Livreur Gratuit | Mon CV Go',
+    description: 'Modèle de CV gratuit pour chauffeur livreur, coursier et conducteur routier. Mettez en avant vos permis, votre ponctualité et votre rigueur.',
+    url: 'https://moncvgo.com/modele-cv-chauffeur-livreur'
+  },
+  '/modele-cv-secretaire': {
+    title: 'Modèle de CV Secrétaire & Assistant Gratuit | Mon CV Go',
+    description: 'Modèle de CV gratuit pour secrétaire administrative, assistante de direction et secrétaire médicale. Valorisez vos compétences bureautiques.',
+    url: 'https://moncvgo.com/modele-cv-secretaire'
+  },
+  '/modele-cv-vendeur': {
+    title: 'Modèle de CV Vendeur Gratuit | Mon CV Go',
+    description: 'Modèle de CV gratuit pour vendeur en magasin, hôte de caisse et conseiller de vente. Valorisez votre relationnel client et dynamisme.',
+    url: 'https://moncvgo.com/modele-cv-vendeur'
+  },
+  '/blog': {
+    title: 'Blog Emploi : Conseils CV et Lettre de Motivation | Mon CV Go',
+    description: 'Lisez nos derniers articles et astuces pour rédiger un CV parfait, créer un portfolio et réussir vos entretiens d\'embauche.',
+    url: 'https://moncvgo.com/blog'
+  },
+  '/a-propos': {
+    title: 'À Propos de Mon CV Go | Générateur de CV Gratuit',
+    description: 'Découvrez l\'histoire et la mission de Mon CV Go, la plateforme gratuite pour créer son CV, sa lettre de motivation et son portfolio sans inscription.',
+    url: 'https://moncvgo.com/a-propos'
+  },
+  '/contact': {
+    title: 'Contactez l\'Équipe Mon CV Go | Support & Assistance',
+    description: 'Contactez l\'équipe Mon CV Go pour toute question, suggestion ou demande d\'assistance sur la création de votre CV en ligne.',
+    url: 'https://moncvgo.com/contact'
+  },
+  '/mentions-legales': {
+    title: 'Mentions Légales | Mon CV Go',
+    description: 'Mentions légales, conditions d\'utilisation et informations relatives à l\'éditeur du site Mon CV Go.',
+    url: 'https://moncvgo.com/mentions-legales'
+  },
+  '/confidentialite': {
+    title: 'Politique de Confidentialité | Mon CV Go',
+    description: 'Découvrez notre engagement strict pour la confidentialité de vos données personnelles. 100% privé, traitement local dans le navigateur.',
+    url: 'https://moncvgo.com/confidentialite'
+  }
+};
+
+// Fallback for React Router (Single Page Application) with Dynamic Crawler-Friendly Meta Tag Injection
 app.get(/(.*)/, (req, res) => {
-  const reqPath = req.params[0] || '';
-  const cleanPath = reqPath.replace(/^\//, '').replace(/\/$/, '');
-  
-  // Construct possible static pre-rendered HTML file paths
-  const possiblePaths = [];
-  if (cleanPath) {
-    possiblePaths.push(path.join(__dirname, 'dist', cleanPath, 'index.html'));
-    possiblePaths.push(path.join(__dirname, 'dist', cleanPath + '.html'));
-  } else {
-    possiblePaths.push(path.join(__dirname, 'dist', 'index.html'));
+  const reqPath = req.path;
+  const distHtmlPath = path.join(__dirname, 'dist', 'index.html');
+  const fallbackHtmlPath = path.join(__dirname, 'index.html');
+  const htmlFile = fs.existsSync(distHtmlPath) ? distHtmlPath : fallbackHtmlPath;
+
+  if (!fs.existsSync(htmlFile)) {
+    return res.status(404).send('Not Found');
   }
+
+  const meta = SEO_ROUTES_MAP[reqPath];
   
-  for (const p of possiblePaths) {
-    if (fs.existsSync(p)) {
-      return res.sendFile(p);
-    }
+  // Read HTML file
+  let html = fs.readFileSync(htmlFile, 'utf8');
+
+  if (meta) {
+    // Dynamically replace default title, meta description, and canonical for this route
+    html = html.replace(/<title>.*?<\/title>/i, `<title>${meta.title}</title>`);
+    html = html.replace(/<meta name="description" content=".*?"\/?>/i, `<meta name="description" content="${meta.description}">`);
+    html = html.replace(/<link rel="canonical" href=".*?"\/?>/i, `<link rel="canonical" href="${meta.url}">`);
+    
+    // Update Open Graph and Twitter tags if present
+    html = html.replace(/<meta property="og:title" content=".*?"\/?>/i, `<meta property="og:title" content="${meta.title}">`);
+    html = html.replace(/<meta property="og:description" content=".*?"\/?>/i, `<meta property="og:description" content="${meta.description}">`);
+    html = html.replace(/<meta property="og:url" content=".*?"\/?>/i, `<meta property="og:url" content="${meta.url}">`);
+    
+    return res.status(200).send(html);
   }
-  
-  // Default fallback to main SPA index.html
-  res.sendFile(path.join(__dirname, 'dist', 'index.html'));
+
+  // If path is unknown and not matching any static route, send HTML (React will show 404 component) with 404 status
+  return res.status(404).send(html);
 });
 
 app.listen(port, () => {

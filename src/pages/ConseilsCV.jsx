@@ -1,6 +1,26 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { motion } from 'framer-motion';
-import { BookOpen, CheckCircle, AlertTriangle, Target, Search, Edit3, Zap, Briefcase, Award } from 'lucide-react';
+import { Link } from 'react-router-dom';
+import { 
+  BookOpen, 
+  CheckCircle, 
+  AlertTriangle, 
+  Target, 
+  Search, 
+  Edit3, 
+  Zap, 
+  Briefcase, 
+  Award, 
+  ArrowRight, 
+  Sparkles, 
+  Layers, 
+  FilePlus2, 
+  GraduationCap, 
+  ShieldCheck, 
+  Code, 
+  PenLine, 
+  Camera 
+} from 'lucide-react';
 import SEO from '../components/SEO';
 import AdSenseUnit from '../components/AdSenseUnit';
 import SocialShare from '../components/SocialShare';
@@ -9,10 +29,11 @@ import { useTranslation } from 'react-i18next';
 export default function ConseilsCV() {
   const { i18n } = useTranslation();
   const lang = i18n.language || 'fr';
+  const [selectedCategory, setSelectedCategory] = useState('all');
 
   const containerVariants = {
     hidden: { opacity: 0 },
-    show: { opacity: 1, transition: { staggerChildren: 0.15 } }
+    show: { opacity: 1, transition: { staggerChildren: 0.1 } }
   };
 
   const itemVariants = {
@@ -20,426 +41,394 @@ export default function ConseilsCV() {
     show: { opacity: 1, y: 0, transition: { type: 'spring', stiffness: 300, damping: 24 } }
   };
 
-  const icons = [
-    <Target className="w-6 h-6 text-blue-500" />,
-    <Search className="w-6 h-6 text-emerald-500" />,
-    <Edit3 className="w-6 h-6 text-indigo-500" />,
-    <CheckCircle className="w-6 h-6 text-purple-500" />,
-    <Award className="w-6 h-6 text-yellow-500" />,
-    <Zap className="w-6 h-6 text-fuchsia-500" />,
-    <Briefcase className="w-6 h-6 text-orange-500" />
+  const CATEGORIES = [
+    { id: 'all', label: 'Tous les conseils', icon: Sparkles },
+    { id: 'structure', label: 'Créer un CV & Structure', icon: FilePlus2, link: '/modele-cv-gratuit' },
+    { id: 'debutant', label: 'CV Débutant & Sans Expérience', icon: GraduationCap, link: '/cv-debutant' },
+    { id: 'etudiant', label: 'CV Étudiant & Stage', icon: BookOpen, link: '/cv-etudiant' },
+    { id: 'ingenieur', label: 'CV Ingénieur & Technique', icon: Award, link: '/cv-ingenieur' },
+    { id: 'informatique', label: 'CV Informatique & Dev', icon: Code, link: '/cv-informatique' },
+    { id: 'ats', label: 'Logiciels ATS & Mots-clés', icon: ShieldCheck, link: '/cv-ats' },
+    { id: 'lettre', label: 'Lettre de Motivation', icon: PenLine, link: '/lettre-motivation' }
   ];
 
-  const adviceData = {
-    fr: {
-      seoTitle: "Conseils CV 2026 : Guide Ultime pour Réussir vos Candidatures",
-      seoDesc: "Découvrez nos conseils d'experts pour rédiger un CV percutant en 2026. Méthode étape par étape, mise en page et astuces pour décrocher plus d'entretiens.",
-      badge: "Guide Ultime 2026",
-      title1: "Guide Ultime : Comment Rédiger un",
-      title2: "CV qui Décroche des Entretiens",
-      desc: "Découvrez nos meilleures pratiques pour créer un CV qui attire l'œil des recruteurs et passe les filtres des logiciels ATS.",
-      do: "À FAIRE",
-      dont: "À ÉVITER",
-      sections: [
-        {
-          title: "La Règle d'Or : Clarté et Concision avant tout",
-          content: "Un recruteur passe en moyenne 6 à 10 secondes sur un CV lors de la première sélection. Utilisez des listes à puces pour détailler vos missions, privilégiez des phrases courtes et percutantes.",
-          dos: ["Limiter le CV à une ou deux pages", "Mettre les expériences récentes en premier", "Quantifier vos résultats"],
-          donts: ["Faire de longs paragraphes", "Ajouter des informations obsolètes", "Mettre une photo de vacances"]
-        },
-        {
-          title: "L'importance cruciale d'adapter votre CV à l'offre",
-          content: "C'est l'erreur numéro un : envoyer le même CV à 50 entreprises. Il vaut mieux envoyer 5 CVs ultra-ciblés. Repérez le vocabulaire utilisé et réintégrez ces mêmes mots-clés.",
-          dos: ["Créer un titre de CV ciblé", "Mettre en avant les compétences demandées", "Ajuster l'accroche pour chaque candidature"],
-          donts: ["Envoyer un document générique", "Mentir sur vos compétences", "Oublier de relire"]
-        },
-        {
-          title: "Le design : Le fond avant la forme, mais la forme compte",
-          content: "Un mauvais design donne une impression de négligence. À compétences égales, un CV clair, aéré et professionnel fera toujours la différence.",
-          dos: ["Choisir des polices modernes", "Garder beaucoup d'espaces blancs", "Aligner parfaitement les dates"],
-          donts: ["Utiliser trop de couleurs", "Mettre des jauges de compétences", "Utiliser des polices fantaisistes"]
-        },
-        {
-          title: "Les Soft Skills : Votre atout secret",
-          content: "Les compétences comportementales (soft skills) prouvent que vous êtes la personne avec qui l'équipe a envie de travailler. L'intelligence émotionnelle, l'adaptabilité et la communication sont très recherchées.",
-          dos: ["Illustrer vos soft skills par des exemples", "Demander des recommandations LinkedIn", "Préparer des anecdotes"],
-          donts: ["Lister des mots sans contexte", "Confondre traits de personnalité et soft skills", "Négliger ces compétences"]
-        },
-        {
-          title: "Réalisations vs Tâches : Prouvez votre valeur",
-          content: "La plupart se contentent de lister les tâches. Ce que le recruteur veut savoir, c'est si vous le faites BIEN. Transformez vos tâches en réalisations avec des chiffres.",
-          dos: ["Utiliser des données chiffrées", "Mentionner les objectifs atteints", "Préciser l'envergure des projets"],
-          donts: ["Faire un 'copier-coller' de votre fiche de poste", "Être flou", "S'attribuer le travail des autres"]
-        },
-        {
-          title: "L'impact psychologique des verbes d'action",
-          content: "Évitez les formules passives. Préférez commencer vos puces par un verbe d'action dynamique : Piloté, Créé, Développé, Optimisé. Cela donne une impression de leadership.",
-          dos: ["Commencer par un verbe d'action", "Varier le vocabulaire", "Utiliser des mots forts"],
-          donts: ["Utiliser le pronom 'Je'", "Employer des verbes faibles", "Mélanger les temps"]
-        },
-        {
-          title: "Le Portfolio : Le 'Game Changer' absolu",
-          content: "Un CV dit ce que vous savez faire. Un Portfolio le prouve. Mon CV Go vous permet de générer un Portfolio élégant en quelques clics.",
-          dos: ["Insérer un lien vers votre Portfolio", "Sélectionner vos meilleurs projets", "Expliquer votre rôle"],
-          donts: ["Ajouter un lien mort", "Mettre des projets scolaires basiques", "Laisser le recruteur chercher"]
-        }
-      ]
-    },
-    en: {
-      seoTitle: "Resume Advice: How to Write a Perfect Resume",
-      seoDesc: "Discover our expert tips for writing an impactful resume.",
-      badge: "Practical Guide",
-      title1: "Tips for writing an",
-      title2: "Impactful Resume",
-      desc: "Discover our best practices for creating a resume that catches the recruiter's eye and passes through ATS filters.",
-      do: "DO",
-      dont: "DON'T",
-      sections: [
-        {
-          title: "The Golden Rule: Clarity and Conciseness",
-          content: "A recruiter spends an average of 6 to 10 seconds on a resume. Use bullet points to detail your missions, favor short and punchy sentences.",
-          dos: ["Limit the resume to one or two pages", "Put recent experiences first", "Quantify your results"],
-          donts: ["Write long paragraphs", "Add outdated information", "Use a vacation photo"]
-        },
-        {
-          title: "The Crucial Importance of Tailoring",
-          content: "It's the number one mistake: sending the same resume to 50 companies. Identify the vocabulary used in the job offer and include those keywords.",
-          dos: ["Create a targeted resume title", "Highlight requested skills", "Adjust your summary for each application"],
-          donts: ["Send a generic document", "Lie about your skills", "Forget to proofread"]
-        },
-        {
-          title: "Design: Substance over Form, but Form matters",
-          content: "A bad design gives an impression of negligence. All else being equal, a clear, airy and professional resume will always make the difference.",
-          dos: ["Choose modern fonts", "Keep plenty of white space", "Align dates perfectly"],
-          donts: ["Use too many colors", "Use skill progress bars", "Use fancy fonts"]
-        },
-        {
-          title: "Soft Skills: Your Secret Weapon",
-          content: "Soft skills prove that you are the person the team wants to work with. Emotional intelligence, adaptability and communication are highly sought after.",
-          dos: ["Illustrate soft skills with examples", "Ask for LinkedIn recommendations", "Prepare anecdotes"],
-          donts: ["List buzzwords without context", "Confuse personality traits with soft skills", "Neglect these skills"]
-        },
-        {
-          title: "Achievements vs Tasks: Prove your Value",
-          content: "Most candidates just list tasks. The recruiter wants to know if you do them WELL. Turn your tasks into achievements with numbers.",
-          dos: ["Use numerical data", "Mention achieved goals", "Specify project scope"],
-          donts: ["Copy-paste your job description", "Be vague", "Take credit for others' work"]
-        },
-        {
-          title: "The Psychological Impact of Action Verbs",
-          content: "Avoid passive phrases. Start your bullet points with a dynamic action verb: Led, Created, Developed, Optimized. This gives an impression of leadership.",
-          dos: ["Start with an action verb", "Vary your vocabulary", "Use strong words"],
-          donts: ["Use the pronoun 'I'", "Use weak verbs", "Mix tenses illogically"]
-        },
-        {
-          title: "The Portfolio: The Absolute Game Changer",
-          content: "A resume says what you can do. A portfolio proves it. Mon CV Go allows you to generate an elegant Portfolio in just a few clicks.",
-          dos: ["Include a link to your Portfolio", "Select your best projects", "Explain your role"],
-          donts: ["Add a dead link", "Include basic school projects", "Make the recruiter search for it"]
-        }
-      ]
-    },
-    de: {
-      seoTitle: "Lebenslauf-Tipps: Wie verfasst man den perfekten Lebenslauf?",
-      seoDesc: "Entdecken Sie unsere Experten-Tipps für einen wirkungsvollen Lebenslauf.",
-      badge: "Praktischer Leitfaden",
-      title1: "Tipps für einen",
-      title2: "wirkungsvollen Lebenslauf",
-      desc: "Entdecken Sie die besten Methoden für einen Lebenslauf, der Personaler überzeugt und ATS-Filter besteht.",
-      do: "EMPFOHLEN",
-      dont: "VERMEIDEN",
-      sections: [
-        {
-          title: "Die goldene Regel: Klarheit und Prägnanz",
-          content: "Ein Personalverantwortlicher verbringt durchschnittlich 6 bis 10 Sekunden mit einem Lebenslauf. Nutzen Sie Stichpunkte und kurze, präzise Sätze.",
-          dos: ["Lebenslauf auf 1 bis 2 Seiten beschränken", "Aktuelle Erfahrungen zuerst nennen", "Ergebnisse mit Zahlen belegen"],
-          donts: ["Lange Absätze schreiben", "Veraltete Informationen einfügen", "Urlaubsfotos verwenden"]
-        },
-        {
-          title: "Anpassung an das Stellenangebot",
-          content: "Der häufigste Fehler: Der gleiche Lebenslauf an 50 Firmen. Passen Sie die Keywords genau an die Stellenausschreibung an.",
-          dos: ["Gezielten Lebenslauf-Titel wählen", "Geforderte Fähigkeiten hervorheben", "Einleitungssatz anpassen"],
-          donts: ["Generisches Dokument senden", "Bei Fähigkeiten lügen", "Korrekturlesen vergessen"]
-        },
-        {
-          title: "Design: Inhalt vor Form, aber die Form zählt",
-          content: "Ein schlechtes Design wirkt nachlässig. Ein übersichtlicher, professioneller Lebenslauf hebt Sie ab.",
-          dos: ["Moderne Schriftarten wählen", "Ausreichend Weißraum lassen", "Datumsangaben exakt ausrichten"],
-          donts: ["Zu viele Farben nutzen", "Fortschrittsbalken verwenden", "Verzierte Schriften nutzen"]
-        },
-        {
-          title: "Soft Skills: Ihre Geheimwaffe",
-          content: "Soft Skills zeigen, wie gut Sie im Team arbeiten. Emotionale Intelligenz und Anpassungsfähigkeit sind sehr gefragt.",
-          dos: ["Soft Skills mit Beispielen belegen", "LinkedIn-Empfehlungen einholen", "Konkrete Erlebnisse vorbereiten"],
-          donts: ["Schlagwörter ohne Kontext auflisten", "Persönlichkeit mit Skills verwechseln", "Soft Skills vernachlässigen"]
-        },
-        {
-          title: "Erfolge statt Aufgaben",
-          content: "Wandeln Sie reine Aufgabenbeschreibungen in quantifizierbare Erfolge mit konkreten Kennzahlen um.",
-          dos: ["Zahlen und Daten nutzen", "Erreichte Ziele nennen", "Projektumfang angeben"],
-          donts: ["Stellenbeschreibung kopieren", "Vage bleiben", "Fremde Erfolge beanspruchen"]
-        },
-        {
-          title: "Starke Aktionsverben verwenden",
-          content: "Beginnen Sie Stichpunkte mit aktiven Verben wie: Geleitet, Entwickelt, Optimiert, Erstellt.",
-          dos: ["Mit Aktionsverb starten", "Wortschatz variieren", "Aussagekräftige Begriffe nutzen"],
-          donts: ["Pronomen 'Ich' nutzen", "Schwache Verben nutzen", "Zeiten durcheinanderbringen"]
-        },
-        {
-          title: "Das Portfolio: Der entscheidende Vorteil",
-          content: "Ein Lebenslauf nennt Fähigkeiten – ein Portfolio beweist sie. Erstellen Sie mit Mon CV Go ein elegantes Portfolio.",
-          dos: ["Portfolio-Link einfügen", "Beste Projekte auswählen", "Eigene Rolle erklären"],
-          donts: ["Defekte Links einfügen", "Einfache Schulprojekte zeigen", "Recruiter suchen lassen"]
-        }
-      ]
-    },
-    ar: {
-      seoTitle: "نصائح السيرة الذاتية: كيف تكتب سيرة ذاتية مثالية",
-      seoDesc: "اكتشف نصائح خبرائنا لكتابة سيرة ذاتية مؤثرة.",
-      badge: "دليل عملي",
-      title1: "نصائح لكتابة",
-      title2: "سيرة ذاتية مؤثرة",
-      desc: "اكتشف أفضل الممارسات لإنشاء سيرة ذاتية تلفت انتباه مسؤولي التوظيف وتتجاوز فلاتر برامج (ATS).",
-      do: "افعل",
-      dont: "تجنب",
-      sections: [
-        {
-          title: "القاعدة الذهبية: الوضوح والإيجاز",
-          content: "يقضي مسؤول التوظيف في المتوسط 6 إلى 10 ثوانٍ على السيرة الذاتية. استخدم النقاط لتفصيل مهامك، وفضل الجمل القصيرة والقوية.",
-          dos: ["قصر السيرة الذاتية على صفحة أو صفحتين", "وضع التجارب الحديثة أولاً", "قياس نتائجك بالأرقام"],
-          donts: ["كتابة فقرات طويلة", "إضافة معلومات قديمة", "استخدام صورة إجازة"]
-        },
-        {
-          title: "الأهمية القصوى للتخصيص",
-          content: "إنه الخطأ الأول: إرسال نفس السيرة الذاتية إلى 50 شركة. حدد المفردات المستخدمة في عرض العمل وقم بتضمين تلك الكلمات الرئيسية.",
-          dos: ["إنشاء عنوان سيرة ذاتية مستهدف", "إبراز المهارات المطلوبة", "تعديل الملخص لكل طلب"],
-          donts: ["إرسال مستند عام", "الكذب بشأن مهاراتك", "نسيان المراجعة"]
-        },
-        {
-          title: "التصميم: المضمون قبل الشكل، لكن الشكل مهم",
-          content: "التصميم السيئ يعطي انطباعًا بالإهمال. مع تساوي المهارات، السيرة الذاتية الواضحة والاحترافية ستحدث دائمًا فرقًا.",
-          dos: ["اختيار خطوط حديثة", "ترك مساحات بيضاء كثيرة", "محاذاة التواريخ بدقة"],
-          donts: ["استخدام ألوان كثيرة", "استخدام أشرطة تقدم للمهارات", "استخدام خطوط مزخرفة"]
-        },
-        {
-          title: "المهارات الشخصية (Soft Skills): سلاحك السري",
-          content: "تثبت المهارات الشخصية أنك الشخص الذي يريد الفريق العمل معه. الذكاء العاطفي والتكيف والتواصل مطلوبة للغاية.",
-          dos: ["توضيح المهارات الشخصية بأمثلة", "طلب توصيات عبر LinkedIn", "تحضير قصص واقعية للمقابلة"],
-          donts: ["سرد كلمات رنانة بدون سياق", "الخلط بين سمات الشخصية والمهارات", "إهمال هذه المهارات"]
-        },
-        {
-          title: "الإنجازات مقابل المهام: أثبت قيمتك",
-          content: "يكتفي معظم المرشحين بسرد المهام. ما يريد مسؤول التوظيف معرفته هو ما إذا كنت تؤديها بشكل جيد. حول مهامك إلى إنجازات مع أرقام.",
-          dos: ["استخدام بيانات رقمية", "ذكر الأهداف المحققة", "تحديد حجم المشاريع"],
-          donts: ["نسخ ولصق الوصف الوظيفي", "أن تكون غامضًا", "نسب عمل الآخرين لنفسك"]
-        },
-        {
-          title: "التأثير النفسي لأفعال الحركة",
-          content: "تجنب العبارات السلبية. ابدأ نقاطك بفعل حركة ديناميكي: قدت، أنشأت، طورت، حسّنت. هذا يعطي انطباعًا بالقيادة.",
-          dos: ["البدء بفعل حركة", "تنويع المفردات", "استخدام كلمات قوية"],
-          donts: ["استخدام الضمير 'أنا'", "استخدام أفعال ضعيفة", "الخلط بين الأزمنة"]
-        },
-        {
-          title: "ملف الأعمال (البورتفوليو): يغير قواعد اللعبة",
-          content: "السيرة الذاتية تقول ما يمكنك القيام به. ملف الأعمال يثبت ذلك. يتيح لك Mon CV Go إنشاء ملف أعمال أنيق في بضع نقرات.",
-          dos: ["تضمين رابط لملف أعمالك", "اختيار أفضل مشاريعك", "شرح دورك"],
-          donts: ["إضافة رابط معطل", "تضمين مشاريع مدرسية أساسية", "جعل مسؤول التوظيف يبحث عنه"]
-        }
-      ]
-    }
-  };
+  const breadcrumbs = [
+    { name: 'Accueil', url: 'https://moncvgo.com/' },
+    { name: 'Conseils CV', url: 'https://moncvgo.com/conseils-cv' }
+  ];
 
-  const glossaryData = {
-    fr: {
-      title: "Le Glossaire du Chercheur d'Emploi",
-      desc: "Ne vous perdez plus dans le jargon des ressources humaines. Voici les définitions essentielles pour comprendre le recrutement moderne.",
-      terms: [
-        { term: "ATS (Applicant Tracking System)", def: "Logiciel utilisé par les recruteurs pour filtrer, trier et classer automatiquement les milliers de CV reçus selon des mots-clés spécifiques. Un CV non optimisé ATS ne sera jamais lu par un humain." },
-        { term: "Soft Skills (Compétences comportementales)", def: "Traits de personnalité, aptitudes sociales et intelligence émotionnelle (ex: leadership, empathie, gestion du stress). Elles sont devenues aussi importantes, voire plus, que les compétences techniques." },
-        { term: "Hard Skills (Compétences techniques)", def: "Savoir-faire métier, connaissances techniques acquises par la formation ou l'expérience (ex: maîtrise d'un logiciel, programmation, comptabilité)." },
-        { term: "Portfolio", def: "Dossier physique ou numérique (souvent un site web) qui rassemble des preuves de vos réalisations passées (maquettes, articles, code, photos). Indispensable dans les métiers créatifs et techniques." },
-        { term: "Mots-clés (Keywords)", def: "Termes spécifiques présents dans une offre d'emploi. Les recruteurs et les algorithmes ATS cherchent ces mots exacts dans votre CV pour déterminer votre pertinence." },
-        { term: "Onboarding", def: "Processus d'intégration d'un nouveau salarié au sein de l'entreprise (formations, présentation de l'équipe, prise en main des outils)." },
-        { term: "Marque Employeur", def: "L'image et la réputation d'une entreprise en tant qu'employeur. Elle détermine sa capacité à attirer et retenir les meilleurs talents." }
-      ]
+  const adviceSections = [
+    {
+      category: 'structure',
+      badge: 'Bases & Méthode',
+      title: 'Comment faire un CV professionnel en 2026 : La méthode étape par étape',
+      intro: 'Un recruteur passe en moyenne entre 6 et 10 secondes sur une première lecture. Votre document doit respecter une hiérarchie visuelle irréprochable et contenir les informations essentielles sans fioritures inutiles.',
+      dos: [
+        'Organiser le CV en rubriques claires : En-tête, Accroche, Expériences, Formations, Compétences, Langues.',
+        'Limiter votre document à une seule page pour les profils ayant moins de 10 ans d\'expérience.',
+        'Télécharger au format PDF pour conserver une mise en page parfaite sur tout appareil.',
+        'Utiliser des polices modernes et lisibles (Inter, Roboto, Arial) avec une taille de 10 à 12pt pour le texte courant.'
+      ],
+      donts: [
+        'Utiliser plus de 2 couleurs différentes ou des polices exotiques illisibles.',
+        'Mettre des jauges de compétences en pourcentage sans valeur normative.',
+        'Envoyer un fichier Word modifiable qui risque de se décaler.',
+        'Oublier de relire le document à tête reposée pour traquer la moindre faute d\'orthographe.'
+      ],
+      cta: { label: 'Créer mon CV maintenant', url: '/create' }
     },
-    en: {
-      title: "The Job Seeker's Glossary",
-      desc: "Don't get lost in HR jargon anymore. Here are the essential definitions to understand modern recruiting.",
-      terms: [
-        { term: "ATS (Applicant Tracking System)", def: "Software used by recruiters to automatically filter, sort, and rank thousands of received resumes based on specific keywords. A non-ATS-optimized resume will never be read by a human." },
-        { term: "Soft Skills", def: "Personality traits, social aptitudes, and emotional intelligence (e.g., leadership, empathy, stress management). They have become as important, if not more, than technical skills." },
-        { term: "Hard Skills", def: "Job-specific know-how, technical knowledge acquired through training or experience (e.g., software mastery, programming, accounting)." },
-        { term: "Portfolio", def: "A physical or digital folder (often a website) that gathers proof of your past achievements (mockups, articles, code, photos). Essential in creative and technical professions." },
-        { term: "Keywords", def: "Specific terms found in a job offer. Recruiters and ATS algorithms look for these exact words in your resume to determine your relevance." },
-        { term: "Onboarding", def: "The process of integrating a new employee into the company (training, team introduction, getting familiar with tools)." },
-        { term: "Employer Branding", def: "The image and reputation of a company as an employer. It determines its ability to attract and retain top talent." }
-      ]
+    {
+      category: 'accroche',
+      badge: 'Impact Immédiat',
+      title: 'Rédiger une phrase d\'accroche percutante et captivante',
+      intro: 'Le résumé de profil (ou phrase d\'accroche) est le premier texte lu après votre nom. Situé sous votre titre de métier, il synthétise en 3 à 4 lignes votre valeur ajoutée, votre spécialité et vos objectifs.',
+      dos: [
+        'Commencer par votre titre de poste et vos années d\'expérience.',
+        'Mentionner vos spécialisations clés ou votre secteur de prédilection.',
+        'Citer une réussite concrète ou un résultat marquant chiffré.',
+        'Préciser ce que vous recherchez et ce que vous apportez à l\'entreprise.'
+      ],
+      donts: [
+        'Utiliser des formules creuses comme "Très motivé et dynamique, je cherche un emploi".',
+        'Rédiger un pavé de plus de 5 lignes qui alourdit l\'en-tête.',
+        'Oublier de personnaliser l\'accroche en fonction de l\'offre postulée.'
+      ],
+      cta: { label: 'Voir des exemples d\'accroches', url: '/exemple-cv' }
     },
-    de: {
-      title: "Das Glossar für Arbeitssuchende",
-      desc: "Keine Verwirrung mehr bei HR-Fachbegriffen. Hier sind die wichtigsten Definitionen für das moderne Recruiting.",
-      terms: [
-        { term: "ATS (Applicant Tracking System)", def: "Software zur automatischen Vorfilterung und Sortierung von Bewerbungen anhand von Schlüsselwörtern. Nicht ATS-optimierte Bewerbungen werden oft gar nicht von Menschen gelesen." },
-        { term: "Soft Skills (Soziale Kompetenzen)", def: "Persönlichkeitseigenschaften und soziale Fähigkeiten (z. B. Führungskompetenz, Empathie, Stressresistenz)." },
-        { term: "Hard Skills (Fachkompetenzen)", def: "Fachwissen und technische Fähigkeiten, die durch Ausbildung oder Berufserfahrung erworben wurden (z. B. Softwarekenntnisse, Programmierung)." },
-        { term: "Portfolio", def: "Digitale oder gedruckte Mappe zur Präsentation eigener Arbeitsproben (z. B. Designentwürfe, Artikel, Code-Beispiele)." },
-        { term: "Schlüsselwörter (Keywords)", def: "Spezifische Begriffe aus der Stellenanzeige. Recruiter und ATS-Systeme suchen genau danach im Lebenslauf." },
-        { term: "Onboarding", def: "Der Einarbeitungsprozess neuer Mitarbeiter im Unternehmen." },
-        { term: "Arbeitgebermarke (Employer Branding)", def: "Das Ansehen eines Unternehmens als Arbeitgeber zur Gewinnung und Bindung von Talenten." }
-      ]
+    {
+      category: 'experience',
+      badge: 'Preuve par les Faits',
+      title: 'Expériences professionnelles : La méthode CAR (Contexte - Action - Résultat)',
+      intro: 'Les recruteurs ne cherchent pas à lire une simple fiche de poste recopiée. Ils veulent comprendre quel a été votre impact réel. Chaque puce de votre CV doit démontrer une valeur créée.',
+      dos: [
+        'Utiliser la formule : Verbe d\'action fort + Tâche précise + Résultat mesuré.',
+        'Quantifier avec des chiffres : pourcentages d\'amélioration, chiffre d\'affaires généré, budget géré, équipe encadrée.',
+        'Ordonner vos expériences par ordre anti-chronologique strict (la plus récente en haut).',
+        'Indiquer clairement les technologies, outils ou méthodes utilisés pour chaque projet.'
+      ],
+      donts: [
+        'Lister passivement des tâches quotidiennes ("Répondre au téléphone", "Faire des réunions").',
+        'Laisser des trous inexpliqués de plusieurs années sans justification claire.',
+        'Utiliser le pronom "Je" dans les listes à puces.'
+      ],
+      cta: { label: 'Modèles de CV Gratuits', url: '/modele-cv-gratuit' }
     },
-    ar: {
-      title: "معجم الباحث عن عمل",
-      desc: "لا تضيع في مصطلحات الموارد البشرية بعد الآن. إليك التعريفات الأساسية لفهم التوظيف الحديث.",
-      terms: [
-        { term: "ATS (نظام تتبع المتقدمين)", def: "برنامج يستخدمه مسؤولو التوظيف لتصفية وفرز وتصنيف آلاف السير الذاتية المستلمة تلقائيًا بناءً على كلمات رئيسية محددة. السيرة الذاتية غير المحسنة لـ ATS لن يقرأها أي إنسان أبدًا." },
-        { term: "المهارات السلوكية (Soft Skills)", def: "السمات الشخصية والكفاءات الاجتماعية والذكاء العاطفي (مثل القيادة والتعاطف وإدارة الإجهاد). أصبحت مهمة، إن لم تكن أكثر، من المهارات الفنية." },
-        { term: "المهارات الفنية (Hard Skills)", def: "المعرفة الخاصة بالوظيفة، المعرفة الفنية المكتسبة من خلال التدريب أو الخبرة (مثل إتقان البرامج، والبرمجة، والمحاسبة)." },
-        { term: "ملف الأعمال (Portfolio)", def: "مجلد مادي أو رقمي (غالبًا موقع ويب) يجمع أدلة على إنجازاتك السابقة (النماذج، المقالات، الكود، الصور). ضروري في المهن الإبداعية والتقنية." },
-        { term: "الكلمات الرئيسية (Keywords)", def: "مصطلحات محددة توجد في عرض العمل. يبحث مسؤولو التوظيف وخوارزميات ATS عن هذه الكلمات الدقيقة في سيرتك الذاتية لتحديد مدى ملاءمتك." },
-        { term: "الدمج (Onboarding)", def: "عملية دمج موظف جديد في الشركة (التدريب، تقديم الفريق، التعرف على الأدوات)." },
-        { term: "العلامة التجارية لصاحب العمل", def: "صورة وسمعة الشركة كصاحب عمل. تحدد قدرتها على جذب أفضل المواهب والاحتفاظ بها." }
-      ]
+    {
+      category: 'competences',
+      badge: 'Hard & Soft Skills',
+      title: 'Compétences : Trouver le juste équilibre entre Hard Skills et Soft Skills',
+      intro: 'Les compétences techniques (Hard Skills) permettent de passer les premiers filtres de sélection, tandis que les compétences comportementales (Soft Skills) vous font réussir l\'entretien d\'embauche.',
+      dos: [
+        'Séparer distinctement les compétences techniques (outils, langages, normes) des qualités relationnelles.',
+        'Adapter vos compétences aux exigences spécifiques de l\'offre d\'emploi.',
+        'Préciser votre niveau sur les logiciels clés (Notions, Intermédiaire, Avancé, Expert).',
+        'Illustrer vos soft skills par des exemples concrets lors de l\'entretien.'
+      ],
+      donts: [
+        'Aligner 40 mots-clés sans hiérarchie ni cohérence avec le poste.',
+        'Déclarer être "Expert" sur un outil que vous n\'avez utilisé qu\'une seule fois.',
+        'Négliger les soft skills indispensables comme l\'adaptabilité, la communication et l\'esprit d\'équipe.'
+      ],
+      cta: { label: 'Optimiser mes compétences ATS', url: '/cv-ats' }
+    },
+    {
+      category: 'ats',
+      badge: 'Technologie RH',
+      title: 'Optimisation ATS : Comment franchir les logiciels de tri automatique',
+      intro: 'Plus de 80% des grandes entreprises filtrent les candidatures via des logiciels ATS. Si votre CV n\'est pas lisible par ces robots, il sera rejeté avant d\'arriver sur le bureau du recruteur.',
+      dos: [
+        'Reprendre les termes exacts et mots-clés mentionnés dans l\'annonce.',
+        'Utiliser des titres de sections universels (Expérience professionnelle, Formation, Compétences).',
+        'Tester votre score de complétude avec notre jauge de Score ATS en direct sur MonCVGo.',
+        'Générer un PDF vectoriel propre sans texte incrusté dans des images.'
+      ],
+      donts: [
+        'Mettre des mots-clés en texte blanc caché (sanctionné immédiatement par les algorithmes).',
+        'Placer des données capitales exclusivement dans des en-têtes ou pieds de page.',
+        'Utiliser des tableaux imbriqués ou des colonnes graphiques complexes non reconnues.'
+      ],
+      cta: { label: 'Guide complet CV ATS', url: '/cv-ats' }
+    },
+    {
+      category: 'debutant',
+      badge: 'Jeunes & Sans Expérience',
+      title: 'Réussir son CV quand on est débutant ou sans expérience préalable',
+      intro: 'Tout le monde commence un jour. Même sans un long historique professionnel, vos études, vos projets associatifs, vos stages et vos centres d\'intérêt témoignent de votre sérieux et de votre dynamisme.',
+      dos: [
+        'Placer la rubrique Formations et Projets académiques en haut du document.',
+        'Détailler vos projets d\'école, mémoires, exposés ou réalisations associatives.',
+        'Mettre en avant les compétences acquises lors de jobs étudiants (sens du service, ponctualité, rigueur).',
+        'Soigner particulièrement l\'accroche et joindre une lettre de motivation personnalisée.'
+      ],
+      donts: [
+        'Laisser le CV à moitié vide : comblez avec vos compétences informatiques, linguistiques et centres d\'intérêt précis.',
+        'Inventer des expériences factices qui vous mettront en difficulté lors de l\'entretien.',
+        'Minimiser vos stages de découverte.'
+      ],
+      cta: { label: 'Guide CV Sans Expérience', url: '/cv-sans-experience' }
+    },
+    {
+      category: 'lettre',
+      badge: 'Candidature Complète',
+      title: 'Comment rédiger une lettre de motivation qui donne envie de lire votre CV',
+      intro: 'La lettre de motivation apporte le contexte humain, explique vos motivations profondes et montre votre compréhension des enjeux de l\'entreprise convoitée.',
+      dos: [
+        'Structurer la lettre selon le schéma classique "Vous - Moi - Nous".',
+        'Montrer que vous vous êtes renseigné sur l\'entreprise, ses valeurs et ses projets récents.',
+        'Rester concis et percutant : une seule page de 3 à 4 paragraphes bien aérés.',
+        'Terminer par une proposition d\'entretien dynamique.'
+      ],
+      donts: [
+        'Répéter mot pour mot le contenu de votre CV.',
+        'Utiliser une lettre type impersonnelle sans changer le nom de l\'entreprise.',
+        'Faire une lettre trop longue qui décourage la lecture.'
+      ],
+      cta: { label: 'Générateur de Lettre de Motivation', url: '/lettre-motivation' }
+    },
+    {
+      category: 'erreurs',
+      badge: 'Checklist Finale',
+      title: 'Les 7 erreurs fatales à éliminer avant d\'envoyer votre candidature',
+      intro: 'Faites une vérification minutieuse avant chaque envoi. Une simple erreur d\'inattention peut réduire à néant des heures de travail.',
+      dos: [
+        'Vérifier que votre numéro de téléphone et votre adresse email sont 100% exacts.',
+        'Vérifier que les dates d\'expériences sont cohérentes et sans chevauchement illogique.',
+        'Exporter au nom de fichier clair : "CV_Prenom_Nom_Poste.pdf".',
+        'Faire relire par une tierce personne pour traquer les coquilles.'
+      ],
+      donts: [
+        'Nommer votre fichier "CV_version_finale_def_2.pdf".',
+        'Mettre une photo de mauvaise qualité, sombre ou prise en soirée.',
+        'Envoyer la même candidature à 50 entreprises sans adaptation.'
+      ],
+      cta: { label: 'Créer mon CV parfait', url: '/create' }
     }
-  };
+  ];
 
-  const t = adviceData[lang] || adviceData['fr'];
+  const glossaryTerms = [
+    { term: "ATS (Applicant Tracking System)", def: "Logiciel de gestion et de tri automatique des candidatures utilisé par les services RH pour filtrer les CV selon des mots-clés spécifiques." },
+    { term: "Hard Skills", def: "Compétences techniques professionnelles acquises par la formation ou l'expérience (ex: programmation, comptabilité, CAO, langues)." },
+    { term: "Soft Skills", def: "Compétences comportementales et relationnelles (ex: esprit d'équipe, intelligence émotionnelle, adaptabilité, leadership)." },
+    { term: "Méthode CAR", def: "Technique de rédaction (Contexte, Action, Résultat) permettant de prouver l'impact de vos réalisations avec des données chiffrées." },
+    { term: "Accroche / Profil", def: "Court paragraphe de 3 à 4 lignes situé sous l'en-tête résumant votre proposition de valeur pour le poste ciblé." },
+    { term: "Portfolio", def: "Présentation visuelle de vos réalisations concrètes (projets web, maquettes, plans, articles) pour appuyer votre CV." }
+  ];
+
+  const filteredSections = selectedCategory === 'all' 
+    ? adviceSections 
+    : adviceSections.filter(s => s.category === selectedCategory || selectedCategory === 'all');
 
   return (
-    <div dir={lang === 'ar' ? 'rtl' : 'ltr'}>
-    <SEO title={t.seoTitle} description={t.seoDesc} url="https://moncvgo.com/conseils-cv" />
-    <div className="bg-slate-50 dark:bg-[#0B1120] min-h-[calc(100vh-4rem)] relative overflow-hidden pb-20">
-      
-      <div className="absolute top-0 right-0 w-[600px] h-[600px] bg-blue-600/5 dark:bg-blue-600/10 blur-[150px] rounded-full pointer-events-none -z-10"></div>
-      <div className="absolute top-40 left-0 w-[500px] h-[500px] bg-emerald-500/5 dark:bg-emerald-500/10 blur-[120px] rounded-full pointer-events-none -z-10"></div>
+    <>
+      <SEO 
+        title="Conseils CV : Exemples et Astuces pour Réussir son CV | Mon CV Go" 
+        description="Conseils d'experts pour réussir votre CV professionnel : structure idéale, optimisation ATS, compétences, accroches percutantes et modèles gratuits." 
+        url="https://moncvgo.com/conseils-cv"
+        breadcrumbs={breadcrumbs}
+      />
 
-      <section className="pt-16 pb-12 sm:pt-24 sm:pb-16 px-4">
-        <motion.div 
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          className="max-w-4xl mx-auto text-center"
-        >
-          <div className="inline-flex items-center gap-2 px-4 py-2 bg-yellow-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border brutal-shadow mb-6 transform -rotate-2">
-            <BookOpen className="w-4 h-4 text-slate-900" />
-            {t.badge}
-          </div>
-          <h1 className="text-5xl sm:text-6xl font-black text-slate-900 dark:text-white tracking-tighter uppercase">
-            {t.title1} <span className="bg-cyan-400 text-slate-900 px-3 py-1 mx-2 brutal-border transform rotate-2 inline-block">{t.title2}</span>
-          </h1>
-          <p className="mt-8 text-xl text-slate-700 dark:text-slate-300 font-bold max-w-2xl mx-auto">
-            {t.desc}
-          </p>
-        </motion.div>
-      </section>
+      <div className="bg-slate-50 dark:bg-[#0B1120] min-h-screen pt-12 pb-20">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+          
+          {/* Breadcrumbs */}
+          <nav aria-label="Breadcrumb" className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 mb-6">
+            <Link to="/" className="hover:text-cyan-500 transition-colors">Accueil</Link>
+            <span>/</span>
+            <span className="text-slate-900 dark:text-white">Conseils CV</span>
+          </nav>
 
-      <AdSenseUnit />
-
-      <section className="max-w-6xl xl:max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 mt-8">
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          animate="show"
-          className="grid gap-8"
-        >
-          {t.sections.map((section, idx) => (
-            <motion.div 
-              key={idx} 
-              variants={itemVariants}
-              className={`bg-white dark:bg-slate-900 p-6 sm:p-8 brutal-border brutal-shadow-lg transition-smooth brutal-hover ${idx % 2 === 0 ? 'transform rotate-1' : 'transform -rotate-1'}`}
-            >
-              <div className="flex flex-col sm:flex-row gap-6 items-start">
-                <div className={`w-16 h-16 sm:w-20 sm:h-20 shrink-0 flex items-center justify-center brutal-border brutal-shadow transform -rotate-3 ${idx % 3 === 0 ? 'bg-rose-200' : idx % 3 === 1 ? 'bg-amber-200' : 'bg-sky-200'}`}>
-                  {React.cloneElement(icons[idx % icons.length], { className: "w-8 h-8 sm:w-10 sm:h-10 text-slate-900", strokeWidth: 2.5 })}
-                </div>
-                <div className="flex-grow">
-                  <h2 className="text-3xl sm:text-4xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-4">{section.title}</h2>
-                  <p className="text-lg sm:text-xl text-slate-700 dark:text-slate-300 font-medium leading-loose mb-8">
-                    {section.content}
-                  </p>
-                  
-                  <div className="grid sm:grid-cols-2 gap-6 mt-6">
-                    <div className="bg-sky-100 dark:bg-sky-900/40 brutal-border p-6 text-slate-900 dark:text-white transform rotate-1">
-                      <h3 className="text-lg sm:text-xl font-black uppercase tracking-widest mb-4 flex items-center gap-2 text-sky-700 dark:text-sky-300">
-                        <CheckCircle className="w-6 h-6" strokeWidth={3} /> {t.do}
-                      </h3>
-                      <ul className="space-y-4">
-                        {section.dos.map((item, i) => (
-                          <li key={i} className="text-base sm:text-lg font-medium flex items-start gap-3 leading-relaxed">
-                            <span className="w-2 h-2 brutal-border bg-sky-500 mt-2 shrink-0"></span> {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    <div className="bg-rose-100 dark:bg-rose-900/40 brutal-border p-6 text-slate-900 dark:text-white transform -rotate-1">
-                      <h3 className="text-lg sm:text-xl font-black uppercase tracking-widest mb-4 flex items-center gap-2 text-rose-700 dark:text-rose-300">
-                        <AlertTriangle className="w-6 h-6" strokeWidth={3} /> {t.dont}
-                      </h3>
-                      <ul className="space-y-4">
-                        {section.donts.map((item, i) => (
-                          <li key={i} className="text-base sm:text-lg font-medium flex items-start gap-3 leading-relaxed">
-                            <span className="w-2 h-2 brutal-border bg-rose-500 mt-2 shrink-0"></span> {item}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </motion.div>
-          ))}
-        </motion.div>
-
-        {/* Model Links Section */}
-        <div className="mt-16 bg-gradient-to-r from-yellow-400 via-pink-400 to-cyan-400 p-1 brutal-border brutal-shadow-lg">
-          <div className="bg-white dark:bg-slate-900 p-8 text-center">
-            <h3 className="text-2xl font-black uppercase text-slate-900 dark:text-white mb-4">
-              Explorez nos modèles de CV gratuits par métier
-            </h3>
-            <p className="text-slate-700 dark:text-slate-300 font-bold mb-6 max-w-2xl mx-auto">
-              Chaque métier a ses exigences. Choisissez un modèle de CV pré-rempli et optimisé ATS adapté à votre secteur d'activité.
+          {/* Hero Header */}
+          <div className="bg-white dark:bg-slate-900 brutal-border brutal-shadow p-6 sm:p-10 md:p-12 mb-10 text-center relative overflow-hidden">
+            <div className="inline-flex items-center gap-2 px-3 py-1.5 bg-yellow-400 text-slate-900 font-black text-xs uppercase tracking-widest brutal-border mb-6 transform -rotate-1">
+              <BookOpen className="w-4 h-4 text-slate-900" />
+              Guide Éditorial Recrutement 2026
+            </div>
+            
+            <h1 className="text-3xl sm:text-5xl md:text-6xl font-black text-slate-900 dark:text-white uppercase tracking-tight mb-6">
+              Conseils CV : réussir son CV professionnel
+            </h1>
+            
+            <p className="text-base sm:text-lg md:text-xl text-slate-700 dark:text-slate-300 font-bold max-w-3xl mx-auto leading-relaxed mb-8">
+              Découvrez les meilleures pratiques et astuces de recruteurs pour concevoir un Curriculum Vitae qui attire l'attention, passe les filtres ATS et débouche sur des entretiens d'embauche.
             </p>
+
             <div className="flex flex-wrap justify-center gap-3">
-              <Link to="/modele-cv-comptable-word" className="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black text-xs uppercase tracking-wider brutal-border hover:bg-yellow-400 dark:hover:bg-yellow-400 dark:hover:text-slate-900 transition-colors">Modèle CV Comptable</Link>
-              <Link to="/modele-cv-developpeur" className="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black text-xs uppercase tracking-wider brutal-border hover:bg-cyan-400 dark:hover:bg-cyan-400 dark:hover:text-slate-900 transition-colors">Modèle CV Développeur</Link>
-              <Link to="/modele-cv-etudiant" className="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black text-xs uppercase tracking-wider brutal-border hover:bg-pink-400 dark:hover:bg-pink-400 dark:hover:text-slate-900 transition-colors">Modèle CV Étudiant</Link>
-              <Link to="/modele-cv-commercial" className="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black text-xs uppercase tracking-wider brutal-border hover:bg-yellow-400 dark:hover:bg-yellow-400 dark:hover:text-slate-900 transition-colors">Modèle CV Commercial</Link>
-              <Link to="/modele-cv-infirmiere" className="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black text-xs uppercase tracking-wider brutal-border hover:bg-emerald-400 dark:hover:bg-emerald-400 dark:hover:text-slate-900 transition-colors">Modèle CV Infirmière</Link>
-              <Link to="/modele-cv-ingenieur" className="px-4 py-2 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white font-black text-xs uppercase tracking-wider brutal-border hover:bg-purple-400 dark:hover:bg-purple-400 dark:hover:text-slate-900 transition-colors">Modèle CV Ingénieur</Link>
+              <Link to="/create" className="px-6 py-3.5 bg-yellow-400 text-slate-900 font-black uppercase text-xs sm:text-sm tracking-wider brutal-border brutal-shadow brutal-hover flex items-center gap-2 transform -rotate-1">
+                <FilePlus2 className="w-4 h-4" />
+                Créer mon CV gratuitement
+              </Link>
+              <Link to="/modele-cv-gratuit" className="px-6 py-3.5 bg-cyan-400 text-slate-900 font-black uppercase text-xs sm:text-sm tracking-wider brutal-border brutal-shadow brutal-hover flex items-center gap-2 transform rotate-1">
+                <Layers className="w-4 h-4" />
+                Voir les modèles de CV
+              </Link>
             </div>
           </div>
-        </div>
 
-        {/* Share Section */}
-        <div className="mt-12 bg-white dark:bg-slate-900 p-8 brutal-border brutal-shadow flex flex-col items-center justify-center text-center">
-          <h3 className="text-2xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-6">Partagez ce guide avec votre réseau</h3>
-          <SocialShare url="https://moncvgo.com/conseils-cv" title={t.seoTitle} />
-        </div>
+          <AdSenseUnit />
 
-        {/* Glossary Section */}
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          animate="show"
-          className="mt-20 bg-white dark:bg-slate-900 p-8 sm:p-12 brutal-border brutal-shadow-lg"
-        >
-          <div className="text-center mb-12">
-            <h2 className="text-3xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-4">{glossaryData[lang]?.title || glossaryData['fr'].title}</h2>
-            <p className="text-slate-700 dark:text-slate-300 font-bold max-w-2xl mx-auto text-lg">{glossaryData[lang]?.desc || glossaryData['fr'].desc}</p>
+          {/* Category Navigation Pills */}
+          <div className="my-10 bg-white dark:bg-slate-900 p-4 sm:p-6 brutal-border brutal-shadow">
+            <h2 className="text-sm font-black uppercase tracking-wider text-slate-900 dark:text-white mb-4 flex items-center gap-2">
+              <Target className="w-4 h-4 text-pink-500" />
+              Explorer les catégories de conseils :
+            </h2>
+            <div className="flex flex-wrap gap-2 sm:gap-3">
+              {CATEGORIES.map(cat => {
+                const Icon = cat.icon;
+                const isSelected = selectedCategory === cat.id;
+                return (
+                  <button
+                    key={cat.id}
+                    onClick={() => setSelectedCategory(cat.id)}
+                    className={`px-3 sm:px-4 py-2 text-xs font-black uppercase tracking-wider brutal-border transition-all flex items-center gap-2 ${
+                      isSelected 
+                        ? 'bg-yellow-400 text-slate-900 brutal-shadow transform -translate-y-0.5' 
+                        : 'bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700'
+                    }`}
+                  >
+                    <Icon className="w-3.5 h-3.5" />
+                    <span>{cat.label}</span>
+                  </button>
+                );
+              })}
+            </div>
           </div>
-          <div className="grid md:grid-cols-2 gap-8">
-            {(glossaryData[lang]?.terms || glossaryData['fr'].terms).map((item, idx) => (
-              <div key={idx} className="bg-slate-50 dark:bg-slate-800 p-6 brutal-border transform hover:-translate-y-1 transition-transform">
-                <h3 className="text-xl font-black text-indigo-600 dark:text-indigo-400 mb-3">{item.term}</h3>
-                <p className="text-slate-700 dark:text-slate-300 leading-relaxed font-medium">{item.def}</p>
-              </div>
+
+          {/* Editorial Guides Grid */}
+          <div className="grid gap-8">
+            {filteredSections.map((sec, idx) => (
+              <article key={idx} className="bg-white dark:bg-slate-900 p-6 sm:p-8 md:p-10 brutal-border brutal-shadow">
+                <div className="flex flex-wrap items-center justify-between gap-2 mb-4">
+                  <span className="px-2.5 py-1 bg-pink-100 dark:bg-pink-900/40 text-pink-700 dark:text-pink-300 font-black text-xs uppercase tracking-wider rounded">
+                    {sec.badge}
+                  </span>
+                  {sec.cta && (
+                    <Link to={sec.cta.url} className="text-xs font-black text-blue-600 dark:text-blue-400 hover:underline flex items-center gap-1">
+                      {sec.cta.label} <ArrowRight className="w-3 h-3" />
+                    </Link>
+                  )}
+                </div>
+
+                <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-4">
+                  {sec.title}
+                </h2>
+
+                <p className="text-base sm:text-lg text-slate-700 dark:text-slate-300 font-medium leading-relaxed mb-6">
+                  {sec.intro}
+                </p>
+
+                <div className="grid sm:grid-cols-2 gap-6 mt-6">
+                  {/* DO's */}
+                  <div className="bg-emerald-50 dark:bg-emerald-950/30 p-5 brutal-border border-emerald-500">
+                    <h3 className="text-sm font-black uppercase tracking-wider text-emerald-800 dark:text-emerald-300 flex items-center gap-2 mb-3">
+                      <CheckCircle className="w-4 h-4 text-emerald-600" strokeWidth={3} />
+                      À FAIRE (Bonnes Pratiques)
+                    </h3>
+                    <ul className="space-y-2.5 text-xs sm:text-sm text-slate-800 dark:text-slate-200 font-medium">
+                      {sec.dos.map((item, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <span className="text-emerald-600 font-black mt-0.5">✓</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* DONT's */}
+                  <div className="bg-rose-50 dark:bg-rose-950/30 p-5 brutal-border border-rose-500">
+                    <h3 className="text-sm font-black uppercase tracking-wider text-rose-800 dark:text-rose-300 flex items-center gap-2 mb-3">
+                      <AlertTriangle className="w-4 h-4 text-rose-600" strokeWidth={3} />
+                      À ÉVITER (Erreurs Fréquentes)
+                    </h3>
+                    <ul className="space-y-2.5 text-xs sm:text-sm text-slate-800 dark:text-slate-200 font-medium">
+                      {sec.donts.map((item, i) => (
+                        <li key={i} className="flex items-start gap-2">
+                          <span className="text-rose-600 font-black mt-0.5">✕</span>
+                          <span>{item}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                </div>
+              </article>
             ))}
           </div>
-        </motion.div>
-      </section>
 
-    </div>
-    </div>
+          {/* Specialized Pages Hub Section */}
+          <section className="my-16 bg-gradient-to-r from-yellow-400 via-pink-400 to-cyan-400 p-1 brutal-border brutal-shadow">
+            <div className="bg-white dark:bg-slate-900 p-6 sm:p-10">
+              <h2 className="text-2xl sm:text-3xl font-black uppercase text-slate-900 dark:text-white mb-4 text-center">
+                Guides spécialisés par profil et situation
+              </h2>
+              <p className="text-slate-600 dark:text-slate-400 font-medium text-center max-w-2xl mx-auto mb-8 text-sm sm:text-base">
+                Chaque profil possède ses spécificités. Consultez nos dossiers complets rédigés pour vous guider pas à pas :
+              </p>
+
+              <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                {[
+                  { label: 'CV Ingénieur & Technique', url: '/cv-ingenieur', desc: 'Structure et réalisations CAR pour ingénieurs confirmés' },
+                  { label: 'CV Ingénieur Débutant', url: '/cv-ingenieur-debutant', desc: 'Valoriser son PFE, ses stages et son diplôme CTI' },
+                  { label: 'CV Étudiant & Alternance', url: '/cv-etudiant', desc: 'Modèles pour stages, alternances et jobs d\'été' },
+                  { label: 'CV Sans Expérience', url: '/cv-sans-experience', desc: 'Miser sur les compétences transversales et le potentiel' },
+                  { label: 'CV Débutant / Premier Emploi', url: '/cv-debutant', desc: 'Conseils pour réussir son entrée sur le marché du travail' },
+                  { label: 'CV Compatible ATS', url: '/cv-ats', desc: 'Passez les filtres des logiciels de recrutement RH' },
+                  { label: 'Exemples de CV Gratuits', url: '/exemple-cv', desc: 'Plus de 50 modèles professionnels à télécharger' },
+                  { label: 'Modèles de CV PDF Gratuits', url: '/modele-cv-gratuit', desc: 'Designs épurés, modernes et exécutifs 100% gratuits' },
+                  { label: 'CV Informatique & Dev', url: '/cv-informatique', desc: 'Stack technique, dépôts GitHub et projets web' },
+                  { label: 'CV Professionnel de Référence', url: '/cv-professionnel', desc: 'Les normes 2026 pour un CV validé par les recruteurs' },
+                  { label: 'Générateur Lettre de Motivation', url: '/lettre-motivation', desc: 'Rédigez une lettre de candidature percutante' },
+                  { label: 'Studio Photo CV IA', url: '/studio-photo', desc: 'Détourez et améliorez votre photo de profil gratuitement' }
+                ].map((g, gi) => (
+                  <Link
+                    key={gi}
+                    to={g.url}
+                    className="p-4 bg-slate-50 dark:bg-slate-800 hover:bg-yellow-400 dark:hover:bg-yellow-400 hover:text-slate-900 group transition-all brutal-border"
+                  >
+                    <h3 className="font-black text-sm uppercase mb-1 text-slate-900 dark:text-white group-hover:text-slate-900 flex items-center justify-between">
+                      <span>{g.label}</span>
+                      <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+                    </h3>
+                    <p className="text-xs text-slate-600 dark:text-slate-400 group-hover:text-slate-800 font-medium">
+                      {g.desc}
+                    </p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          </section>
+
+          {/* Glossary Section */}
+          <section className="bg-white dark:bg-slate-900 p-6 sm:p-10 brutal-border brutal-shadow mb-12">
+            <h2 className="text-2xl sm:text-3xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-2 text-center">
+              Le Glossaire du Chercheur d'Emploi
+            </h2>
+            <p className="text-slate-600 dark:text-slate-400 text-center font-bold text-sm max-w-xl mx-auto mb-8">
+              Les termes clés du recrutement moderne expliqués simplement.
+            </p>
+            <div className="grid sm:grid-cols-2 md:grid-cols-3 gap-4">
+              {glossaryTerms.map((term, ti) => (
+                <div key={ti} className="bg-slate-50 dark:bg-slate-800/70 p-4 brutal-border">
+                  <h3 className="font-black text-sm text-cyan-600 dark:text-cyan-400 uppercase mb-2">
+                    {term.term}
+                  </h3>
+                  <p className="text-xs text-slate-700 dark:text-slate-300 font-medium leading-relaxed">
+                    {term.def}
+                  </p>
+                </div>
+              ))}
+            </div>
+          </section>
+
+          {/* Social Share */}
+          <div className="bg-white dark:bg-slate-900 p-8 brutal-border brutal-shadow flex flex-col items-center justify-center text-center">
+            <h3 className="text-xl font-black uppercase tracking-tight text-slate-900 dark:text-white mb-4">
+              Partagez ces conseils avec vos contacts en recherche d'emploi
+            </h3>
+            <SocialShare url="https://moncvgo.com/conseils-cv" title="Conseils CV : réussir son CV professionnel | Mon CV Go" />
+          </div>
+
+        </div>
+      </div>
+    </>
   );
 }
