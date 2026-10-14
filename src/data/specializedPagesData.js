@@ -653,5 +653,128 @@ export const specializedPagesData = {
       { label: 'Générateur de Lettre de Motivation', url: '/lettre-motivation' },
       { label: 'Conseils CV d\'Experts', url: '/conseils-cv' }
     ]
+  },
+  'alternative-gratuite-zety': {
+    slug: 'alternative-gratuite-zety',
+    seoTitle: 'Alternative Gratuite à Zety (100% Sans Carte Bancaire) | Mon CV Go',
+    seoDesc: 'Découvrez la meilleure alternative gratuite à Zety. Créez et téléchargez votre CV en PDF sans abonnement caché, sans filigrane et sans renseigner votre carte bancaire.',
+    h1: 'L\'Alternative 100% Gratuite à Zety (Sans Carte Bancaire)',
+    badge: 'Alternative Éthique 2026',
+    intro: 'Vous venez de passer une heure à peaufiner votre CV sur Zety, et au moment de cliquer sur Télécharger, un écran surgit pour vous demander vos coordonnées bancaires pour un essai payant qui se transforme en abonnement à 25€/mois ? Mon CV Go a été créé pour mettre fin à cette frustration : un outil 100% gratuit, sans inscription et sans carte bancaire.',
+    presetKey: 'modele-cv-comptable-word',
+    stats: [
+      { label: 'Coût Mon CV Go', value: '0,00 € (À vie)' },
+      { label: 'Carte Bancaire', value: 'Non requise' },
+      { label: 'Export PDF', value: 'Immédiat sans filigrane' }
+    ],
+    sections: [
+      {
+        title: '1. Pourquoi chercher une alternative gratuite à Zety ?',
+        content: 'Zety est un outil populaire mais qui utilise un modèle dit "freemium trompeur" : l\'accès à l\'éditeur est gratuit, mais le téléchargement du document final exige de payer un essai de 2,99€ qui se renouvelle automatiquement chaque mois. Des milliers de candidats se retrouvent ainsi prélevés sans s\'en rendre compte.',
+        bullets: [
+          'Zéro mauvaise surprise : sur Mon CV Go, le bouton Télécharger en PDF est 100% gratuit et sans aucun formulaire de paiement.',
+          'Pas de création de compte obligatoire : vous n\'avez même pas besoin de laisser votre adresse email pour télécharger votre CV.',
+          'Confidentialité absolue : vos données ne sont pas stockées sur des serveurs distants, tout est traité localement dans votre navigateur.',
+          'Modèles optimisés pour les logiciels ATS des recruteurs avec jauge de score en direct.'
+        ]
+      },
+      {
+        title: '2. Tableau Comparatif : Mon CV Go vs Zety',
+        content: 'Voici comment se positionne Mon CV Go face aux solutions payantes du marché :',
+        bullets: [
+          'Prix du téléchargement PDF : 0 € sur Mon CV Go vs 2,99 € à 24,90 € sur Zety.',
+          'Abonnement caché à renouvellement automatique : Aucun sur Mon CV Go vs Oui sur Zety.',
+          'Inscription préalable : Non requise sur Mon CV Go vs Obligatoire sur Zety.',
+          'Filigrane sur le document gratuit : Aucun sur Mon CV Go vs Version texte brute ou filigranée sur les outils concurrents.',
+          'Générateur de lettre de motivation et studio photo IA : Inclus gratuitement sur Mon CV Go.'
+        ]
+      },
+      {
+        title: '3. Comment transférer votre CV sur Mon CV Go en 2 minutes ?',
+        content: 'Vous avez déjà rédigé votre texte ? Ne recommencez pas de zéro. Copiez simplement vos expériences et compétences dans notre éditeur, choisissez parmi nos 50+ modèles modernes et exportez immédiatement votre fichier PDF prêt pour vos candidatures.',
+        examples: [
+          '« J\'avais passé 1h sur Zety avant de voir qu\'il fallait payer 2,99€ puis 24€/mois. J\'ai copié-collé mes textes sur Mon CV Go et j\'ai eu mon PDF parfait en 3 minutes, totalement gratuit ! »'
+        ]
+      }
+    ],
+    mistakesToAvoid: [
+      'Payer un abonnement mensuel alors que votre recherche d\'emploi ne dure que quelques semaines.',
+      'Oublier de résilier une période d\'essai payante sur un site de CV concurrent.',
+      'Accepter un CV avec filigrane qui décrédibilise votre candidature auprès des employeurs.'
+    ],
+    faq: [
+      {
+        q: 'Mon CV Go est-il vraiment 100% gratuit ou y a-t-il des options payantes ?',
+        a: 'Mon CV Go est 100% gratuit, sans aucune option payante cachée. Le site est financé de manière transparente par des bannières publicitaires non intrusives.'
+      },
+      {
+        q: 'Dois-je entrer mes coordonnées bancaires à un moment donné ?',
+        a: 'Non, jamais. Aucun numéro de carte bancaire ne vous sera jamais demandé sur Mon CV Go.'
+      },
+      {
+        q: 'Le PDF téléchargé contient-il le logo ou le filigrane de Mon CV Go ?',
+        a: 'Non, aucun filigrane ni mention commerciale n\'apparaît sur votre CV téléchargé. Le document est 100% neutre et professionnel.'
+      }
+    ],
+    relatedPages: [
+      { label: 'Créer un CV Gratuit', url: '/create' },
+      { label: 'CV Compatible ATS', url: '/cv-ats' },
+      { label: 'Modèles de CV Gratuits', url: '/modele-cv-gratuit' }
+    ]
+  },
+  'cv-ats-score-gratuit': {
+    slug: 'cv-ats-score-gratuit',
+    seoTitle: 'Score CV ATS Gratuit : Testez votre CV en Ligne | Mon CV Go',
+    seoDesc: 'Testez gratuitement la compatibilité de votre CV avec les logiciels ATS de recrutement. Score en direct, mots-clés manquants et optimisation instantanée.',
+    h1: 'Testeur de CV ATS Gratuit : Calculez votre Score de Recrutement',
+    badge: 'Outil Gratuit ATS 2026',
+    intro: 'Savez-vous que plus de 80% des grandes entreprises et cabinets de recrutement utilisent des logiciels ATS (Applicant Tracking Systems) comme Workday, Taleo ou Greenhouse pour filtrer les candidatures avant le moindre regard humain ? Avec Mon CV Go, testez et optimisez en direct votre score ATS.',
+    presetKey: 'modele-cv-ingenieur',
+    stats: [
+      { label: 'Taux de rejet ATS moyen', value: '75% des candidatures' },
+      { label: 'Temps d\'analyse du score', value: 'Instantané en direct' },
+      { label: 'Compatibilité algorithmes', value: 'Normes Workday, Taleo, Greenhouse' }
+    ],
+    sections: [
+      {
+        title: '1. Qu\'est-ce qu\'un test de score ATS pour CV ?',
+        content: 'Un ATS scanne le texte brut de votre CV pour en extraire les compétences, intitulés de postes, diplômes et dates. Si votre CV utilise des tableaux imbriqués, des colonnes graphiques complexes ou des polices vectorisées, le robot ne peut rien lire et attribue une note éliminatoire.',
+        bullets: [
+          'Analyse sémantique des mots-clés : correspondance exacte avec l\'intitulé du poste ciblé.',
+          'Structure hiérarchique claire : balisage ordonné des sections (Profil, Expériences, Formations, Compétences).',
+          'Vérification des formats de dates : standardisation pour le calcul de l\'ancienneté par le logiciel RH.',
+          'Absence d\'éléments graphiques bloquants : zéro icône non vectorielle, mise en page lisible machine.'
+        ]
+      },
+      {
+        title: '2. Comment obtenir un score ATS supérieur à 90% ?',
+        content: 'Pour vous assurer que votre candidature atterrit directement en haut de la pile du recruteur :',
+        bullets: [
+          'Reprenez les mots-clés exacts de l\'offre d\'emploi (ex: si l\'offre demande "Gestion de projet Agile", n\'écrivez pas seulement "Méthode Scrum").',
+          'Détaillez vos résultats avec des chiffres concrets (la méthode CAR).',
+          'Utilisez l\'un des modèles certifiés ATS de Mon CV Go, testés sur les principaux parseurs RH du marché.'
+        ]
+      }
+    ],
+    mistakesToAvoid: [
+      'Insérer vos coordonnées dans l\'en-tête (Header) d\'un document Word que certains ATS ignorent.',
+      'Utiliser des barres de niveau de compétence graphiques illisibles pour un robot.',
+      'Exclure les acronymes ou abréviations reconnus du secteur (ex: SEO, PMP, CTI, DCG).'
+    ],
+    faq: [
+      {
+        q: 'Comment fonctionne la jauge de score ATS sur Mon CV Go ?',
+        a: 'Notre algorithme évalue en temps réel la complétude de votre profil, la présence de verbes d\'action, la densité de compétences et la structure des sections au fur et à mesure que vous remplissez votre CV.'
+      },
+      {
+        q: 'Quel format de fichier est le plus recommandé pour les ATS ?',
+        a: 'Le format PDF généré par Mon CV Go est le format idéal car il préserve une structure textuelle sémantique parfaitement parsable par les logiciels tout en garantissant un affichage impeccable pour l\'humain.'
+      }
+    ],
+    relatedPages: [
+      { label: 'Créer un CV Compatible ATS', url: '/cv-ats' },
+      { label: 'Modèle de CV Développeur', url: '/modele-cv-developpeur' },
+      { label: 'Conseils CV & Recrutement', url: '/conseils-cv' }
+    ]
   }
 };

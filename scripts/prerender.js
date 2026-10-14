@@ -4,6 +4,7 @@ import { fileURLToPath } from 'url';
 import { blogPosts } from '../src/data/blogPosts.js';
 import { jobModelsData } from '../src/data/jobModelsData.js';
 import { getLocalizedJobModel } from '../src/data/getLocalizedJobModel.js';
+import { specializedPagesData } from '../src/data/specializedPagesData.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -461,18 +462,54 @@ Object.keys(jobModelsData).forEach((key) => {
     }
     
     const localized = getLocalizedJobModel(key, lang);
+    const tipsList = (localized.tips || []).map(t => `<li>${escapeHtml(t)}</li>`).join('');
+    const faqList = (localized.faq || []).map(item => `
+      <div style="margin-bottom: 1.25rem;">
+        <h3 style="font-weight: 700; margin-bottom: 0.25rem;">${escapeHtml(item.q)}</h3>
+        <p style="margin: 0; color: #4b5563;">${escapeHtml(item.a)}</p>
+      </div>
+    `).join('');
     
-    // Build content dynamically
+    // Build content dynamically with GEO / AEO Blueprint
     const content = `
-      <h1>${localized.h1}</h1>
-      <p>${localized.intro}</p>
-      <h2>1. Why use this template?</h2>
-      <p>${localized.whyUse}</p>
-      <h2>2. Skills included</h2>
-      <p><strong>Hard Skills:</strong> ${(localized.hardSkills || []).join(', ')}</p>
-      <p><strong>Soft Skills:</strong> ${(localized.softSkills || []).join(', ')}</p>
-      <h2>3. Professional catchphrase</h2>
-      <blockquote>${localized.sampleCatchphrase}</blockquote>
+      <article>
+        <h1>${escapeHtml(localized.h1)}</h1>
+        <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">${escapeHtml(localized.intro)}</p>
+        
+        <div style="background: #f8fafc; border-left: 4px solid #eab308; padding: 1.25rem; margin-bottom: 2rem; border-radius: 4px;">
+          <h2 style="margin-top: 0; font-size: 1.2rem; font-weight: 700;">📌 Points clés à retenir pour ce CV</h2>
+          <ul style="margin: 0.5rem 0 0 1.25rem; line-height: 1.6;">
+            ${tipsList || `<li>Format PDF recommandé avec mise en page chronologique inversée.</li><li>Optimisation du vocabulaire technique pour les filtres ATS.</li>`}
+          </ul>
+        </div>
+
+        <h2>1. Pourquoi choisir ce modèle de CV ${escapeHtml(localized.jobTitle || '')} ?</h2>
+        <p>${escapeHtml(localized.whyUse)}</p>
+
+        <h2>2. Compétences indispensables à valoriser</h2>
+        <p><strong>Compétences techniques (Hard Skills) :</strong> ${(localized.hardSkills || []).map(escapeHtml).join(', ')}</p>
+        <p><strong>Qualités humaines (Soft Skills) :</strong> ${(localized.softSkills || []).map(escapeHtml).join(', ')}</p>
+
+        <h2>3. Exemple de phrase d'accroche percutante</h2>
+        <blockquote style="border-left: 3px solid #cbd5e1; padding-left: 1rem; font-style: italic; color: #334155; margin: 1rem 0;">
+          ${escapeHtml(localized.sampleCatchphrase)}
+        </blockquote>
+
+        ${localized.experienceAdvice ? `
+        <h2>4. Conseils pour détailler vos expériences (Méthode CAR)</h2>
+        <p>${escapeHtml(localized.experienceAdvice)}</p>
+        ` : ''}
+
+        ${localized.atsAdvice ? `
+        <h2>5. Optimisation pour les logiciels de recrutement ATS</h2>
+        <p>${escapeHtml(localized.atsAdvice)}</p>
+        ` : ''}
+
+        ${faqList ? `
+        <h2>Foire Aux Questions (FAQ)</h2>
+        ${faqList}
+        ` : ''}
+      </article>
     `;
     
     routes.push({
@@ -480,8 +517,68 @@ Object.keys(jobModelsData).forEach((key) => {
       title: localized.seoTitle || `${localized.h1} | Mon CV Go`,
       description: localized.seoDesc || localized.intro.substring(0, 160),
       h1: localized.h1,
-      content: content
+      content: content,
+      faq: localized.faq || []
     });
+  });
+});
+
+// 2b. Process Specialized Pages (cv-ingenieur, cv-ats, cv-etudiant, cv-sans-experience, etc.)
+Object.keys(specializedPagesData).forEach((key) => {
+  const page = specializedPagesData[key];
+  const cleanPath = page.slug || key;
+
+  const sectionsHtml = (page.sections || []).map(sec => `
+    <h2>${escapeHtml(sec.title)}</h2>
+    <p>${escapeHtml(sec.content || '')}</p>
+    ${sec.bullets ? `<ul>${sec.bullets.map(b => `<li>${escapeHtml(b)}</li>`).join('')}</ul>` : ''}
+    ${sec.hardSkills ? `<p><strong>Hard Skills :</strong> ${sec.hardSkills.map(escapeHtml).join(', ')}</p>` : ''}
+    ${sec.softSkills ? `<p><strong>Soft Skills :</strong> ${sec.softSkills.map(escapeHtml).join(', ')}</p>` : ''}
+    ${sec.examples ? `<ul>${sec.examples.map(ex => `<li>${escapeHtml(ex)}</li>`).join('')}</ul>` : ''}
+    ${sec.quote ? `<blockquote style="border-left: 3px solid #cbd5e1; padding-left: 1rem; font-style: italic;">${escapeHtml(sec.quote)}</blockquote>` : ''}
+  `).join('');
+
+  const mistakesHtml = (page.mistakesToAvoid || []).map(m => `<li>${escapeHtml(m)}</li>`).join('');
+  const faqList = (page.faq || []).map(item => `
+    <div style="margin-bottom: 1.25rem;">
+      <h3 style="font-weight: 700; margin-bottom: 0.25rem;">${escapeHtml(item.q)}</h3>
+      <p style="margin: 0; color: #4b5563;">${escapeHtml(item.a)}</p>
+    </div>
+  `).join('');
+
+  const content = `
+    <article>
+      <h1>${escapeHtml(page.h1)}</h1>
+      <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">${escapeHtml(page.intro)}</p>
+      
+      <div style="background: #f8fafc; border-left: 4px solid #eab308; padding: 1.25rem; margin-bottom: 2rem; border-radius: 4px;">
+        <h2 style="margin-top: 0; font-size: 1.2rem; font-weight: 700;">📌 Points clés du guide ${escapeHtml(page.badge || '')}</h2>
+        <ul style="margin: 0.5rem 0 0 1.25rem; line-height: 1.6;">
+          ${(page.stats || []).map(s => `<li><strong>${escapeHtml(s.label)} :</strong> ${escapeHtml(s.value)}</li>`).join('')}
+        </ul>
+      </div>
+
+      ${sectionsHtml}
+
+      ${mistakesHtml ? `
+      <h2>Erreurs courantes à éviter</h2>
+      <ul>${mistakesHtml}</ul>
+      ` : ''}
+
+      ${faqList ? `
+      <h2>Foire Aux Questions (FAQ)</h2>
+      ${faqList}
+      ` : ''}
+    </article>
+  `;
+
+  routes.push({
+    path: cleanPath,
+    title: page.seoTitle || `${page.h1} | Mon CV Go`,
+    description: page.seoDesc || page.intro.substring(0, 160),
+    h1: page.h1,
+    content: content,
+    faq: page.faq || []
   });
 });
 
@@ -585,6 +682,31 @@ routes.forEach((route) => {
   `;
   html = html.replace('</head>', `${ogTags}\n</head>`);
 
+  // Inject or replace dynamic FAQPage schema if available
+  if (route.faq && route.faq.length > 0) {
+    const faqEntities = route.faq.map(item => ({
+      "@type": "Question",
+      "name": item.q,
+      "acceptedAnswer": {
+        "@type": "Answer",
+        "text": item.a
+      }
+    }));
+    
+    const faqRegex = /\{[\s\n\r]*"@type":\s*"FAQPage"[\s\S]*?"mainEntity":\s*\[[\s\S]*?\][\s\n\r]*\}/;
+    if (faqRegex.test(html)) {
+      const newFaqBlock = JSON.stringify({
+        "@type": "FAQPage",
+        "@id": `${canonicalUrl}#faq`,
+        "mainEntity": faqEntities
+      }, null, 2);
+      html = html.replace(faqRegex, newFaqBlock);
+    } else {
+      const faqScript = `\n  <script type="application/ld+json">\n  {\n    "@context": "https://schema.org",\n    "@type": "FAQPage",\n    "@id": "${canonicalUrl}#faq",\n    "mainEntity": ${JSON.stringify(faqEntities, null, 4)}\n  }\n  </script>`;
+      html = html.replace('</head>', `${faqScript}\n</head>`);
+    }
+  }
+
   // Replace root div content for static pre-rendering
   const rootReplacement = `
     <div id="root">
@@ -593,7 +715,7 @@ routes.forEach((route) => {
       </div>
     </div>
   `;
-  html = html.replace(/<div id="root">[\s\S]*?<\/div>\s*<\/body>/gi, `${rootReplacement}\n  </body>`);
+  html = html.replace(/<div id="root">[\s\S]*?<\/div>\s*<\/div>/i, rootReplacement);
 
   fs.writeFileSync(targetFilePath, html, 'utf-8');
   preRenderCount++;

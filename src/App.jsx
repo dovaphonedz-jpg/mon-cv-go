@@ -56,6 +56,8 @@ function App() {
             <Route path="/modele-cv-gratuit" element={<SpecializedPage />} />
             <Route path="/cv-informatique" element={<SpecializedPage />} />
             <Route path="/cv-professionnel" element={<SpecializedPage />} />
+            <Route path="/alternative-gratuite-zety" element={<SpecializedPage />} />
+            <Route path="/cv-ats-score-gratuit" element={<SpecializedPage />} />
 
             {/* Existing Job Models Routes */}
             <Route path="/modele-cv-comptable-word" element={<ModelePage />} />

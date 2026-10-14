@@ -114,9 +114,21 @@
   </url>
   <url>
     <loc>https://moncvgo.com/cv-professionnel</loc>
-    <lastmod>2026-10-05</lastmod>
+    <lastmod>2026-10-14</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.90</priority>
+  </url>
+  <url>
+    <loc>https://moncvgo.com/alternative-gratuite-zety</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
+  </url>
+  <url>
+    <loc>https://moncvgo.com/cv-ats-score-gratuit</loc>
+    <lastmod>2026-10-14</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.95</priority>
   </url>
 
   <!-- PAGES MODÈLES MÉTIERS -->
