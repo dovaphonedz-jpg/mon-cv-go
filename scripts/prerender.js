@@ -453,8 +453,8 @@ languages.forEach((lang) => {
   });
 });
 
-// 2. Process Job Models Routes for all languages (excluding creer-cv-gratuit which is in baseRoutes)
-Object.keys(jobModelsData).filter(key => key !== 'creer-cv-gratuit').forEach((key) => {
+// 2. Process Job Models Routes for all languages (excluding creer-cv-gratuit and specialized pages already processed)
+Object.keys(jobModelsData).filter(key => key !== 'creer-cv-gratuit' && !specializedPagesData[key]).forEach((key) => {
   languages.forEach((lang) => {
     let cleanPath = key;
     if (lang !== 'fr') {
