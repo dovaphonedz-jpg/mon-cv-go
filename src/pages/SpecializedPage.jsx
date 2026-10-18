@@ -21,19 +21,26 @@ import {
 import SEO from '../components/SEO';
 import SocialShare from '../components/SocialShare';
 import AdSenseUnit from '../components/AdSenseUnit';
-import { specializedPagesData } from '../data/specializedPagesData';
+import { useTranslation } from 'react-i18next';
+import { specializedPagesData, getLocalizedSpecializedPage } from '../data/specializedPagesData';
 
 export default function SpecializedPage() {
+  const { t, i18n } = useTranslation();
   const location = useLocation();
-  // Strip leading slash
-  const path = location.pathname.replace(/^\/+/, '');
-  const data = specializedPagesData[path] || specializedPagesData['cv-ingenieur'];
+  // Strip leading slash and language prefix if present
+  const rawPath = location.pathname.replace(/^\/+/, '');
+  const pathParts = rawPath.split('/');
+  const langInPath = ['en', 'de', 'ar'].includes(pathParts[0]) ? pathParts[0] : null;
+  const currentLang = langInPath || (i18n.language || 'fr').substring(0, 2);
+  const slug = ['en', 'de', 'ar', 'fr'].includes(pathParts[0]) ? pathParts.slice(1).join('/') : rawPath;
+  const data = getLocalizedSpecializedPage(slug, currentLang);
   const [openFaq, setOpenFaq] = useState(null);
 
+  const langPrefix = currentLang === 'fr' ? '' : `/${currentLang}`;
   const breadcrumbs = [
-    { name: 'Accueil', url: 'https://moncvgo.com/' },
-    { name: 'Conseils & Modèles', url: 'https://moncvgo.com/conseils-cv' },
-    { name: data.h1, url: `https://moncvgo.com/${data.slug}` }
+    { name: t('nav.home', 'Accueil'), url: `https://moncvgo.com${langPrefix || '/'}` },
+    { name: t('nav.cv_tips', 'Conseils CV'), url: `https://moncvgo.com${langPrefix}/conseils-cv` },
+    { name: data.h1, url: `https://moncvgo.com${langPrefix}/${data.slug}` }
   ];
 
   return (
@@ -41,7 +48,7 @@ export default function SpecializedPage() {
       <SEO 
         title={data.seoTitle} 
         description={data.seoDesc} 
-        url={`https://moncvgo.com/${data.slug}`}
+        url={`https://moncvgo.com${langPrefix}/${data.slug}`}
         faqItems={data.faq}
         breadcrumbs={breadcrumbs}
       />

@@ -10,6 +10,7 @@ export default function NotFound() {
         title="Page Introuvable (404) | Mon CV Go" 
         description="Oups ! La page que vous recherchez n'existe pas ou a été déplacée. Retrouvez tous nos outils pour créer votre CV gratuit en ligne." 
         url="https://moncvgo.com/404" 
+        noindex={true}
       />
       <div className="min-h-[70vh] flex items-center justify-center bg-slate-50 dark:bg-[#0B1120] px-4 py-16">
         <div className="max-w-xl w-full bg-white dark:bg-slate-900 brutal-border brutal-shadow p-8 sm:p-12 text-center relative overflow-hidden">

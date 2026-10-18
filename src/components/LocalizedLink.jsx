@@ -7,15 +7,12 @@ export function localizePath(path, lang) {
   if (path.startsWith('http') || path.startsWith('mailto:') || path.startsWith('tel:') || path.startsWith('#')) {
     return path;
   }
-  const cleanLang = (lang || 'fr').substring(0, 2);
+  const cleanLang = (lang || 'fr').substring(0, 2).toLowerCase();
+  const strippedPath = path.replace(/^\/(?:en|de|ar)(?=\/|$)/, '') || '/';
   if (cleanLang && cleanLang !== 'fr') {
-    const cleanPath = path.startsWith('/') ? path : '/' + path;
-    if (cleanPath.startsWith(`/${cleanLang}/`) || cleanPath === `/${cleanLang}`) {
-      return path;
-    }
-    return `/${cleanLang}${cleanPath === '/' ? '' : cleanPath}`;
+    return strippedPath === '/' ? `/${cleanLang}` : `/${cleanLang}${strippedPath}`;
   }
-  return path;
+  return strippedPath;
 }
 
 export default function LocalizedLink({ to, children, ...props }) {

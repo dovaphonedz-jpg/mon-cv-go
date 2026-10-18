@@ -778,3 +778,208 @@ export const specializedPagesData = {
     ]
   }
 };
+
+export const specializedPagesTranslations = {
+  en: {
+    'cv-ingenieur': {
+      h1: "Engineering Resume: Templates, Examples and Career Tips",
+      seoTitle: "Engineering Resume: Template, Examples and Tips (2026) | Mon CV Go",
+      seoDesc: "Create an ATS-friendly engineering resume. Download free professional engineering templates, technical skills, and actionable advice."
+    },
+    'cv-ingenieur-debutant': {
+      h1: "Junior & Graduate Engineering Resume Template",
+      seoTitle: "Junior Engineer Resume Template: Career Starter Guide (2026) | Mon CV Go",
+      seoDesc: "Kickstart your engineering career with our junior and graduate resume template. Key projects, technical skills and ATS compliance."
+    },
+    'cv-etudiant': {
+      h1: "Student Resume Template: Internship & Graduate Jobs",
+      seoTitle: "Student Resume Template: Internships & Entry-Level (2026) | Mon CV Go",
+      seoDesc: "Free student resume template designed to highlight your education, relevant coursework, academic projects, and volunteer work."
+    },
+    'cv-sans-experience': {
+      h1: "Resume Template with No Experience: Complete Guide",
+      seoTitle: "Resume With No Experience: Template & Tips (2026) | Mon CV Go",
+      seoDesc: "Create a standout resume even with zero formal experience. Functional template focusing on transferable skills and education."
+    },
+    'cv-debutant': {
+      h1: "Entry-Level Resume: Free Template for First-Time Job Seekers",
+      seoTitle: "Entry-Level Resume: First Job Template & Advice (2026) | Mon CV Go",
+      seoDesc: "Stand out in your first job search with our beginner resume template. Structure your soft skills, studies and motivations."
+    },
+    'cv-ats': {
+      h1: "ATS Resume Template: Formatting and Optimization Guide",
+      seoTitle: "ATS Resume Template: Optimization & Formatting (2026) | Mon CV Go",
+      seoDesc: "Pass Applicant Tracking Systems (ATS) with confidence. Clean layouts, keyword optimization, and scanner-friendly templates."
+    },
+    'exemple-cv': {
+      h1: "Resume Examples 2026: Free Samples by Industry",
+      seoTitle: "Resume Examples 2026: Free Samples by Industry | Mon CV Go",
+      seoDesc: "Explore professional resume examples tailored for each field. Industry-specific keywords, proven layouts and instant download."
+    },
+    'modele-cv-gratuit': {
+      h1: "Free Professional Resume Templates 2026 (PDF & Word)",
+      seoTitle: "Free Resume Templates 2026: Download in PDF & Word | Mon CV Go",
+      seoDesc: "Download free professional resume templates. 100% free, customizable, ATS-compliant, no registration and no paywall."
+    },
+    'cv-informatique': {
+      h1: "IT & Software Engineer Resume: Template & Tech Skills",
+      seoTitle: "IT & Software Engineer Resume: Tech Stack & Template (2026) | Mon CV Go",
+      seoDesc: "Build an outstanding developer or IT resume. Highlight your tech stack, system architecture experience, and open source projects."
+    },
+    'cv-professionnel': {
+      h1: "Professional Resume: Template for Executives and Experts",
+      seoTitle: "Professional Resume 2026: Executive & Expert Template | Mon CV Go",
+      seoDesc: "Executive-level resume template crafted for seasoned managers and specialists. Quantified accomplishments and leadership focus."
+    },
+    'alternative-gratuite-zety': {
+      h1: "Free Zety Alternative (100% Free, No Credit Card)",
+      seoTitle: "Best Free Alternative to Zety (No Card Required 2026) | Mon CV Go",
+      seoDesc: "Create and download your resume for free without hidden subscriptions or credit card requirements. Best free Zety alternative."
+    },
+    'cv-ats-score-gratuit': {
+      h1: "Free ATS Resume Checker: Test Your Score Online",
+      seoTitle: "Free ATS Resume Checker: Test Your Score Online (2026) | Mon CV Go",
+      seoDesc: "Test your resume ATS compatibility for free. Live scoring, missing keywords analysis, and instant recruiter optimization."
+    }
+  },
+  de: {
+    'cv-ingenieur': {
+      h1: "Lebenslauf Ingenieur: Vorlage, Muster und Tipps",
+      seoTitle: "Lebenslauf Ingenieur: Vorlage, Muster und Tipps (2026) | Mon CV Go",
+      seoDesc: "Erstellen Sie einen überzeugenden Ingenieur-Lebenslauf. Kostenlose ATS-Vorlage, technische Fähigkeiten und Bewerbungstipps."
+    },
+    'cv-ingenieur-debutant': {
+      h1: "Lebenslauf Jungingenieur & Absolvent: Vorlage & Tipps",
+      seoTitle: "Lebenslauf Jungingenieur: Vorlage für den Berufseinstieg (2026) | Mon CV Go",
+      seoDesc: "Starten Sie Ihre Ingenieurkarriere mit unserer Vorlage für Berufseinsteiger und Absolventen. Tipps zu Projekten und Tech-Skills."
+    },
+    'cv-etudiant': {
+      h1: "Studenten-Lebenslauf: Vorlage für Praktikum & Werkstudent",
+      seoTitle: "Studenten-Lebenslauf: Vorlage für Praktikum & Werkstudent (2026) | Mon CV Go",
+      seoDesc: "Kostenlose Lebenslauf-Vorlage für Studenten und Praktikanten. Ausbildung, Projekte und Fähigkeiten optimal präsentieren."
+    },
+    'cv-sans-experience': {
+      h1: "Kostenlose Lebenslauf-Vorlage Ohne Berufserfahrung",
+      seoTitle: "Lebenslauf Ohne Erfahrung: Vorlage & Tipps (2026) | Mon CV Go",
+      seoDesc: "Ohne formelle Erfahrung ist ein funktionaler Lebenslauf ideal, um Fähigkeiten, Zertifikate und Motivation hervorzuheben."
+    },
+    'cv-debutant': {
+      h1: "Lebenslauf Berufsanfänger: Vorlage für den ersten Job",
+      seoTitle: "Lebenslauf Berufsanfänger: Vorlage für den ersten Job (2026) | Mon CV Go",
+      seoDesc: "Kostenlose Lebenslauf-Vorlage für Berufsanfänger und Quereinsteiger ohne Berufserfahrung. Soft Skills und Ausbildung betonen."
+    },
+    'cv-ats': {
+      h1: "ATS-Lebenslauf: Vorlage, Scanner und Optimierungs-Ratgeber",
+      seoTitle: "ATS-Lebenslauf: Vorlage, Scanner und Optimierungs-Ratgeber (2026) | Mon CV Go",
+      seoDesc: "Optimieren Sie Ihren Lebenslauf für HR-Bewerbersoftware (ATS). Kostenlose Vorlagen und Keyword-Tipps für mehr Vorstellungsgespräche."
+    },
+    'exemple-cv': {
+      h1: "Lebenslauf-Muster 2026: Kostenlose Beispiele nach Berufen",
+      seoTitle: "Lebenslauf-Muster 2026: Kostenlose Beispiele nach Berufen | Mon CV Go",
+      seoDesc: "Entdecken Sie professionelle Lebenslauf-Muster und Vorlagen für alle Berufe. Kostenlose Inspiration und Tipps für Bewerber."
+    },
+    'modele-cv-gratuit': {
+      h1: "Kostenlose Lebenslauf-Vorlagen 2026 (PDF & Word)",
+      seoTitle: "Kostenlose Lebenslauf-Vorlagen 2026: Download als PDF | Mon CV Go",
+      seoDesc: "Professionelle Lebenslauf-Vorlagen kostenlos herunterladen und bearbeiten. PDF-Export ohne Anmeldung und ohne Abo-Fallen."
+    },
+    'cv-informatique': {
+      h1: "IT & Softwareentwickler Lebenslauf: Vorlage & Tech-Stack",
+      seoTitle: "IT & Softwareentwickler Lebenslauf: Vorlage & Tech-Stack (2026) | Mon CV Go",
+      seoDesc: "Erstellen Sie einen überzeugenden IT-Lebenslauf für Entwickler und Administratoren mit Tech-Stack und Projekten."
+    },
+    'cv-professionnel': {
+      h1: "Professioneller Lebenslauf für Fach- und Führungskräfte",
+      seoTitle: "Professioneller Lebenslauf 2026: Vorlage für Fach- und Führungskräfte | Mon CV Go",
+      seoDesc: "Überzeugende Lebenslauf-Vorlage für erfahrene Fachkräfte und Führungskräfte mit messbaren Erfolgen und Führungsqualitäten."
+    },
+    'alternative-gratuite-zety': {
+      h1: "Kostenlose Zety-Alternative (100% ohne Kreditkarte)",
+      seoTitle: "Beste kostenlose Zety Alternative (2026 ohne Abo) | Mon CV Go",
+      seoDesc: "Erstellen und laden Sie Ihren Lebenslauf kostenlos herunter ohne Abo-Fallen und ohne Kreditkarte. Die beste Alternative zu Zety."
+    },
+    'cv-ats-score-gratuit': {
+      h1: "Kostenloser ATS-Lebenslauf-Checker: Score online testen",
+      seoTitle: "ATS-Lebenslauf-Checker: Score kostenlos online testen (2026) | Mon CV Go",
+      seoDesc: "Überprüfen Sie kostenlos die ATS-Kompatibilität Ihres Lebenslaufs. Live-Scoring, Keyword-Analyse und Sofort-Optimierung."
+    }
+  },
+  ar: {
+    'cv-ingenieur': {
+      h1: "نموذج سيرة ذاتية للمهندس وأمثلة احترافية",
+      seoTitle: "سيرة ذاتية للمهندس: نماذج، أمثلة ونصائح (2026) | Mon CV Go",
+      seoDesc: "أنشئ سيرة ذاتية مميزة للمهندس. نموذج مجاني متوافق مع أنظمة ATS، مهارات تقنية ونصائح للتوظيف."
+    },
+    'cv-ingenieur-debutant': {
+      h1: "نموذج سيرة ذاتية لمهندس مبتدئ وخريج جديد",
+      seoTitle: "سيرة ذاتية لمهندس مبتدئ: نموذج ودليل أول وظيفة (2026) | Mon CV Go",
+      seoDesc: "ابدأ مسيرتك الهندسية بنموذج سيرة ذاتية احترافي للمبتدئين وخريجي كليات الهندسة."
+    },
+    'cv-etudiant': {
+      h1: "نموذج سيرة ذاتية للطلاب والتدريب الميداني",
+      seoTitle: "سيرة ذاتية للطلاب: نموذج للتدريب والعمل الجزئي (2026) | Mon CV Go",
+      seoDesc: "احصل على تدريب أحلامك مع نموذج السيرة الذاتية المجاني للطلاب والخريجين الجدد."
+    },
+    'cv-sans-experience': {
+      h1: "نموذج سيرة ذاتية مجاني بدون خبرة سابقة",
+      seoTitle: "سيرة ذاتية بدون خبرة: نموذج ونصائح التوظيف (2026) | Mon CV Go",
+      seoDesc: "أنشئ سيرة ذاتية قوية حتى بدون خبرة سابقة بفضل الهيكل الوظيفي وإبراز المهارات والمشاريع الشخصية."
+    },
+    'cv-debutant': {
+      h1: "نموذج سيرة ذاتية للمبتدئين والوظيفة الأولى",
+      seoTitle: "سيرة ذاتية للمبتدئين: نموذج أول وظيفة ونصائح (2026) | Mon CV Go",
+      seoDesc: "نموذج سيرة ذاتية مجاني للمبتدئين والباحثين عن أول وظيفة لتعزيز فرص القبول في سوق العمل."
+    },
+    'cv-ats': {
+      h1: "سيرة ذاتية متوافقة مع أنظمة ATS ودليل الفحص",
+      seoTitle: "سيرة ذاتية متوافقة مع أنظمة ATS: نماذج ودليل التحسين (2026) | Mon CV Go",
+      seoDesc: "اجتز فلاتر التوظيف بأنظمة ATS بنجاح مع نماذج سيرة ذاتية مهيكلة ومتوافقة 100٪."
+    },
+    'exemple-cv': {
+      h1: "أمثلة سيرة ذاتية 2026: نماذج ملهمة حسب المهنة",
+      seoTitle: "أمثلة سيرة ذاتية 2026: نماذج ملهمة حسب المهنة | Mon CV Go",
+      seoDesc: "تصفح عشرات الأمثلة الاحترافية للسيرة الذاتية لجميع المجالات مع نصائح كتابة وتحميل مباشر."
+    },
+    'modele-cv-gratuit': {
+      h1: "نماذج سيرة ذاتية احترافية مجانية 2026 (PDF)",
+      seoTitle: "نماذج سيرة ذاتية مجانية 2026: تحميل مباشر بصيغة PDF | Mon CV Go",
+      seoDesc: "حمل أفضل نماذج السيرة الذاتية المجانية الاحترافية الجاهزة للتعديل والتصدير الفوري بصيغة PDF."
+    },
+    'cv-informatique': {
+      h1: "نموذج سيرة ذاتية لمطوري البرمجيات ومجال IT",
+      seoTitle: "سيرة ذاتية لمجال تكنولوجيا المعلومات والمبرمجين (2026) | Mon CV Go",
+      seoDesc: "صمم سيرة ذاتية تقنية احترافية للمطورين ومهندسي البرمجيات مع إبراز المهارات والمشاريع البرمجية."
+    },
+    'cv-professionnel': {
+      h1: "نموذج سيرة ذاتية احترافي للخبراء والمدراء",
+      seoTitle: "سيرة ذاتية احترافية 2026: نماذج للمناصب القيادية والخبراء | Mon CV Go",
+      seoDesc: "نموذج سيرة ذاتية متقدم للمدراء والخبراء لتسليط الضوء على الإنجازات والنتائج المهنية القوية."
+    },
+    'alternative-gratuite-zety': {
+      h1: "أفضل بديل مجاني لموقع Zety (بدون بطاقة بنكية 100٪)",
+      seoTitle: "بديل Zety المجاني لإنشاء السيرة الذاتية (2026) | Mon CV Go",
+      seoDesc: "أنشئ وحمل سيرتك الذاتية بصيغة PDF مجانا تماما بدون اشتراكات مخفية وبدون طلب بيانات البطاقة البنكية."
+    },
+    'cv-ats-score-gratuit': {
+      h1: "فاحص السيرة الذاتية لأنظمة ATS مجانا: اختبر درجتك أونلاين",
+      seoTitle: "فاحص السيرة الذاتية ATS مجانا: احسب درجتك فورا (2026) | Mon CV Go",
+      seoDesc: "اختبر توافق سيرتك الذاتية مع أنظمة الفرز الآلي ATS مجانا. نتيجة فورية، تحليل الكلمات المفتاحية وتحسين السيرة الذاتية."
+    }
+  }
+};
+
+export function getLocalizedSpecializedPage(slug, lang = 'fr') {
+  const base = specializedPagesData[slug] || specializedPagesData['cv-ingenieur'];
+  const cleanLang = (lang || 'fr').substring(0, 2).toLowerCase();
+  if (cleanLang === 'fr') {
+    return base;
+  }
+  const langOverrides = specializedPagesTranslations[cleanLang]?.[slug] || {};
+  return {
+    ...base,
+    ...langOverrides,
+    seoTitle: langOverrides.seoTitle || base.seoTitle,
+    seoDesc: langOverrides.seoDesc || base.seoDesc,
+    h1: langOverrides.h1 || base.h1
+  };
+}

@@ -50,8 +50,8 @@ export default function CreerCvGratuitPillar() {
   return (
     <>
       <SEO 
-        title="Créer un CV Gratuitement en Ligne (PDF & Word) | Mon CV Go"
-        description="Créer un CV gratuitement en ligne en 2 minutes. Éditeur gratuit n°1 sans inscription, sans abonnement caché, compatible ATS avec téléchargement PDF instantané."
+        title={t('pillar_creer_cv.seo_title', 'Créer un CV Gratuitement en Ligne (PDF & Word) | Mon CV Go')}
+        description={t('pillar_creer_cv.seo_desc', 'Créer un CV gratuitement en ligne en 2 minutes. Éditeur gratuit n°1 sans inscription, sans abonnement caché, compatible ATS avec téléchargement PDF instantané.')}
         url="https://moncvgo.com/creer-cv-gratuit"
         faqItems={faqItems}
         breadcrumbs={breadcrumbs}

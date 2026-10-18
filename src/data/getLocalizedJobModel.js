@@ -417,13 +417,29 @@ const translations = {
 
 export function getLocalizedJobModel(pathKey, lang = 'fr') {
   const baseModel = jobModelsData[pathKey] || jobModelsData['modele-cv-debutant'];
-  if (!lang || lang === 'fr' || !translations[lang] || !translations[lang][pathKey]) {
+  const cleanLang = (lang || 'fr').substring(0, 2);
+  
+  if (!cleanLang || cleanLang === 'fr' || !translations[cleanLang] || !translations[cleanLang][pathKey]) {
     return baseModel;
   }
   
-  const localized = translations[lang][pathKey];
+  const localized = translations[cleanLang][pathKey];
+
+  // Guarantee SEO Title and Description are strictly in the target language (never French fallback)
+  const computedSeoTitle = localized.seoTitle || `${localized.h1 || localized.jobTitle} | Mon CV Go`;
+  const computedSeoDesc = localized.seoDesc || (
+    localized.intro 
+      ? (localized.intro.length > 155 ? localized.intro.substring(0, 155) + '...' : localized.intro)
+      : (cleanLang === 'en' ? `Free ${localized.jobTitle} resume template. ATS-optimized layout with skills, catchphrases, and tips.`
+         : cleanLang === 'de' ? `Kostenlose ${localized.jobTitle} Lebenslauf-Vorlage. ATS-optimiert mit Fähigkeiten, Profiltexten und Tipps.`
+         : cleanLang === 'ar' ? `نموذج سيرة ذاتية مجاني لمهنة ${localized.jobTitle}. تصميم متوافق مع ATS مع المهارات والنصائح.`
+         : baseModel.seoDesc)
+  );
+
   return {
     ...baseModel,
-    ...localized
+    ...localized,
+    seoTitle: computedSeoTitle,
+    seoDesc: computedSeoDesc
   };
 }

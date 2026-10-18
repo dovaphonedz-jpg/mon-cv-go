@@ -12,14 +12,17 @@ export default function ModelePage() {
   const location = useLocation();
   const rawPath = location.pathname.substring(1); // Enlève le '/' initial
   const pathParts = rawPath.split('/');
+  const langInPath = ['en', 'de', 'ar'].includes(pathParts[0]) ? pathParts[0] : null;
+  const currentLang = langInPath || (i18n.language || 'fr').substring(0, 2);
   const path = ['en', 'de', 'ar', 'fr'].includes(pathParts[0]) ? pathParts.slice(1).join('/') : rawPath;
-  const model = getLocalizedJobModel(path, i18n.language);
+  const model = getLocalizedJobModel(path, currentLang);
   const [openFaq, setOpenFaq] = useState(null);
 
+  const langPrefix = currentLang === 'fr' ? '' : `/${currentLang}`;
   const breadcrumbs = [
-    { name: t('nav.home', 'Accueil'), url: 'https://moncvgo.com/' },
-    { name: t('nav.plan_du_site', 'Plan du site'), url: 'https://moncvgo.com/plan-du-site' },
-    { name: model.jobTitle, url: `https://moncvgo.com/${path}` }
+    { name: t('nav.home', 'Accueil'), url: `https://moncvgo.com${langPrefix || '/'}` },
+    { name: t('nav.plan_du_site', 'Plan du site'), url: `https://moncvgo.com${langPrefix}/plan-du-site` },
+    { name: model.jobTitle, url: `https://moncvgo.com${langPrefix}/${path}` }
   ];
 
   return (
@@ -27,7 +30,7 @@ export default function ModelePage() {
       <SEO 
         title={model.seoTitle} 
         description={model.seoDesc} 
-        url={`https://moncvgo.com/${path}`}
+        url={`https://moncvgo.com${langPrefix}/${path}`}
         faqItems={model.faq}
         breadcrumbs={breadcrumbs}
       />

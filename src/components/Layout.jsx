@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
+import Link from './LocalizedLink';
 import { Sparkles, FilePlus2, PenLine, BookOpen, Info, Mail, Menu, X, Moon, Sun, Briefcase, Zap } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { useTranslation } from 'react-i18next';
@@ -13,9 +14,12 @@ export default function Layout({ children }) {
   const [isDark, setIsDark] = useState(true);
   const location = useLocation();
 
+  // Normalize path without language prefix for path matching
+  const currentPathWithoutLang = location.pathname.replace(/^\/(?:en|de|ar)(?=\/|$)/, '') || '/';
+
   // Pages where the footer should be hidden (editor pages)
   const noFooterPaths = ['/create', '/portfolio', '/lettre-motivation'];
-  const isEditorPage = noFooterPaths.some(path => location.pathname.startsWith(path));
+  const isEditorPage = noFooterPaths.some(path => currentPathWithoutLang.startsWith(path));
 
   const toggleTheme = () => {
     setIsDark(!isDark);
@@ -29,7 +33,7 @@ export default function Layout({ children }) {
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
 
   // Helper to check active path
-  const isActive = (path) => location.pathname === path;
+  const isActive = (path) => currentPathWithoutLang === path;
 
   return (
     <div id="app" className={`min-h-screen flex flex-col transition-colors duration-300 ${isDark ? 'bg-[#0F172A] text-slate-100' : 'bg-slate-50 text-slate-800'}`}>
@@ -120,6 +124,7 @@ export default function Layout({ children }) {
             <div className="flex flex-col gap-2">
               <h4 className="font-black uppercase tracking-widest text-sm mb-1">Nos Outils</h4>
               <Link to="/create" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><FilePlus2 className="w-3 h-3" /> Créer mon CV gratuitement</Link>
+              <Link to="/creer-cv-gratuit" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><Sparkles className="w-3 h-3 text-yellow-600" /> Guide : Créer un CV gratuit</Link>
               <Link to="/studio-photo" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><Sparkles className="w-3 h-3 text-yellow-600" /> Photo CV professionnelle</Link>
               <Link to="/portfolio" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><Briefcase className="w-3 h-3" /> Créer un portfolio en ligne</Link>
               <Link to="/lettre-motivation" className="text-sm font-bold hover:underline underline-offset-4 decoration-2 transition-all flex items-center gap-1"><PenLine className="w-3 h-3" /> Créer une lettre de motivation</Link>

@@ -1,5 +1,6 @@
-import React, { lazy, Suspense } from 'react';
-import { BrowserRouter as Router, Routes, Route, Navigate } from 'react-router-dom';
+import React, { lazy, Suspense, useEffect } from 'react';
+import { BrowserRouter as Router, Routes, Route, Navigate, useLocation } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 import Layout from './components/Layout';
 import CookieConsent from './components/CookieConsent';
 import AdManager from './components/AdManager';
@@ -21,60 +22,106 @@ const SpecializedPage = lazy(() => import('./pages/SpecializedPage'));
 const JobSpace = lazy(() => import('./pages/JobSpace'));
 const PlanDuSite = lazy(() => import('./pages/PlanDuSite'));
 const StudioPhoto = lazy(() => import('./pages/StudioPhoto'));
+const CreerCvGratuitPillar = lazy(() => import('./pages/CreerCvGratuitPillar'));
 const NotFound = lazy(() => import('./pages/NotFound'));
+
+const SUPPORTED_LANGS = ['en', 'de', 'ar'];
+
+const routesList = [
+  { path: '', element: <Home /> },
+  { path: 'create', element: <CreateCV /> },
+  { path: 'studio-photo', element: <StudioPhoto /> },
+  { path: 'portfolio', element: <CreatePortfolio /> },
+  { path: 'lettre-motivation', element: <CoverLetter /> },
+  { path: 'conseils-cv', element: <ConseilsCV /> },
+  { path: 'blog', element: <Blog /> },
+  { path: 'blog/:id', element: <BlogPost /> },
+  { path: 'a-propos', element: <About /> },
+  { path: 'contact', element: <Contact /> },
+  { path: 'mentions-legales', element: <Legal /> },
+  { path: 'confidentialite', element: <Privacy /> },
+  { path: 'plan-du-site', element: <PlanDuSite /> },
+  { path: 'creer-cv-gratuit', element: <CreerCvGratuitPillar /> },
+  { path: 'espace-emploi', element: <JobSpace /> },
+
+  // 12 Specialized SEO Pages
+  { path: 'cv-ingenieur', element: <SpecializedPage /> },
+  { path: 'cv-ingenieur-debutant', element: <SpecializedPage /> },
+  { path: 'cv-etudiant', element: <SpecializedPage /> },
+  { path: 'cv-sans-experience', element: <SpecializedPage /> },
+  { path: 'cv-debutant', element: <SpecializedPage /> },
+  { path: 'cv-ats', element: <SpecializedPage /> },
+  { path: 'exemple-cv', element: <SpecializedPage /> },
+  { path: 'modele-cv-gratuit', element: <SpecializedPage /> },
+  { path: 'cv-informatique', element: <SpecializedPage /> },
+  { path: 'cv-professionnel', element: <SpecializedPage /> },
+  { path: 'alternative-gratuite-zety', element: <SpecializedPage /> },
+  { path: 'cv-ats-score-gratuit', element: <SpecializedPage /> },
+
+  // Existing Job Models
+  { path: 'modele-cv-comptable-word', element: <ModelePage /> },
+  { path: 'modele-cv-ingenieur', element: <ModelePage /> },
+  { path: 'modele-cv-debutant', element: <ModelePage /> },
+  { path: 'modele-cv-etudiant', element: <ModelePage /> },
+  { path: 'modele-cv-commercial', element: <ModelePage /> },
+  { path: 'modele-cv-developpeur', element: <ModelePage /> },
+  { path: 'modele-cv-designer', element: <ModelePage /> },
+  { path: 'modele-cv-infirmiere', element: <ModelePage /> },
+  { path: 'modele-cv-restauration', element: <ModelePage /> },
+  { path: 'modele-cv-chauffeur-livreur', element: <ModelePage /> },
+  { path: 'modele-cv-secretaire', element: <ModelePage /> },
+  { path: 'modele-cv-vendeur', element: <ModelePage /> }
+];
+
+function LanguageSync() {
+  const location = useLocation();
+  const { i18n } = useTranslation();
+
+  useEffect(() => {
+    const parts = location.pathname.split('/').filter(Boolean);
+    const lang = SUPPORTED_LANGS.includes(parts[0]) ? parts[0] : 'fr';
+    if (i18n.language !== lang) {
+      i18n.changeLanguage(lang);
+    }
+    document.documentElement.lang = lang;
+    document.documentElement.dir = lang === 'ar' ? 'rtl' : 'ltr';
+  }, [location.pathname, i18n]);
+
+  return null;
+}
 
 function App() {
   return (
     <Router>
+      <LanguageSync />
       <Layout>
         <AdManager />
         <Suspense fallback={<div className="min-h-screen bg-slate-100 dark:bg-slate-900" />}>
           <Routes>
-            <Route path="/" element={<Home />} />
-            <Route path="/create" element={<CreateCV />} />
-            <Route path="/studio-photo" element={<StudioPhoto />} />
-            <Route path="/portfolio" element={<CreatePortfolio />} />
-            <Route path="/lettre-motivation" element={<CoverLetter />} />
-            <Route path="/conseils-cv" element={<ConseilsCV />} />
-            <Route path="/blog" element={<Blog />} />
-            <Route path="/blog/:id" element={<BlogPost />} />
-            <Route path="/a-propos" element={<About />} />
-            <Route path="/contact" element={<Contact />} />
-            <Route path="/mentions-legales" element={<Legal />} />
-            <Route path="/confidentialite" element={<Privacy />} />
+            {/* French (default root) routes */}
+            {routesList.map(r => (
+              <Route 
+                key={r.path || 'home'} 
+                path={r.path ? `/${r.path}` : '/'} 
+                element={r.element} 
+              />
+            ))}
             <Route path="/privacy" element={<Navigate to="/confidentialite" replace />} />
-            <Route path="/plan-du-site" element={<PlanDuSite />} />
-            
-            {/* 10 Specialized SEO Pages */}
-            <Route path="/cv-ingenieur" element={<SpecializedPage />} />
-            <Route path="/cv-ingenieur-debutant" element={<SpecializedPage />} />
-            <Route path="/cv-etudiant" element={<SpecializedPage />} />
-            <Route path="/cv-sans-experience" element={<SpecializedPage />} />
-            <Route path="/cv-debutant" element={<SpecializedPage />} />
-            <Route path="/cv-ats" element={<SpecializedPage />} />
-            <Route path="/exemple-cv" element={<SpecializedPage />} />
-            <Route path="/modele-cv-gratuit" element={<SpecializedPage />} />
-            <Route path="/cv-informatique" element={<SpecializedPage />} />
-            <Route path="/cv-professionnel" element={<SpecializedPage />} />
-            <Route path="/alternative-gratuite-zety" element={<SpecializedPage />} />
-            <Route path="/cv-ats-score-gratuit" element={<SpecializedPage />} />
 
-            {/* Existing Job Models Routes */}
-            <Route path="/modele-cv-comptable-word" element={<ModelePage />} />
-            <Route path="/modele-cv-ingenieur" element={<ModelePage />} />
-            <Route path="/modele-cv-debutant" element={<ModelePage />} />
-            <Route path="/modele-cv-etudiant" element={<ModelePage />} />
-            <Route path="/modele-cv-commercial" element={<ModelePage />} />
-            <Route path="/modele-cv-developpeur" element={<ModelePage />} />
-            <Route path="/modele-cv-designer" element={<ModelePage />} />
-            <Route path="/modele-cv-infirmiere" element={<ModelePage />} />
-            <Route path="/modele-cv-restauration" element={<ModelePage />} />
-            <Route path="/modele-cv-chauffeur-livreur" element={<ModelePage />} />
-            <Route path="/modele-cv-secretaire" element={<ModelePage />} />
-            <Route path="/modele-cv-vendeur" element={<ModelePage />} />
-            
-            <Route path="/espace-emploi" element={<JobSpace />} />
-            
+            {/* Multilingual routes for EN, DE, AR */}
+            {SUPPORTED_LANGS.map(lang => (
+              <React.Fragment key={lang}>
+                {routesList.map(r => (
+                  <Route 
+                    key={`${lang}-${r.path || 'home'}`} 
+                    path={r.path ? `/${lang}/${r.path}` : `/${lang}`} 
+                    element={r.element} 
+                  />
+                ))}
+                <Route path={`/${lang}/privacy`} element={<Navigate to={`/${lang}/confidentialite`} replace />} />
+              </React.Fragment>
+            ))}
+
             {/* 404 Route */}
             <Route path="*" element={<NotFound />} />
           </Routes>

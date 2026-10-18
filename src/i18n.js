@@ -14,14 +14,43 @@ const resources = {
   de: { translation: deTranslation.translation },
 };
 
+const pathPrefixDetector = {
+  name: 'pathPrefix',
+  lookup() {
+    if (typeof window === 'undefined') return undefined;
+    const parts = window.location.pathname.split('/').filter(Boolean);
+    const firstPart = parts[0];
+    if (['en', 'de', 'ar'].includes(firstPart)) {
+      return firstPart;
+    }
+    // If explicitly /fr/... or any root path without prefix, French is the source language
+    if (firstPart === 'fr') {
+      return 'fr';
+    }
+    return 'fr';
+  },
+  cacheUserLanguage(lng) {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      try {
+        window.localStorage.setItem('i18nextLng', lng);
+      } catch (e) {
+        // Ignore localStorage quota or privacy restrictions
+      }
+    }
+  }
+};
+
+const customDetector = new LanguageDetector();
+customDetector.addDetector(pathPrefixDetector);
+
 i18n
-  .use(LanguageDetector)
+  .use(customDetector)
   .use(initReactI18next)
   .init({
     resources,
     fallbackLng: 'fr',
     detection: {
-      order: ['localStorage'],
+      order: ['pathPrefix', 'localStorage'],
       caches: ['localStorage'],
     },
     interpolation: {

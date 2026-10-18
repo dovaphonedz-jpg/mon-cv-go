@@ -4,7 +4,7 @@ import { fileURLToPath } from 'url';
 import { blogPosts } from '../src/data/blogPosts.js';
 import { jobModelsData } from '../src/data/jobModelsData.js';
 import { getLocalizedJobModel } from '../src/data/getLocalizedJobModel.js';
-import { specializedPagesData } from '../src/data/specializedPagesData.js';
+import { specializedPagesData, getLocalizedSpecializedPage } from '../src/data/specializedPagesData.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
@@ -453,8 +453,8 @@ languages.forEach((lang) => {
   });
 });
 
-// 2. Process Job Models Routes for all languages
-Object.keys(jobModelsData).forEach((key) => {
+// 2. Process Job Models Routes for all languages (excluding creer-cv-gratuit which is in baseRoutes)
+Object.keys(jobModelsData).filter(key => key !== 'creer-cv-gratuit').forEach((key) => {
   languages.forEach((lang) => {
     let cleanPath = key;
     if (lang !== 'fr') {
@@ -523,62 +523,69 @@ Object.keys(jobModelsData).forEach((key) => {
   });
 });
 
-// 2b. Process Specialized Pages (cv-ingenieur, cv-ats, cv-etudiant, cv-sans-experience, etc.)
+// 2b. Process Specialized Pages (cv-ingenieur, cv-ats, cv-etudiant, cv-sans-experience, etc.) for all languages
 Object.keys(specializedPagesData).forEach((key) => {
   const page = specializedPagesData[key];
-  const cleanPath = page.slug || key;
+  languages.forEach((lang) => {
+    let cleanPath = page.slug || key;
+    if (lang !== 'fr') {
+      cleanPath = `${lang}/${cleanPath}`;
+    }
 
-  const sectionsHtml = (page.sections || []).map(sec => `
-    <h2>${escapeHtml(sec.title)}</h2>
-    <p>${escapeHtml(sec.content || '')}</p>
-    ${sec.bullets ? `<ul>${sec.bullets.map(b => `<li>${escapeHtml(b)}</li>`).join('')}</ul>` : ''}
-    ${sec.hardSkills ? `<p><strong>Hard Skills :</strong> ${sec.hardSkills.map(escapeHtml).join(', ')}</p>` : ''}
-    ${sec.softSkills ? `<p><strong>Soft Skills :</strong> ${sec.softSkills.map(escapeHtml).join(', ')}</p>` : ''}
-    ${sec.examples ? `<ul>${sec.examples.map(ex => `<li>${escapeHtml(ex)}</li>`).join('')}</ul>` : ''}
-    ${sec.quote ? `<blockquote style="border-left: 3px solid #cbd5e1; padding-left: 1rem; font-style: italic;">${escapeHtml(sec.quote)}</blockquote>` : ''}
-  `).join('');
+    const localized = getLocalizedSpecializedPage(key, lang);
 
-  const mistakesHtml = (page.mistakesToAvoid || []).map(m => `<li>${escapeHtml(m)}</li>`).join('');
-  const faqList = (page.faq || []).map(item => `
-    <div style="margin-bottom: 1.25rem;">
-      <h3 style="font-weight: 700; margin-bottom: 0.25rem;">${escapeHtml(item.q)}</h3>
-      <p style="margin: 0; color: #4b5563;">${escapeHtml(item.a)}</p>
-    </div>
-  `).join('');
+    const sectionsHtml = (page.sections || []).map(sec => `
+      <h2>${escapeHtml(sec.title)}</h2>
+      <p>${escapeHtml(sec.content || '')}</p>
+      ${sec.bullets ? `<ul>${sec.bullets.map(b => `<li>${escapeHtml(b)}</li>`).join('')}</ul>` : ''}
+      ${sec.hardSkills ? `<p><strong>Hard Skills :</strong> ${sec.hardSkills.map(escapeHtml).join(', ')}</p>` : ''}
+      ${sec.softSkills ? `<p><strong>Soft Skills :</strong> ${sec.softSkills.map(escapeHtml).join(', ')}</p>` : ''}
+      ${sec.examples ? `<ul>${sec.examples.map(ex => `<li>${escapeHtml(ex)}</li>`).join('')}</ul>` : ''}
+      ${sec.quote ? `<blockquote style="border-left: 3px solid #cbd5e1; padding-left: 1rem; font-style: italic;">${escapeHtml(sec.quote)}</blockquote>` : ''}
+    `).join('');
 
-  const content = `
-    <article>
-      <h1>${escapeHtml(page.h1)}</h1>
-      <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">${escapeHtml(page.intro)}</p>
-      
-      <div style="background: #f8fafc; border-left: 4px solid #eab308; padding: 1.25rem; margin-bottom: 2rem; border-radius: 4px;">
-        <h2 style="margin-top: 0; font-size: 1.2rem; font-weight: 700;">📌 Points clés du guide ${escapeHtml(page.badge || '')}</h2>
-        <ul style="margin: 0.5rem 0 0 1.25rem; line-height: 1.6;">
-          ${(page.stats || []).map(s => `<li><strong>${escapeHtml(s.label)} :</strong> ${escapeHtml(s.value)}</li>`).join('')}
-        </ul>
+    const mistakesHtml = (page.mistakesToAvoid || []).map(m => `<li>${escapeHtml(m)}</li>`).join('');
+    const faqList = (page.faq || []).map(item => `
+      <div style="margin-bottom: 1.25rem;">
+        <h3 style="font-weight: 700; margin-bottom: 0.25rem;">${escapeHtml(item.q)}</h3>
+        <p style="margin: 0; color: #4b5563;">${escapeHtml(item.a)}</p>
       </div>
+    `).join('');
 
-      ${sectionsHtml}
+    const content = `
+      <article>
+        <h1>${escapeHtml(localized.h1)}</h1>
+        <p style="font-size: 1.1rem; line-height: 1.6; margin-bottom: 1.5rem;">${escapeHtml(localized.intro || localized.seoDesc || page.intro)}</p>
+        
+        <div style="background: #f8fafc; border-left: 4px solid #eab308; padding: 1.25rem; margin-bottom: 2rem; border-radius: 4px;">
+          <h2 style="margin-top: 0; font-size: 1.2rem; font-weight: 700;">📌 Points clés du guide ${escapeHtml(page.badge || '')}</h2>
+          <ul style="margin: 0.5rem 0 0 1.25rem; line-height: 1.6;">
+            ${(page.stats || []).map(s => `<li><strong>${escapeHtml(s.label)} :</strong> ${escapeHtml(s.value)}</li>`).join('')}
+          </ul>
+        </div>
 
-      ${mistakesHtml ? `
-      <h2>Erreurs courantes à éviter</h2>
-      <ul>${mistakesHtml}</ul>
-      ` : ''}
+        ${sectionsHtml}
 
-      ${faqList ? `
-      <h2>Foire Aux Questions (FAQ)</h2>
-      ${faqList}
-      ` : ''}
-    </article>
-  `;
+        ${mistakesHtml ? `
+        <h2>Erreurs courantes à éviter</h2>
+        <ul>${mistakesHtml}</ul>
+        ` : ''}
 
-  routes.push({
-    path: cleanPath,
-    title: page.seoTitle || `${page.h1} | Mon CV Go`,
-    description: page.seoDesc || page.intro.substring(0, 160),
-    h1: page.h1,
-    content: content,
-    faq: page.faq || []
+        ${faqList ? `
+        <h2>Foire Aux Questions (FAQ)</h2>
+        ${faqList}
+        ` : ''}
+      </article>
+    `;
+
+    routes.push({
+      path: cleanPath,
+      title: localized.seoTitle || `${localized.h1} | Mon CV Go`,
+      description: localized.seoDesc || (localized.intro || page.intro).substring(0, 160),
+      h1: localized.h1,
+      content: content,
+      faq: page.faq || []
+    });
   });
 });
 
@@ -643,6 +650,11 @@ routes.forEach((route) => {
   const altAr = `https://moncvgo.com/ar${relativePath}`;
 
   let html = templateHtml;
+
+  // Set html lang and dir attribute
+  const routeLang = pathParts.length > 0 && ['en', 'de', 'ar'].includes(pathParts[0]) ? pathParts[0] : 'fr';
+  const routeDir = routeLang === 'ar' ? 'rtl' : 'ltr';
+  html = html.replace(/<html[^>]*>/i, `<html lang="${routeLang}" dir="${routeDir}">`);
 
   // Replace Title
   html = html.replace(/<title>.*?<\/title>/gi, `<title>${escapeHtml(route.title)}</title>`);
@@ -715,7 +727,7 @@ routes.forEach((route) => {
       </div>
     </div>
   `;
-  html = html.replace(/<div id="root">[\s\S]*?<\/div>\s*<\/div>/i, rootReplacement);
+  html = html.replace(/<div id="root">[\s\S]*?<\/div>/i, rootReplacement);
 
   fs.writeFileSync(targetFilePath, html, 'utf-8');
   preRenderCount++;

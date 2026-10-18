@@ -60,8 +60,21 @@ const routesToCheck = [
   'creer-cv-gratuit',
   'modele-cv-comptable-word',
   'modele-cv-developpeur',
+  'modele-cv-vendeur',
+  'modele-cv-debutant',
+  'cv-ingenieur',
+  'cv-sans-experience',
   'blog/studio-photo-cv-intelligence-artificielle-detourage-gratuit',
-  'blog/erreurs-a-eviter-sur-un-cv'
+  'blog/erreurs-a-eviter-sur-un-cv',
+  // Multilingual routes
+  'en',
+  'de',
+  'ar',
+  'en/conseils-cv',
+  'de/contact',
+  'de/modele-cv-vendeur',
+  'de/cv-sans-experience',
+  'en/cv-ingenieur'
 ];
 
 routesToCheck.forEach((route) => {

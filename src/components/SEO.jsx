@@ -2,30 +2,71 @@ import React from 'react';
 import { Helmet } from 'react-helmet-async';
 import { useTranslation } from 'react-i18next';
 
-export default function SEO({ title, description, url = 'https://moncvgo.com', faqItems = null, breadcrumbs = null }) {
+export default function SEO({ 
+  title, 
+  description, 
+  url = 'https://moncvgo.com', 
+  faqItems = null, 
+  breadcrumbs = null,
+  noindex = false 
+}) {
   const { t, i18n } = useTranslation();
   const defaultDescription = t('home.seo_desc', "Créez facilement et gratuitement votre CV, lettre de motivation et portfolio avec nos outils intuitifs. Simple, rapide et professionnel.");
   const siteTitle = title 
     ? (title.includes('Mon CV Go') ? title : `${title} | Mon CV Go`)
     : 'Mon CV Go - Créez votre CV professionnel gratuitement en ligne';
   const siteDescription = description || defaultDescription;
-  const cleanLang = (i18n.language || 'fr').substring(0, 2);
+
+  // Determine active language: priority to URL path prefix, fallback to i18n
+  const detectLanguage = () => {
+    if (typeof window !== 'undefined') {
+      const parts = window.location.pathname.split('/').filter(Boolean);
+      if (['en', 'de', 'ar'].includes(parts[0])) {
+        return parts[0];
+      }
+      if (parts[0] === 'fr') {
+        return 'fr';
+      }
+    }
+    // Also check if url prop passed has an explicit language prefix
+    try {
+      if (url) {
+        const parsed = new URL(url.startsWith('http') ? url : `https://moncvgo.com${url.startsWith('/') ? url : '/' + url}`);
+        const parts = parsed.pathname.split('/').filter(Boolean);
+        if (['en', 'de', 'ar'].includes(parts[0])) {
+          return parts[0];
+        }
+      }
+    } catch {
+      // ignore
+    }
+    return (i18n.language || 'fr').substring(0, 2);
+  };
+
+  const cleanLang = detectLanguage();
 
   // Calculate canonical and language alternates based on current relative path
   const getCleanRelativePath = () => {
+    let pathname = '';
     try {
-      const parsed = new URL(url);
-      let path = parsed.pathname;
-      // Remove any language prefix if present in the URL
-      const parts = path.split('/').filter(Boolean);
-      if (['en', 'de', 'ar', 'fr'].includes(parts[0])) {
-        path = '/' + parts.slice(1).join('/');
+      if (url.startsWith('http://') || url.startsWith('https://')) {
+        pathname = new URL(url).pathname;
+      } else if (url.startsWith('/')) {
+        pathname = url;
+      } else if (typeof window !== 'undefined') {
+        pathname = window.location.pathname;
       }
-      return path === '/' ? '' : path;
-    } catch (e) {
-      // Fallback
-      return '';
+    } catch {
+      pathname = typeof window !== 'undefined' ? window.location.pathname : '';
     }
+
+    const parts = pathname.split('/').filter(Boolean);
+    // Remove language prefix if present
+    if (parts.length > 0 && ['en', 'de', 'ar', 'fr'].includes(parts[0])) {
+      const rest = parts.slice(1).join('/');
+      return rest ? `/${rest}` : '';
+    }
+    return parts.length > 0 ? `/${parts.join('/')}` : '';
   };
 
   const relativePath = getCleanRelativePath();
@@ -64,8 +105,11 @@ export default function SEO({ title, description, url = 'https://moncvgo.com', f
   return (
     <Helmet htmlAttributes={{ lang: cleanLang }}>
       <title>{siteTitle}</title>
-      <meta name="description" content={siteDescription} />
-      <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      {noindex ? (
+        <meta name="robots" content="noindex, follow" />
+      ) : (
+        <meta name="robots" content="index, follow, max-snippet:-1, max-image-preview:large, max-video-preview:-1" />
+      )}
       
       {/* Hreflang for multilingual */}
       <link rel="alternate" hreflang="fr" href={altFr} />
