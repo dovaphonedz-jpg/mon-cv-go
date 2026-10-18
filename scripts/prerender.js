@@ -71,9 +71,9 @@ const pageTranslations = {
     'conseils-cv': {
       title: 'Conseils CV 2026 : Guide Ultime pour Réussir vos Candidatures | Mon CV Go',
       description: 'Découvrez nos conseils d\'experts RH pour rédiger un CV irréprochable. Méthodes, exemples concrets, astuces ATS et erreurs à éviter.',
-      h1: 'Guide Ultime : Conseils CV et Recrutement 2026',
+      h1: 'Conseils CV : réussir son CV professionnel',
       content: `
-        <h1>Guide Ultime : Conseils CV et Recrutement 2026</h1>
+        <h1>Conseils CV : réussir son CV professionnel</h1>
         <p>Un recruteur passe en moyenne 6 à 10 secondes sur un CV. Suivez notre guide étape par étape pour structurer vos expériences, choisir les bons mots-clés et réussir vos candidatures.</p>
       `
     },
@@ -185,8 +185,8 @@ const pageTranslations = {
     'conseils-cv': {
       title: 'Resume Tips 2026: Ultimate Guide to Job Applications | Mon CV Go',
       description: 'Discover expert HR advice to write an outstanding resume. Methods, concrete examples, ATS tips, and mistakes to avoid.',
-      h1: 'Ultimate Guide: Resume and Recruitment Tips 2026',
-      content: '<h1>Ultimate Guide: Resume and Recruitment Tips 2026</h1><p>A recruiter spends 6 to 10 seconds on average on a resume. Follow our step-by-step guide to structure your experience and select keywords.</p>'
+      h1: 'Resume Tips: Master Your Professional Resume',
+      content: '<h1>Resume Tips: Master Your Professional Resume</h1><p>A recruiter spends 6 to 10 seconds on average on a resume. Follow our step-by-step guide to structure your experience and select keywords.</p>'
     },
     'blog': {
       title: 'Career, Resume & Job Blog 2026 | Mon CV Go',
@@ -271,8 +271,8 @@ const pageTranslations = {
     'conseils-cv': {
       title: 'Lebenslauf-Tipps 2026: Der ultimative Bewerbungsratgeber | Mon CV Go',
       description: 'Entdecken Sie Experten-Tipps für einen perfekten Lebenslauf. Methoden, Beispiele, ATS-Tricks und Fehler, die Sie vermeiden sollten.',
-      h1: 'Ultimativer Ratgeber: Lebenslauf und Bewerbungstipps 2026',
-      content: '<h1>Ultimativer Ratgeber: Lebenslauf und Bewerbungstipps 2026</h1><p>Ein Lebenslauf wird in wenigen Sekunden gescannt. Nutzen Sie unsere Anleitung, um Ihre Erfahrungen und Fähigkeiten optimal darzustellen.</p>'
+      h1: 'Lebenslauf-Tipps: Den professionellen Lebenslauf meistern',
+      content: '<h1>Lebenslauf-Tipps: Den professionellen Lebenslauf meistern</h1><p>Ein Lebenslauf wird in wenigen Sekunden gescannt. Nutzen Sie unsere Anleitung, um Ihre Erfahrungen und Fähigkeiten optimal darzustellen.</p>'
     },
     'blog': {
       title: 'Blog für Karriere, Lebenslauf & Jobs 2026 | Mon CV Go',
@@ -357,8 +357,8 @@ const pageTranslations = {
     'conseils-cv': {
       title: 'نصائح السيرة الذاتية 2026: الدليل الشامل لطلبات التوظيف | Mon CV Go',
       description: 'اكتشف نصائح الخبراء لكتابة سيرة ذاتية مثالية. أساليب، أمثلة عملية، نصائح ATS وأخطاء يجب تجنبها.',
-      h1: 'الدليل الشامل: نصائح السيرة الذاتية والتوظيف 2026',
-      content: '<h1>الدليل الشامل: نصائح السيرة الذاتية والتوظيف 2026</h1><p>يقضي مسؤول التوظيف ثوانٍ معدودة في مراجعة السيرة الذاتية. اتبع دليلنا لتنسيق خبراتك ومهاراتك.</p>'
+      h1: 'نصائح السيرة الذاتية: إتقان سيرتك الذاتية المهنية',
+      content: '<h1>نصائح السيرة الذاتية: إتقان سيرتك الذاتية المهنية</h1><p>يقضي مسؤول التوظيف ثوانٍ معدودة في مراجعة السيرة الذاتية. اتبع دليلنا لتنسيق خبراتك ومهاراتك.</p>'
     },
     'blog': {
       title: 'مدونة الوظائف والسيرة الذاتية 2026 | Mon CV Go',
